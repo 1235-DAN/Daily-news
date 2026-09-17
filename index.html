@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>焦點解讀室 2026</title>
+<meta name="description" content="新聞解讀入口：Apple 2026 發布會全景報告與聯準會 9 月升息解讀，附跨年份新聞時間線。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --apple:#2a78d6;
+  --apple-ink:#1f62b3;
+  --apple-wash:rgba(42,120,214,.10);
+  --fed:#1f7a5a;
+  --fed-ink:#17614a;
+  --fed-wash:rgba(31,122,90,.10);
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+    --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
+    --apple:#3987e5; --apple-ink:#7fb2f0; --apple-wash:rgba(57,135,229,.15);
+    --fed:#43b58a; --fed-ink:#6fd0a6; --fed-wash:rgba(67,181,138,.15);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+  --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
+  --apple:#3987e5; --apple-ink:#7fb2f0; --apple-wash:rgba(57,135,229,.15);
+  --fed:#43b58a; --fed-ink:#6fd0a6; --fed-wash:rgba(67,181,138,.15);
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased}
+a{color:inherit; text-decoration:none}
+a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-offset:2px; border-radius:8px}
+.wrap{max-width:1040px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+header.top{padding-block:28px 8px}
+.bar{display:flex; justify-content:space-between; align-items:center; gap:12px}
+.mark{font-weight:900; font-size:15px; letter-spacing:.02em}
+.mark span{color:var(--muted); font-weight:500; margin-left:8px; font-size:13px}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer}
+
+.intro{padding-block:48px 36px; max-width:720px}
+.intro .date{font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em}
+.intro h1{font-size:clamp(34px, 5.4vw, 58px); line-height:1.12; margin:10px 0 16px; font-weight:900; text-wrap:balance}
+.intro p{color:var(--ink-2); font-size:17px; margin:0}
+
+/* report cards */
+.reports{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
+.rep{position:relative; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:transform .15s, box-shadow .15s}
+.rep:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.08)}
+@media (prefers-reduced-motion: reduce){ .rep{transition:none} .rep:hover{transform:none} }
+.rep .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+.chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:2px 10px; border-radius:999px; white-space:nowrap}
+.chip::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
+.chip.apple{background:var(--apple-wash); color:var(--apple-ink)}
+.chip.fed{background:var(--fed-wash); color:var(--fed-ink)}
+.rep h2{font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:14px 0 8px; font-weight:900; text-wrap:balance}
+.rep p{color:var(--ink-2); font-size:15px; margin:0 0 18px}
+.rep .figs{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:10px; overflow:hidden; margin-top:auto}
+.rep .figs div{background:var(--surface); padding:10px 12px}
+.rep .figs .v{font-family:var(--mono); font-weight:600; font-size:18px; line-height:1.3}
+.rep .figs .l{font-size:12px; color:var(--muted)}
+.rep .go{margin-top:16px; font-weight:700; font-size:14px}
+.rep.apple .go{color:var(--apple-ink)}
+.rep.fed .go{color:var(--fed-ink)}
+.rep.apple{border-top:3px solid var(--apple)}
+.rep.fed{border-top:3px solid var(--fed)}
+
+/* timeline */
+.tl-head{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end; gap:16px; margin:72px 0 20px}
+.tl-head h2{font-size:clamp(24px, 3vw, 32px); margin:0; font-weight:900}
+.tl-head p{margin:4px 0 0; color:var(--ink-2); font-size:15px}
+.filters{display:flex; gap:6px; flex-wrap:wrap}
+.filters button{font:inherit; font-size:13.5px; border:1px solid var(--border); background:var(--surface); color:var(--ink-2); padding:6px 14px; border-radius:999px; cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+
+.year{display:grid; grid-template-columns:120px 1fr; gap:24px; border-top:1px solid var(--grid); padding-block:24px}
+.year h3{margin:0; font-family:var(--mono); font-weight:600; font-size:30px; line-height:1; position:sticky; top:16px; align-self:start}
+.year h3 small{display:block; font-family:var(--font); font-size:12px; color:var(--muted); font-weight:500; margin-top:8px}
+.events{list-style:none; margin:0; padding:0; position:relative}
+.events::before{content:""; position:absolute; left:112px; top:6px; bottom:6px; width:2px; background:var(--grid)}
+.ev{display:grid; grid-template-columns:100px 1fr; gap:24px; padding:8px 0; position:relative}
+.ev::before{content:""; position:absolute; left:107px; top:15px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.ev.apple::before{border-color:var(--apple)}
+.ev.fed::before{border-color:var(--fed)}
+.ev.key.apple::before{background:var(--apple)}
+.ev.key.fed::before{background:var(--fed)}
+.ev .d{font-family:var(--mono); font-size:13.5px; font-weight:600; color:var(--ink); padding-top:3px; white-space:nowrap}
+.ev .d small{display:block; font-size:11.5px; color:var(--muted); font-weight:500}
+.ev .body{padding-left:10px}
+.ev .t{font-weight:700; font-size:15.5px; line-height:1.5}
+.ev .s{color:var(--ink-2); font-size:14px; margin-top:2px}
+.ev .row{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:6px}
+.ev a.more{font-size:13px; font-weight:700}
+.ev.apple a.more{color:var(--apple-ink)}
+.ev.fed a.more{color:var(--fed-ink)}
+.ev a.more:hover{text-decoration:underline}
+.ev[hidden]{display:none}
+.year.empty{display:none}
+
+footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 760px){
+  .wrap{padding:0 16px}
+  .reports{grid-template-columns:1fr}
+  .year{grid-template-columns:1fr; gap:12px}
+  .year h3{position:static; font-size:26px}
+  .year h3 small{display:inline; margin-left:10px}
+  .events::before{left:6px}
+  .ev{grid-template-columns:1fr; gap:0; padding-left:28px}
+  .ev::before{left:1px; top:12px}
+  .ev .body{padding-left:0}
+  .ev .d small{display:inline; margin-left:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="bar">
+      <div class="mark">焦點解讀室<span>科技 · 財經</span></div>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="date">最後更新 2026-09-17</div>
+    <h1>把一整年的大新聞，放在同一條時間線上</h1>
+    <p>每份報告整理事件本身、背後原因、市場反應，以及對產業和台灣的影響，並在文末附上完整資料來源。</p>
+  </section>
+
+  <div class="reports">
+    <a class="rep fed" href="fed-2026-09/index.html">
+      <div class="meta"><span class="chip fed">聯準會</span><span class="mono">2026-09-16</span><span>· 最新</span></div>
+      <h2>聯準會三年來首度升息：Warsh 為什麼選在現在？</h2>
+      <p>記者會重點、升息原因、今年大事、美國經濟現況、全球與產業影響、對台灣的衝擊，以及各家媒體報導比較。</p>
+      <div class="figs">
+        <div><div class="v">3¾–4%</div><div class="l">新利率區間</div></div>
+        <div><div class="v">12–0</div><div class="l">投票結果</div></div>
+        <div><div class="v">4.1%</div><div class="l">年底點陣圖</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
+    <a class="rep apple" href="apple-2026/index.html">
+      <div class="meta"><span class="chip apple">Apple</span><span class="mono">2026-09-09</span><span>· 資料截至 09-11</span></div>
+      <h2>Apple 2026 發布會全景報告</h2>
+      <p>春季新品週、WWDC26 到 Ternus 首場「Surprise and Shine」：新產品、股價、競爭格局與商業影響。</p>
+      <div class="figs">
+        <div><div class="v">$1,999</div><div class="l">iPhone Duo 起價</div></div>
+        <div><div class="v">+16%</div><div class="l">FY26 Q3 營收</div></div>
+        <div><div class="v">$315</div><div class="l">9/9 收盤</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
+  </div>
+
+  <div class="tl-head" id="timeline">
+    <div>
+      <h2>新聞時間線</h2>
+      <p>實心點為重大事件。點「看報告」可直接跳到對應章節。</p>
+    </div>
+    <div class="filters" role="group" aria-label="篩選主題">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
+      <button type="button" id="f-fed" data-f="fed" aria-pressed="false">聯準會</button>
+      <button type="button" id="f-apple" data-f="apple" aria-pressed="false">Apple</button>
+    </div>
+  </div>
+
+  <div id="tl"></div>
+
+  <footer>
+    <p>各報告為獨立整理的新聞解讀，非官方文件，不構成投資建議。日期以事件發生地（美國）時間為準；台灣時間通常晚一天。</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var F = 'fed-2026-09/index.html', A = 'apple-2026/index.html';
+  // d: YYYY-MM-DD or YYYY-MM; k: key event
+  var items = [
+    {d:'2023-07-26', t:'fed', k:1, h:'Fed 升息至 5.25%–5.50%', s:'上一輪升息循環的最後一次，利率達到 22 年高點', u:F + '#year'},
+    {d:'2024-09-18', t:'fed', k:1, h:'Fed 開始降息，一次降兩碼', s:'利率降至 4.75%–5.00%，2024 年共降息三次', u:F + '#year'},
+    {d:'2025-09-17', t:'fed', h:'Fed 2025 年首次降息', s:'降至 4.00%–4.25%', u:F + '#year'},
+    {d:'2025-10-17', t:'apple', h:'Apple 取得美國 F1 獨家轉播權', s:'五年合約，2026 年起在 Apple TV 播出', u:A + '#marketing'},
+    {d:'2025-12-10', t:'fed', h:'Fed 年內第三次降息', s:'利率降至 3.50%–3.75%，一直維持到 2026 年 9 月', u:F + '#year'},
+    {d:'2026-01-12', t:'apple', k:1, h:'Apple 與 Google 合作，以 Gemini 重建 Siri', s:'據報每年支付約 10 億美元', u:A + '#timeline'},
+    {d:'2026-01', t:'fed', h:'川普提名 Kevin Warsh 接任 Fed 主席', s:'接替任期屆滿的 Powell', u:F + '#year'},
+    {d:'2026-01-26', t:'apple', h:'AirTag 第二代發表', s:'$29，精確尋找距離延長 50%', u:A + '#products'},
+    {d:'2026-01-28', t:'fed', h:'FOMC 今年首次會議，維持利率', s:'', u:F + '#year'},
+    {d:'2026-02-28', t:'fed', k:1, h:'伊朗戰爭爆發', s:'荷莫茲海峽航運中斷，油價飆升，成為今年通膨主因', u:F + '#why'},
+    {d:'2026-03-02', t:'apple', k:1, h:'Apple 春季新品週', s:'MacBook Neo、iPhone 17e、M5 MacBook Air／Pro 等（3/2–3/4）', u:A + '#products'},
+    {d:'2026-03-12', t:'fed', h:'布蘭特原油突破每桶 100 美元', s:'伊朗新任最高領袖宣布持續封鎖海峽', u:F + '#year'},
+    {d:'2026-03-18', t:'fed', h:'FOMC 維持利率，仍預期年內降息一次', s:'', u:F + '#year'},
+    {d:'2026-04-20', t:'apple', k:1, h:'Tim Cook 宣布卸任 CEO', s:'John Ternus 9/1 接任；隔日股價跌 2.52% 後迅速收復', u:A + '#stock'},
+    {d:'2026-04-29', t:'fed', h:'Powell 最後一次主持 FOMC', s:'維持利率，卸任主席後留任理事', u:F + '#year'},
+    {d:'2026-05-13', t:'fed', h:'參議院 54 比 45 通過 Warsh 任命', s:'近代票數最接近的 Fed 主席任命', u:F + '#year'},
+    {d:'2026-05-22', t:'fed', k:1, h:'Warsh 宣誓就任 Fed 主席', s:'', u:F + '#year'},
+    {d:'2026-06-08', t:'apple', k:1, h:'WWDC26', s:'Siri AI、iOS 27；Cook 最後一場主題演講，當天股價收跌 1.89%', u:A + '#features'},
+    {d:'2026-06-17', t:'fed', h:'Warsh 首次主持 FOMC', s:'維持利率，點陣圖從降息轉向「年底前升息」', u:F + '#year'},
+    {d:'2026-07-29', t:'fed', h:'FOMC 以 9 比 3 維持利率', s:'三位委員投票主張升息', u:F + '#year'},
+    {d:'2026-07-30', t:'apple', h:'Apple FY26 Q3 財報', s:'營收 1,094 億美元（+16%），iPhone +22%', u:A + '#stock'},
+    {d:'2026-08-25', t:'apple', h:'新 Mac mini 發表', s:'M6／M5 Pro，$899 起', u:A + '#products'},
+    {d:'2026-08-28', t:'fed', h:'Warsh 於 Jackson Hole 年會演講', s:'金融條件「難稱緊縮」，提出升息的判斷標準', u:F + '#presser'},
+    {d:'2026-09-01', t:'apple', h:'John Ternus 正式接任 Apple CEO', s:'', u:A + '#timeline'},
+    {d:'2026-09-04', t:'fed', h:'美國 8 月非農就業 +16.2 萬', s:'遠超預期，失業率 4.1%', u:F + '#economy'},
+    {d:'2026-09-09', t:'apple', k:1, h:'Apple「Surprise and Shine」發表會', s:'首款摺疊 iPhone Duo、iPhone 18 Pro、Watch Series 12', u:A + '#products'},
+    {d:'2026-09-11', t:'fed', h:'美國 8 月 CPI 年增 3.4%', s:'汽油年漲 27.4%，油價重回 100 美元', u:F + '#economy'},
+    {d:'2026-09-16', t:'fed', k:1, h:'Fed 三年來首度升息至 3.75%–4.00%', s:'12 比 0 全票；點陣圖暗示年底前再升一碼', u:F + '#summary'},
+    {d:'2026-09-17', t:'fed', h:'台灣央行第三季理監事會', s:'外資多預期不變，國內金融圈估升息半碼機率略過五成；決議待官方公布', u:F + '#taiwan'},
+    {d:'2026-10-23', t:'apple', h:'iPhone Duo 上市（預定）', s:'10/16 開放預購', u:A + '#products', future:1},
+    {d:'2026-10-28', t:'fed', h:'下次 FOMC 會議（預定）', s:'期貨市場估計再升息機率約五成', u:F + '#outlook', future:1}
+  ];
+  var names = {fed:'聯準會', apple:'Apple'};
+  var wk = ['日','一','二','三','四','五','六'];
+
+  var byYear = {};
+  items.sort(function(a, b){ return (a.d + '-99').localeCompare(b.d + '-99'); });
+  items.forEach(function(it){ var y = it.d.slice(0, 4); (byYear[y] = byYear[y] || []).push(it); });
+
+  var html = '';
+  Object.keys(byYear).sort().reverse().forEach(function(y){
+    var list = byYear[y].slice().reverse();
+    html += '<div class="year" data-year="' + y + '"><h3>' + y + '<small><span class="cnt">' + list.length + '</span> 則</small></h3><ol class="events">';
+    list.forEach(function(it){
+      var parts = it.d.split('-'), dateLabel, sub = '';
+      if (parts.length === 3){
+        dateLabel = parts[1] + '-' + parts[2];
+        sub = '週' + wk[new Date(it.d + 'T12:00:00Z').getUTCDay()];
+      } else { dateLabel = parts[1] + ' 月'; sub = '日期未定'; }
+      if (it.future) sub = '預定';
+      html += '<li class="ev ' + it.t + (it.k ? ' key' : '') + '" data-t="' + it.t + '">' +
+        '<div class="d">' + it.d.slice(0,4) + '-' + dateLabel.replace(' 月', '') + (parts.length === 2 ? '' : '') + '<small>' + sub + '</small></div>' +
+        '<div class="body"><div class="t">' + it.h + '</div>' + (it.s ? '<div class="s">' + it.s + '</div>' : '') +
+        '<div class="row"><span class="chip ' + it.t + '">' + names[it.t] + '</span><a class="more" href="' + it.u + '">看報告 →</a></div></div></li>';
+    });
+    html += '</ol></div>';
+  });
+  document.getElementById('tl').innerHTML = html;
+
+  var btns = document.querySelectorAll('.filters button');
+  function apply(f){
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-f') === f ? 'true' : 'false'); });
+    document.querySelectorAll('.ev').forEach(function(e){ e.hidden = !(f === 'all' || e.getAttribute('data-t') === f); });
+    document.querySelectorAll('.year').forEach(function(yr){
+      var n = yr.querySelectorAll('.ev:not([hidden])').length;
+      yr.classList.toggle('empty', n === 0);
+      yr.querySelector('.cnt').textContent = n;
+    });
+    try { localStorage.setItem('portalFilter', f); } catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ apply(b.getAttribute('data-f')); }); });
+  var start = 'all'; try { start = localStorage.getItem('portalFilter') || 'all'; } catch(e){}
+  apply(start);
+})();
+</script>
+</body>
+</html>

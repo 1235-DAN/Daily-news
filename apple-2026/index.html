@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple 2026 發布會全景報告</title>
+<meta name="description" content="整理 Apple 2026 年春季新品、WWDC26 與 9 月「Surprise and Shine」發表會：新產品、新功能、股價反應、外界評價、競爭格局與商業影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#7a7873;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#eb6834;
+  --neutral-bar:#b9b7ae;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-wash:rgba(57,135,229,.14);
+    --neg:#d95926; --neutral-bar:#55544f;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-wash:rgba(57,135,229,.14);
+  --neg:#d95926; --neutral-bar:#55544f;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:20px; height:52px}
+.nav .brand{font-weight:700; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:88px 0 72px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -60% 40%; height:520px; background:radial-gradient(closest-side, rgba(57,135,229,.28), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--hero-ink-2); margin:0 0 18px}
+.hero h1{font-size:clamp(36px, 6vw, 68px); line-height:1.12; margin:0 0 22px; font-weight:900; letter-spacing:-.01em}
+.hero h1 span{color:#6da7ec}
+.hero .lede{font-size:clamp(16px, 2vw, 19px); color:#d6d5cf; max-width:760px; margin:0}
+.kpis{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; margin-top:52px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); overflow:hidden; position:relative; z-index:1}
+.kpi{background:var(--hero-bg); padding:22px 22px 20px}
+.kpi .label{font-size:13px; color:var(--hero-ink-2)}
+.kpi .value{font-size:clamp(26px, 3.4vw, 36px); font-weight:700; margin:4px 0 2px; line-height:1.2}
+.kpi .delta{font-size:13px; color:#d6d5cf}
+
+/* ---------- sections ---------- */
+section{padding:80px 0 8px}
+.sec-head{margin-bottom:32px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 36px); line-height:1.25; margin:6px 0 12px; font-weight:900}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:20px; line-height:1.4; margin:0 0 10px; font-weight:700}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap}
+.tag.accent{background:var(--accent-wash); color:var(--ink); border-color:transparent}
+
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+
+/* summary */
+.summary{display:grid; grid-template-columns:1fr; gap:0; counter-reset:s}
+.summary li{list-style:none; display:grid; grid-template-columns:44px 1fr; gap:12px; padding:18px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-weight:900; font-size:20px; color:var(--accent); line-height:1.5}
+.summary b{font-weight:700}
+.summary ul{padding:0; margin:0}
+
+/* timeline */
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 22px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{font-weight:700; font-size:14px; font-variant-numeric:tabular-nums}
+.timeline .what{color:var(--ink-2)}
+.timeline .what b{color:var(--ink)}
+
+/* product cards */
+.event-block{margin-bottom:40px}
+.event-title{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:16px}
+.event-title h3{margin:0; font-size:22px}
+.prod{display:flex; flex-direction:column}
+.prod .top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:6px}
+.prod .price{font-weight:700; font-size:15px; white-space:nowrap}
+.prod ul{margin:8px 0 0; padding-left:18px; color:var(--ink-2); font-size:14.5px}
+.prod li{margin:3px 0}
+.prod .foot{margin-top:auto; padding-top:14px; font-size:13px; color:var(--muted)}
+.prod.feature{grid-column:span 2; background:linear-gradient(160deg, var(--accent-wash), transparent 60%), var(--surface)}
+.specs{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:10px; overflow:hidden; margin-top:14px}
+.specs div{background:var(--surface); padding:12px 14px}
+.specs .k{font-size:12px; color:var(--muted)}
+.specs .v{font-weight:700; font-size:15px; line-height:1.4}
+
+/* features */
+.feat h3{display:flex; align-items:center; gap:10px}
+.feat ul{margin:0; padding-left:18px; color:var(--ink-2); font-size:14.5px}
+.feat li{margin:4px 0}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink)}
+
+/* charts */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 8px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px}
+.legend i.ring{background:var(--surface); border:2px solid var(--accent); width:10px; height:10px}
+.legend i.fill{background:var(--accent)}
+.legend i.line{width:14px; height:2px; border-radius:1px; background:var(--axis); vertical-align:3px}
+#stockChart{width:100%; position:relative}
+#stockChart svg{display:block; width:100%; height:auto; overflow:visible}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:10px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+.tip .t-date{color:var(--muted); font-size:12px}
+.tip .t-val{font-weight:700; font-size:16px; font-variant-numeric:tabular-nums}
+
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:8em minmax(60px, 1fr) auto; align-items:center; gap:12px; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .track{height:22px; position:relative}
+.hbar .bar{position:absolute; left:0; top:0; bottom:0; background:var(--accent); border-radius:0 4px 4px 0; min-width:2px; transition:filter .15s}
+.hbar .bar.dim{background:var(--neutral-bar)}
+.hbar:hover .bar{filter:brightness(1.08)}
+.hbar .val{font-variant-numeric:tabular-nums; color:var(--ink); font-weight:500; white-space:nowrap}
+.hbar .val small{color:var(--muted); font-weight:400; margin-left:6px}
+
+/* diverging */
+.div-rows{display:grid; gap:10px}
+.div-row, .axis-note{display:grid; grid-template-columns:10em minmax(90px, 1fr) 70px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.35}
+.div-row .lab b{color:var(--ink); font-weight:500}
+.div-track{position:relative; height:22px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0; background:var(--accent)}
+.div-bar.pos{left:50%; border-radius:0 4px 4px 0}
+.div-bar.neg{right:50%; background:var(--neg); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.55}
+.div-row .val{font-variant-numeric:tabular-nums; text-align:right; font-weight:500}
+.axis-note{font-size:12px; color:var(--muted); margin:6px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+
+/* target dot plot */
+.tgt{display:grid; gap:0}
+.tgt-row{display:grid; grid-template-columns:9em minmax(90px, 1fr) 56px; gap:0 12px; align-items:stretch; font-size:14px; min-height:36px}
+.tgt-row .lab{color:var(--ink-2); line-height:1.3; align-self:center; padding:3px 0}
+.tgt-row .lab small{display:block; color:var(--muted); font-size:12px}
+.tgt-track{position:relative; min-height:36px}
+.tgt-track::before{content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:var(--grid)}
+.tgt-track .cur{position:absolute; top:0; bottom:0; width:1px; background:var(--ink-2); opacity:.55}
+.tgt-track .cons{position:absolute; top:0; bottom:0; width:0; border-left:1px solid var(--accent); opacity:.6}
+.tgt-track .seg{position:absolute; top:50%; height:2px; margin-top:-1px; background:var(--accent); opacity:.45}
+.tgt-track .seg.down{background:var(--neg)}
+.tgt-track .dot{position:absolute; top:50%; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 2px var(--surface)}
+.tgt-track .dot.down{background:var(--neg)}
+.tgt-row .val{text-align:right; font-variant-numeric:tabular-nums; font-weight:500; align-self:center}
+.tgt-axis{display:grid; grid-template-columns:9em minmax(90px, 1fr) 56px; gap:12px; font-size:12px; color:var(--muted); margin-top:6px}
+.tgt-axis .ticks{position:relative; height:16px}
+.tgt-axis .ticks span{position:absolute; transform:translateX(-50%); font-variant-numeric:tabular-nums}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:640px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums; white-space:nowrap}
+details.data{margin-top:12px; font-size:13.5px}
+details.data summary{cursor:pointer; color:var(--ink-2)}
+details.data table{min-width:0; margin-top:8px; font-size:13px}
+details.data th, details.data td{padding:6px 10px}
+
+/* reactions */
+.voice{display:flex; flex-direction:column; gap:10px}
+.voice .who{display:flex; align-items:center; gap:10px}
+.voice .ico{width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:var(--surface-2); font-size:18px; flex:none}
+.voice ul{margin:0; padding-left:18px; color:var(--ink-2); font-size:14.5px}
+.voice li{margin:5px 0}
+.sentiment{display:flex; gap:6px; flex-wrap:wrap}
+
+/* SWOT */
+.swot{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.swot .card h3{font-size:17px; display:flex; align-items:center; gap:10px}
+.swot .letter{width:30px; height:30px; border-radius:8px; display:grid; place-items:center; font-weight:900; font-size:15px; background:var(--surface-2); color:var(--ink)}
+.swot .s .letter{background:var(--accent); color:#fff}
+.swot ul{margin:0; padding-left:18px; color:var(--ink-2); font-size:14.5px}
+.swot li{margin:5px 0}
+.swot li b{color:var(--ink); font-weight:500}
+
+/* business topics */
+.biz{display:flex; flex-direction:column}
+.biz .num{font-size:12px; font-weight:700; color:var(--accent); letter-spacing:.06em}
+.biz h3{font-size:18px; margin:2px 0 10px}
+.biz dl{margin:0; font-size:14.5px}
+.biz dt{font-size:12px; font-weight:700; color:var(--muted); margin-top:10px}
+.biz dd{margin:2px 0 0; color:var(--ink-2)}
+.biz .impact{margin-top:auto; padding-top:14px; display:flex; gap:6px; flex-wrap:wrap}
+
+/* vision */
+.horizon{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.horizon .card{border-top:3px solid var(--accent)}
+.horizon .when{font-size:12px; font-weight:700; color:var(--accent); letter-spacing:.06em}
+.horizon ul{margin:8px 0 0; padding-left:18px; color:var(--ink-2); font-size:14.5px}
+.horizon li{margin:5px 0}
+
+/* sources */
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:18px}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .g4{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .horizon{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .charts2{grid-template-columns:1fr}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .g2, .g3, .g4, .swot{grid-template-columns:1fr}
+  .prod.feature{grid-column:auto}
+  .specs{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .hero{padding:64px 0 48px}
+  section{padding-top:60px}
+  .sources{columns:1}
+  .div-row, .axis-note, .tgt-row, .tgt-axis{grid-template-columns:96px minmax(80px, 1fr) 56px; gap:8px; font-size:13px}
+  .axis-note{font-size:12px}
+  .hbar{grid-template-columns:78px 1fr auto; gap:8px; font-size:13px}
+  #ladderChart .hbar{grid-template-columns:104px 1fr auto}
+  .tgt-axis .ticks span.odd{display:none}
+  .nav .brand{display:none}
+  .nav .home span{display:none}
+}
+@media print{
+  .nav, .theme-btn{display:none}
+  .hero{background:#fff; color:#000}
+  .card, .chart-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <span class="brand">Apple 2026 報告</span>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#timeline">時間軸</a></li>
+      <li><a class="link" href="#products">新產品</a></li>
+      <li><a class="link" href="#features">新功能</a></li>
+      <li><a class="link" href="#stock">股價分析</a></li>
+      <li><a class="link" href="#reaction">外界反應</a></li>
+      <li><a class="link" href="#vision">願景與影響</a></li>
+      <li><a class="link" href="#competitors">競爭對手</a></li>
+      <li><a class="link" href="#position">全球定位</a></li>
+      <li><a class="link" href="#business">商業影響</a></li>
+      <li><a class="link" href="#marketing">行銷策略</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">產業研究報告 · 資料截至 2026 年 9 月 11 日</p>
+    <h1>Apple 2026<br><span>發布會全景報告</span></h1>
+    <p class="lede">從 3 月春季新品週、6 月 WWDC26（Tim Cook 以 CEO 身分的最後一場主題演講），到 9 月 9 日 John Ternus 接任 CEO 後的首場「Surprise and Shine」發表會——整理新產品、新功能、股價反應、外界評價、競爭格局、各面向的商業影響，以及近期與未來的行銷策略。</p>
+    <div class="kpis">
+      <div class="kpi"><div class="label">iPhone Duo 起售價</div><div class="value">$1,999</div><div class="delta">首款摺疊 iPhone · 10/23 上市</div></div>
+      <div class="kpi"><div class="label">FY26 Q3 營收</div><div class="value">$1,094 億</div><div class="delta">▲ 16% YoY · 六月季歷史新高</div></div>
+      <div class="kpi"><div class="label">9/9 發表會當日收盤</div><div class="value">$315.34</div><div class="delta">▼ 0.28% · 隔日盤中回升約 1.6%</div></div>
+      <div class="kpi"><div class="label">市值（9 月初）</div><div class="value">≈ $4.7 兆</div><div class="delta">全球第 2，僅次於 Nvidia</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 01 摘要 ============ -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · EXECUTIVE SUMMARY</div>
+      <h2>五個核心結論</h2>
+      <p>2026 是 Apple 的「交棒之年」：CEO 換人、第一支摺疊手機、Siri 以 Google Gemini 為底重建。硬體端全面發力，AI 端仍在補課。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>硬體重新成為主角。</b>iPhone Duo、首顆 2 奈米手機晶片 A20 Pro、自研 C2 基頻，是硬體工程出身的 Ternus 為新時代定調的三張牌。</div></li>
+      <li><div><b>高階化取代走量。</b>秋季不推標準版 iPhone 18（延至 2027 春季），Pro 系列漲 $100，舊機型同步調價——用定價能力抵銷記憶體成本飆升。</div></li>
+      <li><div><b>AI 仍是最大變數。</b>Siri AI 以客製化 Gemini 模型為基礎，首發僅限英文、需排候補名單，歐盟與中國市場暫時缺席，AI 敘事尚未完整。</div></li>
+      <li><div><b>市場上演「賣事實」。</b>WWDC 與 9/9 發表會當天股價都收低，但多數分析師上調目標價；39 位分析師的共識目標價約 $331.5，看法分歧仍大（$245–$400）。</div></li>
+      <li><div><b>財務底氣充足，但毛利承壓。</b>Q3 iPhone +22%、Mac +29%、大中華區 +22.4%；不過 Q4 毛利率指引降到 47–48%，記憶體成本被管理層形容為「百年一遇的洪水」。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 02 時間軸 ============ -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · TIMELINE</div>
+      <h2>2026 年 Apple 大事時間軸</h2>
+      <p>藍色節點為主要發布會或對股價影響較大的事件。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">01 / 12</div><div class="what">Apple 與 Google 宣布多年期合作，以 <b>Gemini 模型</b>重建 Siri（據報每年約 10 億美元）</div></li>
+        <li><div class="date">01 / 26</div><div class="what"><b>AirTag 第二代</b>（$29），精確尋找距離延長 50%</div></li>
+        <li class="key"><div class="date">03 / 02 – 03 / 04</div><div class="what"><b>春季新品週</b>（新聞稿 + 紐約／倫敦／上海媒體體驗）：iPhone 17e、M4 iPad Air、M5 MacBook Air、M5 Pro／Max MacBook Pro、Studio Display／XDR、<b>MacBook Neo</b></div></li>
+        <li><div class="date">03 / 16</div><div class="what"><b>AirPods Max 2</b>（H2 晶片、即時翻譯）</div></li>
+        <li class="key"><div class="date">04 / 20</div><div class="what">宣布 <b>Tim Cook 卸任 CEO</b>、轉任執行董事長；硬體工程資深副總裁 John Ternus 9/1 接任</div></li>
+        <li class="key"><div class="date">06 / 08</div><div class="what"><b>WWDC26</b>：Siri AI、iOS 27、macOS 27 Golden Gate 等六大系統；Cook 的告別主題演講</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">07 / 30</div><div class="what"><b>FY26 Q3 財報</b>：營收 $1,094 億（+16%）、淨利 $298 億</div></li>
+        <li><div class="date">08 / 25</div><div class="what">新 <b>Mac mini</b>（M6／M5 Pro，$899 起，標配 2.5Gb 乙太網路）</div></li>
+        <li><div class="date">09 / 01</div><div class="what"><b>John Ternus 正式接任 CEO</b></div></li>
+        <li class="key"><div class="date">09 / 09</div><div class="what"><b>秋季發表會「Surprise and Shine」</b>：iPhone 18 Pro／Pro Max、<b>iPhone Duo</b>、Watch Series 12／Ultra 4、AirPods 5</div></li>
+        <li><div class="date">09 / 14 – 09 / 18</div><div class="what">iOS 27 等系統正式推送；iPhone 18 Pro、Watch、AirPods 5 開賣（9/12 預購）</div></li>
+        <li><div class="date">10 / 16 → 10 / 23</div><div class="what">iPhone Duo 預購 → 上市（搭載 iOS 27.1）</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 新產品 ============ -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · NEW PRODUCTS</div>
+      <h2>新產品推出</h2>
+      <p>截至 9 月，Apple 今年已推出十餘款新硬體。秋季主打高階機種，平價產品則集中在春季。以下價格均為美國售價。</p>
+    </div>
+
+    <div class="event-block">
+      <div class="event-title"><h3>9 月 9 日 · Surprise and Shine</h3><span class="tag accent">Ternus 首場發表會</span></div>
+      <div class="grid g3">
+        <article class="card prod feature">
+          <div class="top"><div><span class="tag accent">全新品類</span><h3 style="margin-top:8px">iPhone Duo</h3></div><div class="price">$1,999 – $3,199</div></div>
+          <p class="small muted" style="margin:0">Apple 第一支摺疊手機，採「護照式」短寬比例；展開後是史上最薄的 iPhone。</p>
+          <div class="specs">
+            <div><div class="k">螢幕</div><div class="v">外 5.4″ ／ 內 7.6″</div></div>
+            <div><div class="k">更新率／亮度</div><div class="v">120Hz · 3,000 nits</div></div>
+            <div><div class="k">晶片</div><div class="v">A20 Pro（2nm）</div></div>
+            <div><div class="k">機身</div><div class="v">5 級鈦金屬 · IP68</div></div>
+            <div><div class="k">相機</div><div class="v">48MP 主 + 48MP 超廣</div></div>
+            <div><div class="k">上市</div><div class="v">10/16 預購 · 10/23</div></div>
+          </div>
+          <ul>
+            <li>內螢幕採奈米紋理霧面處理，大幅淡化摺痕；鉸鏈蓋以 3D 列印製造</li>
+            <li>雙電池分置兩側，內螢幕影片播放最長 31 小時</li>
+            <li>支援 USB-C 版 Apple Pencil；容量 256GB 至 2TB</li>
+          </ul>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>iPhone 18 Pro / Pro Max</h3><div class="price">$1,199 / $1,299</div></div>
+          <ul>
+            <li>A20 Pro：首顆 2 奈米 iPhone 晶片，GPU 較 A19 Pro 快達 40%</li>
+            <li>48MP 主鏡頭<b>可變光圈</b> f/1.48–f/4，可手動調整光圈與快門</li>
+            <li>「Apple Reference Image」影像真實性驗證</li>
+            <li>自研 <b>C2 基頻</b>（省電 15%、美國支援 mmWave）、Wi-Fi 7、藍牙 6</li>
+            <li>影片播放 36 / 45 小時（Pro Max 為史上最長）；動態島縮小</li>
+          </ul>
+          <div class="foot">起價較前代 +$100 · 9/12 預購、9/18 上市 · 256GB–2TB</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>Apple Watch Series 12 / Ultra 4</h3><div class="price">$399 / $799</div></div>
+          <ul>
+            <li>全新健康感測系統：ECG 電極面積加大、心率量測更密集</li>
+            <li>8 項健康／健身新功能、3 項「Audio Intelligence」功能</li>
+            <li>新增陶瓷款式；Ultra 4 續航兩天</li>
+          </ul>
+          <div class="foot">9/18 上市 · 血壓相關通知功能仍待 FDA 審查</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>AirPods 5</h3><div class="price">$129 / $149</div></div>
+          <ul>
+            <li>主動降噪成為標配，音質升級</li>
+            <li>高階款支援無線充電</li>
+          </ul>
+          <div class="foot">9/18 上市</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>其他重要調整</h3></div>
+          <ul>
+            <li>iPhone 17 Pro 系列停售；iPhone 16、17、Air、17e <b>全面漲價</b></li>
+            <li>標準版 iPhone 18、18e、Air 2 延至 <b>2027 年春季</b></li>
+            <li>iPhone 14–16 免費衛星服務延長；AppleCare One 家庭方案（最多 6 人）</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-title"><h3>3 月 · 春季新品週</h3><span class="tag">以新聞稿發布，搭配媒體體驗活動</span></div>
+      <div class="grid g4">
+        <article class="card prod">
+          <div class="top"><h3>MacBook Neo</h3><div class="price">$599 起</div></div>
+          <ul><li>A18 Pro 晶片，史上最平價 Mac 筆電</li><li>上市首週創首次購買 Mac 用戶紀錄</li></ul>
+          <div class="foot">據報 6 月底起價調至 $699</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>iPhone 17e</h3><div class="price">$599</div></div>
+          <ul><li>A19、48MP 相機、MagSafe</li><li>256GB 起跳（容量加倍）、C1X 基頻</li></ul>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>iPad Air（M4）</h3></div>
+          <ul><li>11″ ／ 13″，12GB 記憶體</li><li>C1X 基頻、N1 無線晶片</li></ul>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>MacBook Air / Pro</h3></div>
+          <ul><li>Air 升級 M5，儲存容量加倍</li><li>Pro 提供 M5 Pro、M5 Max</li></ul>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>Studio Display / XDR</h3></div>
+          <ul><li>XDR 版採 mini-LED、120Hz，瞄準創作者</li></ul>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>AirPods Max 2</h3></div>
+          <ul><li>H2 晶片、更強降噪、即時翻譯</li></ul>
+          <div class="foot">3/16 發布</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>Mac mini</h3><div class="price">$899 起</div></div>
+          <ul><li>M6 或 M5 Pro、Wi-Fi 7、2.5Gb 乙太網路</li></ul>
+          <div class="foot">8/25 發布</div>
+        </article>
+        <article class="card prod">
+          <div class="top"><h3>AirTag 2</h3><div class="price">$29</div></div>
+          <ul><li>第二代 UWB，精確尋找距離 +50%</li></ul>
+          <div class="foot">1/26 發布</div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 新功能 ============ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · NEW FEATURES</div>
+      <h2>新功能：WWDC26 與秋季發表會</h2>
+      <p>WWDC26 一次更新六套系統（iOS 27、iPadOS 27、macOS 27、watchOS 27、visionOS 27、tvOS 27），超過 250 項改動；主軸是重建後的 Siri AI。</p>
+    </div>
+    <div class="grid g2">
+      <article class="card feat">
+        <h3>Siri AI <span class="tag accent">年度主軸</span></h3>
+        <ul>
+          <li>以<b>客製化 Google Gemini 模型</b>為基礎，在 Apple 自有資料中心執行，強調資料只用於完成請求</li>
+          <li>獨立 Siri App：保留對話紀錄，可從 iPhone 接續到 Mac</li>
+          <li>常駐動態島、以卡片呈現結果，對話更自然</li>
+          <li>理解個人情境與螢幕內容，可跨 App 執行動作</li>
+          <li>部分功能（表現力語音、進階聽寫）需要 12GB 記憶體，標準版 iPhone 17 無法使用</li>
+        </ul>
+      </article>
+      <article class="card feat">
+        <h3>iOS 27</h3>
+        <ul>
+          <li>支援 iPhone 11 及後續機型</li>
+          <li>效能優化：照片載入快 70%、AirDrop 快 80%</li>
+          <li>全新聽寫系統，自動修正拼字與標點</li>
+          <li>全螢幕主畫面小工具；鬧鐘、計時器、提醒音量可分開調整</li>
+          <li>Spotlight、照片、郵件搜尋全面重建；Liquid Glass 透明度可自訂</li>
+        </ul>
+      </article>
+      <article class="card feat">
+        <h3>Apple Intelligence 擴充</h3>
+        <ul>
+          <li>訊息 App 的 AI 回覆建議；電話 App 能讀懂郵件與訊息的上下文</li>
+          <li>照片：Reframe（調整透視）、Extend（生成式延伸畫面）、強化版 Cleanup</li>
+          <li>Safari 自動依主題分組分頁；捷徑可用自然語言建立</li>
+          <li>一鍵更新密碼；Image Playground 改版</li>
+        </ul>
+      </article>
+      <article class="card feat">
+        <h3>其他系統與服務</h3>
+        <ul>
+          <li><b>macOS 27 Golden Gate</b>：主打底層效能與穩定度</li>
+          <li>健康 App 新增圍停經期與更年期追蹤</li>
+          <li>App Store：訂閱綑綁、個人化推薦；家長控制預設「詢問後購買／瀏覽」</li>
+          <li>秋季發表會加碼：iPhone Handoff（初期限 T-Mobile、德國電信）、感應兌換 Apple 禮品卡、相機顆粒與質感選項</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note" style="margin-top:16px"><b>上線限制：</b>Siri AI 以英文、候補名單的 beta 形式推出；因《數位市場法》（DMA）爭議，今年不在歐盟推出，中國也延後。另據報導，iOS 27 程式碼裡已有讓 ChatGPT、Claude、Gemini 接入系統的「Extensions」框架，但 WWDC 並未發表，也未公布上線時程。</p>
+  </div>
+</section>
+
+<!-- ============ 05 股價分析 ============ -->
+<section id="stock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · STOCK ANALYSIS</div>
+      <h2>發布會後的股價分析</h2>
+      <p>今年幾個關鍵事件的走勢相當一致：發表當天「賣事實」、之後分析師上調目標價、股價在數週內回穩。</p>
+    </div>
+
+    <div class="chart-card">
+      <p class="chart-title">AAPL 關鍵交易日股價（美元）</p>
+      <p class="chart-sub">依媒體報導的收盤價與盤中價繪製，並非完整日線；空心點為推算或盤中價。滑鼠移到點上可看說明。</p>
+      <div class="legend"><span><i class="fill"></i>收盤價（報導值）</span><span><i class="ring"></i>推算值／盤中價</span><span><i class="line"></i>關鍵事件</span></div>
+      <div id="stockChart" role="img" aria-label="AAPL 2026 年 4 月至 9 月關鍵交易日股價折線圖"></div>
+      <details class="data"><summary>檢視數據表</summary><div id="stockTable"></div></details>
+    </div>
+
+    <div class="grid g2 charts2" style="margin-top:16px">
+      <div class="chart-card">
+        <p class="chart-title">事件日股價漲跌幅</p>
+        <p class="chart-sub">單日變動（%）；淡色為推算或盤中數字</p>
+        <div class="div-rows" id="reactChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="chart-card">
+        <p class="chart-title">分析師目標價 vs. 現價</p>
+        <p class="chart-sub">灰線：9/9 收盤 $315.34 · 藍線：共識均價 $331.53（39 位分析師）</p>
+        <div class="tgt" id="tgtChart"></div>
+        <div class="tgt-axis"><span></span><div class="ticks" id="tgtTicks"></div><span></span></div>
+      </div>
+    </div>
+
+    <div class="sub-h">事件逐一拆解</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>事件</th><th>當日反應</th><th>後續走勢</th><th>市場解讀</th></tr></thead>
+        <tbody>
+          <tr><td><b>春季新品週</b><br><span class="muted small">3/2–3/4</span></td><td>反應平淡</td><td>MacBook Neo 3/11 上市後數週累計約 +6%</td><td>Evercore（$330）、Wedbush（$350）重申買進，看好 Neo 打開中價位 PC 市場</td></tr>
+          <tr><td><b>CEO 交接宣布</b><br><span class="muted small">4/20 盤後</span></td><td class="num">▼ 2.52%（$266.17）</td><td>隔日 ▲ 2.63%（$273.17），一天收復</td><td>Ternus 早被視為接班首選，市場稱之為「小插曲」</td></tr>
+          <tr><td><b>WWDC26</b><br><span class="muted small">6/8</span></td><td class="num">盤中創高 $317.40 → 收 $301.54（▼ 1.89%）</td><td>6/10 跌至 $290.55</td><td>Siri AI 沒給時程、歐盟與中國缺席；但 TD Cowen、Maxim、Bernstein 等反而上調目標價</td></tr>
+          <tr><td><b>FY26 Q3 財報</b><br><span class="muted small">7/30</span></td><td>營收 $1,094 億，高於預期的 $1,087 億</td><td>財報前 7/28 收盤創歷史新高（約 $340），盤中市值觸及 5 兆美元</td><td>iPhone、Mac 強勁；Q4 毛利率指引 47–48% 成為隱憂</td></tr>
+          <tr><td><b>Surprise and Shine</b><br><span class="muted small">9/9</span></td><td class="num">▼ 0.28%（$315.34），量 6,470 萬股</td><td>9/10 盤中 ▲ 約 1.6%（$320.49）</td><td>選擇權原本預期波動 >1.5%（約平常 3 倍），實際反應溫和；Duo 定價低於預期是主要利多</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-h">多空因素</div>
+    <div class="grid g2">
+      <div class="card">
+        <h4>▲ 支撐股價的因素</h4>
+        <ul class="small" style="padding-left:18px; color:var(--ink-2); margin:0">
+          <li>Duo 起價 $1,999 低於市場預期；Morgan Stanley 認為 Apple 優先衝普及率，而非壓榨短期毛利</li>
+          <li>Pro 系列漲價、舊機型調價，顯示定價能力</li>
+          <li>Q3 連續第九季優於預期；單季回購 $258 億、配息 $40 億</li>
+          <li>超過 25 億台活躍裝置，是 Siri AI 的現成通路</li>
+          <li>歷史上，自 2007 年以來 iPhone 發表後 60 天股價有 17 次上漲</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>▼ 壓抑股價的因素</h4>
+        <ul class="small" style="padding-left:18px; color:var(--ink-2); margin:0">
+          <li>記憶體價格暴漲，Q4 毛利率指引較 Q3 的 50.1% 明顯下滑</li>
+          <li>BofA 將目標價由 $380 下修至 $370，FY27 EPS 預估由 $10.32 降至 $9.98</li>
+          <li>Siri AI 僅限英文 beta，歐盟、中國缺席</li>
+          <li>本益比約 41 倍，明顯高於大型科技股平均；Simply Wall St 的 DCF 模型認為高估約 26%</li>
+          <li>Duo 受良率限制，今年產能估計只有 800–1,000 萬台</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px"><b>接下來的觀察點：</b>10/16 Duo 預購熱度與出貨時間、10 月底至 11 月初的 FY26 Q4 財報（毛利率是否守住 47%）、Siri AI 何時開放候補名單以外的用戶與其他語言。</p>
+  </div>
+</section>
+
+<!-- ============ 06 外界反應 ============ -->
+<section id="reaction">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · REACTIONS</div>
+      <h2>外界的反應</h2>
+      <p>整體來看：硬體好評、AI 保留、華爾街分歧。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card voice">
+        <div class="who"><span class="ico">📱</span><h3 style="margin:0">科技媒體</h3></div>
+        <div class="sentiment"><span class="tag accent">偏正面</span></div>
+        <ul>
+          <li><b>Duo 上手：</b>The Verge、MacRumors 等認為摺痕在正常使用下幾乎看不到、摸不到；Gizmodo 形容霧面內螢幕像紙一樣不反光</li>
+          <li>Tom's Guide 認為 Apple 這次做對了，軟體完成度高</li>
+          <li><b>保留意見：</b>Duo 不如 Galaxy Z Fold 8 輕薄，價格還貴 $100</li>
+          <li>MacBook Neo 評價普遍很好，但 8GB 記憶體與散熱是主要限制</li>
+        </ul>
+      </article>
+      <article class="card voice">
+        <div class="who"><span class="ico">📈</span><h3 style="margin:0">華爾街</h3></div>
+        <div class="sentiment"><span class="tag">多空分歧</span></div>
+        <ul>
+          <li>Deepwater 的 Gene Munster 把 Duo 占 FY27 iPhone 營收比重由 5% 上調到 10%，認為這是繼 AirPods 以來最重要的新品</li>
+          <li>Citi 稱 Duo 是 Apple Watch 之後最大的新硬體品類（買進，$365）</li>
+          <li>Needham 的 Laura Martin 提醒：摺疊機只占整體手機市場約 5%</li>
+          <li>Barclays 維持減碼，目標價 $245，是最悲觀的一家</li>
+        </ul>
+      </article>
+      <article class="card voice">
+        <div class="who"><span class="ico">🗣️</span><h3 style="margin:0">散戶與消費者</h3></div>
+        <div class="sentiment"><span class="tag accent">熱度高</span></div>
+        <ul>
+          <li>Stocktwits 散戶社群情緒轉強，有人稱 Duo 發表是「現代版的 Steve Jobs 時刻」</li>
+          <li>消費者對漲價反應分歧：Pro 起價到 $1,199，Duo 頂規 $3,199</li>
+          <li>標準版 iPhone 18 缺席，想買入門機型的人要等到 2027 春季</li>
+        </ul>
+      </article>
+      <article class="card voice">
+        <div class="who"><span class="ico">🧠</span><h3 style="margin:0">產業評論</h3></div>
+        <div class="sentiment"><span class="tag">偏保留</span></div>
+        <ul>
+          <li>PYMNTS 等評論指出，Siri 靠授權 Google 的模型運作，Apple 並不擁有核心 AI 技術</li>
+          <li>擔心 Apple 淪為 AI 的「收費站」：手握通路，卻缺少自己的 AI 營收模式</li>
+          <li>很多 iPhone 用戶早已習慣用 ChatGPT，預設入口的優勢正在變弱</li>
+        </ul>
+      </article>
+      <article class="card voice">
+        <div class="who"><span class="ico">⚖️</span><h3 style="margin:0">監管機構</h3></div>
+        <div class="sentiment"><span class="tag">對立</span></div>
+        <ul>
+          <li>Apple 表示與歐盟協商數月未果，提出的「Trusted System Agent」等方案都被拒絕</li>
+          <li>歐盟執委會發言人反駁：DMA 並未禁止 Apple 在歐盟推出新產品</li>
+          <li>中國的 Siri AI 上線時間仍不明</li>
+        </ul>
+      </article>
+      <article class="card voice">
+        <div class="who"><span class="ico">🏁</span><h3 style="margin:0">競爭對手</h3></div>
+        <div class="sentiment"><span class="tag">主動出擊</span></div>
+        <ul>
+          <li>Samsung 在 Apple 發表 Duo 後隨即加強吸引 iPhone 用戶，Smart Switch 改成掃 QR code 就能無線轉移資料</li>
+          <li>Samsung 表示 Z Fold 8 系列從 iOS 轉來的用戶是前代的 1.6 倍</li>
+          <li>對 CEO 交接，Fortune 的評價是「沒有人感到意外」</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 願景與影響 ============ -->
+<section id="vision">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · VISION & IMPACT</div>
+      <h2>未來的願景及影響</h2>
+      <p>Ternus 在首場發表會把 iPhone 定位為「最適合 AI 的個人裝置」，理由是既有的隱私保護。以下整理 Apple 的策略方向與可能影響（屬分析推論）。</p>
+    </div>
+    <div class="grid g2 charts2" style="margin-bottom:16px">
+      <div class="card">
+        <h3>四個策略方向</h3>
+        <dl class="small" style="margin:0">
+          <dt style="font-weight:700; margin-top:6px">① 硬體驅動創新</dt><dd class="muted" style="margin:2px 0 10px">從摺疊機、可變光圈到 2 奈米晶片，用硬體差異化撐起高價。</dd>
+          <dt style="font-weight:700">② 晶片全面自研</dt><dd class="muted" style="margin:2px 0 10px">A20 Pro、M6、C2 基頻、N1 無線晶片，逐步取代 Qualcomm、Broadcom 等外購零件。</dd>
+          <dt style="font-weight:700">③ 「隱私 AI」＋ 外部模型</dt><dd class="muted" style="margin:2px 0 10px">短期租用 Gemini 補上能力落差，長期能否把核心技術做回自己手上，是最大的問號。</dd>
+          <dt style="font-weight:700">④ 高低兩端擴張</dt><dd class="muted" style="margin:2px 0 0">頂端用 Duo 與 Pro 拉高平均售價，入門用 MacBook Neo、iPhone 17e 擴大生態系入口，再靠服務變現。</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h3>產品週期的結構性改變</h3>
+        <p class="small muted">秋季只推高階機（Pro、Pro Max、Duo），標準版 iPhone 18、18e、Air 2 移到 2027 年春季。</p>
+        <ul class="small" style="padding-left:18px; color:var(--ink-2); margin:0">
+          <li><b>營收節奏：</b>從「秋季單峰」變成「秋、春雙峰」，季節性波動可能減少</li>
+          <li><b>供應鏈：</b>拉貨時間分散，組裝與零組件廠的產能利用率更平均</li>
+          <li><b>消費者：</b>秋季購機平均單價拉高，預算有限的人得等到春季</li>
+          <li><b>財測：</b>FY27 上半年 iPhone 營收組合改變，比較基期會失真</li>
+        </ul>
+      </div>
+    </div>
+    <div class="horizon">
+      <div class="card"><div class="when">短期 · FY27</div><h3>摺疊機驗證期</h3><ul>
+        <li>Duo 占 iPhone 營收 5–10%（Munster 估 10%）</li>
+        <li>Melius 估 FY27 最多賣 1,500 萬台</li>
+        <li>若約三分之一 Pro Max 買家改買 Duo，iPhone 營收可再增加約 5%</li>
+        <li>記憶體成本持續壓縮毛利</li>
+      </ul></div>
+      <div class="card"><div class="when">中期 · 2027–2028</div><h3>AI 能否補齊</h3><ul>
+        <li>Siri AI 若開放多語系、歐盟與中國，可能帶動換機潮</li>
+        <li>Extensions 若上線，iPhone 將成為多家 AI 模型的分發平台</li>
+        <li>C2 基頻全面導入，對 Qualcomm 的依賴降到最低</li>
+        <li>2027 年是 iPhone 問世 20 週年，市場預期會有重大設計更新</li>
+      </ul></div>
+      <div class="card"><div class="when">長期 · 2029 之後</div><h3>Ternus 時代的定位</h3><ul>
+        <li>從「營運效率」（Cook）轉向「產品創新」（Ternus）</li>
+        <li>自有 AI 模型是否能取代 Gemini，決定 Apple 在 AI 價值鏈的位置</li>
+        <li>健康感測（血壓等）若取得法規認證，Watch 將跨入醫療級應用</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 競爭對手 ============ -->
+<section id="competitors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · COMPETITION</div>
+      <h2>對其他競爭對手的影響</h2>
+      <p>Apple 今年的發布不只影響手機對手，也牽動晶片、AI 與 PC 產業。</p>
+    </div>
+    <div class="grid g2 charts2" style="margin-bottom:16px">
+      <div class="chart-card">
+        <p class="chart-title">2026 年摺疊手機市占預估</p>
+        <p class="chart-sub">Counterpoint 預估，Apple 進場首年即拿下四分之一</p>
+        <div class="hbars" id="foldChart"></div>
+      </div>
+      <div class="chart-card">
+        <p class="chart-title">2026 Q2 全球智慧型手機出貨市占</p>
+        <p class="chart-sub">總出貨 2.775 億支，年減 6.7%</p>
+        <div class="hbars" id="shareChart"></div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對手</th><th>受影響領域</th><th>影響說明</th><th>評估</th></tr></thead>
+        <tbody>
+          <tr><td><b>Samsung</b></td><td>摺疊手機、高階 Android</td><td>Duo 與 Z Fold 8 同為「護照式」比例，正面對決；Samsung 已加碼 Smart Switch 搶 iPhone 用戶。另一方面，Samsung 也是記憶體供應商，受惠於漲價</td><td><span class="tag">手機承壓／記憶體受惠</span></td></tr>
+          <tr><td><b>Google</b></td><td>AI 模型、Android、Pixel</td><td>Gemini 成為 Siri 的基礎模型，每年約 10 億美元授權收入，也等於獲得最大的品牌背書；但 Siri 變強後，Pixel 的 AI 差異化會縮小</td><td><span class="tag accent">淨受惠</span></td></tr>
+          <tr><td><b>Qualcomm</b></td><td>基頻晶片</td><td>C2 導入 iPhone 18 Pro 的速度比預期快，Qualcomm 預估 Apple 相關營收在 9 月季到 12 月季之間將季減約一半</td><td><span class="tag">明顯受損</span></td></tr>
+          <tr><td><b>OpenAI</b></td><td>AI 助理入口</td><td>ChatGPT 失去 Siri 唯一外部模型的地位；據報正考慮對既有合作提出違約訴訟。Extensions 若上線，將與 Claude、Gemini 同台競爭</td><td><span class="tag">受損</span></td></tr>
+          <tr><td><b>Huawei</b></td><td>中國高階手機、摺疊機</td><td>Q2 中國市場整體衰退 4.3%，Huawei 與 Apple 卻各成長約 20%，兩強在高階市場的對決更激烈；Siri AI 在中國缺席，Huawei 在 AI 功能上暫時領先</td><td><span class="tag">勢均力敵</span></td></tr>
+          <tr><td><b>OPPO、vivo、小米等</b></td><td>中低階手機</td><td>記憶體漲價對中低階機衝擊最大；OPPO、vivo Q2 出貨分別年減 17.5% 與 19.4%。Apple 靠長約鎖定記憶體，較能承受成本</td><td><span class="tag">受損</span></td></tr>
+          <tr><td><b>Windows PC 廠、Chromebook</b></td><td>入門與教育筆電</td><td>MacBook Neo 以 $599–699 切入中價位，帶動 Mac Q3 成長 29%、大中華區創紀錄，直接壓縮 Windows 與 Chromebook 的空間</td><td><span class="tag">受損</span></td></tr>
+          <tr><td><b>Anthropic 等 AI 新創</b></td><td>模型分發</td><td>Extensions 若開放，可直接觸及超過 10 億 Apple 用戶；但時程未定</td><td><span class="tag">潛在受惠</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 全球定位 ============ -->
+<section id="position">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · GLOBAL POSITION</div>
+      <h2>現在在世界上的定位</h2>
+      <p>市值全球第二、手機出貨全球第二，但在高階手機的營收與獲利上仍居龍頭。今年股價漲幅在七大科技股中名列前茅。</p>
+    </div>
+    <div class="grid g2 charts2" style="margin-bottom:16px">
+      <div class="chart-card">
+        <p class="chart-title">全球市值前四大（2026 年 9 月初，兆美元）</p>
+        <p class="chart-sub">Apple 與 Nvidia 今年多次互換第一</p>
+        <div class="hbars" id="capChart"></div>
+      </div>
+      <div class="chart-card">
+        <p class="chart-title">FY26 Q3 各產品線營收</p>
+        <p class="chart-sub">億美元，括號內為年增率</p>
+        <div class="hbars" id="segChart"></div>
+      </div>
+    </div>
+    <div class="swot">
+      <div class="card s"><h3><span class="letter">S</span>優勢</h3><ul>
+        <li><b>生態系規模：</b>活躍裝置超過 25 億台、付費訂閱超過 15 億</li>
+        <li><b>晶片自研：</b>2 奈米 A20 Pro、M 系列、C 系列基頻、N1，軟硬整合的深度無人能比</li>
+        <li><b>定價能力：</b>漲價後需求依然強勁，Q3 iPhone +22%</li>
+        <li><b>供應鏈議價力：</b>長約鎖定記憶體，比 Android 陣營更扛得住成本</li>
+        <li><b>現金流：</b>單季回饋股東 $330 億</li>
+      </ul></div>
+      <div class="card"><h3><span class="letter">W</span>弱勢</h3><ul>
+        <li><b>AI 核心技術外包：</b>Siri 依賴 Gemini</li>
+        <li><b>AI 覆蓋不足：</b>僅英文 beta，歐盟、中國缺席</li>
+        <li><b>iPad 疲弱：</b>Q3 年減 6%</li>
+        <li><b>毛利承壓：</b>Q4 指引 47–48%</li>
+        <li><b>估值偏高：</b>本益比約 41 倍，容錯空間小</li>
+      </ul></div>
+      <div class="card"><h3><span class="letter">O</span>機會</h3><ul>
+        <li><b>摺疊新品類：</b>進場首年市占預估 25%</li>
+        <li><b>入門市場：</b>MacBook Neo 帶進大量首次購買 Mac 的用戶</li>
+        <li><b>AI 平台化：</b>Extensions 若上線可抽成或綁定服務</li>
+        <li><b>健康醫療：</b>血壓通知等功能等待 FDA 審核</li>
+        <li><b>中國回溫：</b>大中華區 Q3 +22.4%</li>
+      </ul></div>
+      <div class="card"><h3><span class="letter">T</span>威脅</h3><ul>
+        <li><b>監管：</b>歐盟 DMA、中國法規持續限制新功能</li>
+        <li><b>成本：</b>AI 資料中心搶走記憶體產能，價格持續上漲</li>
+        <li><b>競爭：</b>Samsung 摺疊機先行多年、Huawei 在中國崛起</li>
+        <li><b>入口遷移：</b>用戶習慣直接用 ChatGPT 等 AI App，繞過 Siri</li>
+        <li><b>先進製程產能：</b>管理層坦言供給受限於先進製程</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">區域營收成長（FY26 Q3 年增率）</div>
+    <div class="chart-card"><div class="hbars" id="geoChart"></div></div>
+  </div>
+</section>
+
+<!-- ============ 10 商業影響 ============ -->
+<section id="business">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · BUSINESS IMPACT</div>
+      <h2>各種商業影響（分主題）</h2>
+      <p>按主題整理今年各場發布對 Apple 本身、合作夥伴與整體產業的影響，並列出後續可追蹤的指標。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card biz"><div class="num">主題 01</div><h3>定價與產品組合</h3><dl>
+        <dt>重點</dt><dd>Pro 漲 $100、舊機全面調價、Duo 定位 $1,999 起，秋季只賣高階機。</dd>
+        <dt>商業影響</dt><dd>iPhone 平均售價與營收大幅提升；也考驗高價位的需求彈性。</dd>
+        <dt>觀察指標</dt><dd>iPhone ASP、Pro 與 Duo 出貨比例、Q4 iPhone 是否達到指引的「中雙位數成長」。</dd></dl>
+        <div class="impact"><span class="tag accent">營收 ↑</span><span class="tag">需求風險</span></div></article>
+
+      <article class="card biz"><div class="num">主題 02</div><h3>供應鏈與零組件成本</h3><dl>
+        <dt>重點</dt><dd>管理層把記憶體漲價形容為「百年一遇的洪水」；供給還受限於先進製程產能。</dd>
+        <dt>商業影響</dt><dd>毛利率從 50.1% 降到 47–48%；漲價是轉嫁成本的手段，但空間有限。</dd>
+        <dt>觀察指標</dt><dd>DRAM 合約價、Q4 實際毛利率、Duo 良率與交期。</dd></dl>
+        <div class="impact"><span class="tag">毛利 ↓</span><span class="tag">產能瓶頸</span></div></article>
+
+      <article class="card biz"><div class="num">主題 03</div><h3>AI 策略與夥伴生態</h3><dl>
+        <dt>重點</dt><dd>Siri AI 以客製 Gemini 為底，每年支付約 10 億美元；Extensions 框架已完成但未上線。</dd>
+        <dt>商業影響</dt><dd>用最快速度補上 AI 能力，但核心技術不在自己手上，議價與差異化受限。</dd>
+        <dt>觀察指標</dt><dd>Siri AI 開放範圍、語系數、自研模型進度、與 OpenAI 的法律糾紛。</dd></dl>
+        <div class="impact"><span class="tag">依賴風險</span><span class="tag accent">換機誘因</span></div></article>
+
+      <article class="card biz"><div class="num">主題 04</div><h3>服務營收與訂閱</h3><dl>
+        <dt>重點</dt><dd>服務營收 $307 億（+12%）；推出 AppleCare One 家庭方案、App Store 訂閱綑綁。</dd>
+        <dt>商業影響</dt><dd>高毛利的服務能抵銷硬體毛利壓力；入門機擴大用戶基礎，提供更多變現對象。</dd>
+        <dt>觀察指標</dt><dd>付費訂閱數、服務毛利率、AppleCare 採用率。</dd></dl>
+        <div class="impact"><span class="tag accent">穩定成長</span></div></article>
+
+      <article class="card biz"><div class="num">主題 05</div><h3>自研晶片與垂直整合</h3><dl>
+        <dt>重點</dt><dd>C2 基頻上 Pro 機、N1 無線晶片擴及 iPad 與 Mac、A20 Pro 率先採用 2 奈米。</dd>
+        <dt>商業影響</dt><dd>長期降低授權與採購成本、提升續航與效能；Qualcomm、Broadcom 的 Apple 營收減少。</dd>
+        <dt>觀察指標</dt><dd>C2 普及速度、Qualcomm 財報中的 Apple 營收、晶片成本占比。</dd></dl>
+        <div class="impact"><span class="tag accent">成本 ↓</span><span class="tag accent">差異化 ↑</span></div></article>
+
+      <article class="card biz"><div class="num">主題 06</div><h3>監管與地緣政治</h3><dl>
+        <dt>重點</dt><dd>Siri AI 因 DMA 不進歐盟、中國延後；Q3 毛利含約 2 個百分點的關稅退款利益。</dd>
+        <dt>商業影響</dt><dd>歐洲與中國用戶拿不到年度主打功能，削弱換機誘因；關稅退款屬一次性收益。</dd>
+        <dt>觀察指標</dt><dd>歐盟協商進展、中國 AI 合作夥伴與審批、關稅政策變化。</dd></dl>
+        <div class="impact"><span class="tag">功能延遲</span><span class="tag">一次性收益</span></div></article>
+
+      <article class="card biz"><div class="num">主題 07</div><h3>電信商與通路</h3><dl>
+        <dt>重點</dt><dd>iPhone Handoff 初期只與 T-Mobile、德國電信合作；Pro 機提供 eSIM 版本；延長舊機衛星服務。</dd>
+        <dt>商業影響</dt><dd>電信商合作可能換取補貼或行銷資源；eSIM 普及會改變實體通路的角色。</dd>
+        <dt>觀察指標</dt><dd>電信商補貼力道、各國 eSIM 採用率。</dd></dl>
+        <div class="impact"><span class="tag">通路重組</span></div></article>
+
+      <article class="card biz"><div class="num">主題 08</div><h3>開發者與 App 生態</h3><dl>
+        <dt>重點</dt><dd>Duo 雙螢幕需要調整 App 版面；Siri AI 能跨 App 執行動作；App Store 開放訂閱綑綁。</dd>
+        <dt>商業影響</dt><dd>開發者得投入摺疊螢幕與 AI 動作的適配；訂閱綑綁可能提高留存與客單價。</dd>
+        <dt>觀察指標</dt><dd>支援摺疊版面的 App 數量、Siri 動作整合數。</dd></dl>
+        <div class="impact"><span class="tag">適配成本</span><span class="tag accent">新商機</span></div></article>
+
+      <article class="card biz"><div class="num">主題 09</div><h3>PC 與入門市場</h3><dl>
+        <dt>重點</dt><dd>MacBook Neo 以手機晶片降低成本，帶動 Mac 單季 +29%，首週首次購買 Mac 的人數創紀錄。</dd>
+        <dt>商業影響</dt><dd>搶下教育與學生市場，擴大生態系入口；毛利較低，但長期用戶價值高。</dd>
+        <dt>觀察指標</dt><dd>Mac 市占、A18 Pro 晶片供應、Neo 漲價後的銷量。</dd></dl>
+        <div class="impact"><span class="tag accent">市占 ↑</span></div></article>
+
+      <article class="card biz"><div class="num">主題 10</div><h3>健康與穿戴</h3><dl>
+        <dt>重點</dt><dd>Watch 新健康感測系統、健康 App 加入更年期追蹤；血壓相關功能送交 FDA。</dd>
+        <dt>商業影響</dt><dd>往醫療級功能靠攏，能拉開與一般手錶的差距，也可能帶來保險、企業健康方案等合作。</dd>
+        <dt>觀察指標</dt><dd>FDA 審核結果、穿戴營收（Q3 +6%）是否加速。</dd></dl>
+        <div class="impact"><span class="tag">法規門檻</span><span class="tag accent">長期潛力</span></div></article>
+
+      <article class="card biz"><div class="num">主題 11</div><h3>資本市場與股東回報</h3><dl>
+        <dt>重點</dt><dd>單季回購 $258 億、每股配息 $0.27；股價年初至今漲幅名列七大科技股前段。</dd>
+        <dt>商業影響</dt><dd>龐大回購支撐 EPS；但高估值讓股價對 AI 與毛利的消息更敏感。</dd>
+        <dt>觀察指標</dt><dd>FY27 EPS 預估的修正方向、共識目標價變化。</dd></dl>
+        <div class="impact"><span class="tag accent">EPS 支撐</span><span class="tag">估值敏感</span></div></article>
+
+      <article class="card biz"><div class="num">主題 12</div><h3>台灣供應鏈啟示</h3><dl>
+        <dt>重點</dt><dd>A20 Pro 採 2 奈米製程；摺疊機帶來鉸鏈、面板、鈦金屬機殼等新零件需求。</dd>
+        <dt>商業影響</dt><dd>先進製程代工與摺疊零組件廠可望受惠；基頻自研則讓部分射頻供應商面臨調整（屬分析推論）。</dd>
+        <dt>觀察指標</dt><dd>2 奈米產能配置、Duo 拉貨量、2027 春季機型的備貨時間。</dd></dl>
+        <div class="impact"><span class="tag accent">先進製程受惠</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 行銷策略 ============ -->
+<section id="marketing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · MARKETING STRATEGY</div>
+      <h2>近期及未來的行銷策略</h2>
+      <p>今年 Apple 的行銷方向很清楚：高階產品講「變革」與「隱私 AI」，入門產品講「最平價」，再用區域促銷、運動內容與服務綑綁把用戶留在生態系裡。</p>
+    </div>
+
+    <div class="grid g2 charts2" style="margin-bottom:16px; align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">2026 新品價格階梯（美國起售價）</p>
+        <p class="chart-sub">從 $129 到 $3,199，同時往高低兩端延伸；藍色為今年主打的高階機種</p>
+        <div class="hbars" id="ladderChart"></div>
+        <p class="small muted" style="margin:12px 0 0">註：iPhone 17e 為發表時定價，9 月已宣布調漲；MacBook Neo 據報 6 月底調至 $699。</p>
+      </div>
+      <div class="card">
+        <h3>核心行銷訊息</h3>
+        <dl class="small" style="margin:0">
+          <dt style="font-weight:700; margin-top:6px">「變革」敘事</dt>
+          <dd class="muted" style="margin:2px 0 12px">Ternus 把 Duo 稱為初代 iPhone 以來最具變革性的改變，強調展開後的操作像 iPad 一樣自然。新 CEO 首次登台，本身就是話題。</dd>
+          <dt style="font-weight:700">隱私是 AI 的賣點</dt>
+          <dd class="muted" style="margin:2px 0 12px">產品行銷副總裁 Kaiann Drance 在受訪時強調，Siri AI 懂個人情境，但以隱私為核心；AI 被包裝成融入日常的功能，而不是獨立的科技噱頭。</dd>
+          <dt style="font-weight:700">熟悉感降低門檻</dt>
+          <dd class="muted" style="margin:2px 0 12px">Duo 主打「老 iPhone 用戶拿起來就會用」，瞄準想換摺疊機、又不想離開 iOS 的人。</dd>
+          <dt style="font-weight:700">入門機講「最平價」</dt>
+          <dd class="muted" style="margin:2px 0 0">MacBook Neo 以「史上最平價 Mac 筆電」切入學生與首次購買 Mac 的族群。</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="sub-h">近期行銷手法（2026 年已執行）</div>
+    <div class="grid g3">
+      <article class="card biz"><div class="num">發表會</div><h3>「Surprise and Shine」與 CEO 交棒</h3><dl>
+        <dt>做法</dt><dd>美國等多國以「Surprise and Shine」為主題；線上直播由新 CEO 開場，把 iPhone 定位為個人 AI 的核心裝置。</dd>
+        <dt>效果</dt><dd>Duo 定價低於預期成為媒體焦點，散戶情緒明顯轉熱。</dd></dl></article>
+      <article class="card biz"><div class="num">合作夥伴</div><h3>App 夥伴共同造勢</h3><dl>
+        <dt>做法</dt><dd>Netflix、Slack、Zoom 等為 Duo 的大螢幕重新設計 App，發表時一併展示。</dd>
+        <dt>效果</dt><dd>上市第一天就有可用的 App 生態，降低「摺疊機沒有 App 支援」的疑慮。</dd></dl></article>
+      <article class="card biz"><div class="num">區域促銷</div><h3>中國 618 降價搭國補</h3><dl>
+        <dt>做法</dt><dd>5 月中起 iPhone 17 Pro 系列降價 1,000 元人民幣，部分機型搭配以舊換新與政府補貼後低於 6,000 元的補貼門檻。</dd>
+        <dt>效果</dt><dd>Q2 中國 iPhone 出貨年增 24.4%，是當地成長最快的品牌。</dd></dl></article>
+      <article class="card biz"><div class="num">教育市場</div><h3>Back to School 延長檔期</h3><dl>
+        <dt>做法</dt><dd>7/16 起購買 Mac 或 iPad 送最高 $150 禮品卡，並延長到 9/24，台灣也在適用範圍。MacBook Neo 不在優惠內。</dd>
+        <dt>解讀</dt><dd>Neo 本身供不應求，不需要再用促銷刺激，優惠改用來推高毛利的 Air 與 Pro。</dd></dl></article>
+      <article class="card biz"><div class="num">內容與運動</div><h3>F1、MLS 綁定 Apple TV</h3><dl>
+        <dt>做法</dt><dd>2026 年起 Apple TV 獨家轉播美國 F1 全賽事（5 年約，每年約 1.4 億美元），延續電影《F1》的熱度；MLS 取消季票，改為 Apple TV 訂閱全包。</dd>
+        <dt>效果</dt><dd>用全年不停的賽事觸及年輕族群，推升服務訂閱。</dd></dl></article>
+      <article class="card biz"><div class="num">留存與綑綁</div><h3>服務綑綁提高黏著度</h3><dl>
+        <dt>做法</dt><dd>AppleCare One 家庭方案（最多 6 人）、App Store 訂閱綑綁、iPhone 14–16 免費衛星服務延長。</dd>
+        <dt>效果</dt><dd>拉長換機前的使用時間，也讓全家綁在同一個生態系裡。</dd></dl></article>
+      <article class="card biz"><div class="num">通路</div><h3>直營店與電信商</h3><dl>
+        <dt>做法</dt><dd>印度第 6 家直營店 2/26 在孟買開幕，班加羅爾第二家預計 2027 年初；亞太區計畫 2027 年前新增 15 家店。iPhone Handoff 先與 T-Mobile、德國電信合作。</dd>
+        <dt>效果</dt><dd>在新興市場建立品牌體驗，並透過電信商取得補貼與曝光。</dd></dl></article>
+      <article class="card biz"><div class="num">定價溝通</div><h3>用價格錨點帶高階</h3><dl>
+        <dt>做法</dt><dd>Duo 頂規 $3,199 拉高價格上限，讓 $1,199 的 Pro 看起來較容易入手；同時把入門版延到春季，避免秋季自家產品互搶。</dd>
+        <dt>解讀</dt><dd>典型的價格錨定手法（屬分析推論）。</dd></dl></article>
+      <article class="card biz"><div class="num">溝通分寸</div><h3>AI 不過度承諾</h3><dl>
+        <dt>做法</dt><dd>Siri AI 清楚標示為 beta、需排候補名單、僅支援英文。</dd>
+        <dt>解讀</dt><dd>2025 年 Apple 曾因 Apple Intelligence 廣告對功能上線時間的描述遭美國廣告審查機構要求修正，今年的保守措辭可視為吸取教訓（屬分析推論）。</dd></dl></article>
+    </div>
+
+    <div class="sub-h">未來行銷策略展望（分析推論）</div>
+    <div class="horizon">
+      <div class="card"><div class="when">2026 Q4 · 假期季</div><h3>Duo 上市衝刺</h3><ul>
+        <li>直營店體驗為主：讓消費者親手摸摺痕、測耐用度，化解對摺疊機的疑慮</li>
+        <li>主攻 Pro Max 用戶升級，以及 Samsung 等 Android 摺疊機用戶轉換</li>
+        <li>以舊換新、電信補貼、分期付款降低 $1,999 的心理門檻</li>
+        <li>Siri AI 候補名單逐步開放，製造「搶先體驗」話題</li>
+      </ul></div>
+      <div class="card"><div class="when">2027 上半年 · 春季檔期</div><h3>雙峰發表常態化</h3><ul>
+        <li>標準版 iPhone 18、18e、Air 2 在春季上市，形成第二個行銷高峰</li>
+        <li>與開學季、中國 618 檔期銜接，主打大眾市場與性價比</li>
+        <li>若 FDA 核准血壓相關功能，健康可望成為 Watch 的新行銷主軸</li>
+        <li>Siri AI 若新增語系與地區，將是非英語市場的換機訴求</li>
+      </ul></div>
+      <div class="card"><div class="when">2027 下半年之後</div><h3>20 週年與 Ternus 品牌</h3><ul>
+        <li>iPhone 問世 20 週年，預期會以品牌傳承與設計突破做情感行銷</li>
+        <li>Ternus 工程師出身，發表會可能更強調工程細節與實機展示</li>
+        <li>若 Extensions 上線，「自由選擇 AI」可作為歐盟市場的溝通重點，也回應 DMA 的要求</li>
+        <li>印度等新興市場持續擴店，搭配入門機型搶首購族</li>
+      </ul></div>
+    </div>
+    <p class="note" style="margin-top:16px"><b>行銷風險：</b>① 價格一再上調，可能讓品牌從「高端」變成「昂貴」，入門族群流失；② AI 功能在歐盟與中國缺席，全球行銷訊息難以一致；③ 在中國與 Huawei 的價格戰壓縮獲利；④ 對 AI 能力的描述若再次超前實際上線進度，可能面臨監管與訴訟風險。</p>
+  </div>
+</section>
+
+<!-- ============ 12 來源 ============ -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">12 · SOURCES</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與官方資料。部分股價為依報導的漲跌幅推算（圖表中已標示），不同媒體的數字可能略有出入。</p>
+    </div>
+    <ol class="sources">
+      <li><a href="https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/" target="_blank" rel="noopener">Apple Newsroom — iPhone 18 Pro 發表</a></li>
+      <li><a href="https://www.apple.com/newsroom/2026/07/apple-reports-third-quarter-results/" target="_blank" rel="noopener">Apple Newsroom — FY26 Q3 財報</a></li>
+      <li><a href="https://www.macrumors.com/2026/09/09/apple-september-2026-event-recap/" target="_blank" rel="noopener">MacRumors — 9 月發表會總整理</a></li>
+      <li><a href="https://www.macrumors.com/2026/09/09/iphone-duo-hands-on/" target="_blank" rel="noopener">MacRumors — iPhone Duo 上手</a></li>
+      <li><a href="https://www.macrumors.com/2026/07/30/apple-3q-2026-earnings/" target="_blank" rel="noopener">MacRumors — Q3 2026 財報</a></li>
+      <li><a href="https://www.macrumors.com/2026/06/11/aapl-stock-slides-following-wwdc/" target="_blank" rel="noopener">MacRumors — WWDC 後股價與目標價</a></li>
+      <li><a href="https://www.macrumors.com/2026/06/13/top-stories-wwdc-2026-recap/" target="_blank" rel="noopener">MacRumors — WWDC 2026 回顧</a></li>
+      <li><a href="https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-siri-ai-os-27-apple-intelligence-and-more/" target="_blank" rel="noopener">TechCrunch — WWDC 2026 全部發表內容</a></li>
+      <li><a href="https://9to5mac.com/2026/08/27/apple-has-announced-11-new-products-in-2026-so-far-with-more-coming-soon/" target="_blank" rel="noopener">9to5Mac — 2026 年已發表的 11 項新品</a></li>
+      <li><a href="https://www.gizmochina.com/2026/09/09/apple-iphone-duo-launched-specs-price/" target="_blank" rel="noopener">Gizmochina — iPhone Duo 規格與價格</a></li>
+      <li><a href="https://www.benzinga.com/markets/tech/26/09/61696812/apple-announced-airpods-5-watch-ultra-4-and-watch-series-12" target="_blank" rel="noopener">Benzinga — AirPods 5、Watch 價格</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/apple-stock-outlook-after-iphone-duo-launch-what-investors-need-to-know-93CH-4895834" target="_blank" rel="noopener">Investing.com — Duo 發表後股價展望</a></li>
+      <li><a href="https://www.cnbc.com/2026/09/10/what-wall-street-thought-of-apples-foldable-iphone-what-duo-means-for-the-stock.html" target="_blank" rel="noopener">CNBC — 華爾街如何看 Duo</a></li>
+      <li><a href="https://www.ibtimes.com.au/apples-first-foldable-iphone-wall-street-reactions-1875323" target="_blank" rel="noopener">IBTimes — 分析師對 Duo 的分歧</a></li>
+      <li><a href="https://247wallst.com/investing/2026/09/10/prediction-apple-stock-could-be-headed-for-a-big-move-after-yesterdays-event/" target="_blank" rel="noopener">24/7 Wall St. — 發表會後股價預測</a></li>
+      <li><a href="https://finance.yahoo.com/technology/article/how-apple-stock-usually-reacts-to-big-iphone-reveal-events-152915777.html" target="_blank" rel="noopener">Yahoo Finance — iPhone 發表後的歷史股價</a></li>
+      <li><a href="https://simplywall.st/stocks/us/tech/nasdaq-aapl/apple/news/apple-aapl-could-be-26-overvalued-following-its-september-9" target="_blank" rel="noopener">Simply Wall St — 估值分析</a></li>
+      <li><a href="https://ts2.tech/en/apple-stock-loses-120-billion-before-sept-9-event-pricing-is-the-real-test/" target="_blank" rel="noopener">TS2 — 發表會前市值回落</a></li>
+      <li><a href="https://www.techtimes.com/articles/318097/20260609/apple-stock-slips-after-wwdc-2026-wall-street-splits-between-400-bull-case-215-floor.htm" target="_blank" rel="noopener">Tech Times — WWDC 後多空分歧</a></li>
+      <li><a href="https://macdailynews.com/2026/04/22/apple-investors-have-muted-reaction-to-tim-cooks-ceo-exit-shares-quickly-rebound/" target="_blank" rel="noopener">MacDailyNews — CEO 交接的股價反應</a></li>
+      <li><a href="https://fortune.com/2026/04/21/apple-ceo-tim-cook-steps-down-john-ternus/" target="_blank" rel="noopener">Fortune — Tim Cook 卸任</a></li>
+      <li><a href="https://www.nbcnews.com/tech/tech-news/apples-new-ceo-john-ternus-takes-tim-cook-15-years-rcna595504" target="_blank" rel="noopener">NBC News — Ternus 接任 CEO</a></li>
+      <li><a href="https://edition.cnn.com/2026/09/09/business/live-news/apple-event-foldable-iphone-ternus" target="_blank" rel="noopener">CNN — Ternus 發表 iPhone Duo</a></li>
+      <li><a href="https://www.forbes.com/sites/tylerroush/2026/07/28/apple-briefly-surpasses-5-trillion-market-value-joining-nvidia/" target="_blank" rel="noopener">Forbes — Apple 市值短暫突破 5 兆美元</a></li>
+      <li><a href="https://www.cnbc.com/2026/09/10/samsung-tries-to-draw-iphone-users-to-its-foldables-amid-apple-entry.html" target="_blank" rel="noopener">CNBC — Samsung 搶 iPhone 用戶</a></li>
+      <li><a href="https://www.engadget.com/2254316/iphone-duo-vs-samsung-galaxy-z-fold-8-comparison/" target="_blank" rel="noopener">Engadget — iPhone Duo vs Galaxy Z Fold 8</a></li>
+      <li><a href="https://www.ubergizmo.com/2026/07/samsung-and-apple-lead-global-smartphone-market-in-q2-2026/" target="_blank" rel="noopener">Ubergizmo — 2026 Q2 全球手機市占</a></li>
+      <li><a href="https://www.idc.com/resource-center/blog/china-smartphone-market-decline-q2-2026/" target="_blank" rel="noopener">IDC — 2026 Q2 中國手機市場</a></li>
+      <li><a href="https://www.macrumors.com/2026/07/29/qualcomm-apple-modem-revenue-dropping/" target="_blank" rel="noopener">MacRumors — Qualcomm 的 Apple 基頻營收下滑</a></li>
+      <li><a href="https://www.eweek.com/news/apple-siri-ai-eu-dma-delay-emea/" target="_blank" rel="noopener">eWeek — Siri AI 因 DMA 延後進入歐盟</a></li>
+      <li><a href="https://www.pymnts.com/apple/2026/apples-new-ceo-has-a-hardware-event-and-an-ai-problem/" target="_blank" rel="noopener">PYMNTS — 新 CEO 的 AI 難題</a></li>
+      <li><a href="https://thenextweb.com/news/apple-siri-extensions-third-party-ai-missing-wwdc" target="_blank" rel="noopener">The Next Web — iOS 27 Extensions 未在 WWDC 亮相</a></li>
+      <li><a href="https://tech-insider.org/apple-google-gemini-siri-deal-1-billion-2026/" target="_blank" rel="noopener">Tech Insider — Apple 與 Google Gemini 合作</a></li>
+      <li><a href="https://www.macworld.com/article/3081612/macbook-neo-a18-pro-review.html" target="_blank" rel="noopener">Macworld — MacBook Neo 評測</a></li>
+      <li><a href="https://finance.yahoo.com/news/analysts-praise-macbook-neo-game-193055376.html" target="_blank" rel="noopener">Yahoo Finance — 分析師看 MacBook Neo</a></li>
+      <li><a href="https://www.macrumors.com/2026/02/26/dram-shortage-apple-less-affected/" target="_blank" rel="noopener">MacRumors — DRAM 短缺對 Apple 影響較小</a></li>
+      <li><a href="https://www.tomsguide.com/phones/iphones/iphone-duo-hands-on-apple-nailed-it-and-just-put-everyone-else-on-notice" target="_blank" rel="noopener">Tom's Guide — iPhone Duo 上手</a></li>
+      <li><a href="https://gizmodo.com/iphone-duo-hands-on-2000808932" target="_blank" rel="noopener">Gizmodo — iPhone Duo 上手</a></li>
+      <li><a href="https://www.mediapost.com/publications/article/417770/with-iphone-duo-apple-unfolds-a-new-chapter.html" target="_blank" rel="noopener">MediaPost — iPhone Duo 的行銷新篇章</a></li>
+      <li><a href="https://abc7ny.com/post/apple-executive-kaiann-drance-gives-insights-new-folding-iphone-duo-emphasizes-privacy-siri-ai/19816015/" target="_blank" rel="noopener">ABC7 — Kaiann Drance 談 Duo 與隱私 AI</a></li>
+      <li><a href="https://www.macrumors.com/2026/05/15/apple-slashes-iphone-17-prices-china/" target="_blank" rel="noopener">MacRumors — 中國 618 iPhone 降價</a></li>
+      <li><a href="https://www.macrumors.com/2026/08/11/apple-extends-2026-back-to-school-promo/" target="_blank" rel="noopener">MacRumors — Back to School 延長至 9/24</a></li>
+      <li><a href="https://www.cnbc.com/2025/10/17/apple-f1-media-deal-streaming.html" target="_blank" rel="noopener">CNBC — Apple 取得 F1 美國轉播權</a></li>
+      <li><a href="https://appleinsider.com/articles/26/02/25/sixth-apple-store-in-india-to-open-on-february-26" target="_blank" rel="noopener">AppleInsider — 印度第 6 家直營店</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的產業研究，非 Apple 官方文件，內容不構成任何投資建議。資料截至 2026 年 9 月 11 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  // ---------- theme toggle ----------
+  var root = document.documentElement, btn = document.getElementById('themeBtn');
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  btn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+    drawStock();
+  });
+
+  // ---------- tooltip ----------
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8);
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock chart ----------
+  var pts = [
+    {d:'2026-04-20', p:273.05, k:'est', n:'CEO 交接宣布前收盤（由 4/21 跌幅推算）'},
+    {d:'2026-04-21', p:266.17, k:'close', n:'宣布 Cook 卸任後首個交易日，▼2.52%'},
+    {d:'2026-04-22', p:273.17, k:'close', n:'▲2.63%，一天收復跌幅'},
+    {d:'2026-06-05', p:307.35, k:'est', n:'WWDC 前收盤（由 6/8 跌幅推算）'},
+    {d:'2026-06-08', p:301.54, k:'close', n:'WWDC26 當日，▼1.89%'},
+    {d:'2026-06-10', p:290.55, k:'close', n:'WWDC 後續跌'},
+    {d:'2026-07-28', p:339.79, k:'close', n:'收盤歷史新高，盤中市值觸及 5 兆美元'},
+    {d:'2026-09-08', p:316.23, k:'est', n:'發表會前收盤（由 9/9 跌幅推算）'},
+    {d:'2026-09-09', p:315.34, k:'close', n:'秋季發表會當日，▼0.28%'}
+  ];
+  var extra = [
+    {d:'2026-06-08', p:317.40, k:'intra', n:'WWDC 當日盤中高點（Siri AI 發表時）'},
+    {d:'2026-09-10', p:320.49, k:'intra', n:'發表會隔日盤中（9:48 ET），▲1.63%'}
+  ];
+  var events = [
+    {d:'2026-04-20', t:'CEO 交接宣布'},
+    {d:'2026-06-08', t:'WWDC26'},
+    {d:'2026-07-30', t:'Q3 財報'},
+    {d:'2026-09-09', t:'秋季發表會'}
+  ];
+  function ts(s){ return new Date(s + 'T00:00:00Z').getTime(); }
+  function fmtD(s){ var a = s.split('-'); return (+a[1]) + '/' + (+a[2]); }
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(name, attrs, parent){ var e = document.createElementNS(NS, name); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+
+  function drawStock(){
+    var box = document.getElementById('stockChart');
+    box.innerHTML = '';
+    var W = Math.max(300, box.clientWidth), narrow = W < 560;
+    var H = narrow ? 280 : 330;
+    var m = {l:44, r:14, t:narrow ? 52 : 40, b:28};
+    var cs = getComputedStyle(document.documentElement);
+    var c = function(v){ return cs.getPropertyValue(v).trim(); };
+    var x0 = ts('2026-04-10'), x1 = ts('2026-09-16'), y0 = 250, y1 = 350;
+    var X = function(d){ return m.l + (ts(d) - x0) / (x1 - x0) * (W - m.l - m.r); };
+    var Y = function(p){ return m.t + (1 - (p - y0) / (y1 - y0)) * (H - m.t - m.b); };
+    var svg = el('svg', {viewBox:'0 0 ' + W + ' ' + H, width:W, height:H}, box);
+
+    // grid + y ticks
+    for (var v = 260; v <= 340; v += 20){
+      el('line', {x1:m.l, x2:W - m.r, y1:Y(v), y2:Y(v), stroke:c('--grid'), 'stroke-width':1}, svg);
+      var tt = el('text', {x:m.l - 8, y:Y(v) + 4, 'text-anchor':'end', 'font-size':11, fill:c('--muted'), style:'font-variant-numeric:tabular-nums'}, svg); tt.textContent = '$' + v;
+    }
+    // x month ticks
+    ['2026-05-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01'].forEach(function(d){
+      var t = el('text', {x:X(d), y:H - 8, 'text-anchor':'middle', 'font-size':11, fill:c('--muted')}, svg);
+      t.textContent = (+d.split('-')[1]) + ' 月';
+    });
+    el('line', {x1:m.l, x2:W - m.r, y1:H - m.b, y2:H - m.b, stroke:c('--axis'), 'stroke-width':1}, svg);
+
+    // events
+    events.forEach(function(e, i){
+      var ex = X(e.d);
+      el('line', {x1:ex, x2:ex, y1:m.t - 6, y2:H - m.b, stroke:c('--axis'), 'stroke-width':1}, svg);
+      var row = narrow ? (i % 2) : 0;
+      var anchor = ex > W - 70 ? 'end' : (ex < m.l + 40 ? 'start' : 'middle');
+      var t = el('text', {x:anchor === 'end' ? ex + 2 : ex, y:m.t - 12 - row * 16, 'text-anchor':anchor, 'font-size':11.5, 'font-weight':500, fill:c('--ink-2')}, svg);
+      t.textContent = e.t;
+    });
+
+    // area wash + line
+    var d = pts.map(function(p, i){ return (i ? 'L' : 'M') + X(p.d).toFixed(1) + ',' + Y(p.p).toFixed(1); }).join('');
+    var area = d + 'L' + X(pts[pts.length - 1].d).toFixed(1) + ',' + (H - m.b) + 'L' + X(pts[0].d).toFixed(1) + ',' + (H - m.b) + 'Z';
+    el('path', {d:area, fill:c('--accent'), opacity:.08}, svg);
+    el('path', {d:d, fill:'none', stroke:c('--accent'), 'stroke-width':2, 'stroke-linejoin':'round', 'stroke-linecap':'round'}, svg);
+
+    // points
+    pts.concat(extra).forEach(function(p){
+      var cx = X(p.d), cy = Y(p.p), hollow = p.k !== 'close';
+      var g = el('g', {tabindex:0, style:'cursor:pointer; outline:none'}, svg);
+      el('circle', {cx:cx, cy:cy, r:12, fill:'transparent'}, g);
+      el('circle', {cx:cx, cy:cy, r:hollow ? 4 : 4.5, fill:hollow ? c('--surface') : c('--accent'), stroke:hollow ? c('--accent') : c('--surface'), 'stroke-width':2}, g);
+      var label = p.k === 'est' ? '推算收盤' : (p.k === 'intra' ? '盤中價' : '收盤價');
+      var html = '<div class="t-date">2026/' + fmtD(p.d) + ' · ' + label + '</div><div class="t-val">$' + p.p.toFixed(2) + '</div><div>' + p.n + '</div>';
+      function on(ev){ var r = ev.currentTarget.getBoundingClientRect(); showTip(html, ev.clientX || (r.left + r.width / 2), ev.clientY || r.top); }
+      g.addEventListener('mouseenter', on); g.addEventListener('mousemove', on);
+      g.addEventListener('focus', on); g.addEventListener('mouseleave', hideTip); g.addEventListener('blur', hideTip);
+    });
+
+    // direct labels: ATH and latest
+    var ath = pts[6], last = pts[pts.length - 1];
+    var a = el('text', {x:X(ath.d), y:Y(ath.p) - 12, 'text-anchor':'middle', 'font-size':12, 'font-weight':700, fill:c('--ink')}, svg); a.textContent = '$339.79 歷史新高';
+    var l = el('text', {x:X(last.d) - 10, y:Y(last.p) + 22, 'text-anchor':'end', 'font-size':12, 'font-weight':700, fill:c('--ink')}, svg); l.textContent = '$315.34';
+  }
+
+  // data table for stock chart
+  (function(){
+    var rows = pts.concat(extra).sort(function(a, b){ return ts(a.d) - ts(b.d) || a.p - b.p; });
+    var h = '<table><thead><tr><th>日期</th><th>股價</th><th>類型</th><th>說明</th></tr></thead><tbody>';
+    rows.forEach(function(p){ h += '<tr><td class="num">2026/' + fmtD(p.d) + '</td><td class="num">$' + p.p.toFixed(2) + '</td><td>' + (p.k === 'est' ? '推算' : p.k === 'intra' ? '盤中' : '收盤') + '</td><td>' + p.n + '</td></tr>'; });
+    document.getElementById('stockTable').innerHTML = h + '</tbody></table>';
+  })();
+
+  // ---------- event reaction diverging bars ----------
+  var react = [
+    {l:'<b>4/21</b> CEO 交接宣布翌日', v:-2.52},
+    {l:'<b>4/22</b> 隔日反彈', v:2.63},
+    {l:'<b>6/8</b> WWDC26 當日', v:-1.89},
+    {l:'<b>6/5→6/10</b> WWDC 前後累計', v:-5.47, est:true},
+    {l:'<b>9/9</b> 秋季發表會當日', v:-0.28},
+    {l:'<b>9/10</b> 隔日盤中', v:1.63, est:true}
+  ];
+  var rmax = 6;
+  document.getElementById('reactChart').innerHTML = react.map(function(r){
+    var w = Math.abs(r.v) / rmax * 50;
+    return '<div class="div-row" data-tip="' + r.l.replace(/<[^>]+>/g, '') + '：' + (r.v > 0 ? '+' : '') + r.v.toFixed(2) + '%' + (r.est ? '（推算／盤中）' : '') + '"><div class="lab">' + r.l + '</div><div class="div-track"><div class="div-bar ' + (r.v >= 0 ? 'pos' : 'neg') + (r.est ? ' est' : '') + '" style="width:' + w + '%"></div></div><div class="val">' + (r.v > 0 ? '▲ ' : '▼ ') + Math.abs(r.v).toFixed(2) + '%</div></div>';
+  }).join('');
+
+  // ---------- analyst targets dot plot ----------
+  var tg = [
+    {f:'Wedbush', r:'優於大盤', p:400},
+    {f:'Tigress Financial', r:'強力買進', p:375},
+    {f:'Melius Research', r:'正向', p:370},
+    {f:'BofA', r:'由 $380 下修', p:370},
+    {f:'Citi', r:'買進', p:365},
+    {f:'Morgan Stanley', r:'加碼（6 月）', p:360},
+    {f:'TD Cowen', r:'買進（6 月上調）', p:350},
+    {f:'Bernstein', r:'優於大盤（6 月）', p:350},
+    {f:'JPMorgan', r:'加碼（6 月）', p:325},
+    {f:'UBS', r:'中立（6 月）', p:296},
+    {f:'Barclays', r:'減碼', p:245}
+  ];
+  var t0 = 220, t1 = 420, cur = 315.34, cons = 331.53;
+  var P = function(v){ return ((v - t0) / (t1 - t0) * 100).toFixed(2) + '%'; };
+  document.getElementById('tgtChart').innerHTML = tg.map(function(t){
+    var down = t.p < cur, lo = Math.min(t.p, cur), hi = Math.max(t.p, cur);
+    var up = ((t.p / cur - 1) * 100);
+    return '<div class="tgt-row" data-tip="' + t.f + '（' + t.r + '）：$' + t.p + '，相對現價 ' + (up >= 0 ? '+' : '') + up.toFixed(1) + '%"><div class="lab">' + t.f + '<small>' + t.r + '</small></div><div class="tgt-track"><span class="cur" style="left:' + P(cur) + '"></span><span class="cons" style="left:' + P(cons) + '"></span><span class="seg' + (down ? ' down' : '') + '" style="left:' + P(lo) + '; width:calc(' + P(hi) + ' - ' + P(lo) + ')"></span><span class="dot' + (down ? ' down' : '') + '" style="left:' + P(t.p) + '"></span></div><div class="val">$' + t.p + '</div></div>';
+  }).join('');
+  document.getElementById('tgtTicks').innerHTML = [250, 300, 350, 400].map(function(v){ return '<span class="' + (v % 100 ? 'odd' : '') + '" style="left:' + P(v) + '">$' + v + '</span>'; }).join('');
+
+  // ---------- horizontal bars ----------
+  function hbars(id, data, max, fmt, focus, dimFn){
+    document.getElementById(id).innerHTML = data.map(function(d){
+      var dim = dimFn ? dimFn(d) : (focus && d.l !== focus);
+      return '<div class="hbar" data-tip="' + d.l + '：' + fmt(d).replace(/<[^>]+>/g, ' ') + '"><div class="lab">' + d.l + '</div><div class="track"><div class="bar' + (dim ? ' dim' : '') + '" style="width:' + (d.v / max * 100).toFixed(1) + '%"></div></div><div class="val">' + fmt(d) + '</div></div>';
+    }).join('');
+  }
+  hbars('foldChart', [{l:'Samsung', v:38}, {l:'Apple', v:25}, {l:'其他', v:37}], 45, function(d){ return d.v + '%'; }, 'Apple');
+  hbars('shareChart', [{l:'Samsung', v:22.6}, {l:'Apple', v:20.1}, {l:'小米', v:11.2}, {l:'其他', v:46.1}], 50, function(d){ return d.v + '%'; }, 'Apple');
+  hbars('capChart', [{l:'Nvidia', v:5.58}, {l:'Apple', v:4.70}, {l:'Alphabet', v:4.10}, {l:'Microsoft', v:3.71}], 6, function(d){ return '$' + d.v.toFixed(2) + ' 兆'; }, 'Apple');
+  hbars('segChart', [
+    {l:'iPhone', v:543, g:'+22%'}, {l:'服務', v:307, g:'+12%'}, {l:'Mac', v:104, g:'+29%'},
+    {l:'穿戴／居家', v:79, g:'+6%'}, {l:'iPad', v:62, g:'−6%'}
+  ], 600, function(d){ return '$' + d.v + ' 億<small>' + d.g + '</small>'; });
+  hbars('ladderChart', [
+    {l:'AirPods 5', v:129}, {l:'Watch Series 12', v:399}, {l:'iPhone 17e', v:599}, {l:'MacBook Neo', v:599},
+    {l:'Watch Ultra 4', v:799}, {l:'Mac mini', v:899}, {l:'iPhone 18 Pro', v:1199, hi:1}, {l:'iPhone 18 Pro Max', v:1299, hi:1},
+    {l:'iPhone Duo', v:1999, hi:1}, {l:'Duo 2TB', v:3199, hi:1}
+  ], 3300, function(d){ return '$' + d.v.toLocaleString('en-US'); }, null, function(d){ return !d.hi; });
+  hbars('geoChart', [
+    {l:'歐洲', v:22.4}, {l:'大中華區', v:22.4}, {l:'其他亞太', v:15.6}, {l:'日本', v:13.4}, {l:'美洲', v:11.1}
+  ], 25, function(d){ return '+' + d.v + '%'; });
+
+  // hover tooltips for HTML charts
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav active state ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  drawStock(); onScroll();
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(drawStock, 120); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawStock);
+})();
+</script>
+</body>
+</html>
