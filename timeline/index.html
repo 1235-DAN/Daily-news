@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大事時間線｜焦點解讀室</title>
+<meta name="description" content="2025–2026 國內外經濟大事時間線：台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經，一條線看完。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0; --surface:#fcfcfb; --surface-2:#efeee9;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#76746e;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --up:#d0342c; --down:#1f8a4c;
+  --c-tw:#c62f4b;   --ci-tw:#a8233d;
+  --c-us:#2f6fd6;   --ci-us:#2358b0;
+  --c-tsmc:#d9731a; --ci-tsmc:#a9540c;
+  --c-nvda:#5f9a00; --ci-nvda:#4a7a00;
+  --c-tech:#8a4fd0; --ci-tech:#6f3bb0;
+  --c-macro:#1f7a5a;--ci-macro:#17614a;
+  --c-geo:#6b7684;  --ci-geo:#4f5966;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+    --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
+    --up:#f06a5f; --down:#4cc27e;
+    --c-tw:#ec5f78;   --ci-tw:#f28a9c;
+    --c-us:#5a92ec;   --ci-us:#8fb6f3;
+    --c-tsmc:#f0913d; --ci-tsmc:#f5b27a;
+    --c-nvda:#8fc93a; --ci-nvda:#aedb6e;
+    --c-tech:#a97ae6; --ci-tech:#c4a3ef;
+    --c-macro:#43b58a;--ci-macro:#6fd0a6;
+    --c-geo:#8f9aa8;  --ci-geo:#b6bfca;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d87;
+  --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
+  --up:#f06a5f; --down:#4cc27e;
+  --c-tw:#ec5f78;   --ci-tw:#f28a9c;
+  --c-us:#5a92ec;   --ci-us:#8fb6f3;
+  --c-tsmc:#f0913d; --ci-tsmc:#f5b27a;
+  --c-nvda:#8fc93a; --ci-nvda:#aedb6e;
+  --c-tech:#a97ae6; --ci-tech:#c4a3ef;
+  --c-macro:#43b58a;--ci-macro:#6fd0a6;
+  --c-geo:#8f9aa8;  --ci-geo:#b6bfca;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased}
+a{color:inherit; text-decoration:none}
+a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-offset:2px; border-radius:8px}
+.wrap{max-width:1040px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* top nav (shared with portal) */
+.topnav{position:sticky; top:0; z-index:30; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.topnav .wrap{display:flex; align-items:center; gap:16px; height:56px}
+.mark{font-weight:900; font-size:15px; letter-spacing:.02em; white-space:nowrap}
+.tabs{display:flex; gap:4px; flex:1}
+.tabs a{font-size:14px; font-weight:500; color:var(--ink-2); padding:6px 12px; border-radius:8px; white-space:nowrap}
+.tabs a:hover{background:var(--surface-2); color:var(--ink)}
+.tabs a[aria-current="page"]{background:var(--ink); color:var(--bg); font-weight:700}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+.intro{padding-block:48px 28px; max-width:760px}
+.intro .date{font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em}
+.intro h1{font-size:clamp(34px, 5.6vw, 60px); line-height:1.12; margin:10px 0 16px; font-weight:900; text-wrap:balance}
+.intro p{color:var(--ink-2); font-size:17px; margin:0}
+
+/* stat tiles */
+.stats{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden; margin-bottom:40px}
+.stats div{background:var(--surface); padding:14px 16px}
+.stats .v{font-family:var(--mono); font-weight:600; font-size:22px; line-height:1.25; white-space:nowrap}
+.stats .l{font-size:12.5px; color:var(--muted); line-height:1.45; margin-top:4px}
+.stats .v.up{color:var(--up)} .stats .v.down{color:var(--down)}
+
+/* controls */
+.controls{position:sticky; top:56px; z-index:20; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding-block:12px; border-bottom:1px solid var(--grid); display:flex; flex-wrap:wrap; align-items:center; gap:10px; justify-content:space-between}
+.filters{display:flex; gap:6px; flex-wrap:wrap}
+.filters button, .keybtn{font:inherit; font-size:13.5px; border:1px solid var(--border); background:var(--surface); color:var(--ink-2); padding:5px 12px; border-radius:999px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
+.filters button[data-f]:not([data-f="all"])::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--c)}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.keybtn[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.count{font-size:13px; color:var(--muted)}
+
+.t-tw{--c:var(--c-tw); --ci:var(--ci-tw)}
+.t-us{--c:var(--c-us); --ci:var(--ci-us)}
+.t-tsmc{--c:var(--c-tsmc); --ci:var(--ci-tsmc)}
+.t-nvda{--c:var(--c-nvda); --ci:var(--ci-nvda)}
+.t-tech{--c:var(--c-tech); --ci:var(--ci-tech)}
+.t-macro{--c:var(--c-macro); --ci:var(--ci-macro)}
+.t-geo{--c:var(--c-geo); --ci:var(--ci-geo)}
+
+/* timeline */
+.year{display:grid; grid-template-columns:120px 1fr; gap:24px; border-top:1px solid var(--grid); padding-block:28px}
+.year:first-child{border-top:0}
+.year h2{margin:0; font-family:var(--mono); font-weight:600; font-size:32px; line-height:1; position:sticky; top:132px; align-self:start}
+.year h2 small{display:block; font-family:var(--font); font-size:12px; color:var(--muted); font-weight:500; margin-top:8px}
+.events{list-style:none; margin:0; padding:0; position:relative}
+.events::before{content:""; position:absolute; left:112px; top:6px; bottom:6px; width:2px; background:var(--grid)}
+.mo{display:grid; grid-template-columns:100px 1fr; gap:24px; padding:18px 0 4px}
+.mo span{grid-column:2; padding-left:10px; font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.08em}
+.ev{display:grid; grid-template-columns:100px 1fr; gap:24px; padding:9px 0; position:relative}
+.ev::before{content:""; position:absolute; left:107px; top:16px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--c)}
+.ev.key::before{background:var(--c); box-shadow:0 0 0 4px color-mix(in srgb, var(--c) 18%, transparent)}
+.ev.future{opacity:.72}
+.ev.future::before{border-style:dashed}
+.ev .d{font-family:var(--mono); font-size:13.5px; font-weight:600; padding-top:3px; white-space:nowrap}
+.ev .d small{display:block; font-size:11.5px; color:var(--muted); font-weight:500}
+.ev .body{padding-left:10px; min-width:0}
+.ev .t{font-weight:700; font-size:16px; line-height:1.5; text-wrap:pretty}
+.ev.key .t{font-size:17.5px; font-weight:900}
+.ev .num{font-family:var(--mono); font-weight:600; font-size:13px; margin-left:8px; white-space:nowrap}
+.ev .num.up{color:var(--up)} .ev .num.down{color:var(--down)}
+.ev .s{color:var(--ink-2); font-size:14px; margin-top:2px}
+.ev .row{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:6px}
+.chip{display:inline-flex; align-items:center; font-size:12px; font-weight:700; padding:1px 9px; border-radius:999px; white-space:nowrap; color:var(--ci); background:color-mix(in srgb, var(--c) 12%, transparent)}
+.ev a.more{font-size:13px; font-weight:700; margin-left:4px; color:var(--ink-2)}
+.ev a.more:hover{color:var(--ink); text-decoration:underline}
+.year.empty{display:none}
+.empty-msg{padding:48px 0; color:var(--muted); text-align:center}
+
+details.src{margin-top:56px; border-top:1px solid var(--border); padding-top:20px}
+details.src summary{cursor:pointer; font-weight:700; font-size:15px}
+details.src ul{margin:12px 0 0; padding-left:20px; font-size:13.5px; color:var(--ink-2); columns:2; column-gap:32px}
+details.src li{break-inside:avoid; margin-bottom:4px}
+details.src a{text-decoration:underline; text-decoration-color:var(--axis)}
+footer{margin-top:40px; padding-block:24px 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 900px){
+  .stats{grid-template-columns:repeat(3, minmax(0,1fr))}
+}
+@media (max-width: 760px){
+  .wrap{padding:0 16px}
+  .topnav .wrap{gap:10px}
+  .mark{display:none}
+  .tabs a{padding:6px 10px; font-size:13.5px}
+  .stats{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .stats .v{font-size:19px}
+  .controls{position:static}
+  .year{grid-template-columns:1fr; gap:8px}
+  .year h2{position:static; font-size:26px}
+  .year h2 small{display:inline; margin-left:10px}
+  .events::before{left:6px}
+  .mo{grid-template-columns:1fr; padding-left:28px}
+  .mo span{grid-column:1; padding-left:0}
+  .ev{grid-template-columns:1fr; gap:0; padding-left:28px}
+  .ev::before{left:1px; top:12px}
+  .ev .body{padding-left:0}
+  .ev .d small{display:inline; margin-left:6px}
+  details.src ul{columns:1}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="網站導覽">
+  <div class="wrap">
+    <a class="mark" href="../index.html">焦點解讀室</a>
+    <div class="tabs">
+      <a href="../index.html">新聞報告</a>
+      <a href="index.html" aria-current="page">大事時間線</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="intro">
+    <div class="date">2025.01 — 2026.09 · 最後更新 2026-09-17</div>
+    <h1>一條線，看穿全年風暴</h1>
+    <p>台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經——從關稅股災、AI 狂潮到 Fed 轉向升息，每一次震盪都在這條線上。</p>
+  </section>
+
+  <div class="stats" aria-label="2026 年關鍵數字">
+    <div><div class="v up">48,219</div><div class="l">台股盤中歷史高點（6/23）</div></div>
+    <div><div class="v down">−2,954</div><div class="l">717 股災，史上最大跌點</div></div>
+    <div><div class="v">+40%</div><div class="l">台積電全年美元營收目標</div></div>
+    <div><div class="v">$962億</div><div class="l">Nvidia 單季營收，年增 106%</div></div>
+    <div><div class="v">11.05%</div><div class="l">台灣 GDP 預測，39 年最高</div></div>
+    <div><div class="v">3¾–4%</div><div class="l">Fed 三年來首度升息</div></div>
+  </div>
+
+  <div class="controls" id="controls">
+    <div class="filters" role="group" aria-label="篩選主題" id="filters"></div>
+    <div style="display:flex; align-items:center; gap:10px">
+      <span class="count" id="count"></span>
+      <button type="button" class="keybtn" id="keyBtn" aria-pressed="false">★ 只看重大</button>
+    </div>
+  </div>
+
+  <div id="tl"></div>
+  <p class="empty-msg" id="emptyMsg" hidden>這個分類沒有符合的事件。</p>
+
+  <details class="src">
+    <summary>資料來源（點開）</summary>
+    <ul>
+      <li><a href="https://zh.wikipedia.org/wiki/%E5%8A%A0%E6%AC%8A%E6%8C%87%E6%95%B8">維基百科：加權指數（整數關卡、歷史紀錄）</a></li>
+      <li><a href="https://udn.com/news/story/12806/9480775">聯合新聞網：台股史上最大漲點（5/4）</a></li>
+      <li><a href="https://udn.com/news/story/7251/9634167">聯合新聞網：717 崩跌 2,953 點</a></li>
+      <li><a href="https://www.managertoday.com.tw/articles/view/72547">經理人：717 前一週全球時間軸</a></li>
+      <li><a href="https://news.tvbs.com.tw/money/3260284">TVBS：台股史上最大跌點排行</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183008/post/202606240072/">今周刊：外資單日賣超 1,774 億</a></li>
+      <li><a href="https://udn.com/news/story/7251/9648667">聯合新聞網：7/24 台股跌 1,196 點</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202608050135.aspx">中央社：8/5 台股大漲 1,250 點</a></li>
+      <li><a href="https://www.cna.com.tw/news/aopl/202607240053.aspx">中央社：7/24 美國新關稅上路</a></li>
+      <li><a href="https://www.ey.gov.tw/Page/9277F759E41CCD91/472c4eba-b7c3-4a7d-8b39-e482e5a1548d">行政院：台美簽署對等貿易協定</a></li>
+      <li><a href="https://www.wilmerhale.com/en/insights/client-alerts/20260220-supreme-court-strikes-down-ieepa-tariffs-what-now">WilmerHale：最高法院判 IEEPA 關稅無效</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9343034">經濟日報：台積電衝上 2,000 元</a></li>
+      <li><a href="https://pr.tsmc.com/english/news/3281">TSMC：2025 年第四季財報</a></li>
+      <li><a href="https://www.stockfeel.com.tw/%e5%8f%b0%e7%a9%8d%e9%9b%bb-2026q1-%e6%b3%95%e8%aa%aa%e6%9c%83/">股感：台積電 2026 Q1 法說會</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6536791">鉅亨網：台積電上調資本支出至 600–640 億美元</a></li>
+      <li><a href="https://money.udn.com/money/story/5710/9681873">經濟日報：台積電 7 月營收 4,675 億</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183025/post/202608140032/">今周刊：GDP 上修至 11.05%</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202609120023.aspx">中央社：央行 9/17 理監事會前瞻</a></li>
+      <li><a href="https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html">CNBC：GTC 2026 兆元訂單</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027">NVIDIA：FY2027 Q1 財報</a></li>
+      <li><a href="https://www.kiplinger.com/investing/live/nvidia-earnings-live-updates-and-commentary-august-2026">Kiplinger：Nvidia 8 月財報</a></li>
+      <li><a href="https://cryptobriefing.com/phlx-semiconductor-index-plunges-worst-day/">Crypto Briefing：費半 6/5 單日跌 10%</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/29/chip-selloff-sk-hynix-samsung-softbank.html">CNBC：7 月晶片股蒸發逾 1 兆美元</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6511272">鉅亨網：美光 Q3 營收暴增 346%</a></li>
+      <li><a href="https://www.cnbc.com/2026/01/30/silver-gold-fall-price-usd-dollar-fed-warsh-chair-trump-metals.html">CNBC：Warsh 提名，金銀崩跌</a></li>
+      <li><a href="https://axios.com/2026/01/28/sp500-ai-stock-market">Axios：標普 500 首觸 7,000 點</a></li>
+      <li><a href="https://www.cnn.com/2026/02/06/investing/dow-index-us-stocks-50k">CNN：道瓊站上 50,000 點</a></li>
+      <li><a href="https://www.cnn.com/2026/08/04/investing/us-stock-market">CNN：標普重返新高、道瓊 54,000</a></li>
+      <li>2025 年事件與 Fed、Apple 相關事件另見各報告文末來源</li>
+    </ul>
+  </details>
+
+  <footer>
+    <p>整理自公開媒體報導，非官方資料，不構成投資建議。日期以事件發生地時間為準（美股事件為美東時間，台灣時間通常晚一天）。漲跌顏色依台灣習慣：紅漲、綠跌。</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var F = '../fed-2026-09/index.html', A = '../apple-2026/index.html';
+  var TAGS = [
+    ['tw','台股'], ['us','美股'], ['tsmc','台積電'], ['nvda','Nvidia'],
+    ['tech','科技產業'], ['macro','央行・總經'], ['geo','國際政經']
+  ];
+  var NAME = {}; TAGS.forEach(function(t){ NAME[t[0]] = t[1]; });
+
+  // d: YYYY-MM-DD or YYYY-MM · g: tags (first = dot color) · k: key · n: move [text, 'up'|'down'] · u: report link
+  var items = [
+    // ---------- 2025 ----------
+    {d:'2025-01-20', g:['geo'], h:'川普二度入主白宮，關稅大戲開演', s:'「美國優先」貿易政策上路，全球供應鏈重新洗牌'},
+    {d:'2025-01-27', g:['nvda','tech','us'], k:1, h:'DeepSeek 震撼彈，Nvidia 一天蒸發近 6,000 億美元', n:['−17%','down'], s:'中國低成本 AI 模型引爆算力需求疑慮，美股史上最大單日市值損失'},
+    {d:'2025-03-03', g:['tsmc','geo'], k:1, h:'台積電加碼美國 1,000 億美元', s:'亞利桑那再蓋 3 座晶圓廠、2 座先進封裝廠與研發中心'},
+    {d:'2025-04-02', g:['geo','us'], k:1, h:'「解放日」對等關稅，台灣挨轟 32%', s:'川普對全球課徵對等關稅，全球股市連日崩跌'},
+    {d:'2025-04-07', g:['tw'], k:1, h:'關稅股災：台股史上最大跌幅', n:['−2,065 點（−9.70%）','down'], s:'清明連假後開盤全面跌停潮；國安基金隔日進場護盤'},
+    {d:'2025-04-09', g:['us','geo'], k:1, h:'川普急喊暫停 90 天，那斯達克狂飆 12%', n:['+12.2%','up'], s:'中國以外的對等關稅暫緩，美股 2008 年以來最大單日漲幅'},
+    {d:'2025-04-10', g:['tw'], h:'台股絕地大反攻，漲幅創史上最大', n:['+1,608 點（+9.25%）','up']},
+    {d:'2025-05-05', g:['tw','macro'], h:'新台幣兩天狂升逾 2 元', s:'5/2、5/5 連兩日暴升，壽險匯損與出口業報價壓力浮上檯面'},
+    {d:'2025-07-09', g:['nvda','us'], k:1, h:'Nvidia 全球首家市值 4 兆美元'},
+    {d:'2025-07-31', g:['geo','tw'], h:'台灣對等關稅暫定 20%，輸日韓一截', s:'日、韓已談到 15%，國內傳產與工具機業壓力大增'},
+    {d:'2025-08-06', g:['geo','tsmc'], h:'川普揚言晶片關稅 100%', s:'赴美設廠企業可豁免，台積電被視為最大護身符'},
+    {d:'2025-08-22', g:['tech','us'], h:'美國政府入股 Intel 10%', s:'以晶片法案補助換股權，華府成為 Intel 大股東'},
+    {d:'2025-09-10', g:['tech','us'], h:'Oracle 暴漲 36%，AI 雲端訂單爆表', n:['+36%','up'], s:'未履約訂單達 4,550 億美元，1992 年以來最大單日漲幅'},
+    {d:'2025-09-10', g:['tw'], h:'台股首度登上 25,000 點'},
+    {d:'2025-09-17', g:['macro'], h:'Fed 重啟降息，2025 年首降', s:'利率降至 4.00%–4.25%', u:F + '#year'},
+    {d:'2025-09-18', g:['nvda','tech'], h:'Nvidia 50 億美元入股 Intel', s:'宿敵變盟友，共同開發資料中心與 PC 晶片'},
+    {d:'2025-09-22', g:['nvda','tech'], k:1, h:'Nvidia 千億美元押注 OpenAI', s:'合作建置至少 10 GW 的 AI 資料中心，AI「循環投資」爭議浮現'},
+    {d:'2025-10-01', g:['us','macro'], h:'美國政府關門 43 天，史上最長', s:'至 11/12 才結束，就業、通膨等官方數據大延遲'},
+    {d:'2025-10-10', g:['geo','us'], h:'稀土管制對上 100% 關稅，美股急殺', n:['那斯達克 −3.6%','down'], s:'中國前一日擴大稀土出口管制，川普揚言加徵 100% 關稅'},
+    {d:'2025-10-29', g:['nvda','us'], k:1, h:'Nvidia 市值衝破 5 兆美元', s:'距離 4 兆美元不到四個月'},
+    {d:'2025-10-29', g:['macro'], h:'Fed 再降一碼', s:'利率降至 3.75%–4.00%', u:F + '#year'},
+    {d:'2025-10-30', g:['geo'], h:'川習釜山會，貿易戰休兵一年', s:'中國暫緩稀土管制，美方調降芬太尼關稅'},
+    {d:'2025-12-08', g:['nvda','geo'], h:'川普放行 H200 晶片賣中國', s:'美國政府從銷售額中抽成'},
+    {d:'2025-12-10', g:['macro'], h:'Fed 年內第三降，利率 3.50%–3.75%', s:'此後一路凍結到 2026 年 9 月', u:F + '#year'},
+    {d:'2025-12-24', g:['nvda','tech'], h:'Nvidia 砸 200 億美元吃下 Groq', s:'技術授權加人才收購，公司史上最大交易'},
+
+    // ---------- 2026 ----------
+    {d:'2026-01-05', g:['tw'], k:1, h:'台股站上 30,000 點', s:'AI 伺服器與半導體撐起新一輪多頭'},
+    {d:'2026-01-12', g:['tech'], h:'Apple 聯手 Google，用 Gemini 重建 Siri', s:'據報每年支付約 10 億美元', u:A + '#timeline'},
+    {d:'2026-01-12', g:['tw'], h:'國安基金功成身退', s:'2025/4/8 關稅股災進場護盤，九個月後退場'},
+    {d:'2026-01-15', g:['tsmc'], k:1, h:'台積電資本支出狂砸 560 億美元', s:'2025 Q4 EPS 19.50 元創新高；2026 資本支出 520–560 億美元，ADR 盤中漲逾 5%'},
+    {d:'2026-01-15', g:['geo','tw'], h:'台美關稅談妥：20% 降到 15%', s:'對等關稅不疊加，台灣以大規模對美投資與信用保證換取'},
+    {d:'2026-01-28', g:['us'], h:'標普 500 盤中首觸 7,000 點'},
+    {d:'2026-01-30', g:['macro','geo'], k:1, h:'Warsh 獲提名 Fed 主席，金銀史詩級崩跌', n:['白銀 −31%','down'], s:'白銀創 1980 年以來最慘一天，黃金自 5,500 美元上方重挫約 9%', u:F + '#year'},
+    {d:'2026-02-06', g:['us'], h:'道瓊首度站上 50,000 點'},
+    {d:'2026-02-12', g:['geo','tw'], h:'台美正式簽署對等貿易協定', s:'15% 且不疊加，2,072 項輸美產品豁免對等關稅'},
+    {d:'2026-02-20', g:['geo','us'], k:1, h:'最高法院判對等關稅違法', s:'6 比 3 推翻 IEEPA 關稅；川普隨即改依貿易法 122 條款課徵全球臨時關稅'},
+    {d:'2026-02-25', g:['tsmc','tw'], k:1, h:'台積電攻上 2,000 元，台股破 35,000 點', s:'台積電市值 51.86 兆元；台股單日成交值首度突破 1 兆元'},
+    {d:'2026-02-28', g:['geo','macro'], k:1, h:'伊朗戰爭爆發，荷莫茲海峽斷航', s:'全球約兩成石油供應受阻，通膨風暴就此點燃', u:F + '#why'},
+    {d:'2026-03-09', g:['tw'], h:'油價衝擊，台股重挫近 1,500 點', n:['−1,494 點（−4.44%）','down']},
+    {d:'2026-03-12', g:['geo'], h:'布蘭特原油衝破 100 美元', s:'伊朗新任最高領袖宣布持續封鎖海峽', u:F + '#year'},
+    {d:'2026-03-16', g:['nvda','tech'], k:1, h:'GTC 2026：黃仁勳喊出兆元訂單', s:'Blackwell＋Vera Rubin 至 2027 年訂單上看 1 兆美元，一年內翻倍'},
+    {d:'2026-04', g:['nvda'], h:'Nvidia 市值重回 5 兆美元'},
+    {d:'2026-04-16', g:['tsmc'], h:'台積電 Q1 營收年增 35%', s:'單季營收 1.13 兆元、毛利率 66.2%，資本支出朝高標前進'},
+    {d:'2026-04-16', g:['us'], h:'標普 500 首度收在 7,000 點之上'},
+    {d:'2026-04-20', g:['tech'], k:1, h:'Tim Cook 卸任，Ternus 接掌 Apple', s:'隔日股價跌 2.52% 後迅速收復', u:A + '#stock'},
+    {d:'2026-04-27', g:['tw'], h:'台股登上 40,000 點'},
+    {d:'2026-04-29', g:['macro'], h:'Powell 最後一次主持 FOMC', s:'維持利率，卸任主席後留任理事', u:F + '#year'},
+    {d:'2026-05-04', g:['tw'], k:1, h:'史上最大漲點！台股狂飆 1,778 點', n:['+1,778 點（+4.57%）','up'], s:'收 40,705 點，成交值破兆；2026 年包辦史上十大漲點中的 6 席'},
+    {d:'2026-05-13', g:['macro'], h:'參院 54:45 驚險通過 Warsh', s:'近代票數最接近的 Fed 主席任命', u:F + '#year'},
+    {d:'2026-05-14', g:['us'], h:'標普 500 收破 7,500 點'},
+    {d:'2026-05-20', g:['nvda'], h:'Nvidia 單季營收 816 億美元', s:'年增 85%，下季財測 910 億美元遠優於預期'},
+    {d:'2026-05-22', g:['macro'], k:1, h:'Warsh 宣誓就任 Fed 主席', u:F + '#year'},
+    {d:'2026-06-01', g:['tw'], h:'台股站上 45,000 點'},
+    {d:'2026-06-05', g:['us','tech','nvda'], k:1, h:'黑色星期五：費半單日崩 10%', n:['−10.3%','down'], s:'Broadcom 財報不夠驚豔、公債殖利率竄升，晶片股蒸發逾 1 兆美元；那斯達克 −4.18%'},
+    {d:'2026-06-08', g:['tw'], h:'台股盤中急殺近 1,500 點又拉回', s:'下影線長達 1,125 點，創歷史紀錄'},
+    {d:'2026-06-08', g:['tech'], h:'WWDC26：Siri AI 登場', s:'iOS 27 亮相；Cook 最後一場主題演講', u:A + '#features'},
+    {d:'2026-06-17', g:['macro'], h:'Warsh 首場 FOMC，點陣圖轉向升息', u:F + '#year'},
+    {d:'2026-06-23', g:['tw'], k:1, h:'台股攻頂 48,218 點', s:'盤中歷史高點；前一日收盤高點 47,741 點'},
+    {d:'2026-06-24', g:['tw'], k:1, h:'外資單日狂砍 1,774 億，史上最大賣超', s:'費半回檔加上記憶體利多出盡疑慮，四天賣超近 4,000 億元'},
+    {d:'2026-06-24', g:['tech','us'], h:'美光營收暴增 346%，市值破兆', n:['盤後 +15%','up'], s:'HBM 缺貨看到 2027 年後，簽下 220 億美元長約'},
+    {d:'2026-07-13', g:['geo'], h:'美軍再炸伊朗，油價單日飆 9.6%', s:'川普宣布重新封鎖伊朗港口'},
+    {d:'2026-07-14', g:['tech','us'], h:'IBM 暴跌 25%，115 年來最慘', n:['−25%','down'], s:'第二季初步財報低於預期'},
+    {d:'2026-07-16', g:['tsmc'], k:1, h:'台積電上修全年成長至四成', s:'資本支出上調至 600–640 億美元；Q3 營收預估 446–458 億美元、毛利率 65–67%'},
+    {d:'2026-07-17', g:['tw','tsmc'], k:1, h:'717 股災：台股崩 2,953 點，史上最大跌點', n:['−2,953 點（−6.47%）','down'], s:'收 42,671 點；台積電跌 180 元；外資賣超 1,890 億創紀錄。前一日韓國升息、KOSPI 崩 6.37%'},
+    {d:'2026-07-24', g:['geo','tw'], h:'122 條款到期，美改課 301 新關稅', n:['台股 −1,196 點','down'], s:'台灣適用 10%；同日 Google、特斯拉財報拖累科技股，油價再破百'},
+    {d:'2026-07-29', g:['us','tech'], h:'晶片股全球失血逾 1 兆美元', s:'AI 資本支出見頂疑慮發酵，費半 7 月重挫 18%', u:null},
+    {d:'2026-07-29', g:['macro'], h:'FOMC 9:3 凍息，三票要升息', u:F + '#year'},
+    {d:'2026-07-30', g:['tech'], h:'Apple 季營收 1,094 億美元，年增 16%', s:'iPhone 營收 +22%', u:A + '#stock'},
+    {d:'2026-08-04', g:['us','geo'], k:1, h:'美伊協議露曙光，標普重返新高', s:'標普收 7,737 點、道瓊首破 54,000 點'},
+    {d:'2026-08-05', g:['tw'], h:'台股狂噴 1,250 點，股匯雙漲', n:['+1,250 點（+2.88%）','up'], s:'外資回補 903 億元；新台幣升 1.32 角至 32.315 元'},
+    {d:'2026-08-10', g:['tsmc'], h:'台積電 7 月營收 4,675 億，連三月創高', s:'年增 44.7%'},
+    {d:'2026-08-14', g:['macro','tw'], k:1, h:'台灣 GDP 上修至 11.05%，39 年最高', s:'AI 帶動全年出口估突破 9,000 億美元，年增 41%'},
+    {d:'2026-08-26', g:['nvda'], k:1, h:'Nvidia 營收翻倍達 962 億美元', n:['盤前 +7%','up'], s:'年增 106%；預告下一財年再成長 70%，晶片股全面反彈'},
+    {d:'2026-08-28', g:['macro'], h:'Jackson Hole：Warsh 預告出手', s:'直言金融條件「難稱緊縮」', u:F + '#presser'},
+    {d:'2026-09-01', g:['tech'], h:'Ternus 正式上任 Apple CEO', u:A + '#timeline'},
+    {d:'2026-09-04', g:['macro'], h:'非農爆量 +16.2 萬，升息預期升溫', s:'失業率 4.1%', u:F + '#economy'},
+    {d:'2026-09-09', g:['tech'], k:1, h:'Apple 首款摺疊 iPhone Duo 登場', s:'「Surprise and Shine」發表會，同步推出 iPhone 18 Pro', u:A + '#products'},
+    {d:'2026-09-11', g:['macro'], h:'美國 CPI 3.4%，油價重回 100 美元', s:'汽油年漲 27.4%', u:F + '#economy'},
+    {d:'2026-09-16', g:['macro','us'], k:1, h:'Fed 三年來首度升息', n:['3.75%–4.00%','up'], s:'12 比 0 全票通過；點陣圖暗示年底前再升一碼', u:F + '#summary'},
+    {d:'2026-09-17', g:['macro','tw'], h:'台灣央行理監事會：升或凍？', s:'GDP 破 11%、CPI 連月破 2%，市場看法五五波；決議以央行公布為準', u:F + '#taiwan'},
+    {d:'2026-10-23', g:['tech'], future:1, h:'iPhone Duo 上市', s:'10/16 開放預購', u:A + '#products'},
+    {d:'2026-10-28', g:['macro'], future:1, h:'下一次 FOMC', s:'期貨市場估計再升息機率約五成', u:F + '#outlook'}
+  ];
+
+  var wk = ['日','一','二','三','四','五','六'];
+  items.forEach(function(it, i){ it.i = i; });
+  items.sort(function(a, b){
+    var c = (b.d + '-99').localeCompare(a.d + '-99');
+    return c !== 0 ? c : a.i - b.i;
+  });
+
+  var byYear = {}, years = [];
+  items.forEach(function(it){
+    var y = it.d.slice(0, 4);
+    if (!byYear[y]) { byYear[y] = []; years.push(y); }
+    byYear[y].push(it);
+  });
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var html = '';
+  years.forEach(function(y){
+    html += '<section class="year" data-year="' + y + '"><h2>' + y + '<small><span class="cnt"></span> 則</small></h2><ol class="events">';
+    var lastMo = '';
+    byYear[y].forEach(function(it){
+      var p = it.d.split('-'), mo = p[1];
+      if (mo !== lastMo){ html += '<li class="mo" aria-hidden="true"><span>' + parseInt(mo, 10) + ' 月</span></li>'; lastMo = mo; }
+      var dl, sub;
+      if (p.length === 3){ dl = p[1] + '-' + p[2]; sub = '週' + wk[new Date(it.d + 'T12:00:00Z').getUTCDay()]; }
+      else { dl = p[1] + ' 月'; sub = '日期未定'; }
+      if (it.future) sub = '預定';
+      var chips = it.g.map(function(t){ return '<span class="chip t-' + t + '">' + NAME[t] + '</span>'; }).join('');
+      html += '<li class="ev t-' + it.g[0] + (it.k ? ' key' : '') + (it.future ? ' future' : '') + '" data-g="' + it.g.join(' ') + '" data-k="' + (it.k ? 1 : 0) + '">' +
+        '<div class="d">' + dl + '<small>' + sub + '</small></div>' +
+        '<div class="body"><div class="t">' + esc(it.h) + (it.n ? '<span class="num ' + it.n[1] + '">' + (it.n[1] === 'up' ? '▲ ' : '▼ ') + esc(it.n[0]) + '</span>' : '') + '</div>' +
+        (it.s ? '<div class="s">' + esc(it.s) + '</div>' : '') +
+        '<div class="row">' + chips + (it.u ? '<a class="more" href="' + it.u + '">看報告 →</a>' : '') + '</div></div></li>';
+    });
+    html += '</ol></section>';
+  });
+  document.getElementById('tl').innerHTML = html;
+
+  var fwrap = document.getElementById('filters');
+  var fh = '<button type="button" data-f="all" aria-pressed="true">全部</button>';
+  TAGS.forEach(function(t){ fh += '<button type="button" class="t-' + t[0] + '" data-f="' + t[0] + '" aria-pressed="false">' + t[1] + '</button>'; });
+  fwrap.innerHTML = fh;
+
+  var state = {f:'all', key:false};
+  try {
+    var sv = JSON.parse(localStorage.getItem('tlState') || 'null');
+    if (sv && (sv.f === 'all' || NAME[sv.f])) state = {f:sv.f, key:!!sv.key};
+  } catch(e){}
+
+  var keyBtn = document.getElementById('keyBtn');
+  function apply(){
+    fwrap.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-f') === state.f ? 'true' : 'false'); });
+    keyBtn.setAttribute('aria-pressed', state.key ? 'true' : 'false');
+    var total = 0;
+    document.querySelectorAll('.year').forEach(function(yr){
+      var n = 0, lastMo = null, moHas = false;
+      yr.querySelectorAll('.events > li').forEach(function(li){
+        if (li.classList.contains('mo')){
+          if (lastMo) lastMo.hidden = !moHas;
+          lastMo = li; moHas = false; return;
+        }
+        var g = li.getAttribute('data-g').split(' ');
+        var show = (state.f === 'all' || g.indexOf(state.f) > -1) && (!state.key || li.getAttribute('data-k') === '1');
+        li.hidden = !show;
+        if (show){ n++; moHas = true; }
+      });
+      if (lastMo) lastMo.hidden = !moHas;
+      yr.classList.toggle('empty', n === 0);
+      yr.querySelector('.cnt').textContent = n;
+      total += n;
+    });
+    document.getElementById('count').textContent = '共 ' + total + ' 則';
+    document.getElementById('emptyMsg').hidden = total > 0;
+    try { localStorage.setItem('tlState', JSON.stringify(state)); } catch(e){}
+  }
+  fwrap.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    state.f = b.getAttribute('data-f'); apply();
+  });
+  keyBtn.addEventListener('click', function(){ state.key = !state.key; apply(); });
+  apply();
+})();
+</script>
+</body>
+</html>

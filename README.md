@@ -1,6 +1,9 @@
 # 焦點解讀室 Daily News
 
-新聞解讀的單頁 HTML 報告合集，由入口網站 [`index.html`](index.html) 統一瀏覽，並附上跨年份的新聞時間線（可依主題篩選）。
+新聞解讀的單頁 HTML 報告合集。網站分兩頁，由頂部導覽列切換：
+
+- **新聞報告** [`index.html`](index.html)：各份解讀報告入口
+- **大事時間線** [`timeline/index.html`](timeline/index.html)：2025–2026 國內外經濟大事（台股、美股、台積電、Nvidia、科技產業、央行・總經、國際政經），可依主題篩選、只看重大事件
 
 直接用瀏覽器打開 `index.html` 即可閱讀；在 repo 設定中開啟 GitHub Pages（Branch: `main`、資料夾 `/ (root)`）後也能用網址瀏覽。
 

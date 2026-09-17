@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>焦點解讀室 2026</title>
-<meta name="description" content="新聞解讀入口：Apple 2026 發布會全景報告與聯準會 9 月升息解讀，附跨年份新聞時間線。">
+<meta name="description" content="新聞解讀入口：Apple 2026 發布會全景報告與聯準會 9 月升息解讀，另有 2025–2026 國內外經濟大事時間線。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -55,11 +55,14 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .wrap{max-width:1040px; margin:0 auto; padding:0 24px}
 .mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
 
-header.top{padding-block:28px 8px}
-.bar{display:flex; justify-content:space-between; align-items:center; gap:12px}
-.mark{font-weight:900; font-size:15px; letter-spacing:.02em}
-.mark span{color:var(--muted); font-weight:500; margin-left:8px; font-size:13px}
-.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer}
+.topnav{position:sticky; top:0; z-index:30; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.topnav .wrap{display:flex; align-items:center; gap:16px; height:56px}
+.mark{font-weight:900; font-size:15px; letter-spacing:.02em; white-space:nowrap}
+.tabs{display:flex; gap:4px; flex:1}
+.tabs a{font-size:14px; font-weight:500; color:var(--ink-2); padding:6px 12px; border-radius:8px; white-space:nowrap}
+.tabs a:hover{background:var(--surface-2); color:var(--ink)}
+.tabs a[aria-current="page"]{background:var(--ink); color:var(--bg); font-weight:700}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
 
 .intro{padding-block:48px 36px; max-width:720px}
 .intro .date{font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.04em}
@@ -88,67 +91,47 @@ header.top{padding-block:28px 8px}
 .rep.apple{border-top:3px solid var(--apple)}
 .rep.fed{border-top:3px solid var(--fed)}
 
-/* timeline */
-.tl-head{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end; gap:16px; margin:72px 0 20px}
-.tl-head h2{font-size:clamp(24px, 3vw, 32px); margin:0; font-weight:900}
-.tl-head p{margin:4px 0 0; color:var(--ink-2); font-size:15px}
-.filters{display:flex; gap:6px; flex-wrap:wrap}
-.filters button{font:inherit; font-size:13.5px; border:1px solid var(--border); background:var(--surface); color:var(--ink-2); padding:6px 14px; border-radius:999px; cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
-
-.year{display:grid; grid-template-columns:120px 1fr; gap:24px; border-top:1px solid var(--grid); padding-block:24px}
-.year h3{margin:0; font-family:var(--mono); font-weight:600; font-size:30px; line-height:1; position:sticky; top:16px; align-self:start}
-.year h3 small{display:block; font-family:var(--font); font-size:12px; color:var(--muted); font-weight:500; margin-top:8px}
-.events{list-style:none; margin:0; padding:0; position:relative}
-.events::before{content:""; position:absolute; left:112px; top:6px; bottom:6px; width:2px; background:var(--grid)}
-.ev{display:grid; grid-template-columns:100px 1fr; gap:24px; padding:8px 0; position:relative}
-.ev::before{content:""; position:absolute; left:107px; top:15px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
-.ev.apple::before{border-color:var(--apple)}
-.ev.fed::before{border-color:var(--fed)}
-.ev.key.apple::before{background:var(--apple)}
-.ev.key.fed::before{background:var(--fed)}
-.ev .d{font-family:var(--mono); font-size:13.5px; font-weight:600; color:var(--ink); padding-top:3px; white-space:nowrap}
-.ev .d small{display:block; font-size:11.5px; color:var(--muted); font-weight:500}
-.ev .body{padding-left:10px}
-.ev .t{font-weight:700; font-size:15.5px; line-height:1.5}
-.ev .s{color:var(--ink-2); font-size:14px; margin-top:2px}
-.ev .row{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:6px}
-.ev a.more{font-size:13px; font-weight:700}
-.ev.apple a.more{color:var(--apple-ink)}
-.ev.fed a.more{color:var(--fed-ink)}
-.ev a.more:hover{text-decoration:underline}
-.ev[hidden]{display:none}
-.year.empty{display:none}
+/* timeline teaser */
+.teaser{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:center; margin-top:48px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px}
+.teaser .kicker{font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--muted)}
+.teaser h2{font-size:clamp(24px, 3vw, 32px); line-height:1.25; margin:6px 0 8px; font-weight:900; text-wrap:balance}
+.teaser p{margin:0 0 18px; color:var(--ink-2); font-size:15px}
+.teaser .btn{display:inline-block; background:var(--ink); color:var(--bg); font-weight:700; font-size:14px; padding:9px 16px; border-radius:10px}
+.teaser .btn:hover{opacity:.88}
+.teaser ol{list-style:none; margin:0 0 0 6px; padding:0; border-left:2px solid var(--grid)}
+.teaser li{position:relative; padding:6px 0 6px 18px; font-size:14.5px; line-height:1.5; font-weight:700}
+.teaser li::before{content:""; position:absolute; left:-7px; top:14px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--ink-2)}
+.teaser li b{font-family:var(--mono); font-weight:600; font-size:12.5px; color:var(--muted); display:block}
 
 footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
 
 @media (max-width: 760px){
   .wrap{padding:0 16px}
+  .topnav .wrap{gap:10px}
+  .mark{display:none}
+  .tabs a{padding:6px 10px; font-size:13.5px}
   .reports{grid-template-columns:1fr}
-  .year{grid-template-columns:1fr; gap:12px}
-  .year h3{position:static; font-size:26px}
-  .year h3 small{display:inline; margin-left:10px}
-  .events::before{left:6px}
-  .ev{grid-template-columns:1fr; gap:0; padding-left:28px}
-  .ev::before{left:1px; top:12px}
-  .ev .body{padding-left:0}
-  .ev .d small{display:inline; margin-left:6px}
+  .teaser{grid-template-columns:1fr; padding:20px}
 }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="top">
-    <div class="bar">
-      <div class="mark">焦點解讀室<span>科技 · 財經</span></div>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+<nav class="topnav" aria-label="網站導覽">
+  <div class="wrap">
+    <a class="mark" href="index.html">焦點解讀室</a>
+    <div class="tabs">
+      <a href="index.html" aria-current="page">新聞報告</a>
+      <a href="timeline/index.html">大事時間線</a>
     </div>
-  </header>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
 
+<div class="wrap">
   <section class="intro">
     <div class="date">最後更新 2026-09-17</div>
-    <h1>把一整年的大新聞，放在同一條時間線上</h1>
+    <h1>頭條背後，錢往哪裡走</h1>
     <p>每份報告整理事件本身、背後原因、市場反應，以及對產業和台灣的影響，並在文末附上完整資料來源。</p>
   </section>
 
@@ -177,22 +160,23 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
     </a>
   </div>
 
-  <div class="tl-head" id="timeline">
+  <section class="teaser" aria-labelledby="tzTitle">
     <div>
-      <h2>新聞時間線</h2>
-      <p>實心點為重大事件。點「看報告」可直接跳到對應章節。</p>
+      <div class="kicker">大事時間線 · 2025–2026</div>
+      <h2 id="tzTitle">一條線，看穿全年風暴</h2>
+      <p>台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經，80 多則大事依時間排好，可依主題篩選。</p>
+      <a class="btn" href="timeline/index.html">打開時間線 →</a>
     </div>
-    <div class="filters" role="group" aria-label="篩選主題">
-      <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
-      <button type="button" id="f-fed" data-f="fed" aria-pressed="false">聯準會</button>
-      <button type="button" id="f-apple" data-f="apple" aria-pressed="false">Apple</button>
-    </div>
-  </div>
-
-  <div id="tl"></div>
+    <ol>
+      <li><b>2026-09-16</b>Fed 三年來首度升息</li>
+      <li><b>2026-08-26</b>Nvidia 營收翻倍達 962 億美元</li>
+      <li><b>2026-07-17</b>717 股災：台股崩 2,953 點</li>
+      <li><b>2026-06-23</b>台股攻頂 48,218 點</li>
+    </ol>
+  </section>
 
   <footer>
-    <p>各報告為獨立整理的新聞解讀，非官方文件，不構成投資建議。日期以事件發生地（美國）時間為準；台灣時間通常晚一天。</p>
+    <p>各報告為獨立整理的新聞解讀，非官方文件，不構成投資建議。日期以事件發生地時間為準；美國事件換算台灣時間通常晚一天。</p>
   </footer>
 </div>
 
@@ -207,83 +191,6 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch(e){}
   });
-
-  var F = 'fed-2026-09/index.html', A = 'apple-2026/index.html';
-  // d: YYYY-MM-DD or YYYY-MM; k: key event
-  var items = [
-    {d:'2023-07-26', t:'fed', k:1, h:'Fed 升息至 5.25%–5.50%', s:'上一輪升息循環的最後一次，利率達到 22 年高點', u:F + '#year'},
-    {d:'2024-09-18', t:'fed', k:1, h:'Fed 開始降息，一次降兩碼', s:'利率降至 4.75%–5.00%，2024 年共降息三次', u:F + '#year'},
-    {d:'2025-09-17', t:'fed', h:'Fed 2025 年首次降息', s:'降至 4.00%–4.25%', u:F + '#year'},
-    {d:'2025-10-17', t:'apple', h:'Apple 取得美國 F1 獨家轉播權', s:'五年合約，2026 年起在 Apple TV 播出', u:A + '#marketing'},
-    {d:'2025-12-10', t:'fed', h:'Fed 年內第三次降息', s:'利率降至 3.50%–3.75%，一直維持到 2026 年 9 月', u:F + '#year'},
-    {d:'2026-01-12', t:'apple', k:1, h:'Apple 與 Google 合作，以 Gemini 重建 Siri', s:'據報每年支付約 10 億美元', u:A + '#timeline'},
-    {d:'2026-01', t:'fed', h:'川普提名 Kevin Warsh 接任 Fed 主席', s:'接替任期屆滿的 Powell', u:F + '#year'},
-    {d:'2026-01-26', t:'apple', h:'AirTag 第二代發表', s:'$29，精確尋找距離延長 50%', u:A + '#products'},
-    {d:'2026-01-28', t:'fed', h:'FOMC 今年首次會議，維持利率', s:'', u:F + '#year'},
-    {d:'2026-02-28', t:'fed', k:1, h:'伊朗戰爭爆發', s:'荷莫茲海峽航運中斷，油價飆升，成為今年通膨主因', u:F + '#why'},
-    {d:'2026-03-02', t:'apple', k:1, h:'Apple 春季新品週', s:'MacBook Neo、iPhone 17e、M5 MacBook Air／Pro 等（3/2–3/4）', u:A + '#products'},
-    {d:'2026-03-12', t:'fed', h:'布蘭特原油突破每桶 100 美元', s:'伊朗新任最高領袖宣布持續封鎖海峽', u:F + '#year'},
-    {d:'2026-03-18', t:'fed', h:'FOMC 維持利率，仍預期年內降息一次', s:'', u:F + '#year'},
-    {d:'2026-04-20', t:'apple', k:1, h:'Tim Cook 宣布卸任 CEO', s:'John Ternus 9/1 接任；隔日股價跌 2.52% 後迅速收復', u:A + '#stock'},
-    {d:'2026-04-29', t:'fed', h:'Powell 最後一次主持 FOMC', s:'維持利率，卸任主席後留任理事', u:F + '#year'},
-    {d:'2026-05-13', t:'fed', h:'參議院 54 比 45 通過 Warsh 任命', s:'近代票數最接近的 Fed 主席任命', u:F + '#year'},
-    {d:'2026-05-22', t:'fed', k:1, h:'Warsh 宣誓就任 Fed 主席', s:'', u:F + '#year'},
-    {d:'2026-06-08', t:'apple', k:1, h:'WWDC26', s:'Siri AI、iOS 27；Cook 最後一場主題演講，當天股價收跌 1.89%', u:A + '#features'},
-    {d:'2026-06-17', t:'fed', h:'Warsh 首次主持 FOMC', s:'維持利率，點陣圖從降息轉向「年底前升息」', u:F + '#year'},
-    {d:'2026-07-29', t:'fed', h:'FOMC 以 9 比 3 維持利率', s:'三位委員投票主張升息', u:F + '#year'},
-    {d:'2026-07-30', t:'apple', h:'Apple FY26 Q3 財報', s:'營收 1,094 億美元（+16%），iPhone +22%', u:A + '#stock'},
-    {d:'2026-08-25', t:'apple', h:'新 Mac mini 發表', s:'M6／M5 Pro，$899 起', u:A + '#products'},
-    {d:'2026-08-28', t:'fed', h:'Warsh 於 Jackson Hole 年會演講', s:'金融條件「難稱緊縮」，提出升息的判斷標準', u:F + '#presser'},
-    {d:'2026-09-01', t:'apple', h:'John Ternus 正式接任 Apple CEO', s:'', u:A + '#timeline'},
-    {d:'2026-09-04', t:'fed', h:'美國 8 月非農就業 +16.2 萬', s:'遠超預期，失業率 4.1%', u:F + '#economy'},
-    {d:'2026-09-09', t:'apple', k:1, h:'Apple「Surprise and Shine」發表會', s:'首款摺疊 iPhone Duo、iPhone 18 Pro、Watch Series 12', u:A + '#products'},
-    {d:'2026-09-11', t:'fed', h:'美國 8 月 CPI 年增 3.4%', s:'汽油年漲 27.4%，油價重回 100 美元', u:F + '#economy'},
-    {d:'2026-09-16', t:'fed', k:1, h:'Fed 三年來首度升息至 3.75%–4.00%', s:'12 比 0 全票；點陣圖暗示年底前再升一碼', u:F + '#summary'},
-    {d:'2026-09-17', t:'fed', h:'台灣央行第三季理監事會', s:'外資多預期不變，國內金融圈估升息半碼機率略過五成；決議待官方公布', u:F + '#taiwan'},
-    {d:'2026-10-23', t:'apple', h:'iPhone Duo 上市（預定）', s:'10/16 開放預購', u:A + '#products', future:1},
-    {d:'2026-10-28', t:'fed', h:'下次 FOMC 會議（預定）', s:'期貨市場估計再升息機率約五成', u:F + '#outlook', future:1}
-  ];
-  var names = {fed:'聯準會', apple:'Apple'};
-  var wk = ['日','一','二','三','四','五','六'];
-
-  var byYear = {};
-  items.sort(function(a, b){ return (a.d + '-99').localeCompare(b.d + '-99'); });
-  items.forEach(function(it){ var y = it.d.slice(0, 4); (byYear[y] = byYear[y] || []).push(it); });
-
-  var html = '';
-  Object.keys(byYear).sort().reverse().forEach(function(y){
-    var list = byYear[y].slice().reverse();
-    html += '<div class="year" data-year="' + y + '"><h3>' + y + '<small><span class="cnt">' + list.length + '</span> 則</small></h3><ol class="events">';
-    list.forEach(function(it){
-      var parts = it.d.split('-'), dateLabel, sub = '';
-      if (parts.length === 3){
-        dateLabel = parts[1] + '-' + parts[2];
-        sub = '週' + wk[new Date(it.d + 'T12:00:00Z').getUTCDay()];
-      } else { dateLabel = parts[1] + ' 月'; sub = '日期未定'; }
-      if (it.future) sub = '預定';
-      html += '<li class="ev ' + it.t + (it.k ? ' key' : '') + '" data-t="' + it.t + '">' +
-        '<div class="d">' + it.d.slice(0,4) + '-' + dateLabel.replace(' 月', '') + (parts.length === 2 ? '' : '') + '<small>' + sub + '</small></div>' +
-        '<div class="body"><div class="t">' + it.h + '</div>' + (it.s ? '<div class="s">' + it.s + '</div>' : '') +
-        '<div class="row"><span class="chip ' + it.t + '">' + names[it.t] + '</span><a class="more" href="' + it.u + '">看報告 →</a></div></div></li>';
-    });
-    html += '</ol></div>';
-  });
-  document.getElementById('tl').innerHTML = html;
-
-  var btns = document.querySelectorAll('.filters button');
-  function apply(f){
-    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-f') === f ? 'true' : 'false'); });
-    document.querySelectorAll('.ev').forEach(function(e){ e.hidden = !(f === 'all' || e.getAttribute('data-t') === f); });
-    document.querySelectorAll('.year').forEach(function(yr){
-      var n = yr.querySelectorAll('.ev:not([hidden])').length;
-      yr.classList.toggle('empty', n === 0);
-      yr.querySelector('.cnt').textContent = n;
-    });
-    try { localStorage.setItem('portalFilter', f); } catch(e){}
-  }
-  btns.forEach(function(b){ b.addEventListener('click', function(){ apply(b.getAttribute('data-f')); }); });
-  var start = 'all'; try { start = localStorage.getItem('portalFilter') || 'all'; } catch(e){}
-  apply(start);
 })();
 </script>
 </body>
