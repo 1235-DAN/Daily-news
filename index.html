@@ -74,7 +74,10 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep{position:relative; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:transform .15s, box-shadow .15s}
 .rep:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.08)}
 @media (prefers-reduced-motion: reduce){ .rep{transition:none} .rep:hover{transform:none} }
-.rep .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+.rep .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:13.5px; color:var(--muted)}
+.ndate{display:inline-flex; align-items:center; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px; font-weight:600; line-height:1.3; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:8px; padding:3px 10px; letter-spacing:.02em; white-space:nowrap}
+.rep.fed .ndate{border-color:var(--fed); color:var(--fed-ink); background:var(--fed-wash)}
+.rep.apple .ndate{border-color:var(--apple); color:var(--apple-ink); background:var(--apple-wash)}
 .chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:2px 10px; border-radius:999px; white-space:nowrap}
 .chip::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
 .chip.apple{background:var(--apple-wash); color:var(--apple-ink)}
@@ -101,7 +104,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .teaser ol{list-style:none; margin:0 0 0 6px; padding:0; border-left:2px solid var(--grid)}
 .teaser li{position:relative; padding:6px 0 6px 18px; font-size:14.5px; line-height:1.5; font-weight:700}
 .teaser li::before{content:""; position:absolute; left:-7px; top:14px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--ink-2)}
-.teaser li b{font-family:var(--mono); font-weight:600; font-size:12.5px; color:var(--muted); display:block}
+.teaser li b{display:table; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; line-height:1.3; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
 
 footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
 
@@ -137,7 +140,7 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
 
   <div class="reports">
     <a class="rep fed" href="fed-2026-09/index.html">
-      <div class="meta"><span class="chip fed">聯準會</span><span class="mono">2026-09-16</span><span>· 最新</span></div>
+      <div class="meta"><span class="chip fed">聯準會</span><span class="ndate">2026-09-16</span><span>· 最新</span></div>
       <h2>聯準會三年來首度升息：Warsh 為什麼選在現在？</h2>
       <p>記者會重點、升息原因、今年大事、美國經濟現況、全球與產業影響、對台灣的衝擊，以及各家媒體報導比較。</p>
       <div class="figs">
@@ -148,7 +151,7 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
       <div class="go">閱讀報告 →</div>
     </a>
     <a class="rep apple" href="apple-2026/index.html">
-      <div class="meta"><span class="chip apple">Apple</span><span class="mono">2026-09-09</span><span>· 資料截至 09-11</span></div>
+      <div class="meta"><span class="chip apple">Apple</span><span class="ndate">2026-09-09</span><span>· 資料截至 09-11</span></div>
       <h2>Apple 2026 發布會全景報告</h2>
       <p>春季新品週、WWDC26 到 Ternus 首場「Surprise and Shine」：新產品、股價、競爭格局與商業影響。</p>
       <div class="figs">
