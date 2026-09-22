@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>焦點解讀室 2026</title>
-<meta name="description" content="新聞解讀入口：Apple 2026 發布會全景報告與聯準會 9 月升息解讀，另有 2025–2026 國內外經濟大事時間線。">
+<meta name="description" content="新聞解讀入口：荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -26,6 +26,9 @@
   --fed:#1f7a5a;
   --fed-ink:#17614a;
   --fed-wash:rgba(31,122,90,.10);
+  --oil:#a8620c;
+  --oil-ink:#8a4f08;
+  --oil-wash:rgba(168,98,12,.10);
   --radius:14px;
   --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
@@ -38,6 +41,7 @@
     --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
     --apple:#3987e5; --apple-ink:#7fb2f0; --apple-wash:rgba(57,135,229,.15);
     --fed:#43b58a; --fed-ink:#6fd0a6; --fed-wash:rgba(67,181,138,.15);
+    --oil:#e0a04a; --oil-ink:#ecb86e; --oil-wash:rgba(224,160,74,.14);
   }
 }
 :root[data-theme="dark"]{
@@ -47,6 +51,7 @@
   --grid:#2c2c2a; --axis:#3d3d3a; --border:rgba(255,255,255,.10);
   --apple:#3987e5; --apple-ink:#7fb2f0; --apple-wash:rgba(57,135,229,.15);
   --fed:#43b58a; --fed-ink:#6fd0a6; --fed-wash:rgba(67,181,138,.15);
+  --oil:#e0a04a; --oil-ink:#ecb86e; --oil-wash:rgba(224,160,74,.14);
 }
 *{box-sizing:border-box}
 body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased}
@@ -77,11 +82,13 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:13.5px; color:var(--muted)}
 .ndate{display:inline-flex; align-items:center; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px; font-weight:600; line-height:1.3; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:8px; padding:3px 10px; letter-spacing:.02em; white-space:nowrap}
 .rep.fed .ndate{border-color:var(--fed); color:var(--fed-ink); background:var(--fed-wash)}
+.rep.oil .ndate{border-color:var(--oil); color:var(--oil-ink); background:var(--oil-wash)}
 .rep.apple .ndate{border-color:var(--apple); color:var(--apple-ink); background:var(--apple-wash)}
 .chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:2px 10px; border-radius:999px; white-space:nowrap}
 .chip::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
 .chip.apple{background:var(--apple-wash); color:var(--apple-ink)}
 .chip.fed{background:var(--fed-wash); color:var(--fed-ink)}
+.chip.oil{background:var(--oil-wash); color:var(--oil-ink)}
 .rep h2{font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:14px 0 8px; font-weight:900; text-wrap:balance}
 .rep p{color:var(--ink-2); font-size:15px; margin:0 0 18px}
 .rep .figs{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:10px; overflow:hidden; margin-top:auto}
@@ -93,6 +100,11 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep.fed .go{color:var(--fed-ink)}
 .rep.apple{border-top:3px solid var(--apple)}
 .rep.fed{border-top:3px solid var(--fed)}
+.rep.oil{border-top:3px solid var(--oil)}
+.rep.oil .go{color:var(--oil-ink)}
+.rep.feature{grid-column:1 / -1}
+.rep.feature p{max-width:720px}
+.rep.feature .figs{grid-template-columns:repeat(4, minmax(0,1fr))}
 
 /* timeline teaser */
 .teaser{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:center; margin-top:48px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px}
@@ -114,6 +126,7 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
   .mark{display:none}
   .tabs a{padding:6px 10px; font-size:13.5px}
   .reports{grid-template-columns:1fr}
+  .rep.feature .figs{grid-template-columns:repeat(2, minmax(0,1fr))}
   .teaser{grid-template-columns:1fr; padding:20px}
 }
 </style>
@@ -133,14 +146,26 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
 
 <div class="wrap">
   <section class="intro">
-    <div class="date">最後更新 2026-09-17</div>
+    <div class="date">最後更新 2026-09-22</div>
     <h1>頭條背後，錢往哪裡走</h1>
     <p>每份報告整理事件本身、背後原因、市場反應，以及對產業和台灣的影響，並在文末附上完整資料來源。</p>
   </section>
 
   <div class="reports">
+    <a class="rep oil feature" href="hormuz-2026-09/index.html">
+      <div class="meta"><span class="chip oil">能源</span><span class="ndate">2026-09-22</span><span>· 最新</span></div>
+      <h2>荷莫茲海峽封鎖：全球能源咽喉危機</h2>
+      <p>美伊戰爭第七個月，兩成石油的必經水道幾乎停擺：油價走勢、危機時間軸、繞道管線的極限、全球與台灣的衝擊、三種劇本與觀察訊號。</p>
+      <div class="figs">
+        <div><div class="v">−95%</div><div class="l">海峽石油流量</div></div>
+        <div><div class="v">$98.6</div><div class="l">布蘭特 9/22</div></div>
+        <div><div class="v">~$120</div><div class="l">3 月高點</div></div>
+        <div><div class="v">13 元</div><div class="l">中油每公升吸收</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
     <a class="rep fed" href="fed-2026-09/index.html">
-      <div class="meta"><span class="chip fed">聯準會</span><span class="ndate">2026-09-16</span><span>· 最新</span></div>
+      <div class="meta"><span class="chip fed">聯準會</span><span class="ndate">2026-09-16</span></div>
       <h2>聯準會三年來首度升息：Warsh 為什麼選在現在？</h2>
       <p>記者會重點、升息原因、今年大事、美國經濟現況、全球與產業影響、對台灣的衝擊，以及各家媒體報導比較。</p>
       <div class="figs">

@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>荷莫茲咽喉危機</title>
+<meta name="description" content="美伊戰爭下的荷莫茲海峽封鎖：海峽為何是全球能源咽喉、油價走勢、危機時間軸、繞道方案的極限、全球與台灣的影響、未來三種劇本與觀察訊號。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#a8620c;
+  --accent-ink:#8a4f08;
+  --accent-wash:rgba(168,98,12,.10);
+  --neg:#c8372d;
+  --neg-wash:rgba(200,55,45,.10);
+  --pos:#1f7a5a;
+  --pos-wash:rgba(31,122,90,.10);
+  --sea:#d6e3e6;
+  --sea-ink:#2a6475;
+  --land:#e6e2d6;
+  --hero-bg:#14110d;
+  --hero-ink:#f4f1ea;
+  --hero-ink-2:#a9a192;
+  --hero-accent:#e8a64c;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0e0d0c; --surface:#1a1917; --surface-2:#24221f;
+    --ink:#ffffff; --ink-2:#c6c1b8; --muted:#8f8a82;
+    --grid:#2c2a27; --axis:#3e3b37; --border:rgba(255,255,255,.10);
+    --accent:#e0a04a; --accent-ink:#ecb86e; --accent-wash:rgba(224,160,74,.14);
+    --neg:#ec6a5c; --neg-wash:rgba(236,106,92,.14);
+    --pos:#43b58a; --pos-wash:rgba(67,181,138,.14);
+    --sea:#1a3139; --sea-ink:#7dbccd; --land:#2a2824;
+    --hero-bg:#110f0c;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0e0d0c; --surface:#1a1917; --surface-2:#24221f;
+  --ink:#ffffff; --ink-2:#c6c1b8; --muted:#8f8a82;
+  --grid:#2c2a27; --axis:#3e3b37; --border:rgba(255,255,255,.10);
+  --accent:#e0a04a; --accent-ink:#ecb86e; --accent-wash:rgba(224,160,74,.14);
+  --neg:#ec6a5c; --neg-wash:rgba(236,106,92,.14);
+  --pos:#43b58a; --pos-wash:rgba(67,181,138,.14);
+  --sea:#1a3139; --sea-ink:#7dbccd; --land:#2a2824;
+  --hero-bg:#110f0c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, rgba(232,166,76,.20), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:#dcd6cb; margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+
+/* summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* tiles */
+.tile{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:30px; line-height:1.25; font-variant-numeric:tabular-nums; margin:4px 0 2px}
+.tile .v.neg{color:var(--neg)}
+.tile .d{font-size:13px; color:var(--ink-2)}
+
+/* figures */
+.fig{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px}
+.fig .scroll{overflow-x:auto}
+.fig svg{display:block; width:100%; height:auto}
+.fig .cap{font-size:13px; color:var(--muted); margin:12px 0 0}
+svg text{font-family:var(--font)}
+.s-sea{fill:var(--sea)} .s-land{fill:var(--land)}
+.s-seatext{fill:var(--sea-ink); font-weight:700}
+.s-ink{fill:var(--ink)} .s-ink2{fill:var(--ink-2)} .s-muted{fill:var(--muted)}
+.s-neg{fill:var(--neg)} .s-pos{fill:var(--pos)} .s-acc{fill:var(--accent)}
+.s-ring{fill:none; stroke:var(--neg); stroke-width:3}
+.s-cross{stroke:var(--neg); stroke-width:3}
+.s-pipe{fill:none; stroke:var(--accent); stroke-width:4; stroke-dasharray:10 5}
+.s-grid{stroke:var(--grid); stroke-width:1}
+.s-line{fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round}
+.s-vneg{stroke:var(--neg); stroke-dasharray:3 3}
+.s-arrow{stroke:var(--muted); stroke-width:2}
+.s-arrowhead{fill:var(--muted)}
+.mono-t{font-family:var(--mono)}
+
+/* timeline */
+.legend{display:flex; flex-wrap:wrap; gap:16px; font-size:13px; color:var(--ink-2); margin-bottom:18px}
+.legend span::before{content:""; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px}
+.legend .lx::before{background:var(--neg)} .legend .lc::before{background:var(--pos)} .legend .ln::before{background:var(--surface); border:2px solid var(--accent); width:6px; height:6px}
+.tl{list-style:none; margin:0; padding:0; border-left:2px solid var(--grid); max-width:820px}
+.tl li{position:relative; padding:0 0 20px 24px}
+.tl li::before{content:""; position:absolute; left:-7px; top:8px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--accent)}
+.tl li.x::before{background:var(--neg); border-color:var(--neg)}
+.tl li.c::before{background:var(--pos); border-color:var(--pos)}
+.tl .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13.5px; font-weight:600; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.tl .what{color:var(--ink-2); font-size:15.5px}
+.tl .what b{color:var(--ink)}
+
+/* table */
+.tbl-wrap{overflow-x:auto; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius)}
+table{border-collapse:collapse; width:100%; min-width:640px; font-size:15px}
+th,td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:12.5px; color:var(--muted); font-weight:500; letter-spacing:.04em; background:var(--surface-2)}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td b{font-weight:700}
+
+/* scenarios */
+.sc{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; border-top:4px solid var(--accent)}
+.sc.good{border-top-color:var(--pos)} .sc.bad{border-top-color:var(--neg)}
+.sc .price{font-family:var(--mono); font-weight:600; font-size:24px; margin:2px 0 8px}
+.sc p{color:var(--ink-2); font-size:15px; margin:0}
+.sc .who{font-size:12.5px; color:var(--muted); margin-top:10px}
+
+/* watch list */
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* sources */
+.src{columns:2; column-gap:32px; font-size:14px; padding-left:18px; margin:0}
+.src li{margin:4px 0; break-inside:avoid}
+
+footer{margin-top:72px; padding:28px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 880px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .wrap{padding:0 16px}
+  .nav .home span{display:none}
+  .g2{grid-template-columns:1fr}
+  .hero{padding:48px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:17px; white-space:nowrap}
+  section{padding-top:56px}
+  .src{columns:1}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#chokepoint">咽喉在哪</a></li>
+      <li><a class="link" href="#price">油價走勢</a></li>
+      <li><a class="link" href="#timeline">危機時間軸</a></li>
+      <li><a class="link" href="#bypass">繞道方案</a></li>
+      <li><a class="link" href="#world">全球衝擊</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#outlook">未來劇本</a></li>
+      <li><a class="link" href="#watch">觀察訊號</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">能源解讀 · 美伊戰爭第七個月 · 資料截至 2026 年 9 月 22 日</p>
+      <h1>荷莫茲海峽封鎖：全球能源咽喉危機</h1>
+      <p class="lede">世界兩成石油的必經水道幾乎停擺，兩次停火都沒撐住；原本用來繞過海峽的紅海路線，9 月也落入胡塞武裝的射程。國際能源署（IEA）稱這是石油市場史上最大的供應中斷。</p>
+    </div>
+    <div class="stmt" aria-label="海峽流量">
+      <div class="k">荷莫茲海峽石油流量（相對平時）</div>
+      <div class="range">−95%<small>9 月</small></div>
+      <div class="was">平時約 130 艘/日、2,000 萬桶/日 · 9 月初約 10 艘/日</div>
+      <div class="stmt-row">
+        <div><div class="v">$98.6</div><div class="l">布蘭特 9/22</div></div>
+        <div><div class="v">$5.90</div><div class="l">美國柴油/加侖</div></div>
+        <div><div class="v">4億桶</div><div class="l">IEA 聯合釋儲</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 摘要 -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 摘要</div>
+      <h2>這場危機的八個重點</h2>
+    </div>
+    <ol class="summary">
+      <li><div><b>2 月 28 日美國與以色列空襲伊朗</b>，革命衛隊（IRGC）隨即封鎖荷莫茲海峽，至今七個月航運從未恢復正常。</div></li>
+      <li><div><b>油價兩度破百</b>：3 月底布蘭特高點約 118–126 美元，6 月停火後跌到約 70 美元，7 月停火破局又重回百元。</div></li>
+      <li><div><b>不只石油</b>：卡達 LNG 宣布不可抗力，拉斯拉凡工業區遭襲後產能少了 17%，修復要 3–5 年，亞洲 LNG 現貨價一度飆漲逾 140%。</div></li>
+      <li><div><b>兩次停火都失敗</b>：4 月兩週停火因美軍封鎖伊朗港口而破局；6 月《伊斯蘭馬巴德備忘錄》撐不到一個月。</div></li>
+      <li><div><b>繞道管線不夠用</b>：沙烏地與阿聯兩條管線合計最多約 650–850 萬桶/日，不到海峽平時運量一半，而且兩條都遭過攻擊。</div></li>
+      <li><div><b>9 月出現「雙咽喉」危機</b>：胡塞武裝奪下曼德海峽沿岸與丕林島，沙烏地東西向管線 9/10 遭擊關閉，紅海退路也不安全。</div></li>
+      <li><div><b>最脆弱的是亞洲與新興市場</b>：菲律賓全球第一個宣布能源緊急狀態，孟加拉、埃及、衣索比亞實施限電限時營業。</div></li>
+      <li><div><b>本週的關鍵是外交</b>：川普表示可能在聯合國大會期間會見伊朗總統，市場提前反映，布蘭特連四跌回到 100 美元以下。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 咽喉 -->
+<section id="chokepoint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 咽喉在哪</div>
+      <h2>一條 33 公里寬的水道，卡住全球兩成石油</h2>
+      <p>沙烏地、伊拉克、科威特、阿聯、卡達、伊朗的出口幾乎都得經過荷莫茲海峽。波斯灣國家只有兩條「逃生管線」，其中一條通往紅海——正好又要經過另一個咽喉：曼德海峽。</p>
+    </div>
+    <div class="fig">
+      <div class="scroll">
+      <svg viewBox="0 0 820 360" role="img" aria-label="波斯灣出口路線示意圖：荷莫茲海峽、沙烏地東西向管線至紅海延布港、阿聯哈布善至富查伊拉管線，以及曼德海峽" style="min-width:600px">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="s-arrowhead" d="M0 0 L10 5 L0 10 Z"/></marker></defs>
+        <rect class="s-sea" x="0" y="0" width="820" height="360" rx="10"/>
+        <path class="s-land" d="M60 40 L560 40 L560 110 L620 140 L700 170 L700 300 L520 330 L300 340 L120 300 L60 200 Z"/>
+        <path class="s-sea" d="M430 40 L600 40 L640 90 L620 140 L560 110 L500 95 L440 80 Z"/>
+        <path class="s-sea" d="M60 40 L110 40 L190 300 L160 300 Z"/>
+        <text class="s-seatext" x="470" y="62" font-size="13">波斯灣</text>
+        <text class="s-seatext" x="92" y="150" font-size="13" transform="rotate(72 92 150)">紅海</text>
+        <text class="s-seatext" x="720" y="240" font-size="13">阿拉伯海</text>
+        <text class="s-muted" x="330" y="280" font-size="13">阿拉伯半島</text>
+
+        <circle class="s-ring" cx="640" cy="95" r="16"/>
+        <line class="s-cross" x1="628" y1="83" x2="652" y2="107"/>
+        <text class="s-ink" x="662" y="80" font-size="14" font-weight="700">荷莫茲海峽</text>
+        <text class="s-neg" x="662" y="98" font-size="12">平時 ~2,000 萬桶/日</text>
+        <text class="s-neg" x="662" y="114" font-size="12">9 月流量 −95%</text>
+
+        <path class="s-pipe" d="M470 110 C 380 150, 260 150, 150 175"/>
+        <circle class="s-acc" cx="470" cy="110" r="5"/>
+        <circle class="s-acc" cx="150" cy="175" r="6"/>
+        <text class="s-ink2" x="480" y="130" font-size="12">布蓋格</text>
+        <text class="s-ink2" x="164" y="200" font-size="12">延布港</text>
+        <text class="s-ink" x="250" y="138" font-size="13" font-weight="700">沙烏地東西向管線</text>
+        <text class="s-ink2" x="250" y="156" font-size="12">約 500–700 萬桶/日 · 9/10 遭無人機擊損</text>
+
+        <path class="s-pipe" d="M580 150 L668 150"/>
+        <circle class="s-acc" cx="580" cy="150" r="5"/>
+        <circle class="s-acc" cx="668" cy="150" r="6"/>
+        <text class="s-ink" x="520" y="178" font-size="13" font-weight="700">阿聯 哈布善→富查伊拉</text>
+        <text class="s-ink2" x="520" y="196" font-size="12">約 150 萬桶/日 · 第二條 2027 年完工</text>
+
+        <circle class="s-ring" cx="178" cy="305" r="16"/>
+        <line class="s-cross" x1="166" y1="293" x2="190" y2="317"/>
+        <text class="s-ink" x="204" y="300" font-size="14" font-weight="700">曼德海峽</text>
+        <text class="s-neg" x="204" y="318" font-size="12">9 月胡塞武裝奪下沿岸與丕林島</text>
+
+        <path class="s-arrow" d="M85 45 L85 20" marker-end="url(#ar)"/>
+        <text class="s-muted" x="96" y="26" font-size="12">往蘇伊士運河、歐洲</text>
+      </svg>
+      </div>
+      <p class="cap">示意圖，非比例地圖。虛線為繞過荷莫茲海峽的輸油管線；紅圈為目前受威脅的海峽。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 油價 -->
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 油價走勢</div>
+      <h2>兩次停火、兩次破局，油價跟著坐雲霄飛車</h2>
+      <p>油價的每一次急跌都來自停火消息，每一次急漲都來自停火破局或能源設施遇襲。</p>
+    </div>
+    <div class="fig">
+      <div class="scroll">
+      <svg viewBox="0 0 800 320" role="img" aria-label="2026 年 2 月至 9 月布蘭特原油價格近似走勢" style="min-width:560px">
+        <line class="s-grid" x1="60" y1="280" x2="780" y2="280"/>
+        <line class="s-grid" x1="60" y1="208.6" x2="780" y2="208.6"/>
+        <line class="s-grid" x1="60" y1="137.1" x2="780" y2="137.1"/>
+        <line class="s-grid" x1="60" y1="65.7" x2="780" y2="65.7"/>
+        <g class="s-muted mono-t" font-size="12" text-anchor="end">
+          <text x="52" y="284">$60</text><text x="52" y="212">$80</text><text x="52" y="141">$100</text><text x="52" y="70">$120</text>
+        </g>
+        <g class="s-muted" font-size="12" text-anchor="middle">
+          <text x="97" y="302">3月</text><text x="200" y="302">4月</text><text x="299" y="302">5月</text><text x="402" y="302">6月</text><text x="501" y="302">7月</text><text x="604" y="302">8月</text><text x="707" y="302">9月</text>
+        </g>
+        <path class="s-line" d="M60 238.6 L86.5 237 L103 205 L119.6 137.1 L162.7 80 L186 100 L219 83 L222 55 L232 115 L248 102 L275 95 L308 108 L360 110 L415 112 L455 205 L468 190 L501 240 L524 200 L541 150 L564 144 L577 144.6 L604 170 L630 190 L660 175 L697 150 L710 105 L720 124 L737 132 L766 142"/>
+        <g font-size="12">
+          <line class="s-vneg" x1="86.5" y1="237" x2="86.5" y2="280"/>
+          <text class="s-neg" x="90" y="262">2/28 開戰</text>
+          <circle class="s-neg" cx="222" cy="55" r="5"/>
+          <text class="s-ink" x="232" y="48">3 月底高點 ~$118–126</text>
+          <circle class="s-pos" cx="232" cy="115" r="5"/>
+          <text class="s-pos" x="240" y="135">4/8 兩週停火</text>
+          <circle class="s-pos" cx="455" cy="205" r="5"/>
+          <text class="s-pos" x="372" y="232">6/17 伊斯蘭馬巴德備忘錄</text>
+          <circle class="s-pos" cx="501" cy="240" r="5"/>
+          <text class="s-ink2" x="508" y="258">7/1 ~$70</text>
+          <circle class="s-neg" cx="541" cy="150" r="5"/>
+          <text class="s-neg" x="470" y="140">7 月停火破局</text>
+          <circle class="s-neg" cx="710" cy="105" r="5"/>
+          <text class="s-ink" x="628" y="92">9 月初 ~$109</text>
+          <circle class="s-acc" cx="766" cy="142" r="5"/>
+          <text class="s-ink" x="776" y="165" text-anchor="end">9/22 $98.6</text>
+        </g>
+      </svg>
+      </div>
+      <p class="cap">布蘭特原油（美元/桶）。依新聞報導的關鍵價位連線而成的近似走勢，非逐日行情；3 月高點因來源不同記載為 118–126 美元。</p>
+    </div>
+    <div class="grid g4" style="margin-top:16px">
+      <div class="tile"><div class="l">布蘭特 戰前</div><div class="v">~$72</div><div class="d">2 月底</div></div>
+      <div class="tile"><div class="l">布蘭特 高點</div><div class="v neg">$118–126</div><div class="d">3 月底</div></div>
+      <div class="tile"><div class="l">美國汽油/加侖</div><div class="v">$4.15</div><div class="d">戰前 $2.98，+39%</div></div>
+      <div class="tile"><div class="l">美國柴油/加侖</div><div class="v neg">$5.90</div><div class="d">歷史新高</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 時間軸 -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 危機時間軸</div>
+      <h2>從開戰到「雙咽喉」危機</h2>
+    </div>
+    <div class="legend"><span class="lx">升級／攻擊</span><span class="lc">停火／緩和</span><span class="ln">政策因應</span></div>
+    <ol class="tl">
+      <li class="x"><div class="date">2026-02-28</div><div class="what">美國與以色列空襲伊朗，<b>戰爭爆發</b>。IRGC 發出無線電警告，海峽流量隨即下降約七成。</div></li>
+      <li class="x"><div class="date">2026-03-02 ～ 03-05</div><div class="what">IRGC 宣布海峽「關閉」，多艘商船遇襲；<b>卡達宣布 LNG 不可抗力</b>；3/5 保險公司撤銷戰爭險，通行在經濟上變得不可行。</div></li>
+      <li class="x"><div class="date">2026-03-08 ～ 03-12</div><div class="what">布蘭特原油四年來<b>首度突破 100 美元</b>；伊朗新任最高領袖宣布持續封鎖海峽。</div></li>
+      <li><div class="date">2026-03-12 ～ 03-16</div><div class="what">IEA 協調釋出 <b>4 億桶戰略儲備</b>；日本釋出 8,000 萬桶（約 15 天用量）。</div></li>
+      <li class="x"><div class="date">2026-03-18</div><div class="what">伊朗攻擊卡達拉斯拉凡工業區，<b>LNG 產能減少 17%</b>，修復估需 3–5 年。</div></li>
+      <li><div class="date">2026-03-24</div><div class="what"><b>菲律賓成為全球第一個宣布國家能源緊急狀態的國家</b>；前一天斯洛維尼亞成為首個實施燃油配給的歐盟國家。</div></li>
+      <li class="c"><div class="date">2026-04-08</div><div class="what">美伊同意<b>兩週臨時停火</b>，油價單日重挫約 15%。但 4/13 起美軍封鎖伊朗港口，形成「雙重封鎖」，伊朗 4/18 重新限制通行。</div></li>
+      <li class="x"><div class="date">2026-04-21</div><div class="what">國際海事組織：約 <b>2,000 艘船、2 萬名船員受困</b>波斯灣。</div></li>
+      <li><div class="date">2026-05-04 ～ 05-05</div><div class="what">美海軍啟動護航行動「自由計畫」，兩天後暫停；伊朗另設「波斯灣海峽管理局」，自行審批船隻通行。</div></li>
+      <li class="c"><div class="date">2026-06-17</div><div class="what">川普與伊朗總統裴澤斯基安簽署<b>《伊斯蘭馬巴德備忘錄》</b>，結束戰爭並解除雙方封鎖；7 月初油價跌回約 70 美元。</div></li>
+      <li class="x"><div class="date">2026-07-07 ～ 07-13</div><div class="what">伊朗攻擊海峽內三艘商船（含一艘卡達 LNG 船），美國隔日空襲伊朗本土，<b>停火實質瓦解</b>；7/13 美方宣布重新封鎖伊朗港口，油價單日飆 9.6%。</div></li>
+      <li><div class="date">2026-08</div><div class="what">伊朗與阿曼研議臨時航道方案；8/25 美方表示已清除 <b>100 枚以上疑似水雷</b>。</div></li>
+      <li class="x"><div class="date">2026-09-06 ～ 09-11</div><div class="what">美伊互擊油輪；9/10 <b>沙烏地東西向管線遭無人機攻擊而關閉</b>；胡塞武裝奪下曼德海峽沿岸與丕林島。</div></li>
+      <li class="c"><div class="date">2026-09-22</div><div class="what">沙烏地測試管線、可望本週恢復；川普表示可能在<b>聯合國大會</b>期間會見伊朗總統，布蘭特連四跌至約 98.6 美元。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 05 繞道 -->
+<section id="bypass">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 繞道方案</div>
+      <h2>每條退路都有天花板</h2>
+      <p>管線、儲備和冒險通航都只能補一部分缺口，而且大多已成為攻擊目標。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>替代方式</th><th>容量</th><th>現況</th><th>弱點</th></tr></thead>
+        <tbody>
+          <tr><td><b>沙烏地東西向管線</b>（至紅海延布港）</td><td class="num">500–700 萬桶/日</td><td>9/10 遭擊後關閉，本週測試重啟</td><td>出口仍需經曼德海峽或蘇伊士運河</td></tr>
+          <tr><td><b>阿聯 ADCOP</b>（至富查伊拉）</td><td class="num">~150 萬桶/日</td><td>運作中，但阿聯出口仍減少約六成</td><td>距伊朗近，起點與終點都曾遭襲</td></tr>
+          <tr><td><b>阿聯第二條管線</b></td><td class="num">出口量再倍增</td><td>5 月時完成約 50%，加速施工中</td><td>2027 年才可能上線</td></tr>
+          <tr><td><b>戰略石油儲備</b></td><td class="num">IEA 首輪 4 億桶</td><td>美國儲備降到 1982 年以來最低</td><td>只能買時間，越用越薄</td></tr>
+          <tr><td><b>冒險通航海峽</b></td><td class="num">9 月初 ~10 艘/日</td><td>沙烏地近期約 290 萬桶/日仍經海峽</td><td>戰爭險極貴、水雷與攻擊風險，需伊朗放行</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">兩條管線全開，合計也只有約 650–850 萬桶/日，不到海峽平時運量（約 2,000 萬桶/日）的一半。</p>
+  </div>
+</section>
+
+<!-- 06 全球 -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 全球衝擊</div>
+      <h2>越依賴進口、越沒儲備的國家，受傷越重</h2>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>亞洲：最直接的受害者</h3><ul class="plain">
+        <li>日本原油進口 <b>94%</b> 來自中東；韓國航空業進入緊急模式</li>
+        <li>印度約一半原油、六成 LPG 經海峽，燃油稅每公升降 10 盧比</li>
+        <li>中國暫停成品油出口，約 14 億桶戰略儲備幾乎未動用</li>
+        <li>菲律賓估計 <b>130–310 萬人</b>可能落入貧窮；孟加拉關閉大學、限制商店營業時間</li>
+      </ul></div>
+      <div class="card"><h3>歐洲：油、氣雙重壓力</h3><ul class="plain">
+        <li>荷蘭 TTF 天然氣價一度翻倍，突破 <b>€60/MWh</b></li>
+        <li>冬後儲氣僅約三成，歐盟要求成員國提早補庫</li>
+        <li>斯洛維尼亞限購：私家車每日 50 公升</li>
+        <li>德國調降燃油稅；愛爾蘭爆發油價抗議並引發不信任投票</li>
+      </ul></div>
+      <div class="card"><h3>美國：產油大國也難倖免</h3><ul class="plain">
+        <li>汽油從戰前 $2.98 漲到約 <b>$4.15／加侖</b></li>
+        <li>每戶因戰爭多付約 $419 燃料費；航空燃油一度漲 95%</li>
+        <li>Spirit Airlines 5 月停飛；Costco 9 月開始限購機油</li>
+        <li>原油與油品出口一度衝上近 1,290 萬桶/日</li>
+      </ul></div>
+      <div class="card"><h3>非洲與新興市場：最脆弱</h3><ul class="plain">
+        <li>衣索比亞柴油日供應量減半，物價一個月漲約 <b>四成</b></li>
+        <li>埃及商店晚上 9 點打烊、路燈調暗</li>
+        <li>肯亞油價創新高，大眾運輸票價漲約 25%</li>
+        <li>模里西斯一度只剩 21 天燃料庫存</li>
+      </ul></div>
+    </div>
+    <p class="note">能源衝擊也推高了各國通膨，美國 8 月 CPI 年增 3.4%，聯準會因此在 9 月升息，詳見 <a href="../fed-2026-09/index.html#why">聯準會九月升息解讀</a>。</p>
+  </div>
+</section>
+
+<!-- 07 台灣 -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 台灣影響</div>
+      <h2>油價靠中油硬撐，成本壓在國營事業身上</h2>
+      <p>台灣能源幾乎全靠進口，但國內油價靠「美伊戰爭穩定機制」凍漲，漲價壓力轉由中油吸收。</p>
+    </div>
+    <div class="grid g4">
+      <div class="tile"><div class="l">95 無鉛汽油</div><div class="v">32.7</div><div class="d">元/公升，9/21–9/27 不調整</div></div>
+      <div class="tile"><div class="l">超級柴油</div><div class="v">29.9</div><div class="d">元/公升</div></div>
+      <div class="tile"><div class="l">中油每公升吸收</div><div class="v neg">13.0 / 13.4</div><div class="d">元，汽油 / 柴油</div></div>
+      <div class="tile"><div class="l">9 月發電用天然氣</div><div class="v neg">+5.83%</div><div class="d">民生、工業用氣凍漲</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li>汽柴油維持亞洲鄰近國家最低價，每公升由中油吸收約 13 元</li>
+        <li>中油 2021 年至 2026 年 7 月累計吸收天然氣成本逾 <b>1,400 億元</b></li>
+        <li>9 月發電用天然氣漲 5.83%，成本壓力往台電與電價轉移</li>
+        <li>3/9 油價衝擊下，台股單日重挫 1,494 點</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意（推論）</h3><ul class="plain">
+        <li>凍漲越久，中油、台電虧損越大，最終可能需要撥補或調價</li>
+        <li>LNG 占台灣發電比重高，卡達減產與歐洲搶氣會讓第四季氣價壓力更大</li>
+        <li>石化、航空、航運與運輸業的燃料成本最直接</li>
+        <li>若油價再衝高，進口物價與通膨將牽動央行的利率決策</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 劇本 -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 未來劇本</div>
+      <h2>接下來三種劇本</h2>
+      <p>各機構的預測差距極大，關鍵在於海峽能不能重新開放，以及紅海退路會不會也被切斷。</p>
+    </div>
+    <div class="grid g3">
+      <div class="sc good"><h3>外交降溫</h3><div class="price">→ $85</div><p>聯大期間美伊直接對話、重回備忘錄框架，伊朗–阿曼臨時航道落地，船隻逐步恢復通行。</p><div class="who">高盛基準情境</div></div>
+      <div class="sc"><h3>僵持消耗</h3><div class="price">$90–110</div><p>零星互擊持續、海峽維持低流量，管線時開時關。油價隨每則攻擊或談判消息大幅震盪，各國儲備持續下降。</p><div class="who">目前的走勢（推論）</div></div>
+      <div class="sc bad"><h3>雙海峽全面失守</h3><div class="price">$140+</div><p>荷莫茲與曼德海峽同時封死、東西向管線再遭重創，全球將陷入衰退。</p><div class="who">Rystad Energy 警告</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 訊號 -->
+<section id="watch">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 觀察訊號</div>
+      <h2>值得盯緊的五個訊號</h2>
+    </div>
+    <ul class="watch">
+      <li><b>聯合國大會場邊會談</b>：川普與裴澤斯基安是否真的見面，以及伊朗要求美方落實備忘錄第 5 條（海峽管理安排）。</li>
+      <li><b>沙烏地東西向管線</b>：本週能否順利重啟，以及是否再遭攻擊。</li>
+      <li><b>胡塞在曼德海峽的態度</b>：目前宣稱只針對沙烏地船隻，若擴大封鎖，繞道路線也會失效。</li>
+      <li><b>每日通航船數與戰爭險費率</b>：比油價更早反映實際風險，平時約 130 艘/日、險費約船價的 0.125%。</li>
+      <li><b>戰略儲備水位</b>：美國儲備已是 40 多年來最低，若再次聯合釋儲，市場緩衝會更薄。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 來源 -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+    </div>
+    <ol class="src">
+      <li><a href="https://en.wikipedia.org/wiki/2026_Iran_war_fuel_crisis" target="_blank" rel="noopener">Wikipedia — 2026 Iran war fuel crisis</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank" rel="noopener">Wikipedia — 2026 Strait of Hormuz crisis</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Islamabad_Memorandum" target="_blank" rel="noopener">Wikipedia — Islamabad Memorandum</a></li>
+      <li><a href="https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz" target="_blank" rel="noopener">Al Jazeera — Oil prices surge as US-Iran strikes intensify（9/7）</a></li>
+      <li><a href="https://www.cnbc.com/2026/09/22/oil-iran-us-bessent-un-crude.html" target="_blank" rel="noopener">CNBC — Saudi aims to restart critical pipeline（9/22）</a></li>
+      <li><a href="https://www.washingtontimes.com/news/2026/sep/10/oil-prices-rise-iran-targets-vessels-strait-hormuz-houthis-seize/" target="_blank" rel="noopener">Washington Times — Iran targets vessels; Houthis seize Yemeni port（9/10）</a></li>
+      <li><a href="https://www.timesofisrael.com/houthis-seize-key-red-sea-island-complete-takeover-of-vital-bab-al-mandab-shipping-lane/" target="_blank" rel="noopener">Times of Israel — Houthis take over Bab el-Mandeb</a></li>
+      <li><a href="https://discoveryalert.com/analysis/us-iran-war-oil-prices-september-2026/" target="_blank" rel="noopener">Discovery Alert — $140 or $85? What forecasts say</a></li>
+      <li><a href="https://www.cnbc.com/2026/05/20/uae-pipeline-strait-hormuz-iran-war-oil.html" target="_blank" rel="noopener">CNBC — UAE bypass pipeline nearly 50% complete</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/5/15/uae-to-accelerate-oil-pipeline-project-to-bypass-hormuz" target="_blank" rel="noopener">Al Jazeera — UAE to accelerate pipeline project</a></li>
+      <li><a href="https://www.cna.com.tw/news/ahel/202609190175.aspx" target="_blank" rel="noopener">中央社 — 21 日起汽柴油不調整，95 無鉛維持 32.7 元</a></li>
+      <li><a href="https://n.yam.com/Article/20260920255948" target="_blank" rel="noopener">蕃新聞 — 中油擴大吸收汽、柴油 13.0 及 13.4 元</a></li>
+      <li><a href="https://udn.com/news/story/7238/9725172" target="_blank" rel="noopener">聯合新聞網 — 9 月民生、工業天然氣凍漲，電業漲 5.83%</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀，數字取自 2026 年 3–9 月的公開報導，不同來源可能略有出入；標示「推論」的內容為分析判斷。內容不構成任何投資建議。資料截至 2026 年 9 月 22 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themeBtn');
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  btn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  // highlight the current chapter in the nav
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
