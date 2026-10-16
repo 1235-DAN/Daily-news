@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>焦點解讀室 2026</title>
-<meta name="description" content="新聞解讀入口：台積電 Q3 法說解讀、10/15 台股重挫解讀、荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
+<meta name="description" content="新聞解讀入口：美國九月 CPI 解讀、台積電 Q3 法說解讀、10/15 台股重挫解讀、荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -30,12 +30,14 @@
   --oil-ink:#8a4f08;
   --oil-wash:rgba(168,98,12,.10);
   --t-blue:#2a78d6; --t-blue-ink:#1f62b3; --t-blue-wash:rgba(42,120,214,.10);
+  --t-green:#1f7a5a; --t-green-ink:#17614a; --t-green-wash:rgba(31,122,90,.10);
   --radius:14px;
   --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
+    --t-green:#43b58a; --t-green-ink:#6fd0a6; --t-green-wash:rgba(67,181,138,.15);
     --t-blue:#3987e5; --t-blue-ink:#7fb2f0; --t-blue-wash:rgba(57,135,229,.15);
     color-scheme: dark;
     --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
@@ -47,6 +49,7 @@
   }
 }
 :root[data-theme="dark"]{
+  --t-green:#43b58a; --t-green-ink:#6fd0a6; --t-green-wash:rgba(67,181,138,.15);
   --t-blue:#3987e5; --t-blue-ink:#7fb2f0; --t-blue-wash:rgba(57,135,229,.15);
   color-scheme: dark;
   --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
@@ -115,6 +118,10 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep.t-blue .ndate{border-color:var(--t-blue); color:var(--t-blue-ink); background:var(--t-blue-wash)}
 .chip.t-blue{background:var(--t-blue-wash); color:var(--t-blue-ink)}
 .rep.t-blue .go{color:var(--t-blue-ink)}
+.rep.t-green{border-top:3px solid var(--t-green)}
+.rep.t-green .ndate{border-color:var(--t-green); color:var(--t-green-ink); background:var(--t-green-wash)}
+.chip.t-green{background:var(--t-green-wash); color:var(--t-green-ink)}
+.rep.t-green .go{color:var(--t-green-ink)}
 .rep.feature{grid-column:1 / -1}
 .rep.feature p{max-width:720px}
 .rep.feature .figs{grid-template-columns:repeat(4, minmax(0,1fr))}
@@ -166,15 +173,26 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
   </section>
 
   <div class="reports">
-    <a class="rep t-blue feature" href="tsmc-earnings-2026-10/index.html">
-      <div class="meta"><span class="chip t-blue">台積電</span><span class="ndate">2026-10-15</span><span>· 最新</span><span>· 資料截至 10-16</span></div>
+    <a class="rep t-green feature" href="us-cpi-2026-09/index.html">
+      <div class="meta"><span class="chip t-green">美國通膨</span><span class="ndate">2026-10-14</span><span>· 最新</span><span>· 資料截至 10-16</span></div>
+      <h2>美國 9 月 CPI 升到 3.7%：汽油一個月漲 9.1%，Fed 10 月還要再升息嗎？</h2>
+      <p>油價推升通膨、核心物價也加速：CPI 細項拆解、PPI 與 Fed 升息機率的變化、美股與台股反應、九個產業影響、對台灣物價與央行的影響與三種劇本。</p>
+      <div class="figs">
+        <div><div class="v">3.7%</div><div class="l">CPI 年增（預期 3.6%）</div></div>
+        <div><div class="v">2.6%</div><div class="l">核心 CPI 年增</div></div>
+        <div><div class="v">+9.1%</div><div class="l">汽油單月漲幅</div></div>
+        <div><div class="v">6.3%</div><div class="l">9 月 PPI 年增</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
+    <a class="rep t-blue" href="tsmc-earnings-2026-10/index.html">
+      <div class="meta"><span class="chip t-blue">台積電</span><span class="ndate">2026-10-15</span><span>· 資料截至 10-16</span></div>
       <h2>台積電 Q3 法說：EPS 29.43 元創新高，股價為何沒漲？</h2>
       <p>營收超標、Q4 財測再創高，但 2 奈米與海外廠稀釋毛利率、2027 規劃審慎，又碰上 AI 股拋售：法說重點與經營層發言、台美股反應、九個產業影響、對台灣的影響與三種劇本。</p>
       <div class="figs">
         <div><div class="v">29.43 元</div><div class="l">Q3 EPS（年增 68.7%）</div></div>
         <div><div class="v">467.2 億</div><div class="l">Q3 美元營收</div></div>
         <div><div class="v">66.4%</div><div class="l">毛利率（季減 1.3 點）</div></div>
-        <div><div class="v">523–543 億</div><div class="l">Q4 營收財測（美元）</div></div>
       </div>
       <div class="go">閱讀報告 →</div>
     </a>
@@ -234,8 +252,8 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
     <ol>
       <li><b>2026-10-15</b>台積電 Q3 EPS 29.43 元創新高，ADR 仍跌</li>
       <li><b>2026-10-15</b>台股崩 1,656 點、外資賣 3,025 億</li>
+      <li><b>2026-10-14</b>美國 9 月 CPI 年增 3.7%，汽油單月漲 9.1%</li>
       <li><b>2026-09-16</b>Fed 三年來首度升息</li>
-      <li><b>2026-09-10</b>沙烏地輸油管遭襲，胡塞控制曼德海峽</li>
     </ol>
   </section>
 
