@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10/15 台股重挫解讀</title>
+<meta name="description" content="2026 年 10 月 15 日台股重挫 1,656 點、外資賣超 3,025 億元創紀錄：原因、時間軸、台美韓股價反應、產業與對台灣的影響，以及各家媒體報導比較。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <span class="brand">10/15 台股重挫</span>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台股解讀 · AI 半導體拋售潮 · 資料截至 2026 年 10 月 16 日</p>
+      <h1>台股單日崩 1,656 點、外資提款 3,025 億創紀錄：通膨、AI 舉債與記憶體三記重拳同時落下</h1>
+      <p class="lede">2026 年 10 月 15 日，加權指數（台股大盤）重挫 3.41%，收 46,969.87 點，是史上第 6 大單日跌點；外資單日賣超 3,025.55 億元，打破 7 月 17 日股災的紀錄。導火線是美國 9 月消費者物價指數（CPI）高於預期、讓市場擔心聯準會（Fed）再升息，加上 AI 資料中心舉債風險與中國記憶體廠追趕的消息。接下來要看 10 月 27–28 日的 Fed 會議，以及外資賣壓是否收斂。</p>
+    </div>
+    <div class="stmt" aria-label="10 月 15 日加權指數收盤">
+      <div class="k">加權指數 10/15 收盤</div>
+      <div class="range">46,970<small>−3.41%</small></div>
+      <div class="was">前一日 48,625.83 · 10/5 歷史收盤高點 49,712.04</div>
+      <div class="stmt-row">
+        <div><div class="v">−1,656</div><div class="l">單日跌點（史上第 6）</div></div>
+        <div><div class="v">3,026 億</div><div class="l">外資賣超（史上最多）</div></div>
+        <div><div class="v">32.265</div><div class="l">新台幣（貶 1.92 角）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂 10/15 這場跌勢</h2>
+      <p>懶人包：美國通膨回溫 → 市場怕 Fed 再升息 → 本來就很貴的 AI 晶片股被大量賣出，台股因為科技股占比高，受傷特別重。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>台股史上第 6 大跌點。</b>10 月 15 日加權指數跌 1,655.96 點（−3.41%），收 46,969.87 點，跌破 47,000 點與月線（約 48,041 點）；盤中最低 46,795.38 點，一度跌 1,830 點。成交值 1.32 兆元，比前一天的 9,781 億元多了約 35%。</div></li>
+      <li><div><b>外資單日賣超 3,025.55 億元，史上最多。</b>超過 7 月 17 日的 1,890.38 億元紀錄，也是連續第 7 天賣超；三大法人合計賣超 3,700.76 億元，同樣創紀錄，只有投信逆勢買超 283 億元。</div></li>
+      <li><div><b>直接導火線是美國 9 月 CPI。</b>10 月 14 日公布的 CPI 年增 3.7%，高於預期的 3.6%；核心 CPI 年增 2.6%，也高於預期。美國 10 年期公債殖利率收在約 5.19%，市場擔心 Fed 在 10 月 27–28 日或 12 月再升息。</div></li>
+      <li><div><b>美國晶片股已連跌 6 天。</b>費城半導體指數（費半）10 月 14 日重挫 4.30%，從 9 月 30 日到 10 月 14 日累計跌約 7.5%；Nvidia 跌 3.16%，台積電 ADR 跌 3.40%。</div></li>
+      <li><div><b>AI 舉債疑慮與記憶體競爭火上加油。</b>AI 雲端業者 CoreWeave 公司債殖利率逼近 15%、股價 10 月 14 日跌 15.46%；Broadcom 執行長陳福陽把 AI 投資比喻成「賭場」；中國長鑫存儲（CXMT）宣布年底推出新一代 DRAM，讓記憶體股重挫。</div></li>
+      <li><div><b>科技股重傷、防禦股撐盤。</b>台積電跌 2.01%（收 2,440 元），聯發科跌 6.93%、台達電跌 8.68%、日月光投控跌停；中華電、台灣大、遠傳與玉山金逆勢上漲，9 檔個股創歷史新高。全場 35 檔跌停、只有 9 檔漲停。</div></li>
+      <li><div><b>亞股全面重挫，韓股最慘。</b>韓國 KOSPI 跌 7.57%、觸發熔斷（暫停交易機制），三星電子跌 9.48%、SK 海力士跌 11.06%；日經 225 跌約 4.9%。金管會表示台股跌幅「居亞洲中段」，將密切注意。</div></li>
+      <li><div><b>台積電財報亮眼，但沒能止跌。</b>同日下午法說會公布第 3 季 EPS 29.43 元創新高，第 4 季營收財測 523–543 億美元，全年美元營收成長上修到約 44%。這顯示賣壓主要來自利率與資金面，而不是台積電本身的接單（推論）。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼是這一天？四股力量同時壓下來</h2>
+      <p>CPI 數字、CoreWeave 債券殖利率、CXMT 發表內容與陳福陽發言是當事方公布或說出的事實；「這些因素造成台股大跌」則是媒體與分析師的歸因。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>美國通膨回溫，升息疑慮重燃</h3><p>可以把股價想成「未來獲利折算成今天的價值」：利率越高，折算越打折，而成長股的獲利大多在遙遠的未來，所以受傷最重。9 月 CPI 年增 3.7%、月增 0.6%，核心服務價格是主因。Fed 才在 9 月 16 日三年來首度升息到 3.75%–4.00%，市場現在把 10 月再升息看成「大約五五波」。</p></div><div class="ev"><span class="tag">CPI 年增 3.7%（預期 3.6%）</span><span class="tag">10 年期美債約 5.19%</span><span class="tag">Fed 會議 10/27–28</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>AI 基礎建設「錢從哪裡來」被打問號</h3><p>CoreWeave 靠大量借錢蓋 AI 資料中心，10 月 13 日公司債殖利率一度觸及約 15%（代表市場要求很高的風險補償），隔天股價跌 15.46%；Gartner 警告 2030 年前 80% 的新興 AI 雲端業者（neocloud）可能消失。Broadcom 執行長陳福陽 10 月 12 日在新加坡說，資金可能是 AI 最大的瓶頸，比晶片、記憶體或電力還嚴重。</p></div><div class="ev"><span class="tag">CoreWeave 債殖利率 ~15%</span><span class="tag">CRWV 10/14 −15.46%</span><span class="tag">5 年期信用違約交換 368→643 基點</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>中國長鑫存儲宣布追上次世代 DRAM</h3><p>CXMT 總裁曹堪宇在產業會議上表示已突破更密集的 4F² 記憶體單元設計，最快 2026 年底推出伺服器用 DDR5 模組；外媒指三星規劃 2028 年才導入同結構。市場擔心中國廠商以低價搶占伺服器記憶體市場，三星、SK 海力士 10 月 13 日分別重挫 7.39% 與 10.09%，台灣記憶體股同步受壓。不過 CXMT 尚未公布良率與產能，也沒有第三方驗證。</p></div><div class="ev"><span class="tag">三星 10/13 −7.39%</span><span class="tag">SK 海力士 10/13 −10.09%</span><span class="tag">南亞科 10/13 −7.40%</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>台股漲多、科技權重高，外資一次大提款</h3><p>台股 10 月 5 日才以 49,712.04 點創收盤新高，離 5 萬點只差 288 點；台積電一檔占大盤市值超過四成，本益比約 26.68 倍（9 月底）。當全球資金撤出 AI 硬體，台股是最容易「提款」的市場之一，外資連 7 天賣超，台積電也被連賣 7 天。</p></div><div class="ev"><span class="tag">台積電市值占比 &gt;40%</span><span class="tag">本益比 26.68 倍</span><span class="tag">外資連 7 賣</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>台股與台積電</span><span><i class="g"></i>外部衝擊（通膨、AI 信用、記憶體）</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-07-17</div><div class="what"><b>717 股災</b>：台股崩跌 2,953 點，外資賣超 1,890.38 億元（當時紀錄）。</div></li>
+        <li><div class="date">2026-09-16</div><div class="what">Fed 三年來首度升息至 <b>3.75%–4.00%</b>。</div></li>
+        <li class="key"><div class="date">2026-10-05</div><div class="what">加權指數大漲 1,236 點，收 <b>49,712.04 點創歷史新高</b>；台積電收 2,575 元。</div></li>
+        <li class="geo"><div class="date">2026-10-10</div><div class="what">CXMT 總裁曹堪宇在產業會議宣稱突破 <b>4F² DRAM</b>，年底推伺服器產品。</div></li>
+        <li class="geo"><div class="date">2026-10-12</div><div class="what">陳福陽在新加坡 DBS 論壇稱許多 AI 投資人<b>「像在賭場」</b>；三星、SK 海力士首日跌逾 3%。</div></li>
+        <li class="geo"><div class="date">2026-10-13</div><div class="what">CoreWeave 公司債殖利率逼近 15%；台股跌 960.65 點至 48,341.31 點，外資賣超 1,653 億元；韓國記憶體股重挫。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-10-14</div><div class="what">美國 9 月 <b>CPI 年增 3.7%</b> 高於預期；費半跌 4.30%（連 6 跌）、那斯達克跌 1.88%。台股當天白天仍漲 285 點收 48,625.83 點。</div></li>
+        <li class="key"><div class="date">2026-10-15</div><div class="what"><b>台股跌 1,655.96 點</b>、外資賣超 3,025.55 億元；新台幣貶至 32.265 元；KOSPI 跌 7.57% 熔斷。</div></li>
+        <li class="key"><div class="date">2026-10-15</div><div class="what">台積電法說：第 3 季 EPS 29.43 元，第 4 季營收財測 <b>523–543 億美元</b>，全年成長上修至約 44%。</div></li>
+        <li><div class="date">2026-10-15</div><div class="what">美股收盤：道瓊漲 1.08%、標普 500 漲 0.33%，資金轉向傳產與銀行股，那斯達克約平盤（台灣時間 10/16 清晨）。</div></li>
+        <li><div class="date">2026-10-16</div><div class="what">台指期夜盤回升 435 點收 47,366 點；三星、SK 海力士盤前漲逾 3%。</div></li>
+        <li><div class="date">2026-10-27～28</div><div class="what"><b>下一個關鍵日</b>：Fed 利率會議，決定是否再升息。</div></li>
+      </ol>
+    </div>
+
+    <div class="chart-card" style="margin-top:24px">
+      <p class="chart-title">加權指數收盤：10 月 5 日高點到 10 月 15 日</p>
+      <p class="chart-sub">只標示有新聞報導收盤價的交易日，近似走勢，非逐日行情</p>
+      <svg viewBox="0 0 640 234" role="img" aria-label="加權指數由 10/5 的 49,712 點下跌到 10/15 的 46,970 點" style="width:100%;height:auto;display:block">
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+          <line x1="60" y1="30" x2="620" y2="30" stroke="var(--grid)"/><text x="54" y="34" text-anchor="end">50,000</text>
+          <line x1="60" y1="90" x2="620" y2="90" stroke="var(--grid)"/><text x="54" y="94" text-anchor="end">49,000</text>
+          <line x1="60" y1="150" x2="620" y2="150" stroke="var(--grid)"/><text x="54" y="154" text-anchor="end">48,000</text>
+          <line x1="60" y1="210" x2="620" y2="210" stroke="var(--axis)"/><text x="54" y="214" text-anchor="end">47,000</text>
+          <line x1="60" y1="147.5" x2="620" y2="147.5" stroke="var(--ink-2)" stroke-dasharray="4 4" opacity=".6"/><text x="618" y="142" text-anchor="end">月線 ~48,041</text>
+        </g>
+        <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" points="90,47.3 400,71.9 470,129.5 540,112.4 610,211.8"/>
+        <g fill="var(--accent)"><circle cx="90" cy="47.3" r="4.5"/><circle cx="400" cy="71.9" r="4.5"/><circle cx="470" cy="129.5" r="4.5"/><circle cx="540" cy="112.4" r="4.5"/></g>
+        <circle cx="610" cy="211.8" r="5.5" fill="var(--down)"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="11.5" fill="var(--ink)" text-anchor="middle">
+          <text x="90" y="38">49,712</text><text x="400" y="62">49,302</text><text x="470" y="148">48,341</text><text x="540" y="103">48,626</text><text x="590" y="200" text-anchor="end" fill="var(--down)" font-weight="600">46,970</text>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)" text-anchor="middle">
+          <text x="90" y="226">10/5</text><text x="400" y="226">10/12</text><text x="470" y="226">10/13</text><text x="540" y="226">10/14</text><text x="610" y="226">10/15</text>
+        </g>
+      </svg>
+      <p class="small muted" style="margin:6px 0 0">10/12 收盤由 10/13 收盤與跌點回推（48,341.31 + 960.65）。10/6–10/9 未納入。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>台灣股匯雙殺，韓國更慘，美國反而先止血</h2>
+      <p>事件發生在台股，但震央在美國（通膨與 AI 信用）和韓國（記憶體）；四個市場受傷的程度和原因不同。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">加權指數收盤</div><div class="v down">46,969.87</div><div class="d">−1,655.96 點（−3.41%）</div></div>
+      <div class="tile"><div class="l">外資賣超</div><div class="v">3,025.55 億</div><div class="d">前紀錄 1,890.38 億（7/17）</div></div>
+      <div class="tile"><div class="l">三大法人合計</div><div class="v">−3,700.76 億</div><div class="d">投信唯一買超 283 億</div></div>
+      <div class="tile"><div class="l">成交值</div><div class="v">1.32 兆元</div><div class="d">前一日 9,781 億元</div></div>
+      <div class="tile"><div class="l">櫃買指數</div><div class="v down">−5.53%</div><div class="d">跌 23.23 點，失守 400 點</div></div>
+      <div class="tile"><div class="l">新台幣收盤</div><div class="v">32.265</div><div class="d">貶 1.92 角，成交 70.3 億美元</div></div>
+      <div class="tile"><div class="l">漲停 / 跌停家數</div><div class="v">9 / 35</div><div class="d">48 檔高價股 46 檔收黑</div></div>
+      <div class="tile"><div class="l">融資整戶維持率</div><div class="v">192.32%</div><div class="d">10/14，追繳線 130%</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>台灣</h3><ul class="plain">
+        <li><b>股匯雙殺：</b>新台幣盤中最弱到 32.452 元，創兩個多月新低，央行尾盤進場調節才收斂到 32.265 元。</li>
+        <li><b>類股兩極：</b>塑膠類股跌 9.41%、電子零組件跌 6.99%；貿易百貨、造紙、食品逆勢小漲約 1%。</li>
+        <li><b>外資連賣 ETF：</b>外資賣超主動統一升級 50（00403A）13.9 萬張、元大台灣 50（0050）10.3 萬張。</li>
+      </ul></div>
+      <div class="card"><h3>韓國</h3><ul class="plain">
+        <li><b>KOSPI 跌 7.57%</b> 收 5,554.22 點，連 7 跌、7 天累計跌約 20%，市值蒸發逾 1,100 兆韓元。</li>
+        <li>三星電子跌 9.48%、SK 海力士跌 11.06%，兩檔合計占指數一半以上權重；三星電機單日跌近 17%。</li>
+        <li>觸發賣方熔斷並暫停交易 20 分鐘；外資賣超 3.63 兆韓元（約 27 億美元），連 8 賣。</li>
+      </ul></div>
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li><b>10/14：</b>那斯達克跌 1.88% 收 26,692.87 點，標普 500 跌約 1.1%，道瓊僅跌 0.09%；費半跌 4.30%。</li>
+        <li><b>10/15：</b>道瓊漲 1.08%（約 557 點）、標普 500 漲 0.33% 收 7,744.06 點，銀行財報撐盤；Nvidia 仍跌約 1.8%。</li>
+        <li>市場看 10 月底再升息的機率約一半；Capital.com 分析師 Daniela Hathorn 形容 CPI「給降息希望潑了一桶冷水」。</li>
+      </ul></div>
+      <div class="card"><h3>日本與其他亞洲</h3><ul class="plain">
+        <li>日經 225 跌約 4.9%，Kioxia（鎧俠）與軟銀跌幅居前。</li>
+        <li>依金管會引用的台灣時間 13:30 數據：上海跌 2.37%、香港跌 1.46%、新加坡跌 0.68%，中國與東南亞受傷較輕。</li>
+        <li>受傷程度和「半導體占比」高度相關：韓、日、台三個晶片權重高的市場跌最多（推論）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>賣的是「AI 硬體」，買的是電信、金融與食品</h2>
+      <p>同一天，台積電只跌 2%，封測、IC 設計、電源與載板卻跌 7%–10%；資金從高本益比的科技股，轉進配息穩定的防禦股。紅漲綠跌依台灣習慣。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/15 亞股與 10/14 美股漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；美股標示 10/14，即台股大跌前一晚</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>不是台積電基本面出問題，而是「估值」被重新計算。台積電跌幅在權值股中最小，跌最兇的是前一波漲最多、本益比最高的 AI 供應鏈（日月光、台達電、欣興）。</li>
+          <li><b>美股：</b>10/14 是「通膨＋利率」打科技股；10/15 道瓊與小型股反彈、那斯達克平盤，代表資金是「換股」而不是全面撤出股市。</li>
+          <li><b>債市：</b>10 年期美債殖利率 10/14 收在約 5.19%，10/15 回落到約 5.09%。殖利率越高，成長股的估值壓力越大。</li>
+          <li><b>匯市：</b>外資賣股後換回美元，新台幣成交量達 70.3 億美元的天量，貶 1.92 角；美元指數前一天漲 0.37%。</li>
+          <li><b>信用市場：</b>CoreWeave 5 年期信用違約交換（CDS，買來防對方倒債的保險）報價從 10/6 的 368 基點升到 643 基點，AI 舉債的風險溢價明顯拉高。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">TAIEX</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,969.87</td><td class="num down">−3.41%</td><td class="period">10/5 高點以來 −5.5%</td><td>外資賣超 3,025 億元，跌破月線</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,440</td><td class="num down">−2.01%</td><td class="period">10/5 2,575 元以來 −5.2%</td><td>外資法說前連 7 賣，10/15 賣 3.4 萬張；財報亮眼但未止跌</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">4,165</td><td class="num down">−6.93%</td><td class="period">10/13 收盤 4,525 元起 −8.0%</td><td>AI ASIC 題材估值高，遭獲利了結</td></tr>
+          <tr><td class="num">3711</td><td><b>日月光投控</b></td><td>台股</td><td class="num">673</td><td class="num down">−10.00%</td><td class="period">跌停</td><td>先進封裝前波漲多，賣壓集中</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,630</td><td class="num down">−8.68%</td><td class="period">未查到</td><td>AI 伺服器電源概念股，受 AI 資本支出疑慮衝擊</td></tr>
+          <tr><td class="num">3037</td><td><b>欣興</b></td><td>台股</td><td class="num">未查到</td><td class="num down">−9.28%</td><td class="period">未查到</td><td>ABF 載板，AI 硬體鏈同步被賣</td></tr>
+          <tr><td class="num">2408</td><td><b>南亞科</b></td><td>台股</td><td class="num">未查到</td><td class="num down">−9.16%</td><td class="period">10/13 已跌 7.40%</td><td>CXMT 新 DRAM 消息＋韓國記憶體股重挫；投信也賣超 9,090 張</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">239.50</td><td class="num down">−1.44%</td><td class="period">10/13 收盤 240 元起 −0.2%</td><td>跌幅相對小，評價較低</td></tr>
+          <tr><td class="num">2412</td><td><b>中華電</b></td><td>台股</td><td class="num">152.50</td><td class="num up">+2.69%</td><td class="period">創歷史新高</td><td>防禦型資金湧入，外資買超 1.4 萬張</td></tr>
+          <tr><td class="num">2884</td><td><b>玉山金</b></td><td>台股</td><td class="num">48.80</td><td class="num up">+3.17%</td><td class="period">創歷史新高</td><td>金融股輪動，投信買超 5,735 張</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">未查到</td><td class="num down">−3.40%</td><td class="period">10/14</td><td>費半重挫、利率上升</td></tr>
+          <tr><td class="num">NVDA</td><td><b>Nvidia</b></td><td>美股</td><td class="num">221.30</td><td class="num down">−3.16%</td><td class="period">10/14；10/15 再跌約 1.8%</td><td>CPI 推升殖利率，AI 股估值受壓</td></tr>
+          <tr><td class="num">CRWV</td><td><b>CoreWeave</b></td><td>美股</td><td class="num">65.78</td><td class="num down">−15.46%</td><td class="period">10/14；10/15 反彈約 6%</td><td>公司債殖利率近 15%、Gartner 示警</td></tr>
+          <tr><td class="num">005930</td><td><b>三星電子</b></td><td>韓股</td><td class="num">210,000 韓元</td><td class="num down">−9.48%</td><td class="period">10/13 收盤 23.2 萬韓元起 −9.5%</td><td>CXMT 威脅＋美國通膨</td></tr>
+          <tr><td class="num">000660</td><td><b>SK 海力士</b></td><td>韓股</td><td class="num">1,262,000 韓元</td><td class="num down">−11.06%</td><td class="period">10/13 收盤 144 萬韓元起 −12.4%</td><td>同上，記憶體股首當其衝</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">台股、韓股為 10/15 收盤；美股為 10/14 收盤（台灣時間 10/15 清晨）。來源：中央社、工商時報、鉅亨網、Taipei Times、Startup Fortune、Motley Fool、Yahoo Finance。期間走勢依報導收盤價計算。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>一份美國物價報告，如何掀翻整個亞洲晶片股</h2>
+      <p>傳導路徑：美國通膨 → 利率預期上升 → AI 舉債成本變高 → 全球資金撤出高估值的晶片股 → 半導體占比高的韓、日、台受傷最重。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>利率與債市</h3><ul class="plain small">
+        <li>10 年期美債殖利率 10/14 約 5.19%，處於多年高檔。</li>
+        <li>CPI 公布後，市場看 Fed 10/27–28 再升息的機率約五成。</li>
+        <li>利率越高，所有「未來才賺錢」的資產越被打折。</li>
+      </ul></article>
+      <article class="card"><h3>AI 融資的信用風險</h3><ul class="plain small">
+        <li>CoreWeave 信用評等 B+（非投資等級），債券殖利率逼近 15%。</li>
+        <li>Gartner：2030 年前逾 3.5 兆美元 AI 基建支出可能面臨減損。</li>
+        <li>陳福陽：資金可能是 AI 最大限制，而 Broadcom 本身也是 AI 基建的大型融資方。</li>
+      </ul></article>
+      <article class="card"><h3>記憶體產業版圖</h3><ul class="plain small">
+        <li>CXMT 若如期量產 4F² DRAM，將比三星的 2028 年時程早約 2 年。</li>
+        <li>高頻寬記憶體（HBM）仍不在 CXMT 公開計畫內，韓廠的 AI 優勢暫時未受威脅。</li>
+        <li>128GB DDR5 模組報價先前已漲達 5 倍，市場擔心價格見頂。</li>
+      </ul></article>
+      <article class="card"><h3>新興亞洲資金外流</h3><ul class="plain small">
+        <li>外資單日自台股賣超 3,025 億元台幣、自韓股賣超 3.63 兆韓元。</li>
+        <li>新台幣、韓元同步走弱，央行需進場調節。</li>
+        <li>中國、香港、新加坡跌幅只有 0.7%–2.4%，資金並非全面撤出亞洲。</li>
+      </ul></article>
+      <article class="card"><h3>美股內部輪動</h3><ul class="plain small">
+        <li>10/15 道瓊漲 1.08%、羅素 2000 漲 1.38%，那斯達克約平盤。</li>
+        <li>銀行財報帶動傳產反彈，科技股相對弱勢。</li>
+        <li>分析師提醒：若殖利率再升或 AI 信用利差再擴大，反彈可能很快逆轉。</li>
+      </ul></article>
+      <article class="card"><h3>AI 泡沫論再起</h3><ul class="plain small">
+        <li>Nvidia 投資的澳洲資料中心業者 Firmus 10/9 撤回 IPO。</li>
+        <li>OpenAI 年化營收約 500 億美元，但今年訓練支出逾 250 億美元，仍在虧損。</li>
+        <li>市場在「需求真實」與「資金撐不撐得住」之間重新定價（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依分析師對技術面的看法、利率期貨隱含的升息機率與台積電財測整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>季線附近震盪整理</h3><ul class="plain small">
+        <li>指數在 46,000–48,000 點之間來回，華南投顧分析師 Kevin Su 認為有再測 46,000 點的可能。</li>
+        <li>外資賣超金額逐步縮小，但還不會轉為大買。</li>
+        <li>台積電法說的強勁財測提供下檔支撐，中小型 AI 股波動仍大。</li>
+      </ul><p class="trig">觸發條件：費半止跌、美債殖利率維持在 5%–5.2% 之間</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>Fed 再升息＋AI 信用事件</h3><ul class="plain small">
+        <li>10/28 Fed 升息且暗示 12 月還要升，殖利率突破新高。</li>
+        <li>若有 AI 雲端業者融資困難或違約，AI 硬體股可能再修正一輪。</li>
+        <li>外資持續提款，新台幣跌破 32.5 元（推論）。</li>
+      </ul><p class="trig">觸發條件：10 月 CPI 再超預期、CoreWeave 等信用利差續擴</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>收復月線、回到 48,000 點以上</h3><ul class="plain small">
+        <li>Fed 10 月按兵不動，市場把升息預期延後。</li>
+        <li>資金重新聚焦台積電上修全年成長至 44% 的基本面。</li>
+        <li>康和證券投資長廖繼弘指出，爆量長黑過去常伴隨短線反彈。</li>
+      </ul><p class="trig">觸發條件：指數帶量站回月線（約 48,041 點）、外資轉為買超</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/16 起的外資買賣超</b>：連 7 賣能否結束；若賣超降到千億元以下，代表最恐慌的階段可能過去。</li>
+      <li><b>費半指數</b>：已連 6 跌，是台股電子股的「前一晚預告」；止跌與否決定台股隔天方向。</li>
+      <li><b>10/27–28 Fed 利率會議</b>：升或不升，以及對 12 月的暗示，直接影響殖利率與科技股估值。</li>
+      <li><b>新台幣 32.4–32.5 元</b>：10/15 盤中最弱 32.452 元，若跌破代表資金外流加速，央行是否持續調節。</li>
+      <li><b>AI 信用指標</b>：CoreWeave 公司債殖利率與 CDS 報價；這是市場對 AI 舉債擴張最直接的體溫計。</li>
+      <li><b>季線與月線</b>：多位分析師把季線視為短線防守點，月線約 48,041 點是反彈第一道關卡。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>先進封裝／測試</h3><span class="tag">短空長多</span></div><p>AI 晶片需求仍在，但前波漲幅最大、估值最高，資金撤出時首當其衝；台積電仍在擴充先進封裝，中長期訂單未變（推論）。</p><div class="data">日月光投控 −10.00%（跌停）</div></article>
+      <article class="card"><div class="top"><h3>IC 設計（AI ASIC）</h3><span class="tag bad">利空</span></div><p>客製 AI 晶片靠雲端業者大舉投資支撐；一旦市場懷疑雲端業者的資金來源，訂單能見度的評價就被下修。</p><div class="data">聯發科 −6.93%；世芯-KY 10/13 −7.74%</div></article>
+      <article class="card"><div class="top"><h3>記憶體（DRAM）</h3><span class="tag bad">利空</span></div><p>CXMT 宣布 4F² DRAM 進軍伺服器市場，加上 DDR5 報價已大漲，市場擔心供給增加、價格見頂，台廠也被連帶賣出。</p><div class="data">南亞科 −9.16%；三星 −9.48%、SK 海力士 −11.06%</div></article>
+      <article class="card"><div class="top"><h3>AI 伺服器電源／散熱</h3><span class="tag">好壞參半</span></div><p>資料中心建置若因融資變貴而放慢，電源與散熱訂單會延後；但台積電與雲端大廠的擴產計畫尚未下修（推論）。</p><div class="data">台達電 −8.68%</div></article>
+      <article class="card"><div class="top"><h3>PCB／載板／銅箔基板</h3><span class="tag bad">利空</span></div><p>AI 伺服器用高階板材是本波漲最多的族群之一，籌碼集中，恐慌時賣壓最重。</p><div class="data">欣興 −9.28%；台光電 −7.25%；電子零組件類 −6.99%</div></article>
+      <article class="card"><div class="top"><h3>塑化</h3><span class="tag bad">利空</span></div><p>10/13 才因油價上漲與台塑集團獲利改善而大漲，10/15 外資賣超台塑 5 萬張、南亞 4 萬張，前波漲幅迅速吐回。</p><div class="data">塑膠類股 −9.41%（全市場最差）</div></article>
+      <article class="card"><div class="top"><h3>電信</h3><span class="tag good">受惠</span></div><p>營收穩定、配息高、跟 AI 景氣循環關聯低，成為資金避風港。</p><div class="data">中華電 +2.69%、台灣大 +3.65%、遠傳 +4.63%</div></article>
+      <article class="card"><div class="top"><h3>銀行／金控</h3><span class="tag">好壞參半</span></div><p>銀行受惠利率維持高檔，外資前 10 大買超中有 4 檔金融股；但壽險業持有大量股債，股市重挫與債券評價下跌會壓縮淨值（推論）。</p><div class="data">金融類股 +0.73%；玉山金 +3.17%、兆豐金 +2.74%</div></article>
+      <article class="card"><div class="top"><h3>食品／民生消費</h3><span class="tag good">受惠</span></div><p>需求不隨景氣大幅波動，在避險情緒中獲資金青睞；但新台幣若持續貶值，進口原料成本會上升（推論）。</p><div class="data">食品類股 +0.96%；統一 +1.66%，外資買超 2.6 萬張</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>帳面財富一天蒸發，但企業獲利還在成長</h2>
+      <p>台灣最關心三件事：外資還會賣多久、新台幣會不會繼續貶、股市下跌會不會影響消費與民生。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>金管會（10/15）：</b>證期局主秘王秀玲表示台股跌幅居亞洲中段，「密切注意國際股市與台股表現」，未進一步喊話。</li>
+        <li><b>基本面數據：</b>金管會指上市櫃公司前 9 月累計營收約 48 兆元，年增 37.86%；本益比約 26.68 倍、現金殖利率 1.54%。</li>
+        <li><b>融資籌碼：</b>10/14 整戶維持率 192.32%，離 130% 的追繳線仍有距離，暫無大規模斷頭壓力。</li>
+        <li><b>央行（10/15）：</b>新台幣貶破 32.4 元後，尾盤進場調節。</li>
+        <li><b>台積電：</b>第 3 季營收 1 兆 4,942 億元、年增 50.9%；第 4 季毛利率財測 65%–67%。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>財富效應：</b>台股市值單日縮水數兆元，若跌勢延續，可能壓抑年底消費與房市買氣。</li>
+        <li><b>匯率與物價：</b>新台幣若持續貶值，進口能源與原物料成本上升，與荷莫茲海峽危機下的油價壓力疊加。</li>
+        <li><b>央行利率：</b>若 Fed 再升息，台灣央行 12 月理監事會面臨跟進壓力，房貸族負擔可能增加。</li>
+        <li><b>國安基金：</b>截至查證時未見表態；過去進場條件是「市場失序、非理性下跌」，單日 3.41% 跌幅尚未構成啟動條件。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時（10 月 16 日），10/16 台股收盤與法人買賣超資料尚未取得；目前只有台指期夜盤回升 435 點、收 47,366 點的盤前訊號。國安基金也未公布任何決議。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人（個股）</b></td><td><span class="tag bad">帳面損失</span></td><td>持有 AI 供應鏈中小型股的跌幅普遍 7%–10%，遠大於大盤；使用融資者需留意維持率。</td></tr>
+          <tr><td><b>ETF 持有人</b></td><td><span class="tag bad">淨值下滑</span></td><td>0050 與熱門主動式 ETF 遭外資大量賣超，市價可能短暫低於淨值；高股息、金融類 ETF 相對抗跌（推論）。</td></tr>
+          <tr><td><b>科技業員工</b></td><td><span class="tag">好壞參半</span></td><td>員工持股與股票分紅價值縮水；但台積電等公司獲利仍創高，年終與分紅以獲利計算，影響較小（推論）。</td></tr>
+          <tr><td><b>出口商</b></td><td><span class="tag good">相對有利</span></td><td>新台幣貶至 32.265 元，以美元計價的出口換回的台幣變多。</td></tr>
+          <tr><td><b>一般家庭／民生物價</b></td><td><span class="tag bad">負擔增加</span></td><td>台幣貶值讓進口食品、能源變貴，與高油價疊加（推論）。</td></tr>
+          <tr><td><b>壽險業</b></td><td><span class="tag bad">壓力增加</span></td><td>股市重挫與美債殖利率上升同時壓低投資部位評價；台幣貶值對美元資產有匯兌收益，部分抵銷（推論）。</td></tr>
+          <tr><td><b>出國旅遊／留學族</b></td><td><span class="tag bad">成本增加</span></td><td>美元變貴，換匯與學費成本上升。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>台灣媒體聚焦「外資提款紀錄」與「技術面支撐」，國際媒體則把台股放在「AI 泡沫與信用風險」的大故事裡。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>中央社／Focus Taiwan</td><td>收盤事實＋分析師</td><td>史上第 6 大跌點</td><td>月線失守、可能再測 46,000 點；金管會回應</td></tr>
+          <tr><td>工商時報</td><td>籌碼面</td><td>外資狂賣 3,025 億破紀錄</td><td>「爆量不等於落底」，多位分析師提出操作建議</td></tr>
+          <tr><td>鉅亨網</td><td>法人進出明細</td><td>外資大逃殺、狠砍台積電與主動式 ETF</td><td>外資、投信各自買賣超前 10 名</td></tr>
+          <tr><td>MoneyDJ（Yahoo 股市）</td><td>匯市</td><td>台幣重貶 1.92 角、爆 70 億美元天量</td><td>央行尾盤進場；Intel、Broadcom 示警 AI 資金瓶頸</td></tr>
+          <tr><td>TVBS</td><td>台積電法說</td><td>EPS 29 元創高</td><td>海外擴廠時程、2 奈米產能 2027 年倍增</td></tr>
+          <tr><td>Taipei Times</td><td>區域與 AI 融資</td><td>跌 3.41% 至四週低點</td><td>CoreWeave 殖利率逾 15%、陳福陽「賭場」說</td></tr>
+          <tr><td>Fortune</td><td>AI 投資泡沫</td><td>陳福陽：AI 投資人「像在賭場」</td><td>資金是 AI 最大瓶頸、企業在 AI token 上浪費錢</td></tr>
+          <tr><td>Startup Fortune</td><td>韓國記憶體</td><td>KOSPI 跌 7.57%</td><td>CXMT 宣稱缺乏良率與第三方驗證</td></tr>
+          <tr><td>Yahoo Finance／Motley Fool</td><td>美股盤勢</td><td>熱通膨壓垮科技股、CoreWeave 重挫</td><td>Fed 10 月升息機率約五成；Gartner 示警</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>加權指數跌 1,655.96 點、−3.41%，收 46,969.87 點，史上第 6 大跌點。</li>
+        <li>外資賣超 3,025.55 億元為單日紀錄，投信是唯一買超的法人。</li>
+        <li>美國 9 月 CPI 年增 3.7% 高於預期，是最直接的導火線。</li>
+        <li>台積電收 2,440 元、跌 50 元，跌幅是權值股中最小。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>歸因輕重不同：</b>台灣媒體多以 CPI 為主因，國際媒體則更強調 AI 融資信用與 CXMT。</li>
+        <li><b>時區：</b>美股 10/14 的下跌，是台灣時間 10/15 清晨才收盤，所以台股當天開盤就反應。</li>
+        <li><b>分析師建議≠事實：</b>「分批布局」「保留現金」等是個別分析師看法，本報告不採為建議。</li>
+        <li><b>南亞 vs. 南亞科：</b>南亞（1303，塑化）與南亞科（2408，記憶體）常被混淆，兩者 10/15 都大跌，但原因不同。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>韓國 KOSPI 跌幅</td><td>−7.57%（Taipei Times、Startup Fortune，收盤）</td><td>−8.19%（中央社引金管會，台灣時間 13:30）</td><td>統計時間點不同；盤中最深據報約 −9.3%</td></tr>
+          <tr><td>日經 225 跌幅</td><td>約 −4.9%（Taipei Times）</td><td>−4.55%（中央社，台灣時間 13:30）</td><td>收盤 vs. 盤中</td></tr>
+          <tr><td>台股成交值</td><td>1.32 兆元（中央社、鉅亨網）</td><td>1.8 兆元（工商時報內文一處）</td><td>多數來源為 1.32 兆，1.8 兆疑為誤植</td></tr>
+          <tr><td>標普 500（10/14）</td><td>7,718.94，−1.11%（多數盤後報導）</td><td>7,721，−1.08%（Motley Fool）</td><td>四捨五入或資料源差異</td></tr>
+          <tr><td>CXMT 發表時間</td><td>10/10（週六）上海產業會議（Korea JoongAng Daily）</td><td>10/13（Startup Fortune）</td><td>前者是發言日，後者是韓股開盤反應日</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 16 日。不同媒體的數字可能因時間點不同略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000726/a3q26e_withguidancexfinal.htm" target="_blank" rel="noopener">台積電 — 2026 年第 3 季財報與第 4 季財測（SEC 6-K，10/15）</a></li>
+      <li><a href="https://cna.com.tw/news/afe/202610150272.aspx" target="_blank" rel="noopener">中央社 — 金管會：台股跌幅亞洲中段、密切注意（10/15）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://focustaiwan.tw/business/202610150013" target="_blank" rel="noopener">Focus Taiwan — 台股史上第 6 大跌點，科技股領跌（10/15）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202610130017" target="_blank" rel="noopener">Focus Taiwan — 台股跌 960 點，美科技股重挫（10/13）</a></li>
+      <li><a href="https://www.taipeitimes.com/News/biz/archives/2026/10/16/2003866030" target="_blank" rel="noopener">Taipei Times — 台股跌 3.41% 至四週低點（10/16）</a></li>
+      <li><a href="https://fortune.com/2026/10/15/broadcom-hock-tan-ai-investing-casino/" target="_blank" rel="noopener">Fortune — 陳福陽：AI 投資人像在賭場（10/15）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-15-140429285.html" target="_blank" rel="noopener">Yahoo Finance — 10/15 美股：道瓊小漲、科技股拋售轉向（10/15）</a></li>
+      <li><a href="https://www.fool.com/coverage/stock-market-today/2026/10/14/stock-market-today-oct-14-coreweave-plummets-on-gartner-neocloud-warning-and-bond-yield-surge/" target="_blank" rel="noopener">Motley Fool — CoreWeave 因 Gartner 示警與債券殖利率飆升重挫（10/14）</a></li>
+      <li><a href="https://startupfortune.com/south-koreas-kospi-sinks-757-as-chip-fears-compound-a-brutal-week/" target="_blank" rel="noopener">Startup Fortune — KOSPI 跌 7.57%，晶片疑慮加劇（10/15）</a></li>
+      <li><a href="https://www.koreajoongangdaily.com/business/global-chip-stocks-tumble-as-chinas-cxmt-unveils-nextgeneration-dram-plans/12917865" target="_blank" rel="noopener">Korea JoongAng Daily — CXMT 次世代 DRAM 計畫拖累全球晶片股（10/13）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="11">
+      <li><a href="https://www.ctee.com.tw/news/20261015701433-430201" target="_blank" rel="noopener">工商時報 — 外資狂賣 3,025 億破紀錄，爆量不等於落底（10/15）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6631347" target="_blank" rel="noopener">鉅亨網 — 外資大逃殺砍 3,025 億，狠砍台積電與主動式 ETF（10/15）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6630211" target="_blank" rel="noopener">鉅亨網 — 台積電法說登場，第 3 季營收衝 1.49 兆元（10/15）</a></li>
+      <li><a href="https://news.tvbs.com.tw/money/4035957" target="_blank" rel="noopener">TVBS — 台積電法說會重點懶人包（10/15）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E9%87%8D%E6%8C%AB-%E5%8F%B0%E5%B9%A3%E9%87%8D%E8%B2%B61-92%E8%A7%92-%E7%88%8670%E5%84%84%E7%BE%8E%E5%85%83%E5%A4%A9%E9%87%8F-093100526.html" target="_blank" rel="noopener">MoneyDJ（Yahoo 股市）— 台股重挫，台幣重貶 1.92 角（10/15）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3249346" target="_blank" rel="noopener">ETtoday — 台股、台積電刷史上最高收盤，指數收 49,712（10/5）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="17">
+      <li><a href="https://tw.stock.yahoo.com/quote/%5ETWII" target="_blank" rel="noopener">Yahoo 股市 — 加權指數（^TWII）</a></li>
+      <li><a href="https://www.investing.com/indices/phlx-semiconductor-historical-data" target="_blank" rel="noopener">Investing.com — 費城半導體指數歷史資料</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 16 日。</p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'加權指數', s:'46,969.87', v:-3.41},
+    {l:'櫃買指數', s:'失守 400 點', v:-5.53},
+    {l:'台積電', s:'2,440 元', v:-2.01},
+    {l:'聯發科', s:'4,165 元', v:-6.93},
+    {l:'日月光投控', s:'673 元', v:-10.00},
+    {l:'台達電', s:'1,630 元', v:-8.68},
+    {l:'中華電', s:'152.5 元', v:2.69},
+    {l:'玉山金', s:'48.8 元', v:3.17},
+    {l:'韓國 KOSPI', s:'5,554.22', v:-7.57},
+    {l:'日經 225', s:'', v:-4.9},
+    {l:'費半（10/14）', s:'約 11,684', v:-4.30},
+    {l:'那斯達克（10/14）', s:'26,692.87', v:-1.88},
+    {l:'台積電 ADR（10/14）', s:'', v:-3.40}
+  ];  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

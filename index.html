@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>焦點解讀室 2026</title>
-<meta name="description" content="新聞解讀入口：荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
+<meta name="description" content="新聞解讀入口：10/15 台股重挫解讀、荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -102,6 +102,12 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep.fed{border-top:3px solid var(--fed)}
 .rep.oil{border-top:3px solid var(--oil)}
 .rep.oil .go{color:var(--oil-ink)}
+.rep.tw .ndate{border-color:var(--apple); color:var(--apple-ink); background:var(--apple-wash)}
+.chip.tw{background:var(--apple-wash); color:var(--apple-ink)}
+.rep.tw{border-top:3px solid var(--apple)}
+.rep.tw .go{color:var(--apple-ink)}
+.reports{grid-template-columns:repeat(6, minmax(0,1fr))}
+.rep{grid-column:span 2}
 .rep.feature{grid-column:1 / -1}
 .rep.feature p{max-width:720px}
 .rep.feature .figs{grid-template-columns:repeat(4, minmax(0,1fr))}
@@ -126,6 +132,7 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
   .mark{display:none}
   .tabs a{padding:6px 10px; font-size:13.5px}
   .reports{grid-template-columns:1fr}
+  .rep{grid-column:auto}
   .rep.feature .figs{grid-template-columns:repeat(2, minmax(0,1fr))}
   .teaser{grid-template-columns:1fr; padding:20px}
 }
@@ -146,20 +153,31 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
 
 <div class="wrap">
   <section class="intro">
-    <div class="date">最後更新 2026-09-22</div>
+    <div class="date">最後更新 2026-10-16</div>
     <h1>頭條背後，錢往哪裡走</h1>
     <p>每份報告整理事件本身、背後原因、市場反應，以及對產業和台灣的影響，並在文末附上完整資料來源。</p>
   </section>
 
   <div class="reports">
-    <a class="rep oil feature" href="hormuz-2026-09/index.html">
-      <div class="meta"><span class="chip oil">能源</span><span class="ndate">2026-09-22</span><span>· 最新</span></div>
+    <a class="rep tw feature" href="taiex-crash-2026-10/index.html">
+      <div class="meta"><span class="chip tw">台股</span><span class="ndate">2026-10-15</span><span>· 最新</span></div>
+      <h2>台股崩 1,656 點、外資提款 3,025 億創紀錄</h2>
+      <p>美國通膨回溫、AI 舉債疑慮與中國記憶體追趕三記重拳同時落下：跌勢時間軸、台美韓股價反應、受傷與受惠產業、對台灣的影響與三種劇本。</p>
+      <div class="figs">
+        <div><div class="v">−3.41%</div><div class="l">加權指數 10/15</div></div>
+        <div><div class="v">46,970</div><div class="l">收盤點數</div></div>
+        <div><div class="v">3,026 億</div><div class="l">外資賣超（紀錄）</div></div>
+        <div><div class="v">32.265</div><div class="l">新台幣收盤</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
+    <a class="rep oil" href="hormuz-2026-09/index.html">
+      <div class="meta"><span class="chip oil">能源</span><span class="ndate">2026-09-22</span></div>
       <h2>荷莫茲海峽封鎖：全球能源咽喉危機</h2>
       <p>美伊戰爭第七個月，兩成石油的必經水道幾乎停擺：油價走勢、危機時間軸、繞道管線的極限、全球與台灣的衝擊、三種劇本與觀察訊號。</p>
       <div class="figs">
         <div><div class="v">−95%</div><div class="l">海峽石油流量</div></div>
         <div><div class="v">$98.6</div><div class="l">布蘭特 9/22</div></div>
-        <div><div class="v">~$120</div><div class="l">3 月高點</div></div>
         <div><div class="v">13 元</div><div class="l">中油每公升吸收</div></div>
       </div>
       <div class="go">閱讀報告 →</div>
@@ -192,12 +210,12 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
     <div>
       <div class="kicker">大事時間線 · 2025–2026</div>
       <h2 id="tzTitle">一條線，看穿全年風暴</h2>
-      <p>台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經，80 多則大事依時間排好，可依主題篩選。</p>
+      <p>台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經，近 90 則大事依時間排好，可依主題篩選。</p>
       <a class="btn" href="timeline/index.html">打開時間線 →</a>
     </div>
     <ol>
+      <li><b>2026-10-15</b>台股崩 1,656 點、外資賣 3,025 億</li>
       <li><b>2026-09-16</b>Fed 三年來首度升息</li>
-      <li><b>2026-08-26</b>Nvidia 營收翻倍達 962 億美元</li>
       <li><b>2026-07-17</b>717 股災：台股崩 2,953 點</li>
       <li><b>2026-06-23</b>台股攻頂 48,218 點</li>
     </ol>

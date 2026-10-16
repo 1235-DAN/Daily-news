@@ -180,7 +180,7 @@ footer{margin-top:40px; padding-block:24px 48px; border-top:1px solid var(--bord
 
 <main class="wrap">
   <section class="intro">
-    <div class="date">2025.01 — 2026.09 · 最後更新 2026-09-22</div>
+    <div class="date">2025.01 — 2026.10 · 最後更新 2026-10-16</div>
     <h1>一條線，看穿全年風暴</h1>
     <p>台股、美股、台積電、Nvidia、科技產業、央行利率與國際政經——從關稅股災、AI 狂潮到 Fed 轉向升息，每一次震盪都在這條線上。</p>
   </section>
@@ -257,7 +257,7 @@ footer{margin-top:40px; padding-block:24px 48px; border-top:1px solid var(--bord
     try { localStorage.setItem('theme', next); } catch(e){}
   });
 
-  var F = '../fed-2026-09/index.html', A = '../apple-2026/index.html', H = '../hormuz-2026-09/index.html';
+  var F = '../fed-2026-09/index.html', A = '../apple-2026/index.html', H = '../hormuz-2026-09/index.html', T = '../taiex-crash-2026-10/index.html';
   var TAGS = [
     ['tw','台股'], ['us','美股'], ['tsmc','台積電'], ['nvda','Nvidia'],
     ['tech','科技產業'], ['macro','央行・總經'], ['geo','國際政經']
@@ -349,6 +349,11 @@ footer{margin-top:40px; padding-block:24px 48px; border-top:1px solid var(--bord
     {d:'2026-09-10', g:['geo'], k:1, h:'沙烏地輸油管遭襲，胡塞控制曼德海峽', s:'荷莫茲、紅海兩條石油咽喉同時告急，布蘭特一度衝上 109 美元', u:H + '#bypass'},
     {d:'2026-09-16', g:['macro','us'], k:1, h:'Fed 三年來首度升息', n:['3.75%–4.00%','up'], s:'12 比 0 全票通過；點陣圖暗示年底前再升一碼', u:F + '#summary'},
     {d:'2026-09-17', g:['macro','tw'], h:'台灣央行理監事會：升或凍？', s:'GDP 破 11%、CPI 連月破 2%，市場看法五五波；決議以央行公布為準', u:F + '#taiwan'},
+    {d:'2026-10-05', g:['tw','tsmc'], h:'台股收 49,712 點創歷史新高', n:['+1,236 點','up'], s:'台積電收 2,575 元同創新高，距 5 萬點只差 288 點', u:T + '#cause'},
+    {d:'2026-10-13', g:['tech','us'], h:'AI 舉債警訊：CoreWeave 債券殖利率逼近 15%', s:'陳福陽稱 AI 投資「像在賭場」；中國長鑫宣稱突破 4F² DRAM，韓國記憶體股重挫', u:T + '#cause'},
+    {d:'2026-10-14', g:['macro','us'], h:'美國 9 月 CPI 3.7% 高於預期，費半重挫', n:['費半 −4.30%','down'], s:'核心 CPI 2.6%；10 年期美債殖利率約 5.19%，費半連 6 跌', u:T + '#cause'},
+    {d:'2026-10-15', g:['tw'], k:1, h:'台股崩 1,656 點，外資賣超 3,025 億創紀錄', n:['−1,655.96 點（−3.41%）','down'], s:'史上第 6 大跌點；韓股跌 7.57% 熔斷、新台幣貶至 32.265 元', u:T + '#summary'},
+    {d:'2026-10-15', g:['tsmc'], h:'台積電 Q3 EPS 29.43 元創新高', s:'Q4 營收財測 523–543 億美元，全年美元營收成長上修至約 44%', u:T + '#taiwan'},
     {d:'2026-10-23', g:['tech'], future:1, h:'iPhone Duo 上市', s:'10/16 開放預購', u:A + '#products'},
     {d:'2026-10-28', g:['macro'], future:1, h:'下一次 FOMC', s:'期貨市場估計再升息機率約五成', u:F + '#outlook'}
   ];
