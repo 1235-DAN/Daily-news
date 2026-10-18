@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>焦點解讀室 2026</title>
-<meta name="description" content="新聞解讀入口：Dell 股價重挫解讀、美國九月 CPI 解讀、台積電 Q3 法說解讀、10/15 台股重挫解讀、荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
+<meta name="description" content="新聞解讀入口：法國暴動解讀、Dell 股價重挫解讀、美國九月 CPI 解讀、台積電 Q3 法說解讀、10/15 台股重挫解讀、荷莫茲海峽能源危機、聯準會 9 月升息解讀與 Apple 2026 發布會全景報告，另有 2025–2026 國內外經濟大事時間線。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -31,12 +31,14 @@
   --oil-wash:rgba(168,98,12,.10);
   --t-blue:#2a78d6; --t-blue-ink:#1f62b3; --t-blue-wash:rgba(42,120,214,.10);
   --t-green:#1f7a5a; --t-green-ink:#17614a; --t-green-wash:rgba(31,122,90,.10);
+  --t-purple:#6b4bb8; --t-purple-ink:#553a9a; --t-purple-wash:rgba(107,75,184,.10);
   --radius:14px;
   --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
+    --t-purple:#9b83e0; --t-purple-ink:#b9a6ef; --t-purple-wash:rgba(155,131,224,.15);
     --t-green:#43b58a; --t-green-ink:#6fd0a6; --t-green-wash:rgba(67,181,138,.15);
     --t-blue:#3987e5; --t-blue-ink:#7fb2f0; --t-blue-wash:rgba(57,135,229,.15);
     color-scheme: dark;
@@ -49,6 +51,7 @@
   }
 }
 :root[data-theme="dark"]{
+  --t-purple:#9b83e0; --t-purple-ink:#b9a6ef; --t-purple-wash:rgba(155,131,224,.15);
   --t-green:#43b58a; --t-green-ink:#6fd0a6; --t-green-wash:rgba(67,181,138,.15);
   --t-blue:#3987e5; --t-blue-ink:#7fb2f0; --t-blue-wash:rgba(57,135,229,.15);
   color-scheme: dark;
@@ -122,6 +125,10 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--ink-2); outline-of
 .rep.t-green .ndate{border-color:var(--t-green); color:var(--t-green-ink); background:var(--t-green-wash)}
 .chip.t-green{background:var(--t-green-wash); color:var(--t-green-ink)}
 .rep.t-green .go{color:var(--t-green-ink)}
+.rep.t-purple{border-top:3px solid var(--t-purple)}
+.rep.t-purple .ndate{border-color:var(--t-purple); color:var(--t-purple-ink); background:var(--t-purple-wash)}
+.chip.t-purple{background:var(--t-purple-wash); color:var(--t-purple-ink)}
+.rep.t-purple .go{color:var(--t-purple-ink)}
 .rep.feature{grid-column:1 / -1}
 .rep.feature p{max-width:720px}
 .rep.feature .figs{grid-template-columns:repeat(4, minmax(0,1fr))}
@@ -167,21 +174,32 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
 
 <div class="wrap">
   <section class="intro">
-    <div class="date">最後更新 2026-10-17</div>
+    <div class="date">最後更新 2026-10-18</div>
     <h1>頭條背後，錢往哪裡走</h1>
     <p>每份報告整理事件本身、背後原因、市場反應，以及對產業和台灣的影響，並在文末附上完整資料來源。</p>
   </section>
 
   <div class="reports">
-    <a class="rep t-blue feature" href="dell-2026-10/index.html">
-      <div class="meta"><span class="chip t-blue">Dell</span><span class="ndate">2026-10-14</span><span>· 最新</span><span>· 資料截至 10-17</span></div>
+    <a class="rep t-purple feature" href="france-riots-2026-10/index.html">
+      <div class="meta"><span class="chip t-purple">法國</span><span class="ndate">2026-10-17</span><span>· 最新</span><span>· 資料截至 10-18</span></div>
+      <h2>從一所高中「沒老師」到 55 萬人上街：法國暴動燒到市政廳，也燒向債務危機</h2>
+      <p>學運匯入生活成本與黃背心怒火，10/17 演變成數十年來最嚴重的暴動：八個重點、四個原因與事件經過、法國與歐洲鄰國的影響、法債利差與法股走勢、全球傳導、10/20 預算表決與 10/23 穆迪信評三種劇本、八個產業影響、對台灣旅客與歐元資產的影響與媒體比較。</p>
+      <div class="figs">
+        <div><div class="v">55 萬</div><div class="l">10/17 示威人數（內政部）</div></div>
+        <div><div class="v">≈1,200</div><div class="l">10/17 被捕人數（總理）</div></div>
+        <div><div class="v">137 bp</div><div class="l">法德 10 年利差（10/16）</div></div>
+        <div><div class="v">119%</div><div class="l">政府債務占 GDP</div></div>
+      </div>
+      <div class="go">閱讀報告 →</div>
+    </a>
+    <a class="rep t-blue" href="dell-2026-10/index.html">
+      <div class="meta"><span class="chip t-blue">Dell</span><span class="ndate">2026-10-14</span><span>· 資料截至 10-17</span></div>
       <h2>巴克萊降評 Dell，三天跌兩成：營收靠的是記憶體漲價，不是企業 AI？</h2>
       <p>巴克萊質疑 Dell 亮眼營收主要來自記憶體漲價轉嫁、一般企業的 AI 需求還沒起飛：八個重點、四個原因與股價走勢圖、美股硬體股與台灣伺服器代工股反應、全球傳導、三種劇本、八個產業影響、對台灣各族群的影響與媒體比較。</p>
       <div class="figs">
         <div><div class="v">−21.1%</div><div class="l">Dell 三日累計跌幅</div></div>
         <div><div class="v">574 美元</div><div class="l">巴克萊目標價（原 603）</div></div>
         <div><div class="v">950 億</div><div class="l">AI 伺服器未出貨訂單（美元）</div></div>
-        <div><div class="v">+3.69%</div><div class="l">緯創 10/16 漲幅</div></div>
       </div>
       <div class="go">閱讀報告 →</div>
     </a>
@@ -261,10 +279,10 @@ footer{margin-top:64px; padding-block:28px 48px; border-top:1px solid var(--bord
       <a class="btn" href="timeline/index.html">打開時間線 →</a>
     </div>
     <ol>
+      <li><b>2026-10-17</b>法國 55 萬人示威失控，利摩日市政廳遭燒毀</li>
       <li><b>2026-10-15</b>台積電 Q3 EPS 29.43 元創新高，ADR 仍跌</li>
       <li><b>2026-10-15</b>台股崩 1,656 點、外資賣 3,025 億</li>
       <li><b>2026-10-14</b>巴克萊降評 Dell，股價單日重挫 11%</li>
-      <li><b>2026-10-14</b>美國 9 月 CPI 年增 3.7%，汽油單月漲 9.1%</li>
     </ol>
   </section>
 
