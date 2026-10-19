@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10/19 台股後續追蹤</title>
+<meta name="description" content="10/15 台股重挫後續：10/16–10/19 指數走勢、外資連 9 賣、新台幣創 18 個月新低與央行表態、美股晶片股連 8 跌後反彈、Fed 升息預期降溫，以及對產業與台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <span class="brand">10/19 台股後續</span>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台股解讀・後續追蹤 · 10/15 重挫後第 2 個交易日 · 資料截至 2026 年 10 月 19 日 23:33（台灣時間）</p>
+      <h1>跌勢放緩、但血還沒止住：外資連 9 賣，新台幣摜破 32.5 元創 18 個月新低</h1>
+      <p class="lede">10 月 15 日台股重挫 1,656 點之後，16 日小漲 141 點、19 日再跌 289 點，收 46,822.08 點；19 日盤中一度大跌逾 900 點，靠 60 日均線（季線）附近的低接買盤才收斂。股市跌幅縮小，壓力卻轉到匯市：外資兩天再賣超 1,229 億元並匯出，新台幣 19 日盤中貶到 32.572 元，央行罕見盤中喊話。好消息是市場對 Fed 10 月再升息的押注明顯降溫，美股晶片股 19 日盤中反彈。</p>
+    </div>
+    <div class="stmt" aria-label="10 月 19 日加權指數收盤">
+      <div class="k">加權指數 10/19 收盤</div>
+      <div class="range">46,822<small>−0.61%</small></div>
+      <div class="was">10/15 收 46,969.87 · 10/16 收 47,111.26 · 10/5 高點 49,712.04</div>
+      <div class="stmt-row">
+        <div><div class="v">連 9 賣</div><div class="l">外資（10/19 賣 767 億）</div></div>
+        <div><div class="v">32.445</div><div class="l">新台幣（盤中 32.572）</div></div>
+        <div><div class="v">86.2%</div><div class="l">市場押 Fed 10 月不升息</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>10/15 之後兩個交易日，八件事改變了</h2>
+      <p>懶人包：台股不再崩跌、但也還沒止跌；外資賣壓從股市延燒到匯市，市場的焦點從「Fed 會不會升息」轉向「AI 舉債撐不撐得住」。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>兩天走勢：小彈再跌，指數比 10/15 再低 148 點。</b>10/16 漲 141.39 點收 47,111.26 點（盤中一度漲逾 550 點）；10/19 跌 289.18 點收 46,822.08 點，比 10/5 高點 49,712.04 點累計回落 5.8%。</div></li>
+      <li><div><b>10/19 盤中跌逾 900 點，季線守住。</b>開盤就跌 266 點，盤中最低 46,170 點，接近 60 日均線約 46,089 點後低接買盤湧入，台積電尾盤由黑翻平收 2,420 元，跌幅收斂到 0.61%。</div></li>
+      <li><div><b>外資連 9 賣，但金額大幅縮小。</b>10/16 賣超 461.47 億元、10/19 賣超 767.42 億元，遠低於 10/15 的 3,025.55 億元紀錄；投信連 7 天買超（兩天合計約 348 億元），是主要接手者。</div></li>
+      <li><div><b>壓力轉向匯市：新台幣創 18 個月新低。</b>10/16 收 32.338 元，單週貶 4.63 角、為一年多來最大週跌幅；10/19 盤中貶到 32.572 元，收 32.445 元。外資上週淨匯出約 179.6 億美元。</div></li>
+      <li><div><b>央行罕見盤中表態。</b>10/19 盤中發布說明，指貶值主因是股市下跌與外資匯出，將「適時調節」維持新台幣動態穩定；尾盤進場把匯價拉回 32.4 元附近。</div></li>
+      <li><div><b>美股晶片股週五再重挫，創 2008 年來最長連跌。</b>費半 10/16 跌 3.83%，連 8 跌、單週跌逾 11%；CoreWeave 再跌 11.91%，AMD、Micron 跌近 6%，Nvidia 只跌 1.43%。那斯達克單週跌 4.48%。</div></li>
+      <li><div><b>Fed 升息押注大幅降溫。</b>Fed 主席 Warsh 10/16 在曼谷 IMF 年會表示「不預判會議結果」，CME FedWatch 顯示市場給 10/27–28 不升息的機率達 86.2%（10/15 時升息機率約五成）。Fed 已於 10/17 進入會前緘默期。</div></li>
+      <li><div><b>10/19 晚間美股晶片股反彈（盤中）。</b>費半盤中漲約 2.4%，Nvidia 漲 1.5%、AMD 漲 3.6%；高盛把 CoreWeave 升評為「買進」，其 2031 年到期公司債殖利率由 16% 以上降至 15.13%。截至 23:33 美股尚未收盤。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼沒有止跌？四個新變數</h2>
+      <p>費半連跌、油價、外資匯出與央行說明是公開數據或官方說法；「投信與低接買盤撐住季線」「國家隊可能進場」則是媒體與分析師的觀察，後者尚未獲官方證實。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>美國晶片股週五再跌一輪，AI 舉債疑慮擴大</h3><p>台股 10/16 收盤後，美股晶片股又重挫：費半連 8 跌是 2008 年以來最長，8 天市值蒸發約 2 兆美元。CoreWeave 背負約 500 億美元債務，股價單週跌掉約四分之一，市場擔心這類靠借錢蓋資料中心的公司撐不住，連帶打擊所有 AI 硬體股。美銀分析師 Sebastian Raedler 指出，市場對大型雲端業者資本支出的預估已從 2025 年初的 3,300 億美元翻到 1 兆美元。</p></div><div class="ev"><span class="tag">費半 10/16 −3.83%</span><span class="tag">CoreWeave 10/16 −11.91%</span><span class="tag">SOXX 8 天 −16%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>油價重回 100 美元，通膨壓力未解</h3><p>10/16 傳出伊朗在荷莫茲海峽攻擊油輪，西德州原油收 101.41 美元；美國 9 月生產者物價（PPI）月增 1.3%。油價高會推升物價，讓 Fed 更難放手，對靠低利率撐估值的成長股不利。</p></div><div class="ev"><span class="tag">WTI 101.41 美元</span><span class="tag">PPI 月增 1.3%</span><span class="tag">10 年期美債 5.098%</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>外資「賣股＋匯出」，壓力從股市移到匯市</h3><p>外資賣股後把台幣換成美元匯出，就像大批旅客同時在機場換外幣，匯價自然被壓低。央行統計 10/12–16 外資淨賣超台股 194 億美元、淨匯出 179.6 億美元，新台幣創一年多來最大週跌幅。</p></div><div class="ev"><span class="tag">外資淨匯出 179.6 億美元</span><span class="tag">新台幣 10/19 低點 32.572</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>撐盤力量：投信、季線與 Fed 降溫</h3><p>投信連 7 天買超；19 日指數跌到季線（約 46,089 點）附近時低接湧入。康和證券分析師 Kerry Huang 從台積電尾盤翻平推測政府基金可能進場，但目前沒有官方證實。另一方面，CME 數據顯示 10 月不升息機率升到 86.2%，為市場減壓。</p></div><div class="ev"><span class="tag">投信 10/19 買超 230.51 億</span><span class="tag">季線 ~46,089</span><span class="tag">10 月不升息 86.2%</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過（10/15 之後）</div>
+    <div class="legend"><span><i class="a"></i>台股與新台幣</span><span><i class="g"></i>外部衝擊（晶片股、AI 信用、油價）</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-15</div><div class="what"><b>台股崩 1,655.96 點</b>收 46,969.87 點，外資賣超 3,025.55 億元創紀錄；新台幣收 32.265 元。</div></li>
+        <li><div class="date">2026-10-15</div><div class="what">美股：道瓊漲 1.08%；黃仁勳替 CoreWeave 背書，CRWV 反彈 5.94%；9 月 PPI 月增 1.3%。</div></li>
+        <li class="key"><div class="date">2026-10-16</div><div class="what">台股<b>漲 141.39 點收 47,111.26 點</b>，外資賣超 461.47 億元（連 8 賣）；新台幣收 32.338 元，單週貶 4.63 角。</div></li>
+        <li><div class="date">2026-10-16</div><div class="what">Warsh 在曼谷 IMF 年會：「不預判會議結果」；市場轉押 10 月不升息。</div></li>
+        <li class="geo"><div class="date">2026-10-16</div><div class="what">美股：<b>費半跌 3.83%、連 8 跌</b>；CoreWeave 跌 11.91%；伊朗攻擊油輪消息推升 WTI 至 101.41 美元（台灣時間 10/17 清晨）。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li><div class="date">2026-10-17</div><div class="what">Fed 進入 10 月會議前的<b>緘默期</b>，官員不再公開談利率。</div></li>
+        <li class="key"><div class="date">2026-10-19</div><div class="what">台股盤中跌逾 940 點、最低 46,170 點，<b>收跌 289.18 點至 46,822.08 點</b>；外資賣超 767.42 億元（連 9 賣）。</div></li>
+        <li class="key"><div class="date">2026-10-19</div><div class="what">新台幣盤中貶至 <b>32.572 元（18 個月新低）</b>，央行盤中發布說明、尾盤調節，收 32.445 元。</div></li>
+        <li><div class="date">2026-10-19</div><div class="what">韓國 KOSPI 由盤中跌 3% 翻紅，收漲 1.76%；美股晚間開盤後費半盤中反彈約 2.4%。</div></li>
+        <li><div class="date">2026-10-27～28</div><div class="what"><b>下一個關鍵日</b>：Fed 利率會議（台灣時間 10/29 凌晨公布）。</div></li>
+      </ol>
+    </div>
+
+    <div class="chart-card" style="margin-top:24px">
+      <p class="chart-title">加權指數收盤：10 月 5 日高點到 10 月 19 日</p>
+      <p class="chart-sub">只標示有新聞報導收盤價的交易日，近似走勢，非逐日行情；虛線為季線（60 日均線）約 46,089 點</p>
+      <svg viewBox="0 0 640 234" role="img" aria-label="加權指數由 10/5 的 49,712 點下跌到 10/19 的 46,822 點" style="width:100%;height:auto;display:block">
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+          <line x1="60" y1="20" x2="620" y2="20" stroke="var(--grid)"/><text x="54" y="24" text-anchor="end">50,000</text>
+          <line x1="60" y1="70" x2="620" y2="70" stroke="var(--grid)"/><text x="54" y="74" text-anchor="end">49,000</text>
+          <line x1="60" y1="120" x2="620" y2="120" stroke="var(--grid)"/><text x="54" y="124" text-anchor="end">48,000</text>
+          <line x1="60" y1="170" x2="620" y2="170" stroke="var(--grid)"/><text x="54" y="174" text-anchor="end">47,000</text>
+          <line x1="60" y1="220" x2="620" y2="220" stroke="var(--axis)"/><text x="54" y="224" text-anchor="end">46,000</text>
+          <line x1="60" y1="215.6" x2="620" y2="215.6" stroke="var(--ink-2)" stroke-dasharray="4 4" opacity=".6"/><text x="618" y="210" text-anchor="end">季線 ~46,089</text>
+        </g>
+        <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" points="80,34.4 290,54.9 340,102.9 390,88.7 450,171.5 510,164.4 600,178.9"/>
+        <g fill="var(--accent)"><circle cx="80" cy="34.4" r="4.5"/><circle cx="290" cy="54.9" r="4.5"/><circle cx="340" cy="102.9" r="4.5"/><circle cx="390" cy="88.7" r="4.5"/><circle cx="450" cy="171.5" r="4.5"/><circle cx="510" cy="164.4" r="4.5"/></g>
+        <circle cx="600" cy="178.9" r="5.5" fill="var(--down)"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="11.5" fill="var(--ink)" text-anchor="middle">
+          <text x="80" y="25">49,712</text><text x="290" y="46">49,302</text><text x="340" y="121">48,341</text><text x="390" y="80">48,626</text><text x="450" y="190">46,970</text><text x="510" y="155">47,111</text><text x="600" y="197" fill="var(--down)" font-weight="600">46,822</text>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)" text-anchor="middle">
+          <text x="80" y="232">10/5</text><text x="290" y="232">10/12</text><text x="340" y="232">10/13</text><text x="390" y="232">10/14</text><text x="450" y="232">10/15</text><text x="510" y="232">10/16</text><text x="600" y="232">10/19</text>
+        </g>
+      </svg>
+      <p class="small muted" style="margin:6px 0 0">10/12 收盤由 10/13 收盤與跌點回推（48,341.31 + 960.65）。10/6–10/9 未納入。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>台灣：股市跌幅收斂，匯市接棒承壓；韓國先一步反彈</h2>
+      <p>同樣是 AI 晶片重鎮，韓國 10/19 靠機構法人買盤收漲 1.76%，台灣則因外資持續匯出，股匯同步走弱。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">10/16 加權指數</div><div class="v up">47,111.26</div><div class="d">+141.39 點（+0.30%）</div></div>
+      <div class="tile"><div class="l">10/19 加權指數</div><div class="v down">46,822.08</div><div class="d">−289.18 點（−0.61%）</div></div>
+      <div class="tile"><div class="l">10/19 盤中最低</div><div class="v">46,170.00</div><div class="d">一度跌逾 940 點</div></div>
+      <div class="tile"><div class="l">10/19 成交值</div><div class="v">8,251 億</div><div class="d">10/15 為 1.32 兆元</div></div>
+      <div class="tile"><div class="l">外資賣超（兩日）</div><div class="v">1,228.89 億</div><div class="d">10/16 461 億 · 10/19 767 億</div></div>
+      <div class="tile"><div class="l">投信買超（兩日）</div><div class="v">348.05 億</div><div class="d">連 7 買</div></div>
+      <div class="tile"><div class="l">新台幣 10/19</div><div class="v">32.445</div><div class="d">貶 1.07 角；盤中 32.572</div></div>
+      <div class="tile"><div class="l">櫃買指數 10/19</div><div class="v down">394.05</div><div class="d">−6.21 點（−1.55%）</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>台灣</h3><ul class="plain">
+        <li><b>漲跌兩極：</b>10/19 電子類股只跌 0.41%，台積電平盤、創意漲 4.68%；記憶體、塑化、金融走弱。</li>
+        <li><b>外資買傳產：</b>外資 10/16 買超第一是中鋼（4.37 萬張），10/19 買超前五仍有中鋼、友達、統一。</li>
+        <li><b>外資賣記憶體：</b>10/19 外資賣超前五為力積電、台玻、金寶、鴻海、旺宏；投信則反向買超力積電。</li>
+      </ul></div>
+      <div class="card"><h3>韓國</h3><ul class="plain">
+        <li><b>KOSPI 10/19 收 5,768.01 點（+1.76%）</b>，開盤曾跌 3.17%、盤中低點 5,488.41 點。</li>
+        <li>三星電子漲 1.16% 至 21.8 萬韓元，SK 海力士漲 0.39%；機構法人買超 5,746.6 億韓元，外資小賣 378.7 億韓元。</li>
+        <li>韓元收 1,330.3 兌 1 美元，小幅升值；與新台幣走勢相反。</li>
+      </ul></div>
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li><b>10/16（週五）：</b>標普 500 跌 1.09% 收 7,659.44 點、那斯達克跌 2.15% 收 26,140.03 點，道瓊跌 0.34%。</li>
+        <li><b>單週：</b>那斯達克跌 4.48%、標普 500 跌 1.95%，道瓊反而漲 0.67%；必需消費類股大漲。</li>
+        <li><b>10/19（盤中）：</b>高盛升評 CoreWeave、摩根大通升評 Intel，殖利率與油價回落，晶片股反彈。</li>
+      </ul></div>
+      <div class="card"><h3>政策面（美國與台灣）</h3><ul class="plain">
+        <li><b>Fed：</b>Warsh 稱這是「Fed 的新篇章」、不預判會議；10/17 起進入緘默期。</li>
+        <li><b>台灣央行：</b>10/19 指出 10/7–16 台股跌 5.4%、費半跌 15.7%，台股跌幅相對小；必要時將進場維持匯率動態穩定。</li>
+        <li><b>國安基金：</b>截至查證時未見任何進場公告。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>台積電守平盤，記憶體與塑化仍被賣</h2>
+      <p>10/19 的分化很清楚：權值龍頭與 ASIC 設計服務有撐，記憶體、塑化與金融續弱。紅漲綠跌依台灣習慣。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/19 台韓股與 10/16 美股漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；美股標示 10/16（週五），即台股 10/19 開盤前最後一個交易日</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>10/19 開低是反映美股週五的費半重挫；季線附近有買盤，代表恐慌賣壓比 10/15 小很多。康和證券分析師 Kerry Huang 認為後續方向「取決於美股」。</li>
+          <li><b>美股：</b>週五賣的是「AI 資本支出概念股」（AMD、Micron、Broadcom），Nvidia 只跌 1.43%；資金轉向必需消費等防禦類股。</li>
+          <li><b>債市：</b>10 年期美債殖利率週五收 5.098%，比前一週的 5.244% 低；儘管通膨偏熱，避險買盤推低殖利率。</li>
+          <li><b>匯市：</b>新台幣 10/19 是亞洲主要貨幣中最弱（−0.33%），美元指數漲 0.21%；外資匯出是主因。</li>
+          <li><b>信用市場：</b>CoreWeave 2031 年到期公司債殖利率 10/19 降 19.5 個基點至 15.13%，AI 信用壓力略為紓解，但仍處高檔。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">TAIEX</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,822.08</td><td class="num down">−0.61%</td><td class="period">10/15 起 −0.3%；10/5 高點起 −5.8%</td><td>美股週五晶片股重挫，季線附近低接</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,420</td><td class="num">0.00%</td><td class="period">10/16 −0.82%；10/5 起 −6.0%</td><td>外資 10/16 賣超 2.2 萬張；10/19 尾盤翻平</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">4,205</td><td class="num down">−1.06%</td><td class="period">10/15 收 4,165 元起 +1.0%</td><td>跌幅較 10/15 明顯收斂</td></tr>
+          <tr><td class="num">3443</td><td><b>創意</b></td><td>台股</td><td class="num">7,830</td><td class="num up">+4.68%</td><td class="period">未查到</td><td>ASIC 設計服務逆勢走強</td></tr>
+          <tr><td class="num">2408</td><td><b>南亞科</b></td><td>台股</td><td class="num">436</td><td class="num down">−2.57%</td><td class="period">10/13 收 488 元起 −10.7%</td><td>記憶體股持續受 CXMT 與 Micron 下跌壓抑</td></tr>
+          <tr><td class="num">2344</td><td><b>華邦電</b></td><td>台股</td><td class="num">155.50</td><td class="num down">−3.72%</td><td class="period">未查到</td><td>同上</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,640</td><td class="num up">+0.31%</td><td class="period">10/15 收 1,630 元起 +0.6%</td><td>AI 電源股止跌</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">239.50</td><td class="num down">−1.84%</td><td class="period">10/15 收 239.5 元，持平</td><td>外資 10/19 賣超前五</td></tr>
+          <tr><td class="num">1815</td><td><b>富喬</b></td><td>台股</td><td class="num">154</td><td class="num up">+10.00%</td><td class="period">漲停</td><td>AI 板材用玻纖布題材</td></tr>
+          <tr><td class="num">1301</td><td><b>台塑</b></td><td>台股</td><td class="num">78.20</td><td class="num down">−4.75%</td><td class="period">未查到</td><td>塑化股延續 10/15 跌勢</td></tr>
+          <tr><td class="num">2881</td><td><b>富邦金</b></td><td>台股</td><td class="num">158.50</td><td class="num down">−1.86%</td><td class="period">未查到</td><td>壽險股債部位受壓（推論）</td></tr>
+          <tr><td class="num">NVDA</td><td><b>Nvidia</b></td><td>美股</td><td class="num">未查到</td><td class="num down">−1.43%</td><td class="period">10/19 盤中 +1.5%</td><td>相對抗跌，黃仁勳稱「這一切都會過去」</td></tr>
+          <tr><td class="num">AMD</td><td><b>AMD</b></td><td>美股</td><td class="num">528.75</td><td class="num down">−5.95%</td><td class="period">10/6 起 −18.6%；10/19 盤中 +3.6%</td><td>本益比約 199 倍，估值修正最重</td></tr>
+          <tr><td class="num">MU</td><td><b>Micron</b></td><td>美股</td><td class="num">未查到</td><td class="num down">−5.63%</td><td class="period">單週約 −15%；10/19 盤中 +4.2%</td><td>記憶體價格見頂疑慮</td></tr>
+          <tr><td class="num">CRWV</td><td><b>CoreWeave</b></td><td>美股</td><td class="num">未查到</td><td class="num down">−11.91%</td><td class="period">單週約 −25%；10/19 盤中 +2.4%</td><td>約 500 億美元債務引發信心危機</td></tr>
+          <tr><td class="num">005930</td><td><b>三星電子</b></td><td>韓股</td><td class="num">218,000 韓元</td><td class="num up">+1.16%</td><td class="period">10/15 收 21 萬韓元起 +3.8%</td><td>機構法人逢低承接</td></tr>
+          <tr><td class="num">000660</td><td><b>SK 海力士</b></td><td>韓股</td><td class="num">1,277,000 韓元</td><td class="num up">+0.39%</td><td class="period">10/15 收 126.2 萬韓元起 +1.2%</td><td>同上</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">台股、韓股為 10/19 收盤；美股漲跌幅為 10/16 收盤，「10/19 盤中」為台灣時間晚間的盤中報導，非收盤。來源：中央社／Focus Taiwan、風傳媒、24/7 Wall St.（Yahoo Finance）、Global Banking &amp; Finance（Reuters）、Korea JoongAng Daily。期間走勢依報導收盤價計算。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>市場的擔憂從「利率」轉向「AI 的錢從哪裡來」</h2>
+      <p>傳導路徑更新：Fed 升息預期降溫 → 但 AI 業者舉債的信用風險持續發酵 → 晶片股續跌 → 亞洲資金外流、貨幣承壓。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>AI 信用風險</h3><ul class="plain small">
+        <li>CoreWeave 單週跌約四分之一，債券殖利率一度超過 16%。</li>
+        <li>Great Hill Capital 的 Thomas Hayes：債市對「繼續融資」非常懷疑，要求越來越高的殖利率。</li>
+        <li>10/19 高盛升評後，殖利率回落到 15.13%，但仍是垃圾債水準。</li>
+      </ul></article>
+      <article class="card"><h3>利率預期反轉</h3><ul class="plain small">
+        <li>CME FedWatch：10 月不升息機率 86.2%。</li>
+        <li>10 年期美債殖利率週線由 5.244% 降至 5.098%。</li>
+        <li>Fed 10/17 起緘默，下一次訊號就是 10/28 決議本身。</li>
+      </ul></article>
+      <article class="card"><h3>能源與地緣</h3><ul class="plain small">
+        <li>伊朗攻擊油輪消息讓 WTI 在 10/16 收 101.41 美元。</li>
+        <li>高油價是通膨與升息疑慮的底層來源，也是荷莫茲危機的延續。</li>
+        <li>10/19 油價回落，成為美股反彈理由之一。</li>
+      </ul></article>
+      <article class="card"><h3>亞洲資金與貨幣</h3><ul class="plain small">
+        <li>新台幣 10/19 為亞洲主要貨幣中最弱；韓元反而小升至 1,330.3。</li>
+        <li>韓股外資 10/19 只小賣 378.7 億韓元，賣壓明顯比台股輕。</li>
+        <li>兩地差異在外資對台股的持股更集中於 AI 硬體（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>美股內部輪動</h3><ul class="plain small">
+        <li>上週那斯達克跌 4.48%，道瓊卻漲 0.67%。</li>
+        <li>恐慌指數 VIX 一度升破 22，為四個月來首見。</li>
+        <li>Freedom Capital Markets 的 Jay Woods：本季問題不是「AI 會不會繼續成長」。</li>
+      </ul></article>
+      <article class="card"><h3>下週財報與政治變數</h3><ul class="plain small">
+        <li>韓國分析師點名 Tesla、Meta 財報與 11/3 美國期中選舉是近期風險。</li>
+        <li>雲端大廠財報中的資本支出數字，將直接檢驗 AI 投資是否放緩（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>三種劇本（10/19 更新）</h2>
+      <p>以下依季線支撐、外資買賣超、CME FedWatch 機率與美股 10/19 盤中走勢整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>季線上下震盪、外資賣壓遞減</h3><ul class="plain small">
+        <li>指數在季線（約 46,089 點）到 48,000 點之間整理。</li>
+        <li>外資賣超金額續降，投信持續承接。</li>
+        <li>新台幣在 32.3–32.5 元之間，央行以調節放慢貶值速度。</li>
+      </ul><p class="trig">觸發條件：美股晶片股反彈延續、Fed 10 月按兵不動</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>季線失守、新台幣破 32.5</h3><ul class="plain small">
+        <li>AI 業者再傳融資困難，晶片股第二波修正。</li>
+        <li>跌破季線後技術賣壓湧出，外資賣超再度放大。</li>
+        <li>匯銀人士指新台幣若收破 32.5 元，下一關卡看 32.8 元。</li>
+      </ul><p class="trig">觸發條件：CoreWeave 等信用利差再擴大、油價續升或雲端大廠下修資本支出</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>外資回補、站回 48,000 點</h3><ul class="plain small">
+        <li>Fed 10/28 不升息且語氣溫和，殖利率續降。</li>
+        <li>費半結束連跌，外資轉為買超，新台幣回升。</li>
+        <li>台積電強勁財測重新成為焦點。</li>
+      </ul><p class="trig">觸發條件：外資轉賣為買、指數帶量站回月線（約 48,041 點）</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/19 美股收盤（台灣時間 10/20 清晨）</b>：費半能否收紅結束 8 連跌，決定台股 10/20 開盤方向。</li>
+      <li><b>外資連賣天數</b>：已連 9 賣；賣超降到百億元以下或轉買，代表資金外流告一段落。</li>
+      <li><b>新台幣 32.5 元</b>：央行似乎想守住收盤不破 32.5 元；收破代表貶值壓力升級。</li>
+      <li><b>季線約 46,089 點</b>：10/19 盤中測試後守住，是短線多空分水嶺。</li>
+      <li><b>CoreWeave 公司債殖利率</b>：AI 舉債風險的體溫計；從 16% 以上降到 15.13%，能否續降。</li>
+      <li><b>10/27–28 Fed 會議</b>：市場已押注不升息，若意外升息衝擊會很大。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>10/19 誰止跌、誰還在跌</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag">短空長多</span></div><p>台積電被外資連續賣超，但 10/19 尾盤有大單承接收平盤；強勁的第 4 季財測提供基本面支撐（推論）。</p><div class="data">台積電 10/19 0.00%；外資 10/16 賣超 22,046 張</div></article>
+      <article class="card"><div class="top"><h3>ASIC 設計服務</h3><span class="tag good">相對受惠</span></div><p>雲端大廠自研晶片需求仍在，資金從「舉債蓋機房」的業者，轉向接大廠訂單的設計服務商（推論）。</p><div class="data">創意 +4.68% 至 7,830 元</div></article>
+      <article class="card"><div class="top"><h3>記憶體（DRAM／快閃）</h3><span class="tag bad">利空</span></div><p>Micron 上週跌近 15%，加上中國長鑫的競爭疑慮，台系記憶體股繼續被賣；外資 10/19 賣超力積電、旺宏居前。</p><div class="data">南亞科 −2.57%、華邦電 −3.72%</div></article>
+      <article class="card"><div class="top"><h3>AI 板材／玻纖布</h3><span class="tag">好壞參半</span></div><p>高階玻纖布供給吃緊的題材吸引短線資金，富喬漲停；但同族群波動極大，台玻遭外資賣超（推論）。</p><div class="data">富喬 +10%；德宏 +4.84%</div></article>
+      <article class="card"><div class="top"><h3>塑化</h3><span class="tag bad">利空</span></div><p>10/15 已是全市場跌最多的類股，10/19 台塑再跌近 5%；油價波動加上外資賣超，反彈無力。</p><div class="data">台塑 −4.75%、南亞 −1.14%</div></article>
+      <article class="card"><div class="top"><h3>壽險／金控</h3><span class="tag">好壞參半</span></div><p>股市下跌壓縮壽險持股評價，但新台幣貶值讓美元資產換回台幣變多；投信 10/19 反向買超玉山金、合庫金等銀行型金控。</p><div class="data">富邦金 −1.86%、國泰金 −1.29%</div></article>
+      <article class="card"><div class="top"><h3>鋼鐵</h3><span class="tag good">資金避風港</span></div><p>外資連兩天把中鋼列為買超第一，屬於與 AI 循環無關、評價較低的傳產權值股。</p><div class="data">中鋼 10/16 外資買超 43,729 張</div></article>
+      <article class="card"><div class="top"><h3>出口製造業</h3><span class="tag good">受惠</span></div><p>新台幣貶到 32.4 元以上，出口換回的台幣變多；匯銀人士指出口商在 32.5 元附近拋售美元。</p><div class="data">新台幣 10/19 收 32.445 元</div></article>
+      <article class="card"><div class="top"><h3>航空</h3><span class="tag bad">利空</span></div><p>10/15 外資曾買超長榮航、華航，10/19 投信反手賣超；油價重回百元與台幣貶值同時墊高燃油成本（推論）。</p><div class="data">WTI 10/16 收 101.41 美元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>從股市傳到荷包：台幣貶值是接下來的主角</h2>
+      <p>台灣最需要關心的兩件事：外資匯出會不會讓新台幣繼續走貶，以及央行要怎麼調節。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>央行（10/19）：</b>新台幣 10/12–16 大貶主因是股市下跌與外資匯出；長期而言新台幣相對穩定，必要時將進場「維持新台幣匯率的動態穩定」。</li>
+        <li><b>匯價：</b>10/19 收 32.445 元，盤中 32.572 元為 2025 年 4 月下旬以來最弱；中央社稱連 3 黑、自由時報稱連 7 黑（計算區間不同）。</li>
+        <li><b>外資：</b>上週淨匯出約 179.6 億美元，10/19 再賣超 767.42 億元。</li>
+        <li><b>投信：</b>連 7 天買超，10/19 買超 230.51 億元，買進力積電與玉山金、合庫金、第一金等。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>進口物價：</b>新台幣若維持 32.4 元以上、油價又在百元附近，能源與進口食品成本會先反映。</li>
+        <li><b>壽險避險成本：</b>台幣貶值帶來匯兌收益，但股市修正侵蝕淨值，兩者互相抵銷。</li>
+        <li><b>國家隊：</b>康和證券分析師懷疑政府基金在台積電尾盤進場，但國安基金未有任何公告，應以官方資訊為準。</li>
+        <li><b>央行利率：</b>若 Fed 10 月不升息，台灣央行 12 月跟進升息的壓力也隨之降低。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時（10 月 19 日 23:33），美股 10/19 尚未收盤，文中美股 10/19 數字均為盤中報導；國安基金未公布任何進場決議。</div>
+    <div class="sub-h">對台灣各族群的影響（與 10/15 相比）</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">壓力減輕</span></td><td>兩日指數只再跌 148 點，但記憶體、塑化等族群仍在破底；融資族要留意季線能否守住。</td></tr>
+          <tr><td><b>ETF 持有人</b></td><td><span class="tag">好壞參半</span></td><td>市值型 ETF 隨台積電持平；投信買盤集中在 ETF 申購與金融股（推論）。</td></tr>
+          <tr><td><b>出口商</b></td><td><span class="tag good">相對有利</span></td><td>新台幣兩天再貶約 1.8 角，美元收入換回台幣更多。</td></tr>
+          <tr><td><b>一般家庭／民生物價</b></td><td><span class="tag bad">負擔增加</span></td><td>台幣貶值疊加百元油價，進口能源與食品成本上升（推論）。</td></tr>
+          <tr><td><b>出國旅遊／留學族</b></td><td><span class="tag bad">成本增加</span></td><td>1 美元要多付約 0.18 元台幣（以 10/15 與 10/19 收盤比較）。</td></tr>
+          <tr><td><b>持有美元資產者</b></td><td><span class="tag good">匯兌收益</span></td><td>美元存款、美元保單以台幣計價的價值上升。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>台灣媒體聚焦「誰在護盤」與「新台幣守 32.5」，國際媒體則關注「AI 融資信心」與「晶片股是否見底」。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Focus Taiwan／中央社</td><td>收盤事實＋分析師</td><td>台股收低但跌幅有限</td><td>季線支撐、分析師懷疑政府基金進場</td></tr>
+          <tr><td>Focus Taiwan（央行）</td><td>官方立場</td><td>央行考慮進場干預匯市</td><td>台股跌幅遠小於費半；外資單週匯出 179.6 億美元</td></tr>
+          <tr><td>中央社（匯市）</td><td>匯價與交易員觀點</td><td>央行尾盤防守，台幣重貶 1.07 角</td><td>32.5 元收盤關卡、下一關 32.8 元</td></tr>
+          <tr><td>自由財經</td><td>匯市</td><td>央行喊話難擋外資匯出、台幣連 7 黑</td><td>央行不鎖價位、只放慢貶速</td></tr>
+          <tr><td>風傳媒</td><td>籌碼面</td><td>外資連 9 賣、是誰在護盤？</td><td>法人買賣超明細，未確認護盤者身分</td></tr>
+          <tr><td>品觀點（Yahoo 股市）</td><td>投信觀點彙整</td><td>台股反彈 141 點、機會大於風險</td><td>多家投信看好中長期、建議分批布局</td></tr>
+          <tr><td>24/7 Wall St.（Yahoo Finance）</td><td>美國晶片股</td><td>晶片股連 8 跌、2008 年來最長</td><td>AMD 本益比 199 倍、美銀的資本支出警告</td></tr>
+          <tr><td>Global Banking &amp; Finance（Reuters）</td><td>美股反彈</td><td>晶片股在數月最大週跌後反彈</td><td>CoreWeave 升評、債券殖利率回落</td></tr>
+          <tr><td>IBTimes</td><td>Fed</td><td>Warsh 不給升息訊號，市場押 10 月按兵不動</td><td>CME 不升息機率 86.2%</td></tr>
+          <tr><td>Korea JoongAng Daily</td><td>韓股</td><td>KOSPI 靠機構買盤漲 1.76%</td><td>Tesla、Meta 財報與美國期中選舉風險</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10/19 加權指數跌 289.18 點收 46,822.08 點，外資賣超 767.42 億元、連 9 賣。</li>
+        <li>新台幣 10/19 收 32.445 元，盤中 32.572 元為約 18 個月新低，央行尾盤調節。</li>
+        <li>費半 10/16 跌 3.83%，連 8 跌為 2008 年以來最長。</li>
+        <li>台積電 10/19 收平盤 2,420 元。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「國家隊」是推測：</b>只有分析師從尾盤走勢推論，風傳媒明確寫無法確認買方身分，國安基金也未公告。</li>
+        <li><b>投信樂觀論調：</b>「機會大於風險」「分批布局」出自發行 ETF 的投信，屬業者觀點，本報告不採為建議。</li>
+        <li><b>盤中 vs. 收盤：</b>美股 10/19 的漲幅都是盤中數字，不同時間截取差距可達 0.5 個百分點。</li>
+        <li><b>單週數據區間：</b>央行的「台股跌 5.4%」是 10/7–16，和本報告以 10/5 高點計算的 5.8% 不同。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>新台幣連貶天數</td><td>連 3 黑（中央社）</td><td>連 7 黑（自由財經）</td><td>計算起點不同，可能以收盤或成交價比較</td></tr>
+          <tr><td>10/16 台股成交值</td><td>9,359.59 億元（多家盤後快訊）</td><td>9,378 億元（品觀點）</td><td>是否含零股或盤後交易</td></tr>
+          <tr><td>10/16 自營商賣超</td><td>334.14 億元（合計，風傳媒）</td><td>自營 101 億＋避險 232 億（品觀點）</td><td>定義相同，只是拆分與四捨五入</td></tr>
+          <tr><td>費半 10/19 盤中漲幅</td><td>約 +2.4%（Global Banking &amp; Finance）</td><td>約 +2.9%（其他盤中報導）</td><td>截取時間不同，皆非收盤</td></tr>
+          <tr><td>Fed 10 月升息機率</td><td>約五成（10/15，Yahoo Finance 引述）</td><td>不升息 86.2%（10/19，IBTimes 引 CME）</td><td>時間不同：Warsh 談話與殖利率回落後市場改押</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方說明與公開報導，資料截至 2026 年 10 月 19 日 23:33（台灣時間）。不同媒體的數字可能因時間點不同略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://focustaiwan.tw/business/202610190010" target="_blank" rel="noopener">Focus Taiwan — 央行：新台幣若持續波動將進場調節（10/19）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="2">
+      <li><a href="https://focustaiwan.tw/business/202610190016" target="_blank" rel="noopener">Focus Taiwan — 台股收低、尾盤科技股拉抬跌幅有限（10/19）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-fell-8-161520543.html" target="_blank" rel="noopener">24/7 Wall St.（Yahoo Finance）— 晶片股連 8 跌，2008 年來最長（10/18）</a></li>
+      <li><a href="https://portfolio-terminal.com/blog/stock-market-week-in-review-october-16-2026" target="_blank" rel="noopener">Portfolio Terminal — 美股 10/12–16 週回顧（10/16）</a></li>
+      <li><a href="https://www.globalbankingandfinance.com/us-chip-stocks-rise-steepest-weekly-selloff-months/" target="_blank" rel="noopener">Global Banking &amp; Finance（Reuters）— 美國晶片股在數月最大週跌後反彈（10/19）</a></li>
+      <li><a href="https://www.ibtimes.com/fed-chair-refuses-signal-another-rate-hike-markets-are-betting-october-pause-3808653" target="_blank" rel="noopener">IBTimes — Warsh 不給升息訊號，市場押 10 月按兵不動（10/19）</a></li>
+      <li><a href="https://www.koreajoongangdaily.com/business/kospi-rebounds-sharply-as-institutions-step-in/12928128" target="_blank" rel="noopener">Korea JoongAng Daily — KOSPI 靠機構買盤漲 1.76%（10/19）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="8">
+      <li><a href="https://www.cna.com.tw/news/afe/202610190231.aspx" target="_blank" rel="noopener">中央社 — 央行尾盤防守，新台幣仍重貶 1.07 角收 32.445 元（10/19）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5611449" target="_blank" rel="noopener">自由財經 — 央行喊話難擋外資匯出，新台幣連 7 黑（10/19）</a></li>
+      <li><a href="https://storm.mg/article/11173737" target="_blank" rel="noopener">風傳媒 — 外資連 9 賣狂砍 767 億元，是誰在護盤？（10/19）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E5%8F%8D%E5%BD%88141%E9%BB%9E-%E5%A4%96%E8%B3%87%E8%B3%A3%E8%B6%85%E8%B6%A8%E7%B7%A9%E8%87%B3461%E5%84%84-%E6%B3%95%E4%BA%BA%E7%9C%8B%E5%A5%BD%E6%A9%9F%E6%9C%83%E5%A4%A7%E6%96%BC%E9%A2%A8%E9%9A%AA-122511809.html" target="_blank" rel="noopener">品觀點（Yahoo 股市）— 台股反彈 141 點，外資賣超趨緩至 461 億（10/16）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202610150013" target="_blank" rel="noopener">Focus Taiwan — 10/15 台股史上第 6 大跌點（比較基準，10/15）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="13">
+      <li><a href="https://tw.stock.yahoo.com/quote/%5ETWII" target="_blank" rel="noopener">Yahoo 股市 — 加權指數（^TWII）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為 10 月 15 日台股重挫報告的後續追蹤，獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 19 日 23:33（台灣時間）。</p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'加權指數', s:'46,822.08', v:-0.61},
+    {l:'櫃買指數', s:'394.05', v:-1.55},
+    {l:'台積電', s:'2,420 元', v:0.00},
+    {l:'聯發科', s:'4,205 元', v:-1.06},
+    {l:'創意', s:'7,830 元', v:4.68},
+    {l:'南亞科', s:'436 元', v:-2.57},
+    {l:'華邦電', s:'155.5 元', v:-3.72},
+    {l:'台塑', s:'78.2 元', v:-4.75},
+    {l:'韓國 KOSPI', s:'5,768.01', v:1.76},
+    {l:'費半（10/16）', s:'連 8 跌', v:-3.83},
+    {l:'那斯達克（10/16）', s:'26,140.03', v:-2.15},
+    {l:'Nvidia（10/16）', s:'', v:-1.43},
+    {l:'AMD（10/16）', s:'528.75 美元', v:-5.95},
+    {l:'Micron（10/16）', s:'', v:-5.63}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
