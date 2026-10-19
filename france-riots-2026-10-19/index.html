@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>法國暴動續報</title>
+<meta name="description" content="法國暴動續報（截至 2026 年 10 月 19 日）：被捕人數更新為近 2,400 人、局部宵禁、內政部長請辭被拒、3,000 家企業受損，以及暴動後第一個交易日的法股與法債反應、10/20 預算表決前瞻。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">社會解讀・續報 · 暴動後第一個交易日 · 資料截至 2026 年 10 月 19 日 23:33（台灣時間）</p>
+      <h1>週末暴動後，法國祭出局部宵禁、內政部長請辭被拒；市場週一用賣壓回應</h1>
+      <p class="lede">10/17 的全國示威被捕人數，從當晚的 1,200 人更新為近 2,400 人，至少 3,000 家企業受損。週日馬克宏發表全國談話，內政部長努涅斯承認警方在部分城市「失去控制」而請辭，被馬克宏拒絕。週一總理勒克努宣布局部宵禁，並說必要時會宣布緊急狀態。同一天法國股債下跌：CAC 40 跌 1.39%，法德利差擴大到約 142 bp。明天（10/20）國民議會表決 2027 年預算的收入部分。</p>
+      <p class="lede" style="margin-top:10px;font-size:14px">本頁是續報；事件起因與 10/18 前的完整分析見<a href="https://1235-DAN.github.io/Daily-news/france-riots-2026-10/" target="_blank" rel="noopener" style="color:var(--hero-accent)">前一份報告</a>。</p>
+    </div>
+    <div class="stmt" aria-label="10 月 17 日被捕人數更新">
+      <div class="k">10/17 全國被捕人數（內政部更新）</div>
+      <div class="range">≈2,400<small>人</small></div>
+      <div class="was">10/17 深夜總理說法為 1,200 人</div>
+      <div class="stmt-row">
+        <div><div class="v">≈1,000</div><div class="l">警察與憲兵受傷</div></div>
+        <div><div class="v">≥3,000</div><div class="l">企業受損或遭劫</div></div>
+        <div><div class="v">142 bp</div><div class="l">法德利差（10/19）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>暴動後 48 小時：數字變大、政府轉守為攻、市場開始反應</h2>
+      <p>懶人包：損害比週六晚上估的嚴重一倍，政府從「譴責」升級到「宵禁」，而明天的預算表決成了下一個引爆點。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>被捕人數翻倍到近 2,400 人。</b>內政部 10/19 的數字是 10/17 當天近 2,400 人被捕、約 1,000 名警察與憲兵受傷（7 人重傷）；10/17 深夜總理的說法是 1,200 人被捕、150 名警察受傷。</div></li>
+      <li><div><b>至少 3,000 家企業受損或被搶。</b>中小企業暨貿易部長巴潘（Serge Papin）公布這個數字，政府將設「專項援助基金」；10/18（週日）巴黎、馬賽、里昂仍傳出劫掠與縱火。</div></li>
+      <li><div><b>內政部長請辭，馬克宏不准。</b>努涅斯承認警方在部分大城市「失去控制」並請辭；馬克宏以「目前情況需要持續指揮執法」為由拒絕，並承認政府在「預判與情報上有疏失」。</div></li>
+      <li><div><b>局部宵禁上路，緊急狀態待命。</b>勒克努 10/19 要求地方政府當晚實施「非常有限、局部」的宵禁，主要保護商家；他說必要時會宣布緊急狀態。馬賽禁止 10/19 中午到晚上 8 點的示威集會。</div></li>
+      <li><div><b>馬克宏週日發表全國談話。</b>他把暴力歸咎於「極左派的叛亂分子」與犯罪者，說劫掠者要賠償損失；他沒有宣布宵禁或緊急狀態，而是授權省長與市長禁止集會。</div></li>
+      <li><div><b>暴動後第一個交易日，法國資產下跌。</b>CAC 40 跌 1.39% 到 7,846.13 點；法國興業銀行跌 3.77%、BNP 跌 3.14%、LVMH 跌 2.24%；10 年期公債殖利率升到 4.85%，法德利差從 137.4 擴大到 142.3 bp。</div></li>
+      <li><div><b>明天是預算第一關。</b>10/20 國民議會表決 2027 年預算的收入部分，這是「溫度計」而不是最後一票；全案預計 11/17 表決，10/23 穆迪重新評等。</div></li>
+      <li><div><b>台灣：影響仍集中在旅遊與歐元。</b>加權指數 10/19 跌 0.61%，但未見報導歸因於法國；截至查證時，仍未找到外交部針對法國的新旅遊警示。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼週末過後局勢反而升級？三個新變化</h2>
+      <p>第 1、2 點是法國政府自己的說法與決定；第 3 點是財經媒體與分析師的觀察。學運與生活成本的起因見前一份報告。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>警方承認「失去控制」</h3><p>努涅斯說警力必須調整，因應「機動性極高的團體」；馬克宏要求他公開說明規劃與情報的疏失，並盡快改用新的執法戰術。官方自己承認失控，是政府升級措施的直接原因。</p></div><div class="ev"><span class="tag">約 1,000 名警察與憲兵受傷</span><span class="tag">7 人重傷</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>損害規模遠超預期</h3><p>週六晚間的說法是「數百家商店」受損，到週一變成至少 3,000 家企業；波爾多市長說當地多達 100 家商店被搶。政府因此把重點放在保護商家，宵禁也以商業區為主。</p></div><div class="ev"><span class="tag">≥3,000 家企業</span><span class="tag">波爾多約 100 家商店</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>街頭危機撞上預算表決</h3><p>2027 年預算要用 540 億歐元的節流，把赤字從 GDP 的 5.4% 降到 5.0%；國債利息從 2025 年的 647 億歐元增加到 2027 年預估 912 億歐元。德意志銀行分析師說，局勢升溫會讓國際投資人更不願意買法國公債（彭博引述）。</p></div><div class="ev"><span class="tag">10/20 收入部分表決</span><span class="tag">利息 +41%（2025→2027）</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過（續）</div>
+    <div class="legend"><span><i class="a"></i>政府回應與政治</span><span><i class="g"></i>暴力與市場衝擊</span><span><i></i>預定日程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-10-17</div><div class="what">全國 55 萬人示威失控，利摩日市政廳遭燒毀；深夜總理稱約 1,200 人被捕。</div></li>
+        <li class="geo"><div class="date">2026-10-18</div><div class="what">美聯社報導<b>至少 1,800 人被捕</b>、逾 500 名警察、憲兵與消防員受傷；巴黎、馬賽、里昂週日仍有劫掠與縱火。</div></li>
+        <li class="key"><div class="date">2026-10-18</div><div class="what">馬克宏召開緊急會議後<b>發表全國談話</b>；努涅斯請辭。</div></li>
+        <li class="key"><div class="date">2026-10-19</div><div class="what">馬克宏<b>拒絕努涅斯辭職</b>，承認預判與情報疏失；內政部更新被捕近 2,400 人。</div></li>
+        <li class="key"><div class="date">2026-10-19</div><div class="what">勒克努宣布<b>局部宵禁</b>，不排除緊急狀態；馬賽禁止中午至晚上 8 點集會；政府稱至少 3,000 家企業受損。</div></li>
+        <li class="geo"><div class="date">2026-10-19</div><div class="what">CAC 40 跌 1.39%，法德利差升到 142.3 bp。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-20</div><div class="what"><b>國民議會表決 2027 年預算收入部分</b>（下一個關鍵日）。</div></li>
+        <li><div class="date">2026-10-23</div><div class="what">穆迪重新檢視法國 Aa3 信評（展望負向）。</div></li>
+        <li><div class="date">2026-10-27</div><div class="what">國民議會表決社會安全預算。</div></li>
+        <li><div class="date">2026-10-29</div><div class="what">歐洲央行利率決策。</div></li>
+        <li><div class="date">2026-11-02</div><div class="what">諸聖節假期結束，學校開學。</div></li>
+        <li><div class="date">2026-11-17</div><div class="what">國民議會表決預算全案（可能延到 11/18）；S&amp;P 11/27 檢視 A+ 評等。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>法國進入「半管制」狀態：宵禁保商家、警力全面調整</h2>
+      <p>這兩天的變化都在法國國內：執法、商家損失與政治攻防。鄰國的青年抗議在這段期間沒有找到新的重大發展。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">10/17 被捕（更新）</div><div class="v">≈2,400</div><div class="d">原說法 1,200 人</div></div>
+      <div class="tile"><div class="l">警察與憲兵受傷</div><div class="v">≈1,000</div><div class="d">7 人重傷</div></div>
+      <div class="tile"><div class="l">受損企業</div><div class="v">≥3,000</div><div class="d">中小企業部長巴潘</div></div>
+      <div class="tile"><div class="l">巴黎地區被捕</div><div class="v">855</div><div class="d">557 人遭羈押</div></div>
+      <div class="tile"><div class="l">10 年期公債殖利率</div><div class="v">4.85%</div><div class="d">10/16 為 4.79%</div></div>
+      <div class="tile"><div class="l">法德利差</div><div class="v">142.3 bp</div><div class="d">10/16 為 137.4 bp</div></div>
+      <div class="tile"><div class="l">2027 年國債利息</div><div class="v">912 億 €</div><div class="d">2025 年 647 億 €</div></div>
+      <div class="tile"><div class="l">預算節流目標</div><div class="v">540 億 €</div><div class="d">赤字 5.4% → 5.0%</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>法國：治安與經濟</h3><ul class="plain">
+        <li><b>宵禁：</b>勒克努說宵禁「比緊急狀態更適合目前局勢」；宵禁區域要和市長協商後公布，截至查證時未見完整名單。</li>
+        <li><b>緊急狀態：</b>若宣布，政府可限制人員移動、禁止示威；勒克努說「如果有必要，我就會這麼做」。</li>
+        <li><b>警力：</b>增派第一線警察與憲兵，努涅斯宣布從 10/19 晚上起實施一系列防搶措施。</li>
+        <li><b>商家：</b>受損企業可申請專項援助基金；經濟部長承諾支援，破壞者要負責賠償。</li>
+        <li><b>司法：</b>巴黎檢方表示巴黎地區 855 人被捕、557 人遭羈押。</li>
+      </ul></div>
+      <div class="card"><h3>法國：政治攻防</h3><ul class="plain">
+        <li><b>政府：</b>馬克宏把暴力歸咎「極左派的叛亂分子」；勒克努說「週六沒有人死亡，那是奇蹟」。</li>
+        <li><b>極右：</b>勒龐說馬克宏政府已經「油盡燈枯」，副手巴德拉說，只要「沉默的多數」下定決心，秩序就會恢復。</li>
+        <li><b>極左：</b>梅蘭雄說支持者不該參與劫掠，並指控勒克努「玩火」，要求回應高中生訴求。</li>
+        <li><b>預算：</b>勒龐傾向讓預算通過，即使「不完美」，因為她若當選還能大幅修改（Daybreak Wire 分析）。這讓 10/20 的表決較可能過關（推論）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>暴動後第一個交易日：銀行、觀光、精品領跌，法債利差擴大</h2>
+      <p>10/19（週一）是暴動後第一個交易日。下圖是 10/19 相對 10/16 收盤的漲跌；紅漲綠跌依台灣慣例。截至 23:33（台灣時間）美股尚未收盤。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/19 相關股價、指數與匯率漲跌幅</p>
+        <p class="chart-sub">相對 10/16 收盤（%）；歐元為台灣時間晚間報價，非收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>法股：</b>CAC 40 跌 1.39%，跌幅大於 Stoxx 600 的 1.02%，代表賣壓集中在法國。開盤約跌 1.1%，賣壓一路延續到收盤。</li>
+          <li><b>法國銀行：</b>法興跌 3.77%、BNP 跌 3.14%；歐洲銀行類股早盤約跌 1.4%，是當天最弱的類股。銀行同時承受法債跌價與國內經濟轉弱兩層壓力（推論）。</li>
+          <li><b>觀光與精品：</b>Accor 跌 3.30%、法航荷航跌 2.19%、LVMH 跌 2.24%。暴動畫面與商店被搶，直接打擊觀光與高價零售的預期（推論）。</li>
+          <li><b>公債：</b>10 年期殖利率 4.85%，利差 142.3 bp（Idéal Investisseur）；彭博報導盤中利差擴大 8 bp 到 146 bp，創兩週新高，與義大利的利差也創紀錄。</li>
+          <li><b>台股：</b>加權指數跌 0.61%，台股收盤（13:30）早於歐股開盤，未見報導把跌幅歸因於法國。</li>
+          <li><b>歐元：</b>歐元兌美元約 1.1221，與週五差不多，盤中低點 1.1183。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤（10/19）</th><th>漲跌幅（10/19）</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^FCHI</td><td><b>CAC 40</b></td><td>法股指數</td><td class="num">7,846.13</td><td class="num down">−1.39%</td><td class="period">9/14 以來 −3.35%</td><td>週末暴動加上 10/20 預算表決前的不確定性</td></tr>
+          <tr><td class="num">^STOXX</td><td><b>Stoxx 600</b></td><td>歐股指數</td><td class="num">638.14</td><td class="num down">−1.02%</td><td class="period">9/14 以來 +0.34%</td><td>銀行類股拖累，跌幅小於法股</td></tr>
+          <tr><td class="num">GLE</td><td><b>法國興業銀行</b></td><td>法股</td><td class="num">62.04 €</td><td class="num down">−3.77%</td><td class="period">9/14 以來 −15.52%</td><td>法債利差擴大，銀行持有大量法債（推論）</td></tr>
+          <tr><td class="num">BNP</td><td><b>法國巴黎銀行</b></td><td>法股</td><td class="num">86.74 €</td><td class="num down">−3.14%</td><td class="period">9/14 以來 −15.62%</td><td>同上</td></tr>
+          <tr><td class="num">AC</td><td><b>雅高酒店 Accor</b></td><td>法股</td><td class="num">45.35 €</td><td class="num down">−3.30%</td><td class="period">9/14 以來 −0.83%</td><td>暴動衝擊觀光客來法意願（推論）</td></tr>
+          <tr><td class="num">MC</td><td><b>LVMH</b></td><td>法股</td><td class="num">388.10 €</td><td class="num down">−2.24%</td><td class="period">9/14 以來 −7.03%</td><td>精品店遭劫、觀光客減少的疑慮（推論）</td></tr>
+          <tr><td class="num">AF</td><td><b>法航荷航</b></td><td>法股</td><td class="num">10.29 €</td><td class="num down">−2.19%</td><td class="period">9/14 以來 −9.89%</td><td>赴法旅遊需求疑慮（推論）</td></tr>
+          <tr><td class="num">TTE</td><td><b>TotalEnergies</b></td><td>法股</td><td class="num">80.36 €</td><td class="num down">−0.43%</td><td class="period">9/14 以來 +1.04%</td><td>營收來自全球，跌幅最小（推論）</td></tr>
+          <tr><td class="num">EURUSD</td><td><b>歐元兌美元</b></td><td>匯率</td><td class="num">1.1221</td><td class="num up">+0.07%</td><td class="period">9/14 以來 −3.22%</td><td>台灣時間晚間報價，盤中低點 1.1183</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,822.08</td><td class="num down">−0.61%</td><td class="period">9/14 以來 +2.09%</td><td>未見歸因於法國的報導</td></tr>
+          <tr><td class="num">^GSPC</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">未收盤</td><td class="num">—</td><td class="period">—</td><td>截至 23:33（台灣時間）美股仍在交易</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價為 2026/10/19，取自 Yahoo Finance 歷史行情表；同頁上方報價與表格略有差異（見第 9 節）。期間走勢以 2026/9/14 收盤為基準。公債殖利率與利差來源：Idéal Investisseur。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>法國風險開始外溢到歐洲銀行與國際政治話題</h2>
+      <p>這兩天的外溢主要有兩條路：金融上是歐洲銀行與歐元區債市，政治上是美國領導人把法國當成移民議題的例子。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>歐洲銀行與債市</h3><ul class="plain small">
+        <li>歐洲銀行類股 10/19 早盤約跌 1.4%，是 Stoxx 600 最弱的類股。</li>
+        <li>彭博報導，法國與義大利的利差創紀錄，代表市場把法國看得比義大利更有風險。</li>
+      </ul></article>
+      <article class="card"><h3>歐元</h3><ul class="plain small">
+        <li>歐元兌美元 10/19 盤中最低 1.1183；XTB 研究主管布魯克斯（Kathleen Brooks）認為，如果暴動讓勒龐支持度上升，歐元可能進一步走弱（經 Admiral Markets 轉述）。</li>
+      </ul></article>
+      <article class="card"><h3>美國政治解讀</h3><ul class="plain small">
+        <li>美國總統川普在 Truth Social 寫「France is burning!」，把動亂連到移民問題；法國官方則歸咎極左團體與趁亂打劫者，未把移民與暴動連在一起。</li>
+      </ul></article>
+      <article class="card"><h3>歐洲央行</h3><ul class="plain small">
+        <li>歐洲央行 10/29 開會；先前麥格理分析師認為，央行因道德風險不太可能很快出手救法債（推論：利差若再擴大，市場會更關注央行態度）。</li>
+      </ul></article>
+      <article class="card"><h3>國際觀光</h3><ul class="plain small">
+        <li>宵禁加上馬賽禁止集會，赴法旅客的行程與店家營業時間可能受影響；馬來西亞外交部 10/18 已建議延後非必要的法國行程。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依預算日程、穆迪信評與政府措施整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>宵禁壓住街頭，預算收入部分勉強過關</h3><ul class="plain small">
+        <li>國民聯盟不倒閣，預算進入後續審議。</li>
+        <li>利差維持在 135～147 bp，法國銀行股持續承壓。</li>
+        <li>學校 11/2 開學前，學運動能較低。</li>
+      </ul><p class="trig">觸發條件：10/20 表決過關、宵禁期間沒有大規模新衝突、穆迪 10/23 維持 Aa3。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>宣布緊急狀態，預算受挫加降評</h3><ul class="plain small">
+        <li>利差突破 10/2 的 146.9 bp 前高，歐元跌破 1.11。</li>
+        <li>政府可能動用憲法 49.3 條強行通過預算，引發不信任案。</li>
+        <li>內政部長請辭風波再起，政府威信受損。</li>
+      </ul><p class="trig">觸發條件：新一輪暴動、10/20 表決失敗或 10/23 穆迪降評。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>暴力退潮，政府與學生重啟對話</h3><ul class="plain small">
+        <li>宵禁迅速解除，抗議回到和平遊行。</li>
+        <li>預算順利過關、信評維持，利差回落到 130 bp 以下。</li>
+        <li>觀光、精品股反彈。</li>
+      </ul><p class="trig">觸發條件：連續幾晚沒有劫掠、教育方案獲學生團體接受。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/19 晚間起的宵禁</b>：實施城市與時段，以及當晚有沒有新的劫掠。</li>
+      <li><b>10/20 預算收入部分表決</b>：國民聯盟 62 名出席議員的投票方向，是能否過關的關鍵。</li>
+      <li><b>10/23 穆迪信評</b>：目前 Aa3、展望負向。</li>
+      <li><b>法德利差 146.9 bp</b>：10/2 的高點；彭博報導 10/19 盤中已到 146 bp。</li>
+      <li><b>緊急狀態</b>：勒克努說「必要時」會宣布，一旦宣布代表政府判斷局勢再升級。</li>
+      <li><b>11/17 預算全案表決、11/27 S&amp;P 評等</b>：第二波財政關卡。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠：週一的股價給了第一份答案</h2>
+      <p>標籤為中長期方向判斷；卡片下方是 10/19 的實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>法國銀行業</h3><span class="tag bad">利空</span></div><p>法債利差擴大，銀行手上的法債跌價；國內商家受損也可能增加放款風險（推論）。</p><div class="data">法興 −3.77%、BNP −3.14%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>觀光與旅館</h3><span class="tag bad">利空</span></div><p>宵禁、禁止集會與暴動畫面，讓旅客延後或取消行程（推論）。</p><div class="data">Accor −3.30%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>精品與百貨零售</h3><span class="tag bad">利空</span></div><p>精品店是劫掠目標，宵禁也縮短營業時間（推論）。</p><div class="data">LVMH −2.24%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>航空</h3><span class="tag bad">利空</span></div><p>赴法旅遊需求疑慮，加上油價仍高（推論）。</p><div class="data">法航荷航 −2.19%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>中小商家</h3><span class="tag bad">利空</span></div><p>至少 3,000 家企業受損或被搶；政府設專項援助基金，但重建與保費上升需要時間（推論）。</p><div class="data">波爾多約 100 家商店被搶</div></article>
+      <article class="card"><div class="top"><h3>產物保險</h3><span class="tag bad">利空</span></div><p>受損企業從數百家擴大到至少 3,000 家，理賠金額跟著增加（推論）。</p><div class="data">利摩日市政廳屋頂坍塌</div></article>
+      <article class="card"><div class="top"><h3>能源</h3><span class="tag">好壞參半</span></div><p>跌幅最小，營收來自全球；但燃油價格仍是民怨焦點（推論）。</p><div class="data">TotalEnergies −0.43%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>保全與安全設備</h3><span class="tag good">受惠</span></div><p>商家加裝防護、增加保全需求，是少數可能受惠的行業（推論）。</p><div class="data">未查到相關個股數據</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>對台灣仍是「遠方的火」，但赴法旅客要開始留意宵禁</h2>
+      <p>台股沒有明顯受影響；這兩天新增的重點是法國宵禁與集會禁令，直接關係到正在或即將赴法的台灣旅客。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台股：</b>加權指數 10/19 收 46,822.08 點，跌 0.61%，未見報導歸因於法國。</li>
+        <li><b>宵禁：</b>法國部分城市 10/19 晚起實施局部宵禁，馬賽當天中午到晚上 8 點禁止集會。</li>
+        <li><b>歐元：</b>歐元兌美元約 1.1221，與週五相近。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>10/20 晚間台灣時間：</b>法國預算表決結果出爐，若失敗，歐美市場可能先反應，再於 10/21 傳回台股。</li>
+        <li><b>緊急狀態：</b>若宣布，可能限制人員移動，旅行團行程會受影響。</li>
+        <li><b>歐元資產：</b>持有歐元債券或歐元存款的人，要注意法債利差與歐元走勢。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時（10/19 23:33 台灣時間），仍未查到外交部領事事務局或駐法國台北代表處針對這波暴動發布的新旅遊警示；赴法前請自行查看外交部領事事務局網站的最新公告，並留意當地宵禁公告。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>赴法旅客、旅行團</b></td><td><span class="tag bad">風險升高</span></td><td>宵禁期間晚間行程與餐廳、商店營業可能受限；馬賽等地禁止集會，示威路線周邊要避開。</td></tr>
+          <tr><td><b>在法留學生、台僑</b></td><td><span class="tag bad">生活受擾</span></td><td>宵禁與加強警力部署影響夜間通勤（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">影響有限</span></td><td>10/19 台股小跌，未見與法國相關的報導；要留意的是法國債市若失控引發全球避險（推論）。</td></tr>
+          <tr><td><b>壽險業與歐元資產持有者</b></td><td><span class="tag bad">評價壓力</span></td><td>法債殖利率續升到 4.85%，持有法國或歐元區債券的部位評價受壓（推論）。</td></tr>
+          <tr><td><b>對歐出口業者</b></td><td><span class="tag">好壞參半</span></td><td>歐元這兩天持平，暫時沒有新增匯率衝擊（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電追蹤官方數字與內政部長去留，財經媒體盯著法債利差，台灣媒體則聚焦宵禁與緊急狀態。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>美聯社（CBS 轉載）</td><td>週日官方數字</td><td>暴動後逾 1,800 人被捕</td><td>巴黎 855 人被捕、1 人心臟病死亡、川普「France is burning!」</td></tr>
+          <tr><td>TNND／美聯社（WLOS）</td><td>週一政府措施</td><td>總理呼籲宵禁</td><td>被捕近 2,400 人、約 1,000 名警察受傷、「沒有人死亡是奇蹟」</td></tr>
+          <tr><td>半島電視台</td><td>直播</td><td>馬克宏承認疏失</td><td>預判與情報疏失、拒絕內政部長辭職、局部宵禁</td></tr>
+          <tr><td>彭博</td><td>債市</td><td>法債下跌，暴動加重政府壓力</td><td>利差擴大 8 bp 到 146 bp、與義大利利差創紀錄（經搜尋摘要，未能讀全文）</td></tr>
+          <tr><td>Admiral Markets</td><td>盤中市場數據</td><td>暴動與法股、銀行、法債</td><td>CAC 早盤跌約 1.2%、歐洲銀行類股最弱</td></tr>
+          <tr><td>Daybreak Wire</td><td>預算程序</td><td>10/20 表決決定什麼</td><td>只表決收入部分、利息成本、勒龐傾向讓預算通過</td></tr>
+          <tr><td>中央廣播電臺</td><td>政府措施</td><td>暴動波及 3,000 家企業，總理：必要時宣布緊急狀態</td><td>努涅斯請辭被拒、援助基金</td></tr>
+          <tr><td>FX168</td><td>財經角度</td><td>24 小時近 2,400 人被捕，540 億歐元緊縮引爆民怨</td><td>債務 3.6 兆歐元、波爾多 100 家商店被搶</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>努涅斯承認「失去控制」並請辭，馬克宏拒絕。</li>
+        <li>勒克努 10/19 要求局部宵禁，不排除緊急狀態。</li>
+        <li>至少 3,000 家企業受損，政府提供援助。</li>
+        <li>10/20 國民議會表決預算。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>數字一直在變：</b>被捕人數從 400、1,200、1,800 到近 2,400，都是不同時間點的官方數字，越新越完整。</li>
+        <li><b>有沒有人死亡：</b>巴黎警方說 1 人心臟病死亡，總理說週六「沒有人死亡」；兩者可能是對「死於暴力」的定義不同。</li>
+        <li><b>誰該負責：</b>法國政府指向極左派，川普指向移民，法國官方未把移民與暴動連在一起。</li>
+        <li><b>請辭日期：</b>美聯社寫努涅斯週日請辭，中央廣播電臺寫 10/19「今天稍早」，可能是時區與公開時間不同。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>10/17 被捕人數</td><td>至少 1,800 人（美聯社，10/18）</td><td>近 2,400 人（內政部，10/19）</td><td>統計時間點不同，後者較新</td></tr>
+          <tr><td>受傷執法人員</td><td>逾 500 名警察、憲兵與消防員（努涅斯，10/18）</td><td>約 1,000 名警察與憲兵、7 人重傷（10/19）</td><td>統計時間與範圍不同</td></tr>
+          <tr><td>死亡</td><td>1 人心臟病死亡（巴黎警方，10/18）</td><td>「沒有人死亡」（勒克努，10/19）</td><td>可能指「沒有人死於暴力」，定義不同</td></tr>
+          <tr><td>10/19 法德利差</td><td>142.3 bp（Idéal Investisseur，收盤）</td><td>146 bp（彭博，盤中）</td><td>盤中與收盤不同</td></tr>
+          <tr><td>CAC 40 收盤</td><td>7,846.13（Yahoo 歷史行情表）</td><td>7,842.58，−1.43%（Yahoo 頁面報價）</td><td>同一網站兩處數字不同，可能是收盤集合競價前後的報價</td></tr>
+          <tr><td>LVMH 收盤</td><td>388.10 €（歷史行情表）</td><td>388.25 €（頁面報價）</td><td>同上</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與市場資料，資料截至 2026 年 10 月 19 日 23:33（台灣時間）。官方數字（內政部、總理、中小企業部）皆經媒體轉述。不同媒體的數字可能因時間點不同略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.cbsnews.com/news/protests-france-rising-living-costs-students/" target="_blank" rel="noopener">CBS News（美聯社）— 法國暴動後逾 1,800 人被捕（10/18）</a></li>
+      <li><a href="https://wlos.com/news/nation-world/french-pm-prime-minister-minister-sebastien-lecornu-calls-for-curfews-after-riots-engulf-cities-and-damage-historic-city-hall-paris-rioting-looting-protests-cost-of-living-fuel-prices-school-conditions-arrests-injuries" target="_blank" rel="noopener">WLOS（TNND／美聯社）— 法國總理呼籲宵禁（10/19）</a></li>
+      <li><a href="https://www.aljazeera.com/news/liveblog/2026/10/19/france-protests-live-macron-admits-failures-after-days-of-violent-unrest" target="_blank" rel="noopener">Al Jazeera — 直播：馬克宏承認疏失，總理要求局部宵禁（10/19）</a></li>
+      <li><a href="https://daybreakwire.com/business/france-budget-vote-interest-bill-calendar/" target="_blank" rel="noopener">Daybreak Wire — 10/20 法國預算表決決定什麼（10/18）</a></li>
+      <li><a href="https://admiralmarkets.com/analytics/traders-blog/france-riots-stock-market" target="_blank" rel="noopener">Admiral Markets — 法國暴動與法股、銀行、法債（10/19）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="6">
+      <li><a href="https://www.rti.org.tw/news?uid=3&amp;pid=238572" target="_blank" rel="noopener">中央廣播電臺 — 法國暴動波及 3000 家企業，總理：必要時宣布緊急狀態（10/19）</a></li>
+      <li><a href="https://www.fx168news.com/article/%E6%B3%95%E5%9B%BD-1104290" target="_blank" rel="noopener">FX168 — 法國爆發多年最嚴重騷亂，24 小時近 2400 人被捕（10/19）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="8">
+      <li><a href="https://finance.yahoo.com/quote/%5EFCHI/history/" target="_blank" rel="noopener">Yahoo Finance — CAC 40 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ESTOXX/history/" target="_blank" rel="noopener">Yahoo Finance — Stoxx 600 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/BNP.PA/history/" target="_blank" rel="noopener">Yahoo Finance — BNP Paribas 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/GLE.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 法國興業銀行歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/MC.PA/history/" target="_blank" rel="noopener">Yahoo Finance — LVMH 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AC.PA/history/" target="_blank" rel="noopener">Yahoo Finance — Accor 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AF.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 法航荷航歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/TTE.PA/history/" target="_blank" rel="noopener">Yahoo Finance — TotalEnergies 歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/history/" target="_blank" rel="noopener">Yahoo Finance — 歐元兌美元歷史行情</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數歷史行情</a></li>
+      <li><a href="https://www.ideal-investisseur.fr/en/markets/oat-bund-spread.html" target="_blank" rel="noopener">Idéal Investisseur — 法德 10 年公債利差與殖利率</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 19 日 23:33（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'CAC 40', s:'7,846.13', v:-1.39},
+    {l:'Stoxx 600', s:'638.14', v:-1.02},
+    {l:'法國興業銀行', s:'GLE · 62.04 €', v:-3.77},
+    {l:'法國巴黎銀行', s:'BNP · 86.74 €', v:-3.14},
+    {l:'Accor', s:'AC · 45.35 €', v:-3.30},
+    {l:'LVMH', s:'MC · 388.10 €', v:-2.24},
+    {l:'法航荷航', s:'AF · 10.29 €', v:-2.19},
+    {l:'TotalEnergies', s:'TTE · 80.36 €', v:-0.43},
+    {l:'歐元兌美元', s:'1.1221（盤中）', v:0.07},
+    {l:'加權指數', s:'46,822.08', v:-0.61}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
