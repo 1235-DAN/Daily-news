@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>法債殖利率破 5%</title>
+<meta name="description" content="法國 10 年期公債殖利率 2026 年 10 月 21 日盤中觸及 5.002%，24 年來首破 5%：殖利率是什麼、為什麼上升、法德利差與義大利比較、預算僵局與穆迪信評、法國銀行股與歐股反應、對台灣壽險與歐元資產的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">總經解讀 · 歐元區債市 · 資料截至 2026 年 10 月 22 日 10:00（台灣時間）</p>
+      <h1>法國借錢成本 24 年來首破 5%：比義大利還貴，市場在問「法國還付得起嗎？」</h1>
+      <p class="lede">10 月 21 日，法國 10 年期公債殖利率（借錢 10 年要付的年利率）盤中觸及 5.002%，是 2002 年以來第一次突破 5%；法國比德國多付的利率（法德利差）擴大到約 157～159 bp，是 2011 年歐債危機以來最寬。德國的殖利率一個多月幾乎沒動，代表這是「法國自己的問題」：債務占 GDP 約 119%、預算卡在國會，加上街頭暴動。下一關是 10/23 穆迪信評。</p>
+    </div>
+    <div class="stmt" aria-label="法國 10 年期公債殖利率">
+      <div class="k">法國 10 年期公債殖利率（10/21）</div>
+      <div class="range">5.002<small>% 盤中高點</small></div>
+      <div class="was">收盤約 4.99% · 9/10 為 4.32%</div>
+      <div class="stmt-row">
+        <div><div class="v">157.5 bp</div><div class="l">法德利差（收盤）</div></div>
+        <div><div class="v">4.59%</div><div class="l">義大利 10 年期</div></div>
+        <div><div class="v">912 億 €</div><div class="l">2027 年國債利息（預估）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>法國借錢越來越貴：8 個重點看懂這次法債賣壓</h2>
+      <p>懶人包：殖利率上升＝法國借錢變貴；德國沒變、只有法國變貴，代表市場是在替法國的「政治與財政風險」加價。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>法國 10 年期殖利率 24 年來首度破 5%。</b>10/21 盤中最高 5.002%（路透），收盤約 4.99%；9/10 時只有 4.32%，六週上升約 0.67 個百分點。BlackRock 指出，從 8 月初算起已上升約 1 個百分點。</div></li>
+      <li><div><b>問題出在法國，不是整個歐洲。</b>同期德國 10 年期殖利率從 3.45% 降到 3.41%；法德利差從 9/10 的 87.4 bp 擴大到 10/21 的 157.5 bp，是 2011 年以來最寬。</div></li>
+      <li><div><b>法國借錢已經比義大利還貴。</b>10/21 法國 10 年期約 4.99%～5.01%，義大利約 4.59%、西班牙約 4.08%。義大利過去一直是歐元區的「問題學生」，現在法國比它多付約 0.4 個百分點。</div></li>
+      <li><div><b>根本原因是債太多、赤字降不下來。</b>政府債務約占 GDP 119%，預估 2027 年升到 121.7%；2026 年赤字 5.4%，2027 年目標 5.0%，都遠高於歐盟 3% 的上限。</div></li>
+      <li><div><b>利息支出越滾越大。</b>政府預估國債利息從 2025 年的 647 億歐元，增加到 2026 年 792 億、2027 年 912 億歐元，兩年增加 41%；殖利率越高，舊債到期換新債時利息就越貴。</div></li>
+      <li><div><b>預算卡在國會。</b>原定 10/20 的預算收入部分表決延到 11/3，還有逾 3,000 條修正案、只審了不到 800 條；預算部長阿米耶（David Amiel）說目前的修正已讓赤字惡化約 100 億歐元。</div></li>
+      <li><div><b>暴動讓市場更緊張。</b>10/17 全國暴動後，10/19～10/21 三天殖利率從 4.79% 升到 4.99%、利差擴大約 20 bp；家樂福 10/21 因預估暴動損失 0.8～2 億歐元，股價重挫 14.5%。</div></li>
+      <li><div><b>下一關：10/23 穆迪信評。</b>穆迪目前給法國 Aa3、展望負向，多數經濟學家預期會降評；降評可能讓部分法人必須減碼，進一步推高殖利率。對台灣的直接影響有限，但要留意歐元資產與全球債市連動。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼投資人要求法國付更多利息？四個原因</h2>
+      <p>第 1、2 點是法國政府自己公布的數字；第 3、4 點是市場與分析師的解讀。先記住一個觀念：債券價格跌，殖利率就升，兩者是蹺蹺板。</p>
+    </div>
+    <div class="note">用信用卡比喻：銀行看你收入不穩、帳單越欠越多，就會提高你的循環利率。法國現在就像這位持卡人——德國是信用很好、利率很低的那位，兩人利率的差距就是「利差」。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>債務太高：約 GDP 的 119%</h3><p>法國政府債務在第二季創下 3.6 兆歐元新高，約占 GDP 119%，是歐盟 60% 上限的兩倍；BlackRock 指出 2011 年時只有約 89%。經濟部長萊斯屈爾（Roland Lescure）預估 2027 年會升到 121.7%。</p></div><div class="ev"><span class="tag">3.6 兆 €</span><span class="tag">119% → 121.7%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>赤字降不下來，預算過不了</h3><p>2027 年預算要用約 540 億歐元的努力（430 億新措施＋110 億已決定）把赤字從 5.4% 降到 5.0%。但國會分裂，收入部分表決從 10/20 延到 11/3；2026 年預算最後是 2 月用憲法第 49.3 條（不經表決強行通過）才過關。</p></div><div class="ev"><span class="tag">赤字 5.4% → 5.0%</span><span class="tag">表決延到 11/3</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>街頭暴動與選舉：政府更難緊縮</h3><p>10/17 全國暴動後，政府一邊實施宵禁、一邊得回應民眾對教育與物價的不滿，更難砍支出。德國商業銀行策略師利姆（Erik Liem）說，抗議凸顯政府在「平息民怨」與「迎合金融市場」之間的兩難；2027 年 4～5 月大選前，極右與極左候選人領先，財政路線不確定。</p></div><div class="ev"><span class="tag">10/19～21 利差 +20 bp</span><span class="tag">大選 2027 年 4～5 月</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>全球利率本來就在上升</h3><p>美國 10 年期公債殖利率 10/19 收 5.15%，英國 10 年期約 5.38%；BlackRock 指出全球超過 80% 的債券殖利率高於 4%，五年前只有約 6%。在全球借錢都變貴的環境下，財政最弱的國家會被加價最多。</p></div><div class="ev"><span class="tag">美債 5.15%</span><span class="tag">英債 5.38%</span></div></div>
+    </div>
+
+    <div class="sub-h">殖利率走勢：法國往上，德國不動</div>
+    <div class="chart-card">
+      <p class="chart-title">法國與德國 10 年期公債殖利率（2026/9/10～10/21，每日收盤）</p>
+      <p class="chart-sub">兩條線之間的距離就是法德利差；資料來源：Idéal Investisseur</p>
+      <div id="yieldChart" style="overflow-x:auto"></div>
+      <div class="legend" style="margin-top:8px"><span><i class="a"></i>法國 10 年期（OAT）</span><span><i></i>德國 10 年期（Bund）</span></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>預算與政策</span><span><i class="g"></i>市場衝擊與動盪</span><span><i></i>評等與其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2026-02</div><div class="what">2026 年預算以憲法第 49.3 條強行通過。</div></li>
+        <li><div class="date">2026-08-28</div><div class="what">惠譽維持法國 A+、展望穩定。</div></li>
+        <li class="key"><div class="date">2026-10-01</div><div class="what">政府提出 <b>2027 年預算</b>；利差單日升到 130.3 bp。</div></li>
+        <li class="geo"><div class="date">2026-10-02</div><div class="what">利差升到 146.9 bp；穆迪表示預算能否過關「高度不確定」。</div></li>
+        <li class="key"><div class="date">2026-10-13</div><div class="what">萊斯屈爾在國會說 2026 年赤字將達 5.4%；國會否決社會黨「全案退回」動議，236 比 149。</div></li>
+        <li class="geo"><div class="date">2026-10-17</div><div class="what"><b>全國暴動</b>，55 萬人上街。</div></li>
+        <li class="geo"><div class="date">2026-10-19</div><div class="what">暴動後第一個交易日，殖利率 4.85%、利差 142.3 bp。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-20</div><div class="what">預算收入部分表決<b>延到 11/3</b>；殖利率 4.93%、利差 150.8 bp。</div></li>
+        <li class="geo"><div class="date">2026-10-21</div><div class="what">殖利率盤中 <b>5.002%</b>，2002 年以來首破 5%；利差 157.5 bp。</div></li>
+        <li><div class="date">2026-10-23</div><div class="what"><b>穆迪公布法國信評</b>（歐股收盤後）。</div></li>
+        <li><div class="date">2026-10-29</div><div class="what">歐洲央行利率決策。</div></li>
+        <li class="key"><div class="date">2026-11-03</div><div class="what">國民議會表決預算收入部分。</div></li>
+        <li class="key"><div class="date">2026-11-17</div><div class="what">預算全案表決；11/27 S&amp;P 檢視 A+ 評等。</div></li>
+        <li><div class="date">2026-12-17</div><div class="what">國會審議預算的憲法期限；之後政府可用從未使用過的「預算命令」。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>法國的利息帳單越來越大，房貸與企業貸款也跟著變貴</h2>
+      <p>法國公債（OAT）是法國各種貸款的利率參考，殖利率上升會一路傳到政府、企業和家庭；德國、義大利則因為「對照組」效應，處境和法國不同。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">10 年期殖利率（10/21）</div><div class="v">4.99%</div><div class="d">盤中 5.002%；9/10 為 4.32%</div></div>
+      <div class="tile"><div class="l">法德利差</div><div class="v">157.5 bp</div><div class="d">9/10 為 87.4 bp</div></div>
+      <div class="tile"><div class="l">政府債務／GDP</div><div class="v">119%</div><div class="d">歐盟上限 60%</div></div>
+      <div class="tile"><div class="l">財政赤字／GDP</div><div class="v">5.4%</div><div class="d">2026 年預估；上限 3%</div></div>
+      <div class="tile"><div class="l">2027 年國債利息</div><div class="v">912 億 €</div><div class="d">2025 年 647 億 €</div></div>
+      <div class="tile"><div class="l">每天利息（2027）</div><div class="v">≈2.5 億 €</div><div class="d">Daybreak Wire 換算</div></div>
+      <div class="tile"><div class="l">待審修正案</div><div class="v">&gt;3,000</div><div class="d">已審不到 800 條</div></div>
+      <div class="tile"><div class="l">穆迪評等</div><div class="v">Aa3</div><div class="d">展望負向；10/23 公布</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>法國</h3><ul class="plain">
+        <li><b>政府：</b>利息支出是增長最快的預算項目之一；殖利率上升主要影響「新發與到期換發」的債，舊債利率不會變，所以壓力是慢慢累積的。</li>
+        <li><b>家庭與企業：</b>中央社引述法新社指出，OAT 是各經濟領域利率的參考，企業與家庭借貸成本可能開始上升。</li>
+        <li><b>政治：</b>勒克努說各黨「在互相試探」，妥協可能要到 12 月；社會黨領袖福爾警告，若用 49.3 條強推，就會提不信任案。</li>
+        <li><b>國會門檻：</b>倒閣需要 577 席中的 289 票，左派或國民聯盟單獨都達不到。</li>
+      </ul></div>
+      <div class="card"><h3>德國、義大利與其他歐元區國家</h3><ul class="plain">
+        <li><b>德國：</b>10 年期殖利率維持在 3.41%～3.45%，資金從法國流向德國公債與瑞士法郎，德國反而是避風港。</li>
+        <li><b>義大利：</b>10 年期約 4.59%，比法國低約 0.4 個百分點；鉅亨網引述報導指出法義利差創紀錄。</li>
+        <li><b>西班牙：</b>10 年期約 4.08%；BlackRock 認為若市場「不分青紅皂白」地賣歐洲債，西班牙可能出現機會。</li>
+        <li><b>歐元區整體：</b>債務約 GDP 的 89%，和 2011 年差不多；BlackRock 不預期 2011～12 年歐債危機重演，理由是銀行更穩健、歐洲央行工具更多。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>債市在喊痛，股市卻在反彈：法國銀行股一個多月跌了一成五</h2>
+      <p>10/21 法債殖利率破 5%，但歐股當天普遍上漲，原因是俄烏可能重啟會談與科技股反彈。真正反映法債壓力的是一個多月的累積跌幅。下圖是 9/14 到 10/21 的累計漲跌；紅漲綠跌依台灣慣例。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">9/14 → 10/21 相關股價、指數與匯率累計漲跌幅</p>
+        <p class="chart-sub">收盤價計算（%）；農業信貸為 10/20 收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>法國銀行股：</b>農業信貸跌 17.35%、BNP 跌 15.55%、法興跌 14.83%（9/14 以來），跌幅遠大於 CAC 40 的 2.42%。銀行持有大量法國公債，殖利率上升＝手上債券跌價（推論）。</li>
+          <li><b>法股：</b>CAC 40 10/21 漲 1.06%，但 9/14 以來仍跌 2.42%，同期 Stoxx 600 漲 1.34%。</li>
+          <li><b>債市：</b>投資人「要求更多補償才願意持有法國債」（investingLive）；彭博策略師 Ven Ram 說交易員在大選前要求更高的政治風險溢價（鉅亨網引述）。</li>
+          <li><b>匯率：</b>歐元兌美元 9/14 以來跌 3.17% 到 1.1227，但最近幾天持平。</li>
+          <li><b>台股：</b>加權指數 10/21 漲 1.28%，國泰金、富邦金分別漲 3.64%、3.26%，未見報導把台股走勢歸因於法債。</li>
+          <li><b>美國：</b>美國財長貝森特在 CNBC 說不擔心法債動盪外溢到美國，並稱部分資金正從高風險市場轉進美債。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤（10/21）</th><th>漲跌幅（10/21）</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^FCHI</td><td><b>CAC 40</b></td><td>法股指數</td><td class="num">7,921.69</td><td class="num up">+1.06%</td><td class="period">9/14 以來 −2.42%</td><td>10/21 隨歐股反彈；累計仍落後歐洲</td></tr>
+          <tr><td class="num">^STOXX</td><td><b>Stoxx 600</b></td><td>歐股指數</td><td class="num">644.49</td><td class="num up">+0.92%</td><td class="period">9/14 以來 +1.34%</td><td>俄烏會談消息、科技股反彈</td></tr>
+          <tr><td class="num">ACA</td><td><b>農業信貸</b></td><td>法股</td><td class="num">15.24 €（10/20）</td><td class="num">未查到</td><td class="period">9/14 以來 −17.35%</td><td>法國內需與法債曝險（推論）</td></tr>
+          <tr><td class="num">BNP</td><td><b>法國巴黎銀行</b></td><td>法股</td><td class="num">86.81 €</td><td class="num down">−0.16%</td><td class="period">9/14 以來 −15.55%</td><td>持有大量法債（推論）</td></tr>
+          <tr><td class="num">GLE</td><td><b>法國興業銀行</b></td><td>法股</td><td class="num">62.55 €</td><td class="num up">+0.79%</td><td class="period">9/14 以來 −14.83%</td><td>同上；10/5 除息 0.75 €</td></tr>
+          <tr><td class="num">CS</td><td><b>安盛保險 AXA</b></td><td>法股</td><td class="num">43.20 €</td><td class="num up">+0.82%</td><td class="period">9/14 以來 −1.08%</td><td>保險公司可用較高利率投資新資金，跌幅小（推論）</td></tr>
+          <tr><td class="num">CA</td><td><b>家樂福</b></td><td>法股</td><td class="num">未查到</td><td class="num down">−14.5%</td><td class="period">—</td><td>預估暴動衝擊營業利益 0.8～2 億 €</td></tr>
+          <tr><td class="num">EURUSD</td><td><b>歐元兌美元</b></td><td>匯率</td><td class="num">1.1227</td><td class="num up">+0.10%</td><td class="period">9/14 以來 −3.17%</td><td>法國財政風險拖累歐元</td></tr>
+          <tr><td class="num">^GSPC</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">7,753.19</td><td class="num up">+0.53%</td><td class="period">—</td><td>科技股領漲</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,887.77</td><td class="num up">+1.28%</td><td class="period">9/14 以來 +2.24%</td><td>未見歸因於法債的報導</td></tr>
+          <tr><td class="num">2882</td><td><b>國泰金</b></td><td>台股</td><td class="num">114.00</td><td class="num up">+3.64%</td><td class="period">9/14 以來 +1.33%</td><td>未見歸因於法債的報導</td></tr>
+          <tr><td class="num">2881</td><td><b>富邦金</b></td><td>台股</td><td class="num">158.50</td><td class="num up">+3.26%</td><td class="period">未查到</td><td>未見歸因於法債的報導</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價為 2026/10/21，取自 Yahoo Finance（標示「At close: October 21」的報價）與 investingLive 歐美收盤整理；農業信貸 10/21 收盤未能確認，改列 10/20；家樂福跌幅取自 Il Sole 24 Ore 盤中報導。期間走勢以 2026/9/14 收盤為基準。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>「歐債危機 2.0」？目前更像法國單獨被懲罰</h2>
+      <p>法國是歐元區第二大經濟體，它的債市會透過四條路影響全球：歐洲央行的角色、資金流向、全球長期利率，以及評等機構的連鎖反應。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>歐洲央行</h3><ul class="plain small">
+        <li>2012 年歐債危機時，歐洲央行出手才壓住借錢成本（中央社）。</li>
+        <li>麥格理策略師維茲曼認為，歐洲央行因道德風險（救了會讓政府更不節制）不太可能很快出手。10/29 會議是觀察點。</li>
+      </ul></article>
+      <article class="card"><h3>資金流向</h3><ul class="plain small">
+        <li>工商時報指出，部分資金轉進美債、德國公債與瑞士法郎。</li>
+        <li>BlackRock 上週調升美債評等，對歐元區公債維持中立。</li>
+      </ul></article>
+      <article class="card"><h3>全球長期利率</h3><ul class="plain small">
+        <li>美債 10 年期 5.15%、英債 5.38%、日債長天期超過 3%；BlackRock 說最大風險是財政疑慮推升的「期限溢價」（借越久要多付的補償）。</li>
+      </ul></article>
+      <article class="card"><h3>是否變成歐債危機</h3><ul class="plain small">
+        <li>工商時報提到市場擔心「歐債危機 2.0」；BlackRock 則不預期重演，因為義大利、西班牙殖利率漲幅遠小於法國。</li>
+        <li>目前更像法國單一國家的風險重新定價（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>評等連鎖</h3><ul class="plain small">
+        <li>穆迪 Aa3（負向）、S&amp;P A+（穩定）、惠譽 A+（穩定）。若穆迪降到 A1，三大機構評等會更接近，部分只能買高評等債的基金可能被迫調整（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>美國</h3><ul class="plain small">
+        <li>貝森特表示不預期外溢到美國，並對馬克宏的經濟團隊有信心；美國 9 月成屋待售指數創 2001 年以來新低，反映高利率的拖累。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依穆迪信評、預算日程與分析師說法整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>穆迪降一級，殖利率在 5% 附近震盪</h3><ul class="plain small">
+        <li>市場多已預期降評，衝擊有限；殖利率在 4.8%～5.1% 區間。</li>
+        <li>預算拖到 12 月，最後可能再用 49.3 條。</li>
+        <li>法國銀行股續弱，但沒有出現恐慌拋售。</li>
+      </ul><p class="trig">觸發條件：10/23 降到 A1 且展望穩定；11/3 收入部分勉強過關或延後。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>降評加倒閣，利差衝向 2011 年水準</h3><ul class="plain small">
+        <li>利差突破 160 bp、往 2011 年 225 bp 的歷史高點靠近。</li>
+        <li>拉赫曼（Eurasia Group）警告最壞情況下可能需要 IMF 協助。</li>
+        <li>歐洲央行被迫表態，歐元續弱。</li>
+      </ul><p class="trig">觸發條件：穆迪降評且展望負向、49.3 條引發不信任案通過、暴動再起。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>穆迪維持評等，預算出現妥協</h3><ul class="plain small">
+        <li>殖利率回到 4.7% 附近，利差回落到 130 bp 左右。</li>
+        <li>法國銀行股反彈。</li>
+      </ul><p class="trig">觸發條件：穆迪維持 Aa3、國民聯盟讓預算過關、街頭平靜。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/23（歐股收盤後）穆迪信評</b>：台灣時間 10/24 凌晨揭曉，週一（10/26）亞洲與歐洲開盤會反應。</li>
+      <li><b>法國 10 年期 5% 關卡</b>：能否收在 5% 之上，是市場信心的心理指標。</li>
+      <li><b>法德利差 160 bp</b>：再擴大就接近 2011～12 年歐債危機時的區間。</li>
+      <li><b>10/29 歐洲央行</b>：是否對法國債市表態。</li>
+      <li><b>11/3、11/17 預算表決</b>：是否動用 49.3 條、會不會引發不信任案。</li>
+      <li><b>11/27 S&amp;P 評等</b>：第二個評等關卡。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>法國銀行業</h3><span class="tag bad">利空</span></div><p>銀行持有本國公債，殖利率升＝債券跌價；國家評等若被降，銀行的評等與籌資成本也常跟著受影響（推論）。</p><div class="data">農業信貸 −17.35%、BNP −15.55%（9/14→10/21）</div></article>
+      <article class="card"><div class="top"><h3>法國不動產</h3><span class="tag bad">利空</span></div><p>房貸利率跟著公債殖利率走，買房成本上升、需求轉弱（推論）。</p><div class="data">10 年期殖利率 4.32% → 4.99%（9/10→10/21）</div></article>
+      <article class="card"><div class="top"><h3>零售與內需</h3><span class="tag bad">利空</span></div><p>暴動直接損失加上消費信心下滑；政府若加稅節流，內需更受壓（推論）。</p><div class="data">家樂福 10/21 −14.5%</div></article>
+      <article class="card"><div class="top"><h3>壽險與保險</h3><span class="tag">好壞參半</span></div><p>手上舊債跌價是短期損失，但新資金可以用更高利率投資，長期收益提高（推論）。</p><div class="data">AXA −1.08%（9/14→10/21）</div></article>
+      <article class="card"><div class="top"><h3>德國公債與瑞郎</h3><span class="tag good">受惠</span></div><p>資金從法國轉向避風港，德國借錢成本反而下降。</p><div class="data">德國 10 年期 3.45% → 3.41%（9/10→10/21）</div></article>
+      <article class="card"><div class="top"><h3>美國公債</h3><span class="tag good">受惠</span></div><p>貝森特指出部分資金從高風險市場轉進美債；BlackRock 調升美債評等。</p><div class="data">美債 10 年期 5.15%（10/19）</div></article>
+      <article class="card"><div class="top"><h3>歐洲出口企業</h3><span class="tag">好壞參半</span></div><p>歐元走弱讓出口報價更有競爭力，但歐洲借貸成本上升（推論）。</p><div class="data">歐元兌美元 −3.17%（9/14→10/21）</div></article>
+      <article class="card"><div class="top"><h3>法國中小企業</h3><span class="tag bad">利空</span></div><p>銀行放款利率參考 OAT，借錢變貴；暴動又讓至少 3,000 家企業受損（推論）。</p><div class="data">受損企業 ≥3,000 家（法國政府）</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣不太會被直接波及，但要看兩件事：全球長債利率與歐元</h2>
+      <p>台灣投資法國公債的直接金額沒有公開數據；真正的傳導路徑是全球債市連動，以及持有歐元資產的評價。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台股：</b>加權指數 10/21 漲 1.28%，國泰金、富邦金上漲；未見報導把台股走勢歸因於法債。</li>
+        <li><b>壽險業已受債市影響：</b>中央社 10/15 報導，美債殖利率 9 月上升，使 6 大壽險 9 月獲利縮到 90.71 億元、月減逾七成（這是美債，不是法債）。</li>
+        <li><b>歐元：</b>歐元兌美元 9/14 以來跌 3.17%。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>穆迪結果：</b>台灣時間 10/24 凌晨公布，10/26 台股開盤可能先反映。</li>
+        <li><b>全球長債：</b>如果法國帶動全球「期限溢價」上升，美債殖利率也會被推高，壽險業的債券評價壓力就會再加重。</li>
+        <li><b>保單利率：</b>債券殖利率高，壽險業宣告利率有空間維持高檔，對保戶相對有利。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到台灣壽險業或金控持有法國公債的具體金額，也未查到金管會或央行針對法債的公開說明；以上影響僅能從全球債市連動推論。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>壽險業</b></td><td><span class="tag bad">評價壓力</span></td><td>持有的海外債券跌價；若全球長債利率續升，獲利會再受壓（推論）。</td></tr>
+          <tr><td><b>持有債券基金、債券 ETF 的投資人</b></td><td><span class="tag bad">短期淨值受壓</span></td><td>殖利率上升時債券價格下跌；買在現在則能鎖住較高利率（推論）。</td></tr>
+          <tr><td><b>持有歐元存款、歐元保單的人</b></td><td><span class="tag bad">匯率風險</span></td><td>歐元近一個多月貶值約 3%（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">影響有限</span></td><td>台股目前由科技股主導，法債是次要因素（推論）。</td></tr>
+          <tr><td><b>想去歐洲旅遊的人</b></td><td><span class="tag good">匯率有利</span></td><td>歐元較便宜（推論）。</td></tr>
+          <tr><td><b>美元保單保戶</b></td><td><span class="tag good">相對有利</span></td><td>全球利率高，宣告利率維持高檔，最高約 4.42%（中央社，10 月）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電強調「5%」與「2002 年以來首見」，財經媒體談是否變成歐債危機，台灣媒體則多以法新社稿件為主，少有台灣角度。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>investingLive</td><td>收盤數據</td><td>歐股收高，但法債殖利率創 2002 年以來新高</td><td>股債背離、各國殖利率對照</td></tr>
+          <tr><td>Il Sole 24 Ore</td><td>義大利視角</td><td>歐股盤中上漲</td><td>法國殖利率超過義大利、家樂福重挫 14.5%</td></tr>
+          <tr><td>BlackRock（investingLive）</td><td>資產配置</td><td>法債賣壓是「挑選」的一課</td><td>不預期歐債危機重演、調升美債</td></tr>
+          <tr><td>Rio Times／JDN</td><td>國會程序</td><td>法國政府會不會因預算倒台？表決延到 11/3</td><td>修正案數量、49.3 條、倒閣門檻</td></tr>
+          <tr><td>中央社（法新社）</td><td>背景解釋</td><td>法國 10 年期公債殖利率突破 5%</td><td>債務約 GDP 120%、穆迪 10/23</td></tr>
+          <tr><td>工商時報</td><td>全球債市</td><td>24 年新高 法債殖利率觸及 5%</td><td>利差 159.4 bp、貝森特說法、資金流向</td></tr>
+          <tr><td>鉅亨網</td><td>分析師觀點</td><td>暴力抗爭與財政危機交織</td><td>Gavekal、彭博、德國商銀說法</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10/21 法國 10 年期殖利率盤中觸及 5%，2002 年以來首見。</li>
+        <li>法德利差擴大到約 157～160 bp，2011 年以來最寬。</li>
+        <li>原因：預算僵局、高債務、街頭暴動。</li>
+        <li>穆迪 10/23 公布信評，多數預期降評。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「破 5%」是盤中還是收盤：</b>多數報導是盤中高點 5.002%，收盤約 4.99%；也有報價寫 5.009%，取決於截取時間。</li>
+        <li><b>是否變成歐債危機：</b>台灣媒體提到「歐債危機 2.0」的擔憂，BlackRock 則認為不會重演；目前義大利、西班牙並未同步暴衝。</li>
+        <li><b>預算表決日期：</b>部分 10/20 前的報導仍寫「10/20 表決」，實際已延到 11/3。</li>
+        <li><b>bp 是什麼：</b>1 bp（基點）＝ 0.01 個百分點，157 bp ＝ 1.57 個百分點。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>10/21 法國 10 年期</td><td>盤中 5.002%（路透）</td><td>收盤 4.99%（Idéal）；5.009%（investingLive）</td><td>盤中高點、收盤與不同時間的報價</td></tr>
+          <tr><td>10/21 法德利差</td><td>157.5 bp（Idéal，收盤）</td><td>159.4 bp（工商時報）；約 160 bp（法新社）</td><td>盤中與收盤、資料商不同</td></tr>
+          <tr><td>10/20 法國 10 年期</td><td>4.93%（Idéal）；4.92%（Rio Times 引 ING）</td><td>4.94%（中央社引法新社）</td><td>收盤與盤中報價</td></tr>
+          <tr><td>預算節流金額</td><td>430 億歐元（中央社、工商時報）</td><td>540 億歐元（Daybreak Wire）</td><td>430 億是新措施，540 億含已決定的 110 億</td></tr>
+          <tr><td>政府債務</td><td>約 119%（BlackRock）、119.3%（萊斯屈爾）</td><td>約 120%（法新社）</td><td>四捨五入與統計時點</td></tr>
+          <tr><td>穆迪展望</td><td>負向（路透，10/2）</td><td>穩定（部分 8 月整理）</td><td>以路透 10 月報導的負向為準</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與市場資料，資料截至 2026 年 10 月 22 日 10:00（台灣時間）。法國政府數字（赤字、債務、利息）為政府預估，經媒體轉述。不同媒體的數字可能因時間點不同略有出入（見第 9 節）。相關背景見<a href="https://1235-DAN.github.io/Daily-news/france-riots-2026-10/" target="_blank" rel="noopener">法國暴動解讀</a>。</p>
+    </div>
+    <div class="src-group">國際媒體與機構</div>
+    <ol class="sources">
+      <li><a href="https://investinglive.com/stocks/european-stocks-close-higher-but-french-yields-hit-their-highest-since-2002/" target="_blank" rel="noopener">investingLive — 歐股收高，但法債殖利率創 2002 年以來新高（10/21）</a></li>
+      <li><a href="https://investinglive.com/stocks/european-stocks-close-lower-across-the-board-as-bond-yields-climb/" target="_blank" rel="noopener">investingLive — 殖利率攀升，歐股全面收低（10/19）</a></li>
+      <li><a href="https://investinglive.com/stock-market-update/blackrock-says-french-bond-sell-off-is-a-lesson-in-selectivity-upgrades-us-treasuries/" target="_blank" rel="noopener">investingLive — BlackRock：法債賣壓是挑選的一課，調升美債（10/19）</a></li>
+      <li><a href="https://en.ilsole24ore.com/art/european-stock-markets-rise-midway-through-the-session-as-tech-stocks-boost-milan-by-6-per-cent-AJRE1AqB" target="_blank" rel="noopener">Il Sole 24 Ore — 歐股盤中上漲，法國殖利率觸及 5%（10/21）</a></li>
+      <li><a href="https://www.riotimesonline.com/will-france-government-collapse-2026/" target="_blank" rel="noopener">Rio Times — 法國政府會因 2027 年預算倒台嗎？（10/21）</a></li>
+      <li><a href="https://www.journaldunet.com/business/action-publique/1556923-l-assemblee-nationale-reporte-le-vote-fiscal-du-projet-de-loi-de-finances-2027-au-3-novembre/" target="_blank" rel="noopener">Journal du Net — 國民議會把預算收入表決延到 11/3（10/21）</a></li>
+      <li><a href="https://daybreakwire.com/business/france-budget-vote-interest-bill-calendar/" target="_blank" rel="noopener">Daybreak Wire — 法國預算表決與利息帳單（10/18）</a></li>
+      <li><a href="https://uk.finance.yahoo.com/news/moodys-sees-no-quick-resolution-083057704.html" target="_blank" rel="noopener">路透（Yahoo 轉載）— 穆迪：法國政治分裂難以快速解決（10/2）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="9">
+      <li><a href="https://www.cna.com.tw/news/aopl/202610210292.aspx" target="_blank" rel="noopener">中央社 — 法國 10 年期公債殖利率突破 5% 2002 年以來首見（10/21）</a></li>
+      <li><a href="https://www.cna.com.tw/news/aopl/202610200321.aspx" target="_blank" rel="noopener">中央社 — 法國 10 年期公債殖利率飆至 4.94% 與德債利差創 14 年新高（10/20）</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20261022700135-439901" target="_blank" rel="noopener">工商時報 — 24 年新高 法債殖利率觸及 5%（10/22）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6633508" target="_blank" rel="noopener">鉅亨網 — 暴力抗爭與財政危機交織 法國公債走跌（10/19）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202610150341.aspx" target="_blank" rel="noopener">中央社 — 債券殖利率彈升 6 大壽險 9 月獲利縮至 90 億元（10/15）</a></li>
+    </ol>
+    <div class="src-group">市場資料</div>
+    <ol class="sources" start="14">
+      <li><a href="https://www.ideal-investisseur.fr/en/markets/oat-bund-spread.html" target="_blank" rel="noopener">Idéal Investisseur — 法德 10 年公債殖利率與利差（每日）</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EFCHI/history/" target="_blank" rel="noopener">Yahoo Finance — CAC 40</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ESTOXX/history/" target="_blank" rel="noopener">Yahoo Finance — Stoxx 600</a></li>
+      <li><a href="https://finance.yahoo.com/quote/BNP.PA/history/" target="_blank" rel="noopener">Yahoo Finance — BNP Paribas</a></li>
+      <li><a href="https://finance.yahoo.com/quote/GLE.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 法國興業銀行</a></li>
+      <li><a href="https://finance.yahoo.com/quote/ACA.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 農業信貸</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CS.PA/history/" target="_blank" rel="noopener">Yahoo Finance — AXA</a></li>
+      <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/history/" target="_blank" rel="noopener">Yahoo Finance — 歐元兌美元</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2882.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 國泰金</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2881.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 富邦金</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 22 日 10:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // d: date, f: France 10y, g: Germany 10y (daily close, Idéal Investisseur)
+  var Y = [
+    ['9/10',4.32,3.45],['9/11',4.41,3.51],['9/14',4.48,3.53],['9/15',4.52,3.56],['9/16',4.52,3.56],['9/17',4.48,3.53],['9/18',4.47,3.50],
+    ['9/21',4.45,3.46],['9/22',4.47,3.45],['9/23',4.48,3.46],['9/24',4.67,3.57],['9/25',4.63,3.58],['9/28',4.72,3.64],['9/29',4.74,3.63],['9/30',4.75,3.58],
+    ['10/1',4.90,3.60],['10/2',4.90,3.43],['10/5',4.88,3.45],['10/6',4.72,3.45],['10/7',4.83,3.49],['10/8',4.90,3.50],['10/9',4.80,3.47],
+    ['10/12',4.86,3.46],['10/13',4.82,3.43],['10/14',4.81,3.45],['10/15',4.74,3.39],['10/16',4.79,3.42],['10/19',4.85,3.43],['10/20',4.93,3.42],['10/21',4.99,3.41]
+  ];
+  var W = 720, H = 260, L = 40, R = 52, T = 14, B = 26, lo = 3.2, hi = 5.2;
+  function x(i){ return L + i * (W - L - R) / (Y.length - 1); }
+  function y(v){ return T + (hi - v) / (hi - lo) * (H - T - B); }
+  var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" style="min-width:560px;display:block" role="img" aria-label="法國與德國 10 年期公債殖利率走勢">';
+  [3.5,4.0,4.5,5.0].forEach(function(v){
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="var(--grid)" stroke-width="1"' + (v === 5 ? ' stroke-dasharray="4 3" stroke="var(--neg)"' : '') + '/>';
+    s += '<text x="' + (L - 6) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--mono)">' + v.toFixed(1) + '%</text>';
+  });
+  [0, 10, 15, 21, 29].forEach(function(i){
+    s += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">' + Y[i][0] + '</text>';
+  });
+  function path(k){ return Y.map(function(r, i){ return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(r[k]).toFixed(1); }).join(' '); }
+  var area = path(1) + ' ' + Y.slice().reverse().map(function(r, j){ var i = Y.length - 1 - j; return 'L' + x(i).toFixed(1) + ' ' + y(r[2]).toFixed(1); }).join(' ') + ' Z';
+  s += '<path d="' + area + '" fill="var(--accent-wash)"/>';
+  s += '<path d="' + path(2) + '" fill="none" stroke="var(--ink-2)" stroke-width="2"/>';
+  s += '<path d="' + path(1) + '" fill="none" stroke="var(--accent)" stroke-width="2.5"/>';
+  var n = Y.length - 1;
+  s += '<circle cx="' + x(n) + '" cy="' + y(Y[n][1]) + '" r="4" fill="var(--accent)"/>';
+  s += '<text x="' + (x(n) + 6) + '" y="' + (y(Y[n][1]) + 4) + '" font-size="12" font-weight="600" fill="var(--accent-ink)" font-family="var(--mono)">4.99%</text>';
+  s += '<text x="' + (x(n) + 6) + '" y="' + (y(Y[n][2]) + 4) + '" font-size="12" font-weight="600" fill="var(--ink-2)" font-family="var(--mono)">3.41%</text>';
+  s += '<text x="' + (x(0) + 4) + '" y="' + (y(5.0) - 6) + '" font-size="11" fill="var(--neg)">5% 關卡</text>';
+  s += '<text x="' + (x(n) - 4) + '" y="' + ((y(Y[n][1]) + y(Y[n][2])) / 2 + 4) + '" text-anchor="end" font-size="11" fill="var(--accent-ink)">利差 157.5 bp</text>';
+  s += '<text x="' + (x(0) + 4) + '" y="' + ((y(Y[0][1]) + y(Y[0][2])) / 2 + 4) + '" font-size="11" fill="var(--accent-ink)">87.4 bp</text>';
+  s += '</svg>';
+  document.getElementById('yieldChart').innerHTML = s;
+})();
+</script>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'CAC 40', s:'7,921.69', v:-2.42},
+    {l:'Stoxx 600', s:'644.49', v:1.34},
+    {l:'農業信貸', s:'ACA · 15.24 €', v:-17.35},
+    {l:'法國巴黎銀行', s:'BNP · 86.81 €', v:-15.55},
+    {l:'法國興業銀行', s:'GLE · 62.55 €', v:-14.83},
+    {l:'AXA', s:'CS · 43.20 €', v:-1.08},
+    {l:'歐元兌美元', s:'1.1227', v:-3.17},
+    {l:'加權指數', s:'46,887.77', v:2.24},
+    {l:'國泰金', s:'2882 · 114.00', v:1.33}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
