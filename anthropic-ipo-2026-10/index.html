@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 招股書公開解讀</title>
+<meta name="description" content="Anthropic 公開 S-1 招股書：財務、算力合約、治理結構、台灣風險與美台股市反應的一頁式解讀。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#filing">招股書重點</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">AI 產業解讀 · 史上最大 IPO 倒數 · 資料截至 2026 年 10 月 27 日</p>
+      <h1>Anthropic 公開招股書：半年營收 163 億美元，並把台積電寫進風險</h1>
+      <p class="lede">Claude 的開發商 Anthropic 在美東時間 10 月 26 日（台灣時間 26 日晚間）公開 S-1 招股書（向美國證管會 SEC 申請上市的正式文件），預計以代號「ANT」在那斯達克掛牌。文件第一次完整揭露它的財務：營收一年暴增約 13 倍，但對雲端與晶片的長期付款承諾超過 6,000 億美元。市場預估募資最高 1,000 億美元、估值上看 2 兆美元，最快 11 月 19～20 日上市；文件也直說「先進晶片高度集中在台灣」是營運風險。</p>
+    </div>
+    <div class="stmt" aria-label="2026 上半年營收">
+      <div class="k">2026 年上半年營收</div>
+      <div class="range">163 億<small>美元</small></div>
+      <div class="was">去年同期約 11.6 億美元 · 年增約 1,304%</div>
+      <div class="stmt-row">
+        <div><div class="v">807</div><div class="l">上半年帳面淨損（億美元）</div></div>
+        <div><div class="v">6,000+</div><div class="l">算力長期承諾（億美元）</div></div>
+        <div><div class="v">11/19</div><div class="l">報導中最快掛牌日</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>招股書的 8 個重點：成長驚人、花錢更驚人</h2>
+      <p>懶人包：營收長得比算力成本快，帳面虧損主要是會計重估；真正的風險在超過 6,000 億美元的長約、少數大客戶，以及台灣晶片供應。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>Anthropic 正式公開 S-1，準備以「ANT」在那斯達克上市。</b>美東 10 月 26 日上午 9 點遞件，發行股數與價格區間都還沒定；Goldman Sachs、Morgan Stanley 領銜 22 家承銷商。</div></li>
+      <li><div><b>營收一年翻了十幾倍。</b>2026 上半年營收 163 億美元，去年同期約 11.6 億；光第二季就 116 億美元，年增 1,368%，同期算力成本只增 300%。</div></li>
+      <li><div><b>807 億美元虧損大多是「帳面」上的。</b>其中約 720 億美元來自 Amazon 等投資人持有、上市時會轉成股票的票據重估；真正經營本業的營業虧損只有 6.93 億美元，比去年同期 21 億縮小。</div></li>
+      <li><div><b>花錢規模前所未見。</b>對 Google（≥1,145 億）、Amazon（≥1,100 億）、Microsoft（≥449 億）、SpaceXAI（最高 1,205 億）、Broadcom（約 1,612 億）等的算力承諾合計超過 6,000 億美元，延伸到 2030 年代。</div></li>
+      <li><div><b>可能是史上最大 IPO。</b>市場預估募資最高約 1,000 億美元，超過今年 6 月 SpaceX 的 750 億與 2019 年沙烏地阿美的 256 億；路透報導估值上看 2 兆美元以上，是 5 月私募估值 9,650 億的兩倍多。</div></li>
+      <li><div><b>上市後創辦人仍握有控制權。</b>7 位共同創辦人透過 1 股 F 類股掌握 50.1% 表決權，另有「長期利益信託」（LTBT，5 名無財務利益的受託人）選出董事會多數，外部股東很難改變公司方向。</div></li>
+      <li><div><b>招股書點名台灣與台積電。</b>文件指出絕大多數先進晶片在台灣由台積電生產，台海衝突、封鎖、地震都可能衝擊供應，替代產能要好幾年；公司也承認曾因台積電產能不足而拿不到足夠晶片。</div></li>
+      <li><div><b>美股 AI 股先漲一輪，台股反應平淡。</b>10/26 費半指數漲 2.82%、輝達漲 2.39%、台積電 ADR 漲 1.40%；但 10/27 台股收假後上下震盪 909 點，加權指數終場只漲 0.12%，台積電收 2,400 元、漲 0.63%。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼現在上市？4 個原因</h2>
+      <p>第 1、2 點來自招股書本身的數字；第 3、4 點是路透、Bloomberg、Renaissance Capital 等媒體與機構的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>算力帳單太大，私募市場餵不飽</h3><p>Anthropic 截至 6 月已累計募資 1,411 億美元，但未來長約超過 6,000 億美元，SpaceXAI 合約在 2026 年底交付後每月就要付約 31 億美元。公開市場是唯一能一次募到上千億美元的地方。</p></div><div class="ev"><span class="tag">累計募資 1,411 億美元</span><span class="tag">每月約 31 億美元算力費</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>營收終於跑贏成本，故事最好講的時候</h3><p>第二季營收年增 1,368%、算力成本年增 300%，Baird 引述招股書指「每 1 美元算力換來的營收」從 2025 年第一季到 2026 年第二季提升 5.2 倍。打個比方：以前是賠錢賣電，現在每度電開始賺錢。</p></div><div class="ev"><span class="tag">Q2 營收 116 億美元</span><span class="tag">算力效率 ×5.2</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>估值在半年內三級跳</h3><p>2 月私募估值 3,800 億美元、5 月 Series H 募 650 億美元時估值 9,650 億、首度超越 OpenAI；路透引述招股書內容指 IPO 估值上看 2 兆美元。早期投資人與員工也需要變現管道。</p></div><div class="ev"><span class="tag">2 月 3,800 億</span><span class="tag">5 月 9,650 億</span><span class="tag">IPO 上看 2 兆</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>超大型 IPO 窗口打開，但正在變窄</h3><p>SpaceX 6 月上市、募資 750 億美元；Meta 也在 10/26 宣布要增資最多 950 億美元。BCA Research 指出今年 IPO 有三分之二跌破首日收盤價，資金集中在少數巨型案件，晚一步就要跟別人搶錢（推論）。</p></div><div class="ev"><span class="tag">SpaceX 750 億美元</span><span class="tag">Meta 擬增資 950 億</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>上市主線</span><span><i class="g"></i>爭議與阻力</span><span><i></i>市場與其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2026-02</div><div class="what">私募估值 3,800 億美元（募資 300 億）。</div></li>
+        <li class="geo"><div class="date">2026-02</div><div class="what">國防部長 Hegseth 將 Anthropic 列為<b>供應鏈威脅</b>，因其拒絕讓模型用於全自主武器與大規模監控；Anthropic 提告（Yahoo 財經）。</div></li>
+        <li class="key"><div class="date">2026-05-28</div><div class="what">Series H 募 650 億美元，<b>估值 9,650 億、超越 OpenAI</b>。</div></li>
+        <li class="key"><div class="date">2026-06-01</div><div class="what">宣布<b>秘密遞交</b> IPO 申請草案，讓 SEC 先審。</div></li>
+        <li><div class="date">2026-06-12</div><div class="what">SpaceX 上市，募資 750 億美元，創當時紀錄。</div></li>
+        <li class="geo"><div class="date">2026-09-12</div><div class="what">執行長 Dario Amodei 發文呼籲 AI 產業<b>放慢能力提升速度</b>。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li><div class="date">2026-09-28</div><div class="what">路透引述招股書內容：估值上看 2 兆美元、2025 年淨損 420 億。</div></li>
+        <li class="geo"><div class="date">2026-10-14</div><div class="what">紐約市審計長 Mark Levine 致函要求<b>暫緩 IPO</b>，先處理安全與治理；10/16 雙方展開溝通，未同意延後。</div></li>
+        <li class="key"><div class="date">2026-10-26</div><div class="what">美東 9:00 <b>公開 S-1</b>，代號 ANT；費半當天漲 2.82%。</div></li>
+        <li><div class="date">2026-10-27</div><div class="what">台股光復節連假後開市，盤中震盪 909 點，終場加權指數小漲 0.12%。</div></li>
+        <li><div class="date">2026-10-28～29</div><div class="what">Alphabet、Microsoft、Amazon 財報，聯準會利率決議。</div></li>
+        <li class="key"><div class="date">2026-11-19～20</div><div class="what">Fox Business 引述消息：<b>最快掛牌日</b>（公司未證實）。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 filing (extra) -->
+<section id="filing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 招股書重點</div>
+      <h2>三百多頁裡最值得看的四件事</h2>
+      <p>招股書（S-1）是公司對投資人的「體檢報告」：財務、股權結構、風險都必須寫清楚。以下引自招股書與報導的引述。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><div class="sec-num">財務</div><h3>營收、虧損與現金</h3><ul class="plain small">
+        <li><b>營收：</b>2025 全年約 46 億美元（2024 年的 12 倍）；2026 上半年 163 億美元。</li>
+        <li><b>虧損：</b>2025 年淨損 420 億美元，其中約 340 億是可轉換融資工具的會計費用；2026 上半年淨損 807 億，約 720 億為票據重估。</li>
+        <li><b>現金：</b>6 月底現金 1,124 億美元、短期投資 193 億美元。</li>
+        <li><b>客戶：</b>年貢獻 ≥10 萬美元的客戶逾 11,900 家，≥1,000 萬美元約 250 家；淨營收留存率約 900%（老客戶一年後花的錢是原來 9 倍）。</li>
+      </ul></div>
+      <div class="card"><div class="sec-num">算力</div><h3>超過 6,000 億美元的長約</h3><ul class="plain small">
+        <li><b>Broadcom：</b>TPU 算力五年租約，租金約 1,612 億美元。</li>
+        <li><b>SpaceXAI：</b>輝達 GPU 算力最高 1,205 億美元至 2029 年，比路透先前報導的 845 億多約 360 億。</li>
+        <li><b>Google ≥1,145 億、Amazon ≥1,100 億、Microsoft ≥449 億</b>，最晚到 2036 年。</li>
+        <li><b>其他：</b>Nscale 約 446 億、Lambda 約 413 億；AMD 支出逾 200 億美元，AMD 並承諾依 GPU 里程碑買最多 50 億美元 Anthropic 股票。</li>
+      </ul></div>
+      <div class="card"><div class="sec-num">治理</div><h3>五種股票、創辦人控制</h3><ul class="plain small">
+        <li><b>A 類：</b>公開發行，一股一票。</li>
+        <li><b>F 類：</b>僅 1 股，由 7 位共同創辦人組成的 Founder LLC 持有，占 50.1% 表決權。</li>
+        <li><b>T 類：</b>長期利益信託持有，選出董事會多數席次。</li>
+        <li><b>N 類：</b>多為策略夥伴持有，沒有一般表決權；<b>E 類</b>給員工，表決權有限。</li>
+        <li>公司另撥約 5%（8.47 億股）給公益基金；7 位創辦人承諾捐出 80% 持股，但無法律約束力。</li>
+      </ul></div>
+      <div class="card"><div class="sec-num">風險</div><h3>93～94 頁風險因素</h3><ul class="plain small">
+        <li><b>模型行為：</b>可能出現公司未預期的能力，甚至「自我保存」行為；若造成現實傷害，公司可能無力賠償。</li>
+        <li><b>客戶集中：</b>約 1/5 營收來自 2 個客戶；48% 上半年營收經 Google、Amazon、Microsoft 雲端市集銷售。</li>
+        <li><b>夥伴即對手：</b>雲端供應商同時是投資人、客戶與競爭者。</li>
+        <li><b>晶片供應：</b>先進晶片集中台灣與台積電；HBM（高頻寬記憶體）依賴 SK 海力士、三星、美光。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>美國資本市場迎來一場「抽水」測試</h2>
+      <p>事件發生在美國：上市地是那斯達克，主要股東與合作夥伴是美國科技巨頭；同時也牽動美國政府與 AI 監管的角力。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">預估募資</div><div class="v">≈1,000 億</div><div class="d">美元；SpaceX 為 750 億</div></div>
+      <div class="tile"><div class="l">報導估值</div><div class="v">1.5～2 兆</div><div class="d">美元；5 月私募 9,650 億</div></div>
+      <div class="tile"><div class="l">承銷商</div><div class="v">22 家</div><div class="d">Goldman Sachs、Morgan Stanley 領銜</div></div>
+      <div class="tile"><div class="l">雲端市集占營收</div><div class="v">48%</div><div class="d">2026 上半年，經三大雲端</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國股市與投資人</h3><ul class="plain">
+        <li>1,000 億美元的新股要有人買，短期可能從其他科技股抽走資金；同一週 Meta 也要增資最多 950 億美元（推論）。</li>
+        <li>Amazon、Google 既是大股東也是供應商：IPO 讓它們的持股有了市價，但招股書也揭露它們綁定的長約金額。</li>
+        <li>上市後可能納入那斯達克 100 等指數，被動基金被迫買進（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>美國政府與監管</h3><ul class="plain">
+        <li>國防部 2 月將 Anthropic 列為供應鏈威脅，雙方仍在法院對峙；商務部長 Lutnick 9 月表示關係已改善。</li>
+        <li>紐約市審計長 Levine（管理逾 3,250 億美元退休基金）要求延後上市，代表部分機構投資人對 AI 安全的疑慮。</li>
+        <li>上市後每季要公開財報，AI 公司的安全承諾第一次接受公開市場檢驗。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>美股把招股書當成「AI 需求證明」，台股卻沒跟上</h2>
+      <p>招股書裡 6,000 億美元的算力承諾等於晶片與伺服器的未來訂單，因此半導體漲最多；顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/26 美股、10/27 台股收盤漲跌幅</p>
+        <p class="chart-sub">美股為 10/26 收盤；台股為 10/27 收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>美股：</b>費半 30 檔成分股全數上漲。邏輯是「Anthropic 的支出 = 晶片公司的營收」：輝達（SpaceXAI 合約用輝達 GPU）、博通（TPU 租約 1,612 億）、AMD（MI450 合作）漲 2.3～2.8%。</li>
+          <li><b>大股東：</b>Amazon 小漲 0.44%、Alphabet 反跌 1.06%。持股增值早有預期，而且它們本週就要公布財報，市場在等資本支出數字。</li>
+          <li><b>台股：</b>10/27 是光復節連假後首日，開盤一度漲逾 500 點（最高 46,585 點），隨後翻黑、最低 45,676 點，終場收 46,096.23 點、漲 54.80 點（0.12%）；台積電盤中一度跌破半年線，終場收 2,400 元、漲 15 元，銅箔基板族群走弱。消息在連假期間已被台積電 ADR 消化（推論）。</li>
+          <li><b>其他：</b>VIX 恐慌指數跌 5.45% 至 18.39；費半 10 月以來仍跌 12.2%，這次是反彈而不是扭轉。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr><td class="num">^SOX</td><td><b>費城半導體指數</b></td><td>美股</td><td class="num">11,083.47</td><td class="num up">+2.82%</td><td class="period">10 月以來 −12.2%</td><td>Anthropic 遞件重燃 AI 交易，成分股全數上漲</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克指數</b></td><td>美股</td><td class="num">26,169.38</td><td class="num up">+0.82%</td><td class="period">未查到</td><td>科技股領漲</td></tr>
+          <tr><td class="num">^GSPC</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">7,676.77</td><td class="num up">+0.70%</td><td class="period">未查到</td><td>科技與工業股領漲</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">未查到</td><td class="num up">+2.39%</td><td class="period">未查到</td><td>招股書顯示逾 2,000 億美元輝達架構算力承諾</td></tr>
+          <tr><td class="num">AVGO</td><td><b>博通</b></td><td>美股</td><td class="num">未查到</td><td class="num up">+2.33%</td><td class="period">未查到</td><td>TPU 算力租約租金約 1,612 億美元</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">未查到</td><td class="num up">+2.80%</td><td class="period">未查到</td><td>MI450 部署 2027 年開始，支出逾 200 億美元</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">未查到</td><td class="num up">+2.98%</td><td class="period">未查到</td><td>記憶體股反彈；招股書點名 HBM 供應吃緊；美銀重申看好</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">424.37 美元</td><td class="num up">+1.40%</td><td class="period">未查到</td><td>跟隨晶片股上漲；招股書指先進晶片多由台積電生產</td></tr>
+          <tr><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">532.60 美元</td><td class="num up">+1.54%</td><td class="period">未查到</td><td>Anthropic 承諾至少 449 億美元 Azure 算力</td></tr>
+          <tr><td class="num">AMZN</td><td><b>亞馬遜</b></td><td>美股</td><td class="num">249.09 美元</td><td class="num up">+0.44%</td><td class="period">未查到</td><td>大股東，持有可轉換票據；承諾至少 1,100 億美元 AWS 算力</td></tr>
+          <tr><td class="num">GOOGL</td><td><b>Alphabet</b></td><td>美股</td><td class="num">316.80 美元</td><td class="num down">−1.06%</td><td class="period">未查到</td><td>大股東但逆勢下跌，市場等候週三財報</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,096.23</td><td class="num up">+0.12%</td><td class="period">連假前 10/22 −846 點</td><td>開高逾 500 點後一度翻黑至 45,676 點，尾盤收在平盤之上</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,400 元</td><td class="num up">+0.63%</td><td class="period">10/22 −35 元</td><td>開在 2,380 元、最高 2,405 元，終場漲 15 元</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">247.5 元</td><td class="num up">+1.02%</td><td class="period">10/22 −2.00%</td><td>早盤一度漲至 248.5 元，終場漲 2.5 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 10/26 收盤，來源：Capp Notes、TradingKey、自由財經、MarketAlleys；台股為 10/27 收盤，來源：Yahoo 股市（13:30 收盤報價）；盤中高低點來源：經濟日報／中央社、NOWnews。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>一張招股書，牽動晶片、資金與 AI 競賽</h2>
+      <p>影響透過三條路擴散：Anthropic 的支出變成全球晶片與資料中心的訂單、巨額新股吸走資金、它的財務數字成為所有 AI 公司估值的對照組。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>全球晶片供應鏈</h3><ul class="plain small">
+        <li>逾 6,000 億美元算力承諾延伸到 2030 年代，等於替輝達、博通、AMD、記憶體廠提供長期需求能見度。</li>
+        <li>國泰證券估 IPO 資金可帶來約 700 億美元硬體需求（工商時報引述）。</li>
+      </ul></article>
+      <article class="card"><h3>資本市場</h3><ul class="plain small">
+        <li>若募資 1,000 億美元成真，將超過 SpaceX 的 750 億、SK 海力士的 265 億，成為史上最大 IPO。</li>
+        <li>同一時間 Meta 擬增資 950 億美元，新股供給集中，可能壓抑其他科技股評價（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 公司估值的新標竿</h3><ul class="plain small">
+        <li>富邦投顧認為這次定價將成為純 AI 軟體公司的估值基準。</li>
+        <li>OpenAI 同樣在準備上市，BCA Research 指兩家上市會帶來更嚴格的「客戶集中、毛利」檢視。</li>
+      </ul></article>
+      <article class="card"><h3>記憶體與 HBM</h3><ul class="plain small">
+        <li>招股書點名 HBM 主要由 SK 海力士、三星、美光供應，大客戶搶先鎖產能可能加劇缺貨。</li>
+        <li>10/26 美光 +2.98%、SK 海力士 ADR +4.09%；韓股 Kospi 在遞件前的亞洲盤則跌 1.46%。</li>
+      </ul></article>
+      <article class="card"><h3>AI 治理與監管</h3><ul class="plain small">
+        <li>公益公司（PBC）＋信託控制董事會，是第一家用這種結構上市的大型 AI 公司。</li>
+        <li>美國出口管制、國防部爭議都寫進風險因素，政策變化會直接反映在股價上（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>地緣政治</h3><ul class="plain small">
+        <li>招股書明列台海衝突與封鎖風險，並引彭博經濟研究估台海戰爭可能造成全球 10 兆美元損失。</li>
+        <li>台積電承諾在美投資 2,650 億美元，但招股書認為短期內仍難分散集中風險。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依招股書揭露、媒體報導的時程與市場預估整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>11 月中下旬順利掛牌</h3><ul class="plain small">
+        <li>巡迴路演後公布價格區間，估值落在 1.5～2 兆美元。</li>
+        <li>募資 600～1,000 億美元，晶片與伺服器供應鏈維持強勢。</li>
+        <li>台股 AI 族群跟隨 ADR 與費半表現。</li>
+      </ul><p class="trig">觸發條件：本週科技巨頭財報與聯準會決議未引發賣壓。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>延後上市或下修估值</h3><ul class="plain small">
+        <li>AI 資本支出疑慮升溫，費半延續 10 月跌勢。</li>
+        <li>機構投資人以安全、治理為由壓價，定價低於預期。</li>
+        <li>市場重新評估 6,000 億美元長約能否付得出來。</li>
+      </ul><p class="trig">觸發條件：財報指引保守、SpaceX 式破發陰影、監管或國防部爭議升高。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>超額認購、上市大漲</h3><ul class="plain small">
+        <li>估值超過 2 兆美元，掀起 AI 公司上市潮（包括 OpenAI）。</li>
+        <li>大股東 Amazon、Google 持股價值重估。</li>
+        <li>算力軍備競賽加速，台積電 CoWoS 與伺服器訂單能見度拉長。</li>
+      </ul><p class="trig">觸發條件：第三季營收延續倍數成長、路演反應熱烈。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/28～29 Alphabet、Microsoft、Amazon 財報</b>：三家都是 Anthropic 的股東與算力供應商，資本支出指引會影響市場對 AI 需求的信心。</li>
+      <li><b>10/28 聯準會利率決議</b>：市場預估約 90% 機率維持 3.75～4%，利率決定成長股的估值空間。</li>
+      <li><b>價格區間與發行股數</b>：招股書修訂版公布後，才知道真正的估值與募資規模。</li>
+      <li><b>11/3 美國期中選舉</b>：路透指上市預計在選後；選舉結果可能影響 AI 監管方向。</li>
+      <li><b>11/19～20 可能掛牌日</b>：首日表現將決定 OpenAI 等後續 AI 公司的上市節奏。</li>
+      <li><b>第三季財務</b>：上市前可能補充更新財務，觀察營收成長是否延續。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>AI 晶片（GPU／ASIC）</h3><span class="tag good">受惠</span></div><p>Anthropic 同時採購輝達 GPU、Google TPU（由博通設計）、AMD GPU 與 AWS Trainium，多供應商策略讓各家都分到長單。</p><div class="data">NVDA +2.39% · AVGO +2.33% · AMD +2.80%（10/26）</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工與先進封裝</h3><span class="tag good">受惠</span></div><p>不管哪家晶片，最後多由台積電生產與 CoWoS 封裝；招股書自承曾拿不到足夠晶片，說明產能仍供不應求。</p><div class="data">台積電 ADR +1.40%；CoWoS 傳漲價最高 20%</div></article>
+      <article class="card"><div class="top"><h3>HBM 記憶體</h3><span class="tag good">受惠</span></div><p>AI 加速器需要大量 HBM，招股書指供應能否跟上需求「無法保證」，供不應求對記憶體廠報價有利（推論）。</p><div class="data">MU +2.98% · SK 海力士 ADR +4.09%</div></article>
+      <article class="card"><div class="top"><h3>AI 伺服器組裝</h3><span class="tag good">受惠</span></div><p>Amazon、Google 為了交付 Anthropic 的算力，需要更多伺服器機櫃，鴻海、廣達、緯穎等組裝廠受惠（工商時報）。</p><div class="data">租用資料中心機櫃功率 100～600 kW 以上</div></article>
+      <article class="card"><div class="top"><h3>散熱與電源</h3><span class="tag good">受惠</span></div><p>機櫃功率密度提高，液冷從選配變標配，奇鋐、雙鴻等受惠；電力需求也推升電源與電網設備（推論）。</p><div class="data">工商時報列為 12 檔受惠股之一</div></article>
+      <article class="card"><div class="top"><h3>雲端服務（AWS、Google Cloud、Azure）</h3><span class="tag">好壞參半</span></div><p>拿到上千億美元長約，但 Anthropic 也是它們自家 AI 的競爭者；若 Anthropic 未來自建算力，訂單可能流失。</p><div class="data">AMZN +0.44% · GOOGL −1.06% · MSFT +1.54%</div></article>
+      <article class="card"><div class="top"><h3>其他 AI 新創與軟體公司</h3><span class="tag">好壞參半</span></div><p>估值標竿被墊高，有利募資；但 Anthropic 的 Claude Code、Cowork 直接搶企業軟體與外包預算（推論）。</p><div class="data">逾半數財星 500 大企業為 Claude 客戶</div></article>
+      <article class="card"><div class="top"><h3>投資銀行</h3><span class="tag good">受惠</span></div><p>22 家承銷商分食史上最大 IPO 的承銷費，加上 SpaceX、Meta 案，2026 年股權承銷大豐收（推論）。</p><div class="data">Goldman Sachs、Morgan Stanley 領銜</div></article>
+      <article class="card"><div class="top"><h3>IT 顧問與外包</h3><span class="tag bad">利空</span></div><p>招股書強調 Claude 能自主完成程式與知識工作，人均營收 660 萬美元；長期可能壓縮按人頭計費的外包業務（推論）。</p><div class="data">人均營收：一年前 140 萬 → 660 萬美元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台灣既是 Anthropic 的命脈，也是它寫進風險的地方</h2>
+      <p>台灣最關心三件事：AI 供應鏈訂單能否延續、招股書的「台灣風險」會不會影響國際對台灣的看法，以及台股會不會跟上這波 AI 行情。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li>招股書直言絕大多數先進晶片在台灣由台積電生產，台海衝突、封鎖、經濟脅迫、地震颱風、電網與供水中斷都列為風險（經濟日報編譯彭博）。</li>
+        <li>文件承認曾因台積電產能不足，無法及時取得足夠晶片。</li>
+        <li>台積電 ADR 10/26 漲 1.40%，但 10/27 台股收假後震盪，加權指數終場僅漲 0.12%、台積電漲 0.63%。</li>
+        <li>工商時報列出台積電、日月光、京元電、鴻海、廣達、緯穎、緯創、奇鋐、雙鴻、智邦、穎崴、台光電共 12 檔相關供應鏈。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li>上市後每季財報都會更新算力支出，成為台灣 AI 供應鏈的新「需求溫度計」。</li>
+        <li>招股書把「台灣風險」白紙黑字寫給全球投資人看，可能加強美國客戶要求台積電擴大海外產能的壓力。</li>
+        <li>若 IPO 抽走科技股資金或定價不如預期，外資對台股 AI 股的賣壓可能延續（10/22 前一週外資賣超 2,357 億元）。</li>
+        <li>Anthropic 營收高度依賴雲端大廠，大廠資本支出才是台廠訂單的直接來源。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時（10/27 台股收盤後），未查到台灣政府（經濟部、金管會、國發會）針對 Anthropic 招股書提及台灣風險的公開回應。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>半導體與 AI 伺服器業</b></td><td><span class="tag good">相對有利</span></td><td>6,000 億美元長約延伸到 2030 年代，提高訂單能見度；但客戶集中在少數雲端大廠。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">好壞參半</span></td><td>AI 題材再獲支撐，但 10/27 加權指數盤中震盪 909 點、終場只漲 0.12%，顯示市場已提前反應（推論）；外資近期持續調節權值股。</td></tr>
+          <tr><td><b>美股與複委託投資人</b></td><td><span class="tag">好壞參半</span></td><td>可透過複委託申購或交易 ANT，但估值高、創辦人控制，且新股波動大（如 SpaceX 上市後曾跌破發行價）。</td></tr>
+          <tr><td><b>科技業上班族</b></td><td><span class="tag good">相對有利</span></td><td>供應鏈訂單與員工分紅可望延續；工程師需求仍高（推論）。</td></tr>
+          <tr><td><b>軟體與 IT 外包業</b></td><td><span class="tag bad">壓力增加</span></td><td>Claude Code 等自主 AI 工具降低寫程式人力需求，按人頭計價的外包模式受挑戰（推論）。</td></tr>
+          <tr><td><b>國家安全與能源政策</b></td><td><span class="tag bad">壓力增加</span></td><td>國際企業公開把台海與電網、供水列為風險，台灣的電力與水資源穩定度受到更多檢視（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>美國媒體聚焦營收與巨額虧損、史上最大 IPO；台灣媒體幾乎一致把焦點放在「點名台灣、台積電」。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Anthropic 官方</td><td>法定公告</td><td>遞交 S-1、代號 ANT</td><td>只寫法律必要資訊，不提數字</td></tr>
+          <tr><td>路透</td><td>估值與財務</td><td>招股書顯示 2 兆美元野心、虧損龐大</td><td>420 億淨損中 340 億為會計費用；選後上市</td></tr>
+          <tr><td>Yahoo 財經</td><td>成長 vs 花費</td><td>營收強勁成長、支出巨大</td><td>客戶集中、國防部爭議、AI 傷害風險</td></tr>
+          <tr><td>TechSpot</td><td>IPO 規模</td><td>可能是史上最大 IPO</td><td>帳面虧損拆解、創辦人持股與捐贈承諾</td></tr>
+          <tr><td>Gizmodo</td><td>算力合約</td><td>SpaceXAI 合約比所知更大</td><td>各合約金額比路透先前報導高出多少</td></tr>
+          <tr><td>Unite.AI</td><td>文件細節</td><td>S-1 註冊聲明全貌</td><td>承銷團、五種股票、信託治理</td></tr>
+          <tr><td>經濟日報／聯合（編譯彭博）</td><td>台灣風險</td><td>上市文件點名台灣、警告台積電供應風險</td><td>台海、天災、HBM 與曾斷供經驗</td></tr>
+          <tr><td>工商時報</td><td>台股供應鏈</td><td>12 檔受惠供應鏈出列</td><td>募資帶動硬體需求、本益比重估</td></tr>
+          <tr><td>科技新報</td><td>台股盤勢</td><td>點燃晶片狂歡、長假後補漲</td><td>ABF 鎖產能、CoWoS 漲價</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10 月 26 日公開 S-1，預計在那斯達克以 ANT 掛牌，股數與價格未定。</li>
+        <li>2026 上半年營收約 163 億美元、淨損約 807 億美元，虧損大多是會計費用。</li>
+        <li>算力合約規模數千億美元，Google、Amazon、Microsoft 為主要夥伴。</li>
+        <li>預計 11 月掛牌，有望成為史上最大 IPO。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「虧損 807 億」要拆開看。</b>標題常只寫虧損，但營業虧損只有 6.93 億美元；不看內文容易誤判公司在燒錢。</li>
+        <li><b>估值不是招股書寫的。</b>S-1 沒有價格與估值，「2 兆美元」來自路透引述與券商預估。</li>
+        <li><b>台灣媒體標題較聳動。</b>「點名台灣」是招股書標準的風險揭露，美國公司的 S-1 通常都會列供應鏈與地緣風險。</li>
+        <li><b>時區。</b>美東 10/26 上午遞件，台灣是 26 日晚間；台股因連假到 27 日才反應。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>營收成長率</td><td>年增 1,304%（上半年，BigGo／Yahoo）</td><td>年增 1,368%（第二季，TechSpot／Unite.AI）</td><td>比較期間不同：半年 vs 單季</td></tr>
+          <tr><td>2025 年淨損</td><td>420 億美元（路透、Yahoo）</td><td>80.6 億美元（工商時報轉理財周刊）</td><td>後者可能把營業虧損（約 80 億）誤寫成淨損</td></tr>
+          <tr><td>上半年淨損</td><td>807 億美元（多數外媒）</td><td>810 億美元（部分台媒）</td><td>四捨五入</td></tr>
+          <tr><td>算力承諾總額</td><td>逾 6,000 億美元（TechSpot）；可取消合約含在內 6,370 億（Yahoo）</td><td>未來一年義務 5,180 億（路透 9 月）；三大雲端合計逾 2,600 億（BigGo）</td><td>統計範圍不同：是否含可取消合約、只算部分夥伴</td></tr>
+          <tr><td>台積電 ADR 10/26</td><td>424.37 美元、+1.40%（自由財經、新頭殼）</td><td>418.51 美元、+1.49%（科技新報）</td><td>可能取用盤中或不同時點報價；本報告採 424.37</td></tr>
+          <tr><td>連假前台股收盤</td><td>46,041.43 點（鉅亨網、Yahoo 股市昨收）</td><td>46,426.77 點（科技新報）</td><td>科技新報數字與其他來源不符，本報告採 46,041.43</td></tr>
+          <tr><td>IPO 估值</td><td>逾 2 兆美元（路透）</td><td>1.8～2.2 兆（Citi、Morgan Stanley，工商時報）；1.5～2 兆（其他報導）</td><td>均為預估，招股書尚未定價</td></tr>
+          <tr><td>上市時間</td><td>最快 11/19～20（Fox Business）</td><td>期中選舉後（路透）／感恩節前（TechSpot）</td><td>消息來源不同，三者時間其實相容</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 27 日。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">Anthropic — 向 SEC 遞交 S-1 擬首次公開發行（10/26）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="2">
+      <li><a href="https://finance.yahoo.com/technology/article/anthropic-publicly-files-ipo-prospectus-noting-strong-revenue-growth-and-massive-spending-131807138.html" target="_blank" rel="noopener">Yahoo 財經 — 公開招股書：營收強勁成長、支出巨大（10/26）</a></li>
+      <li><a href="https://www.techspot.com/news/114341-anthropic-files-go-public-could-biggest-ipo-ever.html" target="_blank" rel="noopener">TechSpot — 可能成為史上最大 IPO（10/26）</a></li>
+      <li><a href="https://gizmodo.com/anthropics-deal-with-elon-musks-spacexai-is-even-bigger-than-we-knew-ipo-filing-shows-2000830618" target="_blank" rel="noopener">Gizmodo — SpaceXAI 合約比所知更大（10/26）</a></li>
+      <li><a href="https://www.unite.ai/anthropic-files-s-1-registration-statement-for-nasdaq-ipo/" target="_blank" rel="noopener">Unite.AI — S-1 註冊聲明細節（10/26）</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/anthropic-said-to-plan-9-am-s1-filing-as-midnovember-ipo-remains-on-track-4972374" target="_blank" rel="noopener">Investing.com — 9 點遞件、11 月中上市不變（10/26）</a></li>
+      <li><a href="https://ca.finance.yahoo.com/news/anthropic-prospectus-shows-2-trln-004010815.html" target="_blank" rel="noopener">Investing.com 引述路透 — 招股書顯示 2 兆美元野心（9/29）</a></li>
+      <li><a href="https://finance.yahoo.com/technology/ai/articles/anthropic-seek-2-trillion-ipo-161418318.html" target="_blank" rel="noopener">Kiplinger — Anthropic 尋求 2 兆美元估值（9/30）</a></li>
+      <li><a href="https://news.bloomberglaw.com/private-equity/anthropic-raises-at-965-billion-valuation-eclipsing-openai-1" target="_blank" rel="noopener">Bloomberg — 估值 9,650 億美元超越 OpenAI（5/28）</a></li>
+      <li><a href="https://ph.investing.com/news/stock-market-news/baird-reviews-chip-stocks-after-anthropic-s1-filing-93CH-2650296" target="_blank" rel="noopener">Investing.com — Baird 檢視 S-1 後的晶片股（10/27）</a></li>
+      <li><a href="https://www.pymnts.com/?p=4316615" target="_blank" rel="noopener">PYMNTS — 紐約市審計長促 Anthropic 延後 IPO（10/14）</a></li>
+      <li><a href="https://news.bgov.com/daily-labor-report/anthropic-in-discussions-with-nyc-comptroller-after-ipo-letter" target="_blank" rel="noopener">Bloomberg Government — Anthropic 與紐約市審計長展開溝通（10/16）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="13">
+      <li><a href="https://money.udn.com/money/story/5599/9838749" target="_blank" rel="noopener">經濟日報 — 上市文件點名台灣、警告台積電供應風險（10/27）</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20261009700019-430201" target="_blank" rel="noopener">工商時報 — 拚 2 兆美元上市、12 檔受惠供應鏈（10/9）</a></li>
+      <li><a href="https://finance.technews.tw/2026/10/27/anthropic-ipo-ignites-chip-rally-post-holiday-rebound-focus-abf-lockup-cowos-price-hikes" target="_blank" rel="noopener">科技新報 — 遞交 IPO 點燃晶片狂歡（10/27）</a></li>
+      <li><a href="https://money.udn.com/money/story/5612/9839271" target="_blank" rel="noopener">經濟日報／中央社 — 台股漲逾 500 點後翻黑（10/27）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5619657" target="_blank" rel="noopener">自由財經 — 美股收盤：AI 概念股領漲、台積電 ADR 漲 1.40%（10/27）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="18">
+      <li><a href="https://cappnotes.substack.com/p/closing-look-monday-october-26-2026" target="_blank" rel="noopener">Capp Notes — 10/26 收盤總覽</a></li>
+      <li><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262240365-us-stock-close-nasdaq-anthropic-ipo-s1-semiconductor-ai-tradingkey" target="_blank" rel="noopener">TradingKey — 美股收盤：費半漲近 3%（10/26）</a></li>
+      <li><a href="https://www.marketalleys.com/post/anthropic-ipo-prospectus-details-alphabet-and-amazon-stakes-2026-10-26" target="_blank" rel="noopener">MarketAlleys — Alphabet、Amazon 股價（10/26）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/quote/%5ETWII" target="_blank" rel="noopener">Yahoo 股市 — 加權指數、台積電、鴻海收盤（10/27）</a></li>
+      <li><a href="https://www.nownews.com/news/6886905" target="_blank" rel="noopener">NOWnews — 台股盤中最深跌至 45,676 點、震盪 909 點（10/27）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 27 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'費城半導體', s:'11,083.47', v:2.82},
+    {l:'那斯達克', s:'26,169.38', v:0.82},
+    {l:'輝達 NVDA', s:'', v:2.39},
+    {l:'博通 AVGO', s:'', v:2.33},
+    {l:'AMD', s:'', v:2.80},
+    {l:'美光 MU', s:'', v:2.98},
+    {l:'台積電 ADR', s:'424.37 美元', v:1.40},
+    {l:'微軟 MSFT', s:'532.60 美元', v:1.54},
+    {l:'亞馬遜 AMZN', s:'249.09 美元', v:0.44},
+    {l:'Alphabet', s:'316.80 美元', v:-1.06},
+    {l:'加權指數', s:'10/27 收盤', v:0.12},
+    {l:'台積電 2330', s:'10/27 收盤', v:0.63}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
