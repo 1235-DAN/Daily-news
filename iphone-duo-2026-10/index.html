@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone Duo 上市與螢幕災情解讀</title>
+<meta name="description" content="蘋果首款摺疊手機 iPhone Duo 10 月 23 日開賣即缺貨，開賣首週卻傳內螢幕沿摺痕破裂；整理災情經過、蘋果回應、鉸鏈供應鏈股價與對台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 07 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 08 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#issue">災情與回應</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技解讀 · 蘋果首款摺疊手機開賣第 5 天 · 資料截至 2026 年 10 月 27 日</p>
+      <h1>iPhone Duo 賣到缺貨，卻傳「摺不到 20 次就裂」：蘋果承認少數內螢幕出問題</h1>
+      <p class="lede">蘋果首款摺疊 iPhone「iPhone Duo」10 月 23 日在 70 多個國家和地區開賣，美國新訂單交期排到 2027 年 1 月。開賣隔天起，Reddit 陸續出現內螢幕沿摺痕（鉸鏈所在的對摺線）裂開的案例；10 月 26 日蘋果承認「少數機台」內螢幕受影響，開放免費換機但沒說原因。股市上，蘋果股價只小跌，韓國鉸鏈零件廠和台灣軸承股卻重挫。接下來要看的是：這是個別組裝瑕疵，還是設計問題。</p>
+    </div>
+    <div class="stmt" aria-label="iPhone Duo 台灣起售價">
+      <div class="k">iPhone Duo 台灣售價</div>
+      <div class="range">74,900<small>元起</small></div>
+      <div class="was">2TB 118,900 元 · 美國 1,999 美元起</div>
+      <div class="stmt-row">
+        <div><div class="v">70+</div><div class="l">10/23 首賣國家／地區</div></div>
+        <div><div class="v">−15.7%</div><div class="l">韓鉸鏈廠 Fine M-Tech 10/26</div></div>
+        <div><div class="v">37,350</div><div class="l">台灣內螢幕保外維修估價（元）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>8 個重點看懂 iPhone Duo 的開賣與螢幕裂痕風波</h2>
+      <p>懶人包：需求很強、貨很少，但摺疊螢幕的耐用度成了蘋果第一款摺疊機的最大問號；目前證實的是「少數個案」，原因未明。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>蘋果第一支摺疊 iPhone 已上市。</b>9 月 9 日與 iPhone 18 Pro 同場發表，10 月 16 日開放預購，10 月 23 日在 70 多個國家和地區開賣，10 月 30 日再擴大到 28 個市場。</div></li>
+      <li><div><b>價格是 iPhone 史上最高。</b>美國 1,999～3,199 美元，台灣 74,900～118,900 元；入門款比 iPhone 18 Pro Max（1,299 美元）貴約 700 美元。</div></li>
+      <li><div><b>需求遠大於供給。</b>預購數分鐘售罄，美國 256GB 交期排到 2027 年 1 月 22 日；北京店外黃牛加價 3,000 人民幣收購，eBay 轉售價超過 4,000 美元。</div></li>
+      <li><div><b>開賣隔天就傳災情。</b>澳洲用戶表示用了約 6 小時、開闔不到 20 次，內螢幕就沿摺痕裂開；美國另有用戶開闔約 4 次、還沒完成設定就裂。多數人獲 Apple Store 免費換機。</div></li>
+      <li><div><b>蘋果 10 月 26 日承認問題。</b>聲明說「少數 iPhone Duo」內螢幕受影響，請用戶聯絡 AppleCare 換機，不需要買 AppleCare+（延長保固方案）；但沒說原因，也沒有召回。</div></li>
+      <li><div><b>原因仍是推測。</b>維修網站 iFixit 拆解後認為，鉸鏈中央支撐條在對摺時可能沒完全收回、擠壓螢幕；但部分網路照片被指為 AI 偽造，案例總數不明。</div></li>
+      <li><div><b>股市「蘋果穩、零件廠慘」。</b>蘋果 10/26 跌約 1.1%（343.91 美元），市值仍約 5 兆美元；韓國鉸鏈零件廠 Fine M-Tech 單日暴跌 15.7%，台股鉸鏈龍頭新日興 10/27 盤中一度跌近 8.5%。</div></li>
+      <li><div><b>台灣兩頭都受影響。</b>台灣消費者開賣當天碰上颱風停班停課、直營店只供取貨；產業面則是鴻海組裝、台積電 2 奈米 A20 Pro 晶片、新日興鉸鏈都在供應鏈上，災情若擴大，衝擊先落在鉸鏈股。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼開賣就出事？4 個背景讓摺疊 iPhone 特別脆弱</h2>
+      <p>第 1、2 點是蘋果與供應鏈公開的事實；第 3、4 點來自媒體、拆解者與分析師的觀察，蘋果並未證實。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>摺疊螢幕本來就是手機最難的零件</h3><p>摺疊手機的內螢幕不能用一般硬玻璃，表層是可彎曲的超薄玻璃加聚合物，像一張每天被對摺幾十次的紙。蘋果宣稱鍍膜剛度比業界高 40%，並用鈦金屬板加強底部支撐，但鉸鏈有 100 多個零件，任何公差都會直接壓在螢幕上。</p></div><div class="ev"><span class="tag">鉸鏈零件 100+ 個</span><span class="tag">內螢幕莫氏 2 級就刮傷</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>良率還沒爬上來就趕著大量出貨</h3><p>鴻海供應鏈消息指出，截至 9 月 17 日最終組裝良率只略高於 60%（一般成熟機種通常更高）。開賣後需求爆量，經濟日報 10/26 報導蘋果要求供應商加單約 30%，今年備貨量從 600 萬支上修到 800～1,000 萬支。</p></div><div class="ev"><span class="tag">組裝良率 ≈60%</span><span class="tag">追單 +30%</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>鉸鏈中央支撐條可能擠壓螢幕</h3><p>iFixit 10/25 拆解後指出，裂痕出現的位置正好是鉸鏈形狀不同之處，推測中央支撐條在闔上時沒有完全退開，對螢幕施加過大壓力；另一位評測者也拍到裂痕起點附近的鉸鏈內部零件斷裂。</p></div><div class="ev"><span class="tag">iFixit 拆解推測</span><span class="tag">蘋果未證實</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>個案與偽造照片混在一起，放大了恐慌</h3><p>Reddit 版主把澳洲苦主的貼文標為「Verified Claim（已驗證）」，但 9to5Mac 等媒體也指出有幾則是 AI 生成的假照片；也有人提醒部分「裂痕」可能是排線電路故障，而不是螢幕實體破裂。</p></div><div class="ev"><span class="tag">真假案例並存</span><span class="tag">總數不明</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>產品與銷售主線</span><span><i class="g"></i>災情與股價衝擊</span><span><i></i>供應鏈與其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-09-09</div><div class="what"><b>蘋果發表 iPhone Duo</b>，與 iPhone 18 Pro／Pro Max 同場；美國 1,999 美元起。</div></li>
+        <li class="geo"><div class="date">2026-09-10</div><div class="what">台股蘋概股「利多出盡」，<b>新日興盤中重挫約 8%</b>、富世達挫 4%、兆利跌逾 2.8%。</div></li>
+        <li><div class="date">2026-09-17</div><div class="what">供應鏈消息：鴻海組裝<b>良率僅略高於 60%</b>。</div></li>
+        <li class="key"><div class="date">2026-10-16</div><div class="what"><b>開放預購</b>（台灣晚上 8 點），數分鐘售罄。</div></li>
+        <li class="key"><div class="date">2026-10-23</div><div class="what"><b>全球 70+ 市場開賣</b>；美國交期排到 2027/1/22。蘋果市值盤中一度超越 Nvidia（約 5.1 兆美元）。台灣碰上颱風「薔琵」全台停班停課，電信門市暫停營業。</div></li>
+        <li class="geo"><div class="date">2026-10-24</div><div class="what">Reddit 出現<b>「用 6 小時、摺不到 20 次就裂」</b>案例，台灣媒體開始報導災情。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li><div class="date">2026-10-25</div><div class="what">iFixit 拆解，推測<b>鉸鏈中央支撐條擠壓螢幕</b>；美國保外內螢幕維修 999 美元。</div></li>
+        <li class="geo"><div class="date">2026-10-26</div><div class="what"><b>蘋果聲明承認「少數機台」內螢幕受影響</b>，開放 AppleCare 換機；韓國 Fine M-Tech 跌 15.7%，蘋果收跌約 1.1%。經濟日報報導蘋果追單 30%。</div></li>
+        <li class="geo"><div class="date">2026-10-27</div><div class="what">台股連假後首個交易日，<b>新日興盤中一度跌近 8.5%</b>至 158 元，富世達、兆利跌逾 2%。</div></li>
+        <li><div class="date">2026-10-30</div><div class="what">iPhone Duo 擴大到<b>另外 28 個市場</b>開賣。</div></li>
+        <li><div class="date">2026-11-02</div><div class="what">蘋果公布會計年度第 4 季財報（7～9 月，<b>不含 Duo 銷售</b>），市場關注管理層對災情與供貨的說法。</div></li>
+        <li><div class="date">2027-01-22</div><div class="what">美國官網顯示的<b>下一批出貨時間</b>。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 issue (event-specific) -->
+<section id="issue">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 災情與蘋果回應</div>
+      <h2>災情長什麼樣？目前有紀錄的案例與蘋果怎麼處理</h2>
+      <p>以下案例來自 Reddit 用戶自述，經媒體整理；蘋果沒有評論個案，也沒有公布受影響的機台數量。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>案例（地區）</th><th>使用時間／開闔次數</th><th>狀況</th><th>處理結果</th></tr></thead>
+        <tbody>
+          <tr><td><b>Midnight_Slump（澳洲）</b></td><td class="num">約 6 小時／&lt;20 次</td><td>展開時鉸鏈下方卡住、「喀」一聲，內螢幕沿摺痕裂開並出現白色亮線</td><td>Apple Store 當場免費換新機</td></tr>
+          <tr><td><b>leftyhyzer16（美國）</b></td><td class="num">設定未完成／約 4 次</td><td>鉸鏈變緊，打開時巨響，內螢幕損壞</td><td>Apple Store 免費換機</td></tr>
+          <tr><td><b>chimchambam（美國）</b></td><td class="num">約 3 小時／約 20 次</td><td>類似裂痕</td><td>佛州傑克森維爾門市懷疑摔落，建議先買 AppleCare+，<b>拒絕免費換機</b>（發生在蘋果聲明前）</td></tr>
+          <tr><td><b>schemastic（美國）</b></td><td class="num">取貨後 &lt;7 小時</td><td>螢幕損壞；用戶裝有書本式保護殼，無法排除殼卡住</td><td>Apple Store 免費換機</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><div class="sec-num">蘋果聲明 · 10/26 太平洋時間 10:14</div><h3>「我們已注意到有少數 iPhone Duo 的內螢幕出現問題。」</h3><p class="small muted">蘋果請用戶聯絡 AppleCare 換機，<b>不需要 AppleCare+</b>；透過電信商購買的人也直接找 AppleCare。沒有說明原因，也沒有宣布召回或產線調整。蘋果 10/23 另發布鉸鏈疑難排解指南：鉸鏈問題<b>無法用軟體修復</b>，維修流程是檢查後更換內螢幕組件。</p></div>
+      <div class="card"><div class="sec-num">壓力測試 · JerryRigEverything</div><h3>外螢幕耐刮到莫氏 7 級，內螢幕 2 級就刮傷</h3><p class="small muted">YouTube 頻道 JerryRigEverything 測試發現：指甲就能在內螢幕留痕；大量沙塵灌進鉸鏈後手機闔不起來（雖然標榜 IP68 防塵防水）；反向彎折後機身沒斷，但內螢幕出現永久綠線、最後觸控失靈。這是刻意的極端測試，不能直接等同 Reddit 的日常使用裂痕。</p></div>
+    </div>
+    <div class="note warn">截至 10 月 27 日查證時，蘋果尚未公布裂痕原因、受影響數量或是否調整產線。報導指出初期貨源有限，換機可能要等待。</div>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>美國、中國、南韓：一邊缺貨、一邊在找責任歸屬</h2>
+      <p>iPhone Duo 是全球同步上市，災情首先在美國與澳洲用戶間擴散；南韓是面板與鉸鏈零件的供應國，中國則是最競爭的高階市場。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">美國售價（256GB）</div><div class="v">$1,999</div><div class="d">2TB 為 $3,199</div></div>
+      <div class="tile"><div class="l">美國新訂單交期</div><div class="v">2027/1/22</div><div class="d">英國為 1/25</div></div>
+      <div class="tile"><div class="l">美國保外內螢幕維修</div><div class="v">$999</div><div class="d">AppleCare+ 用戶的內螢幕保護層更換 $19</div></div>
+      <div class="tile"><div class="l">北京黃牛加價</div><div class="v">¥3,000</div><div class="d">約 448 美元／支</div></div>
+      <div class="tile"><div class="l">南韓售價</div><div class="v">329 萬韓元</div><div class="d">約 2,500 美元起</div></div>
+      <div class="tile"><div class="l">日本售價（256GB）</div><div class="v">¥364,800</div><div class="d">約 2,300 美元</div></div>
+      <div class="tile"><div class="l">蘋果市值（10/23 收盤）</div><div class="v">5.074 兆</div><div class="d">美元；Nvidia 5.094 兆</div></div>
+      <div class="tile"><div class="l">Fine M-Tech（10/26）</div><div class="v down">−15.7%</div><div class="d">收 9,400 韓元</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國（蘋果本國、災情主要來源）</h3><ul class="plain">
+        <li>蘋果高層 John Ternus、Deirdre O'Brien 在德州奧斯汀門市迎接首批顧客；門市現貨有限，排隊者很多空手而回。</li>
+        <li>四個 Reddit 案例中有三個在美國；其中佛州門市一度要求先買 AppleCare+，蘋果 10/26 聲明後統一為免費換機。</li>
+        <li>蘋果 11/2 公布財報，季度截至 9 月，不含 Duo 銷售，但管理層對災情與追單的說法會是焦點。</li>
+      </ul></div>
+      <div class="card"><h3>南韓（零件供應國）</h3><ul class="plain">
+        <li>三星顯示（三星電子持股 84.78%）據報是內螢幕面板的實質獨家供應商，報導稱每片約 250 美元，蘋果與三星均未證實。</li>
+        <li>鉸鏈背板廠 Fine M-Tech 10/26 暴跌 15.7%，公司聲明問題「並非我們供應的零件品質瑕疵」，並考慮對不實說法提告。</li>
+      </ul></div>
+      <div class="card"><h3>中國（高階市場主戰場）</h3><ul class="plain">
+        <li>上海靜安店是首賣地之一；北京店外黃牛每支加價 3,000 人民幣收購。</li>
+        <li>華為 Mate X7 已降價 1,000 人民幣至 11,999 人民幣起，Duo 在中國的對手是本土摺疊機（推論：災情可能成為華為行銷素材）。</li>
+      </ul></div>
+      <div class="card"><h3>日本、澳洲</h3><ul class="plain">
+        <li>日本四大電信（Docomo、au、SoftBank、樂天）一次付清價約 41.9～43.6 萬日圓；Reddit 流傳疑似日本門市展示機損壞照片，真偽未證實。</li>
+        <li>澳洲是第一起「已驗證」案例的發生地，苦主在門市當場換機。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>市場把災情算在零件廠頭上：蘋果只跌 1%，鉸鏈股跌 8～16%</h2>
+      <p>蘋果營收來源多、市值大，一款新機的瑕疵難撼動；但鉸鏈廠「題材純度」高，消息一出就被賣。台股 10/23～10/26 因連假與颱風休市，10/27 才反映。紅漲綠跌依台灣習慣。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/23～10/27 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">各自最新交易日的漲跌（%）；淡色長條為盤中數字或依報導推算，非收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>連假後首日（10/27）加權指數一度漲逾 500 點後翻黑，盤中 45,963 點、跌 0.17%，主因是權值股回檔，不是 Duo。蘋概股中，新日興盤中一度跌近 8.5%，富世達、兆利跌逾 2%；鴻海在平盤 245 元附近，市場認為組裝廠受追單支撐。</li>
+          <li><b>美股：</b>10/26 那斯達克漲 0.82%、標普 500 漲 0.70%，大盤被 Anthropic 遞件上市激勵；蘋果逆勢跌約 1.1%，災情與 Loop Capital 調降評等、目標價從 370 降到 330 美元是同期利空。</li>
+          <li><b>韓股：</b>Fine M-Tech 10/26 盤中跌逾 15%、收跌 15.7%，是全球唯一被直接點名的零件廠。</li>
+          <li><b>要注意：</b>新日興早在 9/10 發表會後就因「利多出盡」與「鉸鏈訂單被鴻海分食」走弱，10/27 的跌勢有一部分是延續（推論）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">AAPL</td><td><b>蘋果</b></td><td>美股</td><td class="num">343.91 美元（10/26）</td><td class="num down">−1.10%</td><td class="period">10/23 盤中創高 351.73，收 347.73（−0.14%）</td><td>開賣即缺貨支撐，但災情、券商調降評等壓抑；市值約 5 兆美元</td></tr>
+          <tr><td class="num">KOSDAQ</td><td><b>Fine M-Tech</b></td><td>韓股 KOSDAQ</td><td class="num">9,400 韓元（10/26）</td><td class="num down">−15.70%</td><td class="period">單日跌幅最大</td><td>供應鉸鏈背板，被網路點名；公司否認零件瑕疵</td></tr>
+          <tr><td class="num">3376</td><td><b>新日興</b></td><td>台股</td><td class="num">盤中低 158 元（10/27）</td><td class="num down">約 −8.5%（盤中）</td><td class="period">10/22 收 172.5 元；之後回到 160 元附近</td><td>與鴻海合資承接鉸鏈訂單，題材最純，災情直接衝擊</td></tr>
+          <tr><td class="num">6805</td><td><b>富世達</b></td><td>台股</td><td class="num">未查到</td><td class="num down">跌逾 2%（盤中）</td><td class="period">9/10 發表會後曾挫 4%</td><td>軸承同業，同步下跌</td></tr>
+          <tr><td class="num">3548</td><td><b>兆利</b></td><td>台股</td><td class="num">未查到</td><td class="num down">跌逾 2%（盤中）</td><td class="period">9/10 發表會後跌逾 2.8%</td><td>鉸鏈題材股，實際接單比重未證實</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">約 245 元（10/27 盤中）</td><td class="num">平盤附近</td><td class="period">早盤一度 247 元</td><td>負責組裝；追單 30% 是利多，良率約 60% 是隱憂</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">約 2,405 元（10/27 盤中）</td><td class="num">盤中由紅翻黑</td><td class="period">開盤跌破半年線</td><td>代工 A20 Pro（2 奈米）晶片，股價主要受 AI 與大盤影響</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克</b></td><td>美股指數</td><td class="num">26,169.38（10/26）</td><td class="num up">+0.82%</td><td class="period">—</td><td>Anthropic 遞件上市，AI 樂觀情緒回升</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股指數</td><td class="num">45,963.40（10/27 10:44）</td><td class="num down">−0.17%（盤中）</td><td class="period">前一交易日 10/22 收 46,041.43（−1.81%）</td><td>權值股台達電等回檔，與 Duo 關係不大</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 10/26 收盤（蘋果數字取自 Motley Fool 報價列，Invezz 同期報導約 343.90 美元）；韓股為 10/26 收盤；台股為 10/27 盤中數字（查證時未取得收盤），來源：Motley Fool、BigGo Finance、Yahoo Finance、聯合新聞網、中央社／經濟日報。富世達、兆利收盤價未查到。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>蘋果的第一款摺疊機，決定整個摺疊手機市場會不會長大</h2>
+      <p>影響透過三條路擴散：消費者對「摺疊機耐用嗎」的信心、跨國零件供應鏈的訂單與責任歸屬，以及蘋果與三星、華為的高階機競爭。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>摺疊機品類的信心</h3><ul class="plain small">
+        <li>蘋果進場被視為摺疊機「普及化」訊號；報導估 2027 年出貨可達 3,300 萬支（非官方目標）。</li>
+        <li>若裂痕證實是設計問題，消費者可能對整個品類卻步（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>跨國供應鏈的責任攻防</h3><ul class="plain small">
+        <li>面板來自南韓三星顯示，鉸鏈由新日興與鴻海合資、安費諾、Fine M-Tech 等分工，組裝在鴻海。</li>
+        <li>Fine M-Tech 已公開否認並揚言提告，顯示零件廠急著切割責任。</li>
+      </ul></article>
+      <article class="card"><h3>三星顯示的面板生意</h3><ul class="plain small">
+        <li>Omdia 預估三星顯示 2026 年摺疊面板市占升至 66%，Counterpoint 估去年為 46%。</li>
+        <li>報導稱蘋果與三星簽三年獨家、每片約 250 美元，雙方未證實。</li>
+      </ul></article>
+      <article class="card"><h3>高階手機競爭</h3><ul class="plain small">
+        <li>華為 Mate X7 降價至 11,999 人民幣起，三星 Galaxy Z Fold 系列已出到第 8 代。</li>
+        <li>對手已有多年摺疊耐用度經驗，蘋果首代的口碑會影響後續換機潮（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>維修與二手市場</h3><ul class="plain small">
+        <li>保外內螢幕維修 999 美元、台灣估 37,350 元，接近一支中階手機價格。</li>
+        <li>黃牛轉售溢價與「換機要排隊」並存，可能推升 AppleCare+ 投保意願（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>資本市場</h3><ul class="plain small">
+        <li>10/23 蘋果市值盤中一度超越 Nvidia 重回全球第一，收盤以約 200 億美元之差居次。</li>
+        <li>有分析指資金從 AI 晶片股部分輪動到蘋果；災情若擴大，這個敘事會受考驗（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依蘋果聲明、iFixit 拆解與供應鏈報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>少數組裝瑕疵，換機平息</h3><ul class="plain small">
+        <li>案例維持零星，蘋果靠換機與產線微調處理，不召回。</li>
+        <li>缺貨仍是主要話題，鉸鏈股跌勢逐步收斂。</li>
+        <li>11/2 財報上，蘋果以「需求強勁」帶過災情。</li>
+      </ul><p class="trig">觸發條件：10/30 新增 28 國開賣後，災情案例沒有明顯增加；iFixit 或其他拆解者找不到共通設計缺陷。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>證實鉸鏈設計問題，延後出貨</h3><ul class="plain small">
+        <li>類似 2019 年三星首代 Galaxy Fold 評測機螢幕損壞、延後上市的情況。</li>
+        <li>蘋果暫緩出貨或宣布延長保固，2027/1 的出貨時程再延後。</li>
+        <li>鉸鏈與面板廠面臨重新驗證、訂單調整，股價承壓。</li>
+      </ul><p class="trig">觸發條件：案例大量增加、出現第三方證實的共通結構缺陷，或監管機關介入。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>多數是偽造或使用不當</h3><ul class="plain small">
+        <li>更多「災情」被證實是 AI 假圖、保護殼卡住或排線故障。</li>
+        <li>焦點回到追單 30% 與 2027 年 3,300 萬支的成長題材。</li>
+        <li>被錯殺的鉸鏈股可能反彈（推論）。</li>
+      </ul><p class="trig">觸發條件：蘋果或 iFixit 公布 CT 掃描結果，排除設計缺陷；換機後的新機沒有再出問題。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10 月 30 日 · 28 國新市場開賣</b>：用戶基數擴大後，災情是否等比例增加，是判斷「個案」還是「系統性」的關鍵。</li>
+      <li><b>iFixit CT 掃描結果</b>：東森報導 iFixit 正以 CT 掃描調查原因，若證實中央支撐條設計問題，責任將落在鉸鏈端。</li>
+      <li><b>11 月 2 日 · 蘋果財報與電話會議</b>：管理層是否說明裂痕原因、產能與良率，以及 12 月季度的營收指引。</li>
+      <li><b>官網交期變化</b>：交期若從 2027/1/22 往後延，可能代表產線在調整；若提前，代表良率改善。</li>
+      <li><b>新日興、鴻海 10 月營收</b>：11 月上旬公布，可看出追單是否真的反映到台廠。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>鉸鏈／軸承</h3><span class="tag bad">利空</span></div><p>裂痕位置在鉸鏈處，市場直覺把責任歸給鉸鏈；即使最後證實無關，短期也要面對客戶重新驗證的壓力（推論）。</p><div class="data">Fine M-Tech −15.7%；新日興盤中 −8.5%</div></article>
+      <article class="card"><div class="top"><h3>摺疊 OLED 面板</h3><span class="tag">好壞參半</span></div><p>三星顯示幾乎獨家供應，追單直接受惠；但若問題出在面板層，換機的維修量與賠償也會回到面板端（推論）。</p><div class="data">報導每片約 250 美元（未證實）</div></article>
+      <article class="card"><div class="top"><h3>組裝代工</h3><span class="tag">好壞參半</span></div><p>鴻海拿到追單，但良率只有約 60%，代表每 10 支有約 4 支要重工；量越大、良率壓力越大。</p><div class="data">追單約 +30%；良率 ≈60%（9/17）</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag good">受惠</span></div><p>A20 Pro 是台積電 2 奈米製程，Duo 與 iPhone 18 Pro 共用，螢幕災情不影響晶片需求。</p><div class="data">A20 Pro：2 奈米、6 核 CPU</div></article>
+      <article class="card"><div class="top"><h3>軟板／PCB</h3><span class="tag good">受惠</span></div><p>摺疊結構需要更多跨鉸鏈的軟性電路板，臻鼎-KY、台郡被列為受惠名單；但部分「裂痕」疑似排線故障，品質要求更嚴（推論）。</p><div class="data">臻鼎 2026 年蘋果營收占比估 60～65%</div></article>
+      <article class="card"><div class="top"><h3>維修與延長保固</h3><span class="tag good">受惠</span></div><p>內螢幕保外維修動輒上萬元，消費者更可能加購 AppleCare+ 或第三方手機險（推論）。</p><div class="data">台灣保外 37,350 元 vs AppleCare+ 3,200 元</div></article>
+      <article class="card"><div class="top"><h3>電信與通路</h3><span class="tag">好壞參半</span></div><p>高單價機帶動綁約與分期，但台灣首賣日遇颱風門市全關，好市多則傳出開賣 5 分鐘售完。</p><div class="data">台灣 10/23 全台停班停課（金門除外）</div></article>
+      <article class="card"><div class="top"><h3>保護殼與配件</h3><span class="tag">好壞參半</span></div><p>新外型帶動配件需求；但有案例無法排除書本式保護殼卡住鉸鏈，第三方配件可能被要求更謹慎（推論）。</p><div class="data">官方 Duo Folio 129 美元</div></article>
+      <article class="card"><div class="top"><h3>競爭品牌摺疊機</h3><span class="tag good">受惠</span></div><p>三星、華為已有多代摺疊經驗，蘋果首代的耐用度疑慮給了對手比較的空間（推論）。</p><div class="data">華為 Mate X7 降至 11,999 人民幣起</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台灣同時是買家和供應商：消費者要等貨，鉸鏈股先挨打</h2>
+      <p>台灣最在意三件事：自己買的手機壞了怎麼辦、要等多久，以及鴻海、台積電、新日興這條供應鏈會不會被拖累。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>售價：</b>256GB 74,900 元、512GB 81,900 元、1TB 96,900 元、2TB 118,900 元。</li>
+        <li><b>首賣遇颱風：</b>10/23 颱風「薔琵」造成全台停班停課（金門除外），三大電信門市暫停營業，已預約者改到復業後取機；直營店本來就只供線上訂單取貨、不賣現場機。</li>
+        <li><b>維修成本：</b>今周刊整理的保外內螢幕維修估價 37,350 元，有 AppleCare+ 為 3,200 元。</li>
+        <li><b>股價：</b>10/27 新日興盤中一度跌近 8.5%，富世達、兆利跌逾 2%；鴻海在平盤附近。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li>蘋果的換機承諾是全球適用，台灣用戶遇到內螢幕問題應直接聯絡 AppleCare，即使是在電信門市購買。</li>
+        <li>若災情擴大、蘋果調整鉸鏈設計，新日興與鴻海合資公司的出貨節奏與獲利可能被影響。</li>
+        <li>鴻海追單是利多，但 60% 良率若沒有改善，代工成本會侵蝕利潤。</li>
+        <li>台積電的 A20 Pro 與 iPhone 18 Pro 共用，Duo 的災情對台積電影響有限。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>已入手的消費者</b></td><td><span class="tag">需留意</span></td><td>出現白線、裂痕、鉸鏈異音可免費換機（不需 AppleCare+），但貨源少、可能要等；人為損壞仍要自費。</td></tr>
+          <tr><td><b>想買的消費者</b></td><td><span class="tag">可觀望</span></td><td>新訂單交期排到明年 1 月，等待期間可觀察 10/30 擴大開賣後的災情變化（推論）。</td></tr>
+          <tr><td><b>鉸鏈／軸承股投資人</b></td><td><span class="tag bad">利空</span></td><td>新日興、富世達、兆利題材純度高，消息面波動大；9/10 與 10/27 兩度重挫。</td></tr>
+          <tr><td><b>組裝與晶片供應鏈</b></td><td><span class="tag good">相對有利</span></td><td>鴻海受惠追單 30%，台積電晶片需求與災情無關。</td></tr>
+          <tr><td><b>電信業者</b></td><td><span class="tag">好壞參半</span></td><td>高單價綁約有利營收，但首賣日遇颱風、又要處理換機諮詢。</td></tr>
+          <tr><td><b>手機維修與保險業</b></td><td><span class="tag good">相對有利</span></td><td>高額維修費讓延長保固與手機險更有吸引力（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">截至 10 月 27 日查證時，本報告未查到台灣官方（如行政院消保處、NCC）針對 iPhone Duo 螢幕問題的表態；蘋果台灣也未另發在地聲明。</div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>蘋果官方只談開賣盛況，外媒科技網站追查原因與真假，台灣媒體重苦主故事與換機，財經媒體則把焦點放在誰的股價受傷。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Apple Newsroom</td><td>官方開賣新聞</td><td>iPhone Duo 在全球 Apple Store 登場</td><td>高層迎賓、購買管道，完全未提災情</td></tr>
+          <tr><td>Macworld</td><td>產品完整指南</td><td>價格、規格、上市與問題</td><td>鉸鏈疑難排解指南、長期耐用度仍未知</td></tr>
+          <tr><td>9to5Mac</td><td>蘋果回應</td><td>蘋果回應內螢幕破裂報告</td><td>聲明全文、不需 AppleCare+、有 AI 假圖</td></tr>
+          <tr><td>BigGo Finance</td><td>韓國供應鏈</td><td>Fine M-Tech 暴跌 15%</td><td>公司否認並揚言提告、iFixit 999 美元</td></tr>
+          <tr><td>Yahoo Finance</td><td>市值競賽</td><td>蘋果在 Duo 開賣日超越 Nvidia</td><td>本益比 45 倍、資金輪動</td></tr>
+          <tr><td>東森新聞</td><td>災情與換機</td><td>開賣首週螢幕爆裂痕，蘋果回應了</td><td>iFixit CT 掃描、未全面召回</td></tr>
+          <tr><td>自由時報 3C</td><td>苦主故事</td><td>用 6 小時就螢幕自裂、摺不到 20 次</td><td>Reddit「Verified Claim」、Touch ID 疑慮</td></tr>
+          <tr><td>聯合新聞網</td><td>台股鉸鏈股</td><td>螢幕裂痕疑與「這問題」有關，新日興 160 元保衛戰</td><td>備貨上修到 800～1,000 萬支</td></tr>
+          <tr><td>yipee! 3C</td><td>案例與測試整理</td><td>多名用戶回報破裂，測試發現進塵、綠線</td><td>逐一列出苦主案例與處理結果</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10/23 開賣、需求遠大於供給、交期排到 2027 年 1 月。</li>
+        <li>裂痕都出現在內螢幕摺痕（鉸鏈）位置，多數苦主獲免費換機。</li>
+        <li>蘋果承認「少數」機台受影響，但未說明原因、未召回。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>時間差：</b>10/24 的報導寫「蘋果尚未回應」，10/26 後才有正式聲明，讀舊文要看日期。</li>
+        <li><b>真假混雜：</b>外媒提醒部分照片是 AI 生成，台灣媒體較少強調這點。</li>
+        <li><b>測試 ≠ 日常：</b>JerryRigEverything 的沙塵與反折是極端測試，不能直接當作災情原因。</li>
+        <li><b>股價時點：</b>台股報導多為盤中數字（如「下探 158 元」），與收盤可能不同。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>蘋果是否回應</td><td>尚未公開回應（自由時報 10/24）</td><td>承認少數機台受影響（9to5Mac 10/26）</td><td>報導時間不同</td></tr>
+          <tr><td>能否免費換機</td><td>佛州門市要求先買 AppleCare+（yipee 整理）</td><td>不需 AppleCare+（蘋果 10/26 聲明）</td><td>門市個別處理發生在聲明之前</td></tr>
+          <tr><td>新日興 10/27 跌幅</td><td>下探 158 元、近 −8.5%（聯合）</td><td>回到 160 元附近（約 −7%）</td><td>盤中低點 vs 稍後價位</td></tr>
+          <tr><td>今年備貨量</td><td>600 萬支（原估）</td><td>800～1,000 萬支（上修，聯合／經濟日報）</td><td>追單後上修，均非蘋果官方數字</td></tr>
+          <tr><td>內螢幕保外維修</td><td>999 美元（iFixit／美國）</td><td>37,350 元（今周刊／台灣估價）</td><td>不同市場、台灣為媒體估算</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 27 日。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.apple.com/newsroom/2026/10/iphone-duo-arrives-at-apple-store-locations-worldwide/" target="_blank" rel="noopener">Apple Newsroom — iPhone Duo 在全球 Apple Store 登場（10/23）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="2">
+      <li><a href="https://www.macworld.com/article/2629813/iphone-duo-folding-design-price-specs-release-date.html" target="_blank" rel="noopener">Macworld — iPhone Duo 價格、規格、上市與問題指南</a></li>
+      <li><a href="https://9to5mac.com/2026/10/26/apple-responds-to-reports-of-iphone-duos-inner-display-cracking/" target="_blank" rel="noopener">9to5Mac — 蘋果回應內螢幕破裂報告（10/26）</a></li>
+      <li><a href="https://finance.biggo.com/news/f4b4a4e5-b555-4abe-8a04-e3baf5865a48" target="_blank" rel="noopener">BigGo Finance — Fine M-Tech 因耐用度爭議暴跌逾 10%（10/26）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/apple-just-passed-nvidia-world-111537504.html" target="_blank" rel="noopener">Yahoo Finance — 蘋果在 Duo 開賣日超越 Nvidia（10/24）</a></li>
+      <li><a href="https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-today-oct-26-ai-optimism-lifts-nasdaq-as-tech-stocks-rebound/" target="_blank" rel="noopener">Motley Fool — 10/26 美股收盤：AI 樂觀推升那斯達克（10/26）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="7">
+      <li><a href="https://news.ebc.net.tw/news/living/577627" target="_blank" rel="noopener">東森新聞 — 開賣首週傳災情，蘋果回應了（10/27）</a></li>
+      <li><a href="https://3c.ltn.com.tw/news/68048" target="_blank" rel="noopener">自由時報 3C — 用 6 小時就螢幕自裂、摺不到 20 次（10/24）</a></li>
+      <li><a href="https://udn.com/news/story/7252/9839122" target="_blank" rel="noopener">聯合新聞網 — 螢幕裂痕疑與鉸鏈有關，新日興重挫（10/27）</a></li>
+      <li><a href="https://udn.com/news/story/7241/9833698" target="_blank" rel="noopener">聯合新聞網 — iPhone Duo 開賣碰上颱風，電信門市放颱風假（10/23）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6603008" target="_blank" rel="noopener">鉅亨網 — 蘋果摺疊機開賣 11.89 萬，新日興重挫 7%（9/10）</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183015/post/202610150023/" target="_blank" rel="noopener">今周刊 — iPhone Duo 售價、規格與維修費一表看（10/15）</a></li>
+      <li><a href="https://3c.yipee.cc/356807/iphone-duo-%E4%B8%8A%E5%B8%82%E5%B0%B1%E5%82%B3%E7%81%BD%E6%83%85%EF%BC%81%E5%A4%9A%E5%90%8D%E7%94%A8%E6%88%B6%E5%9B%9E%E5%A0%B1%E8%9E%A2%E5%B9%95%E7%A0%B4%E8%A3%82%EF%BC%8C%E8%80%90%E7%94%A8%E6%80%A7/" target="_blank" rel="noopener">yipee! 3C — 多名用戶回報螢幕破裂，耐用性測試發現進塵、綠線（10/25）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="14">
+      <li><a href="https://money.udn.com/money/story/5612/9839271" target="_blank" rel="noopener">經濟日報（中央社）— 台股漲逾 500 點後翻黑（10/27 盤中）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 27 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'那斯達克', s:'10/26 · 26,169', v:0.82},
+    {l:'S&P 500', s:'10/26 · 7,677', v:0.70},
+    {l:'蘋果 AAPL', s:'10/23 · 347.73', v:-0.14},
+    {l:'蘋果 AAPL', s:'10/26 · 343.91', v:-1.10},
+    {l:'Fine M-Tech', s:'10/26 · 9,400 韓元', v:-15.70},
+    {l:'加權指數', s:'10/27 盤中', v:-0.17, est:true},
+    {l:'鴻海 2317', s:'10/27 盤中 · 約 245', v:0.00, est:true},
+    {l:'富世達 6805', s:'10/27 盤中 · 跌逾 2%', v:-2.00, est:true},
+    {l:'兆利 3548', s:'10/27 盤中 · 跌逾 2%', v:-2.00, est:true},
+    {l:'新日興 3376', s:'10/27 盤中低點 158', v:-8.50, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
