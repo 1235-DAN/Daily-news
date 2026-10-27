@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>輝達 GTC 柏林 2026 解讀</title>
+<meta name="description" content="黃仁勳 10/21 柏林 GTC 主題演講解讀：DSX POD 貨櫃式 AI 工廠、歐洲主權 AI、實體 AI，新雲端資金疑慮引發的晶片股震盪，以及對台廠與台股的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#products">發表重點</a></li>
+      <li><a class="link" href="#local">歐洲影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技解讀 · 輝達 GTC 柏林 2026 · 資料截至 2026 年 10 月 27 日</p>
+      <h1>黃仁勳在柏林把 AI 工廠裝進貨櫃：14 天上線，但隔天他自己說「缺的是錢」</h1>
+      <p class="lede">輝達（Nvidia）執行長黃仁勳 10 月 21 日在柏林 GTC 大會發表主題演講，推出 DSX POD 貨櫃式「AI 工廠」，把資料中心的現場部署從 6 個月壓到最快 14 天，並承諾對歐洲投入近 100 億美元。鴻海、廣達、緯創、技嘉、和碩、台達電 6 家台廠名列合作夥伴。不過隔天他受訪時坦言新雲端業者（neocloud，專門出租 AI 算力的新興雲端公司）資金吃緊，加上 Meta 現金流轉負，10/22 費半重挫 6.72%、輝達跌 4.40%。</p>
+    </div>
+    <div class="stmt" aria-label="DSX POD 部署時間">
+      <div class="k">DSX POD 現場部署時間（場地就緒後）</div>
+      <div class="range">14<small>天（原 6 個月）</small></div>
+      <div class="was">2027 年初起由 17 家夥伴全球交付</div>
+      <div class="stmt-row">
+        <div><div class="v">100 億</div><div class="l">近・對歐投資（美元）</div></div>
+        <div><div class="v">110 億</div><div class="l">實體 AI 營收（美元）</div></div>
+        <div><div class="v">−4.40%</div><div class="l">NVDA 10/22 跌幅</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>8 個重點看懂柏林 GTC：輝達從賣晶片，變成賣「上線速度」</h2>
+      <p>懶人包：產品面講的是「更快蓋好 AI 工廠」，市場面卻被「誰出錢蓋」的疑慮蓋過；台廠拿到名單，股價卻先跌。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>DSX POD 把 AI 工廠工廠化。</b>每個貨櫃模組裝 7 櫃 Vera Rubin NVL72（共 504 顆 GPU），佈線、管線與測試在工廠先做完，場地就緒後部署從 6 個月縮到最快 14 天，2027 年初開始交付。</div></li>
+      <li><div><b>17 家夥伴裡有 6 家台廠。</b>鴻海（鴻佰）、廣達（雲達 QCT）、緯創、技嘉、和碩、台達電，與 Dell、HPE、Lenovo、Schneider Electric、Vertiv 等並列。</div></li>
+      <li><div><b>歐洲是這場演講的主角。</b>黃仁勳說歐洲「不能只消費 AI，也須生產 AI」，輝達過去一年對歐洲投入近 100 億美元、合作夥伴超過 12,000 家。</div></li>
+      <li><div><b>Vera Rubin 已全面量產。</b>輝達同時推出 OpenShell 安全架構（限制 AI 代理能碰哪些資料與工具），把 AI 代理（agent，會自己動手執行任務的 AI）的安全當成基礎建設來賣。</div></li>
+      <li><div><b>實體 AI（physical AI，讓機器人、車輛在真實世界行動的 AI）開始有營收。</b>高盛報告指出，輝達 2027 會計年度上半年實體 AI 營收 110 億美元，已超過 2026 會計年度全年；Volvo 採用 Hyperion 自駕平台，Bolt 計畫部署至少 2.5 萬輛 L4 自駕車。</div></li>
+      <li><div><b>供應鏈擴產藍圖點名台廠。</b>輝達規劃 3 年內 IC 載板產能增為 2.5 倍（欣興在列），京元電預訂 11 億美元美國測試產能、2027 年 4 月量產，矽品光引擎產能 2027 年中前擴 15 倍。</div></li>
+      <li><div><b>股價先漲後殺。</b>10/21 輝達 +2.54%、台股 +1.28%；10/22 黃仁勳受訪說新雲端「需求高得驚人但資本稀缺」，加上 Meta 首度現金淨流出，費半 −6.72%、輝達 −4.40%、台積電 ADR −4.52%。10/26 Anthropic 申請 IPO，費半反彈 2.82%。</div></li>
+      <li><div><b>對台灣：訂單題材確立，但要看資金面。</b>台股 10/22 收 46,041 點（−1.81%），6 家 DSX POD 台廠全數收黑；10/23～10/26 因颱風與光復節連假休市，10/27 復市後指數在 46,000 點附近震盪。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼選在柏林、為什麼是貨櫃？4 個原因</h2>
+      <p>原因 1、2 是輝達自己在演講與新聞稿中的說法；原因 3、4 是媒體與分析師的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>AI 工廠的瓶頸從晶片變成「蓋好的速度」</h3><p>黃仁勳的說法是「AI 工廠在開始產出 token 時才創造價值，不是蓋完的時候」。傳統資料中心要在現場拉線、接管、測試，約需 6 個月；DSX POD 把這些搬回工廠做，等於把蓋房子改成組合屋。</p></div><div class="ev"><span class="tag">6 個月 → 14 天</span><span class="tag">每模組 504 顆 GPU</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>歐洲要「主權 AI」，輝達要當供應商</h3><p>歐盟 7 月 30 日啟動「AI 超級工廠」招標，公部門資金最多 100 億歐元、預期民間投資至少 200 億歐元，2027 年動工，但晶片還沒定案。黃仁勳在此時到柏林喊「歐洲要生產 AI」，等於直接卡位。</p></div><div class="ev"><span class="tag">歐盟公部門 €100 億</span><span class="tag">2027 動工</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>歐洲的限制是電力，不是需求</h3><p>黃仁勳受訪指出電力是歐洲主要限制，應把稀缺能源分給 Nebius、Mistral 等業者。DSX 平台宣稱同樣 token 產量可省最多 30% 電、冷卻用水可減至零，正好對準歐洲的痛點。</p></div><div class="ev"><span class="tag">省電最多 30%</span><span class="tag">高盛：每日省水 5,600 萬公升</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>市場要的是「投資回報」證據</h3><p>演講前一天（10/20）路透報導輝達只能消化中國三大客戶逾 350 億美元訂單中的一小部分，股價 −0.29%。分析師認為，在 AI 支出疑慮下，輝達需要用實體 AI 營收、部署速度等數字說服投資人（推論）。</p></div><div class="ev"><span class="tag">中國訂單 &gt;350 億美元</span><span class="tag">實體 AI 110 億美元</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>輝達發表與歐洲布局</span><span><i class="g"></i>市場衝擊</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2026-07-30</div><div class="what">歐盟執委會啟動 <b>AI 超級工廠招標</b>，公部門資金最多 100 億歐元。</div></li>
+        <li class="key"><div class="date">2026-10 中旬</div><div class="what">黃仁勳歐洲巡迴（巴黎、倫敦、斯德哥爾摩、都柏林）；前一週推出 <b>RTX Spark 筆電</b>。</div></li>
+        <li class="geo"><div class="date">2026-10-20</div><div class="what">GTC 柏林開幕；路透報導輝達難以消化中國客戶訂單，<b>NVDA −0.29%</b>。</div></li>
+        <li class="key"><div class="date">2026-10-21</div><div class="what">黃仁勳 Tempodrom 主題演講（台灣時間 17:00），發表 <b>DSX POD</b>、Vera Rubin 量產、OpenShell、Hyperion；台股先收 +1.28%，美股 NVDA +2.54%、費半 +1.97%。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-10-22</div><div class="what">台股收 −1.81%，DSX POD 台廠全數收黑；黃仁勳受訪稱新雲端「資本稀缺」，Meta 現金轉負，<b>費半 −6.72%、NVDA −4.40%</b>。</div></li>
+        <li><div class="date">2026-10-23～26</div><div class="what">台股因颱風與光復節連假休市；美股 10/26 因 Anthropic 申請 IPO 反彈，<b>費半 +2.82%</b>。</div></li>
+        <li><div class="date">2026-10-27</div><div class="what">台股復市，盤中在 46,000 點附近震盪，台積電 2,390 元附近。</div></li>
+        <li class="key"><div class="date">2027 年初</div><div class="what">（預定）<b>DSX POD 開始全球交付</b>、Agile ONE SN 人形機器人平台推出；京元電美國測試 2027-04 量產。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 products -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 發表重點</div>
+      <h2>一場演講、五條產品線：從資料中心一路講到機器鴨子</h2>
+      <p>以下依輝達官方部落格與新聞稿整理；效能數字多為輝達自報，第三方尚未驗證。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>類別</th><th>發表內容</th><th>關鍵數字</th><th>夥伴／時程</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>AI 工廠</b></td><td>DSX POD 貨櫃式 Vera Rubin AI 工廠參考設計；DSX MaxLPS 電力軟體</td><td class="num">7 櫃 NVL72／504 GPU；800V 直流供電；省電最多 30%</td><td>17 家夥伴，2027 年初交付</td></tr>
+          <tr><td><b>運算平台</b></td><td>Vera Rubin 全面量產；Spectrum-X 網路</td><td class="num">Sentry 宣稱每 MW 吞吐量 30 倍（輝達自報）</td><td>已量產</td></tr>
+          <tr><td><b>AI 代理</b></td><td>OpenShell 安全代理參考架構、Agent Knowledge Foundation、Kumo、開放模型 Nemotron／Cosmos／GR00T／Alpamayo</td><td class="num">CUDA 開發者 &gt;1,100 萬人</td><td>Siemens 埃爾朗根工廠、Dassault、Lila Sciences 示範</td></tr>
+          <tr><td><b>自駕車</b></td><td>Hyperion 平台、Alpamayo 堆疊</td><td class="num">Bolt 至少 2.5 萬輛 L4</td><td>Volvo、Mercedes-Benz、VW 商用車、JLR、Lucid、Einride</td></tr>
+          <tr><td><b>機器人</b></td><td>Agile ONE SN 人形機器人參考設計、Isaac 開放實體 AI 堆疊</td><td class="num">31 個自由度</td><td>2027 年初；Agility、Figure、KUKA、NEURA</td></tr>
+          <tr><td><b>電信／醫療</b></td><td>AI-RAN（基地台變成分散式 AI 機房）；與 Siemens Healthineers 合作適應性放療</td><td class="num">近 20 家電信商宣布合作</td><td>與 Nokia 在 T-Mobile 網路完成首通商用電話</td></tr>
+          <tr><td><b>個人 AI</b></td><td>RTX Spark 筆電、DGX Station（Windows）</td><td class="num">1 petaflop、128GB 記憶體</td><td>上市（10 月中）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><div class="sec-num">AI 工廠</div><h3>「AI 工廠在開始產出 token 時才創造價值，不是蓋完的時候。」</h3><p class="small muted">黃仁勳，DSX POD 新聞稿（10/21）。token 是 AI 處理文字的最小單位，可想成 AI 工廠的「產品」。</p></div>
+      <div class="card"><div class="sec-num">歐洲</div><h3>「如果想參與 AI 經濟，就不能只是消費 AI，也須生產 AI。」</h3><p class="small muted">黃仁勳演講（中央社柏林報導）。演講中途有環保人士上台抗議，他表示議題重要，但請對方讓他先講完。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>歐洲拿到 AI 工廠藍圖，也更依賴一家美國公司</h2>
+      <p>發生地是德國柏林；直接相關的是歐盟（AI 超級工廠計畫）、德國產業（Siemens、Mercedes、VW、Deutsche Telekom）與輝達所在的美國。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">輝達對歐投資</div><div class="v">~100 億美元</div><div class="d">過去一年，黃仁勳自述</div></div>
+      <div class="tile"><div class="l">歐洲合作夥伴</div><div class="v">12,000+</div><div class="d">輝達在歐洲已 33 年</div></div>
+      <div class="tile"><div class="l">歐盟 AI 超級工廠</div><div class="v">€100 億</div><div class="d">公部門上限；民間至少 €200 億</div></div>
+      <div class="tile"><div class="l">輝達資料中心晶片市占</div><div class="v">80–90%</div><div class="d">荷蘭研究機構 SOMO 估計</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>德國與歐盟</h3><ul class="plain">
+        <li><b>製造業拿到 AI 工具：</b>Siemens 埃爾朗根工廠用 AI 代理在數位分身裡規劃產線；Deutsche Telekom 慕尼黑工業 AI 雲約有 1 萬顆 Blackwell GPU。</li>
+        <li><b>汽車業加速自駕：</b>Mercedes-Benz、VW 商用車、Volvo 都列 Hyperion 夥伴；Bolt 2.5 萬輛 L4 車以德國為優先市場。</li>
+        <li><b>主權 AI 的矛盾：</b>布魯塞爾智庫 CEPS 研究員指出，對輝達的依賴「不在晶片，而在 CUDA 軟體」，建議歐盟投資不依賴 GPU 的運算與小型模型。</li>
+        <li><b>電力是硬限制：</b>黃仁勳點名歐洲最缺電，DSX POD 主打省電省水，但仍要先有電網與場地（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>美國（輝達本身）</h3><ul class="plain">
+        <li><b>營收來源更分散：</b>實體 AI 營收 FY27 上半年 110 億美元，超過 FY26 全年；高盛預估 FY27 營收 4,127 億美元。</li>
+        <li><b>從賣晶片到賣整套：</b>DSX POD 把機櫃、網路、散熱、電源一起定規格，輝達掌握更多系統設計話語權（推論）。</li>
+        <li><b>客戶資金風險浮上檯面：</b>黃仁勳承認新雲端業者「資本稀缺」，並說要讓算力成為「可融資資產」；CoreWeave 等股價與債券承壓。</li>
+        <li><b>高盛評等不變：</b>維持「買進」、12 個月目標價 300 美元，但認為演講對股價即時影響有限。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>好消息只撐了一天：產品利多被「AI 誰來付錢」蓋過</h2>
+      <p>10/21 演講當天美股收紅，10/22 黃仁勳的「資本稀缺」說法與 Meta 財報引爆晶片股賣壓。顏色依台灣慣例：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/22 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色長條為依報導推算的數字</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>台灣時間 10/21 下午收盤時演講還沒開始，指數 +1.28% 是受前一晚美股與期指結算影響；10/22 消化 DSX POD 名單後開高走低，6 家台廠全收黑，加上颱風薔琵、外資賣超與中東油價，指數 −1.81%。「利多出盡」是常見解讀。</li>
+          <li><b>美股：</b>10/21 NVDA +2.54%，媒體歸因於 GTC 擴產消息與 SpaceX、美超微財報；10/22 Meta 宣布加碼 AI 支出並出現逾十年首度現金淨流出，黃仁勳又說新雲端缺資本，市場擔心 AI 支出的資金來源，費半 −6.72%、Lam Research −11.8%。</li>
+          <li><b>債市：</b>資金轉進美債，10 年期殖利率一個月來首度跌破 5%，市場降低聯準會年內再升息的押注。</li>
+          <li><b>之後：</b>10/26 Anthropic 申請 IPO、Meta 擬籌資 950 億美元，被解讀為 AI 資金管道仍暢通，費半 +2.82%。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">212.21 美元（10/22）</td><td class="num down">−4.40%</td><td class="period">10/20 216.47 → 10/21 221.97 → 10/26 216.00（−0.22%）</td><td>10/21 演講日上漲；10/22 黃仁勳談新雲端資本稀缺、Meta 引發 AI 支出疑慮</td></tr>
+          <tr><td class="num">SOX</td><td><b>費城半導體指數</b></td><td>美股</td><td class="num">約 10,732（10/22，推算）</td><td class="num down">−6.72%</td><td class="period">10/20 11,284 → 10/21 11,506 → 10/26 11,083（−1.78%）</td><td>AI 支出疑慮全面殺盤，Intel、AMD、Marvell 跌逾 8%</td></tr>
+          <tr><td class="num">IXIC</td><td><b>那斯達克指數</b></td><td>美股</td><td class="num">26,008.86（10/22）</td><td class="num down">−2.6%</td><td class="period">10/21 26,702.86 → 10/26 26,169.38</td><td>科技股賣壓，6 月以來最大單日跌點</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">412.35 美元（10/22）</td><td class="num down">−4.52%</td><td class="period">10/20 425.08 → 10/21 431.89 → 10/22 412.35（−3.0%）</td><td>隨費半下跌；10/23 反彈 1.49%</td></tr>
+          <tr><td class="num">TAIEX</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,041.43（10/22）</td><td class="num down">−1.81%</td><td class="period">10/20 46,292.93 → 10/21 46,887.77 → 10/22 46,041.43（−0.54%）</td><td>開高走低、跌破季線；颱風、外資賣超、中東局勢</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,385 元（10/22）</td><td class="num down">−1.45%</td><td class="period">10/20 2,405 → 10/21 2,420 → 10/22 2,385；10/27 盤中 2,390</td><td>權值股隨大盤走弱</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">245 元（10/22）</td><td class="num down">−2.00%</td><td class="period">10/21 250 → 10/22 245</td><td>旗下鴻佰列 DSX POD 夥伴，利多公布後開高走低</td></tr>
+          <tr><td class="num">2382</td><td><b>廣達</b></td><td>台股</td><td class="num">322 元（10/22）</td><td class="num down">−1.98%</td><td class="period">10/21 328.5 → 10/22 322</td><td>旗下雲達 QCT 列 DSX POD 夥伴，同樣開高走低</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,560 元（10/22）</td><td class="num down">−4.00%</td><td class="period">10/21 1,625 → 10/22 1,560</td><td>DSX POD 電源夥伴；盤中一度翻黑下探，6 家台廠中跌最深</td></tr>
+          <tr><td class="num">3231</td><td><b>緯創</b></td><td>台股</td><td class="num">190 元（10/22）</td><td class="num down">−2.56%</td><td class="period">10/21 195 → 10/22 190</td><td>DSX POD 夥伴，利多出盡賣壓</td></tr>
+          <tr><td class="num">3037</td><td><b>欣興</b></td><td>台股</td><td class="num">1,100 元（10/21）</td><td class="num up">+4.27%</td><td class="period">10/22 收盤未查到（媒體說法相反，見第 10 節）</td><td>輝達載板產能 3 年增 2.5 倍、欣興在列；大摩重申目標價 1,775 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股收盤為美東時間，台股為台灣時間；10/23～10/26 台股休市。費半 10/22 收盤依 10/21 收盤與跌幅推算。來源：stockanalysis.com、經濟日報、自由財經、NOWnews、鉅亨網、Goodinfo、Yahoo 股市。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>全球 AI 競賽的焦點，從「誰有晶片」移到「誰蓋得快、誰付得起」</h2>
+      <p>影響透過四條管道擴散：資料中心建置方式、AI 融資、上游供應鏈產能，以及各國主權 AI 政策。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>資料中心建置方式</h3><ul class="plain small">
+        <li>DSX POD 把整合工作從現場搬到工廠，資料中心可能變成「先有電與水，再運來貨櫃」的模式（推論）。</li>
+        <li>StorageReview 提醒：14 天不含電力與場地建設，真正的瓶頸仍在電網。</li>
+      </ul></article>
+      <article class="card"><h3>AI 融資與新雲端</h3><ul class="plain small">
+        <li>黃仁勳：新雲端需求「高得驚人」但「資本稀缺」，要讓算力成為「可融資資產」。</li>
+        <li>Meta 逾十年首度現金淨流出，10/22 全球晶片股同步重挫；10/26 Anthropic IPO 又帶回買氣，顯示資金面已是 AI 股的主要變數。</li>
+      </ul></article>
+      <article class="card"><h3>上游產能</h3><ul class="plain small">
+        <li>載板 3 年 2.5 倍（Ibiden 大野廠增為 3 倍）、Amkor 韓國中介層產能 2028 年底前增逾 300%、半導體測試產能 2026→2027 倍增。</li>
+        <li>StorageReview 指出這些都是「規劃目標」，輝達未公布現有基準量。</li>
+      </ul></article>
+      <article class="card"><h3>主權 AI 與科技依賴</h3><ul class="plain small">
+        <li>輝達推開放模型，讓企業用自有資料後訓練，稱為「主權智慧」。</li>
+        <li>比利時 ITdaily 評論：歐洲想擺脫美國雲端巨頭，結果是「全押一家美國晶片巨頭」。</li>
+      </ul></article>
+      <article class="card"><h3>汽車與機器人</h3><ul class="plain small">
+        <li>Volvo、Mercedes、VW、JLR 都採用 Hyperion，自駕平台走向「輝達標準」。</li>
+        <li>黃仁勳稱機器人的「ChatGPT 時刻」即將到來；Agile ONE SN 2027 年初推出，目標把研究人員建置時間從數週縮到數天。</li>
+      </ul></article>
+      <article class="card"><h3>電信網路</h3><ul class="plain small">
+        <li>近 20 家電信商宣布 AI-RAN 合作，基地台可兼做分散式 AI 運算節點。</li>
+        <li>黃仁勳估全球約 10 萬個站點、約 100 GW 分散式資料中心潛力（輝達自估）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依輝達公布的交付時程、高盛財測與 10/22～10/26 市場反應整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>DSX POD 如期交付，AI 股隨資金消息震盪</h3><ul class="plain small">
+        <li>2027 年初交付啟動，台灣組裝、電源、散熱廠出貨增加。</li>
+        <li>高盛預估 FY27 營收 4,127 億美元、FY28 7,183 億美元；股價仍隨融資新聞上下波動。</li>
+      </ul><p class="trig">觸發條件：載板、測試產能照計畫開出；新雲端融資沒有出現重大違約。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>AI 融資卡關，訂單遞延</h3><ul class="plain small">
+        <li>新雲端業者籌不到錢，延後下單，ODM 出貨時程跟著往後推。</li>
+        <li>10/22 那種「費半單日 −6.7%」的殺盤可能重演，台股權值股承壓。</li>
+      </ul><p class="trig">觸發條件：新雲端債券違約、大型雲端業者下修資本支出，或高利率持續。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>資金管道打開，供給反而成為瓶頸</h3><ul class="plain small">
+        <li>Anthropic 等 AI 公司 IPO、Meta 籌資 950 億美元順利，市場重回「需求大於供給」。</li>
+        <li>載板、CoWoS、測試等上游產能變成最緊的環節，報價與毛利率受支撐（推論）。</li>
+      </ul><p class="trig">觸發條件：AI 公司 IPO 與債券發行順利；歐盟超級工廠選定輝達方案。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11 月下旬・輝達 FY27 第 3 季財報（日期以官方公告為準）</b>：實體 AI、資料中心營收能否延續，是驗證 GTC 說法的第一份數字。</li>
+      <li><b>新雲端業者股價與債券</b>：CoreWeave、Nebius 的融資狀況，直接反映黃仁勳說的「資本稀缺」有多嚴重。</li>
+      <li><b>2027 年初・DSX POD 首批交付</b>：14 天部署能否在真實場地做到，以及台廠出貨認列時點。</li>
+      <li><b>2027 年 4 月・京元電美國測試量產；2027 年第 2 季・欣興 KF 廠產能開出</b>：上游擴產是否準時。</li>
+      <li><b>歐盟 AI 超級工廠得標與晶片選擇</b>：2027 年動工前，歐洲是否大舉採用輝達方案。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>AI 伺服器組裝（ODM）</h3><span class="tag">好壞參半</span></div><p>整合、佈線、測試從客戶現場移到組裝廠，ODM 每單位附加價值可能提高；但貨櫃規格由輝達制定，議價空間有限（推論）。</p><div class="data">鴻海、廣達、緯創、技嘉、和碩 10/22 跌 1.6%～2.6%</div></article>
+      <article class="card"><div class="top"><h3>電源與散熱</h3><span class="tag good">受惠</span></div><p>DSX POD 採 800V 直流供電、閉迴路液冷與乾式冷卻，電源與熱管理規格升級，單櫃價值提高。</p><div class="data">台達電、Schneider、Vertiv、Eaton 列夥伴；台達電 10/22 −4.00%</div></article>
+      <article class="card"><div class="top"><h3>IC 載板</h3><span class="tag good">受惠</span></div><p>輝達與載板廠簽產能預訂，3 年產能增為 2.5 倍，大摩認為預訂協議可降低產能過剩風險。</p><div class="data">欣興 10/21 +4.27%；KF 廠 2027 Q2 起開出、2028 年中滿載</div></article>
+      <article class="card"><div class="top"><h3>封裝測試與光通訊</h3><span class="tag good">受惠</span></div><p>測試產能 2026→2027 倍增，CPO（共同封裝光學，把光收發元件直接封進晶片旁）需求擴大。</p><div class="data">京元電預訂 11 億美元美國測試；矽品光引擎產能 2027 年中擴 15 倍</div></article>
+      <article class="card"><div class="top"><h3>新雲端（AI 算力出租）</h3><span class="tag bad">利空</span></div><p>需求不缺，缺的是買 GPU 的錢；股價與債券承壓，融資成本上升會拖慢擴張。</p><div class="data">黃仁勳 10/22：「資本稀缺」；CoreWeave 股價續跌</div></article>
+      <article class="card"><div class="top"><h3>資料中心營建與機電工程</h3><span class="tag">好壞參半</span></div><p>現場施工天數大減，傳統機電整合的工作量可能被工廠預製取代；但電網、土建需求仍在（推論）。</p><div class="data">現場部署 6 個月 → 14 天（場地就緒後）</div></article>
+      <article class="card"><div class="top"><h3>汽車／自駕</h3><span class="tag good">受惠</span></div><p>Hyperion 被多家歐洲車廠採用，自駕軟硬體平台標準化，車用晶片與感測器需求增加。</p><div class="data">Bolt 至少 2.5 萬輛 L4；Volvo 採用 Hyperion＋Alpamayo</div></article>
+      <article class="card"><div class="top"><h3>機器人與工業自動化</h3><span class="tag good">受惠</span></div><p>開放的實體 AI 堆疊降低開發門檻，歐洲製造與機電基礎被點名有機會領先。</p><div class="data">實體 AI 營收 FY27 上半年 110 億美元；Agile ONE SN 31 自由度</div></article>
+      <article class="card"><div class="top"><h3>電信設備</h3><span class="tag good">受惠</span></div><p>基地台加裝 AI 運算，電信商有機會把網路變成算力出租的新收入（推論）。</p><div class="data">近 20 家電信商宣布 AI-RAN 合作；Nokia × T-Mobile 首通商用電話</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台廠拿到 AI 工廠「門票」，但股價要等資金疑慮解除</h2>
+      <p>台灣最在意的三件事：6 家 DSX POD 台廠的訂單、載板與封測擴產，以及 AI 融資疑慮對台股權值股的拖累。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>入列夥伴：</b>鴻海（鴻佰）、廣達（雲達）、緯創、技嘉、和碩、台達電列入 17 家 DSX POD 夥伴，2027 年初交付。</li>
+        <li><b>上游被點名：</b>欣興（載板）、京元電（美國測試 11 億美元）、矽品（CPO 光引擎 15 倍）出現在輝達擴產藍圖。</li>
+        <li><b>股價反應：</b>10/22 台股 −846 點、收 46,041 點，6 家夥伴全數收黑，台達電 −4.00% 最深。</li>
+        <li><b>休市空窗：</b>10/23～10/26 休市期間美股先殺後彈，10/27 復市時須一次反映。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li>貨櫃式交付讓組裝廠承擔更多測試與整合工作，營收規模可能放大，但毛利率要看輝達規格下的分工。</li>
+        <li>DSX POD 要在歐美現地組裝或出貨，台廠海外產能（美國、墨西哥、歐洲）配置會更重要。</li>
+        <li>AI 融資疑慮若擴大，台積電與 AI 伺服器權值股首當其衝；台股指數 10/22 已跌破季線。</li>
+        <li>載板與測試擴產需要人力與電力，對台灣的供電與工程師需求是長期壓力。</li>
+      </ul></div>
+    </div>
+    <p class="note warn">截至 2026 年 10 月 27 日查證時，未查到經濟部、國發會等台灣官方針對 GTC 柏林發表的回應；以上影響以企業與市場資訊為主。</p>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>AI 伺服器與電源供應鏈</b></td><td><span class="tag good">相對有利</span></td><td>DSX POD 2027 年初交付，6 家台廠入列；台達電另有 800V 直流電源商機。</td></tr>
+          <tr><td><b>載板、封測廠與員工</b></td><td><span class="tag good">相對有利</span></td><td>欣興 KF 廠 2027 Q2 起開出、京元電美國測試 2027 年 4 月量產，擴產帶動招募需求（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">波動加大</span></td><td>利多公布後「開高走低」，AI 股走勢更受美國融資消息左右；10/22 加權 −1.81%。</td></tr>
+          <tr><td><b>工程師與學生</b></td><td><span class="tag">機會與門檻並存</span></td><td>開放模型、Isaac 機器人堆疊、CUDA-X 免費可用，但 AI 代理、機器人模擬技能變成新門檻（推論）。</td></tr>
+          <tr><td><b>電力與環境</b></td><td><span class="tag">好壞參半</span></td><td>輝達主打省電 30%、省水，但整體 AI 擴產仍增加用電；柏林現場也有環保人士抗議（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>官方與台媒聚焦產品和台廠名單，財經媒體談股價與高盛，科技媒體與歐洲評論則質疑數字與歐洲的依賴。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>NVIDIA 官方部落格／新聞稿</td><td>產品發表</td><td>DSX POD 加速歐洲基礎建設部署</td><td>14 天上線、17 家夥伴、近 100 億美元對歐投資</td></tr>
+          <tr><td>StorageReview</td><td>技術細節與查核</td><td>DSX POD、載板、OpenShell、AI-RAN</td><td>提醒 14 天不含場地建設，擴產數字都是「規劃目標」</td></tr>
+          <tr><td>ITdaily（比利時）</td><td>歐洲觀點評論</td><td>輝達想讓自己在歐洲不可或缺</td><td>主權 AI 變成依賴 CUDA；引 CEPS 警告</td></tr>
+          <tr><td>中央社（經濟日報轉載）</td><td>現場報導</td><td>推貨櫃式資料中心、看好實體 AI</td><td>「歐洲要生產 AI」、台廠夥伴名單、環保人士抗議</td></tr>
+          <tr><td>鉅亨網</td><td>投資觀點</td><td>高盛三大重點、看輝達近四成漲幅</td><td>目標價 300 美元、實體 AI 110 億美元、台廠擴產</td></tr>
+          <tr><td>自由財經</td><td>台股盤中</td><td>輝達「背板股」全被殺</td><td>6 家台廠開高走低，台達電翻黑</td></tr>
+          <tr><td>TechNews 科技新報</td><td>場邊專訪</td><td>AI 需求高得驚人，限制成長的是資金</td><td>新雲端資本稀缺、算力要成為可融資資產</td></tr>
+          <tr><td>經濟日報（美股收盤）</td><td>市場解讀</td><td>AI 燒錢疑慮掀晶片股殺盤，費半重摔 6.7%</td><td>把黃仁勳的資金說法與 Meta 現金流並列為殺盤原因</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>演講時間 10/21 11:00 CEST（台灣時間 17:00），地點柏林 Tempodrom。</li>
+        <li>DSX POD 場地就緒後部署 6 個月 → 最快 14 天，2027 年初交付。</li>
+        <li>Vera Rubin 全面量產；對歐投入近 100 億美元、夥伴 12,000 家以上。</li>
+        <li>鴻海、廣達、緯創、技嘉、和碩、台達電列 DSX POD 夥伴。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>利多 vs 疑慮：</b>台媒多寫「台廠入列、財源滾滾」，國際媒體與美股報導則把焦點放在 10/22 的資金疑慮。</li>
+        <li><b>自報數字：</b>省電 30%、每 MW 吞吐量 30 倍等多為輝達自報，StorageReview 指出未附比較條件。</li>
+        <li><b>時區：</b>台股 10/21 收盤在演講之前，所以 10/21 的漲幅不是對演講的反應；真正反應在 10/22。</li>
+        <li><b>日期標錯：</b>部分網站以「10/21」為題報導的其實是 10/20 收盤（例如 NVDA 216.47 美元）。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>DSX POD 夥伴數</td><td>6 家（新聞稿標題：Bull、Dell、HPE、Lenovo、Schneider、Vertiv）</td><td>17 家（新聞稿內文完整名單）</td><td>標題只列部分；台媒的「6 台廠」是 17 家中的台灣公司</td></tr>
+          <tr><td>部署時間</td><td>最快 14 天（輝達）</td><td>約兩週（高盛）</td><td>同一數字不同寫法；兩者都以場地已就緒為前提</td></tr>
+          <tr><td>省電省水</td><td>同 token 省電最多 30%、冷卻用水最多減 100%（輝達）</td><td>2GW 部署省電約 30%、每日省水 5,600 萬公升（高盛）</td><td>輝達講比例上限，高盛換算成特定規模的絕對量</td></tr>
+          <tr><td>Amkor 擴產</td><td>CoWoS-R 產能達 3 倍（高盛）</td><td>韓國中介層產能 2028 年底前增逾 300%（StorageReview）</td><td>「增為 3 倍」與「增加 300%（＝4 倍）」定義不同，原始數字以輝達簡報為準</td></tr>
+          <tr><td>欣興 10/22 表現</td><td>台積電供應鏈漲幅前三名（理財周刊）</td><td>成交金額大且疲弱（經濟日報）</td><td>可能為盤中與收盤不同時點；本報告未查到 10/22 收盤</td></tr>
+          <tr><td>NVDA 10/21 收盤</td><td>216.47 美元（Gotrade 標題）</td><td>221.97 美元、+2.54%（stockanalysis、Investing.com）</td><td>216.47 是 10/20 收盤，該標題日期標錯</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 27 日。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/" target="_blank" rel="noopener">NVIDIA 官方部落格 — GTC Berlin 2026 主題演講即時更新（10/21）</a></li>
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Introduces-DSX-POD-AI-Factories-to-Accelerate-Europes-Infrastructure-Deployment/default.aspx" target="_blank" rel="noopener">NVIDIA 新聞稿 — 推出 DSX POD AI 工廠加速歐洲基礎建設部署（10/21）</a></li>
+      <li><a href="https://www.nvidia.com/en-eu/gtc/keynote/" target="_blank" rel="noopener">NVIDIA — GTC Berlin 主題演講時間與地點</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="4">
+      <li><a href="https://www.storagereview.com/news/nvidia-gtc-berlin-2026-dsx-pod-14-day-ai-factory-substrate-openshell-ai-ran" target="_blank" rel="noopener">StorageReview — DSX POD 14 天 AI 工廠、載板擴產、OpenShell 與 AI-RAN（10/21）</a></li>
+      <li><a href="https://itdaily.com/blogs/datacenter/nvidia-indispensable-europe/" target="_blank" rel="noopener">ITdaily — 輝達想讓自己在歐洲不可或缺（10/22）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="6">
+      <li><a href="https://money.udn.com/money/story/5599/9829531" target="_blank" rel="noopener">經濟日報（中央社）— 黃仁勳柏林 GTC 推貨櫃式資料中心、看好實體 AI（10/21）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6635664" target="_blank" rel="noopener">鉅亨網 — 高盛總結三大重點、看輝達近四成漲幅（10/22）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6635367" target="_blank" rel="noopener">鉅亨網 — 輝達 DSX POD AI 工廠 6 台廠入列合作夥伴（10/22）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5614885" target="_blank" rel="noopener">自由財經 — 台達電翻黑下探、輝達「背板股」全被殺（10/22）</a></li>
+      <li><a href="https://technews.tw/2026/10/23/jensen-huang-says-neocloud-demand-is-off-the-charts-as-coreweave-stock-continues-to-slide/" target="_blank" rel="noopener">TechNews 科技新報 — 黃仁勳：AI 需求高得驚人，限制成長的是資金（10/23）</a></li>
+      <li><a href="https://udn.com/news/story/6811/9832714" target="_blank" rel="noopener">經濟日報 — AI 燒錢疑慮掀晶片股殺盤，費半重摔 6.7%（10/23）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9831098" target="_blank" rel="noopener">經濟日報 — 台股開高走低下挫 846 點跌破季線（10/22）</a></li>
+      <li><a href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/257402" target="_blank" rel="noopener">理財周刊 — 台股 10/22 盤後分析（10/22）</a></li>
+      <li><a href="https://www.nownews.com/news/6886813" target="_blank" rel="noopener">NOWnews — Anthropic 提 IPO 助攻，費半勁揚近 3%（10/27）</a></li>
+      <li><a href="https://news.nextapple.com/finance/20261027/04922E9B91925FFFB4889BF8ADD5FA23" target="_blank" rel="noopener">壹蘋新聞網 — 4 天連假後台股開盤（10/27）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="16">
+      <li><a href="https://stockanalysis.com/stocks/nvda/history/" target="_blank" rel="noopener">stockanalysis.com — NVDA 歷史股價</a></li>
+      <li><a href="https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=2308" target="_blank" rel="noopener">Goodinfo! — 台達電（2308）股價行情</a></li>
+      <li><a href="https://tw.stock.yahoo.com/quote/3231.TW" target="_blank" rel="noopener">Yahoo 股市 — 緯創（3231）走勢</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 27 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'費城半導體', s:'約 10,732（推算）', v:-6.72},
+    {l:'輝達 NVDA', s:'212.21 美元', v:-4.40},
+    {l:'台積電 ADR', s:'412.35 美元', v:-4.52},
+    {l:'那斯達克', s:'26,008.86', v:-2.6},
+    {l:'加權指數', s:'46,041.43', v:-1.81},
+    {l:'台積電 2330', s:'2,385 元', v:-1.45},
+    {l:'鴻海 2317', s:'245 元', v:-2.00},
+    {l:'廣達 2382', s:'322 元', v:-1.98},
+    {l:'台達電 2308', s:'1,560 元', v:-4.00},
+    {l:'緯創 3231', s:'190 元', v:-2.56}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
