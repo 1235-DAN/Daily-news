@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>塞爾維亞選後動盪解讀</title>
+<meta name="description" content="塞爾維亞 2026 年 10 月國會提前大選，學生名單過半終結武契奇 14 年執政，選後爆發闖入親政府電視台等衝突：前因後果、市場反應、對歐俄中與台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">國際政治解讀 · 塞爾維亞國會提前大選後第 3 天 · 資料截至 2026 年 10 月 28 日 13:46（台灣時間）</p>
+      <h1>學生名單過半、武契奇 14 年政權落幕；選後貝爾格勒從狂歡滑向衝突</h1>
+      <p class="lede">10 月 25 日塞爾維亞國會提前大選，由反貪腐學運轉型的「學生名單」拿下約 52.7% 選票、預估 140 席，前總統武契奇（Aleksandar Vučić）開票約 1.5 小時就認輸。但慶祝人潮隨即拆掉親政府營地、對撤離的警車丟擲物品，隔天約 30 人闖進親武契奇的 Informer 電視台新聞室。接下來要看：選委會正式結果、由武契奇盟友代理的總統如何提名總理，以及 12 月 27 日前的總統大選。</p>
+    </div>
+    <div class="stmt" aria-label="學生名單預估席次">
+      <div class="k">學生名單預估席次（國會 250 席）</div>
+      <div class="range">140<small>/ 250 席</small></div>
+      <div class="was">過半門檻 126 席 · 選委會（RIK）初步計票 · 得票率約 52.7%</div>
+      <div class="stmt-row">
+        <div><div class="v">39.2%</div><div class="l">武契奇陣營得票率</div></div>
+        <div><div class="v">68.78%</div><div class="l">投票率（30 多年新高）</div></div>
+        <div><div class="v">~30 人</div><div class="l">闖入 Informer TV</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>8 個重點：這場「暴動」其實是政權交接的陣痛</h2>
+      <p>懶人包：抗議兩年的學生運動用選票拿下政權，選後零星暴力集中在「清算親政府媒體與營地」，市場目前選擇給新政府信任票。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>反對派首度單獨過半。</b>選委會（RIK）依 8,187 個投開票所初步計票，「學生名單」得票 52.71%、140 席；武契奇的「團結塞爾維亞」39.17%、104 席。投票率 68.78%，是 30 多年來最高。</div></li>
+      <li><div><b>武契奇 14 年執政結束。</b>前進黨（SNS）自 2012 年執政，武契奇 2014 年起任總理、2017 年起任總統。他 9 月 27 日辭去總統、改選總理，10 月 25 日 21:31（台灣時間 26 日 03:31）承認敗選。</div></li>
+      <li><div><b>所謂「暴動」集中在選後兩晚。</b>25 日晚群眾拆除親政府「Ćaciland」營地、有帳篷起火，並對撤離的警方車隊丟擲物品；26 日約 30 人闖入 Informer TV 新聞室包圍總編輯，另一批人聚集在 Pink TV 外，警方封鎖。截至查證時未查到受傷或逮捕統計。</div></li>
+      <li><div><b>勝方呼籲冷靜，敗方喊「攻擊新聞自由」。</b>學生名單領銜人、心臟科醫師斯爾達諾維奇（Ilija Srdanović）要求支持者在選舉程序結束前不要動用暴力；武契奇則在 Instagram 稱闖台事件是對言論與新聞自由的攻擊。</div></li>
+      <li><div><b>導火線是兩年前的 16 條人命。</b>2024 年 11 月 1 日諾維薩德（Novi Sad）車站雨棚倒塌、16 人死亡，學生指控工程貪腐，抗議規模在 2025 年 3 月 15 日達 27.5～32.5 萬人（獨立統計），一路逼出提前大選。</div></li>
+      <li><div><b>市場先給信任票。</b>選後首個交易日（10/26），塞國 2030 年到期美元公債價格由 85.785 升至 86.310 美元、殖利率降約 16 個基點（0.16 個百分點）；歐元兌第納爾維持 117.5 左右，沒有出現資金出逃。</div></li>
+      <li><div><b>外交不會一夕轉向。</b>歐盟執委會主席馮德萊恩、擴大事務專員科斯（「入盟大門是開著的」）道賀；但學生名單表明不制裁俄國、科索沃立場與武契奇相同，俄羅斯天然氣合約 12 月 31 日到期是第一個考驗。</div></li>
+      <li><div><b>對台灣是「地緣訊號」大於「經濟衝擊」。</b>台股 10/27 漲 0.12%，主要受 AI 與半導體帶動，與塞國無關；但這是繼匈牙利之後，第 2 個簽署一帶一路的東歐國家政權更替，台灣媒體與網友以「親中俄政權倒台」角度熱議（推論影響見第 8 節）。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼是現在？4 個原因把學運推進國會</h2>
+      <p>原因 1、2 是學生運動自己提出的訴求；原因 3、4 是路透、半島電視台、BIRN 等媒體與選舉觀察團體 Crta 的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>一場奪命工安變成反貪腐運動</h3><p>諾維薩德車站剛整修完不久，雨棚就倒塌壓死 16 人（含 2 名兒童）。學生認為這不是意外，而是採購與監工層層貪腐的結果，訴求從「公開調查文件」擴大到法治與問責。</p></div><div class="ev"><span class="tag">2024-11-01 · 16 人死亡</span><span class="tag">2 名部長辭職</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>政府拖延，學生改要「提前大選」</h3><p>總理武切維奇 2025 年 1 月辭職，但換上的馬古特（Đuro Macut）內閣沒有平息抗議。學生在 2025 年 5 月起改要求提前大選，武契奇多次承諾卻遲未定日期，直到 2026 年 9 月 9 日才解散國會。</p></div><div class="ev"><span class="tag">2025-01-28 總理請辭</span><span class="tag">2026-09-09 解散國會</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>媒體被一方壟斷，累積對親政府電視台的怒氣</h3><p>選舉觀察團體 Crta 統計，全國性電視台把四分之三的政治人物時段給了政府代表，提到學生名單時超過 80% 是負面報導。無國界記者 2026 年把塞國新聞自由排到第 104 名（共 180 國），為史上最低。這解釋了選後群眾為什麼衝向 Informer 與 Pink 兩家電視台。</p></div><div class="ev"><span class="tag">新聞自由 104/180</span><span class="tag">負面報導 80%+</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>地區強人接連失勢，選民動員創新高</h3><p>武契奇的盟友、匈牙利總理奧班今年稍早敗選下台，NBC 指出兩地都是年輕人投票帶動變天。學生名單騎單車、徒步深入武契奇的農村票倉，投票率比 2023 年高出約 10 個百分點。</p></div><div class="ev"><span class="tag">投票率 68.78%</span><span class="tag">比 2023 年 +10 個百分點</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>政治主線（抗議 → 選舉 → 交接）</span><span><i class="g"></i>暴力衝突</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2024-11-01</div><div class="what"><b>諾維薩德車站雨棚倒塌，16 人死亡</b>，學生開始抗議。</div></li>
+        <li class="geo"><div class="date">2024-11-22</div><div class="what">貝爾格勒戲劇藝術學院師生悼念時遭有組織人士攻擊，<b>3 天後學生佔領校園</b>，各大學跟進。</div></li>
+        <li class="key"><div class="date">2025-01-28</div><div class="what"><b>總理武切維奇宣布辭職</b>；4 月 16 日馬古特接任。</div></li>
+        <li class="key"><div class="date">2025-03-15</div><div class="what">貝爾格勒大遊行，獨立統計 <b>27.5～32.5 萬人</b>，官方估 8.8～10.7 萬人。</div></li>
+        <li class="geo"><div class="date">2025-06-28</div><div class="what">維多夫丹節集會約 14 萬人，入夜衝突，<b>48 名警察、22 名示威者受傷</b>。</div></li>
+        <li class="geo"><div class="date">2025-08-16</div><div class="what">8 月中多地爆發衝突，<b>瓦列沃（Valjevo）前進黨辦公室遭縱火</b>，18 人被拘留。</div></li>
+        <li class="geo"><div class="date">2026-05-23</div><div class="what">Slavija 廣場集會，獨立統計 18～19 萬人、警方稱 34,300 人；會後與鎮暴警察衝突，<b>23 人被拘留</b>。</div></li>
+        <li class="key"><div class="date">2026-09-09</div><div class="what"><b>國會解散，大選訂在 10 月 25 日</b>。</div></li>
+        <li class="key"><div class="date">2026-09-27</div><div class="what"><b>武契奇辭去總統、改選總理</b>，辭前特赦 49 人（23 人涉抗議案）；隔天議長布納比奇代理總統。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li><div class="date">2026-10-20</div><div class="what">財長馬利稱，俄方已簽約把石油公司 NIS 的 56.15% 股權賣給匈牙利 MOL，尚待反壟斷審查。</div></li>
+        <li class="geo"><div class="date">2026-10-21</div><div class="what">警方逮捕 6 人，指其<b>策劃選舉日暴力</b>；其中一名公民運動人士稱是政治迫害。</div></li>
+        <li class="key"><div class="date">2026-10-25</div><div class="what"><b>投票；21:31 武契奇承認敗選</b>。同晚群眾拆除親政府營地、帳篷起火，並對撤離的警方車隊丟擲物品。</div></li>
+        <li class="geo"><div class="date">2026-10-26</div><div class="what">歐盟領袖道賀；伏伊伏丁那公視 RTV 道歉。傍晚約 <b>30 人闖入 Informer TV 新聞室</b>，Pink TV 外有群眾聚集，警方封鎖。</div></li>
+        <li><div class="date">2026-10-27</div><div class="what">記者協會 NUNS 向監管機關 REM 申請<b>撤銷 Informer 全國執照</b>；塞國外幣公債走強。</div></li>
+        <li class="key"><div class="date">2026-10-29</div><div class="what">（預定）選委會須在投票後 <b>96 小時內公布正式結果</b>。</div></li>
+        <li><div class="date">2026-10-30</div><div class="what">（預定）美國財政部對 NIS 出售談判的制裁豁免到期日。</div></li>
+        <li class="key"><div class="date">2026-11</div><div class="what">（預定）正式結果公布後 <b>30 天內新國會成立</b>，再由總統提名總理。</div></li>
+        <li class="key"><div class="date">2026-12-27</div><div class="what">（預定）<b>提前總統大選最晚期限</b>；12 月 31 日俄羅斯天然氣合約到期。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>塞爾維亞換人執政，但國家機器還握在舊陣營手裡</h2>
+      <p>發生地是塞爾維亞；直接相關的是想拉塞國入盟的歐盟、能源命脈相連的俄羅斯，以及在當地大量投資的中國。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">學生名單得票率</div><div class="v">52.71%</div><div class="d">RIK，8,187 個投開票所</div></div>
+      <div class="tile"><div class="l">團結塞爾維亞席次</div><div class="v">104 席</div><div class="d">比上屆少 25 席</div></div>
+      <div class="tile"><div class="l">投票率</div><div class="v">68.78%</div><div class="d">史上紀錄 71.49%（1990 年）</div></div>
+      <div class="tile"><div class="l">歐元兌第納爾</div><div class="v">117.50</div><div class="d">5 月底 117.42，幾乎不動</div></div>
+      <div class="tile"><div class="l">2030 美元公債殖利率</div><div class="v down">5.943%</div><div class="d">10/23 為 6.100%</div></div>
+      <div class="tile"><div class="l">央行政策利率</div><div class="v">5.75%</div><div class="d">10 月 8 日維持不變</div></div>
+      <div class="tile"><div class="l">選後衝突主要地點</div><div class="v">3 處</div><div class="d">營地、Informer、Pink TV</div></div>
+      <div class="tile"><div class="l">總統大選期限</div><div class="v">12/27</div><div class="d">代理總統為前進黨的布納比奇</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>塞爾維亞</h3><ul class="plain">
+        <li><b>權力交接有空窗：</b>總理要由總統提名，而代理總統布納比奇是前進黨高層、武契奇盟友；新國會須在正式結果公布後 30 天內成立，組閣期限是國會成立後 90 天。</li>
+        <li><b>街頭情緒轉向「清算」：</b>選後群眾目標集中在親政府媒體與營地，Informer 總編輯說「學生名單掌權第一天就想封殺媒體」；記者協會則以多年違規為由申請撤照。</li>
+        <li><b>新政府經驗不足：</b>250 名候選人多是學者、醫師、農民、運動員，名單上沒有學生，也排除前執政黨與反對黨官員；內政、財政、司法部長人選都未定。</li>
+        <li><b>政見重點：</b>11 點綱領包括司法獨立、清查官員財產並沒收不法所得、稽核基礎建設採購、改革公共媒體、定期契約上限由 24 個月縮短為 12 個月。</li>
+      </ul></div>
+      <div class="card"><h3>歐盟、俄羅斯、中國</h3><ul class="plain">
+        <li><b>歐盟：</b>馮德萊恩表示準備支持法治、媒體自由與反貪改革；科斯稱這是轉折點、「入盟大門是開著的」。德國總理梅爾茨、匈牙利新總理馬扎爾也表態支持。</li>
+        <li><b>俄羅斯：</b>克里姆林宮發言人佩斯科夫稱希望新勢力理解「與俄合作符合塞國利益」。塞國付給俄氣每千立方米 318 歐元，約是匈牙利的一半，合約 12 月 31 日到期。</li>
+        <li><b>中國：</b>截至查證時未查到北京官方評論。中資在塞國包括紫金礦業持有博爾（Bor）銅礦 63% 股權、承諾 6 年投資 12.6 億美元；倒塌的諾維薩德車站整修則屬中塞合作的鐵路工程（多家台灣媒體報導）。</li>
+        <li><b>匈牙利：</b>MOL 正接手 NIS 的俄方持股，塞國持股將由 29.87% 升到 35%；新政府是否沿用這筆交易，尚未表態。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>債市給新政府「先信任、再觀察」，全球股市則幾乎無感</h2>
+      <p>塞爾維亞資本市場規模小，國際資金主要透過外幣公債表態；台股、美股當天的漲跌由 AI 晶片與聯準會會議主導。顏色依台灣慣例：紅漲、綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">選後首批交易日：相關市場漲跌幅</p>
+        <p class="chart-sub">股市與油價為 10/27 單日收盤漲跌；塞國公債為 10/23 → 10/26 價格變動（%）</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>塞國公債：</b>有選前報價可比的兩檔外幣債在選後首日同步走強，2031 歐元債殖利率由 4.923% 降到 4.772%。Bloomberg 標題形容投資人對「未經考驗的勝選者」給了初步認可：反貪、強化民主被視為有助於入盟與評等。</li>
+          <li><b>第納爾與股市：</b>歐元兌第納爾維持 117.5 左右（央行長期維持匯率穩定）；貝爾格勒 BELEX15 指數 10/27 收高，由保險股 Dunav 與機場股帶動，幅度未查到。</li>
+          <li><b>台股：</b>10/27 是連假後首個交易日，加權指數漲 0.12%，盤中一度上攻 46,585 點後回落，主因是獲利了結與等待聯準會決議，與塞國選舉無直接關係。</li>
+          <li><b>美股：</b>10/27 費半大漲 3.60%，因 Anthropic 晶片採購融資消息帶動 AI 基建預期；油價因伊朗釋出停火條件訊號下跌，布蘭特跌 1.67% 至 113.88 美元。</li>
+          <li><b>礦業：</b>力拓（Rio Tinto）10/27 在澳洲漲 2.53%，未見報導歸因於塞國選舉；但學生名單有候選人主張永久禁止鋰礦開採，對其 Jadar 案是長期利空（推論）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">USD 2030</td><td><b>塞爾維亞 2030 美元公債</b></td><td>國際債市</td><td class="num">$86.310</td><td class="num up">+0.61%</td><td class="period">10/23→10/26，殖利率 6.100%→5.943%</td><td>選後首日，投資人押注新政府推動反貪與入盟、有利評等</td></tr>
+          <tr class="hl"><td class="num">EUR 2031</td><td><b>塞爾維亞 2031 歐元公債</b></td><td>國際債市</td><td class="num">€97.897</td><td class="num up">+0.61%</td><td class="period">10/23→10/26，殖利率 4.923%→4.772%</td><td>同上；歐元債與美元債同步走強</td></tr>
+          <tr><td class="num">USD 2036</td><td><b>塞爾維亞 2036 美元公債</b></td><td>國際債市</td><td class="num">$93.845</td><td class="num">未查到</td><td class="period">10/26 殖利率 6.372%；Bloomberg 稱本週降 13 個基點</td><td>長天期債也獲買盤，Bloomberg 稱創一個月新低殖利率</td></tr>
+          <tr><td class="num">EUR/RSD</td><td><b>歐元兌第納爾</b></td><td>匯市</td><td class="num">117.498</td><td class="num">未查到</td><td class="period">5/26 為 117.4208，幾乎持平</td><td>央行長期穩定匯率，選舉未引發資金外逃</td></tr>
+          <tr><td class="num">BELEX15</td><td><b>貝爾格勒 15 指數</b></td><td>塞國股市</td><td class="num">未查到</td><td class="num up">收高</td><td class="period">10/27 收高，幅度未查到</td><td>保險股 Dunav、尼古拉特斯拉機場股上漲</td></tr>
+          <tr><td class="num">RIO</td><td><b>力拓 Rio Tinto</b></td><td>澳股</td><td class="num">A$150.32</td><td class="num up">+2.53%</td><td class="period">10/23 收 A$146.27</td><td>未見歸因於選舉；Jadar 鋰礦案前景因新政府反對而更不明（推論）</td></tr>
+          <tr><td class="num">TAIEX</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,096.23</td><td class="num up">+0.12%</td><td class="period">10/27 連假後首日，成交 9,765 億元</td><td>高檔獲利了結、等待聯準會；與塞國無直接關聯</td></tr>
+          <tr><td class="num">SOX</td><td><b>費城半導體指數</b></td><td>美股</td><td class="num">11,482.50</td><td class="num up">+3.60%</td><td class="period">連 3 個交易日上漲</td><td>AI 晶片採購融資消息</td></tr>
+          <tr><td class="num">SPX</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">7,722.60</td><td class="num up">+0.60%</td><td class="period">距歷史高點約 1.2%</td><td>科技股領漲，能源股因油價下跌最弱</td></tr>
+          <tr><td class="num">2899.HK</td><td><b>紫金礦業</b></td><td>港股</td><td class="num">未查到</td><td class="num">未查到</td><td class="period">未查到</td><td>持有塞國博爾銅礦 63%；新政府承諾稽核大型投資案，值得追蹤</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">塞國公債與匯率取自塞爾維亞公債管理署 10/23、10/26 收盤；台股為 10/27 收盤（中央社）；美股為 10/27 收盤（HDFC Sky 彙整）；力拓為 ASX 10/27 收盤後報價。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>歐洲版圖鬆動：歐盟多一個機會，俄中少一個可靠夥伴</h2>
+      <p>影響主要透過「外交路線」與「能源、礦產契約」兩條管道外溢，而不是透過金融市場。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>歐盟擴大</h3><ul class="plain small">
+        <li>塞爾維亞是入盟候選國，歐盟領袖第一時間道賀，並把法治、媒體自由、反貪列為合作重點。</li>
+        <li>但學生名單表明不加入對俄制裁，與歐盟共同外交政策仍有落差。</li>
+        <li>歐洲議會議長梅措拉、歐洲理事會主席科斯塔也發表祝賀。</li>
+      </ul></article>
+      <article class="card"><h3>俄羅斯</h3><ul class="plain small">
+        <li>武契奇選前對俄媒稱，若他敗選，新政府會在 10 天內制裁俄國；選後改口預測 2027 年 3～4 月。</li>
+        <li>學生名單的巴基奇反駁：不制裁、不停止進口俄氣，稱俄國是「重要夥伴」。</li>
+        <li>塞國約有 6 萬名俄國移民；鄰國蒙特內哥羅 11 月 1 日起對俄國人實施簽證。</li>
+      </ul></article>
+      <article class="card"><h3>中國與一帶一路</h3><ul class="plain small">
+        <li>自由時報指出，塞國是繼匈牙利後，第 2 個與中國簽一帶一路、出現政權更替的東歐國家。</li>
+        <li>新政府承諾稽核基礎建設採購，2027 世博（5/15～8/15）的工程被反對派點名為貪腐高風險。</li>
+        <li>截至查證時，未查到中國外交部回應。</li>
+      </ul></article>
+      <article class="card"><h3>中東歐「強人退場」潮</h3><ul class="plain small">
+        <li>匈牙利奧班下台、塞國武契奇落敗，兩人都執政 10 年以上、與俄關係密切，也都靠掌控媒體與企業累積權力（中央社綜合外電）。</li>
+        <li>NPR 把塞國選後動盪與歐洲多地的抗議浪潮並列報導。</li>
+      </ul></article>
+      <article class="card"><h3>能源與關鍵礦產</h3><ul class="plain small">
+        <li>NIS 是塞國唯一煉油廠（潘切沃）的經營者，美國制裁俄方股東，股權出售的談判豁免 10 月 30 日到期。</li>
+        <li>Jadar 鋰礦曾被歐盟視為電動車供應鏈關鍵；新政府若立法永久禁採，歐洲本土鋰供應又少一個選項（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>巴爾幹區域穩定</h3><ul class="plain small">
+        <li>斯爾達諾維奇對科索沃的立場與武契奇相同，視其為塞國領土。</li>
+        <li>學生名單綱領承諾改善與鄰國關係；蒙特內哥羅總理、塞族共和國的多迪克都已道賀。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依塞國憲法時程、雙方公開表態與市場定價整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>有摩擦但如期交接</h3><ul class="plain small">
+        <li>選委會 10 月底公布正式結果，11 月內新國會成立，年底前完成組閣。</li>
+        <li>針對親政府媒體與人物的抗議零星發生，但沒有大規模流血。</li>
+        <li>公債維持選後漲幅，第納爾持穩。</li>
+      </ul><p class="trig">觸發條件：代理總統依程序提名學生名單屬意的總理；雙方都約束支持者。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>交接卡關，街頭兩極對峙</h3><ul class="plain small">
+        <li>前進黨利用總統職位或司法、警察系統拖延組閣，12 月總統大選變成第二回合決戰。</li>
+        <li>武契奇支持者與學運群眾在街頭對峙，攻擊媒體或黨部的事件擴大。</li>
+        <li>外資轉趨保守，公債殖利率回升。</li>
+      </ul><p class="trig">觸發條件：選舉結果爭議、選後追訴前官員引發反彈，或黑衣人群體再度出現在街頭。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>快速穩定，啟動入盟與反貪改革</h3><ul class="plain small">
+        <li>迅速推出有共識的總理人選（媒體點名斯爾達諾維奇、前央行總裁蘇什基奇）。</li>
+        <li>歐盟加碼改革援助；評等機構維持或上調展望（Fitch 已是正向展望）。</li>
+        <li>與俄續簽天然氣合約、維持低價，外交採「親歐但不制裁俄」的平衡路線。</li>
+      </ul><p class="trig">觸發條件：武契奇陣營接受在野角色，新政府內部意見整合順利。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10 月 29 日前後（選委會正式結果）</b>：確認 140 或 141 席，以及有無選舉爭議申訴。</li>
+      <li><b>10 月 30 日（NIS 制裁豁免到期）</b>：美國是否再延期，決定唯一煉油廠能否正常運轉。</li>
+      <li><b>11 月 4 日（參謀總部舊址案聽證）</b>：據金融時報報導，相關證據將呈堂；若牽涉武契奇本人，選後對立可能升高。</li>
+      <li><b>11 月（新國會成立與總理提名）</b>：代理總統布納比奇的提名動作，是交接是否順利的第一個檢驗。</li>
+      <li><b>12 月 27 日前（總統大選）</b>：前進黨是否推出強勢人選，把總統職位變成制衡新政府的據點。</li>
+      <li><b>12 月 31 日（俄氣合約到期）</b>：續約價格與條件，反映新政府對俄路線。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>鋰礦／電池材料</h3><span class="tag bad">利空</span></div><p>學生名單第 17 名候選人、農民科卡諾維奇是 Jadar 鋰礦的主要反對者，主張永久禁止鋰與硼的探勘開採。力拓重啟 Jadar 的空間更小（推論）。</p><div class="data">Jadar 案 2022 年估值 24 億美元</div></article>
+      <article class="card"><div class="top"><h3>親政府媒體</h3><span class="tag bad">利空</span></div><p>Informer 遭闖入、被申請撤照，新政府又承諾改革公共媒體與監管機關，過去靠政府支持的電視台將面臨執照與廣告雙重壓力（推論）。</p><div class="data">記者協會 10/27 申請撤銷 Informer 全國執照</div></article>
+      <article class="card"><div class="top"><h3>中資基建／礦業</h3><span class="tag bad">利空</span></div><p>綱領要求稽核基礎建設與公共採購、清查不法所得；中資承包的鐵路、世博與礦業案可能被重新檢視（推論）。</p><div class="data">紫金礦業持有博爾銅礦 63%</div></article>
+      <article class="card"><div class="top"><h3>塞國公債／金融業</h3><span class="tag good">受惠</span></div><p>反貪與入盟前景提高治理評價，外幣公債價格上漲；若評等升至投資級，借貸成本可進一步下降。</p><div class="data">2030 美元債殖利率 6.100%→5.943%</div></article>
+      <article class="card"><div class="top"><h3>石油煉製（NIS）</h3><span class="tag">好壞參半</span></div><p>MOL 接手俄方持股可解除美國制裁風險，但交易由舊政府談成，新政府是否沿用未定；若再延宕，煉油廠營運又陷不確定。</p><div class="data">俄方持股 56.15%；豁免 10/30 到期</div></article>
+      <article class="card"><div class="top"><h3>天然氣／民生能源</h3><span class="tag">好壞參半</span></div><p>新政府表明不停止進口俄氣，短期供應穩定；但續約若被俄方當成籌碼，便宜氣價可能不保（推論）。</p><div class="data">每千立方米 318 歐元，12/31 到期</div></article>
+      <article class="card"><div class="top"><h3>會展／觀光（2027 世博）</h3><span class="tag">好壞參半</span></div><p>世博是武契奇的重點工程，新政府必須接手；稽核可能拖慢工程，但也可能降低超支風險（推論）。選後街頭衝突若持續，觀光訂房會受影響。</p><div class="data">展期 2027-05-15～08-15</div></article>
+      <article class="card"><div class="top"><h3>農業與中小企業</h3><span class="tag good">受惠</span></div><p>綱領明列加強扶植農民與本土企業、提供平價住宅；候選人中也有農民代表（推論：政策資源將向農村傾斜）。</p><div class="data">定期契約上限擬由 24 個月縮為 12 個月</div></article>
+      <article class="card"><div class="top"><h3>出口導向外資製造</h3><span class="tag">好壞參半</span></div><p>入盟進程加速有利歐洲供應鏈投資，但勞動法規收緊（縮短定期契約）會提高用人彈性成本（推論）。</p><div class="data">S&amp;P BBB-、Fitch BB+ 正向、Moody's Ba2</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>經濟上幾乎無感，政治上是「中國在歐洲影響力」的又一次退潮</h2>
+      <p>台灣最在意的三件事：台股會不會受影響（不會）、中國在中東歐的布局是否鬆動，以及這場學運勝選對台灣公民社會的啟示。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台股未受影響：</b>10/27 加權指數漲 0.12%，類股以營建、造紙、金融領漲，盤勢由 AI 與聯準會主導。</li>
+        <li><b>台灣媒體聚焦「親中俄政權倒台」：</b>自由時報以「撼動 14 年親中俄政權」為題，指武契奇推動一帶一路、購買中國軍備；中時則強調新政府須在歐盟、中國、俄羅斯之間取得平衡。</li>
+        <li><b>網路連結台灣選舉：</b>有台灣網友轉發塞國慶祝影片，連結到 11 月 28 日的台灣地方選舉（自由時報）。</li>
+        <li><b>台塞無正式邦交：</b>塞爾維亞長期支持北京立場，雙方經貿往來規模小，目前沒有直接的供應鏈衝擊。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>中東歐對中國的態度：</b>匈牙利、塞爾維亞相繼換上主打法治與入盟的政府，若新政府稽核中資工程，中國在當地的「示範案例」會打折，台灣在歐洲的外交與經貿空間可能略增。</li>
+        <li><b>但不要高估：</b>學生名單外交上主張「親歐但不制裁俄」，對中國政策尚未表態，短期內不會改變對台立場。</li>
+        <li><b>能源價格間接傳導：</b>塞國本身對油氣價格影響有限，台灣民生物價仍主要看中東局勢與國際油價（布蘭特 113 美元上下）。</li>
+        <li><b>旅遊與留學：</b>選後慶祝人潮與零星衝突集中在貝爾格勒市中心與電視台周邊，近期前往者出發前宜查外交部領務局旅外安全資訊。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時（10/28 13:46），未查到外交部或經濟部針對塞爾維亞選舉的公開表態。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">影響有限</span></td><td>塞國市場規模小，台股 10/27 的走勢由 AI 晶片與聯準會主導；短期該盯的是台灣時間 10/29 凌晨的聯準會決議。</td></tr>
+          <tr><td><b>出口與科技業</b></td><td><span class="tag">影響有限</span></td><td>台灣對塞國出口占比極小；若塞國加速入盟、吸引歐洲供應鏈，長期可能多一個中東歐生產據點選項（推論）。</td></tr>
+          <tr><td><b>電池／材料業</b></td><td><span class="tag">好壞參半</span></td><td>Jadar 鋰礦前景更不明，歐洲本土鋰供應少一選項，鋰價長期支撐略增；對台灣電池材料廠的實際影響仍小（推論）。</td></tr>
+          <tr><td><b>關心外交的民眾</b></td><td><span class="tag good">相對有利</span></td><td>中國在中東歐的兩個重要夥伴接連換人，台灣與中東歐國家互動的阻力可能下降（推論）。</td></tr>
+          <tr><td><b>一般家庭／民生物價</b></td><td><span class="tag">影響有限</span></td><td>塞國不是主要能源供應國，油電價格仍主要取決於中東局勢與國際油價。</td></tr>
+          <tr><td><b>學生與公民團體</b></td><td><span class="tag">值得關注</span></td><td>無領袖、扁平決策（每晚全體會議表決）的學運，最後以選舉而非街頭取得政權，是公民運動研究的新案例。</td></tr>
+          <tr><td><b>赴歐旅客與留學生</b></td><td><span class="tag bad">短期留意</span></td><td>選後兩晚的衝突發生在貝爾格勒市中心；正式結果公布與組閣前後可能還有集會。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>西方媒體多把選後衝突放在「新聞自由」與「民主轉型」框架；俄語媒體聚焦會不會制裁俄國；台灣媒體則偏重「親中俄政權倒台」與台灣共鳴。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>半島電視台</td><td>選後衝突、媒體控制</td><td>示威者闖入親武契奇電視台</td><td>無國界記者排名 104、Crta 媒體時段統計、RTV 道歉</td></tr>
+          <tr><td>路透（轉載）</td><td>Informer 事件當事人</td><td>示威者進入電視台、要求逮捕總編輯</td><td>Vučićević 引述、記者協會申請撤照</td></tr>
+          <tr><td>NBC News</td><td>歷史性變天</td><td>強人武契奇向學生運動認輸</td><td>武契奇歸咎外國與「美國深層政府」、選舉違規、與奧班下台並列</td></tr>
+          <tr><td>Tribune（ANI 轉載）</td><td>街頭衝突</td><td>示威者攻擊撤離的警方車隊</td><td>認輸談話全文；但把認輸日期寫成 10/26</td></tr>
+          <tr><td>Bloomberg</td><td>債市</td><td>投資人對未經考驗的勝選者先點頭</td><td>2036 美元債殖利率降 13 個基點</td></tr>
+          <tr><td>Moscow Times / Meduza</td><td>對俄關係</td><td>俄塞還是「永遠的兄弟」嗎</td><td>制裁爭議、俄氣價格、俄國移民</td></tr>
+          <tr><td>中央社（聯合新聞網）</td><td>運動組織與政權交接</td><td>從街頭挺進國會、終結強人統治</td><td>無領袖扁平結構、每週五默哀、組閣時程</td></tr>
+          <tr><td>中時新聞網</td><td>勝選後的治理考驗</td><td>國會選舉大驚奇、學生名單大勝</td><td>新政府須平衡歐盟、中國、俄羅斯</td></tr>
+          <tr><td>自由時報</td><td>親中俄政權倒台</td><td>撼動 14 年親中俄政權、台灣人共鳴</td><td>一帶一路、中國軍備、台灣 11/28 選舉</td></tr>
+          <tr><td>新頭殼 Newtalk</td><td>制裁俄國與司法追訴</td><td>終結 14 年執政、「他」恐遭刑控</td><td>川普大樓案、11/4 聽證（引金融時報）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10 月 25 日投票，學生名單過半，武契奇當晚認輸。</li>
+        <li>導火線是 2024 年 11 月諾維薩德車站雨棚倒塌、16 人死亡。</li>
+        <li>學生名單沒有學生候選人，領銜人斯爾達諾維奇，總理人選未定。</li>
+        <li>選後有親政府營地被拆、Informer TV 遭闖入。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「暴動」用語要小心：</b>多數外媒用「慶祝」「闖入」「衝突」，沒有報導大規模死傷；中文標題的「暴動」容易讓人高估暴力程度。</li>
+        <li><b>對俄立場兩種說法：</b>武契奇稱新政府會制裁俄國，學生名單多位代表公開否認；目前以學生名單的公開說法為準。</li>
+        <li><b>刑事追訴屬假設：</b>Newtalk 標題「恐遭刑控」指武契奇，但目前被起訴的是一名部長，並非武契奇本人。</li>
+        <li><b>時區：</b>認輸是貝爾格勒 10/25 晚間，台灣已是 10/26 清晨，部分中文報導日期因此不同。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>學生名單得票率</td><td>52.54%（RIK，8,077 所，半島電視台）</td><td>52.71%（RIK，8,187 所）；約 53%（CeSID–Ipsos）</td><td>計票進度不同；民調機構用抽樣推估</td></tr>
+          <tr><td>學生名單席次</td><td>135～140 席（武契奇認輸談話）</td><td>140 席（RIK 初步）；141 席（CeSID–Ipsos 最終推估）</td><td>正式結果未公布，各方推估方法不同</td></tr>
+          <tr><td>投票率</td><td>68.78%（RIK 初步，中央社）</td><td>68.95%（維基百科後續更新）；約 70%（選前觀察團預估）</td><td>計票進度與預估時點不同</td></tr>
+          <tr><td>投票日期</td><td>10 月 25 日（多數媒體）</td><td>10 月 20 日（Moscow Times）</td><td>Moscow Times 筆誤</td></tr>
+          <tr><td>2036 美元債殖利率</td><td>6.372%（公債管理署，10/26）</td><td>6.42%（Bloomberg，本週）</td><td>報價來源與時點不同</td></tr>
+          <tr><td>Jadar 鋰礦規模</td><td>24 億美元（2022 年撤照時）</td><td>29.5 億美元（BISI 分析）</td><td>估算年份不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 28 日 13:46（台灣時間）。選舉數字皆為初步計票，不同媒體的數字可能因時間點不同略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">官方資料與背景</div>
+    <ol class="sources">
+      <li><a href="https://www.javnidug.gov.rs/en" target="_blank" rel="noopener">塞爾維亞公債管理署 — 外幣公債收盤價、匯率與評等（10/26）</a></li>
+      <li><a href="https://www.nbs.rs/en/indeks/" target="_blank" rel="noopener">塞爾維亞國家銀行 — 政策利率與近期公告</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2026_Serbian_parliamentary_election" target="_blank" rel="noopener">Wikipedia — 2026 年塞爾維亞國會選舉（背景、選制、選後事件）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2024%E2%80%932026_Serbian_anti-corruption_protests" target="_blank" rel="noopener">Wikipedia — 2024～2026 年塞爾維亞反貪腐抗議（時間線）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="5">
+      <li><a href="https://www.aljazeera.com/news/2026/10/27/protesters-storm-serbian-pro-vucic-tv-station-after-his-loss-at-polls" target="_blank" rel="noopener">Al Jazeera — 示威者闖入親武契奇電視台（10/27）</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/10/26/serbia-after-vucic-who-will-be-pm-and-when-will-a-government-be-formed" target="_blank" rel="noopener">Al Jazeera — 武契奇之後誰當總理、何時組閣（10/26）</a></li>
+      <li><a href="https://www.nbcnews.com/world/europe/serbia-votes-students-seek-unseat-aleksandar-vucic-snap-election-rcna605377" target="_blank" rel="noopener">NBC News — 強人武契奇向學生運動認輸（10/25）</a></li>
+      <li><a href="https://www.tribuneindia.com/news/aleksandar-vucic/protesters-target-police-convoy-in-belgrade-after-vucic-concedes-defeat-in-parliamentary-polls-report" target="_blank" rel="noopener">The Tribune（ANI）— 示威者攻擊撤離的警方車隊（10/27）</a></li>
+      <li><a href="https://balkaninsight.com/2026/10/26/student-list-wins-outright-majority-in-serbian-parliamentary-polls/bi/" target="_blank" rel="noopener">Balkan Insight — 學生名單單獨過半（10/26）</a></li>
+      <li><a href="https://www.aa.com.tr/en/features/explainer-serbias-students-won-the-election-but-who-will-govern/4101491" target="_blank" rel="noopener">Anadolu — 學生贏了選舉，誰來執政（10/27）</a></li>
+      <li><a href="https://themoscowtimes.com/2026/10/27/will-russia-and-serbia-remain-brothers-forever-after-shock-election-result-a94100" target="_blank" rel="noopener">The Moscow Times — 俄塞還是永遠的兄弟嗎（10/27）</a></li>
+      <li><a href="https://meduza.io/amp/en/feature/2026/10/26/serbia-s-student-backed-opposition-has-defeated-vucic-at-the-ballot-box-he-says-the-winners-will-impose-sanctions-on-russia-but-they-say-otherwise" target="_blank" rel="noopener">Meduza — 武契奇稱新政府會制裁俄國，學生名單否認（10/26）</a></li>
+      <li><a href="https://www.fxstreet.com/analysis/serbias-student-list-set-for-majority-202610270649" target="_blank" rel="noopener">Erste（FXStreet）— 學生名單將取得多數（10/27）</a></li>
+      <li><a href="https://www.wsls.com/news/world/2026/05/23/serbian-protesters-clash-with-police-after-anti-government-rally-in-belgrade/" target="_blank" rel="noopener">AP（WSLS 轉載）— 貝爾格勒反政府集會後爆發衝突（5/23）</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-10-27/bond-market-gives-initial-nod-to-serbia-s-untested-ballot-winner" target="_blank" rel="noopener">Bloomberg — 債市對塞國勝選者先點頭（10/27，付費牆，僅讀摘要）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="16">
+      <li><a href="https://www.cna.com.tw/news/aopl/202609280018.aspx" target="_blank" rel="noopener">中央社 — 武契奇辭總統轉戰總理（9/28）</a></li>
+      <li><a href="https://udn.com/news/story/6809/9839609" target="_blank" rel="noopener">聯合新聞網（中央社）— 從街頭挺進國會，學生名單終結強人統治（10/27）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261026002527-260408" target="_blank" rel="noopener">中時新聞網 — 學生名單大勝、武契奇承認敗選（10/26）</a></li>
+      <li><a href="https://news.ltn.com.tw/news/politics/breakingnews/5619179" target="_blank" rel="noopener">自由時報 — 撼動 14 年親中俄政權，塞國變天掀台灣人共鳴（10/26）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-10-27/1067740" target="_blank" rel="noopener">新頭殼 — 終結武契奇 14 年執政、「他」恐遭刑控（10/27）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="21">
+      <li><a href="https://www.cna.com.tw/news/afe/202610270136.aspx" target="_blank" rel="noopener">中央社 — 台股漲 54.8 點（10/27）</a></li>
+      <li><a href="https://hdfcsky.com/news/nasdaq-jumps-1-2percent-as-chip-stocks-rally-oil-slides-and-fed-meeting-begins-october-28-2026" target="_blank" rel="noopener">HDFC Sky — 美股收盤、費半與油價（10/27）</a></li>
+      <li><a href="https://www.halo-technologies.com/markets/shares/asx/rio/" target="_blank" rel="noopener">Halo Technologies — 力拓 ASX 報價（10/27）</a></li>
+      <li><a href="https://seenews.com/news/belgrade-bourse-belex15-closes-higher-dunav-aerodrom-rise-1303760" target="_blank" rel="noopener">SeeNews — 貝爾格勒 BELEX15 收高（10/27）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 28 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'塞國 2030 美元債', s:'價格 10/23→10/26', v:0.61},
+    {l:'塞國 2031 歐元債', s:'價格 10/23→10/26', v:0.61},
+    {l:'力拓 Rio Tinto', s:'ASX A$150.32', v:2.53},
+    {l:'加權指數', s:'46,096', v:0.12},
+    {l:'費城半導體', s:'11,483', v:3.60},
+    {l:'S&P 500', s:'7,723', v:0.60},
+    {l:'布蘭特原油', s:'113.88 美元', v:-1.67}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
