@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聯準會十月按兵不動</title>
+<meta name="description" content="2026 年 10 月 28 日 FOMC 維持利率 3.75%–4.00%：10 比 2 的兩張反對票、Warsh 記者會、聲明措辭變化、美國經濟與市場反應、全球與各產業影響、對台灣的影響與媒體報導比較。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* 聯準會 2026 年 10 月決議解讀：綠色主題（央行／總經）。
+   股價顏色依台股慣例：紅漲（--up）、綠跌（--down），與 good/bad 標籤分開。 */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .nav .home span{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#presser">記者會</a></li>
+      <li><a class="link" href="#local">美國影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">央行解讀 · 期中選舉前最後一次利率決議 · 資料截至 2026 年 10 月 29 日</p>
+      <h1>聯準會這次沒升息，但兩張反對票和一句「通膨太高」，把懸念全推到 12 月</h1>
+      <p class="lede">美國聯準會（Fed）10 月 28 日決定維持聯邦資金利率在 3.75%–4.00%，沒有延續 9 月那次三年來首度升息。表面上是「按兵不動」，實際上聲明把「這次行動有助通膨及時回到 2%」改成「需要更多資訊再決定」，等於把判斷延後。更值得注意的是 10 比 2 的票數：理事庫克（Lisa Cook）與克里夫蘭聯準銀行總裁哈瑪克（Beth Hammack）主張現在就該再升 1 碼（0.25 個百分點）。決議後，利率期貨把 12 月升息的機率拉到八成以上。</p>
+    </div>
+    <div class="stmt" aria-label="利率決策">
+      <div class="k">聯邦資金利率目標區間</div>
+      <div class="range">3¾–4%<small>不變</small></div>
+      <div class="was">9 月升息 1 碼後維持 · 下次會議 12 月 8–9 日</div>
+      <div class="stmt-row">
+        <div><div class="v">10–2</div><div class="l">投票結果</div></div>
+        <div><div class="v">約 85%</div><div class="l">12 月升息機率</div></div>
+        <div><div class="v">3.7%</div><div class="l">9 月 CPI 年增率</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂這次「不升息」</h2>
+      <p>懶人包：Fed 這次沒動，不是因為通膨降了，而是想再多看幾份數據——而且已經有兩個人等不下去。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>利率維持在 3.75%–4.00%，符合市場預期。</b>決議前聯邦資金期貨顯示「維持不變」的機率約 93%，所以決議本身沒有意外。上一次行動是 9 月 16 日升息 1 碼，那是 2023 年 7 月以來首度升息。</div></li>
+      <li><div><b>票數從 12 比 0 變成 10 比 2。</b>理事庫克與克里夫蘭聯準銀行總裁哈瑪克投下反對票，兩人都主張這次就該升息 1 碼。一個月前的升息是全票通過，這次換成「多數按兵、少數主張再升」。</div></li>
+      <li><div><b>庫克這張票是她 2022 年上任以來第一次反對。</b>她正被川普政府以房貸申報爭議推動免職，最高法院 6 月 29 日以「未給予正當程序」暫時擋下，白宮預定約一週後再就她的去留舉行聽證。</div></li>
+      <li><div><b>聲明把「急迫」兩個字拿掉了。</b>9 月寫的是「今天的行動將支持通膨<b>更</b>及時地回到 2%」，10 月改成「累積更多資訊有助於判斷合適的政策立場，以確保通膨及時回到 2%」。英文從 timelier 變成 timely，被解讀為急迫性下降。</div></li>
+      <li><div><b>但對經濟的描述反而上修。</b>經濟活動從 9 月的「穩健擴張」（solid）改成「強勁擴張」（strong）。Warsh 說上半年 GDP 成長已從初估的 1.8% 上修到 2.4%，第三季消費可能超過 3%、企業投資接近兩位數成長。</div></li>
+      <li><div><b>不升息的真正理由是「還沒看夠」，不是通膨好轉。</b>Warsh 直說通膨已經高於目標將近 6 年，而且能源相關價格最近幾週又漲上去了。他形容接下來是「資訊豐富」的一段期間，要等數據再決定。</div></li>
+      <li><div><b>市場把懸念全押到 12 月。</b>決議後利率期貨顯示 12 月 8–9 日升息 1 碼的機率約 85%（CME FedWatch 為 82.6%，前一天是 78.3%）。美股四大指數當天全收高，費半漲 1.75%。</div></li>
+      <li><div><b>Warsh 同時宣布改變開會方式。</b>2027 年起 8 次會議中有 1 次只談長期策略、不表決利率也不發聲明，2028 年變成 2 次策略加 6 次政策會議。他說這是為了留時間思考「小數點左邊」的大問題。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 cause -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼 9 月升了、10 月卻停？四個理由</h2>
+      <p>第 1、2、4 點是 Fed 自己在聲明與記者會講的；第 3 點是媒體與分析師的觀察，Fed 本身否認。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>想先看 9 月那一碼的效果</h3><p>Warsh 說，9 月行動之後「部分企業與家庭的金融與信貸條件已經收緊，和我們預期的一樣」，市場參與者在資金配置上也變得比較挑剔。他把這形容成「貨幣藥方開始起一點作用」。既然藥效正在出現，就沒有急著再加一劑的理由。</p></div><div class="ev"><span class="tag">9/16 升息 1 碼</span><span class="tag">金融條件已收緊</span><span class="tag">10 年期美債 5.02%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>這次沒有新的經濟預測可以參考</h3><p>10 月是非季會，不發布點陣圖與經濟預測摘要（SEP）。上一份點陣圖是 9 月做的，當時中位數認為年底利率應在 4.125%，也就是「年底前再升 1 碼」。Fed 等於可以把這一碼留到 12 月、搭配新的預測一起出手。</p></div><div class="ev"><span class="tag">無點陣圖／SEP</span><span class="tag">9 月中位數 4.1%</span><span class="tag">下次 12/8–9</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>6 天後就是期中選舉 <span class="infer">媒體觀察</span></h3><p>11 月 3 日舉行美國期中選舉，這是選前最後一次利率決議。多家媒體指出，部分觀察人士認為官員不願在選前升息。Warsh 在記者會被直接問到，他回答政治「在這個決定中沒有發揮任何作用」，還說「我沒有聽到任何關於政治的字句」。</p></div><div class="ev"><span class="tag">11/3 期中選舉</span><span class="tag">Warsh 否認</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>通膨確實還在，所以門沒關</h3><p>9 月 CPI 年增率 3.7%，比 8 月的 3.4% 還高；Fed 偏好的 PCE 物價指數在 10 月 29 日公布，市場預期也是 3.7%。聲明維持「通膨仍然偏高」，並保留「委員會將實現物價穩定」這句話。摩根士丹利經濟學家認為，聲明顯示 Fed「可能還沒有緊縮完」。</p></div><div class="ev"><span class="tag">9 月 CPI 3.7%</span><span class="tag">PCE 預期 3.7%</span><span class="tag">超標近 6 年</span></div></div>
+    </div>
+
+    <div class="sub-h">事件時間軸</div>
+    <div class="legend"><span><i class="a"></i>Fed 決策與人事</span><span><i class="g"></i>通膨／能源衝擊</span><span><i></i>數據與政治</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-02-28</div><div class="what">伊朗戰爭爆發，荷莫茲海峽航運中斷，<b>油價成為今年通膨主因</b></div></li>
+        <li class="key"><div class="date">2026-05-22</div><div class="what"><b>Warsh 宣誓就任 Fed 主席</b>，接替 Powell</div></li>
+        <li class="key"><div class="date">2026-06-17</div><div class="what">Warsh 首次主持會議，維持利率；<b>點陣圖從降息轉為年底前升息</b></div></li>
+        <li><div class="date">2026-06-29</div><div class="what">最高法院以<b>未給予正當程序</b>為由，暫時擋下川普免職理事庫克</div></li>
+        <li class="key"><div class="date">2026-07-29</div><div class="what">以 9 比 3 維持利率，<b>三位委員主張升息</b>；Warsh 稱這是他要的「家庭爭論」</div></li>
+        <li class="key"><div class="date">2026-09-16</div><div class="what"><b>升息 1 碼至 3.75%–4.00%</b>，12 比 0 全票，三年多來首度升息</div></li>
+      </ol>
+      <ol class="timeline">
+        <li><div class="date">2026-09-17</div><div class="what">台灣央行<b>利率「連 10 凍」</b>，維持重貼現率 2.00%，但第三度上修今年 GDP 與 CPI 預測</div></li>
+        <li class="geo"><div class="date">2026-10-14</div><div class="what">美國 <b>9 月 CPI 升到 3.7%</b>，高於 8 月的 3.4%，升息預期升溫</div></li>
+        <li class="geo"><div class="date">2026-10-28</div><div class="what">Houthi 攻擊沙烏地、市場傳美方要求波灣國家準備期中選舉後再對伊朗動手，<b>布蘭特原油回到每桶 115 美元附近</b></div></li>
+        <li class="key"><div class="date">2026-10-28</div><div class="what"><b>FOMC 維持利率 3.75%–4.00%</b>，10 比 2；庫克與哈瑪克主張升息</div></li>
+        <li><div class="date">2026-10-29</div><div class="what">美國 <b>9 月 PCE 物價指數</b>公布（市場預期 3.7%）</div></li>
+        <li><div class="date">2026-11-03</div><div class="what"><b>美國期中選舉</b>；白宮預定同週就庫克去留舉行聽證</div></li>
+        <li class="key"><div class="date">2026-12-08 ～ 12-09</div><div class="what"><b>今年最後一次 FOMC</b>，同時公布新的點陣圖與經濟預測</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 presser -->
+<section id="presser">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 記者會重點</div>
+      <h2>Warsh 的說法：經濟很好，但通膨還是太高</h2>
+      <p>引述為本報告依 Fed 公布的開場逐字稿與媒體轉述翻譯；下方小字為補充脈絡。</p>
+    </div>
+    <div class="grid g2">
+      <article class="card">
+        <div class="sec-num">判斷方法</div>
+        <h3>「我們稱之為『拷問現實』。」</h3>
+        <p class="small muted">他說每次開會都要「往窗外看」，判斷實際發生什麼事，並補了一句：這件事並沒有變得比較容易。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">經濟現況</div>
+        <h3>「經濟成長變強了。」</h3>
+        <p class="small muted">上半年 GDP 從初估 1.8% 上修到 2.4%；第三季消費可能超過 3%、企業投資接近兩位數。資本支出占 GDP 比重處於歷史高檔，高科技領頭、其他類別也在擴散。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">就業</div>
+        <h3>「初領失業金的 4 週平均，處於好幾個世代以來的最低水準。」</h3>
+        <p class="small muted">失業率低於一年前，就業成長也明顯高於去年。他的結論是：雙重使命裡的就業那一邊「相當正面」，所以這兩天的討論主要放在物價穩定。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">通膨</div>
+        <h3>「這是好消息，但通膨太高了。」</h3>
+        <p class="small muted">通膨高於目標將近 6 年；能源與相關價格最近幾週又漲上去。他說 Fed 的工作是確保個別產業的價格變化不要擴散到整體經濟，並讓通膨預期維持穩定。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">金融條件</div>
+        <h3>「我不願意、也沒辦法說它們是緊的。」</h3>
+        <p class="small muted">他承認 9 月升息後金融條件整體變緊，但還稱不上「緊縮」。對於「升息擋不住 AI 投資」的說法（避險基金經理人 Ackman 的觀點），他回應：「利率會滲進縫隙裡。」</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">前瞻指引</div>
+        <h3>「除非情況緊急、除非有危機，我不相信前瞻指引。」</h3>
+        <p class="small muted">他沒有對 12 月是否升息表態，只說目前「沒有確定的結論」，接下來是一段「資訊豐富」的期間。這也是他上任以來一貫的風格。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">政治</div>
+        <h3>「政治在這個決定中沒有發揮任何作用。」</h3>
+        <p class="small muted">被問到期中選舉時的回答，他並補充「我沒有聽到任何關於政治的字句」。對川普批評理事們「對總統有敵意」，他為同事辯護；被問是否參加白宮關於庫克的聽證，他說「據我所知沒有」。</p>
+      </article>
+      <article class="card">
+        <div class="sec-num">制度改變</div>
+        <h3>「為我們這個思想多元的群體，保留時間與空間。」</h3>
+        <p class="small muted">2027 年維持 8 次會議，但其中 1 次只談長期策略，不表決利率、不發政策聲明；2028 年會有 2 次策略會議、6 次政策會議。他說開會安排不只是行政細節，而是影響決策品質的制度選擇。</p>
+      </article>
+    </div>
+    <p class="note"><b>一句話總結這場記者會：</b>Warsh 把「經濟強」和「通膨高」兩件事同時講滿，但刻意不給 12 月的承諾——既留住升息的選項，也避免市場把這次暫停解讀成政策轉向。</p>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對美國的影響</div>
+      <h2>數據很漂亮，但選民感受到的是油價和房貸</h2>
+      <p>這一節看的是美國本地：總體數據、家庭負擔，以及這次決議在選前的政治處境。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">CPI 年增率（9 月）</div><div class="v">3.7%</div><div class="d">8 月為 3.4%，連續高於 3%</div></div>
+      <div class="tile"><div class="l">上半年 GDP 成長</div><div class="v">2.4%</div><div class="d">由初估 1.8% 上修</div></div>
+      <div class="tile"><div class="l">30 年期房貸利率</div><div class="v">約 7.4%</div><div class="d">Realtor.com 統計</div></div>
+      <div class="tile"><div class="l">布蘭特原油</div><div class="v">約 $115</div><div class="d">10/28 盤中；UBS 估年底前約 110</div></div>
+      <div class="tile"><div class="l">10 年期美債殖利率</div><div class="v">5.02%</div><div class="d">單日 +3bp；2 年期在 4.7% 上方</div></div>
+      <div class="tile"><div class="l">通膨超標時間</div><div class="v">近 6 年</div><div class="d">Warsh 記者會說法</div></div>
+      <div class="tile"><div class="l">川普生活成本支持度</div><div class="v">27%</div><div class="d">NBC 民調；伊朗戰爭為 29%</div></div>
+      <div class="tile"><div class="l">距離期中選舉</div><div class="v">6 天</div><div class="d">11/3 投票</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>家庭與企業</h3><ul class="plain">
+        <li><b>借錢還是貴：</b>利率沒再升，但也沒降。30 年期房貸約 7.4%，信用卡與車貸跟著基準利率走，短期不會變便宜</li>
+        <li><b>油價是最有感的一項：</b>NBC 民調中約三分之二的受訪者認為伊朗戰爭推升的油價是「嚴重」問題，超過一半的人說經濟狀況已經改變他們買哪些食品</li>
+        <li><b>存款族相對有利：</b>利率維持在 3.75%–4.00%，貨幣市場基金與定存收益仍在高檔</li>
+        <li><b>企業投資反而很熱：</b>資本支出占 GDP 比重處於歷史高檔，高科技投資領頭；Warsh 說這個趨勢「值得關注」</li>
+      </ul></div>
+      <div class="card"><h3>政治與制度</h3><ul class="plain">
+        <li><b>選前最後一次決議：</b>不升息讓 Fed 避開「選前打壓經濟」的指責，但兩張反對票又讓「是不是為了選舉才不升」的質疑無法完全消除</li>
+        <li><b>川普的壓力沒有停：</b>他長期主張利率應遠低於目前水準，近期批評理事會成員對他「有敵意」；不過他沒有點名批評自己提名的 Warsh</li>
+        <li><b>庫克案是最大的制度風險：</b>最高法院已擋下第一次免職，白宮正進行第二次程序。她這次投下任內首張反對票，等於用行動回應「Fed 會被施壓降息」的說法</li>
+        <li><b>開會制度改變：</b>2027 年起少一次利率決策會議，有分析師認為資訊變少不利前瞻指引；Monex USA 的 Juan Perez 認為對美元可能有不小影響</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>股市鬆一口氣，債市不買單</h2>
+      <p>紅色為上漲、綠色為下跌（台股慣例）。美股為 10/28 收盤、已反映決議；台股為 10/28 收盤，當時決議尚未公布。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/28 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色長條為依報導推算的數字</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>美股：</b>四大指數全收高，連三個交易日上漲。CNN 指出，這是 S&amp;P 500 自 2025 年 12 月以來<b>第一次在 Fed 決議日收高</b>；在此之前連 6 次決議日收黑，是 1994 年以來第二長的紀錄。盤中其實來回震盪：聲明公布後先跌，記者會期間拉高，尾盤又吐回部分漲幅</li>
+          <li><b>美股個股：</b>甲骨文因長期營收展望大漲 10.73%，帶動科技股信心；費半漲 1.75% 是當天最強的指數。不過 Nvidia 收黑 0.39%，AI 族群內部分化</li>
+          <li><b>債市：</b>10 年期美債殖利率不跌反升 3 個基點到 5.02%，2 年期停在 4.7% 上方——債市讀到的是「12 月還要升」，不是「升息結束」</li>
+          <li><b>匯市：</b>美元指數跌 0.19% 到 102.128，記者會期間對歐元走弱</li>
+          <li><b>商品：</b>黃金約 4,065 美元、小漲 0.38%；布蘭特原油因 Houthi 攻擊沙烏地而回到 115 美元附近，正是 Warsh 口中「能源價格又漲上去」的那件事</li>
+          <li><b>台股：</b>10/28 在決議前大漲 939 點、重回 47,000 點，但台指期夜盤在決議後反跌 128 點，顯示開盤前情緒分歧</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股與指數一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr><td class="num">ORCL</td><td><b>甲骨文</b></td><td>美股</td><td class="num">144.54</td><td class="num up">+10.73%</td><td class="period">當日最強權值股</td><td>長期營收展望激勵，帶動科技股信心回升</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">4,235</td><td class="num up">+6.94%</td><td class="period">10/28 單日</td><td>AI 股多頭全面噴發，領漲台股權值股</td></tr>
+          <tr><td class="num">SOX</td><td><b>費城半導體指數</b></td><td>美股</td><td class="num">11,684.00</td><td class="num up">+1.75%</td><td class="period">+201.50 點</td><td>利率不變、科技股回神，當日最強指數</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">251.5</td><td class="num up">+1.62%</td><td class="period">10/28 單日</td><td>AI 伺服器族群同步走強</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,425</td><td class="num up">+1.04%</td><td class="period">外資連 14 日調節</td><td>官股單日買超 53.23 億元力挺，但外資仍在減碼</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">439.51</td><td class="num up">+0.60%</td><td class="period">10/28 收盤</td><td>跟隨半導體類股走高，漲幅小於費半</td></tr>
+          <tr><td class="num">SPX</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">7,743.98</td><td class="num up">+0.28%</td><td class="period">+21.38 點</td><td>決議符合預期，利空出盡</td></tr>
+          <tr><td class="num">IXIC</td><td><b>那斯達克</b></td><td>美股</td><td class="num">26,549.85</td><td class="num up">+0.27%</td><td class="period">+72.04 點</td><td>科技股領漲，但漲幅受 AI 股分化拖累</td></tr>
+          <tr><td class="num">DJI</td><td><b>道瓊工業指數</b></td><td>美股</td><td class="num">52,475.10</td><td class="num up">+0.19%</td><td class="period">+97.53 點</td><td>傳產與金融股相對落後</td></tr>
+          <tr><td class="num">NVDA</td><td><b>Nvidia</b></td><td>美股</td><td class="num">217.10</td><td class="num down">−0.39%</td><td class="period">逆勢收黑</td><td>AI 權值股獲利了結，與甲骨文走勢分化</td></tr>
+          <tr><td class="num">2881</td><td><b>富邦金</b></td><td>台股</td><td class="num">161</td><td class="num down">−0.62%</td><td class="period">10/28 逆勢收黑</td><td>升息預期降溫，金融股在台股大漲日反向下跌</td></tr>
+          <tr><td class="num">TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">47,035.58</td><td class="num up">+2.04%</td><td class="period">+939.35 點</td><td>決議前一日，三大法人買超 298.94 億元；夜盤期指轉跌 128 點</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股與美元指數為 10/28 收盤、台股為 10/28 台灣時間收盤，來源：中央社、鉅亨網行情、ETtoday、CNN。黃金為盤中約略價格，已在圖表中標為推算。台股 10/29 開盤後的反應，在本報告完成時尚未出現。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>美國不升息，全球鬆的是情緒，不是資金成本</h2>
+      <p>Fed 是全球資金的定價中心。這次「暫停但不轉向」，讓各國央行少了跟進的壓力，卻也沒有換來寬鬆的空間。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>美元與其他貨幣</h3><ul class="plain small">
+        <li>美元指數跌 0.19% 到 102.128，決議後小幅走弱</li>
+        <li>升息沒落地，非美貨幣短線壓力暫緩</li>
+        <li>但 12 月升息機率高達八成，匯市難有趨勢性反轉（推論）</li>
+      </ul></article>
+      <article class="card"><h3>各國央行的處境</h3><ul class="plain small">
+        <li>Fed 暫停，讓跟進升息的壓力下降一輪</li>
+        <li>但各國同樣面對油價推升的輸入性通膨，自身的問題不會因此消失</li>
+        <li>Fed 2027 年少一次利率決策會議，等於全球少一個定期的政策訊號來源</li>
+      </ul></article>
+      <article class="card"><h3>債市與資金流向</h3><ul class="plain small">
+        <li>10 年期美債 5.02%、2 年期 4.7% 以上，高殖利率持續吸引全球資金</li>
+        <li>市場預期政策利率在 2027 年 9 月前後約 4.7%，高於目前的約 3.9%</li>
+        <li>新興市場與有美元債務的企業，償債成本仍難放鬆</li>
+      </ul></article>
+      <article class="card"><h3>能源是共同變數</h3><ul class="plain small">
+        <li>Houthi 攻擊沙烏地、市場傳美方要求波灣國家準備期中選舉後再對伊朗動手</li>
+        <li>布蘭特原油回到每桶 115 美元附近，UBS 估年底前維持 110 左右</li>
+        <li>油價是今年全球通膨的共同來源，也是 Fed 最難控制的部分</li>
+      </ul></article>
+      <article class="card"><h3>AI 投資與利率的拉鋸</h3><ul class="plain small">
+        <li>Warsh 說資本支出占 GDP 比重創歷史高檔，高科技領頭並向其他類別擴散</li>
+        <li>有人主張升息擋不住 AI 投資，他回應「利率會滲進縫隙裡」</li>
+        <li>這場爭論牽動全球 AI 供應鏈的資本支出節奏（推論）</li>
+      </ul></article>
+      <article class="card"><h3>央行獨立性的示範效應</h3><ul class="plain small">
+        <li>被總統推動免職的理事庫克，投下主張升息的反對票</li>
+        <li>Warsh 公開說政治「沒有發揮任何作用」，並為同事辯護</li>
+        <li>國際投資人把這件事看成美元信用與 Fed 可信度的指標（推論）</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>12 月那一碼，是今年最後的懸念</h2>
+      <p>以下依利率期貨、9 月點陣圖與媒體分析整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 市場基本情境（機率約 85%）</div><h3>12 月升息 1 碼到 4.00%–4.25%</h3><ul class="plain small">
+        <li>與 9 月點陣圖「年底 4.125%」的中位數一致</li>
+        <li>新的點陣圖同時公布，決定 2027 年還要不要再升</li>
+        <li>美債殖利率維持 5% 上下，房貸利率難降</li>
+      </ul><p class="trig">觸發條件：PCE 與 11 月 CPI 維持在 3.5% 以上，油價不明顯回落</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>通膨再往上，升息延伸到 2027 年</h3><ul class="plain small">
+        <li>市場已把 2027 年 9 月的政策利率押到約 4.7%</li>
+        <li>伊朗局勢若在期中選舉後升溫，油價再推一把</li>
+        <li>高估值科技股與新興市場承壓最大</li>
+      </ul><p class="trig">觸發條件：美伊衝突再起、布蘭特站上 130 美元</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>12 月也按兵不動，升息循環就此打住</h3><ul class="plain small">
+        <li>Warsh 說 9 月那一碼「開始起一點作用」，若數據轉弱就沒有再升的理由</li>
+        <li>期貨目前只給這個情境約 15% 的機率</li>
+        <li>股債可望同步反彈，美元回落</li>
+      </ul><p class="trig">觸發條件：油價回落、就業明顯降溫、PCE 低於預期</p></article>
+    </div>
+    <div class="sub-h">接下來要看的訊號</div>
+    <ul class="watch">
+      <li><b>10/29 9 月 PCE 物價指數</b>：Fed 最看重的通膨指標，市場預期 3.7%，高於預期會直接推高 12 月升息機率</li>
+      <li><b>11/3 美國期中選舉</b>：結果會決定川普對 Fed 施壓的力道，也關係到庫克免職案的政治環境</li>
+      <li><b>11 月初白宮關於庫克的聽證</b>：若她真的被免職，市場會重新評估 Fed 的獨立性（推論）</li>
+      <li><b>11 月中 10 月 CPI</b>：12 月決議前最後一份完整的通膨數據</li>
+      <li><b>12/8–9 FOMC 與新點陣圖</b>：今年最後一次會議，同時公布 2027 年的利率路徑</li>
+      <li><b>荷莫茲海峽與伊朗局勢</b>：油價是今年通膨的主要來源，也是 Fed 唯一控制不了的變數</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>沒升息不等於解套，只是把壓力延後一個月</h2>
+      <p>標籤是好壞判斷，與股價的紅綠無關；數據為 10/28 當日表現。標示「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>半導體／AI 硬體</h3><span class="tag good">受惠</span></div><p>利率不再往上，折現率壓力暫緩，高本益比的成長股最先反彈；AI 資本支出本身仍在高檔，需求面沒有受影響。</p><div class="data">費半 +1.75%、台積電 ADR +0.60%</div></article>
+      <article class="card"><div class="top"><h3>軟體／雲端</h3><span class="tag good">受惠</span></div><p>長天期現金流對利率最敏感，暫停升息直接放大營收展望的評價效果，甲骨文當天的漲幅就是例子。</p><div class="data">甲骨文 +10.73%</div></article>
+      <article class="card"><div class="top"><h3>房地產／建商</h3><span class="tag bad">利空</span></div><p>利率沒再升，但也沒降。30 年期房貸停在 7.4% 左右，購屋負擔沒有改善，加上 12 月升息機率八成，買方更傾向繼續觀望。</p><div class="data">30 年期房貸約 7.4%</div></article>
+      <article class="card"><div class="top"><h3>銀行／金融</h3><span class="tag">好壞參半</span></div><p>升息延後，淨利差擴大的時點跟著延後；但殖利率仍高，債券部位的評價壓力沒有解除。台股金融股在大漲日反而收黑。</p><div class="data">富邦金 −0.62%（10/28）</div></article>
+      <article class="card"><div class="top"><h3>能源／油服</h3><span class="tag good">受惠</span></div><p>中東局勢推升油價，與利率循環關係不大。Warsh 點名能源價格最近幾週又漲上去，等於承認這塊不是貨幣政策能解決的。</p><div class="data">布蘭特約 $115；UBS 估年底約 110</div></article>
+      <article class="card"><div class="top"><h3>航空／運輸</h3><span class="tag bad">利空</span></div><p>燃油成本隨油價走高，機隊與設備的融資成本又停在高檔，兩邊同時擠壓獲利。（推論）</p><div class="data">布蘭特較年初低點大幅走高</div></article>
+      <article class="card"><div class="top"><h3>汽車／非必需消費</h3><span class="tag bad">利空</span></div><p>車貸利率跟著基準利率走，利率不降就不會便宜；加上油價與食品支出排擠，大額消費最先被延後。</p><div class="data">NBC 民調：逾半數受訪者已改變採買內容</div></article>
+      <article class="card"><div class="top"><h3>公用事業／高股息</h3><span class="tag bad">利空</span></div><p>殖利率 5% 的美債仍是強力替代品，「類債券」資產的吸引力難以回升，負債高的業者利息成本也居高不下。</p><div class="data">10 年期美債 5.02%</div></article>
+      <article class="card"><div class="top"><h3>黃金／貴金屬</h3><span class="tag good">受惠</span></div><p>利率沒再升，持有無息資產的機會成本不再增加；地緣政治與通膨避險需求仍在。</p><div class="data">黃金約 $4,065、+0.38%</div></article>
+      <article class="card"><div class="top"><h3>存款／貨幣市場</h3><span class="tag good">受惠</span></div><p>利率停在 3.75%–4.00%，定存與貨幣市場基金收益維持高檔，對存錢的人仍然有利。</p><div class="data">政策利率維持 3.75%–4.00%</div></article>
+      <article class="card"><div class="top"><h3>中小企業／高負債公司</h3><span class="tag bad">利空</span></div><p>Warsh 說信貸條件「對部分企業與家庭已經收緊」，市場在資金配置上變得挑剔——體質弱的借款人最先感受到。</p><div class="data">Warsh：市場參與者「更加挑剔」</div></article>
+      <article class="card"><div class="top"><h3>加密資產</h3><span class="tag">好壞參半</span></div><p>暫停升息對風險資產是喘息，但 12 月升息機率八成，讓流動性預期難以轉向。</p><div class="data">決議前比特幣已在相對低檔</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台股先漲為敬，但夜盤已經先反映了 12 月的壓力</h2>
+      <p>台灣關心的三件事：台股怎麼走、新台幣會不會貶、央行 12 月要不要跟進升息。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台股 10/28 已先漲一波：</b>加權指數收 47,035.58 點、大漲 939.35 點（+2.04%），重回 47,000 點，成交約 7,221 億元；三大法人買超 298.94 億元，其中外資買超 159.22 億元</li>
+        <li><b>但外資在台積電身上仍是賣方：</b>外資連續 14 個交易日調節台積電，10/28 官股買超台積電 53.23 億元力挺，股價收 2,425 元、漲 1.04%</li>
+        <li><b>夜盤反而轉跌：</b>決議公布後台指期夜盤下跌 128 點（−0.27%）收 47,121 點，與美股收紅形成反差；外資期貨淨空單仍有 84,917 口</li>
+        <li><b>新台幣：</b>10/28 收 32.418 元兌 1 美元；美元指數在決議後小跌 0.19%</li>
+        <li><b>利差沒有再擴大：</b>美國維持 3.75%–4.00%、台灣維持 2.00%，兩邊利差暫時停在約 2 個百分點</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>12 月是台美雙央行同月：</b>Fed 12 月 8–9 日開會，台灣央行也在 12 月召開第 4 季理監事會。若 Fed 升息而台灣不動，利差會擴大到約 2.25 個百分點，新台幣貶值壓力增加</li>
+        <li><b>央行的鷹派理由還在：</b>9 月理監事會雖「連 10 凍」維持 2.00%，但第三度上修今年預測，CPI 調到 2.03%、核心 CPI 2.16%；台灣 8 月 CPI 2.04%，已連 4 個月高於 2%</li>
+        <li><b>房市：</b>央行 9 月把自然人第二戶房貸成數上限放寬到 70%，若 12 月又升息，等於一手放寬、一手收緊，建商與購屋族要同時看兩個訊號</li>
+        <li><b>台股的關鍵不只利率：</b>外資連 14 日調節台積電、期貨淨空單 84,917 口，顯示部位偏空；利率只是變數之一，AI 供應鏈的訂單能見度影響更大</li>
+      </ul></div>
+    </div>
+    <p class="note warn"><b>台股 10/29 的反應尚未出現：</b>Fed 在台灣時間 10 月 29 日凌晨 2 點公布決議，本報告完成時台股當日尚未開盤，因此本節的台股數字都是 10/28（決議前）的收盤，唯一的決議後訊號是夜盤期指下跌 128 點。</p>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>出口與科技業</b></td><td><span class="tag good">相對有利</span></td><td>美國上半年 GDP 上修到 2.4%、企業投資接近兩位數成長、資本支出占 GDP 比重創歷史高檔，對台灣半導體與伺服器供應鏈是需求面的好消息</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">震盪</span></td><td>利率暫停對高本益比的電子股是喘息，但 12 月升息機率八成、外資期貨淨空單 84,917 口，短線仍以震盪看待</td></tr>
+          <tr><td><b>房貸族</b></td><td><span class="tag">暫時持平</span></td><td>台灣央行 9 月「連 10 凍」維持 2.00%，房貸利率暫時不動；真正的變數是 12 月理監事會</td></tr>
+          <tr><td><b>一般家庭／民生物價</b></td><td><span class="tag bad">壓力仍在</span></td><td>布蘭特原油回到 115 美元附近，輸入性通膨沒有解除；台灣 8 月 CPI 2.04%，連 4 個月高於 2% 警戒線</td></tr>
+          <tr><td><b>壽險業</b></td><td><span class="tag">好壞參半</span></td><td>10 年期美債 5.02% 讓新資金的投資收益維持高檔，但既有債券部位的評價損失也還在；新台幣走勢同時影響匯兌與避險成本（推論）</td></tr>
+          <tr><td><b>存款族與美元資產持有人</b></td><td><span class="tag good">受惠</span></td><td>美元定存與美債收益率維持在高檔；但若 12 月升息，手上的美債 ETF 帳面價值會再受壓</td></tr>
+          <tr><td><b>中小企業</b></td><td><span class="tag bad">融資偏緊</span></td><td>台灣非 AI 產業景氣本來就弱；若 12 月央行跟進升息，資金成本會再往上（推論）</td></tr>
+          <tr><td><b>出國旅遊／留學</b></td><td><span class="tag">看 12 月</span></td><td>新台幣 10/28 收 32.418 元；美台利差若在 12 月擴大，換匯成本可能再增加（推論）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>事實一致，差別在主角：財經媒體看 12 月，綜合媒體看選舉與庫克，台灣媒體看美股收紅之後台股怎麼開。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Federal Reserve</td><td>官方政策</td><td>維持 3¾–4%，10 比 2</td><td>經濟「強勁擴張」；刪去「本次行動支持通膨更及時回到 2%」的說法</td></tr>
+          <tr><td>CNN</td><td>反對票</td><td>Fed 維持利率不變，但兩位官員主張升息</td><td>S&amp;P 500 自 2025 年 12 月以來首次在決議日收高；10 年期殖利率升到 5.02%</td></tr>
+          <tr><td>NBC News</td><td>通膨與選民</td><td>通膨升高，Fed 仍維持利率不變</td><td>9 月 CPI 3.7%；民調中川普生活成本支持度 27%；Warsh 稱政治無影響</td></tr>
+          <tr><td>Yahoo Finance</td><td>記者會與措辭</td><td>利率維持不變、票數分歧，Warsh 稱政治「沒有作用」</td><td>逐句比對聲明措辭 timelier → timely；12 月升息機率約 85%</td></tr>
+          <tr><td>Axios</td><td>庫克的政治處境</td><td>Fed 維持利率，理事庫克投下反對票</td><td>這是她任內首次反對；白宮一週後就她的去留舉行聽證</td></tr>
+          <tr><td>Fox Business</td><td>選舉時機</td><td>期中選舉前，Fed 維持利率不變</td><td>Warsh 對前瞻指引的保留態度</td></tr>
+          <tr><td>Business Insider 台灣版</td><td>三大重點整理</td><td>異議意見、價格上漲與會議日程變更</td><td>引述 Glenmede 看法：分歧是時機之爭，不是方向之爭</td></tr>
+          <tr><td>中央社</td><td>美股收盤</td><td>聯準會維持利率不變，美股收高</td><td>四大指數點數與漲幅，費半漲 201.50 點</td></tr>
+          <tr><td>經濟日報／聯合新聞網</td><td>聲明解讀</td><td>利率按兵不動一如預期，但暗示通膨壓力仍強</td><td>庫克 2022 年上任以來首次投反對票；期中選舉背景</td></tr>
+          <tr><td>鉅亨網</td><td>決議前的觀察點</td><td>升息懸念推遲：10 月決議看三大訊號</td><td>高盛與理事沃勒的觀點：長天期殖利率上升已替 Fed 完成部分緊縮</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>維持 3.75%–4.00% 不變，符合市場預期</li>
+        <li>投票 10 比 2，庫克與哈瑪克主張升息 1 碼</li>
+        <li>聲明維持「通膨仍然偏高」，但不再把本次行動與 2% 目標直接綁定</li>
+        <li>Warsh 說政治在決策中沒有發揮作用</li>
+        <li>市場把 12 月升息的機率推到八成以上</li>
+        <li>2027 年起會有一次不表決利率的策略會議</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>主角不同：</b>財經媒體的主角是「12 月那一碼」，綜合媒體的主角是庫克與期中選舉，台灣媒體的主角是美股收紅後台股怎麼開</li>
+        <li><b>「鷹」或「鴿」各自解讀：</b>有媒體強調 timelier → timely 代表急迫性下降（偏鴿），也有媒體強調經濟描述從 solid 升到 strong、加上兩張鷹派反對票（偏鷹）。兩種說法都成立，因為聲明本身就同時往兩邊走</li>
+        <li><b>時區：</b>美國媒體寫 10 月 28 日，台灣媒體多寫「10 月 29 日凌晨」，是同一場會議</li>
+        <li><b>「1 碼」：</b>台灣慣用說法，等於 0.25 個百分點（25 個基點）</li>
+        <li><b>台股數字要看日期：</b>台灣媒體 10/29 清晨報導中的台股數字，多半還是 10/28（決議前）的收盤</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>明年的會議次數</td><td>維持 8 次，1 次只談策略（Yahoo Finance）</td><td>利率決策會議由 8 次減為 7 次（NBC）</td><td>同一件事的兩種算法：總會議數仍是 8 次，但會表決利率的只剩 7 次</td></tr>
+          <tr><td>12 月升息機率</td><td>約 85%（彭博利率期貨）</td><td>82.6%（CME FedWatch）</td><td>取樣的期貨合約與擷取時間不同；前一日 CME 為 78.3%</td></tr>
+          <tr><td>政策利率水準</td><td>3.75%–4%（區間）</td><td>約 3.9%（AP）</td><td>後者用的是區間中點（有效利率）的講法</td></tr>
+          <tr><td>布蘭特原油</td><td>$114.87、+0.87%（The National）</td><td>$115.86、+1.7%（CNBC）</td><td>都是盤中價，擷取時間不同</td></tr>
+          <tr><td>WTI 原油</td><td>$101.49、+1.59%</td><td>$102.57、+2.7%</td><td>同上；Trading Economics 當日為 101.93</td></tr>
+          <tr><td>台股成交值</td><td>約 7,221 億元</td><td>約 7,432 億元</td><td>是否含盤後交易，統計口徑不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 29 日。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" target="_blank" rel="noopener">Federal Reserve — FOMC 聲明（10/28）</a></li>
+      <li><a href="https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20261028.pdf" target="_blank" rel="noopener">Federal Reserve — Warsh 記者會開場聲明逐字稿（10/28）</a></li>
+      <li><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm" target="_blank" rel="noopener">Federal Reserve — 9 月 FOMC 聲明（9/16，用於比對措辭）</a></li>
+      <li><a href="https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm" target="_blank" rel="noopener">Federal Reserve — 9 月經濟預測摘要與點陣圖（9/16）</a></li>
+      <li><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">Federal Reserve — FOMC 會議日程</a></li>
+      <li><a href="https://www.supremecourt.gov/opinions/25pdf/25a312_5468.pdf" target="_blank" rel="noopener">美國最高法院 — Trump v. Cook 裁定（6/29）</a></li>
+      <li><a href="https://www.cbc.gov.tw/tw/lp-357-1.html" target="_blank" rel="noopener">中央銀行 — 理監事聯席會議決議</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="8">
+      <li><a href="https://www.cnn.com/2026/10/28/business/live-news/federal-reserve-interest-rate-october" target="_blank" rel="noopener">CNN — Fed 維持利率，兩位官員主張升息（10/28）</a></li>
+      <li><a href="https://www.nbcnews.com/business/economy/fed-rates-inflation-warsh-midterms-rcna606154" target="_blank" rel="noopener">NBC News — 通膨升高，Fed 仍維持利率不變（10/28）</a></li>
+      <li><a href="https://finance.yahoo.com/economy/policy/live/fed-meeting-live-updates-federal-reserve-october-meeting-kevin-warsh-161129201.html" target="_blank" rel="noopener">Yahoo Finance — 決議即時報導與記者會逐句解讀（10/28）</a></li>
+      <li><a href="https://finance.yahoo.com/economy/policy/articles/trump-targeted-lisa-cook-dissents-180914658.html" target="_blank" rel="noopener">Yahoo Finance — 被川普鎖定的庫克投下反對票（10/28）</a></li>
+      <li><a href="https://www.axios.com/2026/10/28/fed-warsh-interest-rates-cook" target="_blank" rel="noopener">Axios — Fed 維持利率，庫克投反對票（10/28）</a></li>
+      <li><a href="https://www.foxbusiness.com/economy/federal-reserve-interest-rate-decision-october-28-2026" target="_blank" rel="noopener">Fox Business — 期中選舉前 Fed 維持利率（10/28）</a></li>
+      <li><a href="https://www.kiplinger.com/investing/live/fed-meeting-updates-and-commentary-october-2026" target="_blank" rel="noopener">Kiplinger — 10 月 Fed 會議即時更新與評論（10/28）</a></li>
+      <li><a href="https://www.cnbc.com/2026/10/28/fed-meeting-today-live-updates.html" target="_blank" rel="noopener">CNBC — 10 月利率決策即時更新（10/28）</a></li>
+      <li><a href="https://www.cnbc.com/amp/2026/10/28/oil-price-today-wti-brent-hormuz.html" target="_blank" rel="noopener">CNBC — 10/28 油價：WTI 與布蘭特走勢</a></li>
+      <li><a href="https://www.thenationalnews.com/business/energy/2026/10/28/oil-prices-up-due-to-houthi-strikes-and-us-threat-to-renew-iran-war/" target="_blank" rel="noopener">The National — Houthi 攻擊與美方威脅推升油價（10/28）</a></li>
+      <li><a href="https://www.scotusblog.com/2026/08/trump-informs-lisa-cook-that-he-is-considering-her-removal/" target="_blank" rel="noopener">SCOTUSblog — 白宮函告庫克「考慮」免職（8/5）</a></li>
+      <li><a href="https://www.cnbc.com/2026/10/01/trump-fed-powell-lisa-cook-michael-barr-removal.html" target="_blank" rel="noopener">CNBC — 川普可能鎖定三位 Fed 理事（10/1）</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html" target="_blank" rel="noopener">CNBC — 7 月會議三位委員主張升息（7/29）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="21">
+      <li><a href="https://udn.com/news/story/6811/9843557" target="_blank" rel="noopener">聯合新聞網 — Fed 決策／利率按兵不動，但暗示通膨壓力仍強（10/29）</a></li>
+      <li><a href="https://udn.com/news/story/6811/9843610" target="_blank" rel="noopener">聯合新聞網 — Fed 10 月 28 日會議聲明全文（10/29）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202610290013.aspx" target="_blank" rel="noopener">中央社 — 聯準會維持利率不變，美股收高（10/29）</a></li>
+      <li><a href="https://www.businessinsider.tw/article/8936" target="_blank" rel="noopener">Business Insider 台灣 — 10 月聯準會會議的 3 項重點（10/29）</a></li>
+      <li><a href="https://www.blocktempo.com/fed-holds-rates-oct-2026-fomc-dissent/" target="_blank" rel="noopener">動區動趨 — 聯準會按兵不動，兩票堅持再升息 1 碼（10/29）</a></li>
+      <li><a href="https://hao.cnyes.com/post/274720" target="_blank" rel="noopener">鉅亨網 — 升息懸念推遲：10 月聯準會決議看三大訊號（10/27）</a></li>
+      <li><a href="https://www.ettoday.net/news/20261029/3262538.htm" target="_blank" rel="noopener">ETtoday — Fed 利率不變，美股四大指數收高、台指期夜盤反跌 128 點（10/29）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261029000954-260410" target="_blank" rel="noopener">中時新聞網 — 美期中選舉前 Fed 按兵不動，費半大漲 1.75%（10/29）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3262219" target="_blank" rel="noopener">ETtoday — 台股收盤大漲 939 點重回 47K，台積電漲 25 元（10/28）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9842363" target="_blank" rel="noopener">經濟日報 — 三大法人買超台股 298.94 億元（10/28）</a></li>
+      <li><a href="https://money.udn.com/money/story/5612/9842790" target="_blank" rel="noopener">經濟日報 — 外資買超台股 159 億，連 14 日減碼台積電（10/28）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202610280155.aspx" target="_blank" rel="noopener">中央社 — 台積電聯發科領軍，台股漲 939 點收復 47,000 點（10/28）</a></li>
+      <li><a href="https://money.udn.com/money/story/5613/9761190" target="_blank" rel="noopener">經濟日報 — 央行第 3 季理監事會：第三度調升全年 GDP 與 CPI 預測（9/17）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="34">
+      <li><a href="https://invest.cnyes.com/index/TWS/TSE01" target="_blank" rel="noopener">鉅亨網 — 集中市場加權指數即時行情</a></li>
+      <li><a href="https://invest.cnyes.com/usstock/detail/TSM" target="_blank" rel="noopener">鉅亨網 — 台積電 ADR、Nvidia、甲骨文報價</a></li>
+      <li><a href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">Trading Economics — 布蘭特原油價格</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；Warsh 發言為本報告依官方逐字稿與媒體轉述所做的中文翻譯，標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 29 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'甲骨文 ORCL', s:'144.54', v:10.73},
+    {l:'聯發科 2454', s:'4,235', v:6.94},
+    {l:'加權指數', s:'47,035.58', v:2.04},
+    {l:'費城半導體', s:'11,684.00', v:1.75},
+    {l:'鴻海 2317', s:'251.5', v:1.62},
+    {l:'台積電 2330', s:'2,425', v:1.04},
+    {l:'台積電 ADR', s:'439.51', v:0.60},
+    {l:'黃金', s:'約 $4,065', v:0.38, est:true},
+    {l:'S&P 500', s:'7,743.98', v:0.28},
+    {l:'那斯達克', s:'26,549.85', v:0.27},
+    {l:'道瓊指數', s:'52,475.10', v:0.19},
+    {l:'美元指數', s:'102.128', v:-0.19},
+    {l:'Nvidia', s:'217.10', v:-0.39},
+    {l:'富邦金 2881', s:'161', v:-0.62}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
