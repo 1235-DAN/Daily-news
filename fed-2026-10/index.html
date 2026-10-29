@@ -444,12 +444,12 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
     <div class="sec-head">
       <div class="sec-num">05 · 股價與市場反應</div>
       <h2>股市鬆一口氣，債市不買單</h2>
-      <p>紅色為上漲、綠色為下跌（台股慣例）。美股為 10/28 收盤、已反映決議；台股為 10/28 收盤，當時決議尚未公布。</p>
+      <p>紅色為上漲、綠色為下跌（台股慣例）。美股為 10/28 收盤、已反映決議；台股同時列出 10/28（決議前）與 10/29（決議後第一個交易日）收盤。</p>
     </div>
     <div class="grid g2" style="align-items:start">
       <div class="chart-card">
-        <p class="chart-title">10/28 相關股價與指數漲跌幅</p>
-        <p class="chart-sub">收盤漲跌（%）；淡色長條為依報導推算的數字</p>
+        <p class="chart-title">10/28–10/29 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；台股各列標明日期，美股為 10/28；淡色長條為依報導推算的數字</p>
         <div class="div-rows" id="stockChart"></div>
         <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
       </div>
@@ -461,7 +461,7 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
           <li><b>債市：</b>10 年期美債殖利率不跌反升 3 個基點到 5.02%，2 年期停在 4.7% 上方——債市讀到的是「12 月還要升」，不是「升息結束」</li>
           <li><b>匯市：</b>美元指數跌 0.19% 到 102.128，記者會期間對歐元走弱</li>
           <li><b>商品：</b>黃金約 4,065 美元、小漲 0.38%；布蘭特原油因 Houthi 攻擊沙烏地而回到 115 美元附近，正是 Warsh 口中「能源價格又漲上去」的那件事</li>
-          <li><b>台股：</b>10/28 在決議前大漲 939 點、重回 47,000 點，但台指期夜盤在決議後反跌 128 點，顯示開盤前情緒分歧</li>
+          <li><b>台股：</b>10/28 在決議前大漲 939 點、重回 47,000 點；決議後台指期夜盤先跌 128 點，10/29 現貨收盤跌 667.25 點（−1.42%）到 46,368.33 點，盤中一度跌逾 980 點、失守季線，美股的樂觀沒有延續到台股</li>
         </ul>
       </div>
     </div>
@@ -471,21 +471,21 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
         <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
         <tbody>
           <tr><td class="num">ORCL</td><td><b>甲骨文</b></td><td>美股</td><td class="num">144.54</td><td class="num up">+10.73%</td><td class="period">當日最強權值股</td><td>長期營收展望激勵，帶動科技股信心回升</td></tr>
-          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">4,235</td><td class="num up">+6.94%</td><td class="period">10/28 單日</td><td>AI 股多頭全面噴發，領漲台股權值股</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">4,045<br><small>10/28：4,235</small></td><td class="num down">−4.49%<br><small class="up">10/28 +6.94%</small></td><td class="period">10/29 單日</td><td>10/28 AI 股多頭領漲；10/29 回吐，與聯電跌停、台達電跌 4.52% 同屬電子權值賣壓</td></tr>
           <tr><td class="num">SOX</td><td><b>費城半導體指數</b></td><td>美股</td><td class="num">11,684.00</td><td class="num up">+1.75%</td><td class="period">+201.50 點</td><td>利率不變、科技股回神，當日最強指數</td></tr>
-          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">251.5</td><td class="num up">+1.62%</td><td class="period">10/28 單日</td><td>AI 伺服器族群同步走強</td></tr>
-          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,425</td><td class="num up">+1.04%</td><td class="period">外資連 14 日調節</td><td>官股單日買超 53.23 億元力挺，但外資仍在減碼</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">248<br><small>10/28：251.5</small></td><td class="num down">−1.39%<br><small class="up">10/28 +1.62%</small></td><td class="period">10/29 單日</td><td>10/28 AI 伺服器族群同步走強；10/29 隨電子權值股走弱</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,415<br><small>10/28：2,425</small></td><td class="num down">−0.41%<br><small class="up">10/28 +1.04%</small></td><td class="period">10/29 外資連 15 日調節</td><td>10/29 尾盤拉抬收斂跌幅，外資僅賣超約 10 張；10/28 官股單日買超 53.23 億元力挺</td></tr>
           <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">439.51</td><td class="num up">+0.60%</td><td class="period">10/28 收盤</td><td>跟隨半導體類股走高，漲幅小於費半</td></tr>
           <tr><td class="num">SPX</td><td><b>S&amp;P 500</b></td><td>美股</td><td class="num">7,743.98</td><td class="num up">+0.28%</td><td class="period">+21.38 點</td><td>決議符合預期，利空出盡</td></tr>
           <tr><td class="num">IXIC</td><td><b>那斯達克</b></td><td>美股</td><td class="num">26,549.85</td><td class="num up">+0.27%</td><td class="period">+72.04 點</td><td>科技股領漲，但漲幅受 AI 股分化拖累</td></tr>
           <tr><td class="num">DJI</td><td><b>道瓊工業指數</b></td><td>美股</td><td class="num">52,475.10</td><td class="num up">+0.19%</td><td class="period">+97.53 點</td><td>傳產與金融股相對落後</td></tr>
           <tr><td class="num">NVDA</td><td><b>Nvidia</b></td><td>美股</td><td class="num">217.10</td><td class="num down">−0.39%</td><td class="period">逆勢收黑</td><td>AI 權值股獲利了結，與甲骨文走勢分化</td></tr>
-          <tr><td class="num">2881</td><td><b>富邦金</b></td><td>台股</td><td class="num">161</td><td class="num down">−0.62%</td><td class="period">10/28 逆勢收黑</td><td>升息預期降溫，金融股在台股大漲日反向下跌</td></tr>
-          <tr><td class="num">TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">47,035.58</td><td class="num up">+2.04%</td><td class="period">+939.35 點</td><td>決議前一日，三大法人買超 298.94 億元；夜盤期指轉跌 128 點</td></tr>
+          <tr><td class="num">2881</td><td><b>富邦金</b></td><td>台股</td><td class="num">162<br><small>10/28：161</small></td><td class="num up">+0.62%<br><small class="down">10/28 −0.62%</small></td><td class="period">10/29 逆勢收紅</td><td>10/28 在大漲日收黑；10/29 資金轉進金融避險，金融類股指數漲 1.05%</td></tr>
+          <tr><td class="num">TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">46,368.33<br><small>10/28：47,035.58</small></td><td class="num down">−1.42%<br><small class="up">10/28 +2.04%</small></td><td class="period">10/29 −667.25 點<br><small>10/28 +939.35 點</small></td><td>10/29 盤中曾跌逾 980 點、失守季線，三大法人賣超 816.66 億元（外資賣超 688.15 億元）；10/28 三大法人買超 298.94 億元</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="small muted" style="margin-top:8px">美股與美元指數為 10/28 收盤、台股為 10/28 台灣時間收盤，來源：中央社、鉅亨網行情、ETtoday、CNN。黃金為盤中約略價格，已在圖表中標為推算。台股 10/29 開盤後的反應，在本報告完成時尚未出現。以上僅說明股價變動，不構成投資建議。</p>
+    <p class="small muted" style="margin-top:8px">美股與美元指數為 10/28 收盤、台股為 10/28 台灣時間收盤，來源：中央社、鉅亨網行情、ETtoday、CNN。黃金為盤中約略價格，已在圖表中標為推算。台股 10/29 收盤數字來自鉅亨網行情與台灣證券交易所三大法人統計，個股原因參考經濟日報、中時新聞網 10/29 盤後報導；表中小字為 10/28（決議前）對照。以上僅說明股價變動，不構成投資建議。</p>
   </div>
 </section>
 
@@ -604,20 +604,22 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
     </div>
     <div class="grid g2">
       <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
-        <li><b>台股 10/28 已先漲一波：</b>加權指數收 47,035.58 點、大漲 939.35 點（+2.04%），重回 47,000 點，成交約 7,221 億元；三大法人買超 298.94 億元，其中外資買超 159.22 億元</li>
-        <li><b>但外資在台積電身上仍是賣方：</b>外資連續 14 個交易日調節台積電，10/28 官股買超台積電 53.23 億元力挺，股價收 2,425 元、漲 1.04%</li>
+        <li><b>台股 10/29 決議後回吐：</b>加權指數收 46,368.33 點、下跌 667.25 點（−1.42%），盤中最低 46,055.07 點、跌逾 980 點，失守季線，成交約 7,891.52 億元；三大法人賣超 816.66 億元，其中外資賣超 688.15 億元、投信買超 86.49 億元、自營商賣超 215.00 億元</li>
+        <li><b>對照 10/28 決議前：</b>加權指數收 47,035.58 點、大漲 939.35 點（+2.04%），重回 47,000 點，成交約 7,221 億元；三大法人買超 298.94 億元，其中外資買超 159.22 億元</li>
+        <li><b>但外資在台積電身上仍是賣方：</b>10/29 外資賣超台積電約 10 張（10,199 股），量極小但仍是連續第 15 個交易日調節；投信買超約 454 張，三大法人合計買超約 163 張，股價收 2,415 元、跌 0.41%。10/28 為連 14 日調節，當天官股買超台積電 53.23 億元力挺，股價收 2,425 元、漲 1.04%</li>
+        <li><b>其他權值股的外資動向（10/29）：</b>外資賣超聯發科約 1,682 張，買超鴻海約 3,342 張、富邦金約 4,944 張</li>
         <li><b>夜盤反而轉跌：</b>決議公布後台指期夜盤下跌 128 點（−0.27%）收 47,121 點，與美股收紅形成反差；外資期貨淨空單仍有 84,917 口</li>
-        <li><b>新台幣：</b>10/28 收 32.418 元兌 1 美元；美元指數在決議後小跌 0.19%</li>
+        <li><b>新台幣：</b>10/29 收 32.492 元兌 1 美元、貶 7.4 分，成交 28.24 億美元；10/28 收 32.418 元。美元指數在決議後（10/28）小跌 0.19%，新台幣仍隨外資賣超走貶</li>
         <li><b>利差沒有再擴大：</b>美國維持 3.75%–4.00%、台灣維持 2.00%，兩邊利差暫時停在約 2 個百分點</li>
       </ul></div>
       <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
         <li><b>12 月是台美雙央行同月：</b>Fed 12 月 8–9 日開會，台灣央行也在 12 月召開第 4 季理監事會。若 Fed 升息而台灣不動，利差會擴大到約 2.25 個百分點，新台幣貶值壓力增加</li>
         <li><b>央行的鷹派理由還在：</b>9 月理監事會雖「連 10 凍」維持 2.00%，但第三度上修今年預測，CPI 調到 2.03%、核心 CPI 2.16%；台灣 8 月 CPI 2.04%，已連 4 個月高於 2%</li>
         <li><b>房市：</b>央行 9 月把自然人第二戶房貸成數上限放寬到 70%，若 12 月又升息，等於一手放寬、一手收緊，建商與購屋族要同時看兩個訊號</li>
-        <li><b>台股的關鍵不只利率：</b>外資連 14 日調節台積電、期貨淨空單 84,917 口，顯示部位偏空；利率只是變數之一，AI 供應鏈的訂單能見度影響更大</li>
+        <li><b>台股的關鍵不只利率：</b>外資到 10/29 已連 15 日調節台積電、10/29 現貨賣超 688.15 億元，加上 10/28 期貨淨空單 84,917 口，顯示部位偏空；利率只是變數之一，AI 供應鏈的訂單能見度影響更大</li>
       </ul></div>
     </div>
-    <p class="note warn"><b>台股 10/29 的反應尚未出現：</b>Fed 在台灣時間 10 月 29 日凌晨 2 點公布決議，本報告完成時台股當日尚未開盤，因此本節的台股數字都是 10/28（決議前）的收盤，唯一的決議後訊號是夜盤期指下跌 128 點。</p>
+    <p class="note"><b>台股 10/29 的實際反應：</b>Fed 在台灣時間 10 月 29 日凌晨 2 點公布決議，台股當天收跌 667.25 點（−1.42%）到 46,368.33 點，延續了夜盤期指下跌 128 點的方向，沒有跟著美股收紅。電子權值股是主要賣壓：聯發科跌 4.49%、台達電跌 4.52%、聯電跌停，台積電尾盤拉抬後收 2,415 元、只跌 0.41%；金融股反而逆勢上漲，金融類股指數漲 1.05%、富邦金漲 0.62%。三大法人賣超 816.66 億元、外資賣超 688.15 億元，新台幣貶 7.4 分收 32.492 元。經濟日報引述分析師，把當天的下跌歸因於 Google 母公司盤後重挫、市場擔心 Fed 12 月可能一次升 2 碼，以及多殺多；中時新聞網則提到市場預估 12 月升息機率超過八成，以及聯電宣布追加資本支出。經濟日報另一篇收盤報導則提到韓股早盤走低，並引述投顧指出 10/28 的急漲帶有跌深反彈與空單回補性質、機構追價買盤尚未全面回歸，因此跌幅不能全算在 Fed 頭上。</p>
     <div class="sub-h">對台灣各族群的影響</div>
     <div class="tbl-wrap">
       <table>
@@ -630,7 +632,7 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
           <tr><td><b>壽險業</b></td><td><span class="tag">好壞參半</span></td><td>10 年期美債 5.02% 讓新資金的投資收益維持高檔，但既有債券部位的評價損失也還在；新台幣走勢同時影響匯兌與避險成本（推論）</td></tr>
           <tr><td><b>存款族與美元資產持有人</b></td><td><span class="tag good">受惠</span></td><td>美元定存與美債收益率維持在高檔；但若 12 月升息，手上的美債 ETF 帳面價值會再受壓</td></tr>
           <tr><td><b>中小企業</b></td><td><span class="tag bad">融資偏緊</span></td><td>台灣非 AI 產業景氣本來就弱；若 12 月央行跟進升息，資金成本會再往上（推論）</td></tr>
-          <tr><td><b>出國旅遊／留學</b></td><td><span class="tag">看 12 月</span></td><td>新台幣 10/28 收 32.418 元；美台利差若在 12 月擴大，換匯成本可能再增加（推論）</td></tr>
+          <tr><td><b>出國旅遊／留學</b></td><td><span class="tag">看 12 月</span></td><td>新台幣 10/29 收 32.492 元（10/28 為 32.418 元）；美台利差若在 12 月擴大，換匯成本可能再增加（推論）</td></tr>
         </tbody>
       </table>
     </div>
@@ -745,10 +747,16 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
       <li><a href="https://money.udn.com/money/story/5612/9842790" target="_blank" rel="noopener">經濟日報 — 外資買超台股 159 億，連 14 日減碼台積電（10/28）</a></li>
       <li><a href="https://www.cna.com.tw/news/afe/202610280155.aspx" target="_blank" rel="noopener">中央社 — 台積電聯發科領軍，台股漲 939 點收復 47,000 點（10/28）</a></li>
       <li><a href="https://money.udn.com/money/story/5613/9761190" target="_blank" rel="noopener">經濟日報 — 央行第 3 季理監事會：第三度調升全年 GDP 與 CPI 預測（9/17）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9844640" target="_blank" rel="noopener">經濟日報 — 台股收盤下跌 667 點失守季線，台積電收低 10 元（10/29）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9844486" target="_blank" rel="noopener">經濟日報 — 台股重挫近千點，分析師曝三大利空（10/29）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261029002691-260410" target="_blank" rel="noopener">中時新聞網 — 台股收跌 667 點，聯電跌停、聯發科與台達電殺 4%（10/29）</a></li>
     </ol>
     <div class="src-group">股價資料</div>
-    <ol class="sources" start="34">
+    <ol class="sources" start="37">
       <li><a href="https://invest.cnyes.com/index/TWS/TSE01" target="_blank" rel="noopener">鉅亨網 — 集中市場加權指數即時行情</a></li>
+      <li><a href="https://invest.cnyes.com/forex/detail/USDTWD" target="_blank" rel="noopener">鉅亨網 — 美元／新台幣行情（10/29 收盤）</a></li>
+      <li><a href="https://www.twse.com.tw/zh/trading/foreign/bfi82u.html" target="_blank" rel="noopener">臺灣證券交易所 — 三大法人買賣金額統計表（10/29）</a></li>
+      <li><a href="https://www.twse.com.tw/zh/trading/foreign/t86.html" target="_blank" rel="noopener">臺灣證券交易所 — 三大法人買賣超日報：台積電、聯發科、鴻海、富邦金（10/29）</a></li>
       <li><a href="https://invest.cnyes.com/usstock/detail/TSM" target="_blank" rel="noopener">鉅亨網 — 台積電 ADR、Nvidia、甲骨文報價</a></li>
       <li><a href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">Trading Economics — 布蘭特原油價格</a></li>
     </ol>
@@ -791,11 +799,12 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
   // l: name  s: close  v: % change  est: true = derived from reports (pale bar)
   var STOCKS = [
     {l:'甲骨文 ORCL', s:'144.54', v:10.73},
-    {l:'聯發科 2454', s:'4,235', v:6.94},
-    {l:'加權指數', s:'47,035.58', v:2.04},
+    {l:'聯發科 2454', s:'10/28 收 4,235', v:6.94},
+    {l:'加權指數', s:'10/28 收 47,035.58', v:2.04},
     {l:'費城半導體', s:'11,684.00', v:1.75},
-    {l:'鴻海 2317', s:'251.5', v:1.62},
-    {l:'台積電 2330', s:'2,425', v:1.04},
+    {l:'鴻海 2317', s:'10/28 收 251.5', v:1.62},
+    {l:'台積電 2330', s:'10/28 收 2,425', v:1.04},
+    {l:'富邦金 2881', s:'10/29 收 162', v:0.62},
     {l:'台積電 ADR', s:'439.51', v:0.60},
     {l:'黃金', s:'約 $4,065', v:0.38, est:true},
     {l:'S&P 500', s:'7,743.98', v:0.28},
@@ -803,7 +812,11 @@ footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border);
     {l:'道瓊指數', s:'52,475.10', v:0.19},
     {l:'美元指數', s:'102.128', v:-0.19},
     {l:'Nvidia', s:'217.10', v:-0.39},
-    {l:'富邦金 2881', s:'161', v:-0.62}
+    {l:'台積電 2330', s:'10/29 收 2,415', v:-0.41},
+    {l:'富邦金 2881', s:'10/28 收 161', v:-0.62},
+    {l:'鴻海 2317', s:'10/29 收 248', v:-1.39},
+    {l:'加權指數', s:'10/29 收 46,368.33', v:-1.42},
+    {l:'聯發科 2454', s:'10/29 收 4,045', v:-4.49}
   ];
   var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
   document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
