@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intel 財測重挫解讀</title>
+<meta name="description" content="Intel 2026 年第三季財報優於預期，但第四季財測遠低於市場，加上 PC 需求急凍、以色列 Fab 28 爆炸與現金壓力，10/30 盤前重挫約 25%。本報告整理原因、股價、產業與台灣影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+.chart-scroll{overflow-x:auto}
+.stmt-row .v{white-space:nowrap}
+.chart-scroll svg{display:block; width:100%; min-width:560px; height:auto}
+</style>
+</head>
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#earnings">財報拆解</a></li>
+      <li><a class="link" href="#local">美以影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">半導體解讀 · 第三季財報後首日 · 資料截至 2026 年 10 月 30 日</p>
+      <h1>伺服器賣到缺貨，Intel 卻盤前崩 25%：PC 急凍、工廠爆炸、明年還不賺現金</h1>
+      <p class="lede">Intel（英特爾）10 月 29 日美股盤後公布第三季財報，營收 165 億美元、年增 21%，每股盈餘優於預期；但第四季營收財測只有 150–160 億美元，比市場預期的 170.7 億美元少約 9%。記憶體漲價把 PC（個人電腦）需求壓垮，以色列晶圓廠爆炸再少掉約 6 億美元營收，AI 伺服器要的處理器又供不上。台灣時間 10 月 30 日 20:24，美股還沒開盤，正式跌幅要看收盤。</p>
+    </div>
+    <div class="stmt" aria-label="Intel 10 月 30 日盤前股價">
+      <div class="k">INTC 盤前價（台灣時間 10/30 20:24）</div>
+      <div class="range">69.14<small>−24.9%</small></div>
+      <div class="was">10/29 收盤 92.07 美元 · 非正式收盤價</div>
+      <div class="stmt-row">
+        <div><div class="v">155</div><div class="l">Q4 營收中值（億美元），預期 170.7</div></div>
+        <div><div class="v">0.25</div><div class="l">Q4 每股盈餘（美元），預期 0.43</div></div>
+        <div><div class="v">38.0%</div><div class="l">Q4 毛利率，Q3 為 44.1%</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>這不是一季沒做好，而是市場重新定價 Intel 的復甦速度</h2>
+      <p>懶人包：上一季成績不差，但接下來兩季的營收、毛利率和現金流都比市場想的差，今年的漲幅先吐掉一大段。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>財報打贏，財測打輸。</b>第三季營收 165.1 億美元、年增 21%，調整後每股盈餘 0.52 美元，高於預期的 0.40 美元；第四季營收財測 150–160 億美元，每股盈餘 0.25 美元，分別低於預期的 170.7 億美元和 0.43 美元。</div></li>
+      <li><div><b>PC 是最大的洞。</b>PC 處理器業務第三季營收 81 億美元、年減 5%，低於預估的 89.8 億美元；Intel 預期第四季再季減 20% 以上，並把明年全球 PC 市場規模規劃為再減約 10%。</div></li>
+      <li><div><b>問題根源在記憶體。</b>AI 資料中心搶走記憶體產能，PC 成本和售價上升，買氣被壓下去。IDC 統計第三季全球 PC 出貨 6,270 萬台、年減 20.1%；Omdia 估計記憶體和固態硬碟占 PC 物料成本已從約 15% 升到近 40%。</div></li>
+      <li><div><b>伺服器不是沒人買，是做不出來。</b>資料中心與 AI 業務營收 73 億美元、年增 78%，第四季預計再季增約 15%；但 Intel 說業界供給吃緊會延續整個 2027 年到 2028 年，基板和 Intel 3 製程產能都不夠。</div></li>
+      <li><div><b>以色列爆炸是雪上加霜。</b>10 月 14 日 Fab 28 爆炸造成 2 死 1 重傷，工廠停工約兩週；Intel 估第四季和明年第一季各少約 3 億美元營收，第四季毛利率少約 2 個百分點。</div></li>
+      <li><div><b>現金壓力變成新焦點。</b>今年資本支出 200 億美元，明年會大幅增加；財務長表示明年不太可能有正的自由現金流（扣掉投資後剩下的現金）。Intel 今年 8 月才以每股 95 美元增資，盤前價已低於增資價約 27%。</div></li>
+      <li><div><b>股價一口氣吐掉今年漲幅的四成。</b>Intel 去年底收 36.90 美元，10/29 收 92.07 美元、今年上漲 149.5%；盤前 69.14 美元時，漲幅縮到 87.4%，比 6 月 22 日最高收盤 140.94 美元低約 51%。</div></li>
+      <li><div><b>全球晶片股下跌，但不是 Intel 一家造成。</b>Alphabet 10/29 跌 12.64%、亞馬遜盤後走弱，市場同時擔心 AI 投資回收。台股 10/30 跌 1,156 點、收 45,211.83 點，外資賣超 1,124.67 億元；韓國 KOSPI 跌 3.48%，SK 海力士跌 7.08%。</div></li>
+      <li><div><b>台灣最直接的影響在 PC 供應鏈。</b>10/30 華碩跌 4.63%、宏碁跌 5.00%，載板三雄欣興、南電、景碩跌 2.82%–4.90%。買電腦的人則要面對漲價：宏碁董事長 9 月預估第四季 PC 平均再漲 5%–20%。</div></li>
+      <li><div><b>下一個關卡很近。</b>11 月 3 日 AMD 財報會檢驗 PC 疲弱是全產業問題，還是 Intel 自己的問題；11 月 17 日 Nvidia 財報則看 AI 投資是否仍撐得住。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼好財報換來崩跌？五個原因一起發生</h2>
+      <p>第 1–4 點主要來自 Intel 的財報與法說會；第 5 點是媒體與分析師的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>PC 需求在第三季末急轉直下</h3><p>可以把記憶體想成蓋房子的鋼筋：AI 資料中心出高價把鋼筋買走，蓋一般房子（PC）的成本就跟著漲。Intel 說壓力在第三季尾段加劇，電腦品牌開始快速砍庫存，因此第四季 PC 業務要季減 20% 以上；在記憶體供給和價格恢復正常前，Intel 不預期持續復甦。</p></div><div class="ev"><span class="tag">2026 PC 市場 −12%</span><span class="tag">下半年 −20% 以上</span><span class="tag">2027 再 −10%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>以色列 Fab 28 爆炸，傷到最賺錢的伺服器產品</h3><p>10 月 14 日基里亞特蓋特（Kiryat Gat）廠區在氣體運補時爆炸，造成 2 名員工死亡、1 人重傷，工廠停工約兩週。Intel 說影響幾乎都落在 10 奈米伺服器產品，部分晶圓要報廢。工廠雖預計本週末開始恢復，但晶片從投片到完成約需三個月，所以明年第一季也躲不掉。</p></div><div class="ev"><span class="tag">Q4 營收 −3 億美元</span><span class="tag">Q1 影響相近</span><span class="tag">Q4 毛利率 −2 個百分點</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>AI 帶動 CPU 需求，Intel 卻缺貨</h3><p>代理型 AI（能自己執行多步驟工作的 AI）讓資料中心需要更多 CPU 排程與調度，Intel 的 Xeon 伺服器處理器需求大於供給。瓶頸包括晶圓、Intel 3 製程產能和 EMIB 先進封裝用的有機基板。基板增產 40% 的效果多半要到 2027 年下半年才出現，所以需求再好也不能馬上變成營收。</p></div><div class="ev"><span class="tag">DCAI 年增 78%</span><span class="tag">Q4 季增約 15%</span><span class="tag">供給吃緊到 2028</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>要賺未來的錢，得先燒現在的現金</h3><p>第三季調整後自由現金流 16.4 億美元，手上現金與短期投資約 540 億美元，並不是立刻缺錢。但 2026 年資本支出 200 億美元，2027 年會大幅增加，財務長明確把明年定位為投資年。市場因此發現：復甦之路比原先想的更花錢。</p></div><div class="ev"><span class="tag">2026 資本支出 200 億美元</span><span class="tag">8 月增資約 230 億美元</span><span class="tag">代工虧損 19 億美元</span></div></div>
+      <div class="reason"><div class="n">5</div><div><h3>股價已先反映太多好消息，市場情緒又剛好最脆弱</h3><p>Intel 今年漲幅一度超過 2.8 倍，市場已把代工復甦和 Apple 合作傳聞算進去。但外部代工第三季只有 4.11 億美元，美銀認為客戶進度不足。同一天 Alphabet、亞馬遜也因大額 AI 投資被賣，Seaport 分析師 Jay Goldberg 形容這一季的氣氛是：「再好的結果都不夠好，壞結果還要加倍受罰。」</p></div><div class="ev"><span class="tag">10/28 收盤今年 +158.9%</span><span class="tag">外部代工 4.11 億美元</span><span class="tag">GOOGL −12.64%</span></div></div>
+    </div>
+
+    <div class="sub-h">Intel 今年股價走勢</div>
+    <div class="chart-card">
+      <p class="chart-title">INTC 每日收盤價（2025/12/31–2026/10/29）與 10/30 盤前價</p>
+      <p class="chart-sub">單位：美元；虛線為 10/30 台灣時間 20:24 盤前價，不是收盤價</p>
+      <div class="chart-scroll">
+      <svg viewBox="0 0 640 250" role="img" aria-label="Intel 股價從年初 36.9 美元升到 6 月 140.94 美元，10 月底回落到 92.07 美元，盤前 69.14 美元">
+        <g stroke="var(--grid)" stroke-width="1">
+          <line x1="44" y1="14" x2="626" y2="14"/><line x1="44" y1="66.5" x2="626" y2="66.5"/><line x1="44" y1="119" x2="626" y2="119"/><line x1="44" y1="171.5" x2="626" y2="171.5"/><line x1="44" y1="224" x2="626" y2="224" stroke="var(--axis)"/>
+        </g>
+        <g fill="var(--muted)" font-size="12" font-family="var(--mono)" text-anchor="end">
+          <text x="38" y="18">160</text><text x="38" y="70.5">120</text><text x="38" y="123">80</text><text x="38" y="175.5">40</text><text x="38" y="228">0</text>
+        </g>
+        <g fill="var(--muted)" font-size="12" text-anchor="middle">
+          <text x="50" y="242">1月</text><text x="102.5" y="242">2月</text><text x="155.4" y="242">3月</text><text x="216.7" y="242">4月</text><text x="275.1" y="242">5月</text><text x="330.8" y="242">6月</text><text x="389.3" y="242">7月</text><text x="450.6" y="242">8月</text><text x="509" y="242">9月</text><text x="567.5" y="242">10月</text>
+        </g>
+        <polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" points="44.0,175.6 46.8,172.3 49.6,172.3 52.4,171.4 55.1,168.0 57.9,170.0 60.7,164.2 63.5,166.2 66.3,161.9 69.1,160.1 71.8,160.6 74.6,162.4 77.4,160.3 80.2,152.8 83.0,152.7 85.8,164.8 88.6,168.2 91.3,166.3 94.1,160.0 96.9,160.1 99.7,163.0 102.5,159.9 105.3,159.4 108.0,160.2 110.8,160.7 113.6,157.6 116.4,158.1 119.2,162.1 122.0,160.6 124.8,163.0 127.5,162.6 130.3,163.4 133.1,164.3 135.9,165.4 138.7,166.1 141.5,166.7 144.2,163.5 147.0,162.5 149.8,164.3 152.6,164.1 155.4,164.3 158.2,167.4 161.0,164.2 163.7,163.7 166.5,167.0 169.3,164.2 172.1,162.6 174.9,161.0 177.7,164.6 180.4,163.9 183.2,163.9 186.0,166.2 188.8,164.9 191.6,163.4 194.4,166.4 197.2,166.2 199.9,166.2 202.7,162.1 205.5,166.1 208.3,167.4 211.1,169.9 213.9,166.1 216.7,161.0 219.4,157.9 222.2,157.4 225.0,154.6 227.8,146.6 230.6,143.0 233.4,142.1 236.1,138.5 238.9,140.2 241.7,138.8 244.5,134.1 247.3,134.1 250.1,137.8 252.9,137.0 255.6,138.3 258.4,136.4 261.2,115.7 264.0,112.5 266.8,113.1 269.6,99.6 272.3,100.0 275.1,93.2 277.9,98.3 280.7,82.1 283.5,75.7 286.3,80.1 289.1,60.0 291.8,54.1 294.6,65.7 297.4,66.1 300.2,71.8 303.0,81.2 305.8,82.0 308.5,78.6 311.3,67.9 314.1,68.5 316.9,66.7 319.7,61.9 322.5,64.2 325.3,65.3 328.0,73.5 330.8,80.5 333.6,82.3 336.4,76.1 339.2,77.3 342.0,93.8 344.7,79.3 347.5,82.4 350.3,83.5 353.1,70.5 355.9,60.5 358.7,56.2 361.5,70.4 364.2,65.1 367.0,48.1 369.8,39.0 372.6,50.4 375.4,51.2 378.2,49.6 380.9,55.6 383.7,51.1 386.5,40.7 389.3,57.3 392.1,66.0 394.9,63.6 397.7,79.1 400.4,79.3 403.2,76.3 406.0,79.8 408.8,88.7 411.6,82.6 414.4,88.8 417.1,96.7 419.9,99.3 422.7,96.6 425.5,85.6 428.3,89.3 431.1,92.4 433.9,102.8 436.6,103.7 439.4,110.7 442.2,116.5 445.0,104.4 447.8,105.6 450.6,104.6 453.3,91.6 456.1,91.4 458.9,93.0 461.7,90.6 464.5,96.0 467.3,95.8 470.1,91.5 472.8,86.8 475.6,89.5 478.4,88.2 481.2,97.1 484.0,102.2 486.8,103.1 489.6,105.8 492.3,109.5 495.1,109.2 497.9,108.2 500.7,103.1 503.5,106.6 506.3,106.5 509.0,107.2 511.8,105.8 514.6,103.7 517.4,98.3 520.2,86.9 523.0,84.6 525.8,92.3 528.5,88.9 531.3,96.4 534.1,96.5 536.9,91.4 539.7,81.2 542.5,81.5 545.2,64.2 548.0,61.4 550.8,63.1 553.6,56.8 556.4,62.6 559.2,71.7 562.0,71.8 564.7,66.2 567.5,66.5 570.3,67.4 573.1,71.5 575.9,76.3 578.7,75.5 581.4,83.5 584.2,86.6 587.0,91.0 589.8,89.1 592.6,95.2 595.4,98.8 598.2,106.1 600.9,103.2 603.7,103.7 606.5,102.0 609.3,111.8 612.1,109.9 614.9,105.3 617.6,101.0 620.4,98.6 623.2,103.2"/>
+        <line x1="623.2" y1="103.2" x2="626" y2="133.3" stroke="var(--neg)" stroke-width="2" stroke-dasharray="4 3"/>
+        <g stroke="var(--axis)" stroke-width="1">
+          <line x1="85.8" y1="164.8" x2="85.8" y2="186"/><line x1="470.1" y1="91.5" x2="470.1" y2="134"/><line x1="592.6" y1="95.2" x2="592.6" y2="178"/><line x1="623.2" y1="103.2" x2="623.2" y2="50"/>
+        </g>
+        <g fill="var(--neg)">
+          <circle cx="369.8" cy="39" r="4"/><circle cx="85.8" cy="164.8" r="4"/><circle cx="470.1" cy="91.5" r="4"/><circle cx="592.6" cy="95.2" r="4"/><circle cx="626" cy="133.3" r="4"/>
+        </g>
+        <g fill="var(--ink-2)" font-size="12">
+          <text x="369.8" y="27" text-anchor="middle">6/22 最高收盤 140.94</text>
+          <text x="85.8" y="200" text-anchor="middle">1/23 單日 −17.03%</text>
+          <text x="470.1" y="148" text-anchor="middle">8 月增資價 95</text>
+          <text x="592.6" y="192" text-anchor="end">10/14 Fab 28 爆炸</text>
+          <text x="616" y="150" text-anchor="end">盤前 69.14</text>
+          <text x="626" y="44" text-anchor="end">10/29 收 92.07</text>
+        </g>
+      </svg>
+      </div>
+      <p class="small muted" style="margin:8px 0 0">資料：Yahoo Finance 每日收盤價。</p>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>Intel 財報與股價主線</span><span><i class="g"></i>事故與市場衝擊</span><span><i></i>背景與下一步</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2025-03</div><div class="what">陳立武（Lip-Bu Tan）接任執行長，推動裁員、財務整頓與引進外部資金。</div></li>
+        <li><div class="date">2025-08</div><div class="what">美國政府以 89 億美元取得 Intel 近一成股權，Nvidia、軟銀其後也投入資金。</div></li>
+        <li class="geo"><div class="date">2026-01-23</div><div class="what">第四季財報優於預期但財測偏弱，股價單日跌 <b>17.03%</b>，收 45.07 美元。</div></li>
+        <li><div class="date">2026-05-04</div><div class="what">彭博報導 Apple 與 Intel 初步洽談代工，帶動股價大漲。</div></li>
+        <li class="key"><div class="date">2026-06-22</div><div class="what">股價收在 <b>140.94 美元</b>，為今年最高收盤價。</div></li>
+        <li class="key"><div class="date">2026-08-10</div><div class="what">宣布增資，最後以每股 95 美元發行，含超額配售合計約 230 億美元。</div></li>
+        <li class="key"><div class="date">2026-09-30</div><div class="what">9 月收在 120.23 美元；9 月 24 日曾到 127.39 美元。</div></li>
+        <li class="geo"><div class="date">2026-10-08</div><div class="what">晶片股賣壓擴大，Intel 跌 5.34%，收 107.08 美元。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-10-14</div><div class="what"><b>以色列 Fab 28 爆炸</b>，2 死 1 重傷；Intel 當日跌 4.56%，收 98.12 美元。</div></li>
+        <li><div class="date">2026-10-15</div><div class="what">台積電法說：第四季美元營收估季增約 14%，全年成長上修到約 44%。</div></li>
+        <li class="geo"><div class="date">2026-10-19</div><div class="what">同廠區再傳疑似有害物質外洩，員工被要求留在室內；是否外洩未證實。</div></li>
+        <li class="geo"><div class="date">2026-10-22</div><div class="what">費半重挫 6.72%，Intel 跌 8.04%，收 85.49 美元。</div></li>
+        <li class="key"><div class="date">2026-10-29</div><div class="what">正常盤收 92.07 美元、跌 3.62%；盤後公布財報，<b>第四季財測遠低於預期</b>。</div></li>
+        <li class="geo"><div class="date">2026-10-30</div><div class="what">台股跌 2.49%、KOSPI 跌 3.48%；Intel 盤前約跌 <b>25%</b>，多家券商降評或下調目標價。</div></li>
+        <li><div class="date">2026-11-03</div><div class="what">AMD 公布財報；同一天也是美國期中選舉。</div></li>
+        <li><div class="date">2026-11-17</div><div class="what">Nvidia 財報法說（台灣時間 11/18 清晨）。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 earnings -->
+<section id="earnings">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 財報與法說拆解</div>
+      <h2>同一份財報裡有兩個 Intel：伺服器搶貨，PC 急凍</h2>
+      <p>數字來自 Intel 財報新聞稿與法說會；市場預期來自 LSEG 與媒體整理。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>第三季實績</th><th>變化</th><th>市場預期或備註</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>總營收</b></td><td class="num">165.1 億美元</td><td class="num">年增 21%</td><td>大致符合預期（約 165 億美元）</td></tr>
+          <tr><td><b>PC 處理器（CCPG）</b></td><td class="num">81 億美元</td><td class="num">年減 5%、季減 9%</td><td>低於預估 89.8 億美元；約占營收一半</td></tr>
+          <tr><td><b>資料中心與 AI（DCAI）</b></td><td class="num">73 億美元</td><td class="num">年增 78%、季增 17%</td><td>需求明顯超過供給</td></tr>
+          <tr><td><b>晶圓代工（Intel Foundry）</b></td><td class="num">67 億美元</td><td class="num">年增 58%</td><td>多數是內部訂單，外部僅 4.11 億美元；營業虧損 19 億美元</td></tr>
+          <tr><td><b>調整後毛利率</b></td><td class="num">44.1%</td><td class="num">年增 4.1 個百分點</td><td>第四季財測 38.0%</td></tr>
+          <tr><td><b>調整後每股盈餘</b></td><td class="num">0.52 美元</td><td class="num">年增 126%</td><td>預期 0.40 美元；第四季財測 0.25 美元</td></tr>
+          <tr><td><b>調整後自由現金流</b></td><td class="num">16.4 億美元</td><td class="num">—</td><td>現金與短期投資約 540 億美元</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">分部營收加總高於總營收，是因為 Intel 產品部門向自家代工部門下單，合併時要沖銷約 63 億美元的內部交易。</p>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><div class="sec-num">PC</div><h3>財務長看疲弱至少到明年上半年</h3><p class="small muted">Intel 估今年 PC 市場規模減約 12%，下半年減幅超過 20%；明年以再減約 10% 規劃。AI PC 營收年增 35%，但撐不住整體。</p></div>
+      <div class="card"><div class="sec-num">伺服器</div><h3>第四季還會成長，只是不夠補洞</h3><p class="small muted">DCAI 預計季增約 15%，換算約多 11 億美元；PC 若季減 22%，約少 18 億美元（推算）。Intel 也預期今明兩年伺服器 CPU 出貨量都增加 30% 以上。</p></div>
+      <div class="card"><div class="sec-num">工廠</div><h3>Fab 28 的損失不只一季</h3><p class="small muted">第四季與明年第一季各約 3 億美元；報廢多認列在第四季，晶圓還在清點能用多少。財務長也說影響是否延續要再觀察。</p></div>
+      <div class="card"><div class="sec-num">代工</div><h3>成本在降，客戶名單仍未公開</h3><p class="small muted">18A 成本較第一季降約 40%，14A 目標明年風險試產。陳立武表示未來兩季會有幾家客戶準備好對外宣布，但法說會上沒有點名。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>美國的半導體復興押注受挫，以色列要面對人命與產線</h2>
+      <p>Intel 總部與主要先進製程在美國，出事的 Fab 28 在以色列。這裡看當地影響，全球連鎖反應放在第 6 節。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">市值可能蒸發</div><div class="v">逾 1,230 億</div><div class="d">美元；Reuters 依盤前 25% 跌幅估算</div></div>
+      <div class="tile"><div class="l">今年股價（10/29 收盤）</div><div class="v up">+149.5%</div><div class="d">盤前價換算 +87.4%</div></div>
+      <div class="tile"><div class="l">美國政府投資</div><div class="v">89 億</div><div class="d">美元換得近一成股權（2025 年）</div></div>
+      <div class="tile"><div class="l">Q4 財測與預期差距</div><div class="v">−9.2%</div><div class="d">中值 155 億對 170.7 億美元</div></div>
+      <div class="tile"><div class="l">Fab 28 傷亡</div><div class="v">2 死 1 重傷</div><div class="d">10/14 爆炸</div></div>
+      <div class="tile"><div class="l">停工時間</div><div class="v">約 2 週</div><div class="d">預計本週末開始恢復</div></div>
+      <div class="tile"><div class="l">兩季營收影響</div><div class="v">約 6 億</div><div class="d">美元；Q4、Q1 各約 3 億</div></div>
+      <div class="tile"><div class="l">事故涉及氣體</div><div class="v">三氟化氮</div><div class="d">8 噸儲槽；起因仍在調查</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li><b>產業政策：</b>Intel 是美國本土唯一的先進邏輯晶片製造商，美國政府持股近一成，股價直接反映這項投資的帳面價值。</li>
+        <li><b>製造布局：</b>亞利桑那州已量產 18A，俄亥俄州已裝上首個結構桁架，下一座亞利桑那廠預計 2028 年底前運轉。</li>
+        <li><b>資金壓力：</b>明年資本支出大增，但 Intel 仍承諾 2027 年降低負債，兩個目標要同時做到（推論：融資條件會受到關注）。</li>
+        <li><b>大型科技股：</b>Alphabet、亞馬遜同日被賣，美國科技股面對的是 AI 投資回收的共同疑問。</li>
+      </ul></div>
+      <div class="card"><h3>以色列</h3><ul class="plain">
+        <li><b>員工安全：</b>警方初步懷疑氣體運補時設備故障；消防單位初步指向 8 噸三氟化氮儲槽頸部的技術失效，目前未見犯罪或疏失的認定。</li>
+        <li><b>二次驚魂：</b>10 月 19 日同廠區傳出疑似有害物質外洩，員工被要求留在室內，事後未證實是否外洩。</li>
+        <li><b>產線：</b>Fab 28 主要生產 10 奈米級資料中心晶片，正是 Intel 目前最缺的產品之一。</li>
+        <li><b>待確認：</b>Intel 尚未公布損失晶圓數量與受影響的產品清單。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>市場沒有因為 PC 差就全盤看壞晶片，而是一起質疑 AI 投資的回收速度</h2>
+      <p>亞股已收盤，美股仍在盤前。顏色採台灣習慣：紅漲綠跌，只代表價格方向。</p>
+    </div>
+    <p class="note warn">美股 10/30 尚未開盤。美股數字為台灣時間 20:24 的盤前成交價，流動性低，與正式收盤可能差很多；盤前跌幅以 10/29 收盤計算。</p>
+    <div class="grid g2" style="align-items:start; margin-top:16px">
+      <div class="chart-card">
+        <p class="chart-title">10/30 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">實色為亞股 10/30 收盤；淡色為美股 10/30 盤前，非收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>收 45,211.83 點、跌 1,156.5 點，盤中最低 44,726.26 點並跌破半年線。鉅亨與 ETtoday 主要歸因於 Alphabet、Intel 等美企引發的 AI 回收疑慮，加上台股先前位階高；台達電因法說後賣壓跌停，友達因虧損與展望保守跌停。</li>
+          <li><b>美股盤前：</b>那斯達克 100 期貨約跌 2.3%。晶片股受 Intel 拖累，AMD、Arm 跌幅約 9%，但 Nvidia 只跌約 3%，顯示市場較擔心 PC，而不是資料中心（推論）。</li>
+          <li><b>韓日股：</b>記憶體廠是 PC 漲價的上游，但 SK 海力士仍跌 7.08%，主因是 Alphabet 的 AI 支出讓市場擔心買家撐不久。</li>
+          <li><b>歐股：</b>ASML 盤前約跌 5%，Reuters 稱 STOXX 歐洲 600 科技股指數跌 2.1%。</li>
+          <li><b>匯市與資金：</b>外資 10/30 賣超台股 1,124.67 億元，為史上第七大；10 月累計賣超 9,943 億元，創單月紀錄。新台幣貶到約 32.66 元。</li>
+          <li><b>單日紀錄：</b>Yahoo 十年資料中，Intel 最差單日是 2024-08-02 的 −26.06%，其次 2020-03-16 的 −18.04%。若 10/30 收盤跌幅超過 26.06%，就會改寫這項紀錄。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">INTC</td><td><b>Intel</b></td><td>美股</td><td class="num">92.07 美元</td><td class="num down">−3.62%</td><td class="period">盤前 69.14（−24.9%）</td><td>財測、PC、Fab 28 與現金流</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">566.42 美元</td><td class="num down">−2.08%</td><td class="period">盤前 516.75（−8.77%）</td><td>市場擔心 PC 疲弱擴及同業，11/3 公布財報</td></tr>
+          <tr><td class="num">ARM</td><td><b>安謀</b></td><td>美股</td><td class="num">228.77 美元</td><td class="num down">−3.02%</td><td class="period">盤前 208.00（−9.08%）</td><td>隨晶片股走弱</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">213.66 美元</td><td class="num down">−0.80%</td><td class="period">盤前 207.25（−3.00%）</td><td>AI 基礎建設股回檔</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">934.27 美元</td><td class="num down">−4.98%</td><td class="period">盤前 875.50（−6.29%）</td><td>AI 投資疑慮蓋過記憶體漲價利多</td></tr>
+          <tr><td class="num">DELL</td><td><b>戴爾</b></td><td>美股</td><td class="num">475.51 美元</td><td class="num down">−3.70%</td><td class="period">盤前 419.59（−11.76%）</td><td>PC 與伺服器需求疑慮（推論）</td></tr>
+          <tr><td class="num">HPQ</td><td><b>惠普</b></td><td>美股</td><td class="num">31.83 美元</td><td class="num down">−1.91%</td><td class="period">盤前 28.51（−10.43%）</td><td>PC 占比高；IDC 第三季出貨年減 30.9%</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">431.81 美元</td><td class="num down">−1.75%</td><td class="period">盤前 414.81（−3.94%）</td><td>晶片股連動</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,370 元</td><td class="num down">−1.86%</td><td class="period">10/28 起 −2.27%</td><td>權值股賣壓，跌破整理區間</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,915 元</td><td class="num down">−3.21%</td><td class="period">10/28 起 −7.56%</td><td>跌破 4,000 元，電子權值股走弱</td></tr>
+          <tr><td class="num">2357</td><td><b>華碩</b></td><td>台股</td><td class="num">906 元</td><td class="num down">−4.63%</td><td class="period">10/28 起 −8.30%</td><td>PC 需求疑慮（推論）</td></tr>
+          <tr><td class="num">2353</td><td><b>宏碁</b></td><td>台股</td><td class="num">30.40 元</td><td class="num down">−5.00%</td><td class="period">10/28 起 −7.03%</td><td>PC 需求疑慮（推論）</td></tr>
+          <tr><td class="num">3037</td><td><b>欣興</b></td><td>台股</td><td class="num">989 元</td><td class="num down">−4.90%</td><td class="period">10/28 起 −10.09%</td><td>跌破千元，載板股隨大盤修正</td></tr>
+          <tr><td class="num">8046</td><td><b>南電</b></td><td>台股</td><td class="num">1,190 元</td><td class="num down">−4.80%</td><td class="period">10/28 起 −8.46%</td><td>載板股修正</td></tr>
+          <tr><td class="num">3189</td><td><b>景碩</b></td><td>台股</td><td class="num">932 元</td><td class="num down">−2.82%</td><td class="period">10/28 起 −9.95%</td><td>跌破千元，載板股修正</td></tr>
+          <tr><td class="num">2382</td><td><b>廣達</b></td><td>台股</td><td class="num">318 元</td><td class="num">0.00%</td><td class="period">10/28 起 −3.64%</td><td>AI 伺服器比重高，當日持平</td></tr>
+          <tr><td class="num">3231</td><td><b>緯創</b></td><td>台股</td><td class="num">183.5 元</td><td class="num down">−2.65%</td><td class="period">10/28 起 −5.66%</td><td>隨電子股下跌</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">台股為 10/30 收盤；美股「收盤」為 10/29，「期間走勢」為 10/30 台灣時間約 20:24 盤前價。來源：Yahoo Finance、鉅亨網、ETtoday。華碩、宏碁等個股原因為本報告推論，報導未逐一歸因。以上僅說明股價變動，不構成投資建議。</p>
+
+    <div class="sub-h">分析師動作（10/30）</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>券商</th><th>評等</th><th>目標價（美元）</th><th>主要理由</th></tr></thead>
+        <tbody>
+          <tr><td><b>美銀 BofA</b></td><td>買進 → 中立</td><td class="num">145 → 100</td><td>外部代工客戶進度不足；預期 PC 出貨持續下滑</td></tr>
+          <tr><td><b>Baird</b></td><td>中立</td><td class="num">125 → 83</td><td>供給受限壓抑伺服器成長</td></tr>
+          <tr><td><b>Rosenblatt</b></td><td>賣出</td><td class="num">80 → 70</td><td>第四季展望不如預期，認為 DCAI 可能流失市占</td></tr>
+          <tr><td><b>Northland</b></td><td>優於大盤</td><td class="num">120 → 93</td><td>PC 需求疲弱，晶圓廠產出成長有限</td></tr>
+          <tr><td><b>KeyBanc</b></td><td>加碼</td><td class="num">155 → 140</td><td>短期受 PC 拖累，但 2027 年伺服器 CPU 需求仍強</td></tr>
+          <tr><td><b>Evercore ISI</b></td><td>優於大盤</td><td class="num">133</td><td>看好伺服器 CPU 需求與平均售價</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">以上為券商意見整理，不代表本報告看法，也不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>Intel 的財測，把 AI 的副作用攤在全世界面前</h2>
+      <p>影響經由三條線擴散：記憶體排擠 PC、AI 投資回收疑慮傳到全球晶片股、先進製程第二供應來源的時間表可能延後。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>PC 需求與售價</h3><ul class="plain small">
+        <li>IDC：第三季出貨年減 20.1%，是有紀錄以來最差的第三季。</li>
+        <li>Omdia：預估第四季年減幅擴大到 24%。</li>
+        <li>IDC 指價格不會回到一年前的水準。</li>
+      </ul></article>
+      <article class="card"><h3>全球晶片股連動</h3><ul class="plain small">
+        <li>SK 海力士 −7.08%、三星 −3.02%、東京威力 −5.19%、愛德萬 −5.86%。</li>
+        <li>KOSPI −3.48%、日經 −2.12%。</li>
+        <li>主因混合 Intel、Alphabet 與亞馬遜，無法全算在 Intel 頭上。</li>
+      </ul></article>
+      <article class="card"><h3>AI 投資的回收壓力</h3><ul class="plain small">
+        <li>Alphabet 第三季自由現金流為負 90.7 億美元。</li>
+        <li>亞馬遜自由現金流為負 424 億美元，今年資本支出 2,200 億美元。</li>
+        <li>Intel 明年也不預期正自由現金流，投資人開始比較誰先回本。</li>
+      </ul></article>
+      <article class="card"><h3>記憶體排擠效應</h3><ul class="plain small">
+        <li>AI 資料中心的需求把消費電子成本推高，PC 和手機一起受壓。</li>
+        <li>陳立武示警記憶體問題在 2027 年仍嚴重。</li>
+        <li>Intel 表示不預期明年記憶體情況改善。</li>
+      </ul></article>
+      <article class="card"><h3>晶片供應鏈分散</h3><ul class="plain small">
+        <li>TechInsights 指大型 IC 設計公司正在測試 14A，希望有台積電以外的第二來源。</li>
+        <li>Intel 若現金吃緊或客戶延後，這條分散路線也會變慢（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>企業 IT 預算</h3><ul class="plain small">
+        <li>Intel 財務長指高售價壓抑企業採購。</li>
+        <li>Needham 也提到記憶體與 IT 預算吃緊影響 PC。</li>
+        <li>企業可能延長舊電腦使用年限（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本：關鍵是伺服器能否在 PC 探底前補上來</h2>
+      <p>以下依 Intel 法說內容與分析師看法整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>PC 低迷到明年上半年，伺服器慢慢補</h3><ul class="plain small">
+        <li>Fab 28 恢復，第一季影響約 3 億美元後淡出。</li>
+        <li>伺服器持續成長，但供給要到 2027 年下半年才明顯改善。</li>
+        <li>毛利率先低後回升，股價波動主要看代工與 Xeon 出貨。</li>
+      </ul><p class="trig">觸發條件：記憶體價格維持高檔但不再急漲，基板擴產照計畫推進。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>記憶體更貴、代工沒客戶、資金壓力上升</h3><ul class="plain small">
+        <li>PC 跌幅超過 Intel 假設的 10%，AMD 也報憂。</li>
+        <li>Fab 28 晶圓損失超過目前估計，伺服器缺貨加劇。</li>
+        <li>外部代工客戶遲未公布，市場質疑明年大舉投資的回報。</li>
+      </ul><p class="trig">觸發條件：11/3 AMD 下修 PC 展望、Intel 上修損失，或資本支出再擴大但客戶未到位。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>代工客戶現身，記憶體壓力鬆動</h3><ul class="plain small">
+        <li>未來兩季公布具名代工客戶，市場重新給予代工價值。</li>
+        <li>宏碁董事長預期 PC 均價 2027 年中見頂，若成真，下半年需求回溫。</li>
+        <li>Xeon 供給提前改善，高毛利營收占比上升。</li>
+      </ul><p class="trig">觸發條件：具名客戶、Fab 28 快速回穩、記憶體合約價走平。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>10/30 美股收盤（台灣時間 10/31 清晨）</b>：看盤前約 25% 的跌幅是否擴大，以及是否超過 2024 年 8 月的 26.06%。</li>
+      <li><b>11/3 AMD 財報</b>：PC 業務若同樣急凍，代表是全產業問題；若 AMD 表現強，市場會更在意 Intel 的市占。</li>
+      <li><b>11/3 美國期中選舉</b>：ETtoday 指市場把選舉視為變數，也關係到美國半導體政策的走向。</li>
+      <li><b>Fab 28 復工與晶圓清點</b>：Intel 預計本週末開始恢復，實際損失要看可用晶圓比例。</li>
+      <li><b>11/17 Nvidia 財報</b>：檢驗 AI 硬體需求，決定賣壓是否從 PC 擴大到資料中心。</li>
+      <li><b>未來兩季的代工客戶公告</b>：這是 Intel 轉型最直接的證據，美銀也點名這項進度。</li>
+      <li><b>2027 年 1 月 Intel 第四季財報（日期待公布）</b>：確認明年第一季展望與資本支出金額。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>PC 鏈先受傷，AI 伺服器與記憶體的好消息反而更複雜</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>PC 品牌</h3><span class="tag bad">利空</span></div><p>零組件成本上升又要漲價，出貨量下滑，品牌同時面對毛利和銷量壓力。</p><div class="data">IDC Q3：HP −30.9%、Dell −25.0%、ASUS −8.6%</div></article>
+      <article class="card"><div class="top"><h3>筆電代工</h3><span class="tag bad">利空</span></div><p>品牌砍庫存會先反映到拉貨，代工廠的筆電訂單會比終端銷售更早感受到壓力（推論）。</p><div class="data">Intel：Q4 PC 業務季減 20% 以上</div></article>
+      <article class="card"><div class="top"><h3>PC 處理器競爭</h3><span class="tag">好壞參半</span></div><p>AMD、Arm 陣營有機會搶市占，但市場先擔心整體 PC 蛋糕變小。</p><div class="data">AMD 盤前 −8.77%；Arm −9.08%</div></article>
+      <article class="card"><div class="top"><h3>伺服器 CPU</h3><span class="tag good">受惠</span></div><p>代理型 AI 帶動 CPU 需求，在供給不足下，有貨的廠商議價力較強。</p><div class="data">DCAI Q3 年增 78%；Intel 估 2026、2027 出貨增 30% 以上</div></article>
+      <article class="card"><div class="top"><h3>記憶體</h3><span class="tag">好壞參半</span></div><p>價格與獲利強，但高價正在傷害 PC 下游；AI 客戶現金壓力也讓市場擔心需求能撐多久。</p><div class="data">SK 海力士 10/30 −7.08%；美光盤前 −6.29%</div></article>
+      <article class="card"><div class="top"><h3>IC 載板</h3><span class="tag">短空長多</span></div><p>Intel 明確說基板短缺，代表高階產品需求仍強；股價短線先跟著科技股修正（推論）。</p><div class="data">欣興 −4.90%、南電 −4.80%、景碩 −2.82%</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag good">受惠</span></div><p>Intel 代工進度慢，短期有利台積電維持領先；但消費性晶片需求下滑仍要留意。</p><div class="data">台積電 Q4 美元營收估季增約 14%；Intel 外部代工 4.11 億美元</div></article>
+      <article class="card"><div class="top"><h3>半導體設備</h3><span class="tag">好壞參半</span></div><p>Intel 明年資本支出增加、設備訂單成長，但市場先對 AI 投資降溫有疑慮。</p><div class="data">ASML 盤前 −5.26%；Intel 設備採購單季增近 40%</div></article>
+      <article class="card"><div class="top"><h3>資料中心與雲端</h3><span class="tag">好壞參半</span></div><p>需求仍在，但 CPU、記憶體和基板都缺，成本上升；投資人更要求看到現金回報。</p><div class="data">Alphabet FCF −90.7 億美元；亞馬遜 −424 億美元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台灣兩邊受影響：PC 鏈承壓，台積電的領先卻更明顯</h2>
+      <p>台灣最該看三件事：PC 品牌與代工訂單、載板與 AI 供應鏈的訂單是否仍穩、買電腦的成本。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>股市：</b>10/30 加權指數跌 2.49%，10 月累計跌 2,728.3 點、5.69%。</li>
+        <li><b>PC 股：</b>華碩跌 4.63%、宏碁跌 5.00%，兩天分別跌 8.30%、7.03%。</li>
+        <li><b>載板：</b>欣興、景碩雙雙跌破千元；Intel 卻同時說基板短缺。</li>
+        <li><b>資金：</b>外資賣超 1,124.67 億元，新台幣貶到約 32.66 元。</li>
+        <li><b>評論：</b>分析師陸行之批評 Intel 把問題推給外部因素，並指台積電面對相同環境卻未下修財測。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>電腦價格：</b>宏碁董事長 9 月預估第四季 PC 平均再漲 5%–20%，均價 2027 年中見頂；Intel 的財測表示廠商會更小心備貨。</li>
+        <li><b>CPU 分配：</b>Intel 供給有限，中低價 CPU 又偏緊，台灣品牌要決定優先生產哪些機種。</li>
+        <li><b>訂單分化：</b>AI 伺服器比重高的公司受影響較小，筆電比重高的公司壓力較大。</li>
+        <li><b>台積電：</b>魏哲家 10 月已對 2027 年消費性市場表示審慎，PC 下滑可能影響部分成熟與消費性需求。</li>
+        <li><b>載板訂單：</b>若基板持續短缺，台廠可能受惠；要看客戶是否簽更長約。</li>
+      </ul></div>
+    </div>
+    <p class="note warn">截至查證時，未查到台灣政府、央行或經濟部針對 Intel 財測發表回應。央行下次理監事會在 12 月。</p>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>PC 品牌與筆電代工</b></td><td><span class="tag bad">壓力上升</span></td><td>出貨下滑、成本上升，第四季與明年上半年的訂單能見度降低（推論）。</td></tr>
+          <tr><td><b>台積電與先進製程供應鏈</b></td><td><span class="tag good">相對有利</span></td><td>台積電第四季美元營收估季增約 14%，與 Intel 季減約 6% 形成對比；但晶片股賣壓仍會影響股價。</td></tr>
+          <tr><td><b>載板與 AI 伺服器廠</b></td><td><span class="tag">短空長多</span></td><td>股價先跌，但基板短缺與伺服器需求仍是長線支撐（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">波動加大</span></td><td>10/30 是外資史上第七大賣超，分析師認為短線需要整理；這是市場描述，不是投資建議。</td></tr>
+          <tr><td><b>買電腦的家庭與學生</b></td><td><span class="tag bad">負擔增加</span></td><td>第四季 PC 可能再漲，高記憶體與大容量機種漲幅可能更大；促銷機也可能維持較低規格（推論）。</td></tr>
+          <tr><td><b>中小企業與公司 IT</b></td><td><span class="tag bad">預算壓力</span></td><td>換機成本增加，可能延後汰換或降低規格（推論）。</td></tr>
+          <tr><td><b>上班族與工程師</b></td><td><span class="tag">影響有限</span></td><td>若 PC 訂單持續下滑，先看代工與品牌廠的加班和人力配置，目前未見裁員報導（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電看財測和現金流，台灣媒體看 AI 與 PC 的對比和台股，以色列媒體則把重點放在工廠事故。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Intel 財報新聞稿</td><td>公司官方</td><td>第三季實績與第四季財測</td><td>Xeon 需求、釋出更多產能</td></tr>
+          <tr><td>Reuters</td><td>市場與財測</td><td>以色列爆炸、PC 疲弱與晶片股賣壓</td><td>市值蒸發、資本支出與現金流</td></tr>
+          <tr><td>SiliconANGLE</td><td>科技產業</td><td>PC 放緩造成弱財測</td><td>18A 與代工客戶時程</td></tr>
+          <tr><td>ynet</td><td>以色列觀點</td><td>工廠爆炸帶來 6 億美元損失</td><td>員工傷亡與復工</td></tr>
+          <tr><td>聯合報／經濟日報</td><td>產業對比</td><td>AI 帶旺伺服器、PC 拖累</td><td>財務長認為原因在記憶體價格</td></tr>
+          <tr><td>自由財經</td><td>資金壓力</td><td>供給受限與現金消耗</td><td>現金流與增產投資</td></tr>
+          <tr><td>時報資訊</td><td>晶片股連動</td><td>記憶體拖累 Intel 與晶片股</td><td>個股盤後跌幅</td></tr>
+          <tr><td>Newtalk</td><td>台灣分析師評論</td><td>陸行之拿台積電對比</td><td>執行力與競爭力差距</td></tr>
+          <tr><td>鉅亨／ETtoday</td><td>台股盤後</td><td>AI 疑雲下台股跌破半年線</td><td>外資、權值股與 10 月累計</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>第三季營收約 165 億美元、調整後每股盈餘 0.52 美元。</li>
+        <li>第四季營收財測 150–160 億美元，每股盈餘 0.25 美元。</li>
+        <li>PC 疲弱至少延續到明年上半年。</li>
+        <li>以色列爆炸造成兩名員工死亡，兩季營收影響約 6 億美元。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>股價百分比要看時間點。</b>10/29 正常盤只跌 3.62%，14%、23%、25% 都是盤後或盤前的不同時點。</li>
+        <li><b>台股下跌不等於 Intel 造成。</b>多家台媒把 Alphabet 放在 Intel 前面，個別公司還有自己的財報因素。</li>
+        <li><b>「缺記憶體」說法不同。</b>Intel 強調短缺空前；宏碁 9 月說多數規格已不缺，只是價格高。</li>
+        <li><b>時區。</b>財報在美東 10/29 盤後公布，已是台灣 10/30 清晨，因此台股 10/30 開盤就能反應。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>Intel 跌幅</td><td>14%（Yahoo 股市）、16%（ynet）</td><td>盤後 23%（Reuters）、盤前 25%（Reuters）</td><td>時間點不同。Yahoo 股市寫「盤中」，但 10/29 正常盤跌幅僅 3.62%。</td></tr>
+          <tr><td>哪一年現金流不轉正</td><td>今年（Reuters、Globe）</td><td>明年 2027（法說逐字稿、聯合）</td><td>逐字稿是財務長回答 2027 年的問題；本報告以逐字稿為準。</td></tr>
+          <tr><td>第四季 PC 降幅</td><td>季減 20% 以上（法說）</td><td>20% 中段（Reuters）、約 20%（自由）</td><td>法說給的是下限，媒體轉述範圍不同。</td></tr>
+          <tr><td>PC 出貨年減</td><td>−4%（Counterpoint，Q2）</td><td>−20.1%（IDC，Q3）、−21%（Omdia，Q3）</td><td>季度不同，而且各機構統計範圍不同。</td></tr>
+          <tr><td>第三季營運現金流</td><td>50.82 億美元（新聞稿）</td><td>59.1 億美元（逐字稿）</td><td>本報告以新聞稿為準。</td></tr>
+          <tr><td>第四季營收市場預期</td><td>170.7 億美元（LSEG）</td><td>170.2 億～171 億美元</td><td>資料來源和統計時間不同。</td></tr>
+          <tr><td>台股成交值</td><td>8,777 億元（鉅亨、ETtoday）</td><td>8,792.57 億元（Newtalk）</td><td>統計口徑或時間不同；本報告採 8,777 億元。</td></tr>
+          <tr><td>亞馬遜盤後跌幅</td><td>約 6.5%（今周刊）</td><td>約 11%（同文引述）</td><td>同一篇文章兩個數字，未說明原因。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 30 日 20:24（台灣時間）。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0000050863/000005086326000188/q326earningsrelease.htm" target="_blank" rel="noopener">Intel／SEC — 2026 年第三季財報新聞稿（10/29）</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0000050863/000119312526346806/d117670dex992.htm" target="_blank" rel="noopener">Intel／SEC — 8 月普通股增資定價公告</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873" target="_blank" rel="noopener">NVIDIA — 第三季財報法說日期（11/17）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="4">
+      <li><a href="https://www.investing.com/news/stock-market-news/intel-signals-slower-growth-as-pc-market-remains-under-pressure-4984967" target="_blank" rel="noopener">Reuters／Investing.com — 以色列爆炸與 PC 疲弱使 Intel 重挫（10/29）</a></li>
+      <li><a href="https://www.globalbankingandfinance.com/intel-warning-sparks-chip-rout-pc-weakness-clouds-turnaround/" target="_blank" rel="noopener">Reuters／Global Banking &amp; Finance — Intel 警訊引發晶片股賣壓（10/30）</a></li>
+      <li><a href="https://www.theglobeandmail.com/investing/markets/inside-the-market/market-news/article-premarket-nasdaq-futures-tumble-as-amazon-intel-results-deepen-ai/" target="_blank" rel="noopener">Reuters／Globe and Mail — 那斯達克期貨重挫，亞馬遜與 Intel 加深 AI 支出疑慮（10/30）</a></li>
+      <li><a href="https://www.investing.com/news/transcripts/earnings-call-transcript-intel-beats-q3-2026-estimates-but-stock-sinks-93CH-4985498" target="_blank" rel="noopener">Investing.com — Intel 第三季法說逐字稿（10/29）</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/global-chip-stocks-slide-after-intels-weak-outlook-4987152" target="_blank" rel="noopener">Investing.com — 全球晶片股隨 Intel 走弱（10/30）</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/why-is-intel-stock-crashing-today-93CH-4986042" target="_blank" rel="noopener">Investing.com — Intel 為何重挫（10/30）</a></li>
+      <li><a href="https://ng.investing.com/news/stock-market-news/bofa-downgrades-intel-stock-rating-on-foundry-pc-concerns-93CH-2769986" target="_blank" rel="noopener">Investing.com — 美銀將 Intel 降為中立（10/30）</a></li>
+      <li><a href="https://www.investing.com/news/analyst-ratings/keybanc-cuts-intel-stock-price-target-to-140-on-weak-guidance-93CH-4986572" target="_blank" rel="noopener">Investing.com — KeyBanc 下調目標價（10/30）</a></li>
+      <li><a href="https://www.investing.com/news/analyst-ratings/northland-cuts-intel-stock-price-target-to-93-on-weak-guidance-93CH-4987185" target="_blank" rel="noopener">Investing.com — Northland 下調目標價（10/30）</a></li>
+      <li><a href="https://www.investing.com/news/analyst-ratings/rosenblatt-cuts-intel-stock-price-target-to-70-on-weak-outlook-93CH-4987134" target="_blank" rel="noopener">Investing.com — Rosenblatt 下調目標價（10/30）</a></li>
+      <li><a href="https://siliconangle.com/2026/10/29/shares-of-intel-plummet-more-than-20-following-weak-guidance-blamed-on-pc-market-slowdown/" target="_blank" rel="noopener">SiliconANGLE — PC 放緩導致 Intel 財測偏弱（10/29）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-fall-amzn-100738749.html" target="_blank" rel="noopener">Yahoo Finance — 美股期貨在亞馬遜與 Intel 財報後下跌（10/30）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/amd-shares-fall-6-5-102611265.html" target="_blank" rel="noopener">Yahoo Finance — AMD 受 Intel 展望拖累（10/30）</a></li>
+      <li><a href="https://www.yahoo.com/news/world/articles/two-killed-one-seriously-hurt-093415975.html" target="_blank" rel="noopener">Yahoo News — Intel 以色列廠爆炸兩死（10/15）</a></li>
+      <li><a href="https://www.ynetnews.com/article/rypgmdmhze" target="_blank" rel="noopener">ynet — Intel 廠區再傳有害物質疑慮（10/19）</a></li>
+      <li><a href="https://www.ynetnews.com/business/article/syrm00811amg" target="_blank" rel="noopener">ynet — 爆炸增加 6 億美元損失（10 月）</a></li>
+      <li><a href="https://hwbusters.com/news/intel-fab-28-explosion-will-cost-600-million-and-squeeze-10nm-xeon-supply-into-2027/" target="_blank" rel="noopener">Hardware Busters — Fab 28 影響 10 奈米 Xeon 供給（10 月）</a></li>
+      <li><a href="https://tbreak.com/pc-shipments-fall-20-percent-idc/" target="_blank" rel="noopener">tbreak — IDC 第三季全球 PC 出貨年減 20.1%（10 月）</a></li>
+      <li><a href="https://9to5mac.com/2026/05/05/intels-stock-jumped-13-today-over-apple-chip-manufacturing-report/" target="_blank" rel="noopener">9to5Mac — Apple 與 Intel 代工傳聞帶動股價（5/5）</a></li>
+      <li><a href="https://www.ajupress.com/view/20261030153229938" target="_blank" rel="noopener">AJU Press — Alphabet AI 支出衝擊首爾與東京晶片股（10/30）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202610150018" target="_blank" rel="noopener">Focus Taiwan — 台積電第三季與第四季展望（10/15）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="25">
+      <li><a href="https://money.udn.com/money/story/123398/9846118" target="_blank" rel="noopener">經濟日報 — AI 帶旺伺服器、PC 拖累展望（10/30）</a></li>
+      <li><a href="https://udn.com/news/story/6811/9846124" target="_blank" rel="noopener">聯合新聞網 — 美股收盤、台積電 ADR 與台指期（10/30）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261030002009-260410" target="_blank" rel="noopener">時報資訊 — 記憶體拖累 Intel 與晶片股（10/30）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5623422" target="_blank" rel="noopener">自由財經 — 供給受限與現金消耗衝擊 Intel（10/30）</a></li>
+      <li><a href="https://finance.technews.tw/2026/10/30/intels-fourth-quarter-earnings-forecast-missed-market-expectations-causing-its-stock-price-to-plunge-by-more-than-20-at-one-point" target="_blank" rel="noopener">科技新報 — Intel 第四季財測不如預期（10/30）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-10-30/1068282" target="_blank" rel="noopener">Newtalk — 陸行之以台積電對比 Intel（10/30）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-10-30/1068364" target="_blank" rel="noopener">Newtalk — 台股失守半年線與外資賣超（10/30）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6641797" target="_blank" rel="noopener">鉅亨網 — 台股盤後收跌 1,156 點（10/30）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3263418" target="_blank" rel="noopener">ETtoday — 台股 10 月累計與 10/30 收盤（10/30）</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183008/post/202610300002/" target="_blank" rel="noopener">今周刊 — 台股大跌原因與外資賣超（10/30）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E8%8B%B1%E7%89%B9%E7%88%BE%E8%B2%A1%E6%B8%AC%E5%A4%B1%E8%89%B2%E8%82%A1%E5%83%B9%E5%B4%A9%E8%B7%8C14-%E4%BB%A5%E8%89%B2%E5%88%97%E5%BB%A0%E7%88%86%E7%82%B8-pc%E5%B8%82%E5%A0%B4%E4%BD%8E%E8%BF%B7%E9%9B%99%E9%87%8D%E5%A4%BE%E6%93%8A-031755793.html" target="_blank" rel="noopener">Yahoo 股市 — Intel 財測失色與以色列爆炸（10/30）</a></li>
+      <li><a href="https://finance.sina.cn/tech/2026-10-30/detail-iniwywtv8201241.d.html" target="_blank" rel="noopener">新浪財經 — 記憶體緊缺與 Omdia PC 預估（10/30）</a></li>
+      <li><a href="https://money.udn.com/money/story/5612/9764639" target="_blank" rel="noopener">經濟日報 — 宏碁陳俊聖談第四季 PC 漲價（9/19）</a></li>
+      <li><a href="https://uanalyze.com.tw/articles/3164557160" target="_blank" rel="noopener">優分析 — 台積電法說與魏哲家 2027 年看法（10/15）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="39">
+      <li><a href="https://finance.yahoo.com/quote/INTC/" target="_blank" rel="noopener">Yahoo Finance — INTC 與美股每日收盤、盤前價</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/" target="_blank" rel="noopener">Yahoo Finance — 加權指數與台股個股收盤</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener">Yahoo Finance — KOSPI 與亞股收盤</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 30 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'Intel', s:'盤前 69.14 美元', v:-24.90, est:true},
+    {l:'Arm', s:'盤前 208.00 美元', v:-9.08, est:true},
+    {l:'AMD', s:'盤前 516.75 美元', v:-8.77, est:true},
+    {l:'美光', s:'盤前 875.50 美元', v:-6.29, est:true},
+    {l:'台積電 ADR', s:'盤前 414.81 美元', v:-3.94, est:true},
+    {l:'Nvidia', s:'盤前 207.25 美元', v:-3.00, est:true},
+    {l:'SK 海力士', s:'141.8 萬韓元', v:-7.08},
+    {l:'宏碁', s:'30.40 元', v:-5.00},
+    {l:'欣興', s:'989 元', v:-4.90},
+    {l:'華碩', s:'906 元', v:-4.63},
+    {l:'加權指數', s:'45,211.83 點', v:-2.49},
+    {l:'台積電', s:'2,370 元', v:-1.86}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
