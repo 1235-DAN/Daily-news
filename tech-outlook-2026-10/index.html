@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科技業預期與擔憂解讀</title>
+<meta name="description" content="AI 需求排到 2029 年、雲端四強現金流卻轉負：整理 2026 年 10 月底科技財報、市場預期與擔憂、台美股反應，以及對台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; all placeholders are filled.
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#ledger">預期與擔憂</a></li>
+      <li><a class="link" href="#local">美韓影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技產業解讀 · AI 投資大考 · 資料截至 2026 年 10 月 30 日</p>
+      <h1>訂單排到 2029 年，現金流卻先轉負：AI 行情從「敢花錢」變成「付得起嗎」</h1>
+      <p class="lede">Alphabet 10 月 29 日單日跌 12.64%、市值蒸發約 5,000 億美元，隔天台股重挫 1,156 點跌破半年線。可是同一週，SK 海力士說記憶體賣到 2029 年，台灣第三季 GDP 成長 14.36%。市場不是不相信 AI 有需求，而是開始追問：這麼大筆的錢，由誰來付、何時收得回來？下一個答案看 11 月 17 日的輝達財報。</p>
+    </div>
+    <div class="stmt" aria-label="雲端四強 2026 年資本支出">
+      <div class="k">雲端四強 2026 年資本支出（預估）</div>
+      <div class="range">7,200+<small>億美元</small></div>
+      <div class="was">微軟、Alphabet、亞馬遜、Meta · 約兩年前的 3 倍</div>
+      <div class="stmt-row">
+        <div><div class="v">−12.64%</div><div class="l">Alphabet 10/29</div></div>
+        <div><div class="v">−2.49%</div><div class="l">台股 10/30</div></div>
+        <div><div class="v">14.36%</div><div class="l">台灣 Q3 GDP</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂市場的期待與不安</h2>
+      <p>懶人包：AI 的需求是真的，市場擔心的是付款能力與回收時間。對台灣來說，這份擔憂和經濟成長來自同一條供應鏈。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>導火線是 Alphabet 的成績單。</b>10 月 28 日盤後財報顯示搜尋廣告只成長 12%（分析師預期 15%），單季自由現金流 −91 億美元，遠差於預期的 −27 億美元；公司又說 2027 年資本支出會「顯著增加」。10/29 股價跌 12.64%，市值蒸發約 5,000 億美元，是美股史上第二大單日市值損失。</div></li>
+      <li><div><b>市場開始區分誰付得起。</b>微軟 Azure 成長 48%，是四家中唯一自由現金流仍為正的公司，10/29 只跌 0.16%；亞馬遜近 12 個月自由現金流 −424 億美元，10/29 收跌 4.25%，盤後再跌約 7%。同樣是 AI 投資，股價待遇已經不同。</div></li>
+      <li><div><b>四強今年合計花費超過 7,200 億美元。</b>這個數字約是兩年前的 3 倍，上季 AI 基礎建設支出已超過本業產生的現金。Alphabet 第三季資本支出 514 億美元，高於營運現金流 423 億美元。</div></li>
+      <li><div><b>資金來源正從自有現金轉向市場籌資。</b>Alphabet 6 月增資 848 億美元，Meta 10/26 宣布增資計畫；摩根士丹利估計今年全球 AI 相關債務發行約 4,500 億美元，約為 2025 年兩倍。IMF 指出，5 家公司今年約占全球新發投資級公司債近 10%，2024 年只有 0.5%。</div></li>
+      <li><div><b>看多的根據很具體。</b>微軟商用未履約訂單 6,770 億美元、Google Cloud 積壓訂單 5,610 億美元；SK 海力士營業利益率 80%，DRAM 與 HBM（高頻寬記憶體）產能實質賣到 2029 年；Gartner 估 2026 年全球半導體營收約 1.6 兆美元，年增 92%。</div></li>
+      <li><div><b>看空的根據同樣具體。</b>Gartner 估 AI 資料中心業者到 2030 年需要累計 8.5 兆美元營收才能達到 12% 報酬，但預估最多只有 3.6 兆美元。美銀（BofA）則說這是典型資本週期：技術成真，投資人卻未必賺到錢。</div></li>
+      <li><div><b>台灣同時站在兩邊。</b>主計總處 10/30 公布第三季 GDP 概估成長 14.36%，創 48 年同期最高；同一天台股跌 1,156.5 點收 45,211.83 點，外資賣超 1,124.67 億元。台股距 10/5 收盤新高已回落約 9%（依收盤價計算）。</div></li>
+      <li><div><b>接下來有四個關卡。</b>11/2 蘋果財報、11/3 美國期中選舉、11/17 輝達財報，12/8–9 聯準會（Fed）會議。美股 10/30 在本報告整理時尚未收盤；10/29 盤後亞馬遜跌逾 7%、英特爾跌逾 23%，那斯達克 100 期貨也跌逾 2%。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼是現在？四個原因讓市場改變評分標準</h2>
+      <p>第 1、2 點的數字來自公司財報與官方機構；第 3、4 點是媒體與分析師的觀察。「評分標準改變」是本報告的整理。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>資本支出開始超過本業現金</h3><p>可以把 AI 投資想成開店：過去是用店裡賺的錢開分店，現在分店蓋得比賺錢快。Alphabet 單季營運現金流 423 億美元，資本支出卻是 514 億美元；Meta 自由現金流轉負，經濟日報引述外媒稱這是上市初期以來首見。</p></div><div class="ev"><span class="tag">Alphabet FCF −91 億美元</span><span class="tag">亞馬遜 FCF −424 億美元</span><span class="tag">Meta FCF −21.2 億美元</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>融資從「可選」變成「必要」</h3><p>IMF 統計，科技集團第二季利息支出近 60 億美元，比一年前多一倍以上。也有資金互相繞圈的現象：IMF 找出 2023 年以來 14 筆大型交易，同一批公司同時是投資人、放款人、供應商和客戶。</p></div><div class="ev"><span class="tag">AI 相關債務約 4,500 億美元</span><span class="tag">14 筆循環交易</span><span class="tag">未來採購承諾 1.4 兆美元</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>利率沒有幫忙</h3><p>Fed 9 月升息後，10 月 28 日維持 3.75%–4.00%，但市場仍押注 12 月再升息；10 年期美債殖利率約 4.93%，9 月 PCE 物價 3.6%、布蘭特油價近每桶 116 美元。錢變貴時，回收期很長的投資最受影響。Fortune 報導中，分析師 Greenhaus 說不知道臨界點是再高 25 還是 50 個基點（1 個基點＝0.01 個百分點）。</p></div><div class="ev"><span class="tag">Fed 3.75%–4.00%</span><span class="tag">美債 10 年約 4.93%</span><span class="tag">下次 FOMC 12/8–9</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>AI 開始和原本的金雞母搶飯吃</h3><p>Google 搜尋成長從第一季 19%、第二季 17% 降到第三季 12%。管理層主要歸因於匯率與零售、媒體類廣告，但 Fortune 引述分析師的說法是投資人擔心「AI 侵蝕本業」。這個擔憂不只屬於 Google：雲端賺得更多，舊業務卻可能賺得更少。</p></div><div class="ev"><span class="tag">Search +12%</span><span class="tag">Cloud +103%</span><span class="tag">預期 Search +15%</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>資金與財報主線</span><span><i class="g"></i>市場衝擊</span><span><i></i>官方警訊與後續日程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-06</div><div class="what">Alphabet 增資 <b>848 億美元</b>，其中波克夏投入 100 億美元。</div></li>
+        <li class="geo"><div class="date">2026-07-28～29</div><div class="what">台股連兩日分別跌 2,030 點、1,564 點，29 日盤中一度跌破 4 萬點；英國央行後來也點名 7 月 AI 與半導體股急跌。</div></li>
+        <li><div class="date">2026-09-30</div><div class="what">英國央行金融政策委員會警告：AI 相關債務快速增加，使資本市場曝險上升。</div></li>
+        <li class="key"><div class="date">2026-10-05</div><div class="what">台股收 <b>49,712.04 點</b>創收盤新高，台積電收 2,575 元。</div></li>
+        <li><div class="date">2026-10-13</div><div class="what">IMF《全球金融穩定報告》點出 AI 融資與股價修正風險。</div></li>
+        <li><div class="date">2026-10-14</div><div class="what">Gartner 提出 8.5 兆美元需求與 3.6 兆美元營收上限的落差。</div></li>
+        <li class="geo"><div class="date">2026-10-15</div><div class="what">台股跌 1,656 點，外資賣超 3,025 億元創紀錄。</div></li>
+        <li class="key"><div class="date">2026-10-21</div><div class="what">Meta 第三季自由現金流 <b>−21.2 億美元</b>，股價隨後跌約 7%。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-26</div><div class="what">Meta 宣布增資計畫；SpaceX 宣布 400 億美元貸款購買 AI 晶片；Anthropic 公開招股書。</div></li>
+        <li class="key"><div class="date">2026-10-28</div><div class="what">微軟財報優於預期；Alphabet 盤後急跌；SK 海力士公布 <b>80% 營業利益率</b>。</div></li>
+        <li class="geo"><div class="date">2026-10-29</div><div class="what">Alphabet <b>−12.64%</b>；台股跌 667 點；亞馬遜與英特爾盤後財報再度打擊市場。</div></li>
+        <li class="geo"><div class="date">2026-10-30</div><div class="what">台股 <b>−1,156.5 點</b>跌破半年線；韓股跌 3.53%、日股跌 2.12%。</div></li>
+        <li class="key"><div class="date">2026-10-30</div><div class="what">主計總處公布第三季 GDP 概估 <b>14.36%</b>。</div></li>
+        <li><div class="date">2026-11-02</div><div class="what">蘋果公布財報。</div></li>
+        <li><div class="date">2026-11-03</div><div class="what">美國期中選舉。</div></li>
+        <li class="key"><div class="date">2026-11-17</div><div class="what"><b>輝達第三財季財報</b>（美東 17:00 法說會，台灣時間 11/18 清晨）。</div></li>
+        <li><div class="date">2026-12-08～09</div><div class="what">FOMC 會議與新點陣圖。</div></li>
+        <li class="key"><div class="date">2027 年初</div><div class="what">台積電與 Alphabet 法說，預期給出 2027 年資本支出細節。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ledger -->
+<section id="ledger">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 預期與擔憂對照</div>
+      <h2>同一組事實，樂觀與悲觀各讀出什麼</h2>
+      <p>市場預期與市場擔憂多半不是兩套事實，而是同一件事的兩面。最右欄是本報告的判讀，屬推論。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>主題</th><th>市場預期什麼</th><th>市場擔心什麼</th><th>判讀 <span class="infer">推論</span></th></tr></thead>
+        <tbody>
+          <tr><td><b>需求</b></td><td>微軟未履約訂單 6,770 億美元、年增 73%；Google Cloud 積壓訂單 5,610 億美元，逾 55% 預計 24 個月內認列。</td><td>訂單是承諾，不是現金。Gartner 估到 2030 年 AI 資料中心營收最多 3.6 兆美元。</td><td>短期需求可信，長期要看客戶自己能不能賺到錢。</td></tr>
+          <tr><td><b>獲利</b></td><td>FactSet：S&amp;P 500 第三季獲利估年增 29.0%，七大科技股 33.2%。</td><td>七大科技股扣掉輝達與 Meta 只剩 7.5%；分析師預期第四季其餘 493 家成長率 30.6%，高於七大的 23.6%。</td><td>獲利很好但集中。若領頭羊轉弱，指數缺少緩衝。</td></tr>
+          <tr><td><b>現金流</b></td><td>亞馬遜近 12 個月營運現金流 1,683 億美元、年增 29%。</td><td>同期自由現金流 −424 億美元，Alphabet 與 Meta 單季也轉負。</td><td>本業沒有變差，是投資速度超過賺錢速度。</td></tr>
+          <tr><td><b>融資</b></td><td>Alphabet 手上現金與有價證券 2,651 億美元，大公司仍能籌到錢。</td><td>IMF：5 家公司今年約占全球新發投資級公司債近 10%。</td><td>大公司付得起；風險先落在負債較高的新雲業者。</td></tr>
+          <tr><td><b>半導體</b></td><td>Gartner：2026 年 1.6 兆美元、2027 年 1.9 兆美元，記憶體 2027 年約 1.1 兆美元。</td><td>UPI 引述韓國經濟學者：投資人對榮景存疑，中國晶片業者積極投資是不確定因素。</td><td>缺貨支撐高價，但高價也會壓抑手機與 PC 需求。</td></tr>
+          <tr><td><b>應用</b></td><td>Gemini 應用程式達 10 億用戶；Google 模型 API 每分鐘處理近 320 億 token（AI 計量單位）。</td><td>美銀：激烈競爭下的變現失望，正是歷史資本週期的失敗模式。</td><td>用量成長已經確定，價格能否守住還不確定。</td></tr>
+          <tr><td><b>本業</b></td><td>Google Cloud 營收 307 億美元、年增 103%。</td><td>搜尋成長連續放緩到 12%，市場擔心 AI 自我侵蝕。</td><td>雲端與廣告的此消彼長，是 Alphabet 下一季的核心問題。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-h">四家雲端業者成績單</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>公司</th><th>雲端成長</th><th>2026 資本支出（美元）</th><th>自由現金流（美元）</th><th>股價反應</th></tr></thead>
+        <tbody>
+          <tr><td><b>微軟</b></td><td class="num">Azure +48%</td><td class="num">約 1,700～1,750 億</td><td>四家唯一為正，預期至少維持到明年夏天</td><td>10/28 盤後約 +4%，10/29 收 −0.16%</td></tr>
+          <tr class="hl"><td><b>Alphabet</b></td><td class="num">Cloud +103%</td><td class="num">1,950～2,050 億</td><td class="num">Q3 −91 億</td><td>10/29 收 −12.64%</td></tr>
+          <tr><td><b>亞馬遜</b></td><td class="num">AWS +39%</td><td class="num">約 2,200 億</td><td class="num">近 12 個月 −424 億</td><td>10/29 收 −4.25%，盤後約 −7%</td></tr>
+          <tr><td><b>Meta</b></td><td>無對外雲端業務</td><td class="num">1,350～1,450 億</td><td class="num">Q3 −21.2 億</td><td>財報後約 −7%，10/29 收 +1.96%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">微軟與 Alphabet 的財報在 10/28 同時公布，市場給出完全相反的反應。差別不在有沒有 AI，而在於「成長是否足以支撐花費」（推論）。</p>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>美國是出錢的一方，韓國與台灣是收錢的一方</h2>
+      <p>AI 投資從美國雲端業者流向亞洲硬體供應鏈。擔憂一出現，美股跌的是花錢的公司，亞股跌的則是收錢的公司。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">Alphabet 市值損失</div><div class="v">約 5,000 億</div><div class="d">美元，僅次輝達 2025/1 的 5,930 億</div></div>
+      <div class="tile"><div class="l">那斯達克 10/29</div><div class="v">−1.38%</div><div class="d">收 26,184.73 點</div></div>
+      <div class="tile"><div class="l">SK 海力士利益率</div><div class="v">80%</div><div class="d">Q3 營益 83.33 兆韓元</div></div>
+      <div class="tile"><div class="l">KOSPI 10/30</div><div class="v">−3.53%</div><div class="d">收 5,728.04 點</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li>雲端業者的競賽仍在加速：亞馬遜維持今年約 2,200 億美元資本支出，並預期 AWS 在 2027、2028 年成長都超過 40%。</li>
+        <li>財報壞消息不只來自雲端：英特爾第四季營收預估 150 億～160 億美元，低於市場預期，盤後跌約 23%；財務長表示 PC 需求疲弱可能延續到明年上半年。</li>
+        <li>10/29 開拓重工也跌 9.30%，是 2020 年 3 月以來最大單日跌幅，顯示賣壓不全來自 AI。</li>
+      </ul></div>
+      <div class="card"><h3>韓國</h3><ul class="plain">
+        <li>SK 海力士第三季營收 104.62 兆韓元，高於市場預期的 98.23 兆韓元；與 14 家大客戶簽長約，涵蓋 2027、2028 年逾五成計畫產能。</li>
+        <li>三星電子半導體部門連 4 季創紀錄，股價 10/29 仍跌 4.75%。</li>
+        <li>10/30 KOSPI 盤中一度跌超過 5%，收盤跌 3.53%。創紀錄的獲利仍擋不住 AI 疑慮。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>資金沒有離開股市，而是離開最會花錢的股票</h2>
+      <p>美股為 10/29 收盤，亞股為 10/30 收盤。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/29～10/30 相關指數與股價漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；美股 10/29、亞股 10/30</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>10/30 開低走低，盤中最低 44,726.26 點、最大跌 1,642 點，成交值約 8,792.57 億元。下跌 1,647 家、上漲 222 家；電子權值股領跌，資金轉向電信與航運，中華電創新高，長榮、萬海各漲逾 4%。</li>
+          <li><b>美股：</b>10/29 道瓊跌 0.25%、S&amp;P 500 跌 0.30%，跌幅明顯小於那斯達克的 1.38%。Meta、蘋果逆勢上漲，代表市場在挑股票，而不是全面撤退（推論）。</li>
+          <li><b>債市：</b>資金轉進避險資產，10 年期美債殖利率約降 0.1 個百分點至 4.93%。</li>
+          <li><b>韓日：</b>韓股跌 3.53%、日股跌 2.12%，電子與記憶體股拖累；日本央行同日維持利率 1.25%。</li>
+          <li><b>新雲業者：</b>CoreWeave 跌 5.00%、Nebius 跌 5.70%，與微軟資本支出低於預期、第三方算力交付延遲的說法有關。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,370 元</td><td class="num down">−1.86%</td><td class="period">較 10/5 的 2,575 元 −8.0%（計算）</td><td>外資賣壓與 ADR 下跌，成交 701.81 億元</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,335 元</td><td class="num down">−9.80%</td><td class="period">較 5 月高點 2,585 元約 −48%</td><td>毛利率 34.08% 跌破 35%，EPS 低於預期約 14%（凱基），存貨跌價</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,915 元</td><td class="num down">−3.21%</td><td class="period">較 10/28 的 4,235 元 −7.6%（計算）</td><td>電子權值股同步修正</td></tr>
+          <tr><td class="num">2327</td><td><b>國巨</b></td><td>台股</td><td class="num">502 元</td><td class="num down">−7.55%</td><td class="period">盤中曾跌破 500 元</td><td>Q3 毛利率 41% 優於預期，法說後仍遭賣壓</td></tr>
+          <tr><td class="num">2383</td><td><b>台光電</b></td><td>台股</td><td class="num">4,675 元</td><td class="num down">−6.69%</td><td class="period">未查到</td><td>AI 伺服器材料股同步賣壓</td></tr>
+          <tr><td class="num">2408</td><td><b>南亞科</b></td><td>台股</td><td class="num">454.5 元</td><td class="num down">−4.72%</td><td class="period">未查到</td><td>美韓記憶體股下跌連動</td></tr>
+          <tr><td class="num">2412</td><td><b>中華電</b></td><td>台股</td><td class="num">約 160 元</td><td class="num up">+1.27%</td><td class="period">創新高</td><td>防禦型資金轉入</td></tr>
+          <tr class="hl"><td class="num">GOOGL</td><td><b>Alphabet</b></td><td>美股</td><td class="num">283.82 美元</td><td class="num down">−12.64%</td><td class="period">今年漲幅全數回吐</td><td>搜尋放緩、FCF 惡化、2027 資本支出將顯著增加</td></tr>
+          <tr><td class="num">AMZN</td><td><b>亞馬遜</b></td><td>美股</td><td class="num">243.79 美元</td><td class="num down">−4.25%</td><td class="period">盤後約 −7%</td><td>收盤前受 Alphabet 拖累；盤後財報顯示單季資本支出逾 770 億美元、FCF −424 億美元</td></tr>
+          <tr><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">530.14 美元</td><td class="num down">−0.16%</td><td class="period">10/28 盤後約 +4%</td><td>Azure +48%，但資本支出低於預期引發算力交付疑問</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">213.66 美元</td><td class="num down">−0.80%</td><td class="period">盤後跌逾 2%</td><td>受 Alphabet 賣壓拖累；11/17 公布財報</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">431.81 美元</td><td class="num down">−1.75%</td><td class="period">盤後跌逾 3%</td><td>AI 晶片股賣壓</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">934.27 美元</td><td class="num down">−4.98%</td><td class="period">盤後跌逾 4%</td><td>記憶體族群賣壓</td></tr>
+          <tr><td class="num">INTC</td><td><b>英特爾</b></td><td>美股</td><td class="num">92.07 美元</td><td class="num down">−3.62%</td><td class="period">盤後約 −23%</td><td>第四季展望低於預期、PC 需求疲弱、以色列廠停工</td></tr>
+          <tr><td class="num">MRVL</td><td><b>Marvell</b></td><td>美股</td><td class="num">未查到</td><td class="num down">−13.24%</td><td class="period">費半當日跌幅最大</td><td>傳洽購 Lumentum</td></tr>
+          <tr><td class="num">META</td><td><b>Meta</b></td><td>美股</td><td class="num">624.52 美元</td><td class="num up">+1.96%</td><td class="period">10/21 財報後約 −7%</td><td>逆勢上漲，報導未說明具體原因</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 10/29 收盤，台股為 10/30 收盤；來源：Newtalk、中時新聞網、時報資訊、Yahoo 股市、風傳媒。標「計算」者由本報告依收盤價換算。美股 10/30 尚未收盤。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>AI 已從科技題材變成全球金融議題</h2>
+      <p>影響透過四條路線擴散：債券市場、資金互持、半導體漲價與電力建設。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>全球信用市場</h3><ul class="plain small">
+        <li>IMF：5 家公司占今年新發投資級公司債近 10%，2024 年僅 0.5%。</li>
+        <li>IMF 經濟學家 Jason Wu 警告，AI 投資轉弱或獲利下滑可能引發市場修正。</li>
+        <li>英國央行指出，AI 相關債務增加讓資本市場曝險提高。</li>
+      </ul></article>
+      <article class="card"><h3>資金互持</h3><ul class="plain small">
+        <li>IMF 整理 14 筆交易：約 3,000 億美元股權投資、6,500 億美元債務融資，綁定 1.4 兆美元未來採購。</li>
+        <li>風險有三層：股權貶值、貸款難還、預期營收落空。</li>
+        <li>Alphabet 第三季也因 SpaceX 持股出現帳面損失。</li>
+      </ul></article>
+      <article class="card"><h3>記憶體與晶片價格</h3><ul class="plain small">
+        <li>SK 海力士 DRAM 平均售價季增接近三成。</li>
+        <li>財務長預期記憶體到 2030 年仍供不應求，並預期 PC 與手機出貨下滑。</li>
+        <li>AI 搶走產能的成本，最後會由消費電子買單（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>電力與工期</h3><ul class="plain small">
+        <li>台達電法說提到，缺電與缺工可能拉長 AI 資料中心工期。</li>
+        <li>微軟也說第三方算力交付出現延遲。</li>
+        <li>資金到位不代表算力能準時上線，收入認列可能跟著延後（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>上市與新資金</h3><ul class="plain small">
+        <li>Anthropic 10/26 公開招股書，預計 11 月在那斯達克掛牌。</li>
+        <li>SpaceX 10/26 宣布 400 億美元貸款購買 AI 晶片。</li>
+        <li>公開市場的胃口，將成為 AI 融資的下一個溫度計（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>競爭與價格</h3><ul class="plain small">
+        <li>Fortune 指出，中國開放權重模型加劇競爭。</li>
+        <li>Gartner 預估超過 80% 的新雲業者 2030 年前將無法獨立經營。</li>
+        <li>Gartner 分析師 Will Sommer 的說法是，大家都想做全端，但不可能都成功。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依公司指引、機構預測與市場訊號整理，屬情境推論，不是預測保證，也沒有設定機率。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>支出續增，股價分化</h3><ul class="plain small">
+        <li>四強維持今年支出計畫，2027 年持續增加。</li>
+        <li>市場獎勵現金流與雲端成長都好的公司。</li>
+        <li>台股隨外資與財報來回震盪，資金在電子與防禦股間輪動。</li>
+      </ul><p class="trig">觸發條件：輝達財報符合預期；雲端業者沒有下修資本支出；AI 債券發行順利。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>融資收緊，開始砍單</h3><ul class="plain small">
+        <li>新雲業者先遇到資金壓力，算力訂單遞延。</li>
+        <li>雲端業者為保現金流，下修 2027 年支出。</li>
+        <li>台灣出口動能與 AI 供應鏈同時受壓。</li>
+      </ul><p class="trig">觸發條件：AI 相關信用利差擴大；Fed 升息幅度超出預期；任一雲端大廠明確下修資本支出。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>收入追上支出</h3><ul class="plain small">
+        <li>AWS、Azure、Google Cloud 維持高成長，積壓訂單轉成營收。</li>
+        <li>自由現金流在 2027 年出現改善跡象。</li>
+        <li>市場把這次下跌視為估值修正，而非週期反轉。</li>
+      </ul><p class="trig">觸發條件：輝達與台積電展望優於預期；Fed 暫停升息；企業 AI 付費量持續成長。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/2 蘋果財報</b>：記憶體漲價對毛利與手機售價的影響，是硬體成本壓力的觀察點。</li>
+      <li><b>11/17 輝達財報</b>：FactSet 估七大科技股獲利成長扣掉輝達與 Meta 只剩 7.5%，輝達表現會左右整體觀感；市場也會看資料中心訂單能見度。</li>
+      <li><b>12/8–9 FOMC</b>：點陣圖決定明年資金成本，直接影響長回收期的 AI 投資。</li>
+      <li><b>2027 年初 Alphabet 法說</b>：公司已說會在第四季法說說明 2027 年資本支出細節，這個數字將是全市場的基準。</li>
+      <li><b>2027 年 1 月台積電法說</b>：2027 年資本支出與毛利率，是 AI 硬體需求最直接的訊號。</li>
+      <li><b>自由現金流與債券發行</b>：比單季營收更能反映融資壓力。微軟據傳考慮發行至少 250 億美元公司債，若成真將是 2017 年以來首次舉債。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>雲端平台</h3><span class="tag">好壞參半</span></div><p>雲端需求強勁，但支出吃掉現金流；未來比的是誰能把訂單更快轉成現金（推論）。</p><div class="data">Azure +48%；AWS +39%；Cloud +103%</div></article>
+      <article class="card"><div class="top"><h3>AI 晶片與晶圓代工</h3><span class="tag good">受惠</span></div><p>雲端業者的支出直接轉成晶片訂單。短線估值承壓，但支出計畫目前沒有下修。</p><div class="data">台積電 2026 全年成長約 44%（美元計）</div></article>
+      <article class="card"><div class="top"><h3>記憶體</h3><span class="tag good">受惠</span></div><p>長約讓需求能見度更高，但股價已反映高獲利，對疑慮特別敏感。</p><div class="data">SK 海力士利益率 80%；美光 10/29 −4.98%</div></article>
+      <article class="card"><div class="top"><h3>電源與散熱</h3><span class="tag">短空長多</span></div><p>AI 電力需求仍在，但短料、存貨跌價與工期延遲會直接反映到毛利率。</p><div class="data">台達電 Q3 毛利率 34.08%；10/30 跌停</div></article>
+      <article class="card"><div class="top"><h3>被動元件、PCB、銅箔基板</h3><span class="tag">短空長多</span></div><p>AI 伺服器用料增加推升毛利，但族群漲多後，好財報也擋不住獲利了結。</p><div class="data">國巨毛利率 41%；10/30 收 −7.55%</div></article>
+      <article class="card"><div class="top"><h3>新雲業者</h3><span class="tag bad">利空</span></div><p>沒有本業現金流支撐，對融資條件和算力交付時程最敏感。</p><div class="data">CoreWeave 10/29 −5.00%；Gartner 估 80% 難獨立經營</div></article>
+      <article class="card"><div class="top"><h3>消費電子（手機、PC）</h3><span class="tag bad">利空</span></div><p>記憶體漲價提高成本，廠商只能漲價或吸收，需求因此被壓抑。</p><div class="data">英特爾盤後約 −23%；SK 海力士預期 PC 與手機出貨下滑</div></article>
+      <article class="card"><div class="top"><h3>軟體與線上廣告</h3><span class="tag">好壞參半</span></div><p>AI 能提高效率，但也可能搶走既有業務；市場對不確定性給出較低評價（推論）。</p><div class="data">Search +12%；ServiceNow 10/29 約 −27%</div></article>
+      <article class="card"><div class="top"><h3>金融與信用市場</h3><span class="tag">好壞參半</span></div><p>承銷與放款有收益，但 AI 債務集中度提高，金融體系也跟著曝險。</p><div class="data">AI 相關債務今年約 4,500 億美元</div></article>
+      <article class="card"><div class="top"><h3>電信與防禦型股票</h3><span class="tag good">受惠</span></div><p>科技股修正時，穩定現金流成為避風港；這是資金輪動，不代表基本面突變（推論）。</p><div class="data">中華電 10/30 +1.27%，創新高</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>同一天 GDP 創 48 年同期新高、股市大跌，因為兩者繫於同一條 AI 鏈</h2>
+      <p>台灣最需要看懂三件事：成長的來源、股市的集中度，以及美國雲端業者的支出何時放慢。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>經濟：</b>第三季 GDP 概估 14.36%，比 8 月預測高 2.94 個百分點；前三季累計 14.22%，連 4 季雙位數成長。</li>
+        <li><b>出口：</b>第三季出口 2,449 億美元、年增 44.63%；資本形成實質成長 26.36%。</li>
+        <li><b>訂單：</b>9 月外銷訂單 1,142.1 億美元、年增 62.4%，資通訊接單 438.8 億美元、年增 87.3%。</li>
+        <li><b>股市：</b>10/30 外資賣超 1,124.67 億元，投信買超 239.93 億元、連 14 買；外資台指期淨空單 92,241 口。</li>
+        <li><b>官方：</b>主計總處表示，扣除電子資通訊後，其他業別出口仍有雙位數成長。第三季 CPI 上漲 2.43%。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>成長的傳導鏈很短：</b>美國雲端業者支出 → 台積電與伺服器訂單 → 台灣出口與投資 → GDP。任何一端放慢，都會很快反映到台灣。</li>
+        <li><b>股市財富效果是雙面刃：</b>主計總處提到台股財富效果有助消費；股市持續修正時，這股助力會減弱。</li>
+        <li><b>集中度是台股特色也是弱點：</b>台積電占大盤市值逾四成，外資調節時指數很難不受影響。</li>
+        <li><b>基期效應將出現：</b>連 4 季雙位數成長後，明年數字可能變難看，即使產業沒有轉壞。</li>
+      </ul></div>
+    </div>
+    <p class="note warn">截至查證時，未查到 10/30 國安基金進場決議或金管會針對本次下跌的新措施；新台幣 10/30 收盤價也未查到可靠數字。主計總處的 14.36% 為概估值，修正值與最新預測預定 11/27 公布。</p>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>半導體與伺服器產業</b></td><td><span class="tag good">訂單仍強</span></td><td>客戶尚未下修支出，但股價已先反映疑慮；要看 2027 年資本支出數字。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">波動加大</span></td><td>10/28 漲 939 點、10/29 跌 667 點、10/30 跌 1,156 點，單週振幅擴大。本報告不提供買賣建議。</td></tr>
+          <tr><td><b>槓桿 ETF 與融資族</b></td><td><span class="tag bad">風險較高</span></td><td>10/30 成交量中，00685L 約 66.5 萬張、00631L 約 39.9 萬張；槓桿商品在震盪時的損耗較大（推論）。</td></tr>
+          <tr><td><b>電源與零組件廠員工</b></td><td><span class="tag">好壞參半</span></td><td>營收創高，但成本與短料壓縮毛利；獲利未必同步轉成加薪或分紅（推論）。</td></tr>
+          <tr><td><b>傳統產業</b></td><td><span class="tag">緩步回溫</span></td><td>主計總處稱非電子出口有雙位數成長，但成長幅度遠低於 AI 相關產業。</td></tr>
+          <tr><td><b>一般消費者</b></td><td><span class="tag bad">成本增加</span></td><td>記憶體漲價可能反映到手機、筆電售價；Q3 CPI 2.43% 也高於 2% 通膨參考值（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>美國媒體聚焦現金流與市值，台灣媒體聚焦台股與供應鏈，官方則聚焦 GDP；同一天的新聞因此呈現完全不同的溫度。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Fortune</td><td>AI 熱潮成績單</td><td>Big Tech 財報是 AI 熱潮的關鍵考試</td><td>Alphabet 史上最差交易日、亞馬遜現金流</td></tr>
+          <tr><td>Yahoo Finance</td><td>市場即時反應</td><td>Alphabet 與微軟財報分歧</td><td>Marvell、開拓重工等個股原因</td></tr>
+          <tr><td>經濟日報／中央社</td><td>資本支出與本業現金</td><td>科技巨頭燒錢超出本業獲利</td><td>四強 7,200 億美元、S&amp;P 分析師看法</td></tr>
+          <tr><td>時報資訊</td><td>美股個股</td><td>Alphabet、亞馬遜、英特爾先後爆雷</td><td>個股收盤與盤後波動</td></tr>
+          <tr><td>Newtalk</td><td>台股籌碼</td><td>台股失守半年線、外資賣超</td><td>法人、期貨與市場寬度</td></tr>
+          <tr><td>中央社（GDP）</td><td>官方經濟數據</td><td>第 3 季成長 14.36% 創 48 年同期最高</td><td>出口、投資與傳產回溫</td></tr>
+          <tr><td>TrendForce</td><td>記憶體供需</td><td>SK 海力士利益率 80%，產能賣到 2029</td><td>長約、HBM4 與缺貨時程</td></tr>
+          <tr><td>finews（引述 IMF）</td><td>金融穩定</td><td>AI 熱潮與債務危機的危險組合</td><td>公司債集中度、循環交易</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>Alphabet 10/29 跌幅超過 12%，市值蒸發約 5,000 億美元。</li>
+        <li>雲端需求強，投資人的疑問集中在現金流與回收期。</li>
+        <li>台股 10/30 收 45,211.83 點，跌破半年線。</li>
+        <li>主要雲端業者都沒有下修今年資本支出。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「爆雷」要看對象：</b>Alphabet 營收 1,276 億美元僅略低於預期 1,279 億美元，失望主要來自搜尋、現金流與支出。</li>
+        <li><b>時區：</b>Alphabet 與微軟 10/28 盤後公布，美股反應在 10/29，台股完整反應則在 10/29～10/30。</li>
+        <li><b>盤後不等於收盤：</b>亞馬遜與英特爾的盤後跌幅仍在變動，美股 10/30 收盤可能不同。</li>
+        <li><b>「賣到 2029」要讀原文：</b>TrendForce 引述韓媒，指 DRAM 與 HBM 產能實質賣完，不等於每一筆價格都已鎖定。</li>
+        <li><b>部分數據來自次級來源：</b>主文採用實際讀到的頁面；下表標「其他報導」者僅作對照，未列入來源。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>Alphabet 10/29 收盤</td><td>−12.64%，283.82 美元（時報資訊）</td><td>−12.29%，282.32 美元（Yahoo 股市）</td><td>可能分屬不同股別或資料時間；本報告採用多家引用的 −12.64%。</td></tr>
+          <tr><td>亞馬遜盤後跌幅</td><td>約 −5%（經濟日報）</td><td>−7.30%（時報資訊），一度約 −10%</td><td>盤後交易時點不同。</td></tr>
+          <tr><td>微軟當季資本支出</td><td>452 億美元（Fortune）</td><td>394 億美元（247 Wall St.）</td><td>可能與是否計入融資租賃有關，兩家報導未說明。</td></tr>
+          <tr><td>微軟 2026 日曆年資本支出</td><td>約 1,700 億美元（Fortune）</td><td>約 1,750 億美元（其他報導）</td><td>統計口徑或租賃重分類差異。</td></tr>
+          <tr><td>四強 2026 年資本支出</td><td>7,200 億美元以上（經濟日報）</td><td>7,350 億～7,600 億美元（其他統計）</td><td>是否含融資租賃與統計時點不同。</td></tr>
+          <tr><td>Alphabet 2027 年資本支出</td><td>「顯著增加」（公司）</td><td>約 3,000 億美元（Fortune）</td><td>3,000 億美元非公司正式指引。</td></tr>
+          <tr><td>Meta 增資規模</td><td>最高 950 億美元（經濟日報）</td><td>375 億美元（其他報導）</td><td>可能是計畫上限與單次發行規模的差別，尚待確認。</td></tr>
+          <tr><td>SK 海力士 10/30 跌幅</td><td>約 −7%（ChainCatcher）</td><td>−1.60%（FXStreet）</td><td>後者為盤中數字。</td></tr>
+          <tr><td>Anthropic 上市時間</td><td>11 月 9 日掛牌（Börsen-Zeitung）</td><td>最快 11/19～20（Fox Business，見本站 Anthropic 報告）</td><td>尚無最終定價與掛牌日公告。</td></tr>
+          <tr><td>國巨前三季 EPS</td><td>14.32 元（鉅亨）</td><td>21.5 元（TVBS）</td><td>本報告採用鉅亨數字；TVBS 數字來源未說明。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 10 月 30 日。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方與研究機構</div>
+    <ol class="sources">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001018724/000101872426000038/amzn-20260930xex991.htm" target="_blank" rel="noopener">Amazon — 2026 Q3 財報 8-K 附件（10/29）</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873" target="_blank" rel="noopener">NVIDIA — 第三財季法說會日期公告</a></li>
+      <li><a href="https://insight.factset.com/are-magnificent-7-companies-still-top-contributors-to-sp-500-earnings-growth-for-q3" target="_blank" rel="noopener">FactSet — 七大科技股 Q3 獲利貢獻（10/19）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="4">
+      <li><a href="https://fortune.com/2026/10/30/why-big-tech-earnings-are-a-crucial-report-card-for-the-ai-boom-and-its-future/" target="_blank" rel="noopener">Fortune — Big Tech 財報是 AI 熱潮成績單（10/30）</a></li>
+      <li><a href="https://fortune.com/2026/10/28/alphabet-google-stock-drops-cloud-revenue-doubles-free-cash-flow-negative/" target="_blank" rel="noopener">Fortune — Google Cloud 翻倍但現金流轉負（10/28）</a></li>
+      <li><a href="https://fortune.com/2026/10/17/ai-boom-vs-bust-bubble-warning-hyperscaler-spending-debt-coreweave-nvidia/" target="_blank" rel="noopener">Fortune — 華爾街辯論 AI 泡沫警訊（10/17）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/alphabet-q3-earnings-call-highlights-050416594.html" target="_blank" rel="noopener">Yahoo Finance／MarketBeat — Alphabet Q3 法說重點（10/29）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nasdaq-futures-104943461.html" target="_blank" rel="noopener">Yahoo Finance — 10/29 市場新聞</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-29-134623155.html" target="_blank" rel="noopener">Yahoo Finance — Alphabet 與微軟財報分歧（10/29）</a></li>
+      <li><a href="https://thenextweb.com/news/gartner-ai-infrastructure-spending-3-5-trillion-write-down-neoclouds" target="_blank" rel="noopener">The Next Web — Gartner AI 基建減損風險（10/17）</a></li>
+      <li><a href="https://finews.com/news/english-news/73956-international-monetary-fund-imf-government-debt-rises-tech-companies-are-increasingly-financing-their-ai-investments-with-loans-bond-markets-under-pressure-financial-interdependencies-within-the-ai-industry-1791896095786" target="_blank" rel="noopener">finews — IMF 談 AI 與債務風險（10/13）</a></li>
+      <li><a href="https://www.insurancejournal.com/news/international/2026/09/30/887361.htm" target="_blank" rel="noopener">Insurance Journal — 英國央行警告 AI 債務（9/30）</a></li>
+      <li><a href="https://www.trendforce.com/news/2026/10/28/news-sk-hynix-3q26-opm-hits-record-80-says-dram-hbm-effectively-sold-out-to-2029-14-lta-customers-signed/" target="_blank" rel="noopener">TrendForce — SK 海力士 3Q26（10/28）</a></li>
+      <li><a href="https://www.upi.com/Top_News/World-News/2026/10/29/samsung-SKhynix-earnings-cihipmakers/3821793281516" target="_blank" rel="noopener">UPI — 三星與 SK 海力士財報（10/29）</a></li>
+      <li><a href="https://www.networkworld.com/article/4213288/ai-is-turning-the-semiconductor-market-into-a-1-6-trillion-industry.html" target="_blank" rel="noopener">Network World — Gartner 半導體預測（8/24）</a></li>
+      <li><a href="https://247wallst.com/cards/microsoft-q1-2027-earnings-msft-01m6223bcjxyqzvby9cw8yzzqb" target="_blank" rel="noopener">24/7 Wall St. — 微軟 FY27 Q1 財報（10/28）</a></li>
+      <li><a href="https://letsdatascience.com/news/meta-narrows-2026-capital-spending-range-to-135-billion-145-46f12e07" target="_blank" rel="noopener">Let's Data Science — Meta 收窄資本支出區間（10/21）</a></li>
+      <li><a href="https://www.fxstreet.com/news/asian-stocks-trade-mixed-kospi-leads-losses-as-worries-about-ai-grow-202610300439" target="_blank" rel="noopener">FXStreet — 亞股與日本央行（10/30）</a></li>
+      <li><a href="https://www.chaincatcher.com/en/article/2300325" target="_blank" rel="noopener">ChainCatcher — 日韓股市收盤（10/30）</a></li>
+      <li><a href="https://www.boersen-zeitung.de/unternehmen-branchen/anthropic-will-im-november-an-die-boerse-gehen" target="_blank" rel="noopener">Börsen-Zeitung — Anthropic 上市時程（10/26）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="21">
+      <li><a href="https://www.cna.com.tw/news/afe/202610300259.aspx" target="_blank" rel="noopener">中央社 — 第 3 季經濟成長率 14.36%（10/30）</a></li>
+      <li><a href="https://money.udn.com/money/story/123398/9846584" target="_blank" rel="noopener">經濟日報 — 科技巨頭燒錢超出本業獲利（10/30）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261030002547-260410" target="_blank" rel="noopener">中時新聞網 — 台股跌 1,156 點殺破半年線（10/30）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261030001374-260410" target="_blank" rel="noopener">時報資訊 — 美股掃瞄：AI 股賣壓（10/30）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-10-30/1068364" target="_blank" rel="noopener">Newtalk — 台股失守半年線、外資賣超（10/30）</a></li>
+      <li><a href="https://udn.com/news/story/7240/9846179" target="_blank" rel="noopener">聯合新聞網 — 投顧：AI 變現引憂（10/30）</a></li>
+      <li><a href="https://www.storm.mg/article/11177013" target="_blank" rel="noopener">風傳媒 — 台達電法說與外資看法（10/30）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6640878" target="_blank" rel="noopener">鉅亨網 — 國巨法說（10/29）</a></li>
+      <li><a href="https://news.tvbs.com.tw/money/4043341" target="_blank" rel="noopener">TVBS — 國巨法說後股價（10/30）</a></li>
+      <li><a href="https://finance.technews.tw/2026/10/08/2609-export/" target="_blank" rel="noopener">TechNews — 9 月出口與第四季展望（10/8）</a></li>
+      <li><a href="https://uanalyze.com.tw/articles/8644657444" target="_blank" rel="noopener">優分析 — 9 月外銷訂單（10/20）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/paper/1764591" target="_blank" rel="noopener">自由財經 — 財長談國安基金（7/30）</a></li>
+      <li><a href="https://udn.com/news/story/7238/9847348" target="_blank" rel="noopener">聯合新聞網 — 第 3 季 GDP 上修（10/30）</a></li>
+      <li><a href="https://uanalyze.com.tw/articles/8713158044" target="_blank" rel="noopener">優分析 — 第 3 季 GDP 與 11/27 修正值時程（10/30）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="35">
+      <li><a href="https://tw.stock.yahoo.com/news/%E8%8B%B1%E7%89%B9%E7%88%BE%E7%9B%A4%E5%BE%8C%E7%8B%82%E7%80%8920-%E7%BE%8E%E8%82%A1%E6%94%B6%E9%BB%91-%E5%8F%B0%E7%A9%8D%E9%9B%BBadr%E8%B7%8C1-75-%E5%8F%B0%E6%8C%87%E6%9C%9F%E5%A4%9C%E7%9B%A4%E5%A4%B1%E5%AE%884%E8%90%AC6-231500640.html" target="_blank" rel="noopener">Yahoo 股市 — 美股收盤與台指期夜盤（10/30）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/dow-p-500-nasdaq-futures-040305422.html" target="_blank" rel="noopener">Yahoo Finance — 亞馬遜、英特爾盤後與期貨（10/29）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 10 月 30 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'加權指數', s:'45,211.83（10/30）', v:-2.49},
+    {l:'韓國 KOSPI', s:'5,728.04（10/30）', v:-3.53},
+    {l:'日經 225', s:'63,290.11（10/30）', v:-2.12},
+    {l:'費城半導體', s:'11,518.20（10/29）', v:-1.42},
+    {l:'那斯達克', s:'26,184.73（10/29）', v:-1.38},
+    {l:'S&P 500', s:'7,720.39（10/29）', v:-0.30},
+    {l:'Alphabet', s:'283.82 美元', v:-12.64},
+    {l:'亞馬遜', s:'243.79 美元', v:-4.25},
+    {l:'輝達', s:'213.66 美元', v:-0.80},
+    {l:'微軟', s:'530.14 美元', v:-0.16},
+    {l:'Meta', s:'624.52 美元', v:1.96},
+    {l:'台積電', s:'2,370 元', v:-1.86}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
