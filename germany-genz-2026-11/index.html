@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>德國 Z 世代示威</title>
+<meta name="description" content="德國 Z 世代 2026 年 10 月 31 日示威解讀（截至 11 月 1 日 20:10 台灣時間）：六大訴求與背後的擔憂、國防預算、新兵役、房租與心理健康，以及這一代的未來與對台灣的啟示。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#demands">訴求與擔憂</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#future">他們的未來</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">社會解讀 · 歐洲青年抗議潮 · 資料截至 2026 年 11 月 1 日 20:10（台灣時間）</p>
+      <h1>「我們受夠了」：歐盟失業率最低的德國，年輕人為什麼還是上街？</h1>
+      <p class="lede">10 月 31 日，新成立的「Gen Z regelt」（Z 世代來解決）號召 30 多座城市示威，主辦方稱約 12 萬人參加。白天大致和平，入夜後法蘭克福、漢堡、科隆出現暴力與劫掠。德國青年失業率只有 7.4%，是歐盟最低，所以這不是「找不到工作」的抗議。他們的不滿是：國防預算一年增加 33%，學校、心理治療卻在省錢；付出努力，未來卻未必更好。下一站是 11 月 20 日的歐洲青年罷工日。</p>
+    </div>
+    <div class="stmt" aria-label="10 月 31 日德國示威規模">
+      <div class="k">全國參與人數（主辦方說法）</div>
+      <div class="range">≈12<small>萬人</small></div>
+      <div class="was">原估 18.2 萬 · 警方未見全國統計</div>
+      <div class="stmt-row">
+        <div><div class="v">30+</div><div class="l">城市（多報導稱 34 城）</div></div>
+        <div><div class="v">100+</div><div class="l">法蘭克福受傷警察</div></div>
+        <div><div class="v">21%</div><div class="l">14～29 歲計畫離開德國</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>他們不是沒工作，是不相信努力還有用：9 個重點</h2>
+      <p>懶人包：青年失業率全歐盟最低，但房租、心理健康、兵役、預算分配讓這一代覺得未來被別人決定了。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>10/31 德國出現 Z 世代全國示威。</b>主辦方稱約 12 萬人參加，低於原估的 18.2 萬；柏林主場警方估 5,000 人、主辦方稱 1.1 萬，法蘭克福警方估約 8,000 人。</div></li>
+      <li><div><b>六大訴求寫在給總理的公開信。</b>10/29 公開信開頭是「我們受夠了！」，要求：資助學校與心理治療、讓生活負擔得起、公平分攤負擔、不要徵兵、保護基本權利、落實氣候保護。</div></li>
+      <li><div><b>核心不滿是預算分配。</b>2027 年聯邦預算總額 5,554 億歐元，國防近 1,100 億歐元、增加 33%，同時各部會普遍刪減 1%。示威者說「軍事化有錢，教育和社福卻被砍」。</div></li>
+      <li><div><b>矛盾點：德國青年失業率歐盟最低。</b>只有 7.4%，歐盟平均約 15.1%。研究者認為問題不是工作意願，而是愈來愈懷疑「努力還值不值得」。</div></li>
+      <li><div><b>數字反映的擔憂。</b>2026 年調查：29% 需要心理協助、23% 有債務，都是歷年新高；21% 有具體計畫離開德國。兒少等心理治療平均 28 週。</div></li>
+      <li><div><b>房租壓垮學生。</b>合租房間平均 510 歐元，學生助學金（BAföG）住房補貼只有 380 歐元，全國 90 個大學城有 76 個超過補貼。</div></li>
+      <li><div><b>入夜後變調，但主辦方切割。</b>法蘭克福逾 100 名警察受傷、54 人被捕；漢堡約 120 人遭暫時拘留、路障起火。主辦方稱對集會結束後的事沒有影響力。</div></li>
+      <li><div><b>運動本身很脆弱。</b>發起者約 30 名年輕人，親自籌辦的只有 4 城；發言人上任一天就辭職，全國學生會議不支持 10/31 行動，但支持訴求。</div></li>
+      <li><div><b>未來兩條路：留下抗議，或離開。</b>11/20 有歐洲青年罷工日；政治上，左翼黨在青年中最受歡迎（25%），極右的 AfD 則在年輕男性中上升，世代不滿同時往兩端流動。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼是現在？四件事在 2026 年疊在一起</h2>
+      <p>第 1、2 點是示威者自己的說法與官方數字；第 3 點來自主辦方與研究者；第 4 點是媒體與本報告的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>國防優先的預算</h3><p>財政部長克林拜爾（Lars Klingbeil）說「我們無法用平衡的預算抵禦普丁」。2027 年國防預算增加 33%、新增舉債 1,187 億歐元，部分部會與氣候基金被刪減或挪用。對年輕人來說，這筆帳未來要由他們還（推論）。</p></div><div class="ev"><span class="tag">國防 +33%</span><span class="tag">舉債 1,187 億 €</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>新兵役制度找上 18 歲</h3><p>2026 年 1 月起，2008 年以後出生的男性必須填寫兵役問卷，每年約 65 萬名 18 歲青年會收到信，男性不回覆最高可罰 1,000 歐元。現在仍是志願制，但德軍目標從 18.4 萬人增加到 2035 年的 27 萬人，青年擔心下一步就是徵兵。</p></div><div class="ev"><span class="tag">最高罰 1,000 €</span><span class="tag">18.4 萬 → 27 萬人</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>生活與未來的壓力累積</h3><p>公開信列出校舍惡化、師資不足、氣候危機、歐洲戰爭、物價、未來退休金縮水與兒少福利被砍。研究者科勒克（Nina Kolleck）3 月就警告「青年的抗議並不大聲，但檯面下正在醞釀」。</p></div><div class="ev"><span class="tag">29% 需心理協助</span><span class="tag">23% 有債務</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>歐洲鄰國點了火</h3><p>法國從 9 月開始的學運、義大利、西班牙、塞爾維亞的青年運動，讓德國年輕人看到先例。中時等報導指出這次行動受法國、義大利示威啟發；一名 20 歲學生說，聲援法國等地的抗議很重要。</p></div><div class="ev"><span class="tag">法國 10/31 32 萬人</span><span class="tag">11/20 歐洲青年罷工日</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>青年運動主線</span><span><i class="g"></i>衝突</span><span><i></i>政策與預定日程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2025-10</div><div class="what">Greenpeace 調查：16～25 歲 57% 反對恢復徵兵。</div></li>
+        <li><div class="date">2026-01</div><div class="what"><b>新兵役問卷上路</b>，18 歲男性必須回覆。</div></li>
+        <li class="key"><div class="date">2026-03-25</div><div class="what">「德國青年 2026」調查公布：<b>21% 計畫離開德國</b>。</div></li>
+        <li><div class="date">2026-07-06</div><div class="what">內閣通過 2027 年預算，國防增加 33%。</div></li>
+        <li><div class="date">2026-07-10</div><div class="what">國會通過健保法案，心理治療納入預算控管。</div></li>
+        <li class="key"><div class="date">2026-10</div><div class="what">新成立的 Gen Z regelt 開始動員，學校出現封鎖行動；報名人數超過 15 萬。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-29</div><div class="what">公開信致總理梅爾茨：<b>「我們受夠了！」</b></div></li>
+        <li class="key"><div class="date">2026-10-31</div><div class="what"><b>30 多城示威</b>，主辦方稱約 12 萬人。</div></li>
+        <li class="geo"><div class="date">2026-10-31 晚</div><div class="what">法蘭克福劫掠、漢堡路障起火、科隆水砲。</div></li>
+        <li><div class="date">2026-11-01</div><div class="what">內政部長多布林特要求重判；黑森邦內政部長說 100 多名警察受傷。</div></li>
+        <li class="key"><div class="date">2026-11-20</div><div class="what"><b>歐洲青年罷工日</b>，Gen Z regelt 表示參與。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 demands -->
+<section id="demands">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 他們要什麼、怕什麼</div>
+      <h2>六項訴求背後，是一句話：「沒有我們參與，就別決定我們的未來」</h2>
+      <p>訴求出自 10/29 公開信；右欄是每項訴求背後的現實數據，由本報告對照整理。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>公開信的訴求</th><th>他們擔心什麼</th><th>背景數據</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><b>資助學校、戒癮協助、心理治療，不要刪減</b></td><td>學校變差、老師不足、生病了等不到治療</td><td>兒少等心理治療平均 28 週；約五分之一未成年人有心理疾病；學校心理教練計畫遭取消（GEW，經搜尋摘要）</td></tr>
+          <tr><td class="num">2</td><td><b>讓生活負擔得起</b></td><td>房租、物價吃掉收入，打工才讀得起書</td><td>合租房間 510 €；慕尼黑 850 €；三分之二學生家戶被認為住房負擔過重（MLP 報告，經搜尋摘要）</td></tr>
+          <tr><td class="num">3</td><td><b>公平分攤負擔，不要拿年輕人省錢</b></td><td>現在的舉債與退休金，未來由他們買單</td><td>年金保費率 18.6%，預估 2030 年 20%、2040 年 21.4%；保障年金水準 48% 到 2031 年</td></tr>
+          <tr><td class="num">4</td><td><b>拒絕徵兵：「沒有我們，誰也不能決定我們的未來」</b></td><td>下一步就是強制入伍，而且只針對男性</td><td>18～29 歲 61% 反對（Forsa 2025，經搜尋摘要）；16～25 歲 54% 會拒服武裝兵役</td></tr>
+          <tr><td class="num">5</td><td><b>保護基本權利，不要擴大監控</b></td><td>抗議被污名化、公權力擴大</td><td>Greenpeace 調查：61% 認為徵兵嚴重侵害基本權利</td></tr>
+          <tr><td class="num">6</td><td><b>現在就落實氣候保護</b></td><td>氣候預算被挪去補洞</td><td>數十億氣候基金挪入一般預算；Shell 2024 調查 63% 擔心氣候變遷</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><div class="sec-num">公開信</div><h3>政府正把未來「推向牆壁」</h3><p class="small muted">公開信以大寫強調政府政策把未來「推向牆壁」（gegen die Wand），並警告：覺得自己被需要卻從未被支持的年輕人，會失去對民主的信任。核心要求是：「請您終於聽聽我們的話！」</p></div>
+      <div class="card"><div class="sec-num">18 歲籌辦人 Akram Selo</div><h3>「政治人物不做事，我們年輕人就得行動。」</h3><p class="small muted">Selo 說年輕人擔心自己的未來。這句話反映的不是反體制，而是對政治失去耐心（推論）。</p></div>
+      <div class="card"><div class="sec-num">柏林自由大學學生 Marie S.</div><h3>教育與社福砍了多年，軍事化卻有錢</h3><p class="small muted">她也指出徵兵的負擔會落在年輕人身上（Anadolu 轉述）。另一名同校學生說，應該少花軍費，多花在教育、貧窮與氣候。</p></div>
+      <div class="card"><div class="sec-num">23 歲政治系學生 Veronika Dinter</div><h3>要打工才付得起學費與生活費</h3><p class="small muted">她指出教育與社會服務經費遭刪，研究機構與教職也受影響（中時轉述）。</p></div>
+    </div>
+    <div class="note">背景補充：t-online 整理，年輕人提到的原因還包括校舍差、缺房、緊縮政策、怕 AI 取代入門工作，以及徵兵。發言人弗里德里希（Lina Friedrich）說：「我們是為和平與自由而戰，不是為戰爭與脅迫。」</div>
+  </div>
+</section>
+
+<!-- 04 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對發生地與相關國家的影響</div>
+      <h2>白天是校園議題，晚上變成治安議題：德國政壇的討論正在被帶走</h2>
+      <p>示威發生在德國；各城市的衝突規模差異很大，主辦方與多家媒體都指出夜間暴力和白天遊行的參與者未必相同。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">柏林主場</div><div class="v">5,000</div><div class="d">警方；主辦方稱 1.1 萬</div></div>
+      <div class="tile"><div class="l">法蘭克福遊行</div><div class="v">≈8,000</div><div class="d">警方，大致和平</div></div>
+      <div class="tile"><div class="l">法蘭克福受傷警察</div><div class="v">100+</div><div class="d">1 人重傷</div></div>
+      <div class="tile"><div class="l">法蘭克福被捕</div><div class="v">54</div><div class="d">13～29 歲；逾 1,000 人遭驅離</div></div>
+      <div class="tile"><div class="l">柏林受傷警察</div><div class="v">27</div><div class="d">輕傷；至多 56 人被拘留</div></div>
+      <div class="tile"><div class="l">漢堡暫時拘留</div><div class="v">≈120</div><div class="d">約 1,300 名警力</div></div>
+      <div class="tile"><div class="l">暴力份子（法蘭克福）</div><div class="v">1,000～1,500</div><div class="d">黑森邦內政部長估計</div></div>
+      <div class="tile"><div class="l">主辦團隊</div><div class="v">≈30 人</div><div class="d">親自籌辦 4 城</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>德國各城</h3><ul class="plain">
+        <li><b>法蘭克福：</b>Zeil 購物街櫥窗被砸，Snipes 鞋店被搶，槍店遭攻擊；警方出動水砲、裝甲車、特勤隊與直升機，凌晨 3 點才平靜。</li>
+        <li><b>漢堡：</b>中央車站周邊路障起火，一個翻倒的煙火組讓一名兒童受驚、一名女警受傷。</li>
+        <li><b>科隆：</b>約 200 人在大教堂廣場滋事，5 人遭拘留。</li>
+        <li><b>柏林：</b>晚間另一場「Z 世代受夠了」遊行（非主辦方發起）約 3,500 人，提前結束。</li>
+        <li><b>萊比錫、波昂：</b>也有零星衝突。</li>
+      </ul></div>
+      <div class="card"><h3>政治反應</h3><ul class="plain">
+        <li><b>政府：</b>內政部長多布林特要求「重判」；他說警方阻止了「巴黎那樣的暴力」。</li>
+        <li><b>聯盟黨：</b>秘書長霍珀曼說「無法理解這種破壞性的憤怒」；基民盟青年團柏林米特區支部提議動用軍隊，引發爭議。</li>
+        <li><b>社民黨：</b>國會黨團幹事維澤說暴力不該掩蓋年輕人的憂慮。</li>
+        <li><b>綠黨：</b>黨主席布蘭特納譴責暴力，也要求政府回應年輕人的訊息。</li>
+        <li><b>左翼與綠黨青年組織：</b>支持抗議，呼籲參加 11/20 行動。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到總理梅爾茨或財長克林拜爾對這次示威或公開信的回應；也未查到全國的官方參與人數與被捕總數。各城數字為 11/1 暫定。</div>
+  </div>
+</section>
+
+<!-- 05 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>市場還沒反應：10/31 是週六，德股看的是財報和利率</h2>
+      <p>最後交易日是 10/30（週五）。下圖是 10/16 到 10/30 的累計漲跌；紅漲綠跌依台灣慣例。示威的影響要到 11/2 才看得到。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/16 → 10/30 德股、歐股與台股累計漲跌幅</p>
+        <p class="chart-sub">收盤價計算（%）；不含示威後的交易日</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>德股：</b>DAX 10/30 跌 0.85%，兩週仍漲 0.76%。未見報導把德股走勢歸因於 Z 世代示威。</li>
+          <li><b>軍工：</b>萊茵金屬（Rheinmetall）兩週跌 4.82%；示威者反對的正是軍費擴張，但股價變動未見與示威相關的報導。</li>
+          <li><b>債市：</b>德國 10 年期殖利率 10/30 為 3.34%，法德利差 159 bp，德國仍是歐元區避風港。</li>
+          <li><b>零售：</b>Zalando 兩週漲 5.82%，11/3 公布財報。法蘭克福實體店受損對大型電商沒有直接影響（推論）。</li>
+          <li><b>台股：</b>加權指數同期跌 4.03%，未見歸因於德國的報導。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤（10/30）</th><th>漲跌幅（10/30）</th><th>期間走勢</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^GDAXI</td><td><b>DAX</b></td><td>德股指數</td><td class="num">25,818.21</td><td class="num down">−0.85%</td><td class="period">10/16 以來 +0.76%</td><td>示威前，未反映此事</td></tr>
+          <tr><td class="num">^STOXX</td><td><b>Stoxx 600</b></td><td>歐股指數</td><td class="num">646.75</td><td class="num down">−0.36%</td><td class="period">10/16 以來 +0.31%</td><td>歐洲青年抗議目前未成為市場主軸（推論）</td></tr>
+          <tr><td class="num">RHM</td><td><b>萊茵金屬</b></td><td>德股</td><td class="num">1,037.60 €</td><td class="num down">−1.01%</td><td class="period">10/16 以來 −4.82%</td><td>德國軍費擴張的主要受益者</td></tr>
+          <tr><td class="num">DBK</td><td><b>德意志銀行</b></td><td>德股</td><td class="num">30.08 €</td><td class="num down">−3.45%</td><td class="period">10/16 以來 +2.56%</td><td>總部在法蘭克福，示威集中地；股價未見關聯報導</td></tr>
+          <tr><td class="num">ZAL</td><td><b>Zalando</b></td><td>德股</td><td class="num">26.72 €</td><td class="num down">−0.15%</td><td class="period">10/16 以來 +5.82%</td><td>年輕族群消費指標（推論）；11/3 財報</td></tr>
+          <tr><td class="num">EURUSD</td><td><b>歐元兌美元</b></td><td>匯率</td><td class="num">1.1183</td><td class="num">—</td><td class="period">10/16 以來 −0.27%</td><td>主要受法國財政風險影響</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">45,211.83</td><td class="num down">−2.49%</td><td class="period">10/16 以來 −4.03%</td><td>未見歸因於德國的報導</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價為 2026/10/30（週五），來源：Yahoo Finance；德國 10 年期殖利率來源：Idéal Investisseur。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>歐洲最大經濟體加入青年抗議潮，意義大於人數</h2>
+      <p>德國的人數不如法國，但它代表抗議已從財政問題最嚴重的國家，擴散到青年失業率最低的國家。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>歐洲抗議潮的新階段</h3><ul class="plain small">
+        <li>法國 10/31 有 32 萬人；義大利 10/30 全國示威；西班牙住房抗議延燒，首相宣布 11 月提前大選。</li>
+        <li>德國加入後，「這是南歐或法國的問題」的說法站不住腳（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>歐洲防務預算</h3><ul class="plain small">
+        <li>歐洲各國都在增加軍費；德國年輕人開始質疑由誰付錢、誰去當兵。若此議題擴散，可能影響各國增兵計畫（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>11/20 跨國行動</h3><ul class="plain small">
+        <li>左翼與綠黨青年組織呼籲參加多國的國際青年罷工日，Gen Z regelt 表示參與。</li>
+      </ul></article>
+      <article class="card"><h3>全球 Z 世代運動</h3><ul class="plain small">
+        <li>「Z 世代抗議」的標籤也用在其他地區，例如 2025 年 9 月尼泊爾的抗議造成 19 人死亡；各國原因不同，不能直接類比（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>移民議題的再爭論</h3><ul class="plain small">
+        <li>德國部分官員強調「移民背景」，而被捕者多為德國公民；這類討論可能被極右利用（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 future -->
+<section id="future">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 這一代的未來</div>
+      <h2>發聲或離開：德國 Z 世代眼前的幾條路</h2>
+      <p>t-online 用經濟學家赫希曼的「發聲」與「退出」來解讀：不滿的人要嘛留下來抗議，要嘛直接離開。以下是這一代未來要面對的現實，趨勢判斷標示為推論。</p>
+    </div>
+    <div class="sub-h">兩年內，心情變了：調查對照</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>指標</th><th>數字</th><th>調查</th><th>代表什麼</th></tr></thead>
+        <tbody>
+          <tr><td><b>對社會未來樂觀</b></td><td class="num">56%</td><td>Shell 2024（12～25 歲）</td><td>2024 年多數人仍樂觀，而且是多年高點</td></tr>
+          <tr><td><b>認為德國給足機會</b></td><td class="num">76%</td><td>Shell 2024</td><td>當時的信任基礎還在</td></tr>
+          <tr><td><b>需要心理協助</b></td><td class="num">29%</td><td>德國青年 2026（14～29 歲）</td><td>歷年新高；失業者達 42%</td></tr>
+          <tr><td><b>有債務</b></td><td class="num">23%</td><td>德國青年 2026</td><td>歷年新高</td></tr>
+          <tr><td><b>有具體離開計畫</b></td><td class="num">21%</td><td>德國青年 2026</td><td>男 25%、女 17%；41% 能想像住國外</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">兩項調查的年齡層與方法不同，不能直接相減，只能看方向。德國青年 2026 調查於 1～2 月進行，早於這波示威。</p>
+    <div class="grid g3" style="margin-top:16px">
+      <article class="card"><h3>工作：有工作，但不確定值不值得</h3><ul class="plain small">
+        <li>青年失業率 7.4%，歐盟最低。</li>
+        <li>但受訪者對職涯機會的評價比前一年更差，AI 與經濟不確定是主因。研究者說工作意願仍高，懷疑的是「努力有沒有回報」。</li>
+      </ul></article>
+      <article class="card"><h3>居住：買房更遠</h3><ul class="plain small">
+        <li>大學城之間租金差距比 10 年前更大；只有 20.7% 學生住在接近全國平均的地方（10 年前 35.4%）。</li>
+        <li>BAföG 住房補貼 2027 年夏季學期升到 440 €，仍有 45 個城市高於補貼。</li>
+      </ul></article>
+      <article class="card"><h3>退休：繳更多</h3><ul class="plain small">
+        <li>年金保費率預估從 18.6% 升到 2040 年 21.4%。基民盟自己的年輕議員也反對，認為成本落在年輕人身上。</li>
+        <li>年金委員會的議題包括把退休年齡提高到 67 歲以上。</li>
+      </ul></article>
+      <article class="card"><h3>兵役：最直接的不確定</h3><ul class="plain small">
+        <li>若德軍招不到人，徵兵討論就會回來（推論）。</li>
+        <li>Greenpeace 調查 74% 希望參與討論，50% 覺得這場辯論讓自己受到威脅；40% 願意服役。</li>
+      </ul></article>
+      <article class="card"><h3>政治：往兩端分裂</h3><ul class="plain small">
+        <li>左翼黨以 25% 成為青年最喜歡的政黨，尤其是年輕女性；AfD 在年輕男性中上升，性別差距擴大。</li>
+        <li>研究者指出，想離開的人較有財務下滑感，也較接近 AfD。</li>
+      </ul></article>
+      <article class="card"><h3>民主信任：還有，但在消耗</h3><ul class="plain small">
+        <li>2024 年 75% 高度信任民主，但認同威權立場的人比 5 年前多。</li>
+        <li>公開信本身就警告：不被支持的年輕人會失去對民主的信任。</li>
+      </ul></article>
+    </div>
+    <div class="note">「我們需要這一代的頭腦。」調查共同作者漢佩爾（Kilian Hampel）這樣看待離開的念頭。對人口老化的德國，年輕人離開的代價比抗議更大（推論）。</div>
+  </div>
+</section>
+
+<!-- 08 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依主辦方能力、政府反應與歐洲情勢整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>像「氣候罷課」一樣，週期性行動</h3><ul class="plain small">
+        <li>11/20 再辦一次，規模相近，暴力變少。</li>
+        <li>學生會議與工會接手部分議題，議題進入預算討論。</li>
+        <li>政府提出小幅教育或心理健康措施。</li>
+      </ul><p class="trig">觸發條件：主辦方建立較穩定組織，11/20 平和進行。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>討論被治安與移民議題綁架</h3><ul class="plain small">
+        <li>政府重判、加強集會管制，年輕人更不信任政治。</li>
+        <li>AfD 借移民話題得利，世代不滿轉成排外情緒。</li>
+        <li>夜間暴力在其他城市重演。</li>
+      </ul><p class="trig">觸發條件：11/20 再度出現劫掠、政界持續以移民解讀事件。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>政府坐下來談</h3><ul class="plain small">
+        <li>總理或部長與青年代表對話，類似研究者建議的「世代對話」。</li>
+        <li>兒少心理治療排除預算限制，住房補貼加碼。</li>
+      </ul><p class="trig">觸發條件：梅爾茨政府正面回應公開信，聯邦議會預算審議納入青年項目。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>梅爾茨是否回應公開信</b>：目前未查到；回應方式決定是對話還是對抗。</li>
+      <li><b>11/2 開盤與 11/3 Zalando 財報</b>：市場是否在意法蘭克福的破壞。</li>
+      <li><b>2027 年預算在聯邦議會的最後審議</b>：教育、社福與心理治療有沒有改動。</li>
+      <li><b>11/20 歐洲青年罷工日</b>：人數能不能超過 10/31，是運動存續的關鍵。</li>
+      <li><b>主辦方組織</b>：能否找到可靠的發言人與城市協調者。</li>
+      <li><b>政黨支持度</b>：左翼黨與 AfD 在年輕選民的走向。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>軍工</h3><span class="tag">好壞參半</span></div><p>預算增加是實質利多，但若年輕人反對徵兵與軍費，政治阻力上升（推論）。</p><div class="data">國防 +33%；萊茵金屬 −4.82%（10/16→10/30）</div></article>
+      <article class="card"><div class="top"><h3>實體零售（市中心）</h3><span class="tag bad">利空</span></div><p>示威日提早關店、封窗，法蘭克福 Zeil 等商圈直接受損（推論）。</p><div class="data">法蘭克福損失「可觀」，尚未估算</div></article>
+      <article class="card"><div class="top"><h3>住宅與學生宿舍</h3><span class="tag">好壞參半</span></div><p>需求強勁，租金仍漲；但政治壓力可能帶來更嚴的租金管制（推論）。</p><div class="data">合租房 510 €，年增約 1%</div></article>
+      <article class="card"><div class="top"><h3>心理健康與醫療</h3><span class="tag good">受惠</span></div><p>需求上升、輿論施壓，兒少治療資源可能增加（推論）。</p><div class="data">等候 28 週；29% 需要協助</div></article>
+      <article class="card"><div class="top"><h3>教育與學徒培訓</h3><span class="tag good">受惠</span></div><p>職業培訓對年輕人吸引力上升；教育預算若增加，相關業者受惠（推論）。</p><div class="data">「德國青年 2026」：職訓吸引力上升</div></article>
+      <article class="card"><div class="top"><h3>軍方招募</h3><span class="tag bad">利空</span></div><p>年輕人的反感會讓志願招募更難（推論）。</p><div class="data">目標 27 萬人（2035）；54% 會拒服武裝兵役</div></article>
+      <article class="card"><div class="top"><h3>企業人才</h3><span class="tag bad">利空</span></div><p>德國本來就缺技術人力，若年輕人外流，缺工更嚴重（推論）。</p><div class="data">21% 有具體離開計畫</div></article>
+      <article class="card"><div class="top"><h3>社群與平台業者</h3><span class="tag">好壞參半</span></div><p>運動靠線上動員，也可能面對更多內容管制要求（推論）。</p><div class="data">報名人數超過 15 萬；60% 有成癮式手機使用</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 對台灣的影響</div>
+      <h2>對台灣的直接影響小，但這些問題台灣年輕人也不陌生</h2>
+      <p>德國示威不會影響台灣經濟；更值得看的是它和台灣青年面對的高房價、兵役與世代分配問題有哪些相似之處。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>赴德旅客：</b>法蘭克福、漢堡、科隆市中心 10/31 晚有衝突；法蘭克福是常見的歐洲轉機地（推論）。</li>
+        <li><b>台股：</b>10/30 收 45,211.83 點，未見歸因於德國的報導。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>11/20：</b>若赴歐，留意當天各國大城市的示威。</li>
+        <li><b>赴德留學：</b>房租與住房問題同樣影響外國學生。</li>
+        <li><b>對照台灣：</b>台灣男性有 1 年義務役，德國仍在討論；兩地都有房價、少子化與年金世代分配的爭議。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到外交部針對德國這次示威發布新的旅遊提醒；赴德前請查看領事事務局最新公告。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>赴德旅客、轉機旅客</b></td><td><span class="tag">留意</span></td><td>示威日避開市中心，夜間尤其注意（推論）。</td></tr>
+          <tr><td><b>在德留學生</b></td><td><span class="tag bad">生活受擾</span></td><td>大學城房租高；示威可能影響交通（推論）。</td></tr>
+          <tr><td><b>台灣年輕人</b></td><td><span class="tag">值得參考</span></td><td>德國的「發聲或離開」討論，可以拿來對照台灣的世代議題（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">影響有限</span></td><td>目前不是市場主軸（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 新聞重點比較</div>
+      <h2>同一場示威，一邊是訴求，一邊是暴力</h2>
+      <p>德國公共媒體分開報導白天和夜間，保守政治人物強調移民與極左，台灣媒體標題多聚焦「失控」與 34 城。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>ZDF</td><td>即時記錄</td><td>Z 世代抗議最新發展</td><td>各邦部長說法、法蘭克福記者會</td></tr>
+          <tr><td>Hessenschau</td><td>地方報導</td><td>法蘭克福混亂，隔天清理</td><td>強調暴動者與和平遊行關聯不大</td></tr>
+          <tr><td>Euronews 德文版</td><td>全國彙整</td><td>抗議夜間升級</td><td>主辦方稱 12 萬人、城市比較</td></tr>
+          <tr><td>t-online</td><td>訴求與背景</td><td>住房短缺與徵兵；公開信</td><td>赫希曼「發聲／退出」框架、歐洲比較</td></tr>
+          <tr><td>Anadolu</td><td>人物與訴求</td><td>德國 Z 世代是誰、要什麼</td><td>學生訪談、聯盟黨與警察工會的批評</td></tr>
+          <tr><td>Volksverpetzer</td><td>事實查核立場</td><td>Z 世代抗議背後是什麼</td><td>主辦方內部問題、批評移民污名化（立場鮮明）</td></tr>
+          <tr><td>中時</td><td>和平變調</td><td>法示威延燒德國，34 城上街變調</td><td>訴求與暴力並陳、學生說法</td></tr>
+          <tr><td>新唐人</td><td>整理外電</td><td>德國 34 城數以萬計民眾示威</td><td>警方與主辦方人數差距</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>發起者是 Gen Z regelt，訴求包括教育、生活成本、反對徵兵。</li>
+        <li>白天大致和平，入夜後多城衝突。</li>
+        <li>主辦方與暴力切割。</li>
+        <li>實際人數低於主辦方預估。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「移民背景」的爭議：</b>黑森邦內政部長說暴力群體「多為移民背景」，同時說被捕者多為德國公民。這是官方判斷，未見公開數據佐證；Volksverpetzer 也批評這種歸因缺乏證據。</li>
+        <li><b>暴動者是不是示威者：</b>Hessenschau 說暴動者「顯然與抗議關係不大」，內政部長則連結極左與暴力青年；目前沒有完整調查。</li>
+        <li><b>徵兵是否已恢復：</b>部分中文報導寫「有條件恢復徵兵」，實際上目前是志願制加強制問卷。</li>
+        <li><b>調查時間：</b>多數態度調查做於 2025 年或 2026 年初，早於這波運動。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>全國人數</td><td>約 12 萬（主辦方）</td><td>「數萬人」（ZDF、路透）</td><td>主辦方自報；未見官方全國統計</td></tr>
+          <tr><td>預估人數</td><td>15 萬／15.4 萬（t-online、Anadolu）</td><td>18.2 萬（新唐人、中時）</td><td>報名人數持續增加</td></tr>
+          <tr><td>三城人數</td><td>約 1.8 萬（警方）</td><td>約 3.6 萬（主辦方網站）</td><td>警方與主辦方算法不同</td></tr>
+          <tr><td>城市數</td><td>23（公開信報導）</td><td>30 多／34</td><td>報名城市增加；主辦方只親辦 4 城</td></tr>
+          <tr><td>法蘭克福被捕</td><td>30 多人（夜間）</td><td>54 人（內政部長記者會）</td><td>統計時間不同</td></tr>
+          <tr><td>等待心理治療</td><td>28 週（聯邦心理治療師公會）</td><td>32.5 週（BiPsy 監測，經搜尋摘要）</td><td>統計來源不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 12 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">12 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導、官方與研究資料，資料截至 2026 年 11 月 1 日 20:10（台灣時間）。各城市數字為 11/1 暫定。不同來源的數字可能略有出入（見第 11 節）。法國部分見<a href="https://1235-DAN.github.io/Daily-news/france-halloween-2026-11/" target="_blank" rel="noopener">法國萬聖節示威解讀</a>。</p>
+    </div>
+    <div class="src-group">官方與研究資料</div>
+    <ol class="sources">
+      <li><a href="https://www.destatis.de/Europa/EN/Topic/Population-Labour-Social-Issues/Labour-market/EULabourMarketCrisis.html" target="_blank" rel="noopener">德國聯邦統計局 — 歐盟失業率與青年失業率（10/7）</a></li>
+      <li><a href="https://www.bmbfsfj.bund.de/bmbfsfj/aktuelles/alle-meldungen/19-shell-jugendstudie-veroeffentlicht--246246" target="_blank" rel="noopener">德國聯邦家庭部 — 第 19 次 Shell 青年調查（2024/10/15）</a></li>
+      <li><a href="https://www.bptk.de/newsletter/2-2026/psychotherapeutische-versorgung-von-kindern-und-jugendlichen-staerken-bedarfsplanung-reformieren/" target="_blank" rel="noopener">聯邦心理治療師公會 — 兒少心理治療（8/4）</a></li>
+      <li><a href="https://www.wg-gesucht.de/presse/studentische-wohnkosten/wintersemester-2026-2027-wg-zimmer-mieten" target="_blank" rel="noopener">WG-Gesucht／MMI — 2026/27 冬季學期合租房租金</a></li>
+      <li><a href="https://presseportal.greenpeace.de/255453-greenpeace-umfrage-mehrheit-der-jugendlichen-sieht-grundrechte-durch-wehrpflicht-bedroht/" target="_blank" rel="noopener">Greenpeace — 青年與徵兵調查（2025/10/15）</a></li>
+    </ol>
+    <div class="src-group">國際與德國媒體</div>
+    <ol class="sources" start="6">
+      <li><a href="https://www.zdfheute.de/politik/deutschland/gen-z-proteste-deutschland-liveblog-100.html" target="_blank" rel="noopener">ZDF — Z 世代抗議直播（11/1）</a></li>
+      <li><a href="https://de.euronews.com/2026/11/01/gen-z-proteste-eskalieren-gewalt-und-plunderungen-in-der-nacht" target="_blank" rel="noopener">Euronews — 抗議夜間升級（11/1）</a></li>
+      <li><a href="https://hessenschau.de/panorama/eskalation-nach-gen-z-protesten-in-frankfurt-aktuelle-meldungen-im-ticker,gen-z-demo-frankfurt-100.html" target="_blank" rel="noopener">Hessenschau — 法蘭克福暴動紀錄（11/1）</a></li>
+      <li><a href="https://www.t-online.de/nachrichten/deutschland/innenpolitik/id_101502502/-gen-z-regelt-schreibt-brandbrief-an-merz.html" target="_blank" rel="noopener">t-online — Gen Z regelt 致梅爾茨公開信（10/29）</a></li>
+      <li><a href="https://www.t-online.de/nachrichten/deutschland/innenpolitik/id_101504442/-gen-z-regelt-das-steckt-hinter-den-jugendprotesten.html" target="_blank" rel="noopener">t-online — 住房短缺與徵兵：抗議背後（10 月）</a></li>
+      <li><a href="https://www.aa.com.tr/en/europe/who-are-germany-s-gen-z-protesters-and-what-do-they-want/4106155" target="_blank" rel="noopener">Anadolu — 德國 Z 世代是誰、要什麼（10/30）</a></li>
+      <li><a href="https://volksverpetzer.de/analyse/gen-z-proteste/" target="_blank" rel="noopener">Volksverpetzer — Z 世代抗議分析（立場鮮明）</a></li>
+      <li><a href="https://www.france24.com/en/live-news/20260706-big-defence-spending-aid-cuts-german-cabinet-approves-budget" target="_blank" rel="noopener">France 24 — 德國內閣通過 2027 年預算（7/6）</a></li>
+      <li><a href="https://tuenews.de/en/military-service-questionnaire-ignoring-it-could-be-costly/" target="_blank" rel="noopener">TüNews — 兵役問卷不回覆可能受罰</a></li>
+      <li><a href="https://deutsches-schulportal.de/schule-im-umfeld/stress-schulden-unsicherheit-junge-menschen-blicken-skeptisch-in-die-zukunft/" target="_blank" rel="noopener">德國學校入口網（dpa）— 德國青年 2026 調查（3/25）</a></li>
+      <li><a href="https://www.tagesspiegel.de/politik/ein-funftel-der-jugend-will-auswandern-in-spanien-habe-ich-mich-viel-freier-gefuhlt-15395995.html" target="_blank" rel="noopener">Tagesspiegel — 五分之一青年想移居國外（3/25）</a></li>
+      <li><a href="https://www.infranken.de/ratgeber/karriere-geld/rente-reform-rentenpaket-bundesrat-zustimmung-aenderung-2026-rentenniveau-aktivrente-muetterrente-fruehstartrente-art-6295644" target="_blank" rel="noopener">inFranken — 年金方案通過與保費預估（2025/12/19）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="18">
+      <li><a href="https://www.chinatimes.com/realtimenews/20261101001047-260408" target="_blank" rel="noopener">中時 — 法示威延燒德國，Z 世代 34 城上街變調（11/1）</a></li>
+      <li><a href="https://www.ntdtv.com/b5/2026/11/01/a104146979.html" target="_blank" rel="noopener">新唐人 — 德國 34 城數以萬計民眾示威（11/1）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="20">
+      <li><a href="https://finance.yahoo.com/quote/%5EGDAXI/history/" target="_blank" rel="noopener">Yahoo Finance — DAX</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ESTOXX/history/" target="_blank" rel="noopener">Yahoo Finance — Stoxx 600</a></li>
+      <li><a href="https://finance.yahoo.com/quote/RHM.DE/history/" target="_blank" rel="noopener">Yahoo Finance — 萊茵金屬</a></li>
+      <li><a href="https://finance.yahoo.com/quote/DBK.DE/history/" target="_blank" rel="noopener">Yahoo Finance — 德意志銀行</a></li>
+      <li><a href="https://finance.yahoo.com/quote/ZAL.DE/history/" target="_blank" rel="noopener">Yahoo Finance — Zalando</a></li>
+      <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/history/" target="_blank" rel="noopener">Yahoo Finance — 歐元兌美元</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://www.ideal-investisseur.fr/en/markets/oat-bund-spread.html" target="_blank" rel="noopener">Idéal Investisseur — 德國與法國 10 年期公債殖利率</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 1 日 20:10（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'DAX', s:'25,818.21', v:0.76},
+    {l:'Stoxx 600', s:'646.75', v:0.31},
+    {l:'萊茵金屬', s:'RHM · 1,037.60 €', v:-4.82},
+    {l:'德意志銀行', s:'DBK · 30.08 €', v:2.56},
+    {l:'Zalando', s:'ZAL · 26.72 €', v:5.82},
+    {l:'歐元兌美元', s:'1.1183', v:-0.27},
+    {l:'加權指數', s:'45,211.83', v:-4.03}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
