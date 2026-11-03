@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 第三季營收與上市解讀</title>
+<meta name="description" content="Anthropic 修訂招股書解讀：第三季營收 169.6 億美元、季增放緩到 47%、短期算力造成營業虧損、8,954 億美元承諾、上市時程與對 AI 供應鏈和台股的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#filing">財報拆解</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">AI 產業解讀 · 招股書修訂版 · 資料截至 2026 年 11 月 3 日 18:00（台灣時間）</p>
+      <h1>Anthropic 單季營收 170 億美元，季增卻從 144% 降到 47%：上市前最後一份成績單</h1>
+      <p class="lede">Claude 的開發商 Anthropic 美西時間 11 月 2 日向美國證管會（SEC）提交修訂版招股書（S-1/A），補上第三季數字：營收 169.6 億美元，約是去年同期的 12 倍，但季增速度明顯放緩，還因為購買高價的短期算力，轉為營業虧損 5.67 億美元。公司預計以代號 ANT 在那斯達克掛牌，法新社稱最快下週上市，但定價區間與發行股數都還沒公布。</p>
+    </div>
+    <div class="stmt" aria-label="第三季營收">
+      <div class="k">2026 年第三季營收</div>
+      <div class="range">169.6 億<small>美元</small></div>
+      <div class="was">去年同期約 14 億 · 第二季 115.6 億</div>
+      <div class="stmt-row">
+        <div><div class="v">+47%</div><div class="l">季增（第二季 +144%）</div></div>
+        <div><div class="v">−5.67 億</div><div class="l">營業損益（美元）</div></div>
+        <div><div class="v">8,954 億</div><div class="l">算力等承諾（美元）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>九個重點看懂這份修訂招股書</h2>
+      <p>一句話：營收還在暴衝，但成長開始降速、算力帳單跑得比營收快，投資人要在這個時間點決定它值多少錢。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>第三季營收 169.6 億美元，約是去年同期的 12 倍。</b>去年同期約 14 億美元；第二季為 115.6 億美元。今年前三季累計 332.4 億美元，以第三季換算的年化營收逾 678 億美元。</div></li>
+      <li><div><b>成長明顯降速。</b>第三季季增約 47%，第一季、第二季分別是 132% 與 144%。公司說降價與合約折扣讓營收比第二季少了約 6 億美元。</div></li>
+      <li><div><b>從營業獲利轉為營業虧損。</b>第三季營業虧損 5.67 億美元，第二季是營業獲利 9.74 億美元。主因是 50 億美元的短期算力，招股書說這類算力比多年期合約貴得多。</div></li>
+      <li><div><b>算力成本吃掉近六成營收。</b>算力與基礎設施費用 98.6 億美元，占營收 58%，第二季是 48%。另有 19.6 億美元員工捐贈配對的非現金費用。</div></li>
+      <li><div><b>淨損 232.9 億美元，多數不是真的燒掉的錢。</b>主要來自可轉換票據與衍生負債的公允價值變動，因為公司估值升高，這些負債的帳面價值跟著變大；前三季淨損 1,040 億美元中，約 943 億美元是這類非現金損失。</div></li>
+      <li><div><b>手上現金充足，營運仍在產生現金。</b>9 月底現金與短期投資約 1,318 億美元；前三季營運現金流入 65.7 億美元。</div></li>
+      <li><div><b>承諾的支出接近 9,000 億美元。</b>採購與租賃承諾約 8,954 億美元，期限到 2045 年；未來 12 個月約 698 億美元、2030 年底前約 4,475 億美元，其中約 2,138 億美元可在特定條件下解約。</div></li>
+      <li><div><b>上市時間仍未定案。</b>預計以 ANT 在那斯達克全球精選市場掛牌，22 家承銷銀行包括高盛、摩根士丹利。法新社說最快下週，The Next Web 說 11 月底前；定價區間與股數尚未公布。</div></li>
+      <li><div><b>市場先感受到的是資金排擠。</b>台北時報引述分析師，認為這場上市讓大型基金從亞洲市場抽錢；11/2 美股 AI 股續跌，11/3 台股重挫 1,612 點，但沒有報導把跌勢單獨歸因於這份招股書。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼營收大增，卻反而賠錢？四個原因</h2>
+      <p>前三點出自招股書本身的說明；第四點是 Fortune、The Next Web 等媒體對會計數字的解讀。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>需求來得太快，只好買貴的短期算力</h3><p>就像餐廳客滿，臨時去隔壁租廚房，租金比長租貴很多。第三季 50 億美元的短期算力是虧損的主因，算力與基礎設施費用從 55.6 億美元暴增到 98.6 億美元，季增 77%，比營收的 47% 快。</p></div><div class="ev"><span class="tag">短期算力 50 億美元</span><span class="tag">算力占營收 58%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>為了搶市場而降價</h3><p>新模型推出時一起降價，加上大客戶的合約折扣，讓第三季營收比第二季少了約 6 億美元。前三季營收有 79% 來自 API 用量，價格每降一次就直接反映在營收上。</p></div><div class="ev"><span class="tag">降價影響約 6 億美元</span><span class="tag">API 占 79%</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>一筆 19.6 億美元的捐贈費用</h3><p>員工把股票獎勵捐給慈善機構，公司以無投票權的 N 類股配對捐出。這筆非現金費用列在其他營業與管理費用，讓該項從 10.3 億美元升到 35.9 億美元。扣除後，第三季本業約賺 13.9 億美元（推算）。</p></div><div class="ev"><span class="tag">非現金 19.6 億美元</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>公司越值錢，帳上虧損越大</h3><p>Amazon 等投資人持有可轉換票據，上市時會轉成股票。估值升高時，這些票據的帳面價值上升，差額要記成損失。所以前三季淨損 1,040 億美元裡，約 943 億美元並不是現金流出。</p></div><div class="ev"><span class="tag">非現金損失約 943 億美元</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>上市程序</span><span><i class="g"></i>市場衝擊</span><span><i></i>財務與其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2025-Q3</div><div class="what">單季營收約 14 億美元。</div></li>
+        <li class="key"><div class="date">2026-06</div><div class="what">向 SEC <b>秘密遞件</b>；同月 OpenAI 也秘密遞件，傳目標 2027 年上市。</div></li>
+        <li><div class="date">2026-Q2</div><div class="what">營收 115.6 億美元、季增 144%，營業獲利 9.74 億美元。</div></li>
+        <li><div class="date">2026-09-30</div><div class="what">第三季結束：營收 169.6 億美元，營業虧損 5.67 億美元。</div></li>
+        <li class="key"><div class="date">2026-10-26</div><div class="what"><b>公開首版 S-1</b>，只揭露到上半年。</div></li>
+        <li class="geo"><div class="date">2026-10-29</div><div class="what">Alphabet 財報後單日跌 12.64%，Amazon 跌 4.25%。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-02</div><div class="what"><b>提交 S-1/A</b>，補上第三季財務。</div></li>
+        <li class="geo"><div class="date">2026-11-02</div><div class="what">費半跌 3.37%；Marvell 宣布併購 Lumentum，股價跌 12.72%。</div></li>
+        <li class="geo"><div class="date">2026-11-03</div><div class="what">台股跌 1,612.6 點，外資賣超 1,073 億元。</div></li>
+        <li class="key"><div class="date">2026-11-10</div><div class="what">最早可開始路演：秘密遞件的公司須在公開遞件 15 天後才能路演（Leverage Shares 依 SEC 規定推算）。</div></li>
+        <li class="key"><div class="date">2026-11 下旬</div><div class="what"><b>預計掛牌</b>：法新社稱最快下週，The Next Web 稱 11 月底前；Bloomberg 10 月 1 日報導目標在感恩節（11/26）前。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 filing -->
+<section id="filing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 財報拆解</div>
+      <h2>營收曲線還在往上，但斜率開始變平</h2>
+      <p>第三季與第二季數字取自 PPC Land 整理的招股書表格；部分季度為依累計數推算，圖中以淡色標示。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">各季營收（億美元）</p>
+        <p class="chart-sub">淡色為推算：2026 Q1 由前三季累計扣除 Q2、Q3；2025 Q4 由 Q1 季增 132% 回推</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="2025 年第三季：約 14 億美元"><div class="lab">2025 Q3</div><div class="track"><div class="fill" style="width:8.3%"></div></div><div class="val">14</div></div>
+          <div class="hbar est" data-tip="2025 年第四季：約 20.4 億美元（推算）"><div class="lab">2025 Q4<small>推算</small></div><div class="track"><div class="fill" style="width:12%"></div></div><div class="val">20.4</div></div>
+          <div class="hbar est" data-tip="2026 年第一季：約 47.3 億美元（推算）"><div class="lab">2026 Q1<small>推算，季增 132%</small></div><div class="track"><div class="fill" style="width:27.9%"></div></div><div class="val">47.3</div></div>
+          <div class="hbar" data-tip="2026 年第二季：115.6 億美元，季增 144%"><div class="lab">2026 Q2<small>季增 144%</small></div><div class="track"><div class="fill" style="width:68.1%"></div></div><div class="val">115.6</div></div>
+          <div class="hbar" data-tip="2026 年第三季：169.6 億美元，季增 47%"><div class="lab">2026 Q3<small>季增 47%</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">169.6</div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <p class="chart-title">8,954 億美元承諾何時要付（億美元）</p>
+        <p class="chart-sub">截至 2026/9/30；中段由「2030 年底前 4,475 億」扣除未來 12 個月推算</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="未來 12 個月（2026/10～2027/9）：約 698 億美元"><div class="lab">未來 12 個月</div><div class="track"><div class="fill" style="width:15.6%"></div></div><div class="val">698</div></div>
+          <div class="hbar est" data-tip="2027/10～2030 年底：約 3,777 億美元（推算）"><div class="lab">至 2030 年底<small>推算</small></div><div class="track"><div class="fill" style="width:84.3%"></div></div><div class="val">3,777</div></div>
+          <div class="hbar" data-tip="2031～2045 年：約 4,479 億美元"><div class="lab">2031～2045 年</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">4,479</div></div>
+        </div>
+        <p class="small muted" style="margin:12px 0 0">其中約 2,138 億美元可在符合先決條件時解約。承諾總額約是第三季年化營收的 13 倍。</p>
+      </div>
+    </div>
+    <div class="sub-h">第二季與第三季對照（百萬美元）</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>2026 Q2</th><th>2026 Q3</th><th>季變化</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>營收</b></td><td class="num">11,555</td><td class="num">16,956</td><td class="num">+46.7%</td><td>降價影響約 600</td></tr>
+          <tr><td><b>算力與基礎設施</b></td><td class="num">5,558</td><td class="num">9,863</td><td class="num">+77.5%</td><td>含 5,000 短期算力</td></tr>
+          <tr><td><b>人事</b></td><td class="num">1,857</td><td class="num">1,711</td><td class="num">−7.9%</td><td></td></tr>
+          <tr><td><b>銷售、行銷與合作</b></td><td class="num">2,135</td><td class="num">2,361</td><td class="num">+10.6%</td><td></td></tr>
+          <tr><td><b>其他營業與管理</b></td><td class="num">1,031</td><td class="num">3,588</td><td class="num">+248%</td><td>含 1,960 捐贈配對費用</td></tr>
+          <tr class="hl"><td><b>營業損益</b></td><td class="num">974</td><td class="num">−567</td><td class="num">轉虧</td><td>扣除捐贈費用約 +1,393（推算）</td></tr>
+          <tr><td><b>淨損</b></td><td class="num">−66,309</td><td class="num">−23,291</td><td class="num">虧損縮小</td><td>主要為非現金公允價值變動</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><div class="sec-num">客戶</div><h3>約 250 家年付逾 1,000 萬美元</h3><p class="small muted">過去 12 個月年付逾 100 萬美元的客戶超過 1,900 家，逾 10 萬美元的超過 11,900 家。</p></div>
+      <div class="card"><div class="sec-num">營收來源</div><h3>API 79%、訂閱 21%</h3><p class="small muted">前三季 API 用量收入 263.1 億美元，訂閱 69.4 億美元。企業用量是主力，個人訂閱是輔助。</p></div>
+      <div class="card"><div class="sec-num">毛利</div><h3>前三季毛利率約 85.5%</h3><p class="small muted">PPC Land 依營收成本 48.1 億美元自行計算；大部分算力記在研發與行銷，不在營收成本，所以這個毛利率看起來偏高。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>Anthropic 拿到上市門票，股東與雲端夥伴各有算盤</h2>
+      <p>上市地在美國；最直接受影響的是 Anthropic 本身、持股的雲端股東，以及等著上市的對手。對全球市場的外溢放在第 6 節。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">前三季營收</div><div class="v">332.4 億</div><div class="d">美元，約為去年同期 12 倍</div></div>
+      <div class="tile"><div class="l">年化營收</div><div class="v">逾 678 億</div><div class="d">以第三季 ×4 計算</div></div>
+      <div class="tile"><div class="l">現金與短期投資</div><div class="v">1,318 億</div><div class="d">美元，9 月底</div></div>
+      <div class="tile"><div class="l">前三季營運現金流</div><div class="v">+65.7 億</div><div class="d">去年同期為 −20.2 億</div></div>
+      <div class="tile"><div class="l">前三季營業虧損</div><div class="v">−12.6 億</div><div class="d">美元</div></div>
+      <div class="tile"><div class="l">承銷銀行</div><div class="v">22 家</div><div class="d">含高盛、摩根士丹利</div></div>
+      <div class="tile"><div class="l">傳聞估值</div><div class="v">1.4～1.5 兆</div><div class="d">美元（Bloomberg，經 TNW 轉述）</div></div>
+      <div class="tile"><div class="l">定價區間</div><div class="v">未公布</div><div class="d">發行股數也未公布</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Anthropic 本身</h3><ul class="plain">
+        <li><b>策略：</b>推出 Anthropic Direct，直接租用 AI 晶片並部署在專屬設施，降低對 AWS、Google、微軟的依賴；招股書指這些雲端業者也是競爭者，可能限流、漲價或終止合約。</li>
+        <li><b>算力來源：</b>鉅亨網列出 Amazon、Google、SpaceX 與新雲業者。</li>
+        <li><b>安全：</b>修訂後的負責任擴展政策預估，未來模型可能接近「AI 研發劇烈加速」門檻，現有的 Claude Opus 5.5 尚未跨越。</li>
+      </ul></div>
+      <div class="card"><h3>雲端股東</h3><ul class="plain">
+        <li><b>Amazon：</b>持有大部分可轉換票據，上市時轉為股票；11/2 股價漲 2.20%，原因未查到明確報導。</li>
+        <li><b>Google：</b>既是股東也是算力供應商；Alphabet 10/29 財報後重挫，11/2 再跌 0.30%。</li>
+        <li><b>雙重身分：</b>股東賺的是持股增值，供應商賺的是算力帳單，Anthropic 越大，兩邊都受惠，但談判也越緊張（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>美國資本市場</h3><ul class="plain">
+        <li><b>規模：</b>可能是有紀錄以來最大的 IPO 之一。</li>
+        <li><b>程序：</b>還差定價區間、路演、SEC 生效、定價與首日交易五步。</li>
+        <li><b>時點：</b>正逢期中選舉與 AI 股修正，承銷商要在波動中定價（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>競爭對手</h3><ul class="plain">
+        <li><b>OpenAI：</b>6 月秘密遞件，傳目標 2027 年上市；Anthropic 的估值會成為參考。</li>
+        <li><b>價格戰：</b>Anthropic 的降價說明 AI 模型價格持續下行，對手也面臨同樣壓力（推論）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>Anthropic 還沒有股價，但 AI 概念股已經在替它定價</h2>
+      <p>修訂招股書於美東 11/2（週一）上傳 SEC，當天美股 AI 與晶片股續跌；11/3 台股接著重挫。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/2 美股、11/3 台股相關漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>美股：</b>費半跌 3.37%、那斯達克跌 1.07%。主要拖累是 AI 資本支出疑慮，以及 Marvell 以股票併購 Lumentum 後兩檔大跌；沒有報導把當天跌勢歸因於 Anthropic 的招股書。</li>
+          <li><b>雲端股東：</b>Amazon 逆勢漲 2.20%，Alphabet 小跌 0.30%，微軟跌 2.83%。</li>
+          <li><b>台股：</b>11/3 加權指數跌 3.59%，台積電跌 1.5%、聯發科跌 7.43%；台北時報 11/2 就引述分析師，認為 Anthropic 上市讓大型基金從亞洲抽錢。</li>
+          <li><b>資金排擠的邏輯：</b>一檔可能募資數百億美元的新股，基金得先賣掉其他持股騰出資金，AI 概念股最容易被拿來換（推論）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">AMZN</td><td><b>Amazon</b></td><td>美股</td><td class="num">245.63 美元</td><td class="num up">+2.20%</td><td class="period">10/26 起 −1.39%</td><td>主要股東與算力供應商；當日上漲原因未查到明確報導。</td></tr>
+          <tr><td class="num">GOOGL</td><td><b>Alphabet</b></td><td>美股</td><td class="num">278.99 美元</td><td class="num down">−0.30%</td><td class="period">10/26 起 −11.94%</td><td>股東與算力供應商；10/29 財報後重挫 12.64%。</td></tr>
+          <tr><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">507.12 美元</td><td class="num down">−2.83%</td><td class="period">10/26 起 −4.78%</td><td>雲端合作夥伴，隨科技股下跌。</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">202.06 美元</td><td class="num down">−1.26%</td><td class="period">10/26 起 −6.45%</td><td>AI 晶片龍頭，隨 AI 支出疑慮走弱。</td></tr>
+          <tr><td class="num">AVGO</td><td><b>博通</b></td><td>美股</td><td class="num">322.23 美元</td><td class="num down">−1.18%</td><td class="period">10/26 起 −2.11%</td><td>客製化 AI 晶片供應商。</td></tr>
+          <tr><td class="num">MRVL</td><td><b>Marvell</b></td><td>美股</td><td class="num">171.41 美元</td><td class="num down">−12.72%</td><td class="period">10/28 起 −31.89%</td><td>宣布以股票併購 Lumentum，企業價值 1,150 億美元，市場擔心稀釋。</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">398.63 美元</td><td class="num down">−1.85%</td><td class="period">10/26 起 −6.07%</td><td>AI 晶片代工，隨費半下跌。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,295 元</td><td class="num down">−1.50%</td><td class="period">未查到</td><td>11/3 大盤重挫中相對抗跌。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,675 元</td><td class="num down">−7.43%</td><td class="period">未查到</td><td>AI ASIC 與 IC 設計股遭賣壓。</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克指數</b></td><td>美股</td><td class="num">未列</td><td class="num down">−1.07%</td><td class="period">未查到</td><td>AI 支出疑慮、期中選舉觀望。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 2026/11/2 收盤、台股為 2026/11/3 收盤；來源：Stock Analysis、中央社 Focus Taiwan、CNBC。「期間走勢」由 Stock Analysis 收盤價計算，10/26 為首版 S-1 公開當天。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>一份招股書，牽動 AI 價格、算力市場與全球資金</h2>
+      <p>影響主要循三條線擴散：大型新股吸走資金，算力需求推升晶片與機房需求，降價則把 AI 服務的價格繼續往下壓。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>資金排擠</h3><ul class="plain small">
+        <li>台北時報引述分析師：大型基金已從亞洲市場抽錢，準備參與上市。</li>
+        <li>傳聞估值 1.4～1.5 兆美元，募資規模可能創紀錄。</li>
+        <li>亞洲科技股成了資金來源（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>算力需求</h3><ul class="plain small">
+        <li>8,954 億美元承諾，幾乎都和算力與基礎設施有關。</li>
+        <li>前三季算力與基礎設施支出年增 329%。</li>
+        <li>算力短缺讓短期算力價格偏高，供應商握有定價權（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 價格戰</h3><ul class="plain small">
+        <li>降價與折扣讓單季營收少約 6 億美元。</li>
+        <li>用量成長仍抵過降價，營收照樣季增 47%。</li>
+        <li>企業用 AI 的成本持續下降，有利更廣泛導入（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>雲端競合</h3><ul class="plain small">
+        <li>Anthropic Direct 直接租晶片，繞過部分雲端業者。</li>
+        <li>雲端業者同時是股東、供應商與對手。</li>
+        <li>其他 AI 公司可能跟進自建算力（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 估值的定錨</h3><ul class="plain small">
+        <li>OpenAI 傳 2027 年上市，Anthropic 的定價會成為比較基準。</li>
+        <li>上市首日表現會影響 AI 新創的募資條件（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 安全與監管</h3><ul class="plain small">
+        <li>招股書揭露新版負責任擴展政策，評估未來模型可能接近研發加速門檻。</li>
+        <li>上市後的揭露義務，讓 AI 安全評估更公開（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依招股書、承銷程序與媒體報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>11 月下旬如期掛牌</h3><ul class="plain small">
+        <li>近期公布定價區間，11/10 後開始路演。</li>
+        <li>估值落在傳聞的 1.4～1.5 兆美元附近。</li>
+        <li>上市前後，亞洲 AI 股持續有資金調節壓力。</li>
+      </ul><p class="trig">觸發條件：期中選舉後市場回穩，SEC 審查順利。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>延後或降價發行</h3><ul class="plain small">
+        <li>AI 股修正擴大，承銷商壓低定價或延後上市。</li>
+        <li>市場聚焦成長放緩與 8,954 億美元承諾。</li>
+        <li>OpenAI 等後續上市計畫跟著觀望。</li>
+      </ul><p class="trig">觸發條件：科技股持續重挫、選後利率或監管不確定性升高。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>超額認購、首日大漲</h3><ul class="plain small">
+        <li>投資人把營收規模視為 AI 需求的證明。</li>
+        <li>AI 供應鏈情緒回溫。</li>
+        <li>上市成功帶動更多 AI 公司排隊上市。</li>
+      </ul><p class="trig">觸發條件：路演反應熱烈、定價區間上修。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>下一份 S-1/A</b>：定價區間與發行股數公布後，才知道真正的估值與募資規模。</li>
+      <li><b>11/3 美國期中選舉結果</b>：影響利率、監管與科技股情緒，也影響上市時點。</li>
+      <li><b>11/10 起的路演</b>：機構投資人的反應會決定定價落在區間哪一端。</li>
+      <li><b>定價日與首日交易</b>：首日表現會影響 OpenAI 等後續 AI 公司的上市節奏。</li>
+      <li><b>第四季營收</b>：季增能否守住，或繼續從 47% 往下滑。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>AI 晶片</h3><span class="tag good">受惠</span></div><p>算力支出前三季年增 329%，需求面有實際帳單支撐，但股價先被 AI 支出疑慮壓低。</p><div class="data">NVDA 11/2 −1.26%，10/26 起 −6.45%</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工與先進封裝</h3><span class="tag good">受惠</span></div><p>AI 晶片最終多回到台積電生產，算力承諾等於長期訂單的需求來源（推論）。</p><div class="data">台積電 11/3 −1.50%</div></article>
+      <article class="card"><div class="top"><h3>雲端業者</h3><span class="tag">好壞參半</span></div><p>短期能賺算力帳單，長期面對 Anthropic Direct 的分流與議價。</p><div class="data">AMZN +2.20%、MSFT −2.83%（11/2）</div></article>
+      <article class="card"><div class="top"><h3>新雲與機房業者</h3><span class="tag good">受惠</span></div><p>短期算力需求與直租晶片策略，讓非傳統雲端也能分到訂單（推論）。</p><div class="data">短期算力 50 億美元（Q3）</div></article>
+      <article class="card"><div class="top"><h3>AI 伺服器代工</h3><span class="tag good">受惠</span></div><p>算力擴張需要伺服器與機櫃，鴻海、廣達等台廠是主要組裝者（推論）。</p><div class="data">鴻海 11/3 −2.19%</div></article>
+      <article class="card"><div class="top"><h3>其他 AI 模型公司</h3><span class="tag bad">利空</span></div><p>Anthropic 降價搶市，對手被迫跟進，利潤率受壓（推論）。</p><div class="data">降價影響約 6 億美元</div></article>
+      <article class="card"><div class="top"><h3>投資銀行</h3><span class="tag good">受惠</span></div><p>超大型 IPO 帶來承銷收入，22 家承銷銀行參與。</p><div class="data">高盛、摩根士丹利等</div></article>
+      <article class="card"><div class="top"><h3>亞洲科技股</h3><span class="tag bad">利空</span></div><p>分析師指大型基金從亞洲抽錢，短線成為賣壓來源之一。</p><div class="data">台股 11/3 −3.59%、外資賣超 1,073 億元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>Anthropic 的算力帳單有一部分會流向台灣，但上市前先抽走的是台股資金</h2>
+      <p>台灣同時站在兩邊：長期是算力需求的供應者，短期卻是國際基金調度資金時被賣出的市場。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>資金：</b>台北時報 11/2 引述分析師，認為 Anthropic 上市讓大型基金從亞洲抽錢；11/3 外資賣超台股 1,073 億元、連 4 賣。</li>
+        <li><b>股價：</b>11/3 台積電跌 1.5%、聯發科跌 7.43%、鴻海跌 2.19%。</li>
+        <li><b>招股書：</b>本站 10/27 報告已整理，首版招股書把台積電供應列為風險；修訂版新增的 Anthropic Direct 沒有提到台灣廠商。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>訂單：</b>8,954 億美元承諾若逐年兌現，晶片、伺服器、散熱與電源需求會延續。</li>
+        <li><b>資金面：</b>上市前後外資可能持續調節台股，上市後資金是否回流要看首日表現。</li>
+        <li><b>台灣投資人：</b>一般散戶難以參與 IPO 認購，上市後可透過複委託買賣，要承擔高波動與匯率風險。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>AI 供應鏈廠商</b></td><td><span class="tag good">相對有利</span></td><td>算力承諾代表多年需求，但訂單分配要看雲端業者與晶片商。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">短線承壓</span></td><td>國際資金調度造成賣壓，AI 概念股首當其衝。</td></tr>
+          <tr><td><b>複委託投資人</b></td><td><span class="tag">機會與風險並存</span></td><td>上市後可買賣 ANT，但估值高、虧損大、首日波動可能劇烈。</td></tr>
+          <tr><td><b>企業 AI 使用者</b></td><td><span class="tag good">相對有利</span></td><td>模型持續降價，導入 AI 的成本下降（推論）。</td></tr>
+          <tr><td><b>電力與資料中心</b></td><td><span class="tag">好壞參半</span></td><td>全球算力擴張推升機房需求，但台灣本身的電力限制仍在（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>美國媒體強調成長放緩與成本，台灣媒體標題多寫「年增逾 11 倍、最快下週上市」，科技媒體則深入算力承諾與 Anthropic Direct。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>Fortune</td><td>成長與成本</td><td>成長放緩、成本跳升</td><td>季增 47%、營業轉虧、降價 6 億</td></tr>
+          <tr><td>Business Insider</td><td>算力帳單</td><td>營收飆升與驚人的算力帳單</td><td>短期算力 50 億、捐贈費用 20 億</td></tr>
+          <tr><td>The Next Web</td><td>承諾與上市</td><td>170 億營收、8,950 億承諾</td><td>11 月底前上市、估值 1.4～1.5 兆</td></tr>
+          <tr><td>PPC Land</td><td>財報細項</td><td>5.67 億營業虧損</td><td>各費用科目、客戶數、現金流</td></tr>
+          <tr><td>中央社（法新社）</td><td>基本事實</td><td>年增逾 11 倍、最快下週 IPO</td><td>上市時間</td></tr>
+          <tr><td>鉅亨網</td><td>算力支出</td><td>背負近 9,000 億美元算力支出</td><td>非現金損失、算力供應商</td></tr>
+          <tr><td>mashdigi</td><td>算力策略</td><td>Anthropic Direct 直租晶片</td><td>承諾分年、可解約金額、承銷銀行</td></tr>
+          <tr><td>台北時報</td><td>對台股影響</td><td>美股賣壓考驗台股</td><td>上市讓基金從亞洲抽錢</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>第三季營收約 170 億美元，季增約 47%。</li>
+        <li>第三季營業虧損 5.67 億美元，淨損 232.9 億美元。</li>
+        <li>承諾支出約 8,950 億美元。</li>
+        <li>代號 ANT、那斯達克，定價區間未公布。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>淨損很大，但多為帳面損失。</b>只看「虧 1,040 億美元」會誤判現金狀況。</li>
+        <li><b>「最快下週」不是確定日期。</b>定價區間尚未公布，路演最早 11/10。</li>
+        <li><b>年增 12 倍和季增放緩同時成立。</b>前者看規模，後者看趨勢。</li>
+        <li><b>估值多為傳聞。</b>1～2 兆美元的說法都不是公司公布。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>第三季營收</td><td>169.56 億美元（招股書數字）</td><td>約 170 億（多數媒體）、168 億（TNW 早期）</td><td>四捨五入與初版報導。</td></tr>
+          <tr><td>年增率</td><td>約 1,127%（鉅亨網）</td><td>逾 1,100%（中央社）、逾 1,000%（Fortune）、約 12 倍</td><td>同一數字的不同說法；去年同期約 14 億美元。</td></tr>
+          <tr><td>上市時間</td><td>最快下週（法新社）</td><td>11 月底前（TNW）、感恩節前（Bloomberg 10/1）、11/19～20（本站 10/27 引述 Fox Business）</td><td>尚無公司正式日期，各家消息來源不同。</td></tr>
+          <tr><td>估值</td><td>1.4～1.5 兆美元（Bloomberg，經 TNW）</td><td>1～2 兆美元（mashdigi 引述市場傳聞）</td><td>都是傳聞，定價區間公布後才有依據。</td></tr>
+          <tr><td>可動用資金</td><td>約 1,318 億美元（現金與短期投資，mashdigi）</td><td>1,466 億美元（流動性，含信用額度，Fortune）</td><td>統計範圍不同。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與資料，資料截至 2026 年 11 月 3 日 18:00（台灣時間）。SEC 上的 S-1/A 原文未能直接讀取，財務數字取自下列媒體對招股書的整理；不同媒體的數字可能略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">程序與規定</div>
+    <ol class="sources">
+      <li><a href="https://leverageshares.com/us/insights/when-will-anthropic-go-public/" target="_blank" rel="noopener">Leverage Shares — 上市還差的五個步驟與 15 天規定（11 月）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="2">
+      <li><a href="https://fortune.com/2026/11/02/anthropics-growth-slowed-and-costs-jumped-in-the-third-quarter-updated-ipo-filing-shows/" target="_blank" rel="noopener">Fortune — 第三季成長放緩、成本跳升（11/2）</a></li>
+      <li><a href="https://uk.finance.yahoo.com/news/anthropics-amended-ipo-paperwork-reveals-153730799.html" target="_blank" rel="noopener">Business Insider（Yahoo 財經）— 修訂招股書與算力帳單（11/3）</a></li>
+      <li><a href="https://thenextweb.com/news/anthropic-ipo-filing-17bn-revenue-commitments" target="_blank" rel="noopener">The Next Web — 170 億營收與 8,950 億承諾（11/2）</a></li>
+      <li><a href="https://ppc.land/anthropic-swings-to-567m-q3-operating-loss-on-5bn-of-short-term-compute/" target="_blank" rel="noopener">PPC Land — 第三季營業虧損與費用細項（11/3）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/02/marvell-lumentum-ai-deal.html" target="_blank" rel="noopener">CNBC — Marvell 以股票併購 Lumentum（11/2）</a></li>
+      <li><a href="https://www.taipeitimes.com/News/biz/archives/2026/11/02/2003866974" target="_blank" rel="noopener">Taipei Times — 美股賣壓考驗台股（11/2）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202611030023" target="_blank" rel="noopener">Focus Taiwan — 台股第 7 大跌點（11/3）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="9">
+      <li><a href="https://www.cna.com.tw/news/aopl/202611030002.aspx" target="_blank" rel="noopener">中央社 — 第三季營收年增逾 11 倍、最快下週 IPO（11/3）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5627227" target="_blank" rel="noopener">自由財經 — 第三季營收與上市時間（11/3）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6644813" target="_blank" rel="noopener">鉅亨網 — 背負近 9,000 億美元算力支出（11/3）</a></li>
+      <li><a href="https://mashdigi.com/anthropic-ipo-s1a-filing-compute-strategy/" target="_blank" rel="noopener">mashdigi — 8,954 億算力合約與 Anthropic Direct（11/3）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="13">
+      <li><a href="https://stockanalysis.com/stocks/amzn/history/" target="_blank" rel="noopener">Stock Analysis — AMZN 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/googl/history/" target="_blank" rel="noopener">Stock Analysis — GOOGL 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/msft/history/" target="_blank" rel="noopener">Stock Analysis — MSFT 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/nvda/history/" target="_blank" rel="noopener">Stock Analysis — NVDA 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/avgo/history/" target="_blank" rel="noopener">Stock Analysis — AVGO 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/mrvl/history/" target="_blank" rel="noopener">Stock Analysis — MRVL 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/tsm/history/" target="_blank" rel="noopener">Stock Analysis — TSM 歷史價格</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 3 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'Marvell', s:'171.41 美元', v:-12.72},
+    {l:'聯發科', s:'3,675 元（11/3）', v:-7.43},
+    {l:'加權指數', s:'43,307.54（11/3）', v:-3.59},
+    {l:'費城半導體', s:'11/2', v:-3.37},
+    {l:'微軟', s:'507.12 美元', v:-2.83},
+    {l:'台積電 ADR', s:'398.63 美元', v:-1.85},
+    {l:'台積電', s:'2,295 元（11/3）', v:-1.50},
+    {l:'輝達', s:'202.06 美元', v:-1.26},
+    {l:'博通', s:'322.23 美元', v:-1.18},
+    {l:'那斯達克', s:'11/2', v:-1.07},
+    {l:'Alphabet', s:'278.99 美元', v:-0.30},
+    {l:'Amazon', s:'245.63 美元', v:2.20}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

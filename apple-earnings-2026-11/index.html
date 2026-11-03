@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蘋果 FQ4 財報解讀</title>
+<meta name="description" content="蘋果 2026 會計年度第四季財報解讀：營收與 EPS 優於預期，但記憶體成本壓低毛利率財測，服務成長放緩，股價盤後下跌，以及對台灣供應鏈的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#numbers">財報拆解</a></li>
+      <li><a class="link" href="#local">各地市場</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技財報解讀 · 特納斯接任後首份財報 · 資料截至 2026 年 11 月 3 日 18:00（台灣時間）</p>
+      <h1>蘋果營收創同季新高、財測也比預期好，股價卻盤後跌 3%：記憶體正在吃掉毛利</h1>
+      <p class="lede">蘋果美東時間 11 月 2 日盤後公布 2026 會計年度第四季（7～9 月）財報，營收 1,144.8 億美元、年增 12%，每股盈餘 2.10 美元，都優於預期；iPhone 年增 17%，Mac 年增 24%。但下一季毛利率財測只有 45～46%，低於市場預期，主因是記憶體漲價，服務成長也放緩到 2022 年以來最慢，股價盤後約跌 3%。台股 11 月 3 日大立光跌停，但當天大盤也重挫 1,612 點，跌勢不能全算在蘋果頭上。</p>
+    </div>
+    <div class="stmt" aria-label="第四財季營收">
+      <div class="k">2026 會計年度第四季營收</div>
+      <div class="range">1,144.8 億<small>美元</small></div>
+      <div class="was">年增 12% · LSEG 預期 1,133.9 億</div>
+      <div class="stmt-row">
+        <div><div class="v">2.10</div><div class="l">每股盈餘（美元），預期 1.99</div></div>
+        <div><div class="v">45～46%</div><div class="l">下季毛利率財測，預期 46.3%</div></div>
+        <div><div class="v">約 −3%</div><div class="l">11/2 盤後股價</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>九個重點看懂這份財報</h2>
+      <p>一句話：這一季賣得很好，但下一季每賣一台會賺得比較少，市場在意的是後者。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>營收、獲利都優於預期，全年創紀錄。</b>第四財季營收 1,144.8 億美元、年增 12%，每股盈餘 2.10 美元、年增 14%，高於 LSEG 預期的 1,133.9 億美元與 1.99 美元。2026 會計年度營收 4,788 億美元、年增 15%，淨利 1,322 億美元。</div></li>
+      <li><div><b>iPhone 與 Mac 撐起這一季。</b>iPhone 營收 575.8 億美元、年增 17%，創 9 月季度新高；Mac 107.9 億美元、年增 24%，是成長最快的產品線。兩者都已漲價，蘋果 6 月調漲 Mac、iPad，9 月調漲 iPhone。</div></li>
+      <li><div><b>iPad、穿戴裝置不如預期。</b>iPad 62.3 億美元、年減 10%，穿戴、居家與配件 83.0 億美元、年減 8%，兩項都低於 LSEG 預期。</div></li>
+      <li><div><b>本季毛利率有關稅退款墊高。</b>毛利率 47.9%，優於預期的 47.5%，但其中約 1 個百分點來自關稅退款，每股盈餘也因此多出 0.05 美元。MacRumors 整理電話會議內容指出，扣除退款後，毛利率會比上季少約 1 個百分點，主因是記憶體變貴。</div></li>
+      <li><div><b>下一季毛利率財測才是股價下跌的主因。</b>10～12 月毛利率財測為 45～46%，低於 LSEG 預期的 46.3%。蘋果說主要壓力是記憶體成本，Mac 與 iPad 也受記憶體供應限制。</div></li>
+      <li><div><b>服務仍創新高，但成長放緩。</b>服務營收 315.7 億美元、年增約 10%，CNBC 指是 2022 年以來最慢；下一季財測成長 8～9%，低於科技新報引述的市場預期 10%。</div></li>
+      <li><div><b>營收財測反而比預期好。</b>蘋果預估 10～12 月營收年增 7～10%，高於 LSEG 的 6.1%，並稱可望是公司史上營收最高的一季。iPhone Duo 10 月 23 日才開賣，沒有算進這一季；執行長特納斯說目前仍供不應求，沒有供需平衡的時間表。</div></li>
+      <li><div><b>大中華區成長 21%，仍不如預期。</b>大中華區營收 175.4 億美元、年增 21%，創 9 月季度新高，但今周刊與旺報指比分析師預期少逾 10 億美元。Counterpoint 統計中國手機出貨同期年減 10%，是 14 年來低點。</div></li>
+      <li><div><b>股價：美股盤後跌約 3%，台股供應鏈跟著大盤重挫。</b>AAPL 11/2 收 338.32 美元、跌 1.83%（財報公布前），盤後約跌 3%。台股 11/3 大立光跌停收 4,945 元，鴻海跌 2.19%，但加權指數同日跌 3.59%，很難拆出蘋果的單獨影響。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>成績亮眼，股價為什麼還是跌？四個原因</h2>
+      <p>第 1、2 點是蘋果在新聞稿與電話會議中的說法；第 3、4 點是 CNBC、今周刊等媒體與分析師的比較。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>記憶體漲價，賣得越多、壓力越大</h3><p>AI 伺服器搶走記憶體產能，價格一路漲。特納斯承認本季記憶體成本高於 6 月季度，科技新報引述高層說漲勢「前所未見」，壓力會延續到年底。蘋果用漲價抵銷一部分，但下一季毛利率財測仍降到 45～46%，比本季少約 2～3 個百分點。</p></div><div class="ev"><span class="tag">下季毛利率 45～46%</span><span class="tag">Mac、iPad 受記憶體供應限制</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>本季有一次性的關稅退款</h3><p>關稅退款讓本季毛利率多出約 1 個百分點、每股盈餘多出 0.05 美元。蘋果表示應退的關稅大部分已經收到，這筆加分下一季不會再有，比較基準因此變高。</p></div><div class="ev"><span class="tag">約 +1 個百分點毛利率</span><span class="tag">+0.05 美元 EPS</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>服務這台「印鈔機」轉慢</h3><p>服務毛利率高達 76%，是投資人給蘋果高本益比的理由。這一季成長約 10%、是 2022 年以來最慢，下一季財測 8～9% 也低於預期；蘋果提到匯率與手機遊戲疲弱是拖累，但沒有交代 AI 服務何時開始貢獻營收。</p></div><div class="ev"><span class="tag">服務毛利率 76.0%</span><span class="tag">下季成長 8～9%</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>大中華區與周邊產品不如預期</h3><p>大中華區年增 21% 已不錯，但比預期少逾 10 億美元；iPad 年減 10%、穿戴裝置年減 8%。投資人看到的是：除了漲價的 iPhone 與 Mac，其他產品線沒有幫上忙。</p></div><div class="ev"><span class="tag">大中華區 175.4 億美元</span><span class="tag">iPad −10%</span></div></div>
+    </div>
+    <div class="note">財報公布當天，美股本來就不平靜：11/2 費城半導體指數跌 3.37%、那斯達克跌 1.07%，市場也在觀望 11/3 美國期中選舉。AAPL 當天收盤跌 1.83% 時財報還沒公布，屬於大盤賣壓。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>蘋果經營與財報</span><span><i class="g"></i>成本與市場衝擊</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-06</div><div class="what">蘋果調漲 Mac 與 iPad 售價。</div></li>
+        <li class="key"><div class="date">2026-09-01</div><div class="what"><b>特納斯（John Ternus）接任執行長</b>，庫克卸任。</div></li>
+        <li class="key"><div class="date">2026-09</div><div class="what">調漲 iPhone 售價（今周刊指漲 100 美元）。</div></li>
+        <li><div class="date">2026-09-26</div><div class="what">2026 會計年度第四季結束。</div></li>
+        <li class="key"><div class="date">2026-10-23</div><div class="what"><b>iPhone Duo 開賣</b>，之後傳出少數內螢幕損壞，蘋果稱只影響「少數」裝置。</div></li>
+        <li class="geo"><div class="date">2026-10-29</div><div class="what">Alphabet 財報後單日跌 12.64%，AI 支出疑慮升溫。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-02</div><div class="what">美股盤中：費半跌 3.37%，AAPL 收 338.32 美元、跌 1.83%。</div></li>
+        <li class="key"><div class="date">2026-11-02</div><div class="what"><b>盤後公布財報</b>，營收 1,144.8 億美元；毛利率財測 45～46%，<b>股價盤後約跌 3%</b>。</div></li>
+        <li class="geo"><div class="date">2026-11-03</div><div class="what">台股重挫 1,612.6 點，<b>大立光跌停收 4,945 元</b>。</div></li>
+        <li><div class="date">2026-11-03</div><div class="what">美國期中選舉投票，美股當天的反應截至查證時尚未出現。</div></li>
+        <li class="key"><div class="date">2026-11-12</div><div class="what">每股 0.27 美元股利的登記日；<b>11/16 發放</b>。</div></li>
+        <li class="key"><div class="date">2026-12</div><div class="what">下一季（10～12 月）結束，檢驗 iPhone Duo 與記憶體成本。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 numbers -->
+<section id="numbers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 財報拆解</div>
+      <h2>五條產品線，兩條拉著全家跑</h2>
+      <p>數字取自蘋果送交 SEC 的財報附件（8-K），單位為億美元；年增率由同表去年同期數字計算。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">各產品線營收（億美元，7～9 月）</p>
+        <p class="chart-sub">括號內為年增率；藍色長條是營收，數字標在右側</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="iPhone：575.8 億美元，去年同期 490.3 億，年增 17.5%"><div class="lab">iPhone<small>+17.5%</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">575.8</div></div>
+          <div class="hbar" data-tip="服務：315.7 億美元，去年同期 287.5 億，年增 9.8%"><div class="lab">服務<small>+9.8%</small></div><div class="track"><div class="fill" style="width:54.8%"></div></div><div class="val">315.7</div></div>
+          <div class="hbar" data-tip="Mac：107.9 億美元，去年同期 87.3 億，年增 23.7%"><div class="lab">Mac<small>+23.7%</small></div><div class="track"><div class="fill" style="width:18.7%"></div></div><div class="val">107.9</div></div>
+          <div class="hbar" data-tip="穿戴、居家與配件：83.0 億美元，去年同期 90.1 億，年減 7.9%"><div class="lab">穿戴與配件<small>−7.9%</small></div><div class="track"><div class="fill" style="width:14.4%"></div></div><div class="val">83.0</div></div>
+          <div class="hbar" data-tip="iPad：62.3 億美元，去年同期 69.5 億，年減 10.4%"><div class="lab">iPad<small>−10.4%</small></div><div class="track"><div class="fill" style="width:10.8%"></div></div><div class="val">62.3</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>用便當店來想毛利率</h3>
+        <ul class="plain small">
+          <li><b>漲價：</b>便當從 100 元漲到 110 元，客人照樣排隊，所以這一季營收好看。</li>
+          <li><b>成本：</b>但排骨（記憶體）一下子貴很多，漲價補不完，每個便當賺的比例變少，這就是毛利率從 47.9% 降到 45～46%。</li>
+          <li><b>一次性收入：</b>本季還有一筆政府退回的稅（關稅退款），讓帳面多出約 1 個百分點，下一季沒有了。</li>
+          <li><b>飲料（服務）：</b>毛利 76% 的飲料賣得還不錯，但成長比以前慢。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">關鍵財務數字</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>2026 FQ4</th><th>2025 FQ4</th><th>變化</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>總營收</b></td><td class="num">1,144.8 億</td><td class="num">1,024.7 億</td><td class="num">+11.7%</td><td>9 月季度新高</td></tr>
+          <tr><td><b>產品毛利率</b></td><td class="num">37.2%</td><td class="num">36.2%</td><td class="num">+1.0 個百分點</td><td>含關稅退款</td></tr>
+          <tr><td><b>服務毛利率</b></td><td class="num">76.0%</td><td class="num">75.3%</td><td class="num">+0.7 個百分點</td><td>服務營收創歷史新高</td></tr>
+          <tr><td><b>營業利益</b></td><td class="num">356.3 億</td><td class="num">324.3 億</td><td class="num">+9.9%</td><td>營業費用 192 億、年增 21%</td></tr>
+          <tr><td><b>淨利</b></td><td class="num">307.1 億</td><td class="num">274.7 億</td><td class="num">+11.8%</td><td>9 月季度新高</td></tr>
+          <tr><td><b>每股盈餘</b></td><td class="num">2.10 美元</td><td class="num">1.85 美元</td><td class="num">+13.5%</td><td>含關稅退款 0.05 美元</td></tr>
+          <tr><td><b>回饋股東</b></td><td class="num">約 280 億</td><td class="num">—</td><td class="num">—</td><td>股利約 39 億、買回約 240 億</td></tr>
+          <tr><td><b>現金與有價證券</b></td><td class="num">1,369.4 億</td><td class="num">1,324.2 億</td><td class="num">+3.4%</td><td>總負債約 800 億；不再以「淨現金為零」為目標</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">說明：MacRumors 整理的電話會議內容中，財務長提到淨利 370 億美元，與新聞稿的 307 億美元不一致，本報告以 SEC 財報附件為準。</p>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對各地市場的影響</div>
+      <h2>大中華區成長最快，日本是唯一衰退的市場</h2>
+      <p>蘋果是美國公司，但營收超過一半來自美洲以外。下面看五大地區與蘋果本身；全球供應鏈的外溢影響放在第 6 節。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">美洲</div><div class="v">486.8 億</div><div class="d">年增 10.2%</div></div>
+      <div class="tile"><div class="l">歐洲</div><div class="v">320.1 億</div><div class="d">年增 11.5%</div></div>
+      <div class="tile"><div class="l">大中華區</div><div class="v">175.4 億</div><div class="d">年增 21.0%，仍低於預期</div></div>
+      <div class="tile"><div class="l">日本</div><div class="v">65.4 億</div><div class="d">年減 1.4%</div></div>
+      <div class="tile"><div class="l">其他亞太</div><div class="v">97.1 億</div><div class="d">年增 15.0%</div></div>
+      <div class="tile"><div class="l">活躍裝置</div><div class="v">逾 25 億</div><div class="d">各產品、各地區皆創新高</div></div>
+      <div class="tile"><div class="l">製造採購承諾</div><div class="v">+330 億</div><div class="d">6 月到 9 月增加，為改善供應</div></div>
+      <div class="tile"><div class="l">下季營業費用</div><div class="v">204～208 億</div><div class="d">財測，年增 11～13%</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li><b>市場：</b>美洲營收 486.8 億美元，仍是最大市場。</li>
+        <li><b>政策：</b>關稅退款大部分已入帳；11/3 期中選舉結果可能影響之後的關稅與科技政策（推論）。</li>
+        <li><b>股價：</b>AAPL 收盤市值略低於 5 兆美元。</li>
+      </ul></div>
+      <div class="card"><h3>中國大陸與大中華區</h3><ul class="plain">
+        <li><b>營收：</b>175.4 億美元，全年 823.8 億美元、年增 28%。</li>
+        <li><b>市場背景：</b>Counterpoint 指中國手機出貨年減 10%，是 14 年同期低點；記憶體漲價讓陸系品牌保守減產、優先做高毛利機種。</li>
+        <li><b>相對表現：</b>在整體市場萎縮下仍成長 21%，代表蘋果搶到份額；但未達預期，蘋果沒有說明落差原因。</li>
+      </ul></div>
+      <div class="card"><h3>歐洲、日本與其他亞太</h3><ul class="plain">
+        <li><b>歐洲：</b>320.1 億美元，年增 11.5%。</li>
+        <li><b>日本：</b>65.4 億美元，年減 1.4%，是唯一衰退的地區。</li>
+        <li><b>其他亞太：</b>97.1 億美元，年增 15%；菲律賓教育部訂購 17 萬台 MacBook Neo，是蘋果史上最大的 Mac 教育訂單。</li>
+      </ul></div>
+      <div class="card"><h3>蘋果本身</h3><ul class="plain">
+        <li><b>經營團隊：</b>特納斯 9 月 1 日接任後的首份財報，他說公司「從未如此有信心」。</li>
+        <li><b>供應：</b>Mac、iPad 受記憶體供應限制，iPhone Duo 供不應求。</li>
+        <li><b>資本配置：</b>本季回饋股東約 280 億美元，宣布每股 0.27 美元股利。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>財報利多被毛利率蓋過，台股供應鏈又碰上大盤重挫</h2>
+      <p>美股 11/2 收盤數字是在財報公布前；財報的反應先出現在盤後，再傳到 11/3 的台股。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/2 美股、11/3 台股相關漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色長條為盤後報導的約略數字</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>美股盤後：</b>CNBC 指 AAPL 盤後約跌 3%，今周刊稱一度跌逾 4%。賣壓主因是毛利率財測與服務放緩，而不是營收。</li>
+          <li><b>美股盤中：</b>AAPL 收 338.32 美元、跌 1.83%，與那斯達克跌 1.07%、微軟跌 2.83% 同屬科技股賣壓，當時財報還沒出來。</li>
+          <li><b>台股：</b>大立光跌停，鴻海跌 2.19%、台積電跌 1.5%；同日加權指數跌 3.59%、外資賣超逾千億元，主因是費半重挫與 AI 疑慮，蘋果只是其中一個因素。</li>
+          <li><b>法人看法：</b>經濟日報引述法人，認為 iPhone 零組件進入全年出貨旺季，大立光、美律可望受惠，與股價走勢相反。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">AAPL</td><td><b>蘋果</b></td><td>美股</td><td class="num">338.32 美元</td><td class="num down">−1.83%</td><td class="period">10/23 起 −2.71%；盤後約 −3%</td><td>盤中隨科技股下跌；盤後因毛利率財測與服務放緩再跌。</td></tr>
+          <tr><td class="num">3008</td><td><b>大立光</b></td><td>台股</td><td class="num">4,945 元</td><td class="num down">約 −10%</td><td class="period">跌停價</td><td>跌停；法人雖看好旺季，仍被大盤與高價股賣壓拖累。</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">245.5 元</td><td class="num down">−2.19%</td><td class="period">未查到</td><td>iPhone 主要組裝廠；法人看好伺服器轉型，跌幅小於大盤。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,295 元</td><td class="num down">−1.50%</td><td class="period">未查到</td><td>蘋果晶片代工；當日相對抗跌，仍拖累指數約 280 點。</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">398.63 美元</td><td class="num down">−1.85%</td><td class="period">10/26 起 −6.07%</td><td>隨費半下跌。</td></tr>
+          <tr><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">507.12 美元</td><td class="num down">−2.83%</td><td class="period">10/26 起 −4.78%</td><td>大型科技股同步承壓，作為比較。</td></tr>
+          <tr><td class="num">GOOGL</td><td><b>Alphabet</b></td><td>美股</td><td class="num">278.99 美元</td><td class="num down">−0.30%</td><td class="period">10/26 起 −11.94%</td><td>10/29 財報後重挫 12.64%，作為比較。</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克指數</b></td><td>美股</td><td class="num">未列</td><td class="num down">−1.07%</td><td class="period">未查到</td><td>AI 與晶片股續跌、期中選舉觀望。</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">43,307.54</td><td class="num down">−3.59%</td><td class="period">4 個交易日 −7.93%</td><td>史上第 7 大跌點，外資賣超 1,073 億元。</td></tr>
+          <tr><td class="num">2439、4958、2313、4938</td><td><b>美律、臻鼎、華通、和碩</b></td><td>台股</td><td class="num">未查到</td><td class="num">未查到</td><td class="period">未查到</td><td>法人點名的供應鏈，未查到當日收盤數字。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 2026/11/2 收盤、台股為 2026/11/3 收盤；來源：Stock Analysis、中央社 Focus Taiwan、CNBC、今周刊、MoneyDJ。大立光跌幅依跌停價概算。「期間走勢」由 Stock Analysis 收盤價計算。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>連蘋果都被記憶體卡住，消費電子的成本壓力已經擋不住</h2>
+      <p>影響沿著三條線擴散：記憶體成本轉嫁到終端價格，手機市場萎縮重新分配份額，AI 變現的疑問則從雲端延伸到手機。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>記憶體成本傳導</h3><ul class="plain small">
+        <li>蘋果是全球議價能力最強的買家之一，仍承認記憶體成本壓過漲價效果。</li>
+        <li>議價力較弱的手機、PC 品牌壓力會更大（推論）。</li>
+        <li>陸系手機品牌已保守減產、改做高毛利機種。</li>
+      </ul></article>
+      <article class="card"><h3>終端漲價</h3><ul class="plain small">
+        <li>蘋果 6 月調漲 Mac、iPad，9 月調漲 iPhone。</li>
+        <li>漲價後 iPhone 與 Mac 仍成長，代表高階需求撐得住。</li>
+        <li>低價機種與平板受影響較大，iPad 年減 10% 可作參考（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>中國手機市場</h3><ul class="plain small">
+        <li>出貨年減 10%、14 年低點。</li>
+        <li>蘋果大中華區仍年增 21%，份額向蘋果集中。</li>
+        <li>但成長低於預期，市場對中國需求的信心仍不穩。</li>
+      </ul></article>
+      <article class="card"><h3>AI 變現路線</h3><ul class="plain small">
+        <li>特納斯把硬體當成新版 Siri 的主要變現方式。</li>
+        <li>投資人想看的是 AI 訂閱或服務收入，目前沒有數字。</li>
+        <li>雲端業者被質疑 AI 花太多錢，蘋果則被質疑 AI 賺不到錢（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>匯率與服務</h3><ul class="plain small">
+        <li>服務營收近期受約 4 個百分點匯率逆風。</li>
+        <li>下一季預期還有約 0.5 個百分點。</li>
+        <li>手機遊戲疲弱預期延續，影響 App Store 抽成。</li>
+      </ul></article>
+      <article class="card"><h3>大型科技股估值</h3><ul class="plain small">
+        <li>Alphabet 10/29 單日跌 12.64%，蘋果盤後再跌約 3%。</li>
+        <li>市場從「看營收」轉向「看利潤率與現金流」。</li>
+        <li>財報好不再是上漲的保證（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依蘋果財測與電話會議內容整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>營收創高，毛利率落在財測區間</h3><ul class="plain small">
+        <li>10～12 月營收年增 7～10%，如蘋果所說創單季新高。</li>
+        <li>毛利率 45～46%，記憶體壓力由漲價分攤。</li>
+        <li>股價走勢取決於服務與 AI 有沒有新故事。</li>
+      </ul><p class="trig">觸發條件：記憶體價格不再明顯上漲，iPhone Duo 產能逐步拉高。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>記憶體再漲、供應再卡</h3><ul class="plain small">
+        <li>毛利率跌破 45%，或 Mac、iPad 缺貨擴大。</li>
+        <li>蘋果可能再漲價或壓供應商價格。</li>
+        <li>台灣零組件廠的獲利空間被擠壓（推論）。</li>
+      </ul><p class="trig">觸發條件：記憶體合約價續漲、iPhone Duo 品質問題擴大。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>Duo 熱賣、成本見頂</h3><ul class="plain small">
+        <li>iPhone Duo 供需改善，營收接近財測上緣。</li>
+        <li>記憶體漲勢趨緩，毛利率回到 46% 以上。</li>
+        <li>市場重新聚焦服務與裝置量創新高。</li>
+      </ul><p class="trig">觸發條件：記憶體產能擴充到位、服務成長回到 10% 以上。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/3 美股開盤</b>：盤後的跌幅能否守住，以及期中選舉結果對科技股的影響。</li>
+      <li><b>記憶體合約價</b>：直接決定下一季毛利率會落在財測哪一端。</li>
+      <li><b>iPhone Duo 供需與螢幕問題</b>：蘋果說沒有供需平衡的時間表，退貨比例是否維持「很小」。</li>
+      <li><b>12 月上旬台廠 11 月營收</b>：大立光、鴻海、和碩等月營收，檢驗法人說的「出貨旺季」。</li>
+      <li><b>服務與 AI 收入</b>：下一季服務能否守住 8～9% 成長，以及是否揭露 AI 相關營收。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>記憶體廠</h3><span class="tag good">受惠</span></div><p>連蘋果都要承擔漲價，代表記憶體廠議價力仍強（推論）。</p><div class="data">蘋果：記憶體成本高於 6 月季度</div></article>
+      <article class="card"><div class="top"><h3>手機光學鏡頭</h3><span class="tag">好壞參半</span></div><p>法人看好旺季出貨，但股價已先被高價股賣壓打下來。</p><div class="data">大立光 11/3 跌停收 4,945 元</div></article>
+      <article class="card"><div class="top"><h3>PCB 與載板</h3><span class="tag">好壞參半</span></div><p>經濟日報指，若年度議價能轉嫁 PCB 成本，臻鼎、華通的 2027 年產品組合有利；轉嫁不了則壓縮毛利。</p><div class="data">法人點名臻鼎-KY、華通</div></article>
+      <article class="card"><div class="top"><h3>組裝代工</h3><span class="tag">好壞參半</span></div><p>iPhone 與 Mac 出貨好，但代工毛利本來就薄；法人看好鴻海、廣達、和碩轉向伺服器。</p><div class="data">鴻海 11/3 −2.19%</div></article>
+      <article class="card"><div class="top"><h3>聲學與零組件</h3><span class="tag good">受惠</span></div><p>旺季出貨帶動稼動率，但要看蘋果是否把成本壓力轉回供應商（推論）。</p><div class="data">法人點名美律</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag">好壞參半</span></div><p>iPhone、Mac 成長對台積電是加分，但台積電股價更受 AI 與外資賣壓左右。</p><div class="data">台積電 11/3 −1.50%</div></article>
+      <article class="card"><div class="top"><h3>陸系手機品牌</h3><span class="tag bad">利空</span></div><p>記憶體漲價下保守減產，份額被蘋果拿走。</p><div class="data">中國手機出貨年減 10%（Counterpoint）</div></article>
+      <article class="card"><div class="top"><h3>App 與手機遊戲</h3><span class="tag bad">利空</span></div><p>蘋果預期手機遊戲疲弱延續，對遊戲開發商與 App Store 抽成都不利。</p><div class="data">服務下季財測 +8～9%</div></article>
+      <article class="card"><div class="top"><h3>PC 與教育市場</h3><span class="tag good">受惠</span></div><p>Mac 漲價後仍年增 24%，教育標案擴大，Mac 份額可能擴大（推論）。</p><div class="data">菲律賓 17 萬台 MacBook Neo 訂單</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>訂單看起來沒問題，台灣供應鏈要擔心的是誰來吸收成本</h2>
+      <p>台灣最關心三件事：旺季出貨能不能兌現、記憶體與 PCB 漲價由誰吸收，以及蘋果鏈股價為何跟法人看法相反。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>股價：</b>11/3 大立光跌停，鴻海跌 2.19%、台積電跌 1.5%，但同日大盤跌 3.59%，賣壓來自多個原因。</li>
+        <li><b>法人看法：</b>經濟日報引述法人，看好大立光、美律受惠出貨旺季，臻鼎、華通則看成本能否轉嫁。</li>
+        <li><b>採購：</b>蘋果製造採購承諾 6～9 月增加 330 億美元，用來改善供應。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>年度議價：</b>蘋果毛利率被壓，可能回頭要求供應商降價，台廠轉嫁成本的空間變小。</li>
+        <li><b>匯率：</b>新台幣 11/3 貶到 32.76 元，以美元報價的出口商換回台幣時較有利，部分抵銷成本壓力。</li>
+        <li><b>產品組合：</b>Mac 成長快、iPad 衰退，對不同零組件廠的影響會分化。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>蘋果供應鏈廠商</b></td><td><span class="tag">好壞參半</span></td><td>出貨量有撐，但成本轉嫁與年度議價是壓力。</td></tr>
+          <tr><td><b>記憶體相關廠商</b></td><td><span class="tag good">相對有利</span></td><td>連蘋果都承擔漲價，報價優勢延續（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">波動加大</span></td><td>蘋果鏈與大盤同步重挫，個股消息被整體賣壓蓋過。</td></tr>
+          <tr><td><b>複委託持有 AAPL 者</b></td><td><span class="tag bad">短線承壓</span></td><td>盤後約跌 3%；換回台幣時有新台幣貶值的匯兌收益。</td></tr>
+          <tr><td><b>消費者</b></td><td><span class="tag bad">負擔增加</span></td><td>iPhone、Mac、iPad 都已漲價；台灣售價變化未查到官方說明。</td></tr>
+          <tr><td><b>以美元計價的出口商</b></td><td><span class="tag good">相對有利</span></td><td>新台幣貶值，換回的台幣變多（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>美國媒體看毛利率與服務，台灣媒體把焦點放在供應鏈與記憶體，陸港角度則聚焦大中華區不如預期。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>蘋果官方</td><td>紀錄</td><td>9 月季度營收新高</td><td>服務歷史新高、活躍裝置新高</td></tr>
+          <tr><td>CNBC</td><td>實際對預期</td><td>特納斯首場電話會議</td><td>毛利率財測令人失望、iPad 不如預期</td></tr>
+          <tr><td>MacRumors</td><td>完整數字</td><td>營收 1,145 億、獲利 307 億</td><td>扣除關稅退款後毛利率下滑、財測細項</td></tr>
+          <tr><td>中央社</td><td>基本事實</td><td>營收優於預期、iPhone 強勁</td><td>iPhone 熱銷</td></tr>
+          <tr><td>經濟日報</td><td>台灣供應鏈</td><td>法人看好大立光、華通</td><td>旺季出貨、PCB 成本轉嫁</td></tr>
+          <tr><td>今周刊（鉅亨網）</td><td>股價為何跌</td><td>「沒這麼好賺了」</td><td>毛利率、大中華區不如預期</td></tr>
+          <tr><td>科技新報</td><td>成本</td><td>記憶體成本壓力加劇</td><td>漲勢「前所未見」、延續到年底</td></tr>
+          <tr><td>旺報（中時）</td><td>中國市場</td><td>陸手機出貨 14 年低</td><td>大中華區失色、Counterpoint 數據</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>營收 1,144.8 億美元、每股盈餘 2.10 美元，都優於預期。</li>
+        <li>iPhone 與 Mac 強勁，iPad 與穿戴裝置偏弱。</li>
+        <li>下一季毛利率 45～46% 低於預期，記憶體是主因。</li>
+        <li>股價盤後下跌。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「優於預期」與「股價下跌」並存。</b>台灣標題多寫前者，美國標題多寫毛利率。</li>
+        <li><b>11/2 收盤跌 1.83% 不是財報反應。</b>那是公布前的盤中賣壓。</li>
+        <li><b>法人看好與股價下跌不矛盾。</b>法人談的是出貨，股價反映的是整體賣壓與利潤率。</li>
+        <li><b>時區。</b>美東 11/2 盤後是台灣 11/3 清晨，台股開盤才反映。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>毛利率市場預期</td><td>46.3%（CNBC／LSEG）</td><td>47%（科技新報）</td><td>不同機構的共識值。</td></tr>
+          <tr><td>營收成長市場預期</td><td>6.1%（LSEG）</td><td>5.9%（FactSet，科技新報）</td><td>不同統計機構。</td></tr>
+          <tr><td>盤後跌幅</td><td>約 3%（CNBC）</td><td>一度逾 4%（今周刊）</td><td>盤後報價時間點不同，非收盤價。</td></tr>
+          <tr><td>淨利</td><td>307.1 億美元（新聞稿、SEC）</td><td>370 億美元（MacRumors 引述財務長）</td><td>可能是口誤或轉錄錯誤，以 SEC 文件為準。</td></tr>
+          <tr><td>iPhone 漲價時間</td><td>6 月全面調價（今周刊）</td><td>Mac、iPad 6 月，iPhone 9 月（MacRumors）</td><td>今周刊把不同產品的調價合併描述。</td></tr>
+          <tr><td>iPad 營收</td><td>62.3 億美元（SEC）</td><td>62.2 億美元（CNBC 內文）</td><td>四捨五入。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 11 月 3 日 18:00（台灣時間）。不同媒體的數字可能因時間點不同略有出入（見第 10 節）。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/" target="_blank" rel="noopener">Apple Newsroom — 第四季財報新聞稿（11/2）</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm" target="_blank" rel="noopener">SEC — Apple 8-K 財報附件（11/2）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://www.cnbc.com/2026/11/02/apple-aapl-q4-2026-earnings-live-updates.html" target="_blank" rel="noopener">CNBC — 蘋果財報即時更新（11/2）</a></li>
+      <li><a href="https://www.macrumors.com/2026/11/02/apple-4q-2026-earnings/" target="_blank" rel="noopener">MacRumors — 蘋果 4Q 2026 財報與電話會議（11/2）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202611030023" target="_blank" rel="noopener">Focus Taiwan — 台股第 7 大跌點（11/3）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="6">
+      <li><a href="https://money.udn.com/money/story/5612/9853396" target="_blank" rel="noopener">經濟日報 — 法人看好大立光、華通等供應鏈（11/3）</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183025/post/202611030004/" target="_blank" rel="noopener">今周刊 — 營收優預期、股價盤後卻跌（11/3）</a></li>
+      <li><a href="https://finance.technews.tw/2026/11/03/apple-inc-condensed-consolidated-statements-of-operations" target="_blank" rel="noopener">科技新報 — 記憶體成本壓力加劇（11/3）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261103002236-260409" target="_blank" rel="noopener">旺報 — 陸手機出貨 14 年低、蘋果大中華區失色（11/3）</a></li>
+      <li><a href="https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=1d02ba92-4d9c-4fe5-9f81-d07e938bad3f" target="_blank" rel="noopener">MoneyDJ — 台股盤後重挫 1,612 點（11/3）</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183008/post/202611030017/" target="_blank" rel="noopener">今周刊 — 台股大跌原因與大立光跌停（11/3）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="12">
+      <li><a href="https://stockanalysis.com/stocks/aapl/history/" target="_blank" rel="noopener">Stock Analysis — AAPL 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/tsm/history/" target="_blank" rel="noopener">Stock Analysis — TSM 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/msft/history/" target="_blank" rel="noopener">Stock Analysis — MSFT 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/googl/history/" target="_blank" rel="noopener">Stock Analysis — GOOGL 歷史價格</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 3 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'大立光', s:'4,945 元 跌停（11/3）', v:-9.93, est:true},
+    {l:'加權指數', s:'43,307.54（11/3）', v:-3.59},
+    {l:'費城半導體', s:'11/2', v:-3.37},
+    {l:'蘋果 盤後', s:'約略，非收盤', v:-3.00, est:true},
+    {l:'微軟', s:'507.12 美元', v:-2.83},
+    {l:'鴻海', s:'245.5 元（11/3）', v:-2.19},
+    {l:'台積電 ADR', s:'398.63 美元', v:-1.85},
+    {l:'蘋果 盤中', s:'338.32 美元', v:-1.83},
+    {l:'台積電', s:'2,295 元（11/3）', v:-1.50},
+    {l:'那斯達克', s:'11/2', v:-1.07},
+    {l:'Alphabet', s:'278.99 美元', v:-0.30}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
