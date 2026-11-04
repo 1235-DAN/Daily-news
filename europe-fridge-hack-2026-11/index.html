@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>歐洲超市冰箱遭駭</title>
+<meta name="description" content="2026 年 10 月法國、11 月歐洲多國超市冷凍設備遭駭客遠端調到 50°C：攻擊手法、Danfoss 控制器漏洞、受害業者、調查與歸因、股價反應、對台灣冷鏈的啟示。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+.nav .brand{font-weight:900; font-size:14px; white-space:nowrap; color:var(--ink)}
+.nav .home{font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .nav .home span{display:none}
+  .wrap{padding:0 16px}
+  .nav .brand{display:none}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home" href="../index.html">← <span>新聞入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">資安解讀 · 物聯網與食品供應鏈 · 資料截至 2026 年 11 月 4 日 09:44（台灣時間）</p>
+      <h1>半夜把冰箱變烤箱：歐洲超市冷凍櫃三週內兩度遭駭，密碼竟是「admin＋今天日期」</h1>
+      <p class="lede">10 月 11 日深夜，法國數百家超市的冷凍設備被遠端切換成「除霜模式」，溫度被推到 50°C，食物整批報廢；11 月 2 日凌晨，同樣手法擴散到比利時、瑞典、愛爾蘭、荷蘭、盧森堡、愛沙尼亞、芬蘭等國。被入侵的是丹麥 Danfoss 等廠商的冷凍控制器，許多老舊設備直接連上網路、使用很好猜的密碼。至今沒有人宣稱犯案、也沒有人勒索，歐盟農業執委認為這是蓄意破壞食品供應鏈。</p>
+    </div>
+    <div class="stmt" aria-label="冷凍櫃被調到的溫度">
+      <div class="k">冷凍櫃被遠端調到的溫度</div>
+      <div class="range">50<small>°C</small></div>
+      <div class="was">諾曼第一家店測到 80°C · 正常冷凍約 −18°C</div>
+      <div class="stmt-row">
+        <div><div class="v">≈700</div><div class="l">法國受影響超市（報導）</div></div>
+        <div><div class="v">7+</div><div class="l">第二波受害國</div></div>
+        <div><div class="v">2,765</div><div class="l">可公開連線的控制系統</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>不偷資料、不要贖金，只毀掉食物：8 個重點看懂這波攻擊</h2>
+      <p>懶人包：超市的冷凍設備為了方便遠端維修而連上網路，結果大門沒鎖；有人連續兩次趁半夜把冰箱調成加熱。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>第一波：法國，10 月 11 日深夜。</b>Intermarché、Coopérative U、家樂福、Monoprix、E.Leclerc 等連鎖受害，報導中的受影響門市從約 500 到約 700 家不等；Intermarché 執行長說全國一天損失「數千萬歐元」。</div></li>
+      <li><div><b>第二波：歐洲至少 7 國，11 月 2 日凌晨。</b>比利時家樂福 700 家中 15 家、Colruyt 旗下 5 家 Spar、瑞典 ICA 23 家、Coop 6～7 家、愛爾蘭 SuperValu 13 家受影響，Delhaize 有數十家店出問題。</div></li>
+      <li><div><b>手法很單純：切成除霜模式。</b>攻擊者遠端讓冷凍設備的蒸發器（負責吸熱製冷的零件）進入除霜，部分把除霜時間從 1 小時拉長到 8 小時以延後警報，溫度最高到 50°C。</div></li>
+      <li><div><b>漏洞在老設備與弱密碼。</b>Danfoss 的 AK-SC355 與 AK-SM800 分別在 2016、2021 年停止支援；研究人員發現隱藏的「每日驗證碼」，用 admin 加上設備日期就能登入。</div></li>
+      <li><div><b>暴露在網路上的設備數以千計。</b>Claroty 研究團隊找到 2,765 個可公開連線的系統；Censys 統計全球約 1,000 套 Danfoss StoreView 暴露在外。</div></li>
+      <li><div><b>美國軍方也可能是受害者。</b>8 月至少 6 處美軍基地福利商店冷凍設備異常，美國陸軍刑事調查部門與法國執法單位合作調查。</div></li>
+      <li><div><b>誰做的？至今沒有答案。</b>沒有組織宣稱犯案；歐洲情報官員指俄羅斯正升級「影子戰爭」，但沒有官方把攻擊歸咎任何國家；也有資安專家認為可能只是有人在胡鬧。</div></li>
+      <li><div><b>台灣：未見受害，但冷鏈設備同樣連網。</b>截至查證時，未查到台灣業者受害或資安主管機關提醒；超市、超商與冷鏈物流的遠端管理設備，是值得檢查的同類風險（推論）。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼這麼容易被駭？四個破口疊在一起</h2>
+      <p>第 1、2 點來自資安研究與法國主管機關；第 3 點是《金融時報》與資安業者的觀察；第 4 點是調查單位與媒體的說法。</p>
+    </div>
+    <div class="note">比喻：超市後台的冷凍控制器就像一台「遙控器」。為了讓維修廠商不用到店就能調整，遙控器被放到網路上；而它的密碼是「admin＋今天日期」，等於把家門鑰匙放在門口地墊下。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>管理介面直接暴露在網路上</h3><p>每台控制器都內建網頁伺服器，維修人員用瀏覽器就能遠端設定溫度、啟動除霜。法國國家資訊系統安全局（ANSSI）指出，管理介面直接暴露「違反最佳做法」，建議只允許可信任的 IP 位址遠端管理。英國業者統計，掃描到的暴露設備近 60% 在法國。</p></div><div class="ev"><span class="tag">2,765 個公開系統</span><span class="tag">法國約占 60%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>停產設備與隱藏後門</h3><p>Danfoss 說受影響設備多是停產產品，或沒更新韌體（設備內建的控制程式）的現役產品。資安公司 Claroty 2025 年發現 AK-SM 800A 有驗證繞過漏洞（CVE-2025-41450、41451），可遠端執行指令；修補版本 R4.3.1 已推出，但停產機種不會再更新。</p></div><div class="ev"><span class="tag">AK-SC355 2016 停產</span><span class="tag">AK-SM800 2021 停產</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>冷凍系統外包，沒人管資安</h3><p>多數連鎖超市把冷凍系統管理外包，承包商可能不了解設備缺乏防護，也可能用弱密碼（《金融時報》，公視轉述）。Bitdefender 主管傑克森指出，更新要暫時斷線，業者常因此延後。瑞典 ICA 也說受影響的是外部供應商的系統。</p></div><div class="ev"><span class="tag">ICA 23 店受影響</span><span class="tag">中央 IT 未受影響</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>半夜、沒人、沒警報</h3><p>攻擊都在凌晨進行（第二波約凌晨 2 點），店內人力少；拉長除霜時間能延後警報觸發。等早上員工發現，冷凍食品已經全毀。</p></div><div class="ev"><span class="tag">除霜 1 → 8 小時</span><span class="tag">約凌晨 2 點</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>漏洞與修補</span><span><i class="g"></i>攻擊事件</span><span><i></i>調查與應對</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2025-03-24</div><div class="what">Claroty 把漏洞通報 Danfoss。</div></li>
+        <li class="key"><div class="date">2025-08</div><div class="what">Danfoss 推出修補韌體 R4.3.1。</div></li>
+        <li class="geo"><div class="date">2026-08</div><div class="what">至少 6 處<b>美軍福利商店</b>冷凍設備異常，美方調查是否遭駭。</div></li>
+        <li class="key"><div class="date">2026-08</div><div class="what">Claroty 公開研究：2,765 個系統可公開連線。</div></li>
+        <li class="geo"><div class="date">2026-10-11</div><div class="what"><b>法國第一波</b>：數百家超市冷凍櫃深夜被調到 50°C。</div></li>
+        <li><div class="date">2026-10-12</div><div class="what">巴黎檢方立案；CERT-FR 發布警報，10/13 擴大到 Copeland 與 Dixell 控制器。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-02</div><div class="what"><b>第二波</b>：比、盧、瑞、愛、荷、愛沙尼亞、芬蘭等國超市受害。</div></li>
+        <li><div class="date">2026-11-02</div><div class="what">比利時檢方立案；歐盟執委會稱數位威脅日益影響日常生活。</div></li>
+        <li><div class="date">2026-11-03</div><div class="what">歐盟召開跨機構工作小組會議；Copeland 證實 xweb 控制器遭鎖定。</div></li>
+        <li><div class="date">2026-11-05</div><div class="what">美國零售業資安分享組織（RH-ISAC）營運技術小組與 Google Cloud 開會。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>法國損失最重，第二波範圍更廣但每家受害門市較少</h2>
+      <p>受害地區是法國與北歐、比荷盧、愛爾蘭；設備廠商 Danfoss 在丹麥，Copeland 在美國。各連鎖的受害比例多半在個位數百分比。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">法國 Intermarché／Netto</div><div class="v">180～300</div><div class="d">母公司說約 180；BFM-TV 報 300</div></div>
+      <div class="tile"><div class="l">法國 Coopérative U</div><div class="v">≥80～100</div><div class="d">報導說法不同</div></div>
+      <div class="tile"><div class="l">法國家樂福</div><div class="v">80</div><div class="d">Monoprix 約 5% 門市</div></div>
+      <div class="tile"><div class="l">阿爾薩斯兩店損失</div><div class="v">27 萬 €</div><div class="d">Intermarché＋Super U</div></div>
+      <div class="tile"><div class="l">比利時家樂福</div><div class="v">15／700</div><div class="d">主要是冷凍櫃</div></div>
+      <div class="tile"><div class="l">瑞典 ICA</div><div class="v">23</div><div class="d">8 家須報廢冷藏冷凍品</div></div>
+      <div class="tile"><div class="l">愛爾蘭 SuperValu</div><div class="v">13</div><div class="d">特定冷凍機型</div></div>
+      <div class="tile"><div class="l">荷蘭 Danfoss 客戶</div><div class="v">17</div><div class="d">含冷凍倉庫與肉舖</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>法國（第一波）</h3><ul class="plain">
+        <li><b>損失：</b>Intermarché 執行長科蒂拉爾說全國一天損失「數千萬歐元」；諾曼第一家店溫度到 80°C，部分設備熔化，也有店家起火、灑水器造成水損。</li>
+        <li><b>處置：</b>Monoprix 下架無法確保保存條件的商品；Issy-les-Moulineaux 一家 Intermarché 丟掉數噸商品。</li>
+        <li><b>政府：</b>總理勒克努指示 ANSSI 調查，並與其他歐洲國家協調。</li>
+        <li><b>業者：</b>Coopérative U 執行長謝爾謝說這次攻擊「極度嚴重、前所未見」。</li>
+      </ul></div>
+      <div class="card"><h3>第二波受害國</h3><ul class="plain">
+        <li><b>比利時：</b>Delhaize 數十家、家樂福 15 家、5 家 Spar、IKEA 蒙斯店；一家肉舖損失約 1.5 萬歐元肉品。冷凍業者 Sabcobel 執行長說許多設備需要實體改裝。</li>
+        <li><b>瑞典：</b>ICA 23 家、Coop 6～7 家；國家資安中心負責人說瑞典有「相當多暴露在外的營運技術設備」需要更新。</li>
+        <li><b>愛爾蘭、荷蘭、盧森堡、愛沙尼亞：</b>SuperValu 13 家、荷蘭 17 處設施；愛沙尼亞一家客戶的冷凍電腦被調到 50°C。</li>
+        <li><b>芬蘭：</b>Kesko 旗下 1,100 家店中「少數幾家」溫度異常。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>市場幾乎沒把這當大事：受害超市跌幅有限，資安股也沒因此上漲</h2>
+      <p>下圖是兩次攻擊後第一個交易日的單日漲跌（10/12 與 11/2），加上 Colruyt 的對照；紅漲綠跌依台灣慣例。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">攻擊後首個交易日漲跌幅（10/12 與 11/2）</p>
+        <p class="chart-sub">收盤漲跌（%）；10/12 為第一波，11/2 為第二波</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>受害超市：</b>Ahold Delhaize 10/12 跌 2.79%、11/2 跌 2.20%，但 11/3 回到攻擊前水準附近；Colruyt 兩次都小漲。各連鎖受害門市只占少數，市場視為一次性損失（推論）。</li>
+          <li><b>家樂福：</b>10/9 到 11/3 跌 18.15%，但主因是 10/21 預估法國暴動衝擊營業利益 0.8～2 億歐元、單日重挫 14.5%，不是駭客攻擊。</li>
+          <li><b>資安股：</b>CrowdStrike、Palo Alto 同期分別跌 11.04%、16.38%，與整體科技股修正同步，未見報導把走勢連到這起事件。</li>
+          <li><b>設備商：</b>Danfoss 是未上市的家族企業，Copeland 由私募基金持有，沒有股價可看。</li>
+          <li><b>台股：</b>統一超同期漲 3.01%，加權指數跌 8.89%，兩者都未見與此事相關的報導。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤（11/3）</th><th>漲跌幅（11/2）</th><th>期間走勢</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr><td class="num">AD</td><td><b>Ahold Delhaize</b></td><td>荷股</td><td class="num">32.16 €</td><td class="num down">−2.20%</td><td class="period">10/9 以來 −0.37%</td><td>旗下 Delhaize 數十家店受害；10/12 也跌 2.79%</td></tr>
+          <tr><td class="num">COLR</td><td><b>Colruyt</b></td><td>比股</td><td class="num">35.00 €（11/2）</td><td class="num up">+1.33%</td><td class="period">10/9 以來 +2.40%</td><td>5 家加盟 Spar 受害，系統由加盟主自管</td></tr>
+          <tr><td class="num">CA</td><td><b>家樂福</b></td><td>法股</td><td class="num">13.08 €</td><td class="num">0.00%</td><td class="period">10/9 以來 −18.15%</td><td>兩波都受害；跌幅主因是暴動損失預估</td></tr>
+          <tr><td class="num">CRWD</td><td><b>CrowdStrike</b></td><td>美股</td><td class="num">244.68</td><td class="num down">−3.44%</td><td class="period">10/9 以來 −11.04%</td><td>資安族群，未見與事件相關報導</td></tr>
+          <tr><td class="num">PANW</td><td><b>Palo Alto Networks</b></td><td>美股</td><td class="num">350.20</td><td class="num down">−3.87%</td><td class="period">10/9 以來 −16.38%</td><td>同上</td></tr>
+          <tr><td class="num">2912</td><td><b>統一超</b></td><td>台股</td><td class="num">222.50</td><td class="num">0.00%</td><td class="period">10/12 以來 +3.01%</td><td>台灣冷鏈零售代表，未見相關報導</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">44,920.14（11/2）</td><td class="num down">−0.65%</td><td class="period">10/12 以來 −8.89%</td><td>未見與此事相關報導</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance。11/3 收盤部分取自頁面報價（標示 At close: November 3）；Colruyt 與加權指數 11/3 收盤未能確認，改列 11/2。台股 10/9 休市，以 10/12 為基準。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>從「冰箱」到「基礎設施」：各國開始把食品冷鏈當成資安重點</h2>
+      <p>影響經由四條路傳開：各國政府的調查與警報、對手國家的混合戰疑慮、全球暴露設備的清查，以及食品安全的信任。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>各國調查</h3><ul class="plain small">
+        <li>歐盟 11/3 召開跨機構工作小組會議，成員包括執法與資安機關。</li>
+        <li>英國國家網路安全中心（NCSC）支援少數受影響的英國組織；美國網路安全暨基礎設施安全局（CISA）表示「積極監控與評估」。</li>
+      </ul></article>
+      <article class="card"><h3>混合戰疑慮</h3><ul class="plain small">
+        <li>歐洲情報官員說俄羅斯正升級在歐洲的「影子戰爭」，網攻是工具之一（半島電視台）。</li>
+        <li>目前沒有官方把這起攻擊歸咎任何國家，也沒人宣稱犯案。</li>
+      </ul></article>
+      <article class="card"><h3>全球暴露設備</h3><ul class="plain small">
+        <li>網路掃描在南非、美國、英國等地也找到暴露的 Danfoss 控制器（TIME）。</li>
+        <li>攻擊手法不需高深技術，其他國家同類設備也可能被盯上（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>美國軍方</h3><ul class="plain small">
+        <li>8 月至少 6 處美軍福利商店冷凍異常，美國陸軍刑事調查部門與國防部福利商店署、國防刑事調查局合作調查。</li>
+      </ul></article>
+      <article class="card"><h3>AI 降低攻擊門檻</h3><ul class="plain small">
+        <li>比利時網路安全中心提醒，AI 可能讓駭客更容易利用漏洞；英國 NCSC 預期 2028 年前國家級駭客會常態使用 AI 攻擊（半島電視台引述）。</li>
+      </ul></article>
+      <article class="card"><h3>消費者信任</h3><ul class="plain small">
+        <li>歐盟農業執委韓森說糧食安全目前沒有風險，但食物浪費與業者損失是真的，攻擊意在破壞消費者信心。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依調查進度、設備修補與攻擊模式整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>斷網、換機，攻擊逐漸減少</h3><ul class="plain small">
+        <li>業者把控制器移出公開網路、更新韌體，停產機種逐步汰換。</li>
+        <li>零星攻擊仍會出現在沒修補的小店。</li>
+        <li>汰換與改裝成本由業者與承包商分攤。</li>
+      </ul><p class="trig">觸發條件：12 月前沒有第三波大規模攻擊。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>擴大到其他冷鏈或確認國家級攻擊</h3><ul class="plain small">
+        <li>攻擊延伸到冷凍倉儲、醫療冷藏（疫苗、血漿）或食品工廠。</li>
+        <li>若調查指向國家，歐盟可能祭出制裁，網路安全法規加速。</li>
+      </ul><p class="trig">觸發條件：第三波攻擊、或官方公布攻擊者身分。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>抓到人，原來是「好玩」</h3><ul class="plain small">
+        <li>若攻擊者是業餘人士，政治效應降低，但設備資安問題仍要解決。</li>
+      </ul><p class="trig">觸發條件：執法單位逮捕嫌犯並公布動機。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>是否有第三波</b>：前兩波相隔約 3 週，下一個風險時段可能是 11 月下旬（推論）。</li>
+      <li><b>歐盟工作小組結論</b>：是否提出冷鏈設備的最低資安要求。</li>
+      <li><b>ANSSI 與比利時檢方調查</b>：攻擊路徑與身分是否公開。</li>
+      <li><b>Danfoss、Copeland 的補救</b>：停產設備是否提供更換方案或費用補貼。</li>
+      <li><b>美國 CISA 與軍方調查</b>：8 月美軍事件是否確認為同一手法。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>連鎖超市</h3><span class="tag bad">利空</span></div><p>直接報廢食物、設備損壞，還要花錢汰換控制器與加強網路防護。</p><div class="data">Intermarché：全國一天損失數千萬 €</div></article>
+      <article class="card"><div class="top"><h3>冷凍設備與控制器廠商</h3><span class="tag bad">利空</span></div><p>品牌信任受損、可能面臨求償；但汰換潮也會帶來新訂單（推論）。</p><div class="data">AK-SC355、AK-SM800 已停產</div></article>
+      <article class="card"><div class="top"><h3>工控與物聯網資安</h3><span class="tag good">受惠</span></div><p>營運技術（OT）設備清查與防護需求增加（推論）。</p><div class="data">全球約 1,000 套 StoreView 暴露（Censys）</div></article>
+      <article class="card"><div class="top"><h3>冷凍維修承包商</h3><span class="tag bad">利空</span></div><p>外包管理是主要破口之一，責任與資安要求會提高。</p><div class="data">ICA：受害的是外部供應商系統</div></article>
+      <article class="card"><div class="top"><h3>產物與資安保險</h3><span class="tag bad">利空</span></div><p>食物與設備損失理賠增加，保費與承保條件可能收緊（推論）。</p><div class="data">阿爾薩斯兩店損失 27 萬 €</div></article>
+      <article class="card"><div class="top"><h3>食品供應商</h3><span class="tag">好壞參半</span></div><p>報廢後需要補貨，短期訂單增加；但冷鏈不穩定也提高風險（推論）。</p><div class="data">比利時肉舖單店損失約 1.5 萬 €</div></article>
+      <article class="card"><div class="top"><h3>醫療冷鏈</h3><span class="tag bad">利空</span></div><p>ANSSI 局長在參議院表示正與醫療資安單位合作保護相關機構，醫療冷藏也被視為同類風險（經搜尋摘要，推論延伸）。</p><div class="data">ANSSI 10/21 參議院聽證</div></article>
+      <article class="card"><div class="top"><h3>雲端與遠端管理平台</h3><span class="tag">好壞參半</span></div><p>業者會要求更安全的遠端連線方式，有需求也有更高門檻（推論）。</p><div class="data">RH-ISAC 與 Google Cloud 11/5 開會</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣沒有傳出受害，但同樣的「連網冷鏈」到處都是</h2>
+      <p>台灣的超商、超市與冷鏈物流也大量使用遠端監控的冷凍設備；這起事件的教訓比事件本身更值得注意。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>受害情況：</b>截至查證時，未查到台灣業者受害的報導。</li>
+        <li><b>股市：</b>統一超 10/12 以來漲 3.01%，未見與此事相關的報導。</li>
+        <li><b>媒體：</b>公視、聯合報、關鍵評論網等已整理漏洞原因，但未提到台灣業者。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>設備清查：</b>業者可以檢查冷凍控制器、空調與監視器是否直接暴露在公開網路、是否還在用預設密碼。</li>
+        <li><b>外包管理：</b>歐洲的破口在外包維修廠商，台灣業者同樣需要把承包商納入資安要求。</li>
+        <li><b>醫療冷鏈：</b>疫苗與血品冷藏若遭類似攻擊，衝擊比食物更大。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到數位發展部資安署或國家資通安全研究院針對這起事件發布的公開提醒，也未查到台灣是否有暴露在網路上的 Danfoss 控制器數量。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>超商、超市、量販業者</b></td><td><span class="tag bad">需檢查</span></td><td>冷凍設備若遠端管理，應確認不直接連上公開網路、密碼已更改（推論）。</td></tr>
+          <tr><td><b>冷鏈物流與倉儲</b></td><td><span class="tag bad">需檢查</span></td><td>荷蘭受害的就包含冷凍倉庫（推論延伸）。</td></tr>
+          <tr><td><b>資安服務業者</b></td><td><span class="tag good">需求增加</span></td><td>營運技術設備盤點與防護需求上升（推論）。</td></tr>
+          <tr><td><b>一般消費者</b></td><td><span class="tag">影響有限</span></td><td>歐洲業者都把無法確保溫度的商品下架；台灣目前沒有相關事件（推論）。</td></tr>
+          <tr><td><b>赴歐旅客</b></td><td><span class="tag">影響有限</span></td><td>個別門市可能暫時缺貨，不影響整體旅遊。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電重點在範圍與官方回應，資安媒體挖技術細節，台灣媒體則用「50 度」「貨架全空」吸睛，再補漏洞解釋。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>半島電視台</td><td>誰是幕後黑手</td><td>「非常冷的戰爭」</td><td>俄羅斯影子戰爭、北韓、AI 攻擊的背景</td></tr>
+          <tr><td>NBC／路透</td><td>各國受害清單</td><td>歐洲超市遭新一波冰箱網攻</td><td>各連鎖數字、瑞典資安中心說法</td></tr>
+          <tr><td>CBS</td><td>業者說法</td><td>更多雜貨店回報溫度異常</td><td>Sabcobel 執行長證實是網攻</td></tr>
+          <tr><td>ABC</td><td>各國對照</td><td>歐洲連鎖冷凍設備遭鎖定</td><td>受害多為小型門市、美軍福利商店</td></tr>
+          <tr><td>TIME</td><td>法國第一波</td><td>「前所未見」的網攻</td><td>各連鎖門市數、除霜時間拉長、暴露設備分布</td></tr>
+          <tr><td>Cybersecurity Dive</td><td>調查進度</td><td>歐洲當局調查持續中的攻擊</td><td>ICA 23 店、CISA、英國 NCSC、Copeland</td></tr>
+          <tr><td>Cooling Post</td><td>產業與廠商</td><td>Danfoss 採取措施減緩攻擊</td><td>停產機種、韌體更新建議</td></tr>
+          <tr><td>公視</td><td>漏洞解釋</td><td>背後資安漏洞原因一次看</td><td>每日驗證碼、外包問題、4,500 台暴露</td></tr>
+          <tr><td>聯合報</td><td>現場與動機</td><td>多國遭殃、動機可疑</td><td>員工受訪、比利時 AI 警告</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>攻擊者遠端把冷凍設備切成除霜，溫度到 50°C。</li>
+        <li>涉及 Danfoss 等廠商的冷凍控制器，許多是停產或未更新的設備。</li>
+        <li>沒有人宣稱犯案，也沒有勒索。</li>
+        <li>第二波發生在第一波約 3 週後。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>是不是「同一批人」：</b>多數報導說無法確認兩波有關，只知道手法類似。</li>
+        <li><b>過時韌體是否被利用：</b>Danfoss 說受影響設備多跑舊韌體，但公視引述 ANSSI 初步調查認為舊韌體漏洞「未被利用」，主因是暴露與弱密碼。</li>
+        <li><b>俄羅斯：</b>俄羅斯是背景脈絡，不是官方歸因。</li>
+        <li><b>「冰箱」不是家用冰箱：</b>受害的是商用冷凍系統的中央控制器。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>法國受害超市</td><td>約 500 家（Cooling Post 等）</td><td>約 700 家（維基百科、公視）</td><td>統計時間與來源不同；各連鎖自報數字也不一</td></tr>
+          <tr><td>Intermarché／Netto</td><td>約 180 家（母公司）</td><td>300 家（BFM-TV）</td><td>公司與媒體統計不同</td></tr>
+          <tr><td>瑞典 Coop</td><td>6 家（CBS、NBC）</td><td>7 家（ABC、半島電視台、聯合報）</td><td>不同時間的說法</td></tr>
+          <tr><td>暴露設備數</td><td>2,765 個系統（Claroty）；約 1,000 套 StoreView（Censys）</td><td>約 4,500 台（The Hacker News，公視轉述）</td><td>掃描時間、產品範圍與計算單位不同</td></tr>
+          <tr><td>第二波受害國</td><td>至少 3 國（CBS 早期）</td><td>7 國以上（公視、維基百科）</td><td>消息陸續更新</td></tr>
+          <tr><td>漏洞數量</td><td>3 個（網頁介面）</td><td>23 個（整體平台）</td><td>計算範圍不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導、廠商說明與研究資料，資料截至 2026 年 11 月 4 日 09:44（台灣時間）。CERT-FR 警報內容經媒體轉述，未能直接讀取原文。不同來源的數字可能略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">廠商與研究資料</div>
+    <ol class="sources">
+      <li><a href="https://www.coolingpost.com/world-news/danfoss-moves-to-mitigate-cyberattack/" target="_blank" rel="noopener">Cooling Post — Danfoss 說明與建議（10/12）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2026_French_supermarket_refrigerator_hack" target="_blank" rel="noopener">Wikipedia — 2026 年法國超市冰箱駭客事件（背景整理）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://www.aljazeera.com/news/2026/11/3/very-cold-war-whos-attacking-europes-supermarket-freezers" target="_blank" rel="noopener">Al Jazeera — 誰在攻擊歐洲超市冷凍櫃？（11/3）</a></li>
+      <li><a href="https://www.nbcnews.com/world/europe/european-supermarkets-hit-new-fridge-cyberattack-rcna606972" target="_blank" rel="noopener">NBC News／路透 — 歐洲超市遭新一波冰箱網攻（11/2）</a></li>
+      <li><a href="https://www.cbsnews.com/news/europe-grocery-store-refrigerator-freezer-cyberattack-hack-food-wasted/" target="_blank" rel="noopener">CBS News — 更多雜貨店回報冷凍溫度異常（11/2）</a></li>
+      <li><a href="https://abcnews.com/International/european-grocery-chains-freezers-refrigerators-targeted-apparent-cyberattacks/story?id=137769974" target="_blank" rel="noopener">ABC News — 歐洲連鎖超市冷凍設備遭鎖定（11/2）</a></li>
+      <li><a href="https://time.com/article/2026/10/13/france-cyber-attack-cybersecurity-refrigeration-supermarket-food-security/" target="_blank" rel="noopener">TIME — 法國超市冰箱遭「前所未見」網攻（10/13）</a></li>
+      <li><a href="https://www.yahoo.com/news/world/articles/european-authorities-probe-ongoing-attacks-155957201.html" target="_blank" rel="noopener">Cybersecurity Dive（Yahoo 轉載）— 歐洲當局調查持續中的攻擊（11/3）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="9">
+      <li><a href="https://news.pts.org.tw/article/834064" target="_blank" rel="noopener">公視 — 歐洲超市冰箱連續遭駭 背後資安漏洞原因一次看（11/3）</a></li>
+      <li><a href="https://udn.com/news/story/6809/9855531" target="_blank" rel="noopener">聯合報 — 歐洲超市冰櫃再遭駭 多國遭殃、動機可疑（11/4）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="11">
+      <li><a href="https://en.ilsole24ore.com/art/european-stock-markets-rise-midway-through-the-session-as-tech-stocks-boost-milan-by-6-per-cent-AJRE1AqB" target="_blank" rel="noopener">Il Sole 24 Ore — 家樂福預估暴動損失、股價重挫（10/21）</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AD.AS/history/" target="_blank" rel="noopener">Yahoo Finance — Ahold Delhaize</a></li>
+      <li><a href="https://finance.yahoo.com/quote/COLR.BR/history/" target="_blank" rel="noopener">Yahoo Finance — Colruyt</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CA.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 家樂福</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CRWD/history/" target="_blank" rel="noopener">Yahoo Finance — CrowdStrike</a></li>
+      <li><a href="https://finance.yahoo.com/quote/PANW/history/" target="_blank" rel="noopener">Yahoo Finance — Palo Alto Networks</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2912.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 統一超</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 4 日 09:44（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'Ahold Delhaize', s:'10/12', v:-2.79},
+    {l:'Ahold Delhaize', s:'11/2', v:-2.20},
+    {l:'Colruyt', s:'10/12', v:0.76},
+    {l:'Colruyt', s:'11/2', v:1.33},
+    {l:'家樂福', s:'10/12', v:-0.44},
+    {l:'家樂福', s:'11/2', v:0.00},
+    {l:'CrowdStrike', s:'10/12', v:-4.37},
+    {l:'CrowdStrike', s:'11/2', v:-3.44},
+    {l:'Palo Alto', s:'10/12', v:-3.57},
+    {l:'Palo Alto', s:'11/2', v:-3.87}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
