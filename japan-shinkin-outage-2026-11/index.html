@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西日本信金系統故障</title>
+<meta name="description" content="2026 年 11 月 6 日日本信金共同系統西日本中心故障、128 家信用金庫約 5 個半小時停擺：故障原因、受影響範圍、恢復經過、共用系統的集中風險，以及對台灣基層金融的啟示。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">當地影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">金融系統解讀 · 日本地方金融 · 資料截至 2026 年 11 月 7 日 16:00（台灣時間）</p>
+      <h1>一台通訊設備故障，128 家信用金庫同時停擺：西日本 3,430 個分行的 5 個半小時</h1>
+      <p class="lede">11 月 6 日（週五）下午 1:30 左右，日本信用金庫共用的帳務系統「信金共同系統」位於神戶的西日本中心發生故障，東海、北陸以西 128 家信用金庫的 ATM、臨櫃、網路銀行與轉帳同時中斷，到晚上 7 點左右才全面恢復。官方說原因是設備故障、不是網攻。信用金庫（日本以地方中小企業與居民為主的合作型金融機構）把核心系統集中在共用中心以節省成本，這次故障正好暴露出「一處壞、全區停」的風險。</p>
+    </div>
+    <div class="stmt" aria-label="受影響信用金庫數">
+      <div class="k">受影響信用金庫</div>
+      <div class="range">128<small>家</small></div>
+      <div class="was">共用系統加盟 236 家 · 全國約 254 家</div>
+      <div class="stmt-row">
+        <div><div class="v">3,430</div><div class="l">受影響分行</div></div>
+        <div><div class="v">≈5.5 小時</div><div class="l">13:30～19:05</div></div>
+        <div><div class="v">0</div><div class="l">網攻跡象（官方）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>不是駭客，是硬體：一次故障讓半個日本的信金停擺，8 個重點</h2>
+      <p>懶人包：西日本的信用金庫共用同一套核心系統，神戶的設備一壞，128 家同時不能存提款；6 小時內修好，但週五下午正是企業付款高峰。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>11/6 下午 1:30 開始故障。</b>信金中央金庫說，以廣島信用金庫等西日本信金為中心，資金結算與 ATM 都無法使用。</div></li>
+      <li><div><b>128 家信金、3,430 個分行受影響。</b>範圍涵蓋東海、北陸、近畿、中國、四國、九州（不含沖繩）；東日本中心正常運作。</div></li>
+      <li><div><b>停掉的不只 ATM。</b>臨櫃存提款、ATM 提款與轉帳、網路與手機銀行都中斷；信金卡在其他銀行與超商 ATM 也不能用，部分自動扣款延遲。</div></li>
+      <li><div><b>晚上 7 點左右全面恢復。</b>靜岡放送報導 19:05 所有信金恢復，歷時約 5 個半小時；部分媒體寫「約 6 小時」。</div></li>
+      <li><div><b>原因是西日本中心的通訊設備。</b>信金共同中心說是「設備故障」，未偵測到不當存取或網攻；系統由 NTT Data 負責開發與實務運作。</div></li>
+      <li><div><b>10 月中旬剛更新過系統。</b>產經新聞報導這些信金 10 月中旬透過共同中心更新了系統，但沒有任何官方說法把更新和故障連在一起。</div></li>
+      <li><div><b>信金向客戶道歉。</b>信金中央金庫等三個團體說：「造成極大不便與困擾，深表歉意，將全力防止再發生」；截至查證時未見金融廳的公開回應。</div></li>
+      <li><div><b>市場沒有因此動，因為同天另有大事。</b>日經指數 11/6 跌 5.96%、台股跌 4.51%，主因是前一晚美股費半指數重挫約 12%，與信金故障無關。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼一台設備能讓 128 家金融機構一起停擺？</h2>
+      <p>第 1 點是官方說法；第 2 點是系統架構（多家媒體）；第 3、4 點是報導中的背景與本報告分析。</p>
+    </div>
+    <div class="note">比喻：信用金庫像一條街上的 128 家小雜貨店，為了省錢共用同一個中央倉庫與收銀系統。倉庫的電話線一斷，128 家店同時不能結帳，而對街共用另一個倉庫的店照常營業。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>西日本中心的通訊設備故障</h3><p>信金共同中心說原因是「設備故障」，不是網攻；靜岡放送寫「西日本中心的通訊設備出現不良，被認為是原因」，日經則寫「目前看來沒有網攻可能」。中時引述朝日新聞，故障點可能是交易資料儲存裝置。</p></div><div class="ev"><span class="tag">神戶・西日本中心</span><span class="tag">未偵測到網攻</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>共用系統：省錢，但風險集中</h3><p>全國約 254 家信金中有 236 家（約 93%）使用「信金共同系統」，分成東日本、西日本兩個中心。這次西日本中心故障，128 家（約占加盟信金的 54%）同時停擺；東日本那一半完全不受影響。</p></div><div class="ev"><span class="tag">236／254 家加盟</span><span class="tag">東西兩中心</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>剛做完系統更新</h3><p>產經新聞報導，這些信金 10 月中旬剛透過共同中心更新系統。2023 年全銀系統（日本銀行間轉帳系統）大當機，也是發生在相關系統更換之後；但這次官方沒有說更新是原因（推論）。</p></div><div class="ev"><span class="tag">10 月中旬更新</span><span class="tag">關聯未證實</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>週五下午，付款高峰</h3><p>故障從週五下午 1:30 開始，正是企業月初付款、薪資與帳款入帳的時段。名古屋一名替建設公司管帳的 61 歲女性說：「其實昨天就是期限，便利商店也不能匯吧？」</p></div><div class="ev"><span class="tag">週五 13:30</span><span class="tag">中小企業付款</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>故障與恢復</span><span><i class="g"></i>過去重大故障</span><span><i></i>官方說明與後續</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2021</div><div class="what">瑞穗銀行多次系統故障，11/26 收到金融廳業務改善命令。</div></li>
+        <li class="geo"><div class="date">2023-10-10～11</div><div class="what">全銀系統故障：10 家金融機構受影響，506 萬筆中 87 萬筆無法當天處理。</div></li>
+        <li><div class="date">2026-10 中旬</div><div class="what">西日本信金透過共同中心更新系統（產經）。</div></li>
+        <li class="key"><div class="date">2026-11-06 13:30</div><div class="what"><b>西日本中心故障</b>，128 家信金 ATM、臨櫃、網銀停擺。</div></li>
+        <li class="key"><div class="date">2026-11-06 16:00</div><div class="what">日經 xTECH：仍無恢復時程。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-06 傍晚</div><div class="what">各信金陸續恢復服務；unwire 標題寫「逾 5 小時後全面恢復」。</div></li>
+        <li class="key"><div class="date">2026-11-06 19:05</div><div class="what"><b>全面恢復</b>（靜岡放送）。</div></li>
+        <li><div class="date">2026-11-06 21:47</div><div class="what">信金中央金庫等宣布完全恢復並道歉（時事通信）。</div></li>
+        <li><div class="date">2026-11-09</div><div class="what">週一，信金恢復正常營業後的第一個完整工作日（推論觀察點）。</div></li>
+        <li><div class="date">之後</div><div class="what">金融廳是否要求報告、共同中心是否公布詳細原因，截至查證時未見。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>受害最深的是地方中小企業與年長的存戶</h2>
+      <p>事件發生在日本東海以西；信金的客戶以中小企業、個人商家與地方居民為主，大型銀行與東日本信金都不受影響。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">受影響信金</div><div class="v">128</div><div class="d">東海、北陸以西</div></div>
+      <div class="tile"><div class="l">受影響分行</div><div class="v">3,430</div><div class="d">臨櫃全停</div></div>
+      <div class="tile"><div class="l">停擺時間</div><div class="v">≈5.5 小時</div><div class="d">13:30～19:05</div></div>
+      <div class="tile"><div class="l">共同系統加盟</div><div class="v">236</div><div class="d">占全國約 93%</div></div>
+      <div class="tile"><div class="l">近畿與德島</div><div class="v">27 家</div><div class="d">Insider Paper</div></div>
+      <div class="tile"><div class="l">靜岡縣內信金</div><div class="v">9 家</div><div class="d">全部受影響後恢復</div></div>
+      <div class="tile"><div class="l">東日本中心</div><div class="v">正常</div><div class="d">東半部信金照常</div></div>
+      <div class="tile"><div class="l">金融廳回應</div><div class="v">未見</div><div class="d">截至查證時</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>受影響的人與企業</h3><ul class="plain">
+        <li><b>存戶：</b>大阪市信用金庫總行前有人問「ATM 什麼時候恢復」；一名 70 多歲男性說「有水電費要扣款，想先存錢進去」（產經）。</li>
+        <li><b>企業：</b>名古屋替建設公司管帳的女性錯過付款期限；瀨戶信金的部分自動扣款延遲或保留（Business+IT）。</li>
+        <li><b>跨行：</b>信金卡無法在合作銀行與超商 ATM 使用。</li>
+        <li><b>停業公告：</b>大阪信用金庫、北大阪信用金庫等宣布業務暫停；愛知的岡崎、瀨戶，靜岡的濱松磐田信金也受影響。</li>
+      </ul></div>
+      <div class="card"><h3>系統營運方與主管機關</h3><ul class="plain">
+        <li><b>信金共同中心：</b>一般社團法人，負責營運信金共同系統，與 NTT Data 合作釐清原因、優先恢復（日經 xTECH）。</li>
+        <li><b>信金中央金庫：</b>信用金庫的中央機構，對外說明故障與恢復。</li>
+        <li><b>道歉：</b>信金中央金庫、信金共同中心、全國信用金庫協會聯合道歉並承諾防止再發生。</li>
+        <li><b>金融廳：</b>截至查證時，未查到要求報告或其他行政措施的報導（推論：大型故障通常會被要求提出報告）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>同一天，股市崩跌的是 AI，不是信金</h2>
+      <p>信用金庫是合作型金融機構，沒有股價；故障從下午 1:30 開始，東京股市 3:30 收盤。下圖是 11/6 的單日漲跌，紅漲綠跌依台灣慣例，當天的下跌主因是美股 AI 股重挫。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/6 日股、台股與相關個股漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；當天走勢主要反映美股 AI 股重挫</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>日股：</b>日經 225 跌 3,643 點（5.96%）到 57,434.77 點，是史上第 3 大跌點，33 個產業全數下跌；主因是前一晚美股費半指數重挫約 12%，市場擔心美國民主黨國會加強 AI 與資料中心監管。</li>
+          <li><b>銀行股：</b>三菱 UFJ 跌 6.52%，與大盤一起下跌，未見報導歸因於信金故障。</li>
+          <li><b>NTT：</b>NTT Data 的母公司 NTT 跌 2.85%，跌幅小於大盤，未見與故障相關的報導。</li>
+          <li><b>台股：</b>加權指數跌 1,873 點（4.51%），盤中一度跌 3,737 點；同天資安族群有個股逆勢漲停。精誠漲 8.78%，原因未查到。</li>
+          <li><b>信金中央金庫：</b>有上市優先出資證券（8421），但股價頁面無法讀取。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤（11/6）</th><th>漲跌幅（11/6）</th><th>期間走勢</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr><td class="num">—</td><td><b>128 家信用金庫</b></td><td>未上市</td><td class="num">—</td><td class="num">—</td><td class="period">—</td><td>合作型金融機構，無股價</td></tr>
+          <tr><td class="num">8421</td><td><b>信金中央金庫</b></td><td>日股</td><td class="num">未查到</td><td class="num">—</td><td class="period">—</td><td>信金中央機構，頁面無法讀取</td></tr>
+          <tr class="hl"><td class="num">^N225</td><td><b>日經 225</b></td><td>日股指數</td><td class="num">57,434.77</td><td class="num down">−5.96%</td><td class="period">11/4 以來 −7.64%</td><td>美股 AI 股重挫帶動</td></tr>
+          <tr><td class="num">9432</td><td><b>NTT</b></td><td>日股</td><td class="num">160.20 日圓</td><td class="num down">−2.85%</td><td class="period">—</td><td>NTT Data 母公司，未見相關報導</td></tr>
+          <tr><td class="num">8306</td><td><b>三菱 UFJ</b></td><td>日股</td><td class="num">3,224 日圓</td><td class="num down">−6.52%</td><td class="period">—</td><td>隨大盤下跌，與信金無關</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">39,701.64</td><td class="num down">−4.51%</td><td class="period">11/4 以來 −7.56%</td><td>美股 AI 股重挫帶動</td></tr>
+          <tr><td class="num">6214</td><td><b>精誠</b></td><td>台股</td><td class="num">192.00</td><td class="num up">+8.78%</td><td class="period">—</td><td>金融資訊系統業者，上漲原因未查到</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance（標示 At close: November 6）；市場下跌原因來源：外為どっとコム等報導。精誠的中文名稱依台股代號對照，Yahoo 頁面只顯示英文名稱。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>小型金融機構「共用系統」的集中風險，全球都有</h2>
+      <p>這次故障沒有跨國影響，但它提醒各國：地方銀行、合作社為了省錢共用資訊中心，一個節點故障就可能讓整個地區停擺。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>共用系統的取捨</h3><ul class="plain small">
+        <li>共用能降低每家小機構的系統成本，但也讓故障同時打到所有加盟者（推論）。</li>
+        <li>這次靠東西兩中心分開，只有一半受影響；若只有一個中心，衝擊會加倍（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>系統更新的風險</h3><ul class="plain small">
+        <li>2023 年日本全銀系統故障就發生在相關系統更換之後；系統更新後的穩定期，是各國金融機構的高風險時段（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>日本接連出包</h3><ul class="plain small">
+        <li>東森新聞指出，日本近期接連傳出樂天旅遊、無印良品個資外洩與 NTT Docomo 服務異常；但這些事件與信金故障彼此無關。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依官方說明與過去案例整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>公布原因、補強備援，事件落幕</h3><ul class="plain small">
+        <li>共同中心與 NTT Data 公布設備故障細節與改善措施。</li>
+        <li>金融廳要求提出報告，但不至於下業務改善命令。</li>
+      </ul><p class="trig">觸發條件：週一起沒有再次故障，延遲的扣款順利補處理。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>再度故障，或證實與 10 月更新有關</h3><ul class="plain small">
+        <li>若短期內再當機，金融廳可能比照瑞穗案祭出行政處分。</li>
+        <li>信金加盟者可能要求檢討共同系統架構與廠商責任。</li>
+      </ul><p class="trig">觸發條件：再度發生故障、或調查顯示更新程序有疏失。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>單純硬體故障，加強監控即可</h3><ul class="plain small">
+        <li>確認是單一設備損壞，更換後加強備援切換。</li>
+      </ul><p class="trig">觸發條件：調查確認與更新無關，且備援機制改善。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/9（週一）</b>：信金第一個完整營業日，是否有補處理延遲或再度異常。</li>
+      <li><b>信金共同中心的詳細說明</b>：哪一台設備、為什麼備援沒有自動切換。</li>
+      <li><b>金融廳的回應</b>：是否要求提出報告。</li>
+      <li><b>10 月中旬更新與故障的關係</b>：目前沒有官方說法。</li>
+      <li><b>受影響企業的損失</b>：延遲付款是否造成違約金或資金周轉問題。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>信用金庫與地方金融</h3><span class="tag bad">利空</span></div><p>客戶信任受損，可能被要求加強備援，增加系統成本（推論）。</p><div class="data">128 家同時停擺約 5.5 小時</div></article>
+      <article class="card"><div class="top"><h3>地方中小企業</h3><span class="tag bad">利空</span></div><p>週五下午付款中斷，可能錯過期限或資金周轉延遲。</p><div class="data">名古屋客戶錯過付款期限（中日新聞）</div></article>
+      <article class="card"><div class="top"><h3>金融系統整合商</h3><span class="tag">好壞參半</span></div><p>負責廠商面臨究責；但各機構檢討備援，也帶來新需求（推論）。</p><div class="data">NTT −2.85%（11/6，隨大盤）</div></article>
+      <article class="card"><div class="top"><h3>網路與通訊設備</h3><span class="tag">好壞參半</span></div><p>故障點是通訊設備，可靠性受質疑；汰換與冗餘需求增加（推論）。</p><div class="data">西日本中心通訊設備故障</div></article>
+      <article class="card"><div class="top"><h3>大型銀行與網銀</h3><span class="tag good">受惠</span></div><p>信金客戶若擔心再次停擺，可能分散到其他銀行開戶（推論）。</p><div class="data">東日本中心與大型銀行未受影響</div></article>
+      <article class="card"><div class="top"><h3>超商 ATM 與支付業者</h3><span class="tag bad">利空</span></div><p>信金卡在超商 ATM 也不能用，相關手續費收入短暫中斷（推論）。</p><div class="data">信金卡無法在超商 ATM 使用</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>對台灣沒有直接影響，但台灣基層金融同樣依賴共用系統</h2>
+      <p>台灣旅客若持日本信金卡才會受影響；更值得關心的是，台灣的農漁會信用部與信用合作社等基層金融，也有類似的集中資訊架構（推論）。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>直接影響：</b>未查到台灣民眾或企業受影響的報導；台灣媒體（自由、中時、東森、三立等）以國際新聞處理。</li>
+        <li><b>同週台灣事件：</b>11/3 永豐銀新網銀系統程式異常，419 名客戶遭轉出逾 4,000 萬元，已全數返還，須在 11/12 前向金管會提交報告（另見阿爾凱亞銀行報告）。</li>
+        <li><b>台股：</b>11/6 重挫 4.51%，原因是美股 AI 股重挫，與信金故障無關。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>基層金融：</b>台灣基層金融機構若共用資訊中心，應確認有異地備援與自動切換，避免「一處壞、全區停」。</li>
+        <li><b>系統更新：</b>日本這次與 2023 年全銀故障都發生在系統更新前後，台灣銀行上線新系統時可參考。</li>
+        <li><b>旅日民眾：</b>在日本使用 ATM 時，若遇到系統故障，可改用大型銀行或超商 ATM 的國際卡服務。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到金管會或台灣金融業針對這起事件的公開回應，也未查到日本金融廳的處置；故障的詳細原因仍待信金共同中心公布。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>旅日台灣民眾</b></td><td><span class="tag">影響有限</span></td><td>國際提款卡多走大型銀行或超商系統，信金故障影響小（推論）。</td></tr>
+          <tr><td><b>與日本中小企業往來的台商</b></td><td><span class="tag">留意</span></td><td>若對方以信金付款，11/6 下午的款項可能延遲（推論）。</td></tr>
+          <tr><td><b>台灣基層金融機構</b></td><td><span class="tag bad">需檢查</span></td><td>共用系統的備援與切換機制（推論）。</td></tr>
+          <tr><td><b>金融資訊系統業者</b></td><td><span class="tag good">需求增加</span></td><td>備援與高可用性架構需求（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，日本媒體追原因，台灣媒體追「又出事」</h2>
+      <p>日本媒體逐時更新恢復進度與原因，台灣媒體多以「日本又爆」的角度報導，海外媒體則強調 3,430 個分行的規模。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>日經 xTECH</td><td>系統架構</td><td>128 信金共用帳務系統故障，疑通訊設備損壞</td><td>神戶西日本中心、NTT Data</td></tr>
+          <tr><td>日本經濟新聞</td><td>恢復進度</td><td>128 信金 ATM、臨櫃一度停擺，晚上 7 點後恢復</td><td>「目前看來沒有網攻可能」</td></tr>
+          <tr><td>時事通信</td><td>官方道歉</td><td>信金系統完全恢復，原因是設備故障</td><td>三團體聯合道歉</td></tr>
+          <tr><td>產經新聞</td><td>現場與背景</td><td>系統障礙恢復，「設備故障」所致</td><td>10 月中旬系統更新、存戶心聲</td></tr>
+          <tr><td>靜岡放送</td><td>地方視角</td><td>信金系統完全恢復</td><td>19:05 恢復、縣內 9 家信金</td></tr>
+          <tr><td>中日新聞</td><td>愛知受影響</td><td>西日本 128 信金故障，愛知、靜岡也受影響</td><td>名古屋客戶錯過付款期限</td></tr>
+          <tr><td>Insider Paper</td><td>規模</td><td>影響 128 家、3,430 個分行</td><td>超商 ATM、自動扣款延遲</td></tr>
+          <tr><td>中時</td><td>完整整理</td><td>逾 3,400 分行癱瘓近 6 小時</td><td>254 家中 236 家用共用系統</td></tr>
+          <tr><td>東森</td><td>「又出事」</td><td>日本又爆大規模系統故障</td><td>連結樂天旅遊、無印良品、Docomo 事件</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>11/6 下午 1:30 左右，128 家信金系統故障。</li>
+        <li>原因是西日本中心設備故障，不是網攻。</li>
+        <li>晚上 7 點左右全面恢復。</li>
+        <li>東日本信金不受影響。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「設備故障」的確定程度：</b>時事、產經、サンテレビ寫成定論，日經與靜岡放送則用「目前看來」「被認為是」等保留說法。</li>
+        <li><b>10 月更新：</b>只有產經等少數媒體提到，且沒有官方把它和故障連起來。</li>
+        <li><b>「又爆」：</b>東森把信金故障和個資外洩、通訊異常放在一起，但這些事件彼此無關。</li>
+        <li><b>股市大跌：</b>同一天日股、台股重挫的原因是美股 AI 股，不是信金故障。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>停擺時間</td><td>約 5 個半小時（unwire：13:30～19:05）</td><td>約 6 小時（サンテレビ）；近 6 小時（中時）</td><td>四捨五入方式不同</td></tr>
+          <tr><td>恢復時間</td><td>19:05（靜岡放送）</td><td>19 時許（日經、Business+IT）</td><td>精確度不同</td></tr>
+          <tr><td>信金總數</td><td>全國約 254 家，236 家加盟（中時）</td><td>全國 236 家（東森）</td><td>東森把加盟數當成總數</td></tr>
+          <tr><td>故障設備</td><td>通訊設備（日經 xTECH、靜岡放送）</td><td>交易資料儲存裝置（中時引述朝日）</td><td>官方詳細原因未公布</td></tr>
+          <tr><td>受影響地區</td><td>東海以西（日經、Insider）</td><td>東海、北陸、近畿、中國、四國、九州（產經）</td><td>產經列出較完整的地區</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與市場資料，資料截至 2026 年 11 月 7 日 16:00（台灣時間）。信金中央金庫與信金共同中心的說法皆經媒體轉述。過去故障（全銀系統、瑞穗）的數字來自搜尋摘要，未讀取原文。不同來源的數字可能略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">日本媒體</div>
+    <ol class="sources">
+      <li><a href="https://xtech.nikkei.com/atcl/nxt/news/24/03460/" target="_blank" rel="noopener">日經 xTECH — 西日本 128 信金共用帳務系統故障（11/6）</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXZQOUB066EH0W6A101C2000000/" target="_blank" rel="noopener">日本經濟新聞 — 128 信金 ATM、臨櫃一度停擺，晚上 7 點後恢復（11/6）</a></li>
+      <li><a href="https://www.jiji.com/jc/article?k=2026110601196&amp;g=eco" target="_blank" rel="noopener">時事通信 — 信金系統完全恢復（11/6）</a></li>
+      <li><a href="https://news.yahoo.co.jp/articles/7a0e76f0ee8dc73aa29f5a41340548637b7addfd" target="_blank" rel="noopener">產經新聞（Yahoo）— 128 信金系統恢復，「設備故障」所致（11/6）</a></li>
+      <li><a href="https://news.yahoo.co.jp/articles/6601c6088769878b86b52f48c90b41821b99f638" target="_blank" rel="noopener">靜岡放送（Yahoo）— 信金系統完全恢復（11/6）</a></li>
+      <li><a href="https://news.yahoo.co.jp/articles/c09612967c8b632356799e6b0864dc7001b75049" target="_blank" rel="noopener">Business+IT（Yahoo）— 128 信金停擺近 6 小時（11/7）</a></li>
+      <li><a href="https://www.sun-tv.co.jp/suntvnews/news/2026/11/07/97728/" target="_blank" rel="noopener">サンテレビ — 約 6 小時後全業務恢復（11/7）</a></li>
+      <li><a href="https://www.chunichi.co.jp/article/1335627" target="_blank" rel="noopener">中日新聞 — 128 信金故障，愛知、靜岡也受影響（11/6）</a></li>
+      <li><a href="https://gaitame.com/media/entry/2026/11/06/164550" target="_blank" rel="noopener">外為どっとコム — 日經指數一度暴跌逾 4,000 點（11/6）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="10">
+      <li><a href="https://insiderpaper.com/japan-banking-outage-hits-128-banks-disrupts-3430-branches/" target="_blank" rel="noopener">Insider Paper — 日本銀行故障影響 128 家、3,430 分行（11/6）</a></li>
+      <li><a href="https://www.outlookindia.com/international/japan-banking-outage-128-shinkin-banks-western-japan" target="_blank" rel="noopener">Outlook India — 西日本 128 家信金暫停服務（11/6）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="12">
+      <li><a href="https://www.chinatimes.com/realtimenews/20261106004361-260408" target="_blank" rel="noopener">中時 — 日本 128 家信用金庫系統故障，逾 3400 分行癱瘓近 6 小時（11/6）</a></li>
+      <li><a href="https://news.ltn.com.tw/news/world/breakingnews/5631825" target="_blank" rel="noopener">自由時報 — 日本 128 家信用金庫系統故障（11/6）</a></li>
+      <li><a href="https://news.ebc.net.tw/news/world/579388" target="_blank" rel="noopener">東森新聞 — 日本又爆大規模系統故障（11/6）</a></li>
+      <li><a href="https://unwire.hk/2026/11/06/japan-128-shinkin-atm-outage-system-restored/life-tech/epayment/" target="_blank" rel="noopener">unwire.hk — 128 間信用金庫 ATM 大癱瘓（11/6）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="16">
+      <li><a href="https://finance.yahoo.com/quote/%5EN225/history/" target="_blank" rel="noopener">Yahoo Finance — 日經 225</a></li>
+      <li><a href="https://finance.yahoo.com/quote/9432.T/history/" target="_blank" rel="noopener">Yahoo Finance — NTT</a></li>
+      <li><a href="https://finance.yahoo.com/quote/8306.T/history/" target="_blank" rel="noopener">Yahoo Finance — 三菱 UFJ</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/6214.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 精誠</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 7 日 16:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'日經 225', s:'57,434.77', v:-5.96},
+    {l:'三菱 UFJ', s:'8306 · 3,224 日圓', v:-6.52},
+    {l:'NTT', s:'9432 · 160.20 日圓', v:-2.85},
+    {l:'加權指數', s:'39,701.64', v:-4.51},
+    {l:'精誠', s:'6214 · 192.00', v:8.78}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
