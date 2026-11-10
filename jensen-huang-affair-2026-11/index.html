@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黃仁勳婚外情與國安疑雲</title>
+<meta name="description" content="2026 年 11 月輝達執行長黃仁勳承認婚外情，對象黃樂被美方指為中國情報人員：已證實與未證實的事、Megaspeed 晶片疑雲、董事會調查、美中台官方說法、輝達與台灣供應鏈股價，以及對台灣的意義。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">美中影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">國安與科技解讀 · 輝達 · 資料截至 2026 年 11 月 10 日 18:00（台灣時間）</p>
+      <h1>私事變成國安案：黃仁勳承認婚外情，對象被美方指為中國情報人員</h1>
+      <p class="lede">輝達執行長黃仁勳 11 月 8 日寫信向員工承認對妻子不忠；紐約時報等媒體報導，對象是新加坡雲端公司 Megaspeed 前高管黃樂（Alice Huang），美國情報單位認為她替中國國家安全部蒐集情報。輝達董事會已啟動獨立調查，說「沒有理由相信」國安或公司機密受損。間諜指控目前只來自匿名官員，黃樂未回應、未被起訴，中國外交部稱「捕風捉影」。這件事之所以不只是八卦，是因為輝達的 AI 晶片正是美國對中國出口管制的核心。</p>
+    </div>
+    <div class="stmt" aria-label="輝達 11/9 股價">
+      <div class="k">輝達 11/9 收盤</div>
+      <div class="range">−4.27<small>%</small></div>
+      <div class="was">178.67 美元 · 同日費半指數 +6.85%</div>
+      <div class="stmt-row">
+        <div><div class="v">≈11</div><div class="l">落後費半（百分點）</div></div>
+        <div><div class="v">48 億+</div><div class="l">美元，Megaspeed 兩年購晶片</div></div>
+        <div><div class="v">11/18</div><div class="l">眾議院閉門簡報</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>確定的只有「婚外情」與「董事會調查」，間諜指控仍未證實：8 個重點</h2>
+      <p>懶人包：全球最重要的 AI 晶片公司老闆，和一位被美國情報單位懷疑是中國情報人員的客戶主管有私人關係；問題不在私德，而在美國怕晶片與政策情報外流。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>11/8 黃仁勳承認出軌。</b>他寫信給員工：「我對妻子不忠……我做的事沒有藉口」，信中沒有說出對方姓名。</div></li>
+      <li><div><b>對象被指是黃樂。</b>紐約時報報導，黃仁勳向董事會承認與黃樂有親密關係；黃樂是新加坡雲端公司 Megaspeed 前高管、中國公民（NYT）。</div></li>
+      <li><div><b>美國情報單位懷疑她是中國情報人員。</b>NYT 引述匿名官員：美方認定她受中國國家安全部吸收，向北京傳遞美國 AI 晶片與政策資訊；這是匿名來源的說法，美國政府未公開證實。</div></li>
+      <li><div><b>董事會啟動獨立調查。</b>由獨立董事與外部律師進行，查他是否成為「外國情報行動」目標、是否違反行為準則；準則規定違規最重可解職。董事會說「沒有理由相信」國安或輝達機密受損，黃仁勳繼續任執行長。</div></li>
+      <li><div><b>Megaspeed 本來就在被查。</b>這家公司被懷疑幫中國企業取得受管制的輝達晶片，新加坡警方 2025 年 10 月證實調查中；Megaspeed 否認，稱美國商務部、馬來西亞與輝達檢查都「沒有發現違規證據」。</div></li>
+      <li><div><b>美中官方說法對立。</b>川普說黃仁勳是「正直的人」；中國外交部發言人郭嘉昆 11/9 說：「所謂中國間諜的論調純屬捕風捉影，汙衊抹黑。」</div></li>
+      <li><div><b>市場用腳投票，但沒有恐慌。</b>11/9 輝達收 178.67 美元、跌 4.27%，同日費半指數漲 6.85%、超微漲 13.26%，等於輝達單日落後同業約 11 個百分點。</div></li>
+      <li><div><b>台灣是會面場景，台股沒被拖累。</b>報導指兩人 2024 年 6 月與 2025 年 5 月在台北公開同場；外交部次長陳明祺說手上「沒有任何證據」。台積電 11/9、11/10 分別漲 4.68%、2.24%。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼一段婚外情會讓美國國會要求閉門簡報？</h2>
+      <p>第 1、2 點是報導中的事實與指控；第 3、4 點是政策背景與本報告分析。</p>
+    </div>
+    <div class="note">比喻：一家只賣給「持證買家」的軍火商，老闆和一位被懷疑幫對手轉手貨物的經銷商主管走得很近。就算沒有任何貨流出去，主管機關也會想知道：老闆知道什麼、說過什麼、有沒有被利用。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>輝達晶片是美中科技戰的核心</h3><p>美國自 2022 年起限制先進 AI 晶片賣到中國。輝達 2025 年因中國版晶片受限沖銷約 45 億美元；2026 年美方雖准 H200 銷中，中國監管單位卻擋下進口。誰能接觸輝達執行長、聽到美國出口政策的內情，因此成為國安問題。</p></div><div class="ev"><span class="tag">出口管制</span><span class="tag">H200</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>黃樂與 Megaspeed 的雙重疑點</h3><p>彭博報導黃樂 2023 年協助成立 Megaspeed（從中國遊戲公司 7Road 分拆），時間正好在美國首波對中晶片禁令後；NYT 稱它兩年買了逾 48 億美元輝達晶片，部分放在馬來西亞、印尼資料中心，疑似遠端服務中國客戶。黃樂 2023 年 3～11 月擔任董事總經理（The Week）。</p></div><div class="ev"><span class="tag">2023 成立</span><span class="tag">48 億美元+</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>美國政府早就知道？</h3><p>中文媒體轉述 NYT：川普約一年前已聽取簡報但「選擇不採取行動」；2026 年春天有一份機密備忘錄在川普 5 月訪中前傳閱，指一名與黃仁勳親近的中國女商人向北京傳遞 AI 晶片資訊。NYT 也引述匿名官員說，川普與黃仁勳的關係妨礙了限制晶片外銷的努力。</p></div><div class="ev"><span class="tag">2026 春備忘錄</span><span class="tag">匿名官員</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>為什麼是現在爆發</h3><p>NYT 10/29 先報「情報單位監控黃仁勳身邊一名女性」，輝達當時說只是「正常客戶互動」；FT 11/7 報導兩人關係親密，眾議院同日去信要求簡報，黃仁勳隔天才承認。民主黨剛在期中選舉拿下國會，對晶片出口的監督可能更嚴（推論）。</p></div><div class="ev"><span class="tag">10/29 NYT</span><span class="tag">11/7 FT</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>關鍵報導與承認</span><span><i class="g"></i>Megaspeed 與政策背景</span><span><i></i>官方回應與後續</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2023</div><div class="what">Megaspeed 從 7Road 分拆成立，黃樂 3～11 月任董事總經理。</div></li>
+        <li class="geo"><div class="date">2024-06</div><div class="what">台北 Computex 期間，黃樂與科技業主管聚會，黃仁勳到場（NYT 引述在場者）。</div></li>
+        <li class="geo"><div class="date">2025-05-22</div><div class="what">兩人在台北一場晚宴同框，媒體拍到合照。</div></li>
+        <li class="geo"><div class="date">2025-10</div><div class="what">新加坡警方證實調查 Megaspeed；NYT 報導美國商務部也在查。</div></li>
+        <li class="geo"><div class="date">2026 春</div><div class="what">機密備忘錄在美國政府內部傳閱（NYT，未公開證實）。</div></li>
+        <li class="key"><div class="date">2026-10-29</div><div class="what"><b>NYT 首報</b>情報單位監控黃仁勳身邊女性；輝達稱 Megaspeed 轉運指控「已查明並駁斥」。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-06</div><div class="what">NYT 再報：美方認為她受中國國安部吸收。</div></li>
+        <li class="key"><div class="date">2026-11-07</div><div class="what">FT 報導兩人關係親密；眾議院三位共和黨委員會主席要求 11/18 閉門簡報。</div></li>
+        <li class="key"><div class="date">2026-11-08</div><div class="what"><b>黃仁勳信中承認出軌</b>；董事會宣布獨立調查；川普力挺。</div></li>
+        <li class="key"><div class="date">2026-11-09</div><div class="what">輝達跌 4.27%；中國外交部稱「捕風捉影」；環球時報社評批美媒炒作。</div></li>
+        <li><div class="date">2026-11-10</div><div class="what">台灣外交部次長陳明祺：手上沒有證據、無調查權。</div></li>
+        <li><div class="date">2026-11-17／18</div><div class="what">輝達第三季財報；眾議院閉門簡報。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對美國、中國與相關國家的影響</div>
+      <h2>美國查輝達、新加坡查 Megaspeed、北京全盤否認</h2>
+      <p>這起事件牽動四方：輝達內部、美國國會與政府、中國政府，以及 Megaspeed 所在的新加坡與馬來西亞。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">輝達 11/9 收盤</div><div class="v">178.67</div><div class="d">−4.27%，盤中 170.24</div></div>
+      <div class="tile"><div class="l">10/28 以來</div><div class="v">−17.04%</div><div class="d">同期費半 −14.12%</div></div>
+      <div class="tile"><div class="l">Megaspeed 購晶片</div><div class="v">48 億美元+</div><div class="d">兩年（NYT）</div></div>
+      <div class="tile"><div class="l">中國客戶營收占比</div><div class="v">≈8%</div><div class="d">上一季（24/7 Wall St.）</div></div>
+      <div class="tile"><div class="l">中國晶片沖銷</div><div class="v">≈45 億美元</div><div class="d">2025 年</div></div>
+      <div class="tile"><div class="l">國會簡報</div><div class="v">11/18</div><div class="d">三位眾院委員會主席</div></div>
+      <div class="tile"><div class="l">第三季財報</div><div class="v">11/17</div><div class="d">財測不含中國資料中心</div></div>
+      <div class="tile"><div class="l">黃樂遭起訴</div><div class="v">未見</div><div class="d">截至查證時</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國與輝達</h3><ul class="plain">
+        <li><b>董事會：</b>獨立董事帶外部律師調查，重點是他是否成為外國情報行動目標；行為準則把「私人關係」列為可能的利益衝突，違規最重解職。</li>
+        <li><b>黃仁勳：</b>「我支持調查並會全力配合。我愛我們的國家和公司。」發言人 John Rizzo：他會「不中斷地」繼續領導輝達。</li>
+        <li><b>國會：</b>眾議院中國特別委員會 11/5 聲明稱黃樂是「公開報導的中國情報人員」；華倫參議員批評黃仁勳在川普 5 月訪中時遊說。</li>
+        <li><b>白宮：</b>川普說「他是個正直的人……他為國家做了很棒的工作」，並表示他應該留任。</li>
+      </ul></div>
+      <div class="card"><h3>中國、新加坡與 Megaspeed</h3><ul class="plain">
+        <li><b>中國外交部：</b>10/30 稱報導「捕風捉影」；11/9、11/10 兩度重申「汙衊抹黑」，未回答黃樂國籍與下落。</li>
+        <li><b>中國官媒：</b>環球時報社評〈黃仁勳出軌，還能扯上中國？〉，指美媒把出軌等同「被中國滲透」。</li>
+        <li><b>新加坡：</b>政府表示沒有調查黃樂的情報關係或她與黃仁勳的關係；但彭博列她為協助警方調查 Megaspeed 的人之一。</li>
+        <li><b>Megaspeed：</b>稱報導是「誤導資訊與錯誤影射」，考慮提告；表示過去 6 個月接受美國商務部、馬來西亞貿工部與輝達多次現場檢查，無違規證據。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>輝達逆勢下跌，台灣供應鏈反而反彈</h2>
+      <p>黃仁勳 11/8（週日）承認，美股 11/9 是第一個交易日；台股 11/9 下午 1:30 收盤時，美股尚未開盤。下圖是 11/9 美股、11/10 台股的單日漲跌，紅漲綠跌依台灣慣例。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">消息後首個交易日漲跌幅</p>
+        <p class="chart-sub">美股為 11/9、台股為 11/10 收盤漲跌（%）</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>輝達：</b>盤前一度跌約 5%，盤中低見 170.24 美元，收 178.67 美元、跌 4.27%；Dan Ives 說這是黃仁勳的「黑眼圈時刻」，但認為換掉他的說法是「笑話」。</li>
+          <li><b>同業：</b>同日超微漲 13.26%、邁威爾漲 9.49%、博通漲 8.78%，費半漲 6.85%；上週半導體因期中選舉後的 AI 監管疑慮重挫，11/9 是逢低反彈。</li>
+          <li><b>為什麼分歧：</b>安聯首席經濟顧問伊爾艾朗說，一是逢低買盤，二是市場樂觀認為醜聞「可以被控制」，但時機不好，因為涉及國安與地緣政治。</li>
+          <li><b>台股：</b>11/9 加權指數漲 4.94%、11/10 再漲 2.52%，未見報導把台股走勢歸因於這起事件；台積電、鴻海、廣達、緯創兩天都上漲。</li>
+          <li><b>10/29 首報當天：</b>輝達跌 0.80%，市場當時沒有太大反應。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>單日漲跌幅</th><th>10/28 以來</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">178.67（11/9）</td><td class="num down">−4.27%</td><td class="period">−17.04%</td><td>事件主角</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">508.58（11/9）</td><td class="num up">+13.26%</td><td class="period">−12.08%</td><td>主要競爭對手</td></tr>
+          <tr><td class="num">^SOX</td><td><b>費城半導體指數</b></td><td>美股指數</td><td class="num">10,033.93（11/9）</td><td class="num up">+6.85%</td><td class="period">−14.12%</td><td>同業比較基準</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克</b></td><td>美股指數</td><td class="num">25,253.14（11/9）</td><td class="num up">+2.74%</td><td class="period">−4.88%</td><td>大盤</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股指數</td><td class="num">42,711.92（11/10）</td><td class="num up">+2.52%</td><td class="period">−9.19%</td><td>11/9 另漲 4.94%</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,285（11/10）</td><td class="num up">+2.24%</td><td class="period">−5.77%</td><td>輝達晶片代工</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">241.50（11/10）</td><td class="num up">+1.05%</td><td class="period">−3.98%</td><td>AI 伺服器組裝</td></tr>
+          <tr><td class="num">2382</td><td><b>廣達</b></td><td>台股</td><td class="num">298.50（11/10）</td><td class="num up">+0.67%</td><td class="period">−9.55%</td><td>AI 伺服器組裝</td></tr>
+          <tr><td class="num">3231</td><td><b>緯創</b></td><td>台股</td><td class="num">171.00（11/10）</td><td class="num up">+1.48%</td><td class="period">−12.08%</td><td>AI 伺服器組裝</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance；10/28 是 NYT 首報（10/29）前一個交易日。10/28 以來的跌幅大多反映期中選舉後的 AI 股賣壓，不能全部算在這起事件上；較能反映事件衝擊的是 11/9 輝達與費半之間約 11 個百分點的落差（推論）。美股 11/10 收盤在查證時尚未出爐。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>「關鍵人物風險」與「晶片轉運」兩個老問題被放大</h2>
+      <p>這起事件讓全球看見：一家市值數兆美元、牽動 AI 產業的公司，風險可能集中在一個人身上；同時讓東南亞晶片轉運的疑慮再被檢視。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>關鍵人物風險</h3><ul class="plain small">
+        <li>Panmure Liberum 的 Klement 說，若黃仁勳地位不保，輝達可能減少對其他公司的支持，影響擴及 AI 生態系。</li>
+        <li>輝達沒有公開的接班人選，報導提到外界對家族接班的揣測。</li>
+      </ul></article>
+      <article class="card"><h3>東南亞轉運</h3><ul class="plain small">
+        <li>Megaspeed 在馬來西亞、印尼的資料中心疑似遠端服務中國客戶；「遠端使用」是出口管制的灰色地帶。</li>
+        <li>馬來西亞 2025 年 7 月起要求輝達晶片出口須申請許可。</li>
+      </ul></article>
+      <article class="card"><h3>美中關係</h3><ul class="plain small">
+        <li>環球時報質疑報導時機選在美中關係緩和之際；報導指川普與習近平即將會面（推論：雙方都不希望此事擴大）。</li>
+        <li>Vital Knowledge 的 Crisafulli 說，這可能提高美國收緊晶片出口規定的機率。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>調查認定無機密外洩，黃仁勳留任</h3><ul class="plain small">
+        <li>董事會結論與目前說法一致，最多加強治理與資訊揭露。</li>
+        <li>國會簡報後持續施壓，晶片出口監督變嚴。</li>
+      </ul><p class="trig">觸發條件：11/18 簡報沒有新證據，美國政府未公開指控。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>出現新證據，接班與出口管制雙重衝擊</h3><ul class="plain small">
+        <li>若美方公開情報內容或起訴，黃仁勳可能被迫下台或暫時離職。</li>
+        <li>美國可能全面收緊對東南亞的晶片出口與遠端使用規定。</li>
+      </ul><p class="trig">觸發條件：情報公開、黃樂或 Megaspeed 遭起訴、董事會認定違反準則。</p></article>
+      <article class="card"><div class="prob">劇本 C · 淡化</div><h3>醜聞降溫，焦點回到財報</h3><ul class="plain small">
+        <li>11/17 財報若亮眼，市場注意力回到 AI 需求。</li>
+      </ul><p class="trig">觸發條件：沒有新報導、財報優於預期、川普持續力挺。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/17 輝達第三季財報</b>：營收與財測，以及管理層是否回應調查。</li>
+      <li><b>11/18 眾議院閉門簡報</b>：黃仁勳是否出席、議員會後說法。</li>
+      <li><b>董事會調查結論</b>：時程尚未公布。</li>
+      <li><b>美國司法部與商務部</b>：對 Megaspeed 的調查是否有新進展。</li>
+      <li><b>川習會</b>：雙方是否提及晶片出口或此事。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>輝達</h3><span class="tag bad">利空</span></div><p>關鍵人物風險浮上檯面，政府關係可能受損（推論）。</p><div class="data">11/9 −4.27%，落後費半約 11 個百分點</div></article>
+      <article class="card"><div class="top"><h3>AI 晶片競爭者</h3><span class="tag good">受惠</span></div><p>客戶分散供應商的理由增加（推論）。</p><div class="data">超微 11/9 +13.26%（亦含逢低反彈）</div></article>
+      <article class="card"><div class="top"><h3>東南亞雲端與資料中心</h3><span class="tag bad">利空</span></div><p>轉運疑慮升溫，晶片取得與合規成本可能提高（推論）。</p><div class="data">Megaspeed 遭新加坡、美國調查</div></article>
+      <article class="card"><div class="top"><h3>台灣 AI 伺服器供應鏈</h3><span class="tag">好壞參半</span></div><p>短期未受衝擊；若出口管制收緊，東南亞訂單可能受影響（推論）。</p><div class="data">鴻海、廣達、緯創 11/9～10 皆上漲</div></article>
+      <article class="card"><div class="top"><h3>出口合規與晶片追蹤</h3><span class="tag good">受惠</span></div><p>國會已提案要求晶片追蹤系統，相關需求增加（推論）。</p><div class="data">2025 年起多項追蹤法案提出</div></article>
+      <article class="card"><div class="top"><h3>中國 AI 業者</h3><span class="tag bad">利空</span></div><p>美方若收緊遠端使用，取得算力更難（推論）。</p><div class="data">輝達財測已不含中國資料中心營收</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣是會面場景，真正的風險在「誰能接近科技領袖」</h2>
+      <p>報導中有兩次在台北的同場紀錄；台灣政府目前沒有證據、也沒有展開調查。對台灣的意義在於經濟安全與科技人才的防護。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>會面地點：</b>NYT 引述在場者，2024 年 6 月 Computex 期間黃樂在台北酒吧與科技主管聚會，黃仁勳到場；2025 年 5 月 22 日兩人在台北晚宴同框。報導未說婚外情發生在台灣。</li>
+        <li><b>外交部：</b>次長陳明祺 11/10 說「我手頭上沒有任何證據，我也沒有調查的權利」，入境身分不對外透露，除必要國安考量外「不會有太多必要的限制」；並說此事證明經濟安全的重要。</li>
+        <li><b>台股：</b>11/9、11/10 加權指數與輝達供應鏈都上漲，未受拖累。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>科技領袖的安全防護：</b>黃仁勳每年多次訪台，與供應鏈高層密集互動；台灣企業與政府可能檢討重要人士周邊的接觸管理。</li>
+        <li><b>輝達台灣布局：</b>輝達正在台北籌設海外總部（背景資訊）；若黃仁勳地位生變，訪台頻率與合作節奏可能改變。</li>
+        <li><b>出口管制連動：</b>美國若收緊東南亞晶片規定，台灣伺服器廠的東南亞出貨可能要更多審查。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，美國政府未公開黃樂涉間諜的證據，黃樂未回應媒體、未見被起訴；國安局、陸委會也未見公開說明。輝達董事會調查結果尚未公布。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">短期有限</span></td><td>台股兩天上漲，市場未把事件視為供應鏈風險。</td></tr>
+          <tr><td><b>AI 伺服器供應鏈</b></td><td><span class="tag">留意</span></td><td>出口管制若收緊，東南亞出貨審查可能增加（推論）。</td></tr>
+          <tr><td><b>科技業高層</b></td><td><span class="tag bad">需警覺</span></td><td>商業場合的人際接觸可能成為情報管道（推論）。</td></tr>
+          <tr><td><b>國安與外交單位</b></td><td><span class="tag">待觀察</span></td><td>外交部稱沒有證據，是否進一步調查未知。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，美媒追國安，台媒追八卦與身世，陸媒追「抹黑」</h2>
+      <p>美國財經媒體聚焦董事會調查與股價，台灣媒體大量報導黃樂的經歷與兩人同框照片，中國官媒則把報導定調為政治炒作。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>CNBC</td><td>公司治理</td><td>輝達調查黃仁勳與涉嫌中國間諜的關係</td><td>董事會聲明、黃仁勳信件</td></tr>
+          <tr><td>CNBC</td><td>市場</td><td>輝達跌 4%</td><td>同業大漲、分析師評論</td></tr>
+          <tr><td>CNBC</td><td>背景</td><td>Megaspeed 是什麼？</td><td>新加坡調查、Megaspeed 否認</td></tr>
+          <tr><td>The Week</td><td>Megaspeed 股權</td><td>誰擁有 Megaspeed？</td><td>7Road 分拆、股權轉手</td></tr>
+          <tr><td>24/7 Wall St.</td><td>中國立場</td><td>一年前他說「中國會贏 AI 競賽」</td><td>中國營收、出口政策時間線</td></tr>
+          <tr><td>聯合報</td><td>整理包</td><td>黃樂是誰、川普為何早知情</td><td>備忘錄、行為準則</td></tr>
+          <tr><td>世界日報</td><td>身世</td><td>黃樂過往經歷成謎</td><td>未證實的履歷</td></tr>
+          <tr><td>HK01</td><td>危機公關</td><td>輝達曾密聘危機公關</td><td>引述 WIRED</td></tr>
+          <tr><td>環球時報（經世界日報）</td><td>反駁</td><td>黃仁勳出軌，還能扯上中國？</td><td>質疑報導時機</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>黃仁勳 11/8 寫信承認不忠並道歉。</li>
+        <li>董事會啟動獨立調查，稱沒有理由相信機密受損。</li>
+        <li>間諜指控來自 NYT、FT 引述的情報官員。</li>
+        <li>Megaspeed 否認違規，中國外交部否認。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「間諜」用詞：</b>部分中文標題直接寫「女間諜」，但這是匿名官員的判斷，未經證實或起訴。</li>
+        <li><b>黃樂的履歷：</b>私募資料庫中署名黃樂的經歷（電視台記者、銀行）尚未證實，湖南衛視主管說沒聽過此人（紐約郵報）。</li>
+        <li><b>董事會調查目的：</b>有的寫查「是否違反行為準則」，有的寫查「是否成為外國情報目標」，兩者都在範圍內。</li>
+        <li><b>本報告不採用：</b>未具名來源的私生活細節、外貌與家庭傳聞。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>Megaspeed 購晶片</td><td>近 20 億美元，經馬來西亞子公司（NYT，2025-10）</td><td>兩年逾 48 億美元（NYT，2026-11）；一說 46 億</td><td>統計期間不同</td></tr>
+          <tr><td>黃樂國籍</td><td>中國公民（NYT、The Week）</td><td>新加坡女商人（聯合報部分段落）</td><td>聯合報同文前後不一</td></tr>
+          <tr><td>黃樂年齡</td><td>約 42 歲（財新引述知情人士）</td><td>網傳 1977 年生</td><td>網傳未經證實</td></tr>
+          <tr><td>在 Megaspeed 的身分</td><td>前高管、2023 年 3～11 月任董事總經理（The Week）</td><td>高管（眾院中國委員會）</td><td>是否仍任職不明</td></tr>
+          <tr><td>輝達 11/9 跌幅</td><td>4.27%（CNBC、Yahoo Finance）</td><td>4.2%（經濟日報）</td><td>四捨五入</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與市場資料，資料截至 2026 年 11 月 10 日 18:00（台灣時間）。紐約時報、金融時報、彭博與 WIRED 原文未直接讀取，相關內容經 CNBC、聯合報、世界日報與 HK01 轉述；輝達董事會、黃仁勳信件與各國官方說法也皆經媒體轉述。黃樂年齡一項僅見搜尋摘要。不同來源的數字可能略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.cnbc.com/2026/11/08/nvidia-jensen-huang-investigation-china-spy.html" target="_blank" rel="noopener">CNBC — 輝達調查黃仁勳與涉嫌中國間諜的關係（11/8）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html" target="_blank" rel="noopener">CNBC — 輝達股價跌 4%（11/9）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/09/megaspeed-nvidia-jensen-huang-alice-huang.html" target="_blank" rel="noopener">CNBC — Megaspeed 是什麼？（11/9）</a></li>
+      <li><a href="https://www.cnbc.com/2026/10/29/nvidia-jensen-huang-chinese-intelligence-asset.html" target="_blank" rel="noopener">CNBC — 輝達回應 NYT 報導（10/29）</a></li>
+      <li><a href="https://www.cnbc.com/2025/10/10/singapore-us-investigate-nvidia-client-megaspeed-export-controls-violation.html" target="_blank" rel="noopener">CNBC — 新加坡警方調查 Megaspeed（2025/10/10）</a></li>
+      <li><a href="https://www.theweek.in/news/biz-tech/2026/11/09/nvidia-investigates-jensen-huang-spy-row-megaspeed-alice.html" target="_blank" rel="noopener">The Week — 誰擁有 Megaspeed？（11/9）</a></li>
+      <li><a href="https://finance.yahoo.com/technology/ai/articles/1-ago-jensen-huang-said-094634982.html" target="_blank" rel="noopener">24/7 Wall St.（Yahoo Finance）— 一年前黃仁勳說「中國會贏 AI 競賽」（11/10）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="8">
+      <li><a href="https://udn.com/news/story/125066/9866003" target="_blank" rel="noopener">聯合報 — 整理包／黃仁勳婚外情時間軸（11/9）</a></li>
+      <li><a href="https://udn.com/news/story/6656/9868395" target="_blank" rel="noopener">聯合報 — 外交部：入境合規不會有太多必要限制（11/10）</a></li>
+      <li><a href="https://money.udn.com/money/story/5603/9867046" target="_blank" rel="noopener">經濟日報 — 中國外交部回應（11/9）</a></li>
+      <li><a href="https://money.udn.com/money/story/5603/9869869" target="_blank" rel="noopener">經濟日報 — 輝達跌、費半與那指大漲的兩個原因（11/10）</a></li>
+      <li><a href="https://www.worldjournal.com/wj/story/124277/9866013" target="_blank" rel="noopener">世界日報 — 黃仁勳出軌時間軸（11/8）</a></li>
+      <li><a href="https://www.worldjournal.com/wj/story/121172/9868622" target="_blank" rel="noopener">世界日報 — 黃樂過往經歷成謎（11/10）</a></li>
+      <li><a href="https://www.worldjournal.com/wj/story/121474/9867920" target="_blank" rel="noopener">世界日報 — 中官媒批美媒炒作（11/9）</a></li>
+      <li><a href="https://hk01.com/%E5%8D%B3%E6%99%82%E5%9C%8B%E9%9A%9B/60409078/%E9%BB%83%E4%BB%81%E5%8B%B3%E5%87%BA%E8%BB%8C-%E5%A4%96%E5%AA%92%E6%8F%AD%E8%8B%B1%E5%81%89%E9%81%94%E6%9B%BE%E5%AF%86%E8%81%98%E5%8D%B1%E6%A9%9F%E5%85%AC%E9%97%9C-%E6%93%85%E9%95%B7%E5%8C%96%E8%A7%A3%E6%80%A7%E9%86%9C%E8%81%9E" target="_blank" rel="noopener">HK01 — 輝達曾密聘危機公關（11/10）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="16">
+      <li><a href="https://finance.yahoo.com/quote/NVDA/history/" target="_blank" rel="noopener">Yahoo Finance — 輝達</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AMD/history/" target="_blank" rel="noopener">Yahoo Finance — 超微</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ESOX/history/" target="_blank" rel="noopener">Yahoo Finance — 費城半導體指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener">Yahoo Finance — 那斯達克</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2330.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 台積電</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2317.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 鴻海</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2382.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 廣達</a></li>
+      <li><a href="https://finance.yahoo.com/quote/3231.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 緯創</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；間諜指控為媒體引述匿名官員的說法，尚未經官方證實或司法認定。標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 10 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'輝達', s:'NVDA · 178.67（11/9）', v:-4.27},
+    {l:'超微', s:'AMD · 508.58（11/9）', v:13.26},
+    {l:'費城半導體', s:'10,033.93（11/9）', v:6.85},
+    {l:'那斯達克', s:'25,253.14（11/9）', v:2.74},
+    {l:'加權指數', s:'42,711.92（11/10）', v:2.52},
+    {l:'台積電', s:'2330 · 2,285（11/10）', v:2.24},
+    {l:'鴻海', s:'2317 · 241.50（11/10）', v:1.05},
+    {l:'廣達', s:'2382 · 298.50（11/10）', v:0.67},
+    {l:'緯創', s:'3231 · 171.00（11/10）', v:1.48}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
