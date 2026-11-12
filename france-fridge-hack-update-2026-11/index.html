@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>法國冰箱網攻續報</title>
+<meta name="description" content="2026 年 11 月法國指控伊朗革命衛隊發動超市冰箱網攻：檢方證據與手法、伊朗否認、歐盟制裁、血庫事件後續、法國資安立法、歐洲零售與資安股反應，以及台灣冷鏈該檢查什麼。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">法歐影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">續報 · 資安與國際政經 · 資料截至 2026 年 11 月 12 日 13:00（台灣時間）</p>
+      <h1>冰箱駭客有了名字：法國指伊朗革命衛隊發動「首次大規模破壞性網攻」</h1>
+      <p class="lede">10 月 11～12 日法國約 700 處超市與食品業冷凍設備被遠端改成除霜、溫度飆到約 50°C，引發至少 15 起火災。11 月 9 日法國外長巴羅證實是伊朗伊斯蘭革命衛隊（IRGC）所為，召見伊朗大使並推動歐盟制裁；巴黎檢方鎖定其網路單位「Shahid Kaveh」。伊朗 10 日全盤否認。11 月 2 日的歐洲第二波與法國血庫事件，法國尚未歸咎任何人；11 月 5 日後未見新攻擊。</p>
+    </div>
+    <div class="stmt" aria-label="法國受攻擊據點">
+      <div class="k">法國受攻擊據點（10 月）</div>
+      <div class="range">700<small>處</small></div>
+      <div class="was">外長巴羅 11/9 公布 · 損失「數千萬歐元」</div>
+      <div class="stmt-row">
+        <div><div class="v">15+</div><div class="l">起火災</div></div>
+        <div><div class="v">11/16</div><div class="l">歐盟外長會議</div></div>
+        <div><div class="v">0</div><div class="l">11/5 後新攻擊</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>攻擊停了，外交戰開始了：8 個重點</h2>
+      <p>懶人包：駭客利用冷凍設備的遠端管理介面，把冰箱改成「無限除霜」並關掉警報。法國說是伊朗國家級網軍，準備制裁；伊朗說法國「連冰箱溫度都管不好」。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>11/9 法國點名伊朗。</b>外長巴羅：「我可以確認這次攻擊是伊斯蘭革命衛隊發動的。」並說規模與侵略性「前所未見」，是法國本土「第一次大規模、以破壞為目的的網攻」。</div></li>
+      <li><div><b>只歸咎 10 月那一波。</b>法國的指控針對 10 月 11～12 日法國境內約 700 處；11 月 2 日歐洲第二波與血庫事件，法國尚未公布攻擊者。</div></li>
+      <li><div><b>檢方鎖定 Shahid Kaveh。</b>巴黎檢察長 Beccuau 說，證據包括波斯語介面、指向伊朗境內終端的 IP 位址；手法是透過網頁介面觸發「無限除霜」，並關閉溫度警報。司法調查對象是該單位負責人與兩名副手，路透報導已申請國際逮捕令。</div></li>
+      <li><div><b>伊朗否認。</b>伊朗外交部 11/10「斷然拒絕」法國「毫無根據、片面的指控」；外長阿拉格齊在 X 上嘲諷法國「連冰箱都管不好」。</div></li>
+      <li><div><b>歐盟可能 11/16 討論制裁。</b>歐盟外交與安全政策高級代表卡拉斯說「我們的回應應該強硬」；歐盟 2026 年 3 月已依網攻制裁機制制裁伊朗公司 Emennet Pasargad。</div></li>
+      <li><div><b>血庫靠警報擋下。</b>法國血液中心（EFS）3 個血漿冷庫屬外包商 Coolworld 遠端管理的設備，溫度門檻被調到極高，但沒有血液製品損失；「110°C」說法仍未證實。</div></li>
+      <li><div><b>法國加速立法。</b>國民議會 11/9～13 審議〈關鍵基礎設施韌性與資安強化法案〉，把食品業納入，經營者可能負個人責任；法案 2025 年 3 月已在參議院通過。</div></li>
+      <li><div><b>市場沒有恐慌。</b>11/9 起 CAC 40 連三天上漲、11/11 收 8,332.87 點；家樂福 11/3 以來漲 6.73%，零售股沒有因歸咎伊朗而下跌。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼冰箱會變成國家級網攻的目標？</h2>
+      <p>第 1、2 點是檢方與官方說法；第 3、4 點是背景與本報告分析。</p>
+    </div>
+    <div class="note">比喻：超市冷凍設備像一棟棟裝了「遠端遙控器」的倉庫，廠商為了方便維修，把遙控器連上網路。駭客只要找到沒鎖好的遙控器，就能在半夜把所有倉庫的冷氣改成暖氣，還順手把警報器關掉。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>遠端管理介面暴露在網路上</h3><p>被攻擊的是 Danfoss 控制器（AK-SM 800、AK-SC 355）與 Copeland／Dixell XWEB 介面。法國網安署 ANSSI 旗下 CERT-FR 10/12 發出警報；Danfoss 說受影響系統是「少數」，且早已提醒客戶更新。法方說攻擊者用 FOFA 設備搜尋引擎找目標。</p></div><div class="ev"><span class="tag">Danfoss</span><span class="tag">FOFA</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>Shahid Kaveh 的過往紀錄</h3><p>世界日報報導，這個革命衛隊網路單位自 2020 年活躍，曾被指攻擊美國供水系統；路透引述法方報告，點名 3 名相關人士與「CyberAveng3rs」等掩護名號。微軟據報兩週前已私下把攻擊連到伊朗。</p></div><div class="ev"><span class="tag">IRGC</span><span class="tag">2020 起</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>低成本、高衝擊的破壞</h3><p>不需要偷資料，只要讓食物壞掉、引發火災，就能造成「數千萬歐元」損失並製造恐慌。攻擊者選擇民生設施，比攻擊軍事系統門檻低，政治效果卻很大（推論）。</p></div><div class="ev"><span class="tag">數千萬歐元</span><span class="tag">15+ 火災</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>立法拖延留下破口</h3><p>歐盟 NIS 2 指令要求各國擴大資安規範，法國的轉化法案 2024 年 10 月送參議院，2026 年 10 月 6 日還因議程擁擠被撤下；歐盟執委會已把法國告上歐洲法院。食品業過去不在關鍵基礎設施範圍內。</p></div><div class="ev"><span class="tag">NIS 2</span><span class="tag">遲延轉化</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>攻擊與歸咎</span><span><i class="g"></i>背景</span><span><i></i>官方回應與後續</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2025-03-12</div><div class="what">參議院通過關鍵基礎設施資安法案。</div></li>
+        <li class="key"><div class="date">2026-10-11～12</div><div class="what"><b>第一波</b>：法國約 700 處冷凍設備被改成除霜，溫度約 50°C，至少 15 起火災。</div></li>
+        <li><div class="date">2026-10-12</div><div class="what">CERT-FR 發警報，隔天擴及 Copeland／Dixell XWEB。</div></li>
+        <li class="key"><div class="date">2026-11-02</div><div class="what"><b>第二波</b>：歐洲多國超市冷凍設備遭攻擊；EFS 3 個血漿冷庫遭入侵。</div></li>
+        <li><div class="date">2026-11-04</div><div class="what">EFS 證實無血液製品損失；歐盟說「不是孤立事件」。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-09</div><div class="what"><b>法國點名伊朗革命衛隊</b>，召見伊朗大使；檢方公布調查。</div></li>
+        <li><div class="date">2026-11-09～13</div><div class="what">國民議會審議資安法案。</div></li>
+        <li class="key"><div class="date">2026-11-10</div><div class="what">伊朗外交部否認，外長嘲諷法國。</div></li>
+        <li><div class="date">2026-11-12</div><div class="what">截至查證時，11/5 後未見新攻擊。</div></li>
+        <li><div class="date">2026-11-16</div><div class="what">歐盟外長會議，可能討論制裁。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對法國、歐洲與伊朗的影響</div>
+      <h2>超市丟光生鮮，血庫轉移庫存，外交關係降到冰點</h2>
+      <p>受害最直接的是法國連鎖超市與食品業者；歐洲第二波擴及十多國；法伊關係則從資安事件升級為外交對抗。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">法國受攻擊據點</div><div class="v">700</div><div class="d">10 月第一波</div></div>
+      <div class="tile"><div class="l">Intermarché／Netto</div><div class="v">300+</div><div class="d">半島電視台（TVBS 說 180）</div></div>
+      <div class="tile"><div class="l">U 系統超市</div><div class="v">100+</div><div class="d">半島電視台</div></div>
+      <div class="tile"><div class="l">家樂福</div><div class="v">80</div><div class="d">半島電視台</div></div>
+      <div class="tile"><div class="l">火災</div><div class="v">15+</div><div class="d">路透、BleepingComputer</div></div>
+      <div class="tile"><div class="l">11/2 第二波</div><div class="v">100+ 店</div><div class="d">至少 9～11 國</div></div>
+      <div class="tile"><div class="l">EFS 血漿冷庫</div><div class="v">3 處</div><div class="d">無血液製品損失</div></div>
+      <div class="tile"><div class="l">歐盟制裁</div><div class="v">未通過</div><div class="d">截至查證時</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>法國與歐洲</h3><ul class="plain">
+        <li><b>超市：</b>Intermarché 對法新社說門市必須「丟掉所有產品」；勒克萊爾、Casino、Metro、Monoprix 也受影響。</li>
+        <li><b>第二波：</b>比利時與盧森堡約 40 家 Delhaize、愛爾蘭 13 家 SuperValu、瑞典 6 家 Coop、德國 4 家、羅馬尼亞 6 家、義大利約 20 家；英國小型肉品加工廠也受害。</li>
+        <li><b>血庫：</b>受影響的冷庫屬外包商 Coolworld，它說只有「有限數量」設備受影響、漏洞來自第三方元件；衛生部長辦公室歸功於監控與警報系統。</li>
+        <li><b>立法：</b>新法把公共行政、郵政、廢棄物管理與食品業納入，經營者可能負個人責任。</li>
+      </ul></div>
+      <div class="card"><h3>伊朗與外交</h3><ul class="plain">
+        <li><b>法國：</b>召見伊朗大使「提出非常強烈的抗議」；巴羅說「不排除任何手段」，包括不公開的措施。</li>
+        <li><b>伊朗：</b>外交部說將「毫不猶豫採取必要措施」保護國家利益，並稱法國在「轉嫁治理失敗」。</li>
+        <li><b>其他國家：</b>羅馬尼亞資安局長說攻擊「半業餘」、不懷疑國家級行為者；義大利國防部長 Crosetto 泛指俄中伊三國。</li>
+        <li><b>俄羅斯：</b>11/5 否認涉案，稱指控「荒謬」。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，法國只把 10 月法國境內攻擊歸咎伊朗；11 月 2 日歐洲第二波與 EFS 血庫事件的攻擊者尚未公布。伊朗否認，法方證據也未完整公開。</div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>歸咎伊朗後，零售股照漲，資安股反彈</h2>
+      <p>下圖是 11/3 到 11/11 收盤的累計漲跌，紅漲綠跌依台灣慣例。這段期間歐股整體上漲，未見報導把零售股走勢歸因於網攻。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/3 至 11/11 收盤累計漲跌幅</p>
+        <p class="chart-sub">%；歐股、美股為 11/11 收盤，台股精誠同</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>法國零售：</b>11/9 歸咎伊朗當天，家樂福 −0.44%，隔天 +2.50%；11/3 以來 +6.73%。損失「數千萬歐元」相對大型零售商營收不大（推論）。</li>
+          <li><b>Ahold Delhaize：</b>預估第四季淨銷售最多少 2.5 億歐元（約 2.81 億美元），但這主要來自 10 月另一起讓網站與 App 停擺的 IT 事件，不能全算在冰箱攻擊上；股價 11/3 以來 +9.51%。</li>
+          <li><b>Casino：</b>11/10 跌 6.84%，股價只有約 0.16 歐元，波動大，未見報導歸因於網攻。</li>
+          <li><b>資安股：</b>11/9 CrowdStrike +5.38%、CIBR 資安 ETF +4.00%，但同日美股科技股普遍反彈，難以單獨歸因。</li>
+          <li><b>台股精誠：</b>11/9 −6.77%、11/11 +4.88%，走勢跟台股整體較相關（推論）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>11/11 收盤</th><th>11/9 漲跌</th><th>11/3 以來</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^FCHI</td><td><b>CAC 40</b></td><td>法股指數</td><td class="num">8,332.87</td><td class="num up">+1.16%</td><td class="period">+3.90%</td><td>法國大盤</td></tr>
+          <tr><td class="num">^STOXX</td><td><b>STOXX 600</b></td><td>歐股指數</td><td class="num">663.05</td><td class="num up">+1.26%</td><td class="period">+2.69%</td><td>歐洲大盤</td></tr>
+          <tr><td class="num">CA.PA</td><td><b>家樂福</b></td><td>法股</td><td class="num">13.95 €</td><td class="num down">−0.44%</td><td class="period">+6.73%</td><td>80 家門市受害</td></tr>
+          <tr><td class="num">AD.AS</td><td><b>Ahold Delhaize</b></td><td>荷股</td><td class="num">35.22 €</td><td class="num down">−0.09%</td><td class="period">+9.51%</td><td>約 40 家 Delhaize 受害</td></tr>
+          <tr><td class="num">CO.PA</td><td><b>Casino</b></td><td>法股</td><td class="num">0.1588 €</td><td class="num down">−1.40%</td><td class="period">−6.04%</td><td>旗下門市受害</td></tr>
+          <tr><td class="num">CRWD</td><td><b>CrowdStrike</b></td><td>美股</td><td class="num">229.06</td><td class="num up">+5.38%</td><td class="period">−6.38%</td><td>資安服務</td></tr>
+          <tr><td class="num">CIBR</td><td><b>資安 ETF</b></td><td>美股</td><td class="num">96.25</td><td class="num up">+4.00%</td><td class="period">−1.00%</td><td>資安產業</td></tr>
+          <tr><td class="num">6214</td><td><b>精誠</b></td><td>台股</td><td class="num">193.50</td><td class="num down">−6.77%</td><td class="period">−4.21%</td><td>台灣資訊與資安服務</td></tr>
+          <tr><td class="num">—</td><td><b>Danfoss</b></td><td>未上市</td><td class="num">—</td><td class="num">—</td><td class="period">—</td><td>被攻擊的控制器廠商</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance（歐美個股 11/11 收盤取自頁首「At close: November 11」報價）；中華資安（7765）頁面無法讀取。11/3 以來同期歐美股市整體上漲，個股漲跌多反映大盤。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>「物聯網破壞戰」成為國家對抗的新武器</h2>
+      <p>這是歐洲第一次由政府公開把大規模民生設備破壞歸咎於另一國家，影響資安規範、制裁政策與設備廠商責任。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>制裁先例</h3><ul class="plain small">
+        <li>若歐盟 11/16 通過制裁，將是針對「破壞民生設備」網攻的新案例（推論）。</li>
+        <li>伊朗已警告會採取「必要措施」，法伊關係可能進一步惡化。</li>
+      </ul></article>
+      <article class="card"><h3>設備廠商責任</h3><ul class="plain small">
+        <li>Danfoss、Copeland、Coolworld 都被點名；設備預設可從網路存取的設計受到檢討（推論）。</li>
+        <li>美國軍方福利社 8 月也疑似發生冰箱網攻，五角大廈調查中，與歐洲的關聯未證實。</li>
+      </ul></article>
+      <article class="card"><h3>法規加速</h3><ul class="plain small">
+        <li>歐盟 NIS 2 要求各國擴大關鍵基礎設施範圍；法國已被告上歐洲法院。</li>
+        <li>其他遲延轉化的國家可能加快立法（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>歐盟制裁、攻擊暫停</h3><ul class="plain small">
+        <li>歐盟對 Shahid Kaveh 相關人士實施資產凍結與旅行禁令。</li>
+        <li>法國通過資安法案，業者全面切斷或加固遠端存取。</li>
+      </ul><p class="trig">觸發條件：11/16 外長會議達成共識、沒有新攻擊。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 升級</div><h3>伊朗報復或新一波攻擊</h3><ul class="plain small">
+        <li>攻擊轉向醫療、供水或能源等更關鍵設施。</li>
+        <li>法伊互相驅逐外交官，中東緊張升高。</li>
+      </ul><p class="trig">觸發條件：制裁通過後出現新攻擊、伊朗採取外交報復。</p></article>
+      <article class="card"><div class="prob">劇本 C · 淡化</div><h3>制裁卡關，事件淡出</h3><ul class="plain small">
+        <li>部分會員國對歸咎證據有疑慮，制裁延後。</li>
+      </ul><p class="trig">觸發條件：歐盟無法一致同意、法方證據未公開。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/13</b>：國民議會資安法案審議結果。</li>
+      <li><b>11/16</b>：歐盟外長會議是否通過制裁。</li>
+      <li><b>11 月 2 日第二波的歸咎</b>：是否也指向伊朗或其他國家。</li>
+      <li><b>伊朗的「必要措施」</b>：外交或網路報復。</li>
+      <li><b>零售業者第四季財報</b>：實際損失金額。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>連鎖超市</h3><span class="tag bad">利空</span></div><p>生鮮報廢、設備損壞與資安投資增加。</p><div class="data">法國 700 處受攻擊、損失數千萬歐元</div></article>
+      <article class="card"><div class="top"><h3>冷凍設備廠商</h3><span class="tag bad">利空</span></div><p>產品安全受質疑，可能面臨求償與法規要求（推論）。</p><div class="data">Danfoss、Copeland、Coolworld 被點名</div></article>
+      <article class="card"><div class="top"><h3>工控與物聯網資安</h3><span class="tag good">受惠</span></div><p>新法擴大適用範圍，食品業須投資資安（推論）。</p><div class="data">CrowdStrike 11/9 +5.38%</div></article>
+      <article class="card"><div class="top"><h3>醫療冷鏈</h3><span class="tag">好壞參半</span></div><p>血庫靠警報擋下，但外包商管理的設備成為破口。</p><div class="data">EFS 3 處冷庫、無損失</div></article>
+      <article class="card"><div class="top"><h3>保險業</h3><span class="tag">好壞參半</span></div><p>國家級網攻是否屬「戰爭除外條款」可能引發理賠爭議（推論）。</p><div class="data">15+ 起火災</div></article>
+      <article class="card"><div class="top"><h3>食品加工</h3><span class="tag bad">利空</span></div><p>屠宰場與加工廠也遭攻擊，被納入新法監管。</p><div class="data">英國、法國肉品業者受害</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣沒有受害，但同樣的設備與漏洞台灣也有</h2>
+      <p>截至查證時，沒有台灣業者或設備涉入；但超市、物流與醫療冷鏈的遠端管理架構，台灣與歐洲類似。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>直接影響：</b>無；中央社、聯合報、TVBS、Newtalk 等以國際新聞報導。</li>
+        <li><b>中央社切入點：</b>報導法國加速立法、把食品業納入關鍵基礎設施，經營者可能負個人責任。</li>
+        <li><b>台股：</b>資安類股未出現與此事相關的明顯走勢。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>冷鏈設備盤點：</b>台灣超市、物流與血液基金會的冷藏設備若可從網路遠端管理，應確認更新、密碼與警報是否獨立於網路。</li>
+        <li><b>法規：</b>台灣《資通安全管理法》以關鍵基礎設施為主，食品零售與冷鏈是否納入值得討論。</li>
+        <li><b>國家級威脅：</b>攻擊者用公開搜尋引擎找暴露的設備，任何國家的設備都可能被掃到。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未查到台灣政府或資安主管機關針對此事的公開說明，也未查到台灣設備受影響的報導。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>超市與量販業者</b></td><td><span class="tag bad">需檢查</span></td><td>冷凍設備遠端管理與警報機制（推論）。</td></tr>
+          <tr><td><b>醫療與血液機構</b></td><td><span class="tag bad">需檢查</span></td><td>外包商管理的冷庫是破口（推論）。</td></tr>
+          <tr><td><b>資安業者</b></td><td><span class="tag good">需求增加</span></td><td>工控與物聯網資安服務（推論）。</td></tr>
+          <tr><td><b>一般消費者</b></td><td><span class="tag">影響有限</span></td><td>台灣目前沒有類似事件。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，歐媒追證據與制裁，伊朗媒體反諷，台媒追手法</h2>
+      <p>法國與國際通訊社聚焦歸咎的證據與外交後果；台灣媒體強調「冰櫃飆 50 度」與波斯語程式碼等手法細節。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>France24（法新社）</td><td>外交</td><td>外長：革命衛隊是幕後黑手</td><td>「前所未見」、召見大使</td></tr>
+          <tr><td>路透（Khaleej Times）</td><td>調查</td><td>法國指控革命衛隊</td><td>點名 3 人、微軟早已連結伊朗</td></tr>
+          <tr><td>Euronews</td><td>歐盟</td><td>法國說伊朗是幕後</td><td>11/16 外長會議</td></tr>
+          <tr><td>半島電視台</td><td>規模</td><td>法國指控伊朗</td><td>各連鎖門市數</td></tr>
+          <tr><td>BleepingComputer</td><td>技術</td><td>法國指伊朗駭客引發火災</td><td>FOFA、波斯語痕跡</td></tr>
+          <tr><td>WION／Anadolu</td><td>伊朗回應</td><td>伊朗拒絕「毫無根據」指控</td><td>「連冰箱溫度都管不好」</td></tr>
+          <tr><td>中央社</td><td>立法</td><td>法國加快立法防堵破口</td><td>食品業納管、個人責任</td></tr>
+          <tr><td>TVBS</td><td>手法</td><td>半夜冰櫃飆 50 度</td><td>Danfoss 遠端軟體</td></tr>
+          <tr><td>Newtalk</td><td>證據</td><td>波斯語程式碼成關鍵鐵證</td><td>美軍福利社疑似案例</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>法國 11/9 指控伊朗革命衛隊，召見大使。</li>
+        <li>受攻擊據點約 700 處，至少 15 起火災。</li>
+        <li>伊朗否認。</li>
+        <li>EFS 無血液製品損失。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>歸咎範圍：</b>部分中文報導把血庫事件也算在伊朗頭上，但法國只歸咎 10 月法國境內攻擊。</li>
+        <li><b>Ahold 損失：</b>CBS 把 2.5 億歐元放在冰箱攻擊報導中，但主要來自 10 月另一起 IT 事件。</li>
+        <li><b>110°C：</b>來自諷刺週報《鴨鳴報》，法新社標示未證實。</li>
+        <li><b>「15 國」：</b>部分報導說 15 國，但 15 其實是火災數。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>法國受攻擊據點</td><td>700 處（巴羅）；逾 700（Euronews）</td><td>早期估計 250～400；標題「逾 1,000」</td><td>統計持續更新</td></tr>
+          <tr><td>11/2 受害國家</td><td>至少 9 國（法新社）；至少 11 國（半島 11/4）</td><td>6 國（BleepingComputer）；7 國（Supermarket News）</td><td>統計時間與定義不同</td></tr>
+          <tr><td>Intermarché 門市</td><td>300+（半島）</td><td>180（TVBS）</td><td>統計時間不同</td></tr>
+          <tr><td>火災</td><td>至少 15 起（路透）</td><td>約 20 起（Gadget Review）</td><td>來源不同</td></tr>
+          <tr><td>血庫設定溫度</td><td>110°C（鴨鳴報）</td><td>150°C（未證實報導）</td><td>EFS 只說「極高」</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與市場資料，資料截至 2026 年 11 月 12 日 13:00（台灣時間）。法國外交部、巴黎檢方與伊朗外交部的說法皆經通訊社轉述；Le Monde、Politico 與 BBC 原文未能直接讀取。前兩份報告〈歐洲超市冰箱遭駭〉〈法國血庫冷庫遭駭〉的內容不重複。</p>
+    </div>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.france24.com/en/europe/20261109-iran-revolutionary-guards-behind-cyberattacks-on-supermarket-fridges-says-french-fm-barrot" target="_blank" rel="noopener">France24（法新社）— 外長巴羅：革命衛隊是幕後黑手（11/9）</a></li>
+      <li><a href="https://www.khaleejtimes.com/world/france-accuses-irgc-cyberattack-supermarket-fridges" target="_blank" rel="noopener">路透（Khaleej Times）— 法國指控革命衛隊（11/9）</a></li>
+      <li><a href="https://irishtimes.com/world/2026/11/09/french-officials-accuse-iran-of-carrying-out-refrigerator-hacks/" target="_blank" rel="noopener">Irish Times — 法國官員指伊朗駭冰箱（11/9）</a></li>
+      <li><a href="https://euronews.com/2026/11/09/france-says-iran-behind-cyberattacks-on-supermarket-fridges" target="_blank" rel="noopener">Euronews — 法國說伊朗是幕後（11/9）</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/11/9/france-accuses-iran-of-cyberattack-on-european-fridges" target="_blank" rel="noopener">半島電視台 — 法國指控伊朗（11/9）</a></li>
+      <li><a href="https://aljazeera.com/news/2026/11/4/eu-urges-action-as-germany-romania-and-uk-report-supermarket-cyberattacks" target="_blank" rel="noopener">半島電視台 — 德、羅、英通報攻擊（11/4）</a></li>
+      <li><a href="https://bleepingcomputer.com/news/security/france-blames-iranian-hackers-for-supermarket-attacks-that-sparked-fires" target="_blank" rel="noopener">BleepingComputer — 法國指伊朗駭客引發火災</a></li>
+      <li><a href="https://www.koreatimes.co.kr/world/20261111/iran-rejects-frances-baseless-accusations-on-cyberattack" target="_blank" rel="noopener">Korea Times（法新社）— 伊朗拒絕指控（11/11）</a></li>
+      <li><a href="https://www.wionews.com/world/iran-rejects-france-s-baseless-claims-of-irgc-role-in-fridge-cyberattacks-they-cannot-even-manage-temperatures-1794320403567" target="_blank" rel="noopener">WION — 伊朗嘲諷法國（11/10）</a></li>
+      <li><a href="https://www.aa.com.tr/en/middle-east/iran-denies-french-accusations-of-cyberattacks-on-supermarket-refrigeration-systems/4119026" target="_blank" rel="noopener">Anadolu — 伊朗否認（11/10）</a></li>
+      <li><a href="https://www.cbsnews.com/news/cyberattack-france-blood-bank/" target="_blank" rel="noopener">CBS（AP）— 法國血庫遭網攻</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/04/blood-bank-fridges-cyberattacks.html" target="_blank" rel="noopener">CNBC — 血庫成冰箱網攻最新目標（11/4）</a></li>
+      <li><a href="https://www.techniques-ingenieur.fr/actualite/breves-afp/des-chambres-froides-de-letablissement-francais-du-sang-victimes-dune-cyberattaque-dun-prestataire-165616/" target="_blank" rel="noopener">Techniques de l'Ingénieur（法新社）— EFS 冷庫因外包商遭攻擊</a></li>
+      <li><a href="https://www.leto.legal/news/nis-2-projet-loi-resilience-assemblee-nationale-9-novembre-2026" target="_blank" rel="noopener">leto.legal — 資安法案 11/9 回到國民議會（11/5）</a></li>
+      <li><a href="https://www.supermarketnews.com/grocery-technology/new-freezer-cyberattack-hits-ahold-delhaize-others" target="_blank" rel="noopener">Supermarket News — 新一波冷凍網攻（11/2）</a></li>
+      <li><a href="https://www.esmmagazine.com/retail/ahold-delhaize-posts-resilient-q3-cuts-2026-outlook-after-cyber-incident-325297" target="_blank" rel="noopener">ESM — Ahold Delhaize 下修展望</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="17">
+      <li><a href="https://www.cna.com.tw/news/aopl/202611110340.aspx" target="_blank" rel="noopener">中央社 — 法國超市及血庫相繼遭網攻 加快立法（11/11）</a></li>
+      <li><a href="https://money.udn.com/money/story/5599/9868386" target="_blank" rel="noopener">經濟日報 — 法國控伊朗駭超市冰箱（11/10）</a></li>
+      <li><a href="https://www.worldjournal.com/wj/story/121488/9868869" target="_blank" rel="noopener">世界日報 — 法國控伊朗革命衛隊（11/10）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-11-10/1070359" target="_blank" rel="noopener">Newtalk — 波斯語程式碼成關鍵鐵證（11/10）</a></li>
+      <li><a href="https://news.tvbs.com.tw/world/4048255" target="_blank" rel="noopener">TVBS — 半夜冰櫃飆 50 度</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="22">
+      <li><a href="https://finance.yahoo.com/quote/%5EFCHI/history/" target="_blank" rel="noopener">Yahoo Finance — CAC 40</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ESTOXX/history/" target="_blank" rel="noopener">Yahoo Finance — STOXX 600</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CA.PA/history/" target="_blank" rel="noopener">Yahoo Finance — 家樂福</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AD.AS/history/" target="_blank" rel="noopener">Yahoo Finance — Ahold Delhaize</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CO.PA/history/" target="_blank" rel="noopener">Yahoo Finance — Casino</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CRWD/history/" target="_blank" rel="noopener">Yahoo Finance — CrowdStrike</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CIBR/history/" target="_blank" rel="noopener">Yahoo Finance — CIBR 資安 ETF</a></li>
+      <li><a href="https://finance.yahoo.com/quote/6214.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 精誠</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；攻擊者歸屬為法國政府的指控，伊朗否認，尚未經司法認定。標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 12 日 13:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'CAC 40', s:'8,332.87', v:3.90},
+    {l:'STOXX 600', s:'663.05', v:2.69},
+    {l:'家樂福', s:'CA · 13.95 €', v:6.73},
+    {l:'Ahold Delhaize', s:'AD · 35.22 €', v:9.51},
+    {l:'Casino', s:'CO · 0.1588 €', v:-6.04},
+    {l:'CrowdStrike', s:'CRWD · 229.06', v:-6.38},
+    {l:'資安 ETF', s:'CIBR · 96.25', v:-1.00},
+    {l:'精誠', s:'6214 · 193.50', v:-4.21}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
