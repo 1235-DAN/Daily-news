@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoreWeave 第三季財報解讀</title>
+<meta name="description" content="CoreWeave 2026 年第三季財報解讀：營收年增 168%、訂單積壓 1,325 億美元、上修財測與股價單日漲 24.7% 的原因，公司是什麼、怎麼賺錢、債務與利息壓力，以及對 AI 產業、輝達、全球資金與台灣供應鏈的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#profile">公司介紹</a></li>
+      <li><a class="link" href="#results">財報拆解</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">AI 基礎建設解讀 · 財報 · 資料截至 2026 年 11 月 12 日 09:30（台灣時間）</p>
+      <h1>CoreWeave 營收年增 168%、訂單積壓 1,325 億美元，股價一天飆 24.7%；但利息已是營業利益的 4 倍</h1>
+      <p class="lede">美國 AI 雲端業者 CoreWeave 11 月 10 日（美東，台灣時間 11 日清晨）公布第三季財報：營收 36.61 億美元、年增 168%，高於市場預估；未來幾年已簽約、尚未認列的營收（訂單積壓）達 1,325 億美元，並上修全年營收與獲利財測。股價在財報前一個月跌了約 4 成，11/11 單日大漲 24.71%，帶動費城半導體指數漲 5.66%、台股漲 1,545 點。但它靠借錢買 GPU 擴張，第三季利息支出 8.46 億美元，是營業利益 2.07 億美元的 4 倍；同一晚，大股東輝達因執行長黃仁勳去留的報導，盤後跌逾 8%。</p>
+    </div>
+    <div class="stmt" aria-label="第三季營收">
+      <div class="k">2026 年第三季營收</div>
+      <div class="range">36.61 億<small>美元</small></div>
+      <div class="was">年增 168% · 去年同期 13.65 億美元</div>
+      <div class="stmt-row">
+        <div><div class="v">1,325 億</div><div class="l">訂單積壓（美元），年增 138%</div></div>
+        <div><div class="v">−7.09 億</div><div class="l">淨損（美元），去年 −1.10 億</div></div>
+        <div><div class="v">+24.71%</div><div class="l">11/11 股價，收 60.77 美元</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂這份財報</h2>
+      <p>一句話：AI 算力還是供不應求，CoreWeave 的生意越做越大；但它是用大量借款撐起來的生意，市場同時在看需求和利息。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>營收比預期好。</b>第三季營收 36.61 億美元，年增 168%；LSEG 統計市場預估 35.5 億美元。依 CNBC，調整後每股虧損 0.95 美元，也比預估的 1.16 美元少。</div></li>
+      <li><div><b>訂單積壓 1,325 億美元。</b>比 6 月底的約 1,040 億美元多約 285 億美元，年增 138%；其中 36% 預計 2 年內認列、38% 在第 3～4 年、26% 在 4 年後。</div></li>
+      <li><div><b>上修全年財測。</b>2026 年營收財測從 124～132 億美元調到 130～133 億美元；調整後營業利益從 9.6～11.5 億美元調到 12.75～13.75 億美元，中值上修 26%。</div></li>
+      <li><div><b>還在虧錢，主因是利息與折舊。</b>第三季營業利益 2.07 億美元，但淨利息支出 8.46 億美元，淨損擴大到 7.09 億美元（去年同期 1.10 億美元）；公司預估 2028 年上半年調整後淨利轉正。</div></li>
+      <li><div><b>需求是供給的 10 倍，價格往上調。</b>執行長 Michael Intrator 說，到 2027 年底合格需求是可用產能的 10 倍；7 月全面漲價 25%、季末再漲 10%，舊款 GPU 的價格季增 30～50%。</div></li>
+      <li><div><b>不再發無擔保公司債。</b>部分公司債殖利率曾超過 16%，管理層表示在目前利率下，到 2027 年都不打算再發母公司層級的無擔保債，改用以設備與合約擔保的貸款（DDTL）和客戶預付款，未來 3 個月預計收到約 90 億美元預付款與押金。</div></li>
+      <li><div><b>股價單日大漲 24.71%。</b>11/11 收 60.77 美元，是 2025 年 4 月以來最大單日漲幅；但財報前一個月已跌約 4 成，52 週高點是 138.25 美元。</div></li>
+      <li><div><b>帶動 AI 股與台股反彈，但輝達風波未平。</b>11/11 費城半導體漲 5.66%、台股漲 1,545 點；同晚《華爾街日報》報導輝達董事會準備撤換黃仁勳，輝達盤後跌逾 8%，CoreWeave 盤後也回落 6.37%。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>財報前市場在怕什麼？五個背景</h2>
+      <p>這份財報之所以受矚目，是因為 10 月到 11 月初市場對 AI 基礎建設的疑慮快速升高，CoreWeave 被視為最容易出事的一環。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>AI 股從 10 月開始修正</h3><p>CNBC 指 CoreWeave 財報前一個月股價跌約 40%；輝達 10/6 創高後一度跌 29%（自由財經）。市場質疑 AI 投資何時回本。</p></div><div class="ev"><span class="tag">一個月 −40%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>借錢成本飆高</h3><p>CNBC 報導，CoreWeave 部分公司債殖利率超過 16%，信用違約交換（CDS，可想成債券的保險費）利差 10 月中超過 11%，達到「困境」水準；財報時總負債約 469 億美元。</p></div><div class="ev"><span class="tag">殖利率 &gt;16%</span><span class="tag">CDS &gt;11%</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>美國期中選舉後的監管風險</h3><p>11/3 期中選舉後，CNBC 指選民否決數十項資料中心相關提案；德州州長 Greg Abbott 落敗，他曾因給資料中心租稅優惠受批評。鉅亨引述路透，部分當選人想收緊甚至暫停新建資料中心。</p></div><div class="ev"><span class="tag">資料中心監管</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>大股東輝達的領導危機</h3><p>黃仁勳 11/8 坦承婚外情，對象被美國情報單位懷疑與中國國安部有關；輝達董事會展開調查，股價兩天累跌近 10%。輝達持有 CoreWeave 約 10% 股份（中央社），也是它所有 GPU 的供應商。</p></div><div class="ev"><span class="tag">持股約 10%</span></div></div>
+      <div class="reason"><div class="n">5</div><div><h3>升息預期</h3><p>美國 10 月 CPI 月增 0.4%，高於預期，CME FedWatch 顯示 12 月升息 1 碼（0.25 個百分點）的機率近 90%（鉅亨）。對負債高的公司，利率越高、利息越重（推論）。</p></div><div class="ev"><span class="tag">12 月升息機率約 90%</span></div></div>
+    </div>
+    <div class="note">也就是說，財報要回答的不只是「生意好不好」，還有「錢夠不夠、借得到嗎」。這次財報兩題都給了比預期好的答案，所以股價反彈特別大（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>CoreWeave 公司事件</span><span><i class="g"></i>市場與外部衝擊</span><span><i></i>其他</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2017-09</div><div class="what">以 Atlantic Crypto 之名在紐澤西成立，用 GPU 挖以太幣。</div></li>
+        <li class="key"><div class="date">2019</div><div class="what">改名 CoreWeave，轉型出租 GPU 算力。</div></li>
+        <li class="key"><div class="date">2025-03-28</div><div class="what">那斯達克上市，每股 <b>40 美元</b>、募資 15 億美元；輝達在 40 美元承接股份。</div></li>
+        <li class="geo"><div class="date">2025-10</div><div class="what">以 90 億美元收購 Core Scientific 的案子遭對方股東否決。</div></li>
+        <li class="key"><div class="date">2026-01</div><div class="what">輝達再以每股 87.20 美元投資 20 億美元。</div></li>
+        <li class="key"><div class="date">2026-04</div><div class="what">Meta 擴大合約 210 億美元；與 Anthropic 簽多年算力合約。</div></li>
+        <li class="geo"><div class="date">2026-10 中</div><div class="what">CDS 利差超過 11%，部分公司債殖利率逾 16%。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-03</div><div class="what">美國期中選舉，資料中心監管成為議題。</div></li>
+        <li class="geo"><div class="date">2026-11-08</div><div class="what">黃仁勳坦承婚外情，輝達董事會啟動調查。</div></li>
+        <li class="key"><div class="date">2026-11-10</div><div class="what">美東盤後公布第三季財報，<b>上修全年財測</b>。</div></li>
+        <li class="key"><div class="date">2026-11-11</div><div class="what">股價 <b>+24.71%</b> 收 60.77 美元；台股同日漲 1,545 點。</div></li>
+        <li class="geo"><div class="date">2026-11-11 晚</div><div class="what">《華爾街日報》報導輝達董事會準備撤換黃仁勳，輝達盤後跌逾 8%。</div></li>
+        <li><div class="date">2026-11-17</div><div class="what">輝達公布第三季財報（中央社）。</div></li>
+        <li><div class="date">2026-11-19</div><div class="what">CoreWeave 客戶 Anthropic 預計在那斯達克掛牌（中央社）。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 profile -->
+<section id="profile">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 公司介紹</div>
+      <h2>CoreWeave 是誰？從挖礦起家的「GPU 包租公」</h2>
+      <p>CoreWeave 屬於「新雲端」（neocloud）：不像 Amazon、微軟那樣什麼都做，只專門出租 AI 用的 GPU 算力。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="card">
+        <h3>用房東來想它的生意</h3>
+        <ul class="plain small">
+          <li><b>蓋房子：</b>向銀行借錢，買下輝達 GPU、租下或蓋好資料中心與電力。</li>
+          <li><b>找房客：</b>和 OpenAI、Meta、微軟、Anthropic 等 AI 公司簽 4～5 年的租約。</li>
+          <li><b>收租金還貸款：</b>用租金付利息、還本金，剩下的才是利潤。</li>
+          <li><b>風險：</b>房客太集中、利率上升，或 GPU 舊得比租約還快，都可能讓帳算不過來（推論）。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>基本資料</h3>
+        <ul class="plain small">
+          <li><b>總部：</b>美國紐澤西州 Livingston；2024 年在倫敦設歐洲總部。</li>
+          <li><b>創辦人：</b>Michael Intrator（執行長）、Brian Venturo、Brannin McBee，三人原本是大宗商品交易員。</li>
+          <li><b>上市：</b>2025 年 3 月 28 日，代號 CRWV；原定每股 47～55 美元，因需求不足降到 40 美元、募資 15 億美元。</li>
+          <li><b>規模：</b>52 座資料中心，運轉中電力逾 1.7 GW（吉瓦），已簽約電力逾 4.6 GW；11/11 市值約 335 億美元。</li>
+          <li><b>GPU：</b>全部來自輝達；首家上線 GB200 NVL72，也最早商用 GB300 與 Vera Rubin 機櫃。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">三個關鍵關係</div>
+    <div class="grid g3">
+      <article class="card"><h3>輝達：供應商兼股東</h3><ul class="plain small">
+        <li>2023 年 4 月投資 1 億美元；2025 年上市時在 40 美元承接；2026 年 1 月再投資 20 億美元。</li>
+        <li>持股約 10%（中央社）。</li>
+        <li>拿到最新 GPU 的速度，是 CoreWeave 的主要賣點（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>大客戶：微軟、OpenAI、Meta</h3><ul class="plain small">
+        <li>微軟占 2024 年營收 62%（CNBC 引述招股書）。</li>
+        <li>OpenAI 2025 年 3 月簽約約 119 億美元、5 年；Meta 2026 年 4 月擴約 210 億美元。</li>
+        <li>管理層說到 2027 年，逾 75% 的已承諾資本支出對應投資等級與企業客戶。</li>
+      </ul></article>
+      <article class="card"><h3>債權人：用 GPU 當擔保</h3><ul class="plain small">
+        <li>2023 年由 Blackstone、Magnetar 主導 23 億美元貸款，以 H100 GPU 擔保，利率逾 14%。</li>
+        <li>第三季加權平均借款成本 7.9%，比一年前低 2.5 個百分點。</li>
+        <li>總負債約 469 億美元，高於 11/11 市值約 335 億美元（推算）。</li>
+      </ul></article>
+    </div>
+    <div class="note">微軟占營收比重：CNBC 引述招股書寫 2024 年 62%；維基百科引述路透整理 2025 年約 67%。本報告未讀到 2025 年財報原文，僅供參考。</div>
+  </div>
+</section>
+
+<!-- 04 results -->
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 財報拆解</div>
+      <h2>營收衝得快，但每一塊錢都先付給利息和折舊</h2>
+      <p>數字取自 CoreWeave 11/10 新聞稿，單位為美元；第一、二季營收與第四季隱含營收為本報告推算。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">季營收（億美元）</p>
+        <p class="chart-sub">灰色為去年同期；淡色為依全年財測推算的第四季中值</p>
+        <div class="hbars">
+          <div class="hbar muted-bar" data-tip="2025 年第三季：13.65 億美元"><div class="lab">2025 Q3<small>去年同期</small></div><div class="track"><div class="fill" style="width:27.3%"></div></div><div class="val">13.7</div></div>
+          <div class="hbar" data-tip="2026 年第一季：約 20.8 億美元（路透、CNBC）"><div class="lab">2026 Q1</div><div class="track"><div class="fill" style="width:41.6%"></div></div><div class="val">20.8</div></div>
+          <div class="hbar" data-tip="2026 年第二季：約 25.7 億美元（前三季 83.14 億減第一、三季推算）"><div class="lab">2026 Q2<small>推算</small></div><div class="track"><div class="fill" style="width:51.5%"></div></div><div class="val">25.7</div></div>
+          <div class="hbar" data-tip="2026 年第三季：36.61 億美元，年增 168%"><div class="lab">2026 Q3</div><div class="track"><div class="fill" style="width:73.2%"></div></div><div class="val">36.6</div></div>
+          <div class="hbar est" data-tip="2026 年第四季隱含：46.9～49.9 億美元（全年財測 130～133 億減前三季 83.14 億）"><div class="lab">2026 Q4<small>隱含中值</small></div><div class="track"><div class="fill" style="width:96.7%"></div></div><div class="val">48.4</div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <p class="chart-title">訂單積壓（億美元）</p>
+        <p class="chart-sub">已簽約、尚未認列為營收的金額</p>
+        <div class="hbars">
+          <div class="hbar muted-bar" data-tip="2025 年 9 月底：556 億美元"><div class="lab">2025/9</div><div class="track"><div class="fill" style="width:42%"></div></div><div class="val">556</div></div>
+          <div class="hbar" data-tip="2026 年第一季：接近 1,000 億美元（路透、CNBC）"><div class="lab">2026/3<small>約</small></div><div class="track"><div class="fill" style="width:75.5%"></div></div><div class="val">~1,000</div></div>
+          <div class="hbar" data-tip="2026 年 6 月底：約 1,040 億美元（CNBC）"><div class="lab">2026/6</div><div class="track"><div class="fill" style="width:78.5%"></div></div><div class="val">1,040</div></div>
+          <div class="hbar" data-tip="2026 年 9 月底：約 1,325 億美元，年增 138%"><div class="lab">2026/9</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">1,325</div></div>
+        </div>
+        <p class="small muted" style="margin-top:10px">1,325 億美元中：2 年內約 477 億、第 3～4 年約 504 億、4 年後約 345 億（依公司比例推算）。約等於今年營收財測中值的 10 倍（推算）。</p>
+      </div>
+    </div>
+    <div class="sub-h">第三季損益：從營收到淨損</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>2026 Q3</th><th>2025 Q3</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>營收</b></td><td class="num">36.61 億</td><td class="num">13.65 億</td><td>年增 168%</td></tr>
+          <tr><td><b>調整後 EBITDA</b></td><td class="num">22.56 億（62%）</td><td class="num">8.38 億（61%）</td><td>未扣折舊與利息前的現金獲利能力</td></tr>
+          <tr><td><b>折舊與攤銷</b></td><td class="num">18.89 億</td><td class="num">6.30 億</td><td>GPU 越買越多，折舊跟著膨脹</td></tr>
+          <tr><td><b>營業利益（GAAP）</b></td><td class="num">2.07 億（6%）</td><td class="num">0.52 億（4%）</td><td>調整後為 3.79 億（10%），比原計畫提早一季達到 10%</td></tr>
+          <tr class="hl"><td><b>淨利息支出</b></td><td class="num">8.46 億</td><td class="num">3.10 億</td><td>約為營業利益的 4.1 倍（推算）</td></tr>
+          <tr><td><b>淨損</b></td><td class="num">−7.09 億</td><td class="num">−1.10 億</td><td>每股 −1.27 美元；調整後淨損 5.29 億</td></tr>
+          <tr><td><b>資本支出</b></td><td class="num">145.11 億</td><td class="num">18.50 億</td><td>公司定義；現金流量表的購置支出為 94.41 億</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">財測新舊對照</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>2026 年財測</th><th>8 月版</th><th>11 月版</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>營收</b></td><td class="num">124～132 億</td><td class="num">130～133 億</td><td>LSEG 預估 128.6 億；隱含第四季 46.9～49.9 億</td></tr>
+          <tr><td><b>調整後營業利益</b></td><td class="num">9.6～11.5 億</td><td class="num">12.75～13.75 億</td><td>中值上修 26%；Visible Alpha 預估 10.7 億</td></tr>
+          <tr><td><b>資本支出</b></td><td class="num">350～390 億</td><td class="num">370～390 億</td><td>中值較 2025 年成長 155%（CNBC）</td></tr>
+          <tr><td><b>年底年化營收</b></td><td class="num">—</td><td class="num">200～210 億</td><td>以 12 月營收 × 12 計算</td></tr>
+          <tr><td><b>第四季利息支出</b></td><td class="num">—</td><td class="num">10.5～11.5 億</td><td>比第三季再增加 2～3 億</td></tr>
+          <tr><td><b>運轉中電力</b></td><td class="num">1.85 GW</td><td class="num">逾 1.85 GW</td><td>第三季底逾 1.7 GW</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">資本支出有兩個數字：公司定義的 145 億美元包含已到貨、尚未付現或以融資支付的設備；現金流量表上實際付出的是 94 億美元。媒體引用的多為 145 億（推論：差額主要是付款時點與設備融資）。</div>
+  </div>
+</section>
+
+<!-- 05 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對當事方的影響</div>
+      <h2>CoreWeave 證明需求還在，客戶卻要付更貴的算力</h2>
+      <p>直接當事方是 CoreWeave 本身、它的 AI 客戶、債權人與大股東輝達；對整體產業與全球資金的外溢放在第 7 節。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">第三季營收</div><div class="v">36.61 億</div><div class="d">美元，年增 168%</div></div>
+      <div class="tile"><div class="l">訂單積壓</div><div class="v">1,325 億</div><div class="d">美元，季增約 27%</div></div>
+      <div class="tile"><div class="l">淨利息支出</div><div class="v">8.46 億</div><div class="d">美元，營業利益的 4 倍</div></div>
+      <div class="tile"><div class="l">總負債</div><div class="v">約 469 億</div><div class="d">美元（資產負債表合計）</div></div>
+      <div class="tile"><div class="l">借款成本</div><div class="v">7.9%</div><div class="d">加權平均，年減 2.5 個百分點</div></div>
+      <div class="tile"><div class="l">客戶預付款</div><div class="v">約 90 億</div><div class="d">美元，未來 3 個月</div></div>
+      <div class="tile"><div class="l">漲價</div><div class="v">+25% / +10%</div><div class="d">7 月、第三季末</div></div>
+      <div class="tile"><div class="l">需求倍數</div><div class="v">10 倍</div><div class="d">2027 年底前需求 / 產能</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>CoreWeave 本身</h3><ul class="plain">
+        <li><b>生意：</b>產能到 2027 年大致賣光；2027 年約 13 萬顆、2028 年約 17 萬顆 GPU 合約到期，續約可增加約 40 億美元年化營收（法說會）。</li>
+        <li><b>資金：</b>不再發無擔保債，改用設備擔保貸款，下一筆預計殖利率 7～7.5%（CNBC）。</li>
+        <li><b>獲利：</b>預估 2028 年上半年調整後淨利轉正，在那之前仍靠借款與預付款撐。</li>
+      </ul></div>
+      <div class="card"><h3>AI 客戶</h3><ul class="plain">
+        <li><b>成本上升：</b>7 月漲 25%、季末再漲 10%，第四季價格持續上升（法說會）。</li>
+        <li><b>長約價格：</b>短期算力每 MW（百萬瓦）一年收逾 4,000 萬美元；新簽 4～5 年長約約 2,000～2,500 萬美元。</li>
+        <li><b>預付款：</b>客戶願意先付錢鎖產能，代表算力仍是賣方市場（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>債權人</h3><ul class="plain">
+        <li><b>擔保貸款：</b>DDTL（延遲提領定期貸款，可想成「到貨才撥款的設備貸款」）可融到 70～100% 的資本支出。</li>
+        <li><b>還款：</b>公司說已償還逾 40 億美元債務。</li>
+        <li><b>無擔保債：</b>CNBC 指部分債券殖利率曾超過 16%，這是 CoreWeave 停發的原因。</li>
+      </ul></div>
+      <div class="card"><h3>輝達</h3><ul class="plain">
+        <li><b>股東：</b>持股約 10%，11/11 CoreWeave 大漲讓持股市值增加（推論）。</li>
+        <li><b>供應商：</b>CoreWeave 全年 370～390 億美元資本支出，大部分用來買輝達系統（推論）。</li>
+        <li><b>風波：</b>同晚黃仁勳去留報導讓輝達盤後跌逾 8%，抵銷了 CoreWeave 財報的正面效果。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 股價與市場反應</div>
+      <h2>一天漲回四分之一，盤後又被輝達拖回一截</h2>
+      <p>美股為美東 11/11 收盤，台股為 11/11 收盤；淡色長條是 11/11 盤後報價，不是收盤。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/11 相關股票與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色為 11/11 美股盤後</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>CoreWeave：</b>財報當天（11/10）收 48.73 美元，盤後一度漲 8%；11/11 開 55.97 美元、最高 62.03 美元，收 60.77 美元，成交量約 1.65 億股。</li>
+          <li><b>新雲端同業：</b>Nebius 漲 15.44%、Applied Digital 漲 7.37%、IREN 漲 5.63%（CNBC）。</li>
+          <li><b>晶片股：</b>費半 30 檔成分股全漲，美光漲 11.9%、AMD 漲 7.32%；鉅亨網、TradingKey 引述 Baird 的 Ross Mayfield 說，CoreWeave 財報與 Anthropic 新股認購熱絡改善了 AI 情緒。</li>
+          <li><b>微軟逆勢跌 2.26%：</b>市場資金從大型雲端轉向晶片與新雲端（推論）。</li>
+          <li><b>盤後：</b>輝達跌至 159.51 美元（約 −8.2%），CoreWeave 回落到 56.90 美元（−6.37%），等於吐回當天約三分之一漲幅（推算）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">CRWV</td><td><b>CoreWeave</b></td><td>美股</td><td class="num">60.77 美元（11/11）</td><td class="num up">+24.71%</td><td class="period">較上市價 40 美元 +51.9%；較 52 週高點 −56.0%</td><td>財報優於預期、上修財測、停發無擔保債。</td></tr>
+          <tr><td class="num">NBIS</td><td><b>Nebius</b></td><td>美股</td><td class="num">154.69 美元（11/11）</td><td class="num up">+15.44%</td><td class="period">—</td><td>新雲端同業，11/12 公布財報。</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">173.73 美元（11/11）</td><td class="num up">+2.92%</td><td class="period">11/5 起 −4.33%；盤後 159.51</td><td>終止連兩跌；盤後因黃仁勳去留報導重挫。</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">552.90 美元（11/11）</td><td class="num up">+7.32%</td><td class="period">11/5 起 +36.7%</td><td>AI 晶片股全面回升。</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">811.30 美元（11/11）</td><td class="num up">+11.90%</td><td class="period">—</td><td>AI 記憶體需求，儲存類股同步大漲。</td></tr>
+          <tr><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">521.13 美元（11/11）</td><td class="num down">−2.26%</td><td class="period">—</td><td>CoreWeave 最大客戶之一，也是雲端競爭者。</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">413.35 美元（11/11）</td><td class="num up">+4.25%</td><td class="period">11/5 起 +17.1%</td><td>晶片股反彈，10 月營收創高。</td></tr>
+          <tr><td class="num">^SOX</td><td><b>費城半導體</b></td><td>美股</td><td class="num">10,564.11（11/11）</td><td class="num up">+5.66%</td><td class="period">—</td><td>30 檔成分股全數上漲。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,395 元（11/11）</td><td class="num up">+4.81%</td><td class="period">11/6 起 +12.2%</td><td>貢獻大盤逾一半漲點，收當日最高。</td></tr>
+          <tr><td class="num">5274</td><td><b>信驊</b></td><td>台股</td><td class="num">12,555 元（11/11）</td><td class="num up">+5.19%</td><td class="period">—</td><td>伺服器管理晶片，AI 伺服器出貨指標股。</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">242 元（11/11）</td><td class="num up">+0.21%</td><td class="period">11/6 起 +7.8%</td><td>AI 伺服器組裝；尾盤翻紅，量大但走勢偏弱。</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">44,257.15（11/11）</td><td class="num up">+3.62%</td><td class="period">11/6 起 +11.5%</td><td>史上第 6 大收盤漲點，三天彈 4,555 點。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">美股為 2026/11/11 收盤、台股為 2026/11/11 收盤；來源：Stock Analysis、CNBC、鉅亨網、中央社、TradingKey、CBS。「期間走勢」由收盤價推算；52 週高點 138.25 美元、低點 40.58 美元。台股 11/12 收盤未納入。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 07 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 對世界的影響</div>
+      <h2>AI 泡沫論的第一份反證，也是 AI 靠借錢擴張的放大鏡</h2>
+      <p>CoreWeave 規模不算大，但它同時站在 GPU、資料中心、電力與債市的交叉點，被市場當成 AI 基礎建設的「金絲雀」。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>AI 需求：還沒退燒</h3><ul class="plain small">
+        <li>10 倍需求、連續漲價、1,325 億美元訂單，是 11 月 AI 股修正後第一份硬數據。</li>
+        <li>Interactive Brokers 的 Steve Sosnick 指，市場正從「AI 投資都是好的」轉向檢視投資報酬（自由財經）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 融資模式在轉向</h3><ul class="plain small">
+        <li>從發高利率公司債，轉向以 GPU 與客戶合約擔保的貸款、加上客戶預付款。</li>
+        <li>軟銀同期認列 37 億美元美國資料中心設備預付款減損（鉅亨引述路透），顯示不是每個玩家都順利。</li>
+      </ul></article>
+      <article class="card"><h3>算力價格上升</h3><ul class="plain small">
+        <li>舊款 Ampere、Hopper GPU 價格季增 30～50%，高於原始合約價。</li>
+        <li>AI 模型公司的訓練與推論成本跟著上升，可能轉嫁到 AI 服務價格（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>美國資料中心政治</h3><ul class="plain small">
+        <li>期中選舉後，地方對資料中心用電、用地與租稅優惠的反彈升高。</li>
+        <li>Intrator 認為建設放慢反而讓既有算力更稀缺、價格更高；他說 2027 年交付不受影響。</li>
+      </ul></article>
+      <article class="card"><h3>輝達治理危機</h3><ul class="plain small">
+        <li>CBS 指輝達市值自 11/8 宣布調查以來蒸發逾 4,500 億美元；董事會 11 人中只有黃仁勳非獨立董事。</li>
+        <li>情報單位將黃仁勳與疑似中國國安部人員連結，美方可能進一步收緊對中晶片出口（時報資訊）。</li>
+      </ul></article>
+      <article class="card"><h3>利率與資金</h3><ul class="plain small">
+        <li>12 月升息機率近 90%，美元升到 2025 年 5 月以來新高（鉅亨）。</li>
+        <li>高負債的 AI 基礎建設公司最怕升息；CoreWeave 第四季利息支出預估再增 2～3 億美元（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依公司財測、法說會說法與市場動向整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>照計畫交付，股價跟著輝達與利率震盪</h3><ul class="plain small">
+        <li>第四季營收落在隱含的 46.9～49.9 億美元。</li>
+        <li>年底運轉中電力逾 1.85 GW。</li>
+        <li>股價在財報行情與輝達風波之間拉扯。</li>
+      </ul><p class="trig">觸發條件：新一筆擔保貸款順利以 7～7.5% 發行，90 億美元預付款如期入帳。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>資金面再度收緊</h3><ul class="plain small">
+        <li>Fed 升息幅度大於預期，借款成本回升。</li>
+        <li>輝達領導權更替造成供應或策略不確定。</li>
+        <li>資料中心延誤，營收認列往後推。</li>
+      </ul><p class="trig">觸發條件：12 月升息 2 碼、輝達董事會撤換黃仁勳且接班混亂、Anthropic 上市認購轉冷。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>AI 基礎建設行情回溫</h3><ul class="plain small">
+        <li>輝達財報與 Anthropic 上市都順利，AI 情緒回穩。</li>
+        <li>舊 GPU 續約價格高於原合約，提早改善獲利。</li>
+        <li>信用利差收斂，融資成本下降。</li>
+      </ul><p class="trig">觸發條件：11/17 輝達財報優於預期、11/19 Anthropic 順利掛牌。</p></article>
+    </div>
+    <div class="note warn">截至 11/12 09:30，輝達董事會尚未公布對黃仁勳的決定，相關報導均引述匿名消息來源；本報告不推測結果。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/12 Nebius 財報</b>：同業能否印證算力需求與漲價。</li>
+      <li><b>輝達董事會決定</b>：黃仁勳去留會影響 AI 晶片股與 CoreWeave 的大股東。</li>
+      <li><b>11/17 輝達第三季財報</b>：資料中心營收是 CoreWeave 等雲端業者採購的鏡子。</li>
+      <li><b>11/19 Anthropic 上市</b>：CoreWeave 的客戶，上市順利代表 AI 客戶付得起長約（推論）。</li>
+      <li><b>12 月 Fed 利率決議</b>：利率每升一碼，高負債公司的利息壓力就加重。</li>
+      <li><b>新擔保貸款的利率</b>：管理層說下一筆約 7～7.5%，實際成交價是資金面的溫度計。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 各產業影響</div>
+      <h2>誰受惠、誰要小心</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>新雲端同業</h3><span class="tag good">受惠</span></div><p>需求與價格同步上升，同業的融資故事也變得可信（推論）。但 Bernstein 提醒，一旦算力短缺緩解，新雲端會是最早、最重受傷的一群（鉅亨引述路透）。</p><div class="data">Nebius 11/11 +15.44%</div></article>
+      <article class="card"><div class="top"><h3>AI GPU 與晶片</h3><span class="tag good">受惠</span></div><p>CoreWeave 全年 370～390 億美元資本支出，主要用來買 GPU 系統。</p><div class="data">費半 +5.66%、AMD +7.32%</div></article>
+      <article class="card"><div class="top"><h3>記憶體與儲存</h3><span class="tag good">受惠</span></div><p>AI 叢集需要高頻寬記憶體與大量 SSD；CoreWeave 與 Solidigm 簽了多年 SSD 供應協議。</p><div class="data">美光 +11.9%、Sandisk +13.7%</div></article>
+      <article class="card"><div class="top"><h3>AI 模型公司</h3><span class="tag bad">壓力</span></div><p>算力漲價 25% 再加 10%，訓練與推論成本上升；長約越晚簽越貴（推論）。</p><div class="data">新長約每 MW 每年 2,000～2,500 萬美元</div></article>
+      <article class="card"><div class="top"><h3>大型雲端業者</h3><span class="tag">好壞參半</span></div><p>微軟既是客戶也是競爭者；外包算力能省自建時間，但也讓新雲端分走 AI 生意（推論）。</p><div class="data">微軟 11/11 −2.26%</div></article>
+      <article class="card"><div class="top"><h3>資料中心開發與電力</h3><span class="tag">好壞參半</span></div><p>需求強，但地方監管與用電反彈升高；CoreWeave 說建設放慢反而讓既有產能更值錢。</p><div class="data">已簽約電力逾 4.6 GW</div></article>
+      <article class="card"><div class="top"><h3>私募信貸與銀行</h3><span class="tag">好壞參半</span></div><p>GPU 擔保貸款需求大增，利差 2.25～5.5 個百分點；但若 GPU 貶值快於預期，擔保品價值會縮水（推論）。</p><div class="data">DDTL 尚有近 50 億美元未提領</div></article>
+      <article class="card"><div class="top"><h3>AI 伺服器組裝</h3><span class="tag good">受惠</span></div><p>新雲端擴產直接轉成伺服器機櫃訂單；CoreWeave 首批 GB300 由 Dell 伺服器建置（推論：上游組裝多在台廠）。</p><div class="data">信驊 11/11 +5.19%</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 對台灣的影響</div>
+      <h2>美國一家雲端公司的財報，為什麼能讓台股漲 1,545 點？</h2>
+      <p>CoreWeave 的每一筆資本支出，最後幾乎都會變成輝達 GPU、台積電晶片與台灣組裝的伺服器機櫃；它的財報因此被當成台灣 AI 供應鏈的訂單溫度計。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>股市：</b>11/11 台股漲 1,545.23 點收 44,257.15 點；中央社把 CoreWeave 財報列為帶動亞洲科技股反彈的原因之一。</li>
+        <li><b>權值股：</b>台積電漲 110 元收 2,395 元，貢獻逾一半漲點；聯發科漲 4.18%、信驊漲 5.19%。</li>
+        <li><b>籌碼：</b>外資仍賣超 7.66 億元，投信買超 147.65 億元、自營商買超 62.56 億元（東森）。</li>
+        <li><b>伺服器股：</b>經濟日報指鴻海、廣達、緯穎量大但走勢偏弱，資金集中在晶片與權值股。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>11/12 開盤逆風：</b>輝達盤後跌逾 8%，經濟日報盤前分析以「輝達盤後逆風」形容台股。</li>
+        <li><b>訂單能見度：</b>CoreWeave 說需求延伸到 2028 年，有利台灣 AI 伺服器、散熱、電源、PCB 廠的中期訂單。</li>
+        <li><b>集中風險：</b>台灣 AI 供應鏈的終端客戶高度集中在少數美國雲端與 AI 公司，任何一家資金出狀況都會傳回台灣。</li>
+        <li><b>輝達變數：</b>輝達若換執行長，台灣供應鏈的策略與產品節奏可能受影響。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>晶片與 IC 設計</b></td><td><span class="tag good">相對有利</span></td><td>台積電、聯發科、信驊 11/11 領漲，需求延伸到 2028 年。</td></tr>
+          <tr><td><b>伺服器組裝與零組件</b></td><td><span class="tag good">中期有利</span></td><td>新雲端擴產轉成機櫃訂單，但短線股價表現落後（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">好壞參半</span></td><td>11/11 大漲，但輝達盤後重挫讓 11/12 面臨回檔壓力。</td></tr>
+          <tr><td><b>台股 ETF 持有人</b></td><td><span class="tag">間接相關</span></td><td>台積電權重高，AI 情緒直接影響淨值。</td></tr>
+          <tr><td><b>持有美股 AI 股的台灣投資人</b></td><td><span class="tag bad">波動加大</span></td><td>CoreWeave 一天 +24.7%、盤後 −6.4%，高負債成長股的波動遠大於大盤。</td></tr>
+          <tr><td><b>一般家庭</b></td><td><span class="tag">影響有限</span></td><td>主要透過股市資產與退休基金間接受影響（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電多把財報放在「AI 放緩疑慮」與「債務」的脈絡；台灣媒體則多從「救全村」、輝達風波與台股連動切入。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>CoreWeave 官方</td><td>成長</td><td>「強勁的第三季」</td><td>訂單、電力、新產品；不提客戶集中</td></tr>
+          <tr><td>CNBC</td><td>AI 放緩疑慮</td><td>營收優於預期、上修財測</td><td>債務 470 億、殖利率逾 16%、選舉監管</td></tr>
+          <tr><td>TradingKey</td><td>資本支出</td><td>資本支出飆到 145 億</td><td>利息高於營業利益、盤後走勢分歧</td></tr>
+          <tr><td>工商時報</td><td>需求與定價權</td><td>上修財測、訂單旺到 2028</td><td>漲價 25%＋10%、產能售罄</td></tr>
+          <tr><td>時報資訊</td><td>輝達風波</td><td>撇富爸爸「出軌門」</td><td>出口管制可能收緊</td></tr>
+          <tr><td>優分析</td><td>資金風險</td><td>龐大資本支出考驗資金</td><td>負債、預付款</td></tr>
+          <tr><td>財訊快報</td><td>融資</td><td>CEO 強調多元融資來源</td><td>債券殖利率約 15%</td></tr>
+          <tr><td>鉅亨網</td><td>市場與風險</td><td>點燃 AI 買盤；分析師提醒風險</td><td>Bernstein：短缺緩解時最先受傷</td></tr>
+          <tr><td>自由財經</td><td>市場情緒</td><td>財報救全村</td><td>輝達市值蒸發、大摩移出首選</td></tr>
+          <tr><td>中央社</td><td>輝達與台股</td><td>輝達止跌、台股大漲</td><td>黃仁勳案、台股三天彈 4,555 點</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>營收 36.61 億美元、年增 168%，高於預期。</li>
+        <li>訂單積壓約 1,325 億美元。</li>
+        <li>2026 年營收財測上修到 130～133 億美元。</li>
+        <li>11/11 股價大漲 24.71%、收 60.77 美元。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「EPS」有兩種。</b>−1.27 美元是依會計準則（GAAP）的每股淨損；−0.95 美元是排除股票酬勞的調整後數字。</li>
+        <li><b>「資本支出」有兩種。</b>145 億是公司定義，94 億是實際現金支出。</li>
+        <li><b>「10 倍」與「數倍」不衝突。</b>前者指到 2027 年底，後者指 2028 年。</li>
+        <li><b>盤後漲幅隨時間改變。</b>6%、8% 等數字取自不同時點，不是收盤價。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>每股虧損</td><td>1.27 美元（工商時報、時報資訊）</td><td>0.95 美元（優分析、CNBC）</td><td>GAAP 與調整後口徑不同。</td></tr>
+          <tr><td>市場預估營收</td><td>35.5 億美元（CNBC 引述 LSEG、優分析）</td><td>35.6 億美元（工商時報、時報資訊）</td><td>統計來源與時點不同。</td></tr>
+          <tr><td>訂單積壓比較基準</td><td>1,040 億美元為 6 月底（優分析、CNBC）</td><td>寫成「第三季底」（時報資訊）</td><td>時報資訊標示有誤，本報告以 6 月底為準。</td></tr>
+          <tr><td>第三季資本支出</td><td>145 億美元（TradingKey、時報資訊）</td><td>94.41 億美元（新聞稿現金流量表）</td><td>口徑不同，見第 4 節。</td></tr>
+          <tr><td>輝達 11/11 漲幅</td><td>+2.87%（鉅亨網、TradingKey）</td><td>+2.92%（中央社）</td><td>收盤價同為 173.73 美元，前一日收盤的取值不同。</td></tr>
+          <tr><td>單日漲幅紀錄</td><td>2025 年 4 月以來最大（CNBC）</td><td>2025 年 6 月以來最大（鉅亨網）</td><td>本報告採 CNBC。</td></tr>
+          <tr><td>總負債</td><td>約 469 億美元（優分析、時報資訊）</td><td>約 470 億美元（CNBC）</td><td>四捨五入。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 12 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">12 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件與公開報導，資料截至 2026 年 11 月 12 日 09:30（台灣時間）。法說會逐字稿只讀到前半；路透、彭博與《華爾街日報》原文未能讀取，相關內容引述自其他媒體轉述。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Third-Quarter-2026-Results/default.aspx" target="_blank" rel="noopener">CoreWeave — 2026 年第三季財報新聞稿（11/10）</a></li>
+      <li><a href="https://www.aol.com/articles/coreweave-crwv-q3-2026-earnings-031911000.html" target="_blank" rel="noopener">CoreWeave 第三季法說會逐字稿（AOL 轉載，11/10）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://www.cnbc.com/2026/11/10/coreweave-crwv-q3-earnings-report-2026.html" target="_blank" rel="noopener">CNBC — 營收優於預期、上修財測，緩解 AI 放緩疑慮（11/10）</a></li>
+      <li><a href="https://cnbc.com/2026/11/11/coreweave-crwv-outlook-earnings-ai.html" target="_blank" rel="noopener">CNBC — CoreWeave 大漲逾 24%，2025 年 4 月以來最佳單日（11/11）</a></li>
+      <li><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262299527-coreweave-earnings-report-q3-revenue-growth-backlog-capital-expenditures-net-loss-tradingkey" target="_blank" rel="noopener">TradingKey — 第三季營收增 168%、資本支出 145 億美元（11/10）</a></li>
+      <li><a href="https://tradingkey.com/analysis/stocks/us-stocks/262301417-us-stock-nasdaq-rallies-coreweave-earnings-nvidia-stock-rebound-tradingkey" target="_blank" rel="noopener">TradingKey — 那斯達克漲 1.6%、費半漲逾 5%（11/11）</a></li>
+      <li><a href="https://www.cbsnews.com/news/nvidia-stock-dives-report-board-prepares-oust-jensen-huang/" target="_blank" rel="noopener">CBS News — 輝達董事會考慮撤換黃仁勳，盤後重挫（11/11）</a></li>
+      <li><a href="https://www.nbcnews.com/business/business-news/nvidia-shares-drop-hours-reports-meeting-ceo-jensen-huangs-future-rcna608906" target="_blank" rel="noopener">NBC News — 輝達盤後下跌，董事會將討論黃仁勳去留（11/11）</a></li>
+      <li><a href="https://nbcnewyork.com/news/business/money-report/nvidia-turned-coreweave-into-a-major-player-in-ai-years-before-helping-to-save-its-ipo/6205192" target="_blank" rel="noopener">CNBC（NBC New York 轉載）— 輝達如何扶植 CoreWeave 並撐住其上市（2025/3/30）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/CoreWeave" target="_blank" rel="noopener">Wikipedia — CoreWeave（公司沿革、合約與融資整理，11/11 版本）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="11">
+      <li><a href="https://www.ctee.com.tw/news/20261112700137-439901" target="_blank" rel="noopener">工商時報 — CoreWeave 上修財測，訂單旺到 2028（11/12）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261111001716-260410" target="_blank" rel="noopener">時報資訊 — 撇富爸爸「出軌門」，CoreWeave 盤後飆漲 8%（11/11）</a></li>
+      <li><a href="https://uanalyze.com.tw/articles/3223458925" target="_blank" rel="noopener">優分析 — 訂單突破 1,300 億美元，龐大資本支出考驗資金（11/11）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/coreweave%E7%AC%AC%E4%B8%89%E5%AD%A3%E7%87%9F%E6%94%B6%E6%9A%B4%E5%A2%9E%E8%B6%85%E9%A0%90%E6%9C%9F-%E7%9B%A4%E5%BE%8C%E6%BC%B2%E9%80%BE6-ceo%E5%BC%B7%E8%AA%BF%E5%A4%9A%E5%85%83%E8%9E%8D%E8%B3%87%E4%BE%86%E6%BA%90-001451593.html" target="_blank" rel="noopener">財訊快報（Yahoo 股市）— CEO 強調多元融資來源（11/11）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6658684" target="_blank" rel="noopener">鉅亨網 — 美股盤後：CoreWeave 點燃 AI 買盤、費半漲逾 5.6%（11/12）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6659617" target="_blank" rel="noopener">鉅亨網 — AI 雲端股大反攻，分析師提醒一大風險（11/11）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611120018.aspx" target="_blank" rel="noopener">中央社 — 輝達股價止跌回升，美股聚焦黃仁勳案（11/12）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5637682" target="_blank" rel="noopener">自由財經 — CoreWeave 財報救全村（11/11）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611110143.aspx" target="_blank" rel="noopener">中央社 — 台股漲 1,545 點收復 44,000 點（11/11）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9871732" target="_blank" rel="noopener">經濟日報 — 台股收漲 1,545 點，台積電收最高 2,395 元（11/11）</a></li>
+      <li><a href="https://news.ebc.net.tw/news/business/580158" target="_blank" rel="noopener">東森財經 — 台股狂飆 1,545 點、三大法人買賣超（11/11）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="22">
+      <li><a href="https://stockanalysis.com/stocks/crwv/" target="_blank" rel="noopener">Stock Analysis — CRWV 股價、52 週區間與盤後報價</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 12 日 09:30（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'CoreWeave', s:'60.77 美元（11/11）', v:24.71},
+    {l:'Nebius', s:'154.69 美元（11/11）', v:15.44},
+    {l:'美光', s:'811.30 美元（11/11）', v:11.90},
+    {l:'AMD', s:'552.90 美元（11/11）', v:7.32},
+    {l:'費城半導體', s:'10,564.11（11/11）', v:5.66},
+    {l:'信驊', s:'12,555 元（11/11）', v:5.19},
+    {l:'台積電', s:'2,395 元（11/11）', v:4.81},
+    {l:'台積電 ADR', s:'413.35 美元（11/11）', v:4.25},
+    {l:'加權指數', s:'44,257.15（11/11）', v:3.62},
+    {l:'輝達', s:'173.73 美元（11/11）', v:2.92},
+    {l:'鴻海', s:'242 元（11/11）', v:0.21},
+    {l:'微軟', s:'521.13 美元（11/11）', v:-2.26},
+    {l:'CoreWeave 盤後', s:'56.90 美元（11/11 盤後）', v:-6.37, est:true},
+    {l:'輝達 盤後', s:'159.51 美元（11/11 盤後）', v:-8.19, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

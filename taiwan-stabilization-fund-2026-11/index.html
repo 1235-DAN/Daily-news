@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台股國安基金解讀</title>
+<meta name="description" content="國安基金（國家金融安定基金）介紹：5,000 億元從哪裡來、誰決定進場、法定動用條件、歷來 10 次護盤的投入與損益、進場後指數表現、2026 年 11 月第 10 次授權與限空令，以及對投資人與納稅人的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#mechanism">運作方式</a></li>
+      <li><a class="link" href="#history">歷次戰績</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台股制度解讀 · 國安基金 · 資料截至 2026 年 11 月 12 日 09:30（台灣時間）</p>
+      <h1>國安基金是什麼？5,000 億元的「股市消防隊」，第 10 次出動</h1>
+      <p class="lede">國家金融安定基金（簡稱國安基金）是 2000 年立法設立的政府護盤工具，最多可動用 5,000 億元，在重大事件讓股市失序時進場買股。11 月 6 日台股盤中跌到 37,837 點，國安基金下午召開第 131 次臨時委員會議，授權第 10 次護盤；同一天金管會也宣布限空令。過去 9 次中有 8 次最後賺錢，第 9 次投入 122.5 億元、淨賺 99.32 億元。但進場後 3 個月台股上漲的機率只有 5 成多，而且這次實際買了多少、買了什麼，依法要等任務結束後才會公布。</p>
+    </div>
+    <div class="stmt" aria-label="國安基金規模">
+      <div class="k">國安基金可運用資金上限</div>
+      <div class="range">5,000 億<small>元</small></div>
+      <div class="was">2000 年設立 · 第 10 次授權 · 11/6 第 131 次臨時委員會議</div>
+      <div class="stmt-row">
+        <div><div class="v">8 / 9</div><div class="l">過去護盤最終獲利次數</div></div>
+        <div><div class="v">55.6%</div><div class="l">進場後 3 個月上漲機率</div></div>
+        <div><div class="v">+11.5%</div><div class="l">加權指數 11/6～11/11</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂國安基金</h2>
+      <p>一句話：國安基金像股市的消防隊，負責在恐慌時穩住信心，不負責讓股價上漲；它能止跌，但改變不了外資撤出的大方向。這波行情本身請見<a href="../taiex-rebound-2026-11/index.html">台股反彈報告</a>。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>法源與規模。</b>依《國家金融安定基金設置及管理條例》，2000 年 2 月 9 日公布、3 月 15 日開始運作；可運用資金上限 5,000 億元，26 年來沒有調整。</div></li>
+      <li><div><b>錢是借來的。</b>最多 2,000 億元以國庫持有的公民營事業股票擔保向銀行借；最多 3,000 億元向郵政儲金、勞保、勞退、公務人員退撫等基金借用尚未投資的閒置資金。</div></li>
+      <li><div><b>誰決定。</b>管理委員會 11～13 人，行政院副院長擔任主任委員，央行總裁、財政部長等為當然委員，學者專家不少於三分之一；目前執行秘書是財政部政務次長阮清華。</div></li>
+      <li><div><b>什麼時候出手。</b>條例第 8 條：重大事件或國際資金大幅移動顯著影響民眾信心，讓市場有失序之虞時，經委員會決議即可動用；沒有固定的跌幅或指數門檻。</div></li>
+      <li><div><b>這次為什麼出手。</b>11/2～11/6 台股一週跌 5,510 點（12.19%），11/6 盤中跌 3,737.67 點至 37,837.05 點；10 月外資賣超 9,943.16 億元，創單月紀錄。</div></li>
+      <li><div><b>過去 9 次 8 次賺錢。</b>只有 2000 年第一次虧損約 500 億元；第 9 次（2025 年對等關稅）投入 122.5 億元、淨利 99.32 億元、報酬約 81%，主要靠台積電。</div></li>
+      <li><div><b>止跌快、續航弱。</b>今周刊統計，過去 9 次進場後 1 週全數上漲，1 個月上漲 6 次，3 個月只剩 5 次（55.6%）；2008 年進場後 3 個月仍跌 22.7%。</div></li>
+      <li><div><b>這次買了多少還不知道。</b>國安基金不逐日公布交易，依法按季公告收支，個股明細通常在處分完畢後才公布；決議後 3 個月內須向立法院報告。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼台灣需要國安基金？為什麼是現在？</h2>
+      <p>國安基金誕生於 2000 年首次政黨輪替前後的股市動盪；這次則是 AI 股修正、外資狂賣與美國選後行情疊加。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>設立初衷：防止恐慌踩踏</h3><p>2000 年 3 月總統大選前後，政治與兩岸疑慮讓股市重挫；條例在 2 月 9 日公布，3 月 16 日就首次進場（自由財經）。設計目的是在非理性下跌時提供買盤，穩住民眾信心。</p></div><div class="ev"><span class="tag">2000 年設立</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>這次的導火線：美股科技股重挫</h3><p>經理人指第 10 次的背景是美股科技股重挫、費半暴跌；自由財經則寫美國期中選舉後美股與亞洲股市重挫、外資大幅賣超。</p></div><div class="ev"><span class="tag">選後 AI 股修正</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>外資賣超創紀錄</h3><p>經濟日報指 10 月外資賣超 9,943.16 億元創單月紀錄，11/1～11/6 又賣 5,244 億元；今周刊統計 10/6～11/6 外資累計賣超約 1 兆 6,085 億元。</p></div><div class="ev"><span class="tag">10 月 −9,943 億</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>跌幅與速度</h3><p>11/6 加權指數收 39,701.64 點、跌 1,873.08 點（4.51%），比今年高點 49,968 點低 20.55%，正式進入技術上的空頭市場（跌幅逾 20%）。</p></div><div class="ev"><span class="tag">距高點 −20.55%</span></div></div>
+    </div>
+    <div class="note">國安基金不是看指數決定進場。自由財經整理，委員會考量的是全球危機、地緣政治、非理性下跌、外資大量流出與市場信心，而不是單一跌點或跌幅。</div>
+
+    <div class="sub-h">10 次護盤一覽</div>
+    <div class="legend"><span><i class="a"></i>國安基金進場</span><span><i class="g"></i>本次事件</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2000-03-16</div><div class="what">第 1 次：首次政黨輪替，投入 542 億元，<b>虧損約 500 億元</b>。</div></li>
+        <li class="key"><div class="date">2000-10-03</div><div class="what">第 2 次：網路泡沫、核四停建，投入 1,227 億元。</div></li>
+        <li class="key"><div class="date">2004-05-20</div><div class="what">第 3 次：319 槍擊事件，投入 16 億元。</div></li>
+        <li class="key"><div class="date">2008-09-18</div><div class="what">第 4 次：雷曼倒閉、金融海嘯，投入 600 億元。</div></li>
+        <li class="key"><div class="date">2011-12-21</div><div class="what">第 5 次：歐債危機，投入約 430 億元。</div></li>
+        <li class="key"><div class="date">2015-08-26</div><div class="what">第 6 次：中國股災、人民幣貶值，投入 196.58 億元。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2020-03-20</div><div class="what">第 7 次：新冠疫情，只投入 7.57 億元。</div></li>
+        <li class="key"><div class="date">2022-07-13</div><div class="what">第 8 次：通膨升息與衰退疑慮，投入 545.08 億元。</div></li>
+        <li class="key"><div class="date">2025-04-09</div><div class="what">第 9 次：美國對等關稅，投入 122.5 億元，<b>淨利 99.32 億元</b>。</div></li>
+        <li class="geo"><div class="date">2026-11-06</div><div class="what">第 10 次：14:30 第 131 次臨時委員會議授權；金管會同日宣布限空令。</div></li>
+        <li class="geo"><div class="date">2026-11-09</div><div class="what">限空令生效，台股大漲 1,960.06 點。</div></li>
+        <li><div class="date">2027-02-06 前</div><div class="what">依條例須在決議後 3 個月內向立法院提出報告（推算日期）。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 mechanism -->
+<section id="mechanism">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 運作方式</div>
+      <h2>錢從哪裡來、誰按按鈕、能買什麼</h2>
+      <p>以下條文內容取自全國法規資料庫，最近一次修正為 2016 年 11 月 9 日。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">5,000 億元的資金來源（億元）</p>
+        <p class="chart-sub">條例第 4 條；兩項都是借款，不是預算撥款</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="借用郵政儲金、郵政壽險積存金、勞保、勞退、公務人員退撫基金可投資而尚未投資的資金，上限 3,000 億元"><div class="lab">政府基金閒置資金<small>郵儲、勞保、勞退、退撫</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">3,000</div></div>
+          <div class="hbar" data-tip="以國庫持有的公民營事業股票擔保，向金融機構借款，上限 2,000 億元"><div class="lab">銀行借款<small>國庫持股擔保</small></div><div class="track"><div class="fill" style="width:66.7%"></div></div><div class="val">2,000</div></div>
+          <div class="hbar muted-bar" data-tip="第 9 次護盤實際投入 122.5 億元"><div class="lab">第 9 次實際投入<small>對照</small></div><div class="track"><div class="fill" style="width:4.1%"></div></div><div class="val">122.5</div></div>
+          <div class="hbar muted-bar" data-tip="歷來最大單次投入：第 2 次 1,227 億元"><div class="lab">歷來最大單次<small>2000 年第 2 次</small></div><div class="track"><div class="fill" style="width:40.9%"></div></div><div class="val">1,227</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>用「消防隊」來想國安基金</h3>
+        <ul class="plain small">
+          <li><b>水源：</b>平時不存水，火警時向郵儲、勞保等「鄰居」借水，也可以拿國庫持股去銀行貸款。</li>
+          <li><b>出動：</b>委員會判斷火勢會失控才出動，沒有「跌幾點就出動」的警鈴。</li>
+          <li><b>滅火：</b>在股市或期貨市場買進，讓恐慌賣壓有人承接。</li>
+          <li><b>收隊：</b>任務結束後分批賣出持股，賺的錢歸基金，再給借錢的基金合理補償。</li>
+          <li><b>限制：</b>消防隊能擋住火勢蔓延，擋不住「房客搬走」——外資若決定撤出，國安基金無法改變（推論）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">制度重點</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>規定</th><th>條文</th></tr></thead>
+        <tbody>
+          <tr><td><b>主管機關</b></td><td>行政院</td><td>第 3 條</td></tr>
+          <tr><td><b>管理委員會</b></td><td>11～13 人；行政院副院長兼主任委員；央行總裁、財政部長、交通部長、主計長、勞動部長、銓敘部長為當然委員；學者專家由立法院各黨團推薦，不少於三分之一</td><td>第 5 條</td></tr>
+          <tr><td><b>執行秘書</b></td><td>由主任委員指派兼任；目前為財政部政務次長阮清華（經理人）</td><td>第 7 條</td></tr>
+          <tr class="hl"><td><b>動用條件</b></td><td>重大事件、國際資金大幅移動顯著影響民眾信心，市場有失序或損及國家安定之虞，經委員會決議</td><td>第 8 條</td></tr>
+          <tr><td><b>可以做什麼</b></td><td>在集中市場或櫃買市場買賣有價證券、在期貨市場交易；可委託專業機構操作</td><td>第 8 條</td></tr>
+          <tr><td><b>向國會報告</b></td><td>決議後 3 個月內送立法院；任務達成後 3 個月內送資金額度與評估報告</td><td>第 8、11 條</td></tr>
+          <tr><td><b>資訊公開</b></td><td>收支及運用情形按季公告</td><td>第 13 條</td></tr>
+          <tr><td><b>盈虧</b></td><td>盈虧歸基金；借用各基金的錢要給補償，收益以台灣銀行 2 年期定存利率加碼計算</td><td>第 9 條</td></tr>
+          <tr><td><b>保密</b></td><td>知悉決議或操作計畫者不得買賣，違者最高 7 年徒刑、併科 1,000 萬元罰金</td><td>第 16 條</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">國安基金與「四大基金」（勞保、勞退、退撫、郵儲）不同：四大基金是長期投資的退休與儲蓄資金，國安基金是向它們借錢、專門執行護盤任務的工具，盈虧由國安基金自己承擔，但借用的錢若虧損，最終由國庫彌補（第 9、13 條）。</div>
+  </div>
+</section>
+
+<!-- 04 history -->
+<section id="history">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 歷次戰績</div>
+      <h2>投入越來越少、獲利越來越穩，但指數不保證漲</h2>
+      <p>投入與損益第 1～4 次為媒體整理，第 5～9 次為財政部公布數字（經理人整理）；指數表現取自今周刊，以宣布前一交易日收盤為基準。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>次</th><th>進場</th><th>事件</th><th>投入</th><th>損益</th><th>1 週</th><th>1 個月</th><th>3 個月</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="num">2000/03</td><td>首次政黨輪替</td><td class="num">542 億</td><td class="num down">約 −500 億</td><td class="num up">+5.0%</td><td class="num up">+14.7%</td><td class="num up">+2.8%</td></tr>
+          <tr><td class="num">2</td><td class="num">2000/10</td><td>網路泡沫</td><td class="num">1,227 億</td><td class="num up">約 +226 億</td><td class="num up">+5.4%</td><td class="num down">−3.6%</td><td class="num down">−16.1%</td></tr>
+          <tr><td class="num">3</td><td class="num">2004/05</td><td>319 槍擊事件</td><td class="num">16 億</td><td class="num up">約 +35 億</td><td class="num up">+2.8%</td><td class="num down">−5.1%</td><td class="num down">−8.4%</td></tr>
+          <tr><td class="num">4</td><td class="num">2008/09</td><td>金融海嘯</td><td class="num">600 億</td><td class="num up">約 +319 億</td><td class="num up">+5.7%</td><td class="num down">−14.5%</td><td class="num down">−22.7%</td></tr>
+          <tr><td class="num">5</td><td class="num">2011/12</td><td>歐債危機</td><td class="num">429.66 億</td><td class="num up">約 +35 億</td><td class="num up">+6.3%</td><td class="num up">+8.4%</td><td class="num up">+21.0%</td></tr>
+          <tr><td class="num">6</td><td class="num">2015/08</td><td>中國股災</td><td class="num">196.58 億</td><td class="num up">+12.11 億</td><td class="num up">+10.3%</td><td class="num up">+12.1%</td><td class="num up">+14.4%</td></tr>
+          <tr><td class="num">7</td><td class="num">2020/03</td><td>新冠疫情</td><td class="num">7.57 億</td><td class="num up">+2.58 億</td><td class="num up">+12.2%</td><td class="num up">+21.9%</td><td class="num up">+32.6%</td></tr>
+          <tr><td class="num">8</td><td class="num">2022/07</td><td>升息與衰退疑慮</td><td class="num">545.08 億</td><td class="num up">+112.96 億</td><td class="num up">+5.3%</td><td class="num up">+7.9%</td><td class="num down">−1.1%</td></tr>
+          <tr class="hl"><td class="num">9</td><td class="num">2025/04</td><td>美國對等關稅</td><td class="num">122.5 億</td><td class="num up">+99.32 億</td><td class="num up">+7.6%</td><td class="num up">+11.3%</td><td class="num up">+23.0%</td></tr>
+          <tr><td class="num">10</td><td class="num">2026/11</td><td>AI 股修正、外資賣超</td><td>未公布</td><td>—</td><td>11/13 才滿 1 週</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>第 9 次買了什麼</h3><ul class="plain small">
+        <li><b>8 檔全賺：</b>台積電、鴻海、台達電、廣達、聯發科、日月光投控、富邦金、台塑。</li>
+        <li><b>台積電占 6 成：</b>投入約 77 億元，含股利獲利約 77.72 億元。</li>
+        <li><b>時程：</b>2025/4/9 進場、2026/1/12 結束任務，歷時 279 天；2026/5/6 全數處分完畢（經濟日報）。</li>
+      </ul></div>
+      <div class="card"><h3>第 8 次買了什麼</h3><ul class="plain small">
+        <li><b>15 檔：</b>台積電、聯發科、台達電、廣達、鴻海、日月光投控、富邦金、國泰金、玉山金、中信金、統一、台塑、南亞、台化、台塑化。</li>
+        <li><b>12 賺 3 賠：</b>台積電含股利獲利 90.78 億元。</li>
+        <li><b>時程：</b>2022/7/13～2023/4/13，2023/12/25 全數處分（自由財經）。</li>
+      </ul></div>
+    </div>
+    <div class="note">今周刊把 9 次分成兩組：同時有限空措施的 4 次（2008、2015、2020、2025），3 個月後有 3 次上漲；沒有限空的 5 次，3 個月後只有 2 次上漲。作者也提醒樣本只有 4 次，不能據此推論因果。</div>
+  </div>
+</section>
+
+<!-- 05 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對當事方的影響</div>
+      <h2>政府拿退休金的閒錢護盤，賺了歸基金、賠了國庫補</h2>
+      <p>當事方包括政府與國安基金本身、借錢給國安基金的勞保勞退等基金、在場的投資人與外資；金管會的限空令也一併說明。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">可用上限</div><div class="v">5,000 億</div><div class="d">元，2000 年至今未調整</div></div>
+      <div class="tile"><div class="l">本次投入</div><div class="v">未公布</div><div class="d">依法按季公告</div></div>
+      <div class="tile"><div class="l">委員會議</div><div class="v">第 131 次</div><div class="d">11/6 14:30 臨時會</div></div>
+      <div class="tile"><div class="l">借券賣出上限</div><div class="v">30% → 3%</div><div class="d">30 日均量，11/9 生效</div></div>
+      <div class="tile"><div class="l">融券保證金</div><div class="v">90% → 130%</div><div class="d">11/9 生效</div></div>
+      <div class="tile"><div class="l">外資賣超</div><div class="v">約 1.6 兆</div><div class="d">10/6～11/6（今周刊）</div></div>
+      <div class="tile"><div class="l">8 大公股行庫</div><div class="v">約 3,649 億</div><div class="d">10/6～11/6 分點買超</div></div>
+      <div class="tile"><div class="l">投信</div><div class="v">約 3,504 億</div><div class="d">10/6～11/6 買超</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>政府與國安基金</h3><ul class="plain">
+        <li><b>授權不等於買進：</b>經理人指 11/6 只是授權執行秘書「視情況動用」，不代表已經買股。</li>
+        <li><b>兩道防線：</b>國安基金負責「買」，金管會限空令負責「擋放空」，另有鼓勵庫藏股、法說會與放寬擔保品等措施。</li>
+        <li><b>限空令期限：</b>經理人指公告未訂結束日期，金管會將「適時」調整。</li>
+      </ul></div>
+      <div class="card"><h3>借錢給國安基金的退休基金</h3><ul class="plain">
+        <li><b>規則：</b>借用勞保、勞退、退撫等基金的閒置資金，要以台銀 2 年期定存利率加碼給予收益；若有損失，補償以借用時已發生的損失為限。</li>
+        <li><b>風險：</b>國安基金虧損時，由主管機關編列預算彌補，最終是國庫，也就是全體納稅人。</li>
+      </ul></div>
+      <div class="card"><h3>外資與本土法人</h3><ul class="plain">
+        <li><b>外資：</b>11/6 仍賣超 911.88 億元，11/9 賣 900.56 億元，到 11/11 已連 10 賣。</li>
+        <li><b>投信：</b>11/9 買超 267.49 億元、11/10 買超 368 億元、11/11 買超 147.65 億元，是反彈的主要買盤。</li>
+        <li><b>公股行庫：</b>經理人提醒，8 大行庫分點買超混合客戶與自營交易，不能直接當成國安基金的買進。</li>
+      </ul></div>
+      <div class="card"><h3>散戶</h3><ul class="plain">
+        <li><b>跟單難：</b>國安基金不即時公布持股，經濟日報整理包不建議跟單。</li>
+        <li><b>放空者：</b>借券上限砍到原本的十分之一，融券要押更多錢，放空成本大增。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 股價與市場反應</div>
+      <h2>授權後三天彈回 4,555 點，最大助力其實來自美國</h2>
+      <p>前四列為加權指數單日漲跌；其餘為 11/6 收盤到 11/11 收盤的累計漲跌，個股為國安基金第 8、9 次都買過的權值股。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">授權前後台股走勢</p>
+        <p class="chart-sub">漲跌（%）；淡色為由收盤價推算的累計漲跌</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各階段怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>11/6：</b>盤中最低 37,837.05 點，收 39,701.64 點、跌 4.51%；國安基金在收盤後 14:30 開會授權。</li>
+          <li><b>11/9：</b>限空令上路，加權指數漲 1,960.06 點（4.94%），是史上第 2 大漲點；但外資仍賣超 900.56 億元。</li>
+          <li><b>11/10：</b>再漲 1,050.22 點收 42,711.92 點，投信買超 368 億元。</li>
+          <li><b>11/11：</b>漲 1,545.23 點收 44,257.15 點，中央社把主因歸於 CoreWeave 財報與台積電營收，三天合計彈 4,555.51 點。</li>
+          <li><b>11/12：</b>輝達盤後重挫逾 8%，經濟日報盤前分析稱台股進入均線反壓區。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關指數與個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">44,257.15（11/11）</td><td class="num up">+3.62%</td><td class="period">11/6 起 +11.47%</td><td>史上第 6 大收盤漲點。</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">39,701.64（11/6）</td><td class="num down">−4.51%</td><td class="period">一週 −12.19%</td><td>國安基金授權當天。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,395 元（11/11）</td><td class="num up">+4.81%</td><td class="period">11/6 起 +12.18%</td><td>第 8、9 次最大持股。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,990 元（11/11）</td><td class="num up">+4.18%</td><td class="period">11/6 起 +17.70%</td><td>第 8、9 次都買過。</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">242 元（11/11）</td><td class="num up">+0.21%</td><td class="period">11/6 起 +7.80%</td><td>第 8、9 次都買過。</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,295 元（11/11）</td><td class="num up">+1.57%</td><td class="period">11/9～11/10 連 2 天漲停</td><td>第 8、9 次都買過。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">來源：中央社、經濟日報、今周刊、本站 11/10 台股反彈報告。「期間走勢」由收盤價推算。以上僅說明股價變動，不構成投資建議；國安基金本次是否買進上述個股未公布。</p>
+  </div>
+</section>
+
+<!-- 07 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 對世界的影響</div>
+      <h2>台股護盤是全球 AI 股修正的一個縮影</h2>
+      <p>國安基金是台灣內部的政策工具，但它出手的原因、能否奏效，都和全球資金流向綁在一起。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>全球 AI 股修正</h3><ul class="plain small">
+        <li>美國期中選舉後，那斯達克一週跌 5.5%（Fortune）。</li>
+        <li>台股以半導體為主，跟著費半同步重挫。</li>
+      </ul></article>
+      <article class="card"><h3>外資的全球調整</h3><ul class="plain small">
+        <li>外資一個月賣超台股約 1.6 兆元，多數是在全球降低 AI 與半導體曝險（推論）。</li>
+        <li>國安基金的規模遠小於外資賣壓，只能緩衝不能逆轉。</li>
+      </ul></article>
+      <article class="card"><h3>美國消息決定方向</h3><ul class="plain small">
+        <li>11/11 台股大漲的主因是 CoreWeave 財報帶動的美股 AI 反彈（中央社）。</li>
+        <li>11/11 晚間輝達盤後重挫逾 8%，又成為 11/12 的逆風。</li>
+      </ul></article>
+      <article class="card"><h3>國際觀感</h3><ul class="plain small">
+        <li>政府護盤加限空，可能被國際投資人視為干預市場，影響對台股流動性的評價（推論）。</li>
+        <li>但限空只限制借券放空，不限制賣出現股，外資仍可自由撤出。</li>
+      </ul></article>
+      <article class="card"><h3>利率環境</h3><ul class="plain small">
+        <li>美國 10 月 CPI 高於預期，12 月升息機率近 90%（鉅亨）。</li>
+        <li>美元走強時外資傾向撤出新興市場，對台股形成持續壓力（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>匯率</h3><ul class="plain small">
+        <li>外資賣股後匯出，新台幣承壓；本站台積電營收報告引述 10 月匯率約 32.8 元，低於年初假設的 31.8 元。</li>
+        <li>國安基金買股無法直接穩定匯率，那是央行的工作（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依歷次經驗與目前市場狀況整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>止跌後區間震盪</h3><ul class="plain small">
+        <li>指數在 40,000～45,000 點之間來回。</li>
+        <li>國安基金少量進場，任務延續數月。</li>
+        <li>外資賣壓放緩但未轉買。</li>
+      </ul><p class="trig">觸發條件：美國 AI 股止穩、輝達風波沒有擴大。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>重演 2008 年</h3><ul class="plain small">
+        <li>反彈後再跌破 11/6 低點。</li>
+        <li>國安基金被迫加碼投入。</li>
+        <li>3 個月後指數仍低於進場點。</li>
+      </ul><p class="trig">觸發條件：美國升息超預期、輝達領導危機惡化、外資持續大賣。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>重演 2020、2025 年</h3><ul class="plain small">
+        <li>AI 需求數據轉好，外資回補。</li>
+        <li>3 個月後指數上漲 2 成以上。</li>
+        <li>國安基金提早結束任務並獲利。</li>
+      </ul><p class="trig">觸發條件：輝達財報亮眼、Anthropic 上市順利、外資轉為買超。</p></article>
+    </div>
+    <div class="note warn">截至 11/12 09:30，財政部與國安基金尚未公布第 10 次實際進場與否、投入金額或買進標的；金管會也未訂限空令的結束日期。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>外資買賣超</b>：今周刊列為最重要的指標，連賣中止才算真正止血。</li>
+      <li><b>投信與 8 大公股行庫買超</b>：本土買盤能否接住外資賣壓。</li>
+      <li><b>台積電與費城半導體指數</b>：台股方向仍跟著 AI 晶片走。</li>
+      <li><b>融資餘額</b>：散戶槓桿是否降溫。</li>
+      <li><b>國安基金季度公告與立法院報告</b>：決議後 3 個月內（約 2027 年 2 月初）須送立法院。</li>
+      <li><b>限空令是否解除</b>：解除代表官方認為市場恢復秩序。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 09 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 各產業影響</div>
+      <h2>護盤資金流向哪裡？</h2>
+      <p>標籤為方向判斷；卡片下方是實際數據。國安基金本次持股未公布，以下以過去兩次的買法推論。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>半導體權值股</h3><span class="tag good">受惠</span></div><p>過去兩次護盤都以台積電為核心，第 9 次占投入約 6 成；權值股最能有效穩住指數（推論）。</p><div class="data">台積電 11/6 起 +12.18%</div></article>
+      <article class="card"><div class="top"><h3>電子代工與零組件</h3><span class="tag good">受惠</span></div><p>鴻海、廣達、台達電、日月光投控兩次都入選。</p><div class="data">台達電 11/9～11/10 連 2 天漲停</div></article>
+      <article class="card"><div class="top"><h3>金融股</h3><span class="tag">好壞參半</span></div><p>第 8 次買了 4 檔金控，第 9 次只剩富邦金；金融股波動小，穩盤效果有限（推論）。</p><div class="data">第 9 次 8 檔中 1 檔金控</div></article>
+      <article class="card"><div class="top"><h3>塑化傳產</h3><span class="tag">好壞參半</span></div><p>台塑四寶第 8 次全入選，第 9 次只剩台塑；權重下降，護盤角色變小。</p><div class="data">第 8 次 3 檔虧損</div></article>
+      <article class="card"><div class="top"><h3>券商</h3><span class="tag good">受惠</span></div><p>市場成交量放大，經紀手續費收入增加（推論）。</p><div class="data">11/11 成交值 8,491.65 億元</div></article>
+      <article class="card"><div class="top"><h3>借券與放空業務</h3><span class="tag bad">壓力</span></div><p>借券賣出上限砍到 3%，借券中介與避險策略受限。</p><div class="data">上限 30% → 3%</div></article>
+      <article class="card"><div class="top"><h3>中小型股</h3><span class="tag">好壞參半</span></div><p>國安基金幾乎只買大型權值股，中小型股得不到直接支撐（推論）。</p><div class="data">櫃買指數 11/11 +3.35%</div></article>
+      <article class="card"><div class="top"><h3>退休基金</h3><span class="tag">好壞參半</span></div><p>閒置資金借給國安基金可拿到定存加碼收益，但也承擔政策用途的風險。</p><div class="data">上限 3,000 億元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 對台灣的影響</div>
+      <h2>國安基金穩的是信心，買單的最終是全體納稅人</h2>
+      <p>台股是許多家庭最主要的金融資產；國安基金的盈虧最終也落在國庫。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>股市：</b>授權後三個交易日加權指數彈回 4,555.51 點，回到 44,000 點以上。</li>
+        <li><b>放空者：</b>限空令讓借券賣出幾乎停擺，融券成本提高。</li>
+        <li><b>外資：</b>仍連續賣超，但 11/11 賣超縮小到 7.66 億元。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>公帑風險：</b>過去 9 次只賠 1 次，但第 1 次就賠約 500 億元；若這次買在半山腰，國庫要承擔。</li>
+        <li><b>道德風險：</b>投資人若認為「跌深政府會救」，可能更敢加槓桿。</li>
+        <li><b>市場訊號：</b>國安基金進場有安定人心的效果，但歷史顯示 3 個月後漲跌各半，不宜當成買進訊號。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>持股的一般投資人</b></td><td><span class="tag good">短期有利</span></td><td>恐慌賣壓被承接，止跌速度加快。</td></tr>
+          <tr><td><b>融資族</b></td><td><span class="tag good">短期有利</span></td><td>指數反彈降低斷頭風險；金管會也放寬可用海外股票補繳。</td></tr>
+          <tr><td><b>放空者</b></td><td><span class="tag bad">不利</span></td><td>借券額度大減、融券保證金提高到 130%。</td></tr>
+          <tr><td><b>勞保、勞退受益人</b></td><td><span class="tag">間接相關</span></td><td>閒置資金被借用，依法可拿到補償與收益。</td></tr>
+          <tr><td><b>納稅人</b></td><td><span class="tag">潛在風險</span></td><td>國安基金虧損由國庫彌補。</td></tr>
+          <tr><td><b>台股 ETF 持有人</b></td><td><span class="tag good">相對有利</span></td><td>國安基金偏好的權值股正是 ETF 主要成分股。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>多數媒體做成「歷次戰績」整理包，差別在於強調獲利率，還是強調進場後指數不一定漲。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>全國法規資料庫</td><td>法條</td><td>設置及管理條例</td><td>資金來源、委員會、動用條件</td></tr>
+          <tr><td>經濟日報</td><td>整理包</td><td>第十次進場，投資人可以跟單嗎</td><td>第 9 次 8 檔持股與獲利；不建議跟單</td></tr>
+          <tr><td>今周刊</td><td>指數表現</td><td>一週全漲、3 個月勝率 55%</td><td>5 個落底訊號、外資才是關鍵</td></tr>
+          <tr><td>自由財經</td><td>條件與戰績</td><td>進場條件、歷次戰績</td><td>第 8 條條件、10 次時間表</td></tr>
+          <tr><td>自由財經</td><td>持股</td><td>前 2 次砸逾 667 億</td><td>第 8、9 次個股名單</td></tr>
+          <tr><td>經理人</td><td>政策細節</td><td>限空令來了、國安基金進場了嗎</td><td>授權不等於進場、公股行庫數據不能當國安基金</td></tr>
+          <tr><td>中央社</td><td>行情</td><td>台股三天彈 4,555 點</td><td>CoreWeave 與台積電才是 11/11 主因</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>11/6 第 131 次臨時委員會議授權第 10 次護盤。</li>
+        <li>可運用上限 5,000 億元，不代表會全數投入。</li>
+        <li>第 9 次投入 122.5 億元、淨利 99.32 億元。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「國安基金進場」常被誤用。</b>11/6 是授權，實際是否進場、何時進場官方未公布。</li>
+        <li><b>報酬率與指數漲跌是兩回事。</b>國安基金賺錢，不代表跟著進場的散戶也會賺。</li>
+        <li><b>早期數字是媒體整理。</b>第 1～4 次的投入與損益並非財政部正式公布數字。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>第 8 次獲利</td><td>112.96 億元（自由財經 11/9、經理人引財政部）</td><td>約 83 億元（自由財經 11/8 表格）</td><td>本報告採財政部數字 112.96 億元。</td></tr>
+          <tr><td>第 5 次投入</td><td>429.66 億元（經理人引財政部）</td><td>424 億元（自由財經）</td><td>本報告採財政部數字。</td></tr>
+          <tr><td>第 4、6 次進場日</td><td>2008/9/18、2015/8/25</td><td>2008/9/20、2015/8/26</td><td>宣布日與實際進場日不同；同一篇報導內兩表也不一致。</td></tr>
+          <tr><td>11/6 跌點</td><td>盤中跌 3,737.67 點（經濟日報）</td><td>收盤跌 1,873.08 點（經理人）</td><td>盤中最低與收盤的差別。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 12 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">12 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下法規與公開報導，資料截至 2026 年 11 月 12 日 09:30（台灣時間）。財政部與金管會公告原文未能讀取；Business Insider 台灣版拒絕讀取。</p>
+    </div>
+    <div class="src-group">官方資料</div>
+    <ol class="sources">
+      <li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0300040" target="_blank" rel="noopener">全國法規資料庫 — 國家金融安定基金設置及管理條例</a></li>
+      <li><a href="https://law.moj.gov.tw/LawClass/LawHistory.aspx?pcode=G0300040" target="_blank" rel="noopener">全國法規資料庫 — 條例沿革（2000 制定、2016 修正）</a></li>
+    </ol>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://money.udn.com/money/story/124512/9862538" target="_blank" rel="noopener">經濟日報 — 國安基金第十次進場整理包（11/6）</a></li>
+      <li><a href="https://www.managertoday.com.tw/articles/view/73282" target="_blank" rel="noopener">經理人 — 限空令來了！國安基金進場了嗎（11/6）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5633260" target="_blank" rel="noopener">自由財經 — 進場條件、歷次戰績（11/8）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5633941" target="_blank" rel="noopener">自由財經 — 前 2 次護盤砸逾 667 億、持股名單（11/9）</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183008/post/202611100002/" target="_blank" rel="noopener">今周刊 — 過去 9 次一週全漲、3 個月勝率 55%（11/10）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611110143.aspx" target="_blank" rel="noopener">中央社 — 台股三天強彈 4,555 點（11/11）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9871732" target="_blank" rel="noopener">經濟日報 — 台股收漲 1,545 點（11/11）</a></li>
+      <li><a href="https://news.ebc.net.tw/news/business/580158" target="_blank" rel="noopener">東森財經 — 台股狂飆 1,545 點、三大法人（11/11）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9873267" target="_blank" rel="noopener">經濟日報 — 11/12 盤前：輝達盤後逆風（11/12）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6658684" target="_blank" rel="noopener">鉅亨網 — 美股盤後、CPI 與升息機率（11/12）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="13">
+      <li><a href="https://fortune.com/2026/11/10/anthropic-ipo-price-range-ai-stock-sell-off/" target="_blank" rel="noopener">Fortune — 選後 AI 股拋售、那斯達克一週跌 5.5%（11/10）</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="14">
+      <li><a href="../taiex-rebound-2026-11/index.html">台股三天彈回 4,875 點：限空令與國安基金止住恐慌（11/10）</a></li>
+      <li><a href="../tsmc-revenue-2026-11/index.html">台積電 10 月營收解讀（11/10）</a></li>
+      <li><a href="../coreweave-earnings-2026-11/index.html">CoreWeave 第三季財報解讀（11/12）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 12 日 09:30（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'加權 11/6', s:'39,701.64，授權當天', v:-4.51},
+    {l:'加權 11/9', s:'41,661.70，限空令生效', v:4.94},
+    {l:'加權 11/10', s:'42,711.92', v:2.52},
+    {l:'加權 11/11', s:'44,257.15', v:3.62},
+    {l:'聯發科 累計', s:'3,990 元（11/6→11/11）', v:17.70, est:true},
+    {l:'台積電 累計', s:'2,395 元（11/6→11/11）', v:12.18, est:true},
+    {l:'加權 累計', s:'44,257.15（11/6→11/11）', v:11.47, est:true},
+    {l:'鴻海 累計', s:'242 元（11/6→11/11）', v:7.80, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
