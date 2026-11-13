@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黃仁勳辭去輝達執行長</title>
+<meta name="description" content="2026 年 11 月 12 日黃仁勳辭去輝達總裁、執行長與董事：最新近況與股價、辭職經過、代理執行長柯蕾絲的經歷、董事會更動、輝達之後走向與產品影響，以及對 AI 產業、美中科技戰、全球股市與台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#latest">最新近況</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">輝達與美中</a></li>
+      <li><a class="link" href="#leadership">接班與董事會</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">世界與 AI</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技與國際政經解讀 · 輝達 · 資料截至 2026 年 11 月 13 日 10:00（台灣時間）</p>
+      <h1>AI 時代的總舵手下台：黃仁勳辭去輝達執行長，全球 AI 產業失去最關鍵的那個人</h1>
+      <p class="lede">輝達 11 月 12 日（美東時間）宣布，創辦人黃仁勳辭去總裁、執行長與董事，即刻生效，結束 33 年的掌舵；財務長柯蕾絲（Colette Kress）暫代執行長，資深董事瓊斯（Harvey C. Jones）出任公司史上第一位董事長。公司沒有說明原因，但這發生在他承認婚外情、對象被美方指為中國情報人員、又被爆與直屬部屬交往之後。輝達是全球 AI 算力的主要供應者，也是許多 AI 公司的投資者，這次換帥的影響遠遠超出一家公司。</p>
+    </div>
+    <div class="stmt" aria-label="輝達 11/12 收盤跌幅">
+      <div class="k">輝達 11/12 收盤</div>
+      <div class="range">−4.34<small>%</small></div>
+      <div class="was">166.19 美元 · 盤前一度 −11.65%（153.49）</div>
+      <div class="stmt-row">
+        <div><div class="v">33 年</div><div class="l">黃仁勳掌舵</div></div>
+        <div><div class="v">7.3%</div><div class="l">占標普 500 權重</div></div>
+        <div><div class="v">11/17</div><div class="l">換帥後首次財報</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>訂單還在，掌舵的人不在了：8 個重點</h2>
+      <p>懶人包：輝達的晶片已經賣到明年，短期生意不會停；但黃仁勳同時是產品總設計師、大客戶談判者、AI 生態系的投資人和華府的遊說者，這些角色一次空出來，沒有接班人準備好接手。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>11/11 董事會接受辭呈，11/12 公告。</b>8-K 申報 11/12 美東 8:52（台灣時間 21:52）送出：黃仁勳辭去總裁、執行長與董事，即刻生效；公告沒有說明原因，也沒有黃仁勳本人的聲明。</div></li>
+      <li><div><b>財務長暫代，首設董事長。</b>59 歲的柯蕾絲 2013 年加入輝達，暫代執行長並兼任財務長；73 歲的瓊斯 1993 年起任董事，曾任 Synopsys 執行長，成為首任董事長。正式執行長將從內外部人選中找，沒有時間表。</div></li>
+      <li><div><b>董事會保證「不中斷」。</b>瓊斯說，預期公司營運、客戶承諾與產品路線圖「不會中斷」；11/17 第三季財報照原訂時間公布。</div></li>
+      <li><div><b>盤前重挫、收盤收斂。</b>11/12 盤前一度跌 11.65% 至 153.49 美元，收盤 166.19 美元、跌 4.34%，距 10/6 歷史高點 239.24 美元仍低約 30.5%；同日超微、博通各漲逾 5%。</div></li>
+      <li><div><b>華爾街大舉降評。</b>伯恩斯坦、Oppenheimer、Evercore、Melius、KeyBanc、William Blair 降為中立；伯恩斯坦目標價從 400 砍到 200 美元，Evercore 說輝達「沒有明顯的接班計畫或第二號營運主管」。</div></li>
+      <li><div><b>AI 生態系的金主換人。</b>輝達投資 OpenAI 300 億美元、Anthropic 100 億美元、CoreWeave 等雲端業者數十億美元；11/12 CoreWeave 跌 6%、Nebius 跌 10.7%。</div></li>
+      <li><div><b>美中科技戰可能更緊。</b>國會要求 11/18 簡報、推動 AI Overwatch 等出口管制法案；黃仁勳曾是對中放寬晶片銷售最有力的遊說者，換帥後華府管制可能更少阻力（推論）。</div></li>
+      <li><div><b>台灣：先跌再看。</b>11/12 台股收盤前尚未公告，但撤換傳聞已讓加權指數跌 2.63%、廣達跌 6.54%；經濟部長龔明鑫說「AI 大趨勢不會因為黃仁勳一個人而改變」。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 01A latest (updated 11/13) -->
+<section id="latest">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01-A · 最新近況（11/13 上午更新）</div>
+      <h2>恐慌先來、收盤收斂：輝達守住 4 兆美元，亞股隔天反彈</h2>
+      <p>公告後第一個完整交易日，輝達盤中一度跌 14%，收盤只跌 4.34%；資金轉向超微與博通，台股與韓股 11/13 開盤反彈。國會改以「約時間作證」施壓，司法部據報同時進行三項調查。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">輝達 11/12 收盤</div><div class="v">166.19</div><div class="d">−4.34%，市值約 4.01 兆美元</div></div>
+      <div class="tile"><div class="l">盤中最低</div><div class="v">148.80</div><div class="d">美東 9:31，約 −14.3%</div></div>
+      <div class="tile"><div class="l">成交量</div><div class="v">7.34 億股</div><div class="d">3 個月均量的 5.2 倍</div></div>
+      <div class="tile"><div class="l">盤後（11/12）</div><div class="v">167.84</div><div class="d">+0.99%（美東 19:59）</div></div>
+      <div class="tile"><div class="l">超微／博通</div><div class="v">+5.86%／+5.54%</div><div class="d">11/12 收盤</div></div>
+      <div class="tile"><div class="l">加權指數 11/13</div><div class="v">+3.01%</div><div class="d">44,388 點（09:22 盤中）</div></div>
+      <div class="tile"><div class="l">SK 海力士 11/13</div><div class="v">+4.6%</div><div class="d">首爾 9:15 盤中</div></div>
+      <div class="tile"><div class="l">市值排名</div><div class="v">第 2</div><div class="d">蘋果之後、微軟之前</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>公司與當事人</h3><ul class="plain small">
+        <li><b>柯蕾絲致員工信（CNBC 取得）：</b>「我深信這家公司和它的未來。」並說董事會與高層「知道這是一段極其艱難的時期」，未來幾天會公布更多領導層安排；11/18 美西 9:00（台灣時間 11/19 凌晨 1:00）召開全員大會。</li>
+        <li><b>董事長瓊斯：</b>稱柯蕾絲是「輝達成長與資本策略的關鍵建築師」。</li>
+        <li><b>黃仁勳：</b>辭職後未發表公開聲明；紐時報導他聘請 Paul Weiss 律所，用途不明。彭博報導他放棄約 1.08 億美元未歸屬股權，約占其身家 0.08%。</li>
+        <li><b>新指控：</b>路透 11/12 引述兩名匿名人士，報導他與另一名未具名員工有親密關係，未經證實。</li>
+      </ul></div>
+      <div class="card"><h3>華府與北京</h3><ul class="plain small">
+        <li><b>川普：</b>在 Truth Social 稱黃仁勳「做得非常出色」，並喊話「只有一個人能接替他——蘋果的庫克」；之後又說這是「可怕的事」。蘋果未回應。</li>
+        <li><b>眾議院：</b>Mast 說黃仁勳「已同意出席」、正在協商日期，目標感恩節前；11/18 是否照舊未確認。Moolenaar 說若談不攏將動用傳喚權。參議員 Tim Scott 要求他 12/3、盧特尼克 12/10 作證。</li>
+        <li><b>司法部：</b>Semafor 引述兩名匿名官員，司法部正分別調查輝達（反壟斷）、Megaspeed 與 Supermicro，目前「沒有跡象」要起訴輝達或黃仁勳；Supermicro 11/12 跌 12%。</li>
+        <li><b>出口管制：</b>參院多數黨領袖 Thune 說國防授權法納入新晶片出口限制「機率很高」。</li>
+        <li><b>中國：</b>外交部 11/12 下午（公告前）稱美方應「停止編造所謂的間諜敘事」；11/13 記者會內容截至查證時尚未公布。</li>
+      </ul></div>
+      <div class="card"><h3>華爾街</h3><ul class="plain small">
+        <li><b>公告後再降評：</b>Truist 降為持有、目標價 346 → 174 美元；Craig-Hallum 降為持有、275 → 180 美元。</li>
+        <li><b>維持買進但砍價：</b>Cantor 350 → 250、Stifel 315 → 205、DA Davidson 300 → 200（稱柯蕾絲「能勝任」）；美銀維持 350。</li>
+        <li><b>散戶進場：</b>Vanda Research 統計開盤 30 分鐘散戶淨買進 1.11 億美元。</li>
+        <li><b>接班預測市場：</b>Ian Buck 約 35～42%、柯蕾絲約 12～25%（成交量小）。</li>
+      </ul></div>
+      <div class="card"><h3>台灣</h3><ul class="plain small">
+        <li><b>台股 11/13：</b>開盤 43,719.75 點，09:22 漲至 44,388 點、+3.01%；聯發科、世芯、創意漲停，台積電最高 2,390 元。媒體說外資賣壓減輕、MSCI 調高台股權重，台股「並未直接延續美股科技股跌勢」。</li>
+        <li><b>11/12 籌碼：</b>外資賣超 6.85 億元、投信買超 125.7 億元。</li>
+        <li><b>政府：</b>陸委會說黃樂 2024 年入境 3 次、2025 年 5 次，入台許可已撤銷；政院發言人李慧芝證實「跨國合作調查」（皆在公告前）。總統、行政院長辭職後未表態。</li>
+        <li><b>北士科總部：</b>截至 11/13 未見取消；地上權契約（122 億元）已簽，連續壁工程 11/5 過都委會專案小組，月底送大會審議。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">台股、韓股、日股 11/13 為盤中數字，收盤尚未出爐；美股 11/13 尚未開盤。董事會調查、接班人選與國會作證日期都還沒有結果。</div>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>五天內從「董事會力挺」到「即刻辭職」</h2>
+      <p>第 1～3 點是報導中的事實與指控；第 4 點是本報告分析。婚外情與間諜指控多來自匿名人士，尚未經官方或司法證實。</p>
+    </div>
+    <div class="note">比喻：輝達像一支由傳奇教練帶了 33 年的球隊，球員、戰術、贊助商都圍著他轉。教練突然離開，下一場比賽照樣能打，但沒人知道下一季的戰術誰來定、贊助商談判誰來談。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>國安疑慮</h3><p>11/8 黃仁勳承認與 Megaspeed 前高管黃樂有婚外情，美國匿名情報官員指她是中國國家安全部的情報人員，中方否認。董事會當時說「沒有理由相信」國安或機密受損，並力挺他留任。</p></div><div class="ev"><span class="tag">11/8</span><span class="tag">匿名指控</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>公司治理</h3><p>11/11 紐時引述 5 名匿名前員工，報導他與直屬部屬、醫療保健副總裁鮑威爾的關係；這直接觸及輝達行為準則中「私人關係」的利益衝突規定。董事會當晚開會。</p></div><div class="ev"><span class="tag">11/11</span><span class="tag">行為準則</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>政治與市場壓力</h3><p>參議員 Cramer、眾議員 Subramanyam 與 Bacon 公開要求他下台；眾議院三位委員會主席揚言傳喚；股價一週蒸發約 3,000 億美元。董事會 11/10 已聘 Wachtell 律所調查。</p></div><div class="ev"><span class="tag">國會施壓</span><span class="tag">股東訴訟</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>沒有接班計畫，只能先找代理</h3><p>黃仁勳曾說不相信接班規劃，輝達沒有董事長也沒有營運長；董事會只能讓財務長暫代、同時首設董事長。前 Nasdaq 執行長 Greifeld 直言：「董事會在接班規劃上做得很糟。」</p></div><div class="ev"><span class="tag">無 COO</span><span class="tag">首任董事長</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>關鍵事件</span><span><i class="g"></i>背景</span><span><i></i>後續排程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">1993</div><div class="what">黃仁勳共同創辦輝達；瓊斯同年起任董事。</div></li>
+        <li class="geo"><div class="date">2026-10-06</div><div class="what">輝達收盤 239.24 美元，創歷史新高。</div></li>
+        <li class="geo"><div class="date">2026-10-29</div><div class="what">紐時首報情報單位監控黃仁勳身邊女性。</div></li>
+        <li class="key"><div class="date">2026-11-08</div><div class="what">黃仁勳承認婚外情；董事會啟動調查並力挺。</div></li>
+        <li class="key"><div class="date">2026-11-11</div><div class="what">紐時再爆第二段關係；董事會當晚開會，接受辭呈。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-12 21:52</div><div class="what"><b>8-K 申報、公告辭職</b>（台灣時間）；柯蕾絲暫代、瓊斯任董事長。</div></li>
+        <li class="key"><div class="date">2026-11-12 美股</div><div class="what">輝達盤前跌 11.65% 至 153.49 美元，收盤收斂為 −4.34%、166.19 美元。</div></li>
+        <li><div class="date">2026-11-13</div><div class="what">台股公告後首度開盤，09:22 漲 3.01%。</div></li>
+        <li><div class="date">2026-11-17</div><div class="what">第三季財報，柯蕾絲以代理執行長身分主持。</div></li>
+        <li><div class="date">2026-11-18</div><div class="what">輝達全員大會；眾議院作證日期協商中。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對輝達、美國與中國的影響</div>
+      <h2>輝達少了臉孔，華府少了說客，北京少了對口</h2>
+      <p>黃仁勳是輝達的產品總設計師、最大客戶的談判者、生態系投資的決策者，也是在華府與北京之間奔走、爭取對中銷售的人。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">代理執行長</div><div class="v">柯蕾絲</div><div class="d">59 歲，兼任財務長</div></div>
+      <div class="tile"><div class="l">首任董事長</div><div class="v">瓊斯</div><div class="d">73 歲，1993 年起任董事</div></div>
+      <div class="tile"><div class="l">本益比</div><div class="v">≈12 倍</div><div class="d">預估，2012 年以來最低（LSEG）</div></div>
+      <div class="tile"><div class="l">距歷史高點</div><div class="v">−30.5%</div><div class="d">239.24 → 166.19（11/12 收盤）</div></div>
+      <div class="tile"><div class="l">連續週跌</div><div class="v">6 週</div><div class="d">2012 年以來最長</div></div>
+      <div class="tile"><div class="l">降評券商</div><div class="v">7 家</div><div class="d">11/9～11/12</div></div>
+      <div class="tile"><div class="l">離職條件</div><div class="v">未揭露</div><div class="d">8-K 未提遣散與股權</div></div>
+      <div class="tile"><div class="l">正式接班人</div><div class="v">未定</div><div class="d">內外部遴選</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>輝達內部</h3><ul class="plain">
+        <li><b>柯蕾絲：</b>「輝達的力量一直來自員工……我承諾在黃仁勳 33 年打下的非凡基礎上繼續前進。」她仍兼任財務長，8-K 未揭露薪酬變動。</li>
+        <li><b>人才風險：</b>Oppenheimer 的 Schafer 擔心「人才流失」拖慢創新，稱這是「可能改變投資論點的重大事件」。</li>
+        <li><b>接班猜測：</b>媒體與預測市場點名 CUDA 推手 Ian Buck、柯蕾絲，以及外部的超微執行長蘇姿丰、Arm 執行長 Rene Haas；都只是猜測。</li>
+        <li><b>調查：</b>公告沒有提到調查結果；黃仁勳先前否認危害國安或洩漏機密。</li>
+      </ul></div>
+      <div class="card"><h3>美國與中國</h3><ul class="plain">
+        <li><b>國會：</b>Warren 與 Banks 推動把 AI Overwatch Act 放進國防授權法；MATCH Act、Chip Security Act 也在協商。民主黨 1 月起掌控參眾兩院。</li>
+        <li><b>白宮：</b>川普辭職當天稱黃仁勳「做得非常出色」並推薦庫克接任（見 01-A）；他先前稱黃仁勳是「正直的人」。報導指川普 2025 年與 2026 年 5 月曾聽取簡報，未採取已知行動。</li>
+        <li><b>對中晶片政策：</b>美方允許 H200 賣給「核准客戶」並抽成 25%；商務部據報要把管制延伸到「遠端存取」。</li>
+        <li><b>中國：</b>外交部 11/12 公告前稱美方應「停止編造所謂的間諜敘事」；先前稱間諜說「捕風捉影，汙衊抹黑」。辭職後回應截至查證時未見。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至 11/13 10:00（台灣時間），輝達未說明辭職原因，8-K 也未揭露遣散條件；黃仁勳本人與中國外交部尚未就辭職發表聲明（川普已表態，見 01-A）。</div>
+  </div>
+</section>
+
+<!-- 03A leadership, board, direction, products -->
+<section id="leadership">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03-A · 接班人、董事會、走向與產品</div>
+      <h2>財務長接手、董事會重組：輝達從「一人公司」轉向集體領導</h2>
+      <p>這一節回答四個問題：接任的柯蕾絲是誰、董事會怎麼變、輝達接下來往哪走，以及產品會不會受影響。</p>
+    </div>
+
+    <div class="sub-h">1. 代理執行長柯蕾絲（Colette Kress）是誰</div>
+    <div class="grid g2" style="align-items:start">
+      <div class="card"><h3>經歷</h3><ul class="plain small">
+        <li><b>學歷：</b>亞利桑那大學財務學士、南方衛理公會大學（SMU）企管碩士（輝達年報）。</li>
+        <li><b>德州儀器：</b>約 8 年財務職務。</li>
+        <li><b>微軟（1997～2010）：</b>13 年，2006 年起任伺服器與工具事業部財務長。</li>
+        <li><b>思科（2010-11～2013-09）：</b>商業技術與營運財務資深副總裁暨財務長。</li>
+        <li><b>輝達（2013-09 至今）：</b>執行副總裁暨財務長，掌管財務、規劃、會計、稅務、資金、投資人關係與企業發展；以色列 Globes 報導，黃仁勳在白板上畫出願景說服她加入。出生地與成長背景未見可靠來源公開。</li>
+      </ul></div>
+      <div class="card"><h3>在輝達的成績與風格</h3><ul class="plain small">
+        <li><b>營收：</b>她加入那年度約 41.3 億美元，FY2026 達 2,159 億美元，成長約 52 倍（路透）。</li>
+        <li><b>股東回饋：</b>2026 年 5 月董事會加碼 800 億美元庫藏股、季股利從 0.01 提高到 0.25 美元，計畫把 50% 自由現金流還給股東；她說累計回饋 1 兆美元「已在地平線上」。</li>
+        <li><b>風格：</b>Globes 形容她「克制而審慎」：「我們不關注股價。」時任 Wedbush 的 Ives 2024 年說她「在華爾街備受尊敬」。</li>
+        <li><b>薪酬：</b>FY2026 目標總薪酬約 1,600 萬美元，無遣散或控制權變更協議；持有輝達股票 11/11 市值約 7.5 億美元，富比士美國白手起家女富豪第 32 名。</li>
+      </ul></div>
+    </div>
+    <div class="note">評價重點：eToro 的 Gilbert 說她是「穩住船的當然人選」，但正式執行長「是另一回事，因為輝達的優勢來自技術」。財務出身、沒有工程背景，是市場普遍認為她較可能是過渡人選的原因；Minotaur 的 Rosenberg 建議由她與技術主管搭檔「共同執行長」（皆為分析，非公司說法）。</div>
+
+    <div class="sub-h">2. 董事會更動</div>
+    <div class="grid g2" style="align-items:start">
+      <div class="card"><h3>前後對照</h3><ul class="plain small">
+        <li><b>人數：</b>黃仁勳離開後由 11 席變 10 席，全部是獨立董事；是否補選他的席次，未公布。</li>
+        <li><b>首設董事長：</b>過去輝達不設董事長、以首席獨立董事讓「每位成員有平等發言權」；這次首度任命瓊斯為董事長，公司未說明原因。</li>
+        <li><b>瓊斯：</b>73 歲，1993 年起任董事（與黃仁勳創業同年），1987～1998 年任 Synopsys 執行長與執行董事長，現為 Square Wave Ventures 管理合夥人；任審計、提名與公司治理委員會。</li>
+        <li><b>首席獨立董事 Neal：</b>77 歲，2019 年起任首席董事，是輝達長期法律顧問 Cooley 律所的榮譽董事長；他的角色是否改變未公布。</li>
+      </ul></div>
+      <div class="card"><h3>董事名單（2026 年委託書）</h3><ul class="plain small">
+        <li>瓊斯（董事長，1993）、Neal（首席董事，2019）、Tench Coxe（1993）、Brooke Seawell（審計委員會主席，1997）、Mark Stevens（2008，另 1993～2006）。</li>
+        <li>Dawn Hudson（薪酬委員會主席，2013）、John Dabiri（2020）、Aarti Shah（2020）、Melissa Lora（2023）、Suzanne Nora Johnson（2026，前高盛副董事長）。</li>
+        <li><b>調查：</b>由 Wachtell 律所的 Joon H. Kim（前紐約南區代理聯邦檢察官）主導；監督委員會成員未公布。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">治理批評：Semafor 指輝達董事平均任期約 15 年、約為標普 500 的兩倍，沒有現任或前任大型企業執行長，也沒有國安經驗；賓州大學 Fisch 說這是「執行長實質控制董事會，而非反過來」。截至查證時，ISS、Glass Lewis 等代理投票顧問尚未表態，也未見針對董事的衍生訴訟。</div>
+
+    <div class="sub-h">3. 輝達之後的走向</div>
+    <div class="grid g3">
+      <article class="card"><h3>官方說法</h3><ul class="plain small">
+        <li>唯一的策略表態是「營運、客戶承諾與產品路線圖不會中斷」。</li>
+        <li>11/17 財報照常；未見柯蕾絲致員工信。</li>
+        <li>未見對中國、定價、CUDA、投資組合、北士科總部的新說法。</li>
+      </ul></article>
+      <article class="card"><h3>接班遴選</h3><ul class="plain small">
+        <li>彭博引述一名匿名人士：董事會與一家外部公司合作物色人選，公司名稱與時程未公布。</li>
+        <li>媒體與預測市場猜測：Ian Buck（2004 年加入、主導 CUDA、現管超大規模 AI 產品）、柯蕾絲、Arm 的 Rene Haas、硬體工程主管 Andrew Bell（皆為猜測）。</li>
+      </ul></article>
+      <article class="card"><h3>可能的策略變化 <span class="infer">推論</span></h3><ul class="plain small">
+        <li><b>投資：</b>財務出身的領導層可能更審慎看待對 AI 新創的大額投資。</li>
+        <li><b>產能：</b>路透引述台灣供應商匿名主管：「新執行長可能不像黃仁勳那樣積極。」</li>
+        <li><b>政策：</b>對中銷售的遊說力道可能減弱，合規優先。</li>
+      </ul></article>
+    </div>
+
+    <div class="sub-h">4. 產品會不會受影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>產品世代</th><th>時程（事件前公布）</th><th>現況</th><th>換帥風險</th></tr></thead>
+        <tbody>
+          <tr><td><b>Blackwell／Blackwell Ultra</b></td><td>出貨中</td><td>與 Rubin 合計約 1 兆美元訂單能見度至 2027 年（GTC 2026）</td><td><span class="tag good">低</span> 已簽約量產</td></tr>
+          <tr><td><b>Vera Rubin</b></td><td>2026 下半年</td><td>6 月 Computex 宣布「全面量產」，約 150 家台灣夥伴，首批客戶 Anthropic、OpenAI、SpaceX、甲骨文</td><td><span class="tag good">低</span> 已出貨</td></tr>
+          <tr><td><b>Rubin Ultra（Kyber 機櫃）</b></td><td>2027 下半年</td><td>設計已定</td><td><span class="tag">中</span> 產能承諾力道可能改變（推論）</td></tr>
+          <tr><td><b>Feynman</b></td><td>2028</td><td>3D 堆疊、Rosa CPU、CPO 共同封裝光學</td><td><span class="tag bad">較高</span> 長期技術方向由誰拍板未定（推論）</td></tr>
+          <tr><td><b>RTX Spark（Arm Windows PC）</b></td><td>2026 年 6 月發表</td><td>與聯發科合作</td><td><span class="tag">中</span> 新業務延續性待觀察（推論）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">分析師看法：Greifeld 說既有晶片計畫不會馬上改變；Manulife 的 Thooft 說「更大的風險是未來幾年的遠見」；Minotaur 的 Rosenberg 說客戶 2027 年計畫「不取決於誰經營公司」。截至查證時，微軟、OpenAI、Meta、Google、亞馬遜、甲骨文、xAI 都未就訂單發表聲明。輝達約 60 名直屬主管原本都向黃仁勳報告，沒有總裁或營運長。來源：路透 Factbox、Fortune、Globes、Tae Kim 專訪、2026 年委託書、Semafor、TechCrunch、The Next Web、CNBC。</p>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>輝達重挫、對手持平：市場把它當成「輝達的危機」而非「AI 的終結」</h2>
+      <p>下圖是消息後的單日漲跌，紅漲綠跌依台灣慣例。台股與韓股 11/12 收盤時尚未公告，反映的是撤換傳聞；美股為 11/12 美東 9:12 盤前報價。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/12 單日漲跌幅</p>
+        <p class="chart-sub">%；美股與亞股皆為 11/12 收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>輝達：</b>11/11 盤後一度跌到 156.20 美元，公告後盤前跌 11.65%，正式交易中跌幅收斂，收 166.19 美元、−4.34%；做空者帳面獲利約 38 億美元（Ortex，盤前估計）。</li>
+          <li><b>對手：</b>11/12 收盤超微 +5.86%、博通 +5.54%，路透說市場預期「輝達的動盪可能讓對手受惠」；費半只跌 0.54%。</li>
+          <li><b>AI 雲端與記憶體：</b>CoreWeave −6%、Nebius −10.7%、美光收盤 −1.59%、SanDisk −5.1%，跟輝達投資或供貨關係最緊的股票跌最多。</li>
+          <li><b>大盤：</b>那斯達克 100 期貨跌逾 1%、標普期貨跌 0.5%；輝達占標普 500 約 7.3%、那斯達克 100 約 8.4%，單一公司就能拖動指數。</li>
+          <li><b>台股：</b>11/12 收 43,091.87 點、跌 1,165 點；同時有前一天大漲 1,545 點後的獲利了結。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>最新價</th><th>11/12 漲跌</th><th>11/6 以來</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">166.19</td><td class="num down">−4.34%</td><td class="period">−10.96%</td><td>事件主角</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">585.30</td><td class="num up">+5.86%</td><td class="period">+30.34%</td><td>主要對手</td></tr>
+          <tr><td class="num">AVGO</td><td><b>博通</b></td><td>美股</td><td class="num">364.36</td><td class="num up">+5.54%</td><td class="period">+24.06%</td><td>客製 AI 晶片</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">798.44</td><td class="num down">−1.59%</td><td class="period">+15.72%</td><td>HBM 供應商</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">405.49</td><td class="num down">−1.90%</td><td class="period">+8.00%</td><td>輝達晶片代工</td></tr>
+          <tr><td class="num">000660</td><td><b>SK 海力士</b></td><td>韓股</td><td class="num">1,254,000</td><td class="num down">−1.80%</td><td class="period">+10.78%</td><td>HBM 最大供應商</td></tr>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股指數</td><td class="num">43,091.87</td><td class="num down">−2.63%</td><td class="period">+8.54%</td><td>公告前收盤</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,340</td><td class="num down">−2.30%</td><td class="period">+9.60%</td><td>輝達約占營收 20%</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">240.00</td><td class="num down">−0.83%</td><td class="period">+6.90%</td><td>AI 伺服器組裝</td></tr>
+          <tr><td class="num">2382</td><td><b>廣達</b></td><td>台股</td><td class="num">278.50</td><td class="num down">−6.54%</td><td class="period">−4.13%</td><td>AI 伺服器組裝</td></tr>
+          <tr><td class="num">3231</td><td><b>緯創</b></td><td>台股</td><td class="num">170.00</td><td class="num down">−2.58%</td><td class="period">+6.25%</td><td>AI 伺服器組裝</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">價格來源：Yahoo Finance。美股為 11/12 收盤（盤前最低報價為美東 9:12 的 153.49 美元）；11/6 是黃仁勳承認婚外情前最後一個交易日。台股與韓股 11/12 收盤在公告之前。券商評等來源：CNBC、Yahoo Finance。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界與 AI 產業的影響</div>
+      <h2>輝達不只是供應商，也是 AI 產業的金主、標準制定者與政策說客</h2>
+      <p>CNBC 形容輝達同時是許多 AI 公司的供應商、客戶、投資人、融資者與租約擔保人。黃仁勳離開，影響會沿著這五種關係擴散。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>1. AI 晶片與產品路線</h3><ul class="plain small">
+        <li><b>短期：</b>據報 Rubin 已於 2026 年量產部署（維基百科摘要），晶片開發與長約都已排定；Greifeld 認為新執行長有時間制定策略。</li>
+        <li><b>長期：</b>Manulife 的 Thooft 說，真正的風險是失去執行長的「長期戰略眼光」；2028 年的 Feynman 世代由誰拍板，現在沒有答案。</li>
+        <li><b>CUDA 護城河：</b>輝達 AI GPU 市占約 80%；CUDA 在訓練端黏著度最高，但在推論端正被 PyTorch、ROCm 縮小差距（分析，非事件後報導）。</li>
+      </ul></article>
+      <article class="card"><h3>2. AI 投資與新創資金</h3><ul class="plain small">
+        <li><b>投資組合：</b>OpenAI 300 億美元（另承諾 1,000 億）、Anthropic 100 億、英特爾 50 億、CoreWeave 與 Nebius 各 20 億，Calcalist 說這「只是部分清單」。</li>
+        <li><b>循環融資：</b>Ten Cap 的 Jun Bei Liu 說，多數新雲端資料中心業者由輝達「贊助」，換帥有「相當大的影響」。</li>
+        <li><b>Anthropic 上市：</b>預計下週、估值約 1.4 兆美元，據報已超額認購數倍；輝達是投資人。</li>
+      </ul></article>
+      <article class="card"><h3>3. 客戶與競爭</h3><ul class="plain small">
+        <li><b>雲端資本支出：</b>亞馬遜約 2,200 億、Alphabet 1,950～2,050 億、微軟約 1,700～1,750 億、Meta 1,350～1,450 億美元（2026 年指引，事件前）。</li>
+        <li><b>分散供應：</b>Google 說 TPU 客戶接近 100 家；William Blair 擔心「AI 建置放緩、晶片競爭加劇」。</li>
+        <li><b>未查到：</b>OpenAI、微軟、Google、亞馬遜、Meta 對辭職的回應。</li>
+      </ul></article>
+      <article class="card"><h3>4. 美中科技競爭</h3><ul class="plain small">
+        <li>黃仁勳是對中放寬晶片銷售最有力的企業聲音；他曾說「中國會贏 AI 競賽」。換帥後，華府推動出口管制的阻力可能變小（推論）。</li>
+        <li>Megaspeed 案已移交司法部國安組；新加坡 Megaspeed 說已委託美國律所做 GPU「全面普查」。</li>
+      </ul></article>
+      <article class="card"><h3>5. 全球股市與「AI 泡沫」</h3><ul class="plain small">
+        <li><b>集中風險：</b>瑞銀 Haefele：「輝達動盪讓科技集中風險浮上檯面」，但仍看好 AI 長期。</li>
+        <li><b>不是泡沫破裂：</b>Greifeld 說以輝達約 12 倍本益比，「沒有泡沫可破」；Questar 的 Reyle 說輝達變得「不可投資」，但 AI 交易整體不是。</li>
+        <li><b>悲觀派：</b>Wind Shift 的 Blain 說對 AI 的信心「已動搖數月」。</li>
+      </ul></article>
+      <article class="card"><h3>6. 前例：創辦人離開之後</h3><ul class="plain small">
+        <li><b>蘋果賈伯斯：</b>早已培養庫克接班；Calcalist 說蘋果不像輝達那樣替供應鏈融資，賈伯斯離開不是「技術革命的系統性風險」。</li>
+        <li><b>英特爾 Krzanich（2018）：</b>同樣因私人關係下台，有人認為是英特爾衰退的轉折點。</li>
+        <li><b>HP Hurd（2010）：</b>Melius 認為是最接近的前例。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 平穩過渡</div><h3>內部接班、路線不變</h3><ul class="plain small">
+        <li>董事會數月內從內部（如 Ian Buck）選出執行長，延續 Rubin 與 Feynman 路線。</li>
+        <li>11/17 財報符合預期，Stifel 預期「小幅超越」。</li>
+      </ul><p class="trig">觸發條件：財報穩、核心主管留任、客戶公開表態續約。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 失速</div><h3>人才流失、客戶轉單</h3><ul class="plain small">
+        <li>核心工程師離職，大客戶加速改用自研晶片與超微。</li>
+        <li>出口管制收緊、Megaspeed 案擴大，輝達對中與東南亞業務受限。</li>
+      </ul><p class="trig">觸發條件：高層出走、財測下修、國會通過嚴格管制法案。</p></article>
+      <article class="card"><div class="prob">劇本 C · 外部空降</div><h3>外部執行長、策略重整</h3><ul class="plain small">
+        <li>董事會找外部人選，重新評估生態系投資與定價策略。</li>
+      </ul><p class="trig">觸發條件：內部人選不被市場接受、董事會想切割過去。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/13</b>：台股、韓股收盤是否守住早盤反彈；美股第二個交易日。</li>
+      <li><b>11/17</b>：第三季財報與財測，柯蕾絲首次以代理執行長身分說明。</li>
+      <li><b>11/18</b>：輝達全員大會；眾議院作證日期、參院 12/3 作證要求。</li>
+      <li><b>Anthropic 上市</b>：輝達投資的大型 AI 公司是否順利掛牌。</li>
+      <li><b>核心主管動向</b>：是否有重要工程與業務主管離職。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>輝達</h3><span class="tag bad">利空</span></div><p>領導空窗、人才與客戶關係風險，評等大舉下修。</p><div class="data">11/12 收盤 −4.34%（盤前一度 −11.65%）；7 家券商降評</div></article>
+      <article class="card"><div class="top"><h3>AI 晶片對手與客製晶片</h3><span class="tag good">受惠</span></div><p>客戶分散供應商的理由增加（推論）。</p><div class="data">超微 11/6 以來 +30.34%、博通 +24.06%</div></article>
+      <article class="card"><div class="top"><h3>AI 雲端新創</h3><span class="tag bad">利空</span></div><p>輝達是主要金主與供貨者，投資策略可能重估。</p><div class="data">CoreWeave −6%、Nebius −10.7%</div></article>
+      <article class="card"><div class="top"><h3>HBM 記憶體</h3><span class="tag">好壞參半</span></div><p>需求由 AI 支出決定，但與輝達綁最深的先受壓。</p><div class="data">美光收盤 −1.59%、SK 海力士 −1.80%</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag">影響有限</span></div><p>先進製程客戶多元，輝達轉單也多留在台積電（推論）。</p><div class="data">台積電 −2.30%（公告前）</div></article>
+      <article class="card"><div class="top"><h3>AI 伺服器組裝</h3><span class="tag bad">短空</span></div><p>最依賴輝達平台，情緒衝擊最大；經濟部說明年訂單仍多於今年。</p><div class="data">廣達 −6.54%、緯創 −2.58%</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>失去最懂台灣的 AI 領袖，但輝達離不開台灣</h2>
+      <p>黃仁勳生於台灣，親自推動輝達在台北北士科設立海外總部「星群」，也是台灣 AI 供應鏈與國際市場之間的代言人。他離開後，訂單仍取決於 AI 需求與台灣的製造能力，但合作的溫度與節奏可能改變。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>經濟部長龔明鑫（11/12 公告前）：</b>「只要輝達是往 AI 方向走，就非得跟台灣合作」，「AI 高階伺服器，現在幾乎只有台灣可以出貨」；業者說明年要交貨的訂單「比今年還要多很多」，但「中長期則要觀察」。</li>
+        <li><b>北士科總部：</b>輝達 2026 年 5 月 27 日公布「星群」設計，預計 2030 年完工；台北市長蔣萬安 11/10 說合作「按既定計畫」。截至查證時，辭職後未見輝達或北市府更新說法。</li>
+        <li><b>內政部（11/11）：</b>部長劉世芳說黃樂的入台許可已撤銷；她以香港護照入境，2024 年 6 月與 2025 年 5 月有入境紀錄。</li>
+        <li><b>台股：</b>11/12 加權指數跌 2.63%，台指期夜盤在公告後走低、低見 42,691 點。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>總部與投資節奏：</b>北士科總部、台灣研發中心與物流中心是黃仁勳親自推動；新領導層若重新檢視全球布局，時程可能調整。</li>
+        <li><b>台灣產業的不可替代性：</b>自由時報分析指出，台灣已形成輝達、超微、美光 HBM、EDA 與設備商的聚落，地位不只靠黃仁勳一人。</li>
+        <li><b>伺服器供應鏈：</b>若客戶加速轉向客製晶片，台廠也替 Google、亞馬遜組裝伺服器，訂單可能「換平台」而非消失。</li>
+        <li><b>國安與人員往來：</b>此案讓台灣檢視高科技業敏感接觸的管理。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至 11/13 上午，總統府、行政院、台積電、鴻海、廣達都尚未就黃仁勳辭職發表聲明；台股 11/13 早盤反彈 3%，收盤尚未出爐。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">短期承壓</span></td><td>輝達概念股情緒受挫，11/13 是第一個觀察點。</td></tr>
+          <tr><td><b>伺服器與零組件廠</b></td><td><span class="tag">留意</span></td><td>經濟部說明年訂單仍多，但需觀察客戶平台轉換（推論）。</td></tr>
+          <tr><td><b>台北市與北士科</b></td><td><span class="tag">待觀察</span></td><td>總部時程是否調整，尚無新說法。</td></tr>
+          <tr><td><b>政府與國安單位</b></td><td><span class="tag">檢討</span></td><td>已撤銷黃樂入台許可，政院據報與美方合作調查（未證實）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，美媒談接班與評等，台媒談「時代結束」與台灣地位</h2>
+      <p>美國財經媒體聚焦董事會、接班人與券商降評；台灣媒體以「全球震撼彈」「33 年掌舵結束」為主軸，並追問北士科總部與供應鏈。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>輝達（8-K、新聞稿）</td><td>官方</td><td>宣布執行長交接</td><td>「不會中斷」，未說原因</td></tr>
+          <tr><td>CNBC</td><td>即時更新</td><td>黃仁勳辭職</td><td>國會、降評、財報</td></tr>
+          <tr><td>NBC</td><td>背景</td><td>在婚外情報導後辭職</td><td>間諜指控、川普簡報</td></tr>
+          <tr><td>Semafor</td><td>產業</td><td>黃仁勳辭去輝達執行長</td><td>接班空窗</td></tr>
+          <tr><td>Calcalist</td><td>AI 生態系</td><td>AI 產業的黑天鵝</td><td>投資組合、指數權重</td></tr>
+          <tr><td>Yahoo Finance</td><td>華爾街</td><td>華爾街遠離輝達</td><td>各券商評等與目標價</td></tr>
+          <tr><td>經濟日報</td><td>快訊</td><td>財務長暫代、盤前跌 11%</td><td>WSJ 匿名細節</td></tr>
+          <tr><td>自由財經</td><td>台灣地位</td><td>全球震撼彈</td><td>台灣聚落不靠一人</td></tr>
+          <tr><td>中時</td><td>政府</td><td>經濟部：AI 趨勢不變</td><td>明年訂單更多</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>黃仁勳辭去總裁、執行長與董事，即刻生效。</li>
+        <li>柯蕾絲暫代執行長，瓊斯任首任董事長。</li>
+        <li>公司未說明原因，11/17 財報照常。</li>
+        <li>盤前股價跌 10～12%，收盤收斂為約 −4%。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「董事長」錯誤：</b>經濟日報寫他辭去「董事長」，Semafor、CNBC 也有類似寫法；但瓊斯才是「史上第一位」董事長，黃仁勳辭的是董事。</li>
+        <li><b>譯名：</b>Kress 有克瑞斯、柯蕾絲、克雷斯等譯法。</li>
+        <li><b>辭職還是撤換：</b>官方說「辭職」，經濟日報標題寫「撤換」；先前 WSJ 匿名報導董事會準備撤換他。</li>
+        <li><b>本報告不採用：</b>接班名單中涉及家族成員的猜測與私生活細節。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>盤前跌幅</td><td>−11.65%（Yahoo 9:12）；逾 11%（NBC）</td><td>−10.29%（Newtalk）；約 10%（CNBC）</td><td>報價時間不同</td></tr>
+          <tr><td>本週市值蒸發</td><td>約 3,000 億美元（路透）</td><td>約 6,000 億美元（Newtalk）</td><td>起算點不同</td></tr>
+          <tr><td>OpenAI 投資</td><td>已投 300 億、另承諾 1,000 億（Calcalist）</td><td>300 億，1,000 億「不太可能」（先前報導）</td><td>承諾與實際投入不同</td></tr>
+          <tr><td>台股下跌原因</td><td>辭職衝擊（部分標題）</td><td>撤換傳聞與獲利了結（收盤在公告前）</td><td>時序：台股 13:30 收、公告 21:52</td></tr>
+          <tr><td>北士科完工</td><td>2030 年</td><td>2029～2030 年</td><td>報導不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開文件、報導與市場資料，資料截至 2026 年 11 月 13 日 10:00（台灣時間）；01-A 節與股價為 11/13 更新。輝達新聞稿 GlobeNewswire 頁面無法讀取，改讀 SEC 8-K 附件的同一份新聞稿；CNN、路透、彭博、華爾街日報原文未直接讀取，經其他媒體轉述。前兩份黃仁勳報告的內容不重複。03-A 節為 11/12 增補；柯蕾絲出生地、外部董事職、各事業部主管現職未能查證，未採用。</p>
+    </div>
+    <div class="src-group">官方文件</div>
+    <ol class="sources">
+      <li><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/0001045810-26-000082-index.htm" target="_blank" rel="noopener">SEC — 輝達 8-K（11/12）</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvidiaannouncesceotransiti.htm" target="_blank" rel="noopener">SEC — 輝達新聞稿〈NVIDIA Announces CEO Transition〉</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/a-message-to-our-company" target="_blank" rel="noopener">NVIDIA — 黃仁勳致員工信（11/8）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="4">
+      <li><a href="https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html" target="_blank" rel="noopener">CNBC — 黃仁勳辭職即時更新（11/12）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/12/jensen-huang-nvidia-affair-ceo.html" target="_blank" rel="noopener">CNBC — 券商評等與目標價（11/12）</a></li>
+      <li><a href="https://cnbc.com/2026/11/11/nvidia-jensen-huang-congress-resign-ai-chips.html" target="_blank" rel="noopener">CNBC — 國會與 AI 晶片法案（11/11）</a></li>
+      <li><a href="https://www.nbcnews.com/tech/tech-news/nvidia-ceo-jensen-huang-resigns-reports-extramarital-relationships-rcna608402" target="_blank" rel="noopener">NBC — 黃仁勳辭職（11/12）</a></li>
+      <li><a href="https://www.semafor.com/article/11/12/2026/jensen-huang-resigns-as-nvidia-ceo" target="_blank" rel="noopener">Semafor — 黃仁勳辭去輝達執行長（11/12）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/article/wall-street-backs-away-from-nvidia-as-jensen-huang-uncertainty-unfolds-what-analysts-are-saying-122600606.html" target="_blank" rel="noopener">Yahoo Finance — 華爾街遠離輝達（11/12）</a></li>
+      <li><a href="https://finance.yahoo.com/technology/article/nvidia-ceo-huang-resigns-amid-affair-scandals-board-names-cfo-colette-kress-interim-ceo-135801377.html" target="_blank" rel="noopener">Yahoo Finance — 董事會任命柯蕾絲（11/12）</a></li>
+      <li><a href="https://www.calcalistech.com/ctechnews/article/ily8rgk22" target="_blank" rel="noopener">Calcalist — AI 產業的黑天鵝</a></li>
+      <li><a href="https://theedgemalaysia.com/node/825554" target="_blank" rel="noopener">The Edge（路透）— AI 股連動下跌（11/12）</a></li>
+      <li><a href="https://www.swissinfo.ch/eng/us-stock-futures-fall-as-nvidia-turmoil-deepens:-markets-wrap/92367440" target="_blank" rel="noopener">Swissinfo（彭博）— 美股期貨下跌（11/12）</a></li>
+      <li><a href="https://ppc.land/jensen-huang-exits-nvidia-after-33-years-with-no-permanent-successor/" target="_blank" rel="noopener">PPC Land — 33 年後沒有正式接班人（11/12）</a></li>
+      <li><a href="https://www.thenationalnews.com/future/technology/2026/11/12/jensen-huang-resigns-nvidia-affair/" target="_blank" rel="noopener">The National — 黃仁勳辭職（11/12）</a></li>
+      <li><a href="https://www.malaymail.com/news/money/2026/11/12/family-insiders-or-a-rival-ceo-meet-the-nvidia-contenders-tipped-to-succeed-jensen-huang/242947" target="_blank" rel="noopener">Malay Mail（法新社）— 接班人選猜測（11/12）</a></li>
+      <li><a href="https://mlq.ai/news/megaspeed-breaks-its-silence-on-the-nvidia-scandal-as-taiwan-revokes-alice-huangs-entry-permit/" target="_blank" rel="noopener">MLQ — Megaspeed 回應、台灣撤銷入台許可</a></li>
+    </ol>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources" start="18">
+      <li><a href="https://money.udn.com/money/story/123398/9875422" target="_blank" rel="noopener">經濟日報 — 黃仁勳請辭、財務長暫代（11/12）</a></li>
+      <li><a href="https://udn.com/news/story/125066/9875425" target="_blank" rel="noopener">經濟日報 — 盤前跌 11%（11/12）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5638658" target="_blank" rel="noopener">自由財經 — 全球震撼彈 黃仁勳請辭下台（11/12）</a></li>
+      <li><a href="https://ec.ltn.com.tw/article/breakingnews/5638835" target="_blank" rel="noopener">自由財經 — 台灣 AI 地位分析（11/12）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6660876" target="_blank" rel="noopener">鉅亨網 — 黃仁勳辭職（11/12）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261112004081-260410" target="_blank" rel="noopener">中時 — 經濟部長龔明鑫：AI 趨勢不變（11/12）</a></li>
+      <li><a href="https://udn.com/news/story/7251/9874197" target="_blank" rel="noopener">聯合報 — 台股 11/12 收盤（11/12）</a></li>
+      <li><a href="https://newtalk.tw/news/view/2026-11-12/1070855" target="_blank" rel="noopener">Newtalk — 台股與 AI 供應鏈（11/12）</a></li>
+      <li><a href="https://money.udn.com/money/story/5612/9870222" target="_blank" rel="noopener">經濟日報 — 蔣萬安：北士科按既定計畫（11/10）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20260528001364-260407" target="_blank" rel="noopener">中時 — 輝達公布北士科總部「星群」（2026/5/28）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="29">
+      <li><a href="https://finance.yahoo.com/quote/NVDA/history/" target="_blank" rel="noopener">Yahoo Finance — 輝達</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AMD/history/" target="_blank" rel="noopener">Yahoo Finance — 超微</a></li>
+      <li><a href="https://finance.yahoo.com/quote/AVGO/history/" target="_blank" rel="noopener">Yahoo Finance — 博通</a></li>
+      <li><a href="https://finance.yahoo.com/quote/MU/history/" target="_blank" rel="noopener">Yahoo Finance — 美光</a></li>
+      <li><a href="https://finance.yahoo.com/quote/TSM/history/" target="_blank" rel="noopener">Yahoo Finance — 台積電 ADR</a></li>
+      <li><a href="https://finance.yahoo.com/quote/000660.KS/history/" target="_blank" rel="noopener">Yahoo Finance — SK 海力士</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2330.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 台積電</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2317.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 鴻海</a></li>
+      <li><a href="https://finance.yahoo.com/quote/2382.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 廣達</a></li>
+      <li><a href="https://finance.yahoo.com/quote/3231.TW/history/" target="_blank" rel="noopener">Yahoo Finance — 緯創</a></li>
+    </ol>
+    <div class="src-group">接班人、董事會與產品（03-A）</div>
+    <ol class="sources" start="40">
+      <li><a href="https://sg.finance.yahoo.com/news/factbox-nvidia-interim-ceo-colette-140453683.html" target="_blank" rel="noopener">路透 Factbox — 代理執行長柯蕾絲（11/12）</a></li>
+      <li><a href="https://fortune.com/2024/06/19/nvidia-cfo-instrumental-success-key-jensen-vision/" target="_blank" rel="noopener">Fortune — 柯蕾絲是黃仁勳願景的關鍵（2024）</a></li>
+      <li><a href="https://en.globes.co.il/en/article-trillion-dollar-woman-1001453025" target="_blank" rel="noopener">Globes — 兆元女士（2023）</a></li>
+      <li><a href="https://taekim.substack.com/p/an-interview-with-nvidia-cfo-colette" target="_blank" rel="noopener">Tae Kim — 柯蕾絲專訪（2026/5）</a></li>
+      <li><a href="https://edgar-mirror.sec-api.io/1045810/000104581026000036/nvda-20260512.htm" target="_blank" rel="noopener">輝達 2026 年股東會委託書（董事名單與薪酬）</a></li>
+      <li><a href="https://www.semafor.com/article/11/09/2026/with-a-weak-board-and-no-successor-nvidia-confronts-a-governance-crisis" target="_blank" rel="noopener">Semafor — 董事會薄弱、沒有接班人（11/9）</a></li>
+      <li><a href="https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn" target="_blank" rel="noopener">TechCrunch — 公司治理專家看輝達危機（11/10）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-working-outside-firm-identify-000509874.html" target="_blank" rel="noopener">Yahoo Finance（彭博）— 外部公司物色接班人</a></li>
+      <li><a href="https://www.investing.com/news/stock-market-news/whos-next-ceo-at-nvidia-top-engineer-and-cfo-favored-as-candidates-5020356" target="_blank" rel="noopener">Investing.com — 下一任執行長人選</a></li>
+      <li><a href="https://thenextweb.com/news/jensen-huang-computex-2026-keynote" target="_blank" rel="noopener">The Next Web — Computex 2026 主題演講</a></li>
+      <li><a href="https://cryptobriefing.com/nvidia-wachtell-investigation-jensen-huang/" target="_blank" rel="noopener">Crypto Briefing — Wachtell 調查</a></li>
+    </ol>
+    <div class="src-group">最新近況（01-A，11/13 更新）</div>
+    <ol class="sources" start="51">
+      <li><a href="https://www.cnbc.com/2026/11/12/nvidia-nvda-jensen-huang-second-affair.html" target="_blank" rel="noopener">CNBC — 輝達 11/12 收盤（11/12）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/12/nvidia-kress-jones-employee-emails.html" target="_blank" rel="noopener">CNBC — 柯蕾絲與瓊斯致員工信（11/12）</a></li>
+      <li><a href="https://www.nbcnews.com/business/markets/nvidia-stock-huang-resigns-rcna608958" target="_blank" rel="noopener">NBC — 輝達股價盤中重挫後收斂（11/12）</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-12-221840920.html" target="_blank" rel="noopener">Yahoo Finance — 11/12 股市與成交量</a></li>
+      <li><a href="https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026" target="_blank" rel="noopener">StockTitan — 11/12 盤中低點與盤後</a></li>
+      <li><a href="https://techcrunch.com/2026/11/12/trump-floats-apple-chairman-tim-cook-as-jensen-huangs-successor/" target="_blank" rel="noopener">TechCrunch — 川普推薦庫克接任（11/12）</a></li>
+      <li><a href="https://www.yahoo.com/news/politics/articles/republicans-push-jensen-huangs-testimony-200755313.html" target="_blank" rel="noopener">ABC（Yahoo）— 共和黨要求黃仁勳作證（11/12）</a></li>
+      <li><a href="https://www.semafor.com/article/11/12/2026/us-doj-probes-nvidia" target="_blank" rel="noopener">Semafor — 司法部三項調查（11/12）</a></li>
+      <li><a href="https://www.bloomberg.com/news/articles/2026-11-12/jensen-huang-walks-away-from-108-million-in-unvested-equity" target="_blank" rel="noopener">彭博 — 黃仁勳放棄 1.08 億美元未歸屬股權（11/12）</a></li>
+      <li><a href="https://www.fool.com/investing/2026/11/12/nvidia-stock-just-got-downgraded-after-jensen-huang-s-exit-should-you-sell/" target="_blank" rel="noopener">Motley Fool — 公告後再遭降評（11/12）</a></li>
+      <li><a href="https://news.ifeng.com/c/8xzfF2swYUF" target="_blank" rel="noopener">鳳凰網 — 中國外交部 11/12 記者會</a></li>
+      <li><a href="https://focustaiwan.tw/politics/202611120022" target="_blank" rel="noopener">中央社英文 — 陸委會說明黃樂入境紀錄（11/12）</a></li>
+      <li><a href="https://focustaiwan.tw/business/202611120007" target="_blank" rel="noopener">中央社英文 — 台股 11/12 收盤與籌碼</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6661367" target="_blank" rel="noopener">鉅亨網 — 台股 11/13 盤中（11/13）</a></li>
+      <li><a href="https://money.udn.com/money/story/5607/9876008" target="_blank" rel="noopener">經濟日報 — 台股 11/13 開盤（11/13）</a></li>
+      <li><a href="https://www.cna.com.tw/news/aopl/202611130012.aspx" target="_blank" rel="noopener">中央社 — 分析師：不會影響台積電（11/13）</a></li>
+      <li><a href="https://koreaherald.com/article/10935988" target="_blank" rel="noopener">Korea Herald — 韓股 11/13 開盤</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；輝達未說明辭職原因，婚外情與間諜指控多為媒體引述匿名人士的說法，尚未經官方或司法證實。標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 13 日 10:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'輝達', s:'NVDA · 166.19', v:-4.34},
+    {l:'美光', s:'MU · 798.44', v:-1.59},
+    {l:'台積電 ADR', s:'TSM · 405.49', v:-1.90},
+    {l:'費城半導體', s:'10,506.67', v:-0.54},
+    {l:'超微', s:'AMD · 585.30', v:5.86},
+    {l:'博通', s:'AVGO · 364.36', v:5.54},
+    {l:'SK 海力士', s:'1,254,000 韓元', v:-1.80},
+    {l:'加權指數', s:'43,091.87', v:-2.63},
+    {l:'台積電', s:'2330 · 2,340', v:-2.30},
+    {l:'廣達', s:'2382 · 278.50', v:-6.54},
+    {l:'緯創', s:'3231 · 170.00', v:-2.58}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
