@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微軟 365 全球大當機解讀</title>
+<meta name="description" content="微軟 Microsoft 365 全球大當機解讀：網路升級出錯引發伺服器連鎖下線的原因、70 多國災情、微軟與資安股股價反應、台灣金融業改用傳真的影響，以及雲端集中風險">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">各國災情</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">科技事故解讀 · 雲端集中風險 · 資料截至 2026 年 11 月 14 日</p>
+      <h1>微軟 365 全球大當機近兩天：一次網路升級出錯，讓 70 多國的上班族退回傳真機時代</h1>
+      <p class="lede">美東時間 11 月 12 日（台灣 13 日凌晨）起，微軟的雲端郵件系統 Exchange Online 大量伺服器「被判定生病」而下線，連帶讓 Outlook、Teams、Copilot 在 70 多國停擺，直到 14 日才宣布全面恢復。微軟說原因是先前一次網路容量升級出錯，不是駭客攻擊。台灣的票券商、投信和壽險業被迫改用傳真確認交易；接下來要看微軟的完整事故報告，以及企業會不會開始分散對單一雲端的依賴。</p>
+    </div>
+    <div class="stmt" aria-label="Downdetector 故障回報">
+      <div class="k">DOWNDETECTOR 累計故障回報</div>
+      <div class="range">740<small>萬筆以上</small></div>
+      <div class="was">高峰每分鐘近 2 萬筆，約平時 1,500 倍（Ookla）</div>
+      <div class="stmt-row">
+        <div><div class="v">70+ 國</div><div class="l">受影響國家與地區</div></div>
+        <div><div class="v">約 18 小時</div><div class="l">流量才開始回來</div></div>
+        <div><div class="v">70 億</div><div class="l">美元生產力損失估計</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>8 個重點看懂微軟這次大當機</h2>
+      <p>懶人包：不是駭客、也不是 AI，而是一次網路升級讓伺服器接連倒下；全世界依賴同一家公司的郵件系統，代價就是一停全停。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>Microsoft 365 全球中斷近兩天。</b>美東時間 11 月 12 日下午 1 點前（台灣 13 日凌晨 2 點）開始，Outlook、Teams、Copilot、SharePoint、Defender 等服務陸續失靈，微軟到 11 月 14 日（週六）才宣布所有客戶與地區全面恢復。</div></li>
+      <li><div><b>規模：70 多國、累計逾 740 萬筆回報。</b>Downdetector 在 1 小時內收到 74 個國家與地區的回報；美國 Outlook 一度達 138,058 筆。Microsoft 365 全球約有 4.3 億名使用者。</div></li>
+      <li><div><b>原因：網路容量升級出錯，引發伺服器「骨牌倒」。</b>大量 Exchange Online 伺服器意外沒通過自動健康檢查而被踢下線，剩下的伺服器扛不住轉移過來的負載也跟著倒。微軟強調流量並沒有暴增，週五說根源是「先前一次網路容量升級」的問題。</div></li>
+      <li><div><b>微軟排除駭客與 AI 代理。</b>Copilot 主管 Charles Lamanna 表示沒有惡意或網路攻擊的跡象；微軟並說事件「與資安或 AI 代理無關」，公開表示「深感抱歉」，承諾評估後發布完整報告。</div></li>
+      <li><div><b>醫院、法院、政府一起中招。</b>英國 NHS 取消部分手術、曼徹斯特一場審判暫停；日本政府網路、澳洲與新加坡法院、香港部分銀行、美國眾議院幕僚都受影響。OpenAI 與 Anthropic 的 Microsoft 365 連接器也無法使用。</div></li>
+      <li><div><b>台灣金融業改用傳真。</b>據路透與財經媒體，台灣票券商把原本用 e-mail 確認的交易全部改傳真，一家公司取消一筆債券附買回交易，部分投信無法建檔而暫停交易；但票券商表示資金調度未受影響。</div></li>
+      <li><div><b>股市幾乎沒在怕。</b>微軟 11 月 13 日盤前一度跌 2～3%，開盤報 516.86 美元（−1.1%），最後收在 523.88 美元、小漲 0.17%；資安股盤前上漲，Palo Alto 漲 3%、CrowdStrike 漲 2.6%。</div></li>
+      <li><div><b>損失估計：生產力 70 億美元、保險 3～5 億美元。</b>Anderson Economic Group 估生產力損失約 70 億美元；晨星 DBRS 估全球受保損失 3 億至 5 億美元，低於 2024 年 CrowdStrike 事件的 4 億至 15 億美元。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼會一停全停？4 個原因</h2>
+      <p>第 1、2 點是微軟自己的說明；第 3、4 點是 AP、Al Jazeera、Control Plane 與學者的觀察。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>健康檢查誤判，伺服器像骨牌一樣倒下</h3><p>雲端系統會定期「量體溫」：沒通過健康檢查的伺服器會自動下線，把工作交給其他伺服器。這次大量伺服器被誤判下線，剩下的伺服器分到更多負載而過載，又被判不健康而下線，形成連鎖反應。微軟強調負載升高「不是流量增加」，而是伺服器意外不可用。</p></div><div class="ev"><span class="tag">事件編號 MO1550821</span><span class="tag">主要影響 Exchange Online</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>根源是一次網路容量升級</h3><p>微軟週五（11 月 13 日）表示，問題出在「先前一次網路容量升級」，並回滾近期一項網路設定變更。為了不讓信件遺失，微軟把延遲投遞的逾時時間延長到 48 小時。這和 2024 年 CrowdStrike 一樣，都是「更新出錯」，澳洲內政部長 Burke 也這樣比喻。</p></div><div class="ev"><span class="tag">郵件逾時延長至 48 小時</span><span class="tag">非駭客、非 AI</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>全世界把信箱放在同一家公司</h3><p>Microsoft 365 約有 4.3 億使用者，微軟 1 月說付費商業訂閱逾 4.5 億。郵件、會議、檔案和 AI 助理都綁在 Exchange Online 上，一個核心元件出事，十幾項服務一起失靈。格拉斯哥大學 Jeremy Singer 說，這凸顯我們對單一公司數位基礎設施的依賴。</p></div><div class="ev"><span class="tag">約 4.3 億使用者</span><span class="tag">約 15 項服務失去完整存取</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>微軟今年已經不是第一次</h3><p>Al Jazeera 整理，今年 1 月 Microsoft 365 在北美中斷近 10 小時，8 月底又有大量 Outlook 用戶被鎖在信箱外；TechCrunch 報導 9 月也有一次因核心驗證設定導致的數天中斷。分析師 Rupert Goodwins 認為規模驚人，但「並非前所未見」。</p></div><div class="ev"><span class="tag">2026 年至少第 4 次</span><span class="tag">2025-10 Azure Front Door</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>微軟處理進度</span><span><i class="g"></i>故障與衝擊</span><span><i></i>背景與後續</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li><div class="date">2024-07-19</div><div class="what">CrowdStrike 更新出錯，全球電腦藍屏，航班取消、醫院停擺，成為後來每次大當機的比較基準。</div></li>
+        <li><div class="date">2025-10-29</div><div class="what">微軟 Azure Front Door 發生故障；同月 AWS 也大當機。</div></li>
+        <li><div class="date">2026-01</div><div class="what">Microsoft 365 北美中斷近 10 小時，原因是維護期間容量不足又遇到高負載。</div></li>
+        <li><div class="date">2026-09</div><div class="what">核心驗證設定問題，造成數天中斷（TechCrunch）。</div></li>
+        <li><div class="date">2026-11-12</div><div class="what">美東下午 1 點前（<b>台灣 13 日凌晨 2 點</b>）Outlook 回報暴增，一度達 138,058 筆。</div></li>
+        <li class="key"><div class="date">2026-11-12</div><div class="what">18:26 UTC 開立事件 MO1550821；美東下午 4 點微軟改用替代的健康檢查方式，部分伺服器恢復上線。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-13</div><div class="what">修好的伺服器在流量回流後<b>又失去回應</b>；英國 NHS、日本政府、台灣金融業改用電話與傳真。</div></li>
+        <li class="key"><div class="date">2026-11-13</div><div class="what">微軟說明根源是<b>網路容量升級出錯</b>，排除駭客與 AI，公開道歉；美股微軟收 523.88 美元（+0.17%）。</div></li>
+        <li class="key"><div class="date">2026-11-14</div><div class="what">週六微軟宣布<b>全面恢復</b>所有受影響客戶與地區（台灣時間 14 日下午報導）。</div></li>
+        <li><div class="date">日期未定</div><div class="what">微軟承諾完成評估後發布完整事故報告（PIR），將說明升級出錯的細節與預防措施。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local impact -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對發生地與相關國家的影響</div>
+      <h2>從倫敦法庭到東京交易室，全球同步停擺</h2>
+      <p>微軟是美國公司，但災情不分國界：受影響最重的是大量使用 Microsoft 365 的英國公部門、日本企業與亞太金融業。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">美國 Outlook 回報高峰</div><div class="v">138,058</div><div class="d">筆，美東 11/12 下午 1 點左右</div></div>
+      <div class="tile"><div class="l">Downdetector 累計回報</div><div class="v">740 萬+</div><div class="d">筆，高峰約平時 1,500 倍</div></div>
+      <div class="tile"><div class="l">受影響國家與地區</div><div class="v">74</div><div class="d">個，事發 1 小時內（AP）</div></div>
+      <div class="tile"><div class="l">Microsoft 365 使用者</div><div class="v">約 4.3 億</div><div class="d">人（AP、Wikipedia）</div></div>
+      <div class="tile"><div class="l">生產力損失估計</div><div class="v">約 70 億</div><div class="d">美元（Anderson Economic Group）</div></div>
+      <div class="tile"><div class="l">全球受保損失估計</div><div class="v">3～5 億</div><div class="d">美元；CrowdStrike 為 4～15 億</div></div>
+      <div class="tile"><div class="l">流量開始回復</div><div class="v">約 18 小時</div><div class="d">Kentik 網路分析</div></div>
+      <div class="tile"><div class="l">宣布全面恢復</div><div class="v">11/14</div><div class="d">週六，約 2 天後</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>美國</h3><ul class="plain">
+        <li><b>國會：</b>眾議院幕僚的一整天立法工作中斷（Politico，經 Wikipedia 轉引）。</li>
+        <li><b>地方政府：</b>科羅拉多州 Arapahoe 郡警長辦公室的線上保釋金繳費受影響（AP）。</li>
+        <li><b>企業：</b>美國電動卡車公司 Workhorse 把財報從 11/12 延到 11/16。</li>
+        <li><b>AI 服務：</b>OpenAI 與 Anthropic 的 Microsoft 365 連接器無法連線，但 ChatGPT、Claude 本身沒有全面當機。</li>
+      </ul></div>
+      <div class="card"><h3>英國與歐洲</h3><ul class="plain">
+        <li><b>醫療：</b>NHS 取消部分手術，許多員工改用紙本病歷，電子處方延遲；藥局協會提醒處方可能延誤。</li>
+        <li><b>司法與警政：</b>曼徹斯特一場審判因法官讓陪審員回家而暫停；民眾無法線上報案。</li>
+        <li><b>政府回應：</b>英國國防次長 Luke Pollard 呼籲加強韌性；政府稱已與微軟密切合作、備有應變計畫。希臘、挪威部會信箱也受影響。</li>
+        <li><b>企業：</b>卡地亞母公司歷峰集團（Richemont）延後財報聲明。</li>
+      </ul></div>
+      <div class="card"><h3>日本</h3><ul class="plain">
+        <li><b>政府：</b>政府共用網路 GSS 受影響（Wikipedia 轉引）。</li>
+        <li><b>企業：</b>週五上班後仍無法用 Outlook 與 Teams，會議延後，有公司改用傳真寄送原本用 PDF 的通知（《日本時報》，經鉅亨轉引）。</li>
+        <li><b>金融：</b>BNP Paribas 資產管理在東京的交易室靠電話與傳真成交，交割確認大排長龍（彭博）。</li>
+      </ul></div>
+      <div class="card"><h3>澳洲、新加坡、香港、印度</h3><ul class="plain">
+        <li><b>澳洲：</b>內政部長 Tony Burke 說微軟認為情況類似 CrowdStrike 的「更新出錯」；部分機關與法院無法用電郵聯繫。</li>
+        <li><b>新加坡：</b>法院系統受影響；交易員回報部分銀行無法完成融資交易，CMC Markets 交易員說「大家都重回電話旁」。</li>
+        <li><b>香港：</b>部分銀行營運受干擾（AP）。</li>
+        <li><b>印度：</b>印度航空（Air India）暫時改用其他郵件管道（CNBC）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>微軟盤前跌 3%、收盤卻小漲：市場把當機當成「一次性事件」</h2>
+      <p>11 月 13 日（週五）微軟股價先跌後收平，資安股逆勢上漲。同日那斯達克下跌主要是輝達、AMD 賣壓，與當機無關。顏色依台股習慣：紅漲、綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/13 相關股價與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色長條為盤前或盤中數字，不是收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>微軟：</b>盤前各家報導跌 2%～2.8%，開盤跌 1.1% 報 516.86 美元，盤中最低 513.82 美元；隨著微軟回報「令人鼓舞的恢復進度」，收盤回到 523.88 美元，CNBC 形容「大致持平」。市場關注的是 Copilot 等高價方案的銷售會不會被拖累，而不是一天的營收損失。</li>
+          <li><b>資安股：</b>盤前 Palo Alto 漲 3%、CrowdStrike 漲 2.6%、Rubrik 漲 2%、Fortinet 漲 1%（Seeking Alpha）。市場預期企業會增加備援與資安預算（推論）。</li>
+          <li><b>美股大盤：</b>那斯達克 100 指數中午跌 1.73%，主因是 AMD 大跌 10.5% 與輝達賣壓，不是這次當機。</li>
+          <li><b>台股：</b>加權指數 11/13 漲 1.35% 收 43,675.12 點，本週大漲約 10%，走勢由其他因素主導；未查到與這次當機直接相關的台股個股變動。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">MSFT</td><td><b>微軟</b></td><td>美股</td><td class="num">523.88（11/13）</td><td class="num up">+0.17%</td><td class="period">盤前 −2～−2.8%；開盤 516.86（−1.1%）；盤中低 513.82；今年以來約 +8%</td><td>當機拖到第二天引發賣壓，恢復進展與「非駭客」說明讓股價收復失土</td></tr>
+          <tr><td class="num">PANW</td><td><b>Palo Alto Networks</b></td><td>美股</td><td class="num">未查到收盤</td><td class="num up">盤前 +3%</td><td class="period">11/13 盤前</td><td>資安與韌性需求題材</td></tr>
+          <tr><td class="num">CRWD</td><td><b>CrowdStrike</b></td><td>美股</td><td class="num">未查到收盤</td><td class="num up">盤前 +2.6%</td><td class="period">11/13 盤前</td><td>同上；2024 年自己也是大當機主角</td></tr>
+          <tr><td class="num">RBRK</td><td><b>Rubrik</b></td><td>美股</td><td class="num">未查到收盤</td><td class="num up">盤前 +2%</td><td class="period">11/13 盤前</td><td>資料備份與復原需求</td></tr>
+          <tr><td class="num">FTNT</td><td><b>Fortinet</b></td><td>美股</td><td class="num">未查到收盤</td><td class="num up">盤前 +1%</td><td class="period">11/13 盤前</td><td>資安題材</td></tr>
+          <tr><td class="num">NDX</td><td><b>那斯達克 100</b></td><td>美股</td><td class="num">未查到收盤</td><td class="num down">中午 −1.73%</td><td class="period">11/13 12:42（美東）</td><td>AMD 跌 10.5%、輝達賣壓，與當機無關</td></tr>
+          <tr><td class="num">TAIEX</td><td><b>加權指數</b></td><td>台股</td><td class="num">43,675.12（11/13）</td><td class="num up">+1.35%</td><td class="period">本週（11/9～11/13）約 +10%</td><td>由其他因素主導；當機發生在台股開盤前，未見明顯連動</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">微軟收盤價為 11/13（美東時間），來源：Google Finance、太報、CNBC；盤前與開盤數字來源：Seeking Alpha、GuruFocus、Yahoo Finance、StockPil（轉引《衛報》與 Mint）；台股來源：Yahoo 股市。資安股只查到盤前數字。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>一次當機，把「雲端集中風險」推上檯面</h2>
+      <p>影響沿著五條線擴散：公共服務停擺、金融交易退回人工、數位主權辯論、保險理賠，以及 AI 工具對雲端的依賴。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>公共服務的單點故障</h3><ul class="plain small">
+        <li>醫院、法院、警政、國會同時受影響，顯示公部門把核心通訊放在單一雲端。</li>
+        <li>英國政府呼籲「更強的韌性」，但強調已有應變計畫。</li>
+      </ul></article>
+      <article class="card"><h3>金融市場退回電話與傳真</h3><ul class="plain small">
+        <li>東京、新加坡、倫敦、馬德里交易員改用電話、傳真、聊天室；Barclays、Deutsche Bank 電郵時好時壞，Euronext、Nasdaq 也有電郵異常（彭博）。</li>
+        <li>倫敦經紀商認為受影響的是交易後處理，而非下單本身。</li>
+      </ul></article>
+      <article class="card"><h3>歐洲數位主權辯論升溫</h3><ul class="plain small">
+        <li>AP 報導美國以外的議員認為，這次凸顯過度依賴美國科技公司的後果。</li>
+        <li>法國總理 Lecornu 今年稍早已宣布官員停用 Zoom 等美國視訊工具（Al Jazeera）。</li>
+      </ul></article>
+      <article class="card"><h3>保險與損失</h3><ul class="plain small">
+        <li>晨星 DBRS 估全球受保損失 3 億至 5 億美元，低於 CrowdStrike 的 4 億至 15 億美元。</li>
+        <li>Anderson Economic Group 估生產力損失約 70 億美元；澳洲專家警告當地成本達數十億。</li>
+      </ul></article>
+      <article class="card"><h3>AI 工具也被拖下水</h3><ul class="plain small">
+        <li>Copilot 停擺，OpenAI 與 Anthropic 的 Microsoft 365 連接器也受影響。</li>
+        <li>AI 代理越依賴企業信箱與檔案，雲端一斷，AI 也跟著斷（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>雲端大廠的信任戰</h3><ul class="plain small">
+        <li>AWS 在 X 上強調服務正常，Google 用戶週四也有零星回報（CNBC）。</li>
+        <li>分析師 Goodwins 認為對微軟「非常難堪」，並質疑資深人才流失。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依微軟的說明、過去大當機事件的後續與分析師評論整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>事故報告出爐，風波漸平</h3><ul class="plain small">
+        <li>微軟發布完整事故報告，說明升級流程與健康檢查機制的修正。</li>
+        <li>企業客戶依服務等級協議（SLA）申請補償，股價影響有限，就像 11/13 收平。</li>
+        <li>大型企業與金融業補強備援通訊流程（推論）。</li>
+      </ul><p class="trig">觸發條件：報告說清楚原因、短期內沒有再發生大規模中斷。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>再次當機，信任與監管壓力升高</h3><ul class="plain small">
+        <li>今年已至少 4 次中斷，若年底前再出事，企業可能把部分郵件與協作移到其他平台。</li>
+        <li>歐洲以數位主權為由加強對美國雲端的監管或採購限制（推論）。</li>
+        <li>Copilot 等高價方案銷售受影響，成為微軟股價壓力。</li>
+      </ul><p class="trig">觸發條件：又一次跨國中斷、事故報告延遲或交代不清。</p></article>
+      <article class="card"><div class="prob">劇本 C · 緩和</div><h3>變成一次「韌性演習」</h3><ul class="plain small">
+        <li>企業藉機建立備援信箱、離線通訊流程，資安與備份業者受惠。</li>
+        <li>保險損失低於 CrowdStrike，市場很快遺忘。</li>
+      </ul><p class="trig">觸發條件：微軟提出補償與具體改善、沒有後續訴訟或監管行動。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>微軟完整事故報告（日期未定）：</b>網路容量升級哪裡出錯、為什麼健康檢查會連鎖誤判，以及要改哪些流程。</li>
+      <li><b>SLA 補償：</b>微軟是否主動給予企業服務點數補償，金額與適用範圍。</li>
+      <li><b>英國與歐盟的動作：</b>英國政府已表態要求韌性；歐洲是否把雲端集中風險納入政策討論。</li>
+      <li><b>2027 年 1 月下旬微軟財報（依往例時程）：</b>是否提到客戶流失、Copilot 銷售或補償成本。</li>
+      <li><b>台灣金管會、數位部：</b>是否要求金融業與公部門檢討電郵單一依賴與備援流程。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>金融業（交易後處理）</h3><span class="tag bad">利空</span></div><p>交易確認、交割文件靠電郵往返，信箱一停只能改傳真，後台作業大塞車，部分交易直接取消。</p><div class="data">台灣一家公司取消債券附買回；東京交易室靠電話傳真</div></article>
+      <article class="card"><div class="top"><h3>醫療</h3><span class="tag bad">利空</span></div><p>病歷、處方、院內聯絡都走雲端信箱與 Teams，停擺時只能改紙本，手術排程受影響。</p><div class="data">英國 NHS 取消部分手術；加拿大醫療網宣布 code grey</div></article>
+      <article class="card"><div class="top"><h3>政府與司法</h3><span class="tag bad">利空</span></div><p>法院、警政與部會依賴 Microsoft 365 收發公文，一停就延誤審判與民眾服務。</p><div class="data">曼徹斯特審判暫停；菲律賓最高法院、新加坡法院受影響</div></article>
+      <article class="card"><div class="top"><h3>資安與備份業者</h3><span class="tag good">受惠</span></div><p>企業會重新檢視單一供應商風險，備份、復原與多雲管理的需求可能增加（推論）。</p><div class="data">11/13 盤前 PANW +3%、CRWD +2.6%、RBRK +2%</div></article>
+      <article class="card"><div class="top"><h3>其他雲端與協作平台</h3><span class="tag good">受惠</span></div><p>Google Workspace、Zoom 等可能成為企業的備援選項；歐洲本土雲端則受惠於數位主權討論（推論）。</p><div class="data">AWS 強調服務正常（CNBC）</div></article>
+      <article class="card"><div class="top"><h3>AI 應用</h3><span class="tag">好壞參半</span></div><p>Copilot 直接停擺，ChatGPT、Claude 的微軟連接器也斷線，暴露 AI 代理對企業雲端的依賴；但也提醒業者分散連接來源。</p><div class="data">OpenAI、Anthropic 回報連線問題（AP）</div></article>
+      <article class="card"><div class="top"><h3>保險業</h3><span class="tag">好壞參半</span></div><p>營業中斷險可能面臨理賠，但估計損失低於 CrowdStrike；網路與科技險的保費定價可能重新檢視（推論）。</p><div class="data">受保損失 3～5 億美元（晨星 DBRS）</div></article>
+      <article class="card"><div class="top"><h3>上市公司資訊揭露</h3><span class="tag bad">利空</span></div><p>財報新聞稿、投資人通知要靠電郵發送，當機時只能延後。</p><div class="data">Richemont、Workhorse 延後財報</div></article>
+      <article class="card"><div class="top"><h3>傳真機與電話</h3><span class="tag good">短暫回春</span></div><p>日本、台灣、新加坡都出現「改用傳真」的場面，顯示保留低科技備援仍有價值。</p><div class="data">楊凱文：Outlook 是金融營運的「盲腸」</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣半夜中招，金融業首當其衝，但資金調度沒有斷</h2>
+      <p>當機從台灣時間 13 日凌晨開始，正好撞上週五上班時段的修復高峰。台灣最受影響的是大量使用 Microsoft 365 的金融業，尤其是外資背景的投信。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>故障回報：</b>台灣週五凌晨 3 點到早上 9 點，Downdetector 累計上百筆回報（公視、StockPil）。</li>
+        <li><b>票券商：</b>一名大型票券商交易員說，一早信箱打不開，原本用 e-mail 確認的交易全改傳真；但到期交易都有續做，市場利率沒有明顯變化。</li>
+        <li><b>券商、壽險、投信：</b>據路透，資金管理作業受干擾，一家公司取消一筆債券附買回交易；部分投信無法建檔只能暫停交易，部分壽險取消交易，有大型券商抽單避免流程出錯。</li>
+        <li><b>微軟回應：</b>微軟向中央社表示已掌握狀況，主要涉及 Exchange Online，正積極處理。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>金融業備援流程：</b>交易確認高度依賴電郵，主管機關可能要求業者把「信箱停擺」納入營運持續計畫演練。</li>
+        <li><b>企業 IT 預算：</b>中大型企業可能增加備援信箱、異地備份與多雲管理支出，對台灣系統整合商與資安服務業是機會。</li>
+        <li><b>學校與公部門：</b>台灣大專院校與部分機關也使用 Microsoft 365 教育版或政府雲端方案，類似事件需要事前規劃替代聯繫管道。</li>
+        <li><b>AI 工作流程：</b>越來越多企業把 Copilot 等 AI 嵌入日常作業，雲端一斷 AI 也停，需要人工備案。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>金融業（票券、券商、投信、壽險）</b></td><td><span class="tag bad">直接受影響</span></td><td>交易確認改傳真、部分交易取消；外資背景與大型投信較依賴 Microsoft 365，受影響較大。</td></tr>
+          <tr><td><b>上班族</b></td><td><span class="tag bad">工作中斷</span></td><td>週五上午信箱與 Teams 時好時壞，會議與文件往來延誤；有新進微軟工程師的「報到第一天」貼文吸引逾百萬人瀏覽，成為網路話題。</td></tr>
+          <tr><td><b>企業 IT 與資安服務商</b></td><td><span class="tag good">相對有利</span></td><td>企業檢討單一雲端風險，備援與多雲顧問需求可能增加（推論）。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag">影響有限</span></td><td>加權指數 11/13 上漲 1.35%，未見與當機相關的明顯個股波動。</td></tr>
+          <tr><td><b>AI 工具使用者</b></td><td><span class="tag">短期不便</span></td><td>Copilot 與 ChatGPT、Claude 的微軟連接器無法使用，但聊天服務本身正常。</td></tr>
+          <tr><td><b>一般民眾</b></td><td><span class="tag">影響有限</span></td><td>個人 Outlook 信箱可能收信延遲；微軟把延遲投遞期限延長到 48 小時，信件不會因此遺失。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">截至查證時，未查到數位發展部、資安署或金管會針對這次微軟當機發布正式說明或指引；也沒有查到具名的台灣政府機關受影響報導。</div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>國際媒體聚焦「誰被癱瘓、微軟怎麼解釋」，技術媒體追問健康檢查機制，台灣媒體則偏重上班族崩潰、金融業改傳真與網路話題。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>微軟官方（X、服務狀態）</td><td>處理進度</td><td>已完成處理根本問題並恢復服務</td><td>非資安、非 AI 代理；深感抱歉</td></tr>
+          <tr><td>CNBC</td><td>道歉與企業衝擊</td><td>微軟為大規模中斷道歉</td><td>網路容量升級、股價大致持平、Air India 與 NHS</td></tr>
+          <tr><td>AP（CP24 轉載）</td><td>全球公共服務</td><td>微軟稱服務已全面恢復</td><td>法院、警政、藥局、對美國科技依賴</td></tr>
+          <tr><td>Al Jazeera</td><td>解釋型</td><td>發生了什麼、為什麼</td><td>今年多次當機、數位主權、專家評論</td></tr>
+          <tr><td>TechCrunch</td><td>技術與服務範圍</td><td>郵件當機變全球雲端危機</td><td>約 18 小時停機、Defender、Intune 也受影響</td></tr>
+          <tr><td>Control Plane</td><td>技術根因</td><td>健康檢查失靈的連鎖效應</td><td>事件編號、各時間點、Azure 未受影響</td></tr>
+          <tr><td>彭博（太報、Yahoo 轉載）</td><td>金融市場</td><td>交易員回頭用電話和傳真</td><td>東京、新加坡、倫敦交易室實況</td></tr>
+          <tr><td>鉅亨網</td><td>台日企業</td><td>台日企業靠傳真機繼續辦公</td><td>740 萬筆回報、保險損失、台灣附買回取消</td></tr>
+          <tr><td>經理人</td><td>商業解讀</td><td>13 萬筆回報、官方曝故障主因</td><td>健康檢查機制、企業備援建議</td></tr>
+          <tr><td>ETtoday</td><td>網路話題</td><td>工程師第一天報到巧遇大當機</td><td>貼文 169 萬瀏覽、網友封「社畜英雄」</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>美東 11/12 下午開始，影響 Outlook、Teams、Copilot 等依賴 Exchange Online 的服務。</li>
+        <li>微軟排除駭客攻擊，說是伺服器健康檢查失靈與網路變更造成。</li>
+        <li>受影響範圍超過 70 個國家，11/14 宣布全面恢復。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>時區：</b>美東 11/12 下午等於台灣 11/13 凌晨，所以台灣媒體多寫「13 日當機」。</li>
+        <li><b>「當機多久」看發稿時間：</b>早上的報導寫 5 小時、下午寫 10～12 小時、隔天寫近 24 小時，都是當時還沒修好的累計時間。</li>
+        <li><b>原因說法有演進：</b>先是「伺服器健康檢查失敗」，後來才說是「網路容量升級」出錯；完整報告還沒出來。</li>
+        <li><b>工程師貼文是趣聞：</b>ETtoday 明確指出沒有證據顯示該工程師與故障有關。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>故障回報數</td><td>13～13.8 萬筆（路透、經理人）</td><td>逾 740 萬筆（Ookla，經鉅亨、太報）</td><td>前者是某一時點的美國 Outlook 高峰，後者是全球累計</td></tr>
+          <tr><td>開始時間</td><td>16:00 GMT（Al Jazeera）</td><td>17～18 UTC（Wikipedia）／18:26 UTC 開單（Control Plane）</td><td>使用者開始回報、微軟承認、正式開事件單是三個不同時間點</td></tr>
+          <tr><td>受影響國家</td><td>逾 70 國（財訊、Wikipedia）</td><td>72 國／74 國（Al Jazeera、AP）</td><td>統計時間不同</td></tr>
+          <tr><td>微軟股價</td><td>盤前 −2%～−3%（Seeking Alpha、Mint）</td><td>收盤 +0.17%（Google Finance、太報）</td><td>盤前與收盤的差別，恢復消息讓股價收復</td></tr>
+          <tr><td>故障原因</td><td>伺服器設定／安全連線程序過載（Wikipedia、自由）</td><td>網路容量升級出錯（CNBC、鉅亨）</td><td>微軟在不同時間點的說明不同</td></tr>
+          <tr><td>工程師貼文瀏覽數</td><td>169 萬（ETtoday）</td><td>逾 130 萬（中時標題）</td><td>統計時間不同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方說明與公開報導，資料截至 2026 年 11 月 14 日。不同媒體的數字可能因時間點不同略有出入（見第 9 節）。</p>
+    </div>
+    <div class="src-group">官方資料與技術分析</div>
+    <ol class="sources">
+      <li><a href="https://controlplane.com/blog/post/microsoft-365-outage-november-2026-cause" target="_blank" rel="noopener">Control Plane — 整理微軟服務狀態更新：事件編號與健康檢查根因（11/13）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/2026_Microsoft_outage" target="_blank" rel="noopener">Wikipedia — 2026 Microsoft outage（各國災情彙整）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="3">
+      <li><a href="https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html" target="_blank" rel="noopener">CNBC — 微軟為大規模中斷道歉（11/12，11/14 更新）</a></li>
+      <li><a href="https://www.cp24.com/news/world/2026/11/14/microsoft-says-services-fully-restored-after-hours-long-global-outage/" target="_blank" rel="noopener">AP（CP24）— 微軟稱服務已全面恢復（11/14）</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/11/13/microsoft-hit-by-global-outages-what-happened-and-why" target="_blank" rel="noopener">Al Jazeera — 微軟全球當機：發生什麼、為什麼（11/13）</a></li>
+      <li><a href="https://techcrunch.com/2026/11/12/microsofts-outlook-email-hit-by-new-outage/" target="_blank" rel="noopener">TechCrunch — 郵件當機演變為全球雲端危機（11/13）</a></li>
+      <li><a href="https://www.tradingview.com/news/seekingalpha:0b43adbfb094b:0-microsoft-stock-down-cybersecurity-gains-as-outage-disrupts-outlook-teams/" target="_blank" rel="noopener">Seeking Alpha（TradingView）— 微軟盤前下跌、資安股上漲（11/13）</a></li>
+      <li><a href="https://au.finance.yahoo.com/news/microsoft-stock-drops-global-outage-113525939.html" target="_blank" rel="noopener">Yahoo Finance／GuruFocus — 當機讓微軟股價走低（11/13）</a></li>
+      <li><a href="https://stockpil.com/microsoft-outage-outlook-teams-shares-fall" target="_blank" rel="noopener">StockPil — 微軟盤前跌 2.8%、開盤報 516.86 美元（11/14）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="10">
+      <li><a href="https://cna.com.tw/news/ait/202611130190.aspx" target="_blank" rel="noopener">中央社 — 亞太企業及政府機關受影響（11/13）</a></li>
+      <li><a href="https://tw.news.yahoo.com/microsoft-365%E7%95%B6%E6%A9%9F%E9%80%BE12%E5%B0%8F%E6%99%82-%E5%8F%B0%E7%81%A3%E9%87%91%E8%9E%8D%E6%A5%AD%E4%B9%9F%E5%8F%97%E9%9B%B6%E6%98%9F%E6%B3%A2%E5%8F%8A-%E7%A5%A8%E5%88%B8%E5%95%86%E6%94%B9%E5%82%B3%E7%9C%9F%E7%A2%BA%E8%AA%8D%E4%BA%A4%E6%98%93-113019726.html" target="_blank" rel="noopener">Yahoo 財經中心 — 台灣金融業受波及，票券商改傳真（11/13）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6662307" target="_blank" rel="noopener">鉅亨網 — 台日企業靠傳真機繼續辦公（11/14）</a></li>
+      <li><a href="https://www.taisounds.com/news/content/84/309787" target="_blank" rel="noopener">太報 — 微軟：旗下服務已全面恢復（11/14）</a></li>
+      <li><a href="https://tw.news.yahoo.com/%E6%98%AF%E6%B0%B4%E9%80%86%E9%82%84%E6%98%AF%E6%96%87%E8%97%9D%E5%BE%A9%E8%88%88-%E5%BE%AE%E8%BB%9F%E5%85%A8%E7%90%83%E5%A4%A7%E7%95%B6%E6%A9%9F-%E4%BA%A4%E6%98%93%E5%93%A1%E5%9B%9E%E9%A0%AD%E7%94%A8%E9%9B%BB%E8%A9%B1%E5%92%8C%E5%82%B3%E7%9C%9F-131720789.html" target="_blank" rel="noopener">太報（Yahoo 轉載彭博）— 交易員回頭用電話和傳真（11/13）</a></li>
+      <li><a href="https://www.managertoday.com.tw/articles/view/73332" target="_blank" rel="noopener">經理人 — 13 萬筆回報，官方曝故障主因（11/13）</a></li>
+      <li><a href="https://3c.ltn.com.tw/news/68261" target="_blank" rel="noopener">自由時報 3C — Outlook 多項服務爆災情（11/13）</a></li>
+      <li><a href="https://news.ebc.net.tw/news/world/580441" target="_blank" rel="noopener">東森新聞 — 上班族崩潰，當機超過 5 小時（11/13）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E5%BE%AE%E8%BB%9F%E7%88%86%E5%85%A8%E7%90%83%E5%A4%A7%E7%95%B6%E6%A9%9F%E9%80%BE10%E5%B0%8F%E6%99%82%E6%B3%A2%E5%8F%8A70%E5%A4%9A%E5%9C%8B-openai%E8%88%87anthropic%E5%90%8C%E5%8F%97%E7%89%BD%E9%80%A3-071347277.html" target="_blank" rel="noopener">財訊快報（Yahoo 股市）— 逾 10 小時波及 70 多國（11/13）</a></li>
+      <li><a href="https://www.ettoday.net/news/20261114/3271934.htm" target="_blank" rel="noopener">ETtoday — 工程師第一天報到巧遇大當機（11/14）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="20">
+      <li><a href="https://www.google.com/finance/quote/MSFT:NASDAQ" target="_blank" rel="noopener">Google Finance — 微軟 MSFT 報價</a></li>
+      <li><a href="https://www.benzinga.com/markets/equities/26/11/63259862/stock-market-today-amd-nvidia-chip-selloff-cisco-modine-november-13" target="_blank" rel="noopener">Benzinga — 11/13 美股盤中：AMD 跌 10.5%、那斯達克 100 跌 1.7%</a></li>
+      <li><a href="https://tw.stock.yahoo.com/quote/%5ETWII" target="_blank" rel="noopener">Yahoo 股市 — 加權指數走勢</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 14 日。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:"微軟 MSFT", s:"11/13 盤前", v:-2.5, est:true},
+    {l:"微軟 MSFT", s:"11/13 開盤 516.86 美元", v:-1.1, est:true},
+    {l:"微軟 MSFT", s:"11/13 收 523.88 美元", v:0.17},
+    {l:"Palo Alto PANW", s:"11/13 盤前", v:3.0, est:true},
+    {l:"CrowdStrike CRWD", s:"11/13 盤前", v:2.6, est:true},
+    {l:"Rubrik RBRK", s:"11/13 盤前", v:2.0, est:true},
+    {l:"那斯達克 100", s:"11/13 中午（輝達、AMD 拖累）", v:-1.73, est:true},
+    {l:"加權指數", s:"11/13 收 43,675.12", v:1.35}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
