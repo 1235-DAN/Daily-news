@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本資安事件月報</title>
+<meta name="description" content="2026 年 10 月中旬到 11 月中旬日本資安事件彙整：無印良品、Nitori、樂天旅遊、郵件發送服務、京成 Skyliner 等 17 起重大事件總表，攻擊手法、統計、政府對策、受害公司股價，以及對台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">事件總表</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">資安彙整 · 日本 · 涵蓋 2026 年 10 月 15 日～11 月 15 日 · 資料截至 11 月 15 日 20:00（台灣時間）</p>
+      <h1>一個月、上億筆個資：日本遭遇史上最大資料外洩潮，政府緊急投入 100 億日圓</h1>
+      <p class="lede">過去一個月，日本幾乎每天都有企業公告遭不正存取：無印良品最多 2,726 萬筆、Nitori 最多 3,762 萬筆、郵件發送服務 Arara 8,130 萬個 Email、樂天旅遊兩起合計約 350 萬筆，最新的是京成 Skyliner 最多 337 萬筆。個資保護委員會統計，光是 10 月 1～16 日就有 830 件外洩事故；東京商工研究上市公司 10 月一個月就有 109 件，創紀錄。日本政府判斷這是針對日本網路系統的大規模掃描攻擊，「極可能」使用 AI，首相高市早苗 11 月 6 日宣布 100 億日圓緊急資安對策。</p>
+    </div>
+    <div class="stmt" aria-label="上市公司外洩件數">
+      <div class="k">上市公司 10 月外洩事故</div>
+      <div class="range">109<small>件</small></div>
+      <div class="was">1～10 月 215 件，已破全年紀錄（東京商工研究）</div>
+      <div class="stmt-row">
+        <div><div class="v">≈2.6 億</div><div class="l">4 月以來外洩人數（個資委）</div></div>
+        <div><div class="v">100 億</div><div class="l">日圓緊急對策</div></div>
+        <div><div class="v">17</div><div class="l">本報告整理重大事件</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>不是幾起駭客事件，而是一波「掃遍日本」的攻擊潮：8 個重點</h2>
+      <p>懶人包：攻擊者大量掃描日本企業對外開放的系統，從委外廠商、雲端服務、沒修補的漏洞和沒保護好的 API 下手；10 月起外洩事件暴增，零售、旅遊、電信、交通、政府機關都中招。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>規模空前。</b>個資保護委員會：2026 年 4 月 1 日～10 月 16 日外洩事故 2,094 件，超過 2025 年度全年的 1,256 件；其中 10 月 1～16 日就有 830 件，約 2.6 億人次資料外洩。</div></li>
+      <li><div><b>10 月是高峰。</b>東京商工研究：上市公司 1～10 月外洩 215 件創紀錄，10 月單月 109 件；趨勢科技統計 10 月公開事件 233 件，是過去紀錄的 2.4 倍。</div></li>
+      <li><div><b>大型零售首當其衝。</b>無印良品最多 2,726 萬筆、約 109 萬筆完整卡號（約 34.5 萬張仍有效）；Nitori 最多 3,762 萬筆；BOOKOFF 638 萬人。</div></li>
+      <li><div><b>委外服務是最大破口。</b>Email 發送服務 Arara（8,130 萬個 Email、約 380 家客戶）、Cuenote（約 5,160 萬筆）、blastmail 接連被駭，連帶影響大阪市、企業客戶。</div></li>
+      <li><div><b>旅遊與交通。</b>樂天旅遊兩起合計約 350 萬筆；日航經 Amadeus 系統約 9.2 萬筆訂位資料；京成 Skyliner 最多 337 萬筆。</div></li>
+      <li><div><b>勒索與恐嚇。</b>GMO 的雲端桌面服務遭駭，攻擊者要求 100 萬美元，GMO 拒付並懸賞；京王集團遭勒索軟體 Qilin 列名。</div></li>
+      <li><div><b>政府出手。</b>國家網路安全統括室 11/5 發布警告，判斷「極可能」使用 AI；警察廳 11/6 成立聯合偵查；首相宣布 100 億日圓緊急對策；主動網路防禦法 10/1 起可對攻擊伺服器採取行動。</div></li>
+      <li><div><b>不是每件都是駭客。</b>11/6 西日本信金系統故障、11/11 Docomo 5G SA 斷訊都是設備問題，官方說沒有網攻跡象。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>攻擊者怎麼進來？四條共同的路</h2>
+      <p>第 1～3 點是日本官方警告與報導歸納的手法；第 4 點是本報告分析。目前沒有確認單一攻擊組織。</p>
+    </div>
+    <div class="note">比喻：攻擊者像拿著一串萬能鑰匙，挨家挨戶試日本企業的後門。很多公司的後門不是自己的，而是委外廠商、雲端服務或手機 App 留下的；只要一家郵件發送商被打開，幾百家客戶的名單就一起流出。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>委外與雲端服務</h3><p>Arara、Cuenote、blastmail 等郵件發送服務，以及消防廳的委外廠商 Fujisoft、釧路市的 Portas、大阪大學經 NEC 的委外商，都是「打一家、中一串」。警告要求委外廠商使用多因素登入。</p></div><div class="ev"><span class="tag">供應鏈</span><span class="tag">多因素登入</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>沒修補的漏洞與 API</h3><p>JPCERT 10/8 警告：攻擊者利用 Metabase 漏洞（CVE-2026-72898）、分析公開 App 找出 API 端點與金鑰、濫用內部 API、植入網頁後門；blastmail 是兩台 API 伺服器被入侵。</p></div><div class="ev"><span class="tag">CVE</span><span class="tag">API</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>大規模掃描與 AI</h3><p>國家網路安全統括室判斷攻擊是對日本網路系統的大規模掃描，「極可能」使用 AI；GMO 子公司報告在攻擊約 20 家日本企業的基礎設施上，發現中國開發的 AI 滲透測試工具 ARTEX 痕跡（未證實）。共同社說 10 月偵測到約 4.75 億次針對企業網站的攻擊。</p></div><div class="ev"><span class="tag">AI</span><span class="tag">未證實</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>為什麼是日本</h3><p>大量會員資料集中在零售點數與網購平台、委外層層轉包、舊系統與新 App 並存，讓攻擊者容易找到弱點；卡號未代碼化（以無意義代碼取代真實卡號）等基本保護沒做到，放大了損害（推論）。</p></div><div class="ev"><span class="tag">會員經濟</span><span class="tag">多層委外</span></div></div>
+    </div>
+
+    <div class="sub-h">這一個月的時間線</div>
+    <div class="legend"><span><i class="a"></i>重大外洩</span><span><i class="g"></i>政府行動</span><span><i></i>非網攻事件</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">10-01</div><div class="what">主動網路防禦法：政府可對攻擊伺服器存取、無害化。</div></li>
+        <li class="geo"><div class="date">10-08</div><div class="what">JPCERT 警告 Metabase 漏洞與 API 濫用。</div></li>
+        <li class="key"><div class="date">10-16～19</div><div class="what">Cuenote 約 5,160 萬筆。</div></li>
+        <li class="key"><div class="date">10-21</div><div class="what">Arara、blastmail 遭駭；大阪大學外洩。</div></li>
+        <li class="key"><div class="date">10-24～26</div><div class="what">GMO 雲端桌面遭勒索；樂天旅遊公告兩起外洩。</div></li>
+        <li class="key"><div class="date">10-30</div><div class="what">無印良品首報；日航經 Amadeus 外洩。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">11-04～05</div><div class="what">無印良品二報（109 萬卡號）；Docomo 線上商店遭駭；消防廳系統遭入侵。</div></li>
+        <li class="geo"><div class="date">11-05～06</div><div class="what">統括室警告；警察廳聯合偵查；首相 100 億日圓對策。</div></li>
+        <li><div class="date">11-06</div><div class="what">西日本信金設備故障（非網攻）。</div></li>
+        <li class="key"><div class="date">11-09</div><div class="what">Nitori 最多 3,762 萬筆。</div></li>
+        <li><div class="date">11-11</div><div class="what">Docomo 5G SA 斷訊（設備壅塞，非網攻）。</div></li>
+        <li class="key"><div class="date">11-13</div><div class="what">京成 Skyliner 最多 337 萬筆。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 incident table -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對日本的影響：事件總表</div>
+      <h2>17 起重大事件，一張表看完</h2>
+      <p>依公告日期排列；「最多」代表官方公布的上限，實際外洩數量可能較少。斜體為非網攻事件。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>公告</th><th>組織</th><th>類型</th><th>規模</th><th>破口／原因</th><th>現況</th></tr></thead>
+        <tbody>
+          <tr><td>11/13</td><td><b>京成電鐵 Skyliner</b></td><td>不正存取</td><td>最多約 337 萬筆</td><td>未公布</td><td>預約系統停止</td></tr>
+          <tr><td>11/9</td><td><b>Nitori</b></td><td>不正存取</td><td>最多 3,762 萬筆（無密碼、卡號）</td><td>未公布</td><td>與外部專家調查</td></tr>
+          <tr><td>11/9～13</td><td><b>BOOKOFF</b></td><td>外洩</td><td>638 萬人</td><td>會員系統存取控制缺陷</td><td>第三報</td></tr>
+          <tr><td>11/5</td><td><b>NTT Docomo 線上商店</b></td><td>不正存取</td><td>最多約 30 萬人</td><td>未公布</td><td>服務暫停</td></tr>
+          <tr><td>11/5</td><td><b>消防廳安否資訊系統</b></td><td>經委外廠商入侵</td><td>未確認個資外洩</td><td>委外商 Fujisoft</td><td>停止服務</td></tr>
+          <tr><td>10/30、11/4</td><td><b>無印良品（良品計畫）</b></td><td>不正存取</td><td>最多 2,726 萬筆；約 109 萬完整卡號</td><td>卡號未代碼化</td><td>網店延後重開</td></tr>
+          <tr><td>10/30</td><td><b>日本航空（經 Amadeus）</b></td><td>廠商外洩</td><td>約 9.2 萬筆訂位</td><td>Amadeus 系統</td><td>10/23 接獲通知</td></tr>
+          <tr><td>10/26</td><td><b>樂天旅遊</b></td><td>兩起不正存取</td><td>約 260 萬＋86 萬筆</td><td>原因已確認未公布</td><td>已通報個資委</td></tr>
+          <tr><td>10/24～26</td><td><b>GMO 雲端桌面</b></td><td>入侵＋勒索</td><td>交易帳號被盜用</td><td>未公布</td><td>拒付贖金、懸賞 100 萬美元</td></tr>
+          <tr><td>10/21～11/2</td><td><b>Arara 郵件發送</b></td><td>供應鏈外洩</td><td>8,130 萬個 Email、約 380 家客戶</td><td>網頁伺服器漏洞</td><td>全面停止</td></tr>
+          <tr><td>10/21</td><td><b>blastmail</b></td><td>不正存取</td><td>全客戶合約資料</td><td>兩台 API 伺服器</td><td>目標 11/11 前後重啟</td></tr>
+          <tr><td>10/21、11/9</td><td><b>大阪大學、早稻田大學</b></td><td>外洩</td><td>7.79 萬人、3,342 筆</td><td>委外商、系統入侵</td><td>部分服務暫停</td></tr>
+          <tr><td>10/20</td><td><b>Medley「@link」</b></td><td>不正存取</td><td>醫療機構數未公布</td><td>調查中</td><td>部分恢復（未證實）</td></tr>
+          <tr><td>10/16～19</td><td><b>Cuenote 郵件發送</b></td><td>供應鏈外洩</td><td>約 5,160 萬筆</td><td>漏洞＋竊取客服帳號</td><td>10/20 起恢復</td></tr>
+          <tr><td>10/15</td><td><b>釧路市（經委外商）</b></td><td>勒索軟體</td><td>學校設備設定資料</td><td>委外商伺服器</td><td>外洩「無法排除」</td></tr>
+          <tr><td>10/15～16</td><td><b>京王集團</b></td><td>勒索軟體</td><td>飯店等系統，列車未受影響</td><td>未公布</td><td>Qilin 列名、真偽確認中</td></tr>
+          <tr><td><i>11/6、11/11</i></td><td><i>西日本信金、Docomo 5G SA</i></td><td><i>設備故障</i></td><td><i>128 家信金停擺；全國 5G SA 斷訊</i></td><td><i>通訊設備、交換設備壅塞</i></td><td><i>已恢復，非網攻</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">其他同期公告（ScanNetSecurity 等）：Nojima Online 約 700 萬、Netmile 約 549 萬、故鄉納稅網站 Furusato Choice 445 萬、Club Tourism 432 萬、Carsensor 371 萬、@cosme 約 300 萬、So-net 214 萬、阪急阪神百貨預約網 126 萬、Sony 人壽約 38.5 萬，以及數位廳、電力瓦斯監視委員會網站等。</p>
+    <div class="note warn">京成、Nitori 都只說「可能」外洩；京成、Nitori、Docomo 的入侵手法未公布。GMO 勒索者身分與金額、Qilin 對京王的聲稱、AI 工具 ARTEX 的關聯，都尚未證實。</div>
+  </div>
+</section>
+
+<!-- 04 stocks and markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>外洩潮沒有讓受害公司股價崩跌</h2>
+      <p>受害上市公司的股價大多持平甚至上漲；同期日經指數因美股 AI 賣壓下跌 5.1%。下圖是 10/15 到 11/13 收盤的累計漲跌，紅漲綠跌依台灣慣例。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">10/15 → 11/13 收盤累計漲跌幅</p>
+        <p class="chart-sub">%；東京股市</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>良品計畫：</b>10/30 首報當天 +1.36%，11/4 二報（卡號外洩）後隔天 11/5 +6.13%，股價未受打擊；網店延後重開的營收影響尚未反映（推論）。</li>
+          <li><b>樂天集團：</b>10/26 公告當天幾乎持平（+0.09%）。</li>
+          <li><b>NTT：</b>11/4 以來 −3.50%，含 Docomo 外洩與 5G 斷訊，也受大盤影響。</li>
+          <li><b>京成電鐵：</b>10/15 以來 +12.12%；Skyliner 公告在 11/13 收盤後，11/16 才反映。</li>
+          <li><b>趨勢科技：</b>11/13 單日 +8.32%，期間 +2.04%；資安需求升溫，但漲跌原因未見報導歸因（推論）。</li>
+          <li><b>為什麼不跌（推論）：</b>個資外洩的直接財務損失通常有限，罰則較輕；市場更關注營收是否中斷。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>11/13 收盤</th><th>11/13 漲跌</th><th>10/15 以來</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr><td class="num">7453</td><td><b>良品計畫</b></td><td>日股</td><td class="num">4,844</td><td class="num up">+1.55%</td><td class="period">+0.83%</td><td>無印良品外洩</td></tr>
+          <tr><td class="num">4755</td><td><b>樂天集團</b></td><td>日股</td><td class="num">637</td><td class="num up">+0.71%</td><td class="period">+4.20%</td><td>樂天旅遊外洩</td></tr>
+          <tr><td class="num">9432</td><td><b>NTT</b></td><td>日股</td><td class="num">168.4</td><td class="num up">+0.54%</td><td class="period">−2.83%</td><td>Docomo 外洩與斷訊</td></tr>
+          <tr><td class="num">9009</td><td><b>京成電鐵</b></td><td>日股</td><td class="num">1,531.5</td><td class="num up">+1.06%</td><td class="period">+12.12%</td><td>Skyliner 外洩</td></tr>
+          <tr><td class="num">4704</td><td><b>趨勢科技</b></td><td>日股</td><td class="num">7,214</td><td class="num up">+8.32%</td><td class="period">+2.04%</td><td>資安產業</td></tr>
+          <tr class="hl"><td class="num">^N225</td><td><b>日經 225</b></td><td>日股指數</td><td class="num">61,142.35</td><td class="num up">+0.53%</td><td class="period">−5.10%</td><td>大盤</td></tr>
+          <tr><td class="num">9843</td><td><b>Nitori</b></td><td>日股</td><td class="num">未查到</td><td class="num">—</td><td class="period">—</td><td>最多 3,762 萬筆</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance；LAC（3857）與東證指數頁面無法讀取。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>日本成為 AI 輔助攻擊的試驗場？</h2>
+      <p>這波攻擊潮讓外界關注：AI 是否已讓「大規模、自動化找漏洞」成為現實，以及供應鏈風險如何跨國擴散。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>AI 攻擊工具</h3><ul class="plain small">
+        <li>統括室說「極可能」使用 AI；ARTEX 工具的關聯未證實，「80 家企業」的日本媒體標題沒有根據。</li>
+        <li>若屬實，代表攻擊門檻大幅降低，任何國家都可能面對類似攻擊潮（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>跨國供應鏈</h3><ul class="plain small">
+        <li>日航外洩源自全球訂位系統 Amadeus；樂天旅遊海外飯店網站外洩也已通報海外主管機關。</li>
+      </ul></article>
+      <article class="card"><h3>同期其他國家</h3><ul class="plain small">
+        <li>歐洲同期也有超市冰箱、法國血庫等攻擊（見本站相關報告）；關鍵基礎設施與民生系統都成為目標。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>攻擊趨緩、企業補強</h3><ul class="plain small">
+        <li>緊急對策與警告奏效，11 月下旬起新公告減少。</li>
+        <li>企業加強委外管理、多因素登入、卡號代碼化。</li>
+      </ul><p class="trig">觸發條件：漏洞修補完成、偵查有進展。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 二次傷害</div><h3>外洩資料被用來詐騙</h3><ul class="plain small">
+        <li>上億筆 Email、電話被用於釣魚與冒名詐騙，卡號被盜刷。</li>
+      </ul><p class="trig">觸發條件：資料在暗網出現、詐騙案激增。</p></article>
+      <article class="card"><div class="prob">劇本 C · 法規大改</div><h3>強化個資法與處罰</h3><ul class="plain small">
+        <li>政府提高罰則、要求委外商也負通報義務。</li>
+      </ul><p class="trig">觸發條件：再出現千萬級外洩、輿論壓力。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11 月底</b>：經產省 AI「頂尖團隊」成立。</li>
+      <li><b>警察廳聯合偵查</b>：是否查出攻擊者或組織。</li>
+      <li><b>個資委統計</b>：11 月事故件數是否下降。</li>
+      <li><b>無印良品、Nitori、京成</b>：服務恢復與實際外洩數量。</li>
+      <li><b>主動網路防禦</b>：通訊資料運用部分 2027 年秋上路前的準備。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>零售與電商</h3><span class="tag bad">利空</span></div><p>會員資料最集中，網店停擺影響營收。</p><div class="data">無印 2,726 萬、Nitori 3,762 萬筆（上限）</div></article>
+      <article class="card"><div class="top"><h3>郵件發送與 SaaS</h3><span class="tag bad">利空</span></div><p>客戶流失、求償風險；一家被駭牽連數百家。</p><div class="data">Arara 約 380 家客戶</div></article>
+      <article class="card"><div class="top"><h3>旅遊與交通</h3><span class="tag bad">利空</span></div><p>訂位與會員系統成為目標。</p><div class="data">樂天旅遊、日航、京成</div></article>
+      <article class="card"><div class="top"><h3>資安業者</h3><span class="tag good">受惠</span></div><p>事件調查、監控、委外稽核需求增加。</p><div class="data">政府 100 億日圓對策</div></article>
+      <article class="card"><div class="top"><h3>政府與公部門</h3><span class="tag">好壞參半</span></div><p>消防廳、大阪市、大學受害，同時加強權限。</p><div class="data">主動網路防禦 10/1 上路</div></article>
+      <article class="card"><div class="top"><h3>支付與信用卡</h3><span class="tag bad">利空</span></div><p>卡號外洩需換卡與監控盜刷。</p><div class="data">約 34.5 萬張有效卡</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣旅客與日系服務用戶：先查自己有沒有中</h2>
+      <p>台灣人常用的日本服務——無印良品、樂天、Skyliner、日航——都在名單中；但多數公告沒有公布國籍分布。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>樂天旅遊：</b>海外飯店網站外洩明確不含台灣、香港、澳門、新加坡、韓國站；多語訂房網站（86 萬筆）是否含台灣用戶未說明。</li>
+        <li><b>無印良品：</b>外洩的是日本的 App 與網店會員；台灣無印良品是否受影響，未見公告。</li>
+        <li><b>Skyliner：</b>電子票主要賣給外國旅客，台灣旅客是否在內未公布（見本站京成報告）。</li>
+        <li><b>台灣媒體：</b>自由、華視、NOWnews、聯合、中央社、科技新報、iThome 都有報導；中央社 11/11 報導日本企業開始停止蒐集個資，聯合報提到大創「密碼筆記本」賣到缺貨。</li>
+      </ul></div>
+      <div class="card"><h3>台灣可以借鏡什麼 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>個人：</b>曾註冊日本網購、旅遊、交通服務的人，更換重複使用的密碼、開啟雙重驗證、留意假冒退款的簡訊與 Email。</li>
+        <li><b>企業：</b>盤點委外廠商與雲端服務的存取權限，信用卡號務必代碼化，API 金鑰不要寫在 App 裡。</li>
+        <li><b>政府：</b>台灣同樣面臨大量掃描攻擊；日本的主動網路防禦與緊急對策可作參考。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，未見台灣政府或台灣分公司針對這波日本外洩潮發布說明；本報告未能確認台灣用戶受影響的人數。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>赴日旅客</b></td><td><span class="tag bad">需留意</span></td><td>旅遊、交通會員資料可能外洩。</td></tr>
+          <tr><td><b>日系網購用戶</b></td><td><span class="tag bad">需留意</span></td><td>日本站會員可能受影響，台灣站未見公告。</td></tr>
+          <tr><td><b>台灣企業</b></td><td><span class="tag">借鏡</span></td><td>委外與 API 管理。</td></tr>
+          <tr><td><b>台灣資安業</b></td><td><span class="tag good">需求增加</span></td><td>日台企業的資安服務需求（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>日媒追統計與手法，外媒追 AI，台媒追「台灣人常用」</h2>
+      <p>日本資安媒體逐件記錄、整理手法；國際媒體聚焦 AI 與政府對策；台灣媒體挑台灣人熟悉的品牌報導。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>特別強調</th><th>需要注意</th></tr></thead>
+        <tbody>
+          <tr><td>ScanNetSecurity</td><td>逐件紀錄</td><td>每週數十件公告</td><td>以標題為主</td></tr>
+          <tr><td>piyolog</td><td>手法整理</td><td>郵件發送服務連環外洩</td><td>—</td></tr>
+          <tr><td>東京商工研究</td><td>統計</td><td>上市公司 215 件</td><td>僅上市公司</td></tr>
+          <tr><td>nippon.com</td><td>個資委統計</td><td>約 2.6 億人次</td><td>初步數字</td></tr>
+          <tr><td>SecurityWeek（美聯社）</td><td>政府對策</td><td>100 億日圓</td><td>—</td></tr>
+          <tr><td>GMO IERAE</td><td>AI 工具</td><td>ARTEX</td><td>未證實</td></tr>
+          <tr><td>自由時報</td><td>品牌</td><td>無印「史上最大」</td><td>—</td></tr>
+          <tr><td>聯合報</td><td>趨勢</td><td>Nitori、代理型 AI、密碼筆記本</td><td>—</td></tr>
+          <tr><td>中央社</td><td>企業反應</td><td>停止蒐集個資、Docomo 30 萬</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>10 月起外洩事件數創紀錄。</li>
+        <li>委外與雲端服務是主要破口。</li>
+        <li>政府發布警告並推出緊急對策。</li>
+        <li>沒有確認單一攻擊組織。</li>
+      </ul></div>
+      <div class="card"><h4>閱讀提醒</h4><ul class="plain small">
+        <li><b>「最多」不等於「已外洩」：</b>京成、Nitori 都是上限。</li>
+        <li><b>不是每件都是駭客：</b>信金與 Docomo 5G 斷訊是設備問題。</li>
+        <li><b>AI 歸因：</b>官方只說「極可能」，ARTEX 未證實。</li>
+        <li><b>重複計算：</b>Email 地址可能在多起事件中重複出現，總數不能直接相加。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>Arara Email 數</td><td>8,130 萬（去重後）</td><td>7,700 萬（第二報）</td><td>統計方式更新</td></tr>
+          <tr><td>樂天旅遊合計</td><td>約 354 萬（iThome）</td><td>260 萬＋86 萬（兩起分列）</td><td>是否含飯店人員帳號</td></tr>
+          <tr><td>10 月事件數</td><td>233 件（趨勢科技）</td><td>上市公司 109 件（東京商工）</td><td>統計範圍不同</td></tr>
+          <tr><td>GMO 勒索金額</td><td>100 萬美元</td><td>最初 5,000 萬美元（一說）</td><td>未證實</td></tr>
+          <tr><td>AI 工具受害企業</td><td>約 20 家（GMO）</td><td>「80 家」（部分日本標題）</td><td>標題無根據</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件、報導與市場資料，涵蓋 2026 年 10 月 15 日～11 月 15 日，資料截至 11 月 15 日 20:00（台灣時間）。警察廳 PDF 未能讀取，內容經二手來源轉述。</p>
+    </div>
+    <div class="src-group">官方與統計</div>
+    <ol class="sources">
+      <li><a href="https://www.cyber.go.jp/pdf/press/261105_taiou.pdf" target="_blank" rel="noopener">國家網路安全統括室 — 個資外洩不正存取對策（11/5）</a></li>
+      <li><a href="https://www.soumu.go.jp/menu_kyotsuu/important/kinkyu02_000683.html" target="_blank" rel="noopener">總務省 — 轉知業者（11/6）</a></li>
+      <li><a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener">警察廳 — 2026 上半年網路犯罪情勢</a></li>
+      <li><a href="https://www.fdma.go.jp/pressrelease/houdou/items/261105_kokuun_1.pdf" target="_blank" rel="noopener">消防廳 — 安否資訊系統遭入侵（11/5）</a></li>
+      <li><a href="https://www.nitori-net.jp/ec/notices/info261109/" target="_blank" rel="noopener">Nitori — 公告（11/9）</a></li>
+      <li><a href="https://www.docomo.ne.jp/info/network/kanto/pages/261111_13_m.html" target="_blank" rel="noopener">NTT Docomo — 5G SA 障礙（11/11）</a></li>
+      <li><a href="https://www.nippon.com/en/articles/-/56881" target="_blank" rel="noopener">nippon.com — 個資委統計（11/7）</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/12/56764.html" target="_blank" rel="noopener">東京商工研究統計（ScanNetSecurity）</a></li>
+      <li><a href="https://www.securityweek.com/japan-announces-emergency-cybersecurity-package-following-a-wave-of-attacks/" target="_blank" rel="noopener">SecurityWeek — 日本緊急資安對策</a></li>
+    </ol>
+    <div class="src-group">日本資安媒體</div>
+    <ol class="sources" start="10">
+      <li><a href="https://piyolog.hatenadiary.jp/entry/2026/11/09/230435" target="_blank" rel="noopener">piyolog — 郵件發送服務連環外洩（11/9）</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/04/56662.html" target="_blank" rel="noopener">ScanNetSecurity — 無印良品二報</a></li>
+      <li><a href="https://www.watch.impress.co.jp/docs/news/2153690.html" target="_blank" rel="noopener">Impress Watch — 無印良品</a></li>
+      <li><a href="https://www.travelvoice.jp/20261026-160742" target="_blank" rel="noopener">TravelVoice — 樂天旅遊（10/26）</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/10/56724.html" target="_blank" rel="noopener">ScanNetSecurity — Docomo 線上商店</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/12/56759.html" target="_blank" rel="noopener">ScanNetSecurity — Arara</a></li>
+      <li><a href="https://rocket-boys.co.jp/?p=45116" target="_blank" rel="noopener">セキュリティ対策Lab — GMO 勒索</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/11/56736.html" target="_blank" rel="noopener">ScanNetSecurity — 日航經 Amadeus</a></li>
+      <li><a href="https://scan.netsecurity.ne.jp/article/2026/11/13/56778.html" target="_blank" rel="noopener">ScanNetSecurity — BOOKOFF</a></li>
+      <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2610/15/news021.html" target="_blank" rel="noopener">@IT — JPCERT 警告（10/8）</a></li>
+      <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2610/03/news001.html" target="_blank" rel="noopener">@IT — 主動網路防禦法上路</a></li>
+      <li><a href="https://malware.news/t/japan-data-breaches-2026-inside-the-october-surge/126558" target="_blank" rel="noopener">Malware News — 10 月外洩潮解析</a></li>
+      <li><a href="https://www.tokyoreporter.com/japan-news/japan-hit-by-record-cyberattack-wave/" target="_blank" rel="noopener">Tokyo Reporter — 創紀錄攻擊潮</a></li>
+      <li><a href="https://www.nikkei.com/article/DGXZQOUC13CBJ0T11C26A1000000/" target="_blank" rel="noopener">日經 — 京成 Skyliner（11/13）</a></li>
+    </ol>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources" start="24">
+      <li><a href="https://www.cna.com.tw/news/aopl/202611113002.aspx" target="_blank" rel="noopener">中央社 — 日企停止蒐集個資（11/11）</a></li>
+      <li><a href="https://news.ltn.com.tw/news/world/breakingnews/5638497" target="_blank" rel="noopener">自由時報 — 無印良品史上最大外洩</a></li>
+      <li><a href="https://news.cts.com.tw/cts/international/202610/202610313095987.html" target="_blank" rel="noopener">華視 — 無印、全日空（10/31）</a></li>
+      <li><a href="https://udn.com/news/story/6811/9872081" target="_blank" rel="noopener">聯合報 — Nitori 與代理型 AI</a></li>
+      <li><a href="https://finance.technews.tw/2026/11/11/nitori-cyber-attack/" target="_blank" rel="noopener">科技新報 — Nitori（11/11）</a></li>
+      <li><a href="https://www.ithome.com.tw/news/180087" target="_blank" rel="noopener">iThome — 樂天旅遊</a></li>
+      <li><a href="../keisei-skyliner-hack-2026-11/index.html">本站 — 日本 Skyliner 遭駭客入侵</a></li>
+      <li><a href="../japan-shinkin-outage-2026-11/index.html">本站 — 西日本信金系統故障</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="32">
+      <li><a href="https://finance.yahoo.com/quote/7453.T/history/" target="_blank" rel="noopener">Yahoo Finance — 良品計畫</a></li>
+      <li><a href="https://finance.yahoo.com/quote/4755.T/history/" target="_blank" rel="noopener">Yahoo Finance — 樂天集團</a></li>
+      <li><a href="https://finance.yahoo.com/quote/9432.T/history/" target="_blank" rel="noopener">Yahoo Finance — NTT</a></li>
+      <li><a href="https://finance.yahoo.com/quote/9009.T/history/" target="_blank" rel="noopener">Yahoo Finance — 京成電鐵</a></li>
+      <li><a href="https://finance.yahoo.com/quote/4704.T/history/" target="_blank" rel="noopener">Yahoo Finance — 趨勢科技</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EN225/history/" target="_blank" rel="noopener">Yahoo Finance — 日經 225</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的資安事件彙整；外洩筆數多為各公司公布的上限，不同事件的資料可能重複，不能直接加總。標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 15 日 20:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'京成電鐵', s:'9009 · 1,531.5', v:12.12},
+    {l:'樂天集團', s:'4755 · 637', v:4.20},
+    {l:'趨勢科技', s:'4704 · 7,214', v:2.04},
+    {l:'良品計畫', s:'7453 · 4,844', v:0.83},
+    {l:'NTT', s:'9432 · 168.4', v:-2.83},
+    {l:'日經 225', s:'61,142.35', v:-5.10}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
