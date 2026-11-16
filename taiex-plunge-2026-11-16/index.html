@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台股 11/16 暴跌解讀</title>
+<meta name="description" content="2026 年 11 月 16 日台股重挫 2,635 點（史上第 2 大跌點）的解讀：五個原因排序、盤中走勢與類股、三大法人與期貨匯率、AI 供應鏈跌停名單、亞股與美股連動、本週輝達財報與 Anthropic 上市的三種劇本，以及對台灣投資人與生活的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#intraday">盤中走勢</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台股解讀 · 單日重挫 · 資料截至 2026 年 11 月 16 日 16:30（台灣時間）</p>
+      <h1>台股重挫 2,635 點、史上第 2 大跌點：輝達失去黃仁勳、美債殖利率破 5%，AI 股一天被賣掉一整週的漲幅</h1>
+      <p class="lede">11 月 16 日加權指數收 41,040.08 點，跌 2,635.04 點（6.03%），點數僅次於今年 7 月 17 日的 2,953.71 點；開盤就是最高點、收盤就是最低點，上市櫃近 170 檔跌停。上週台股才漲 10.01%，這一天就吐回約三分之二。賣壓來自 AI 供應鏈：輝達創辦人黃仁勳上週四辭職、美國財長要求輝達從外部找執行長，加上美國通膨偏熱讓 10 年期公債殖利率重回 5% 以上，而本週輝達財報與 Anthropic 掛牌接連登場，法人選擇先撤。三大法人合計賣超 1,140.55 億元，連一路撐盤的投信也結束連 24 買。</p>
+    </div>
+    <div class="stmt" aria-label="加權指數收盤">
+      <div class="k">11/16 加權指數收盤</div>
+      <div class="range">41,040.08<small>點</small></div>
+      <div class="was">−2,635.04 點 · −6.03% · 收在當日最低</div>
+      <div class="stmt-row">
+        <div><div class="v">−1,140.55 億</div><div class="l">三大法人合計賣超（元）</div></div>
+        <div><div class="v">近 170 檔</div><div class="l">上市櫃跌停</div></div>
+        <div><div class="v">−5.74%</div><div class="l">台積電，收 2,215 元</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂這次暴跌</h2>
+      <p>一句話：上週的反彈靠的是「AI 需求還在」的信心，這週一信心的三根支柱——輝達的領導人、低利率、即將到來的好消息——同時鬆動。黃仁勳辭職經過請見<a href="../jensen-huang-resigns-2026-11/index.html">黃仁勳辭職報告</a>。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>史上第 2 大跌點。</b>加權指數收 41,040.08 點，跌 2,635.04 點、6.03%；最大跌點是 2026 年 7 月 17 日的 2,953.71 點（聯合報）。成交值 8,450.56 億元。</div></li>
+      <li><div><b>一路殺到收盤。</b>開盤 43,512.42 點就是全日最高，收盤就是最低；上漲 100 家、下跌 967 家，上市櫃跌停近 170 檔（中央社）。</div></li>
+      <li><div><b>AI 供應鏈全面跌停。</b>台達電、信驊、創意，CPO（共同封裝光學）的聯鈞、聯亞、光聖、華星光，PCB 的欣興、南電、景碩、台光電、台燿、聯茂全部跌停；鴻海跌 9.34%、聯發科跌 7.89%。</div></li>
+      <li><div><b>台積電跌 135 元。</b>收 2,215 元、跌 5.74%，市值降到約 57.4 兆元（聯合報），一天蒸發逾 3 兆元。</div></li>
+      <li><div><b>三大法人一起賣。</b>外資賣超 701.89 億元、自營商 259.03 億元、投信 179.63 億元，合計 1,140.55 億元；投信結束連 24 日買超。外資已連 7 週賣超，今年累計賣超 2 兆 9,904.69 億元。</div></li>
+      <li><div><b>導火線是輝達。</b>黃仁勳 11/12（美東）辭去輝達執行長，財長貝森特 11/15 要求董事會從外部找人，並在 10 天內說明如何遵守晶片出口管制（聯合報）。輝達股價 11/6 到 11/13 跌 12.75%（推算）。</div></li>
+      <li><div><b>利率也在加壓。</b>美國上週五 CPI 高於預期，10 年期公債殖利率一週升 29 個基點到 5.14%，12 月升息 1 碼（0.25 個百分點）幾乎已成定局（路透）。</div></li>
+      <li><div><b>匯率、期貨同步重挫。</b>新台幣午盤貶 1.17 角到 32.955 元；11 月台指期跌 2,954 點收 40,885 點，比現貨低 155 點（逆價差），顯示法人仍在避險。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼偏偏是今天？五個原因，按影響力排序</h2>
+      <p>排序為本報告依各家報導與盤勢的綜合判斷（推論）；第 4 點為未經證實的市場傳聞。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>輝達群龍無首，而且華府插手</h3><p>黃仁勳因婚外情與國安疑慮辭職後，財長貝森特 11/15 公開表示董事會應從外部找新執行長，並要求 10 天內說明出口管制合規（聯合報）；《金融時報》則報導黃仁勳曾和親信討論回任（路透轉述）。兆豐國際投顧副總黃國偉說，黃仁勳離開幾乎確認 AI 資料中心建置會延後，2028 年的 AI 成長預期也受質疑（中央社）。</p></div><div class="ev"><span class="tag">輝達 11/6→11/13 −12.75%</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>AI 資本支出放緩的疑慮早已存在</h3><p>Pinpoint 資產管理的 Zhiwei Zhang 對美聯社說，市場在輝達出事前就擔心這個風險，「現在風險變得更嚴重」。美國期中選舉後，資料中心擴建的政策不確定性升高。</p></div><div class="ev"><span class="tag">選後監管風險</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>美國通膨偏熱、殖利率破 5%</h3><p>上週五美國 CPI 高於預期，10 年期公債殖利率一週升 29 個基點到 5.14%、2 年期升 35 個基點；市場幾乎確定 12 月升息 1 碼（路透）。利率越高，高本益比的 AI 股估值越受壓。</p></div><div class="ev"><span class="tag">10 年期 5.14%</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>Vera Rubin 延遲傳聞（未經證實）</h3><p>中時引述市場傳言，輝達新一代 Vera Rubin 平台可能因 HBM（高頻寬記憶體）供應或主機板翹曲問題延後到 2027 年上半年後才放量；輝達未回應。這屬傳聞，但打中了台灣伺服器供應鏈最敏感的地方。</p></div><div class="ev"><span class="tag">傳聞</span></div></div>
+      <div class="reason"><div class="n">5</div><div><h3>大事件前先下車</h3><p>輝達財報在美東 11/17（台灣 11/18 清晨）公布，Anthropic 預計 11/19 掛牌，Fed 會議紀錄週三公布。上週台股已漲 10.01%，法人在不確定性前獲利了結；央行總裁楊金龍也說外資賣超屬獲利了結，不是恐慌（中央社）。</p></div><div class="ev"><span class="tag">上週 +10.01%</span></div></div>
+    </div>
+    <div class="note">用登山來想：上週台股從 39,702 點爬回 43,675 點，靠的是「AI 需求還在」這條繩子。這週一，帶隊的嚮導（黃仁勳）走了、天氣變差（利率上升）、前方還有兩段險坡（輝達財報、Anthropic 上市），隊員就先往下撤（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>台股</span><span><i class="g"></i>輝達與美國</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-07-17</div><div class="what">台股跌 2,953.71 點，史上最大跌點。</div></li>
+        <li class="key"><div class="date">2026-11-06</div><div class="what">台股跌 1,873.08 點收 39,701.64 點；國安基金獲授權、金管會祭限空令。</div></li>
+        <li class="geo"><div class="date">2026-11-08</div><div class="what">黃仁勳坦承婚外情，輝達董事會啟動調查。</div></li>
+        <li class="key"><div class="date">2026-11-09～11</div><div class="what">台股三天彈 4,555.51 點，11/11 收 44,257.15 點。</div></li>
+        <li class="geo"><div class="date">2026-11-12</div><div class="what">黃仁勳辭去輝達執行長，財務長 Colette Kress 暫代；輝達跌 4.34%。</div></li>
+        <li class="key"><div class="date">2026-11-13</div><div class="what">台股漲 583.25 點收 43,675.12 點，全週漲 10.01%。美國 CPI 偏熱，輝達再跌 2.01%。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-15</div><div class="what">財長貝森特要求輝達從外部找執行長、10 天內說明出口管制合規。</div></li>
+        <li class="key"><div class="date">2026-11-16</div><div class="what"><b>台股跌 2,635.04 點收 41,040.08 點，史上第 2 大跌點。</b></div></li>
+        <li><div class="date">2026-11-17</div><div class="what">輝達公布第三季財報（台灣時間 11/18 清晨）。</div></li>
+        <li><div class="date">2026-11-18</div><div class="what">Fed 會議紀錄公布；Anthropic 預計定價。</div></li>
+        <li><div class="date">2026-11-19</div><div class="what">Anthropic 預計在那斯達克掛牌；APEC 深圳峰會（美聯社）。</div></li>
+        <li><div class="date">2026-12</div><div class="what">央行理監事會，楊金龍稱升息與否看通膨、主要國家政策與放款熱度。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 intraday -->
+<section id="intraday">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 盤中走勢</div>
+      <h2>開高走低、收最低：一天沒有像樣的反彈</h2>
+      <p>盤中數字取自鉅亨網盤中速報與中央社；個別時點以報導發布時間為準。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/16 加權指數盤中位置（點）</p>
+        <p class="chart-sub">長條長度以 39,000 點為起點；灰色為前一交易日收盤</p>
+        <div class="hbars">
+          <div class="hbar muted-bar" data-tip="11/13 收盤 43,675.12 點"><div class="lab">11/13 收盤<small>前一交易日</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">43,675</div></div>
+          <div class="hbar" data-tip="開盤 43,512.42 點，也是全日最高"><div class="lab">09:00 開盤<small>全日最高</small></div><div class="track"><div class="fill" style="width:96.5%"></div></div><div class="val">43,512</div></div>
+          <div class="hbar" data-tip="跌破 5 日線約 42,955 點與 10 日線約 42,397 點（中央社）"><div class="lab">早盤<small>跌破 5 日、10 日線</small></div><div class="track"><div class="fill" style="width:72.7%"></div></div><div class="val">42,397</div></div>
+          <div class="hbar" data-tip="鉅亨盤中速報：跌 1,806.45 點至 41,868.67 點（−4.14%）"><div class="lab">午盤前<small>−4.14%</small></div><div class="track"><div class="fill" style="width:61.4%"></div></div><div class="val">41,869</div></div>
+          <div class="hbar" data-tip="13:30 收盤 41,040.08 點，跌 6.03%，也是全日最低"><div class="lab">13:30 收盤<small>全日最低</small></div><div class="track"><div class="fill" style="width:43.6%"></div></div><div class="val">41,040</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>盤面重點</h3>
+        <ul class="plain small">
+          <li><b>跌停擴散：</b>中時 11:52 報導約 70 檔 AI 相關股跌停；收盤時上市櫃跌停近 170 檔（中央社）。</li>
+          <li><b>槓桿 ETF 跌最重：</b>跌幅前五名全是「正 2」槓桿 ETF，成交量前五名也都是 ETF（中央社）。</li>
+          <li><b>委買多於委賣：</b>委買 2,565.8 萬張、委賣 1,757.2 萬張，成交 1,388.8 萬張；低掛的買單沒有阻止價格下滑（推論：賣方願意用更低價成交）。</li>
+          <li><b>櫃買同步重挫：</b>鉅亨盤中速報顯示櫃買指數一度跌 5.09% 到 324.99 點；收盤數字本報告未查到。</li>
+          <li><b>電子比金融慘：</b>電子類指數跌 6.72%、金融類跌 3.40%（推算），食品與營建類小漲。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">類股表現</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>類股</th><th>收盤</th><th>漲跌</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>電子類</b></td><td class="num">2,512.06</td><td class="num down">−180.89（−6.72%）</td><td>AI 供應鏈全面下殺</td></tr>
+          <tr><td><b>塑化類</b></td><td class="num">—</td><td class="num down">−6.91%</td><td>權值股南亞同步重挫</td></tr>
+          <tr><td><b>機電類</b></td><td class="num">—</td><td class="num down">−6.70%</td><td>含散熱、電源等 AI 零組件</td></tr>
+          <tr><td><b>未含金融指數</b></td><td class="num">36,008.66</td><td class="num down">−2,427.41（−6.32%）</td><td>跌幅比大盤更深</td></tr>
+          <tr><td><b>金融類</b></td><td class="num">3,617.63</td><td class="num down">−127.36（−3.40%）</td><td>相對抗跌</td></tr>
+          <tr><td><b>紡織類</b></td><td class="num">—</td><td class="num down">−1.28%</td><td>內需傳產跌幅小</td></tr>
+          <tr><td><b>食品類</b></td><td class="num">—</td><td class="num up">+0.26%</td><td>資金避風港</td></tr>
+          <tr><td><b>營建類</b></td><td class="num">—</td><td class="num up">+0.18%</td><td>資金避風港</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">電子類與金融類漲跌幅由中央社公布的指數與點數推算；其餘取自中央社收盤稿。</p>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>外資、投信、自營商這次站在同一邊</h2>
+      <p>當事方包括三大法人、政府的護盤工具、AI 供應鏈公司與一般投資人；台灣整體經濟與生活的影響放在第 9 節。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">外資</div><div class="v">−701.89 億</div><div class="d">元，連 7 週賣超</div></div>
+      <div class="tile"><div class="l">投信</div><div class="v">−179.63 億</div><div class="d">元，結束連 24 買</div></div>
+      <div class="tile"><div class="l">自營商</div><div class="v">−259.03 億</div><div class="d">元</div></div>
+      <div class="tile"><div class="l">外資今年累計</div><div class="v">−2.99 兆</div><div class="d">元，至 11/13</div></div>
+      <div class="tile"><div class="l">外資持股比例</div><div class="v">47.01%</div><div class="d">上市市值，11/13</div></div>
+      <div class="tile"><div class="l">台指期逆價差</div><div class="v">155 點</div><div class="d">11 月合約 40,885 點</div></div>
+      <div class="tile"><div class="l">新台幣</div><div class="v">32.955</div><div class="d">午盤，貶 1.17 角</div></div>
+      <div class="tile"><div class="l">台積電市值</div><div class="v">約 57.4 兆</div><div class="d">元（聯合報）</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>三大法人</h3><ul class="plain">
+        <li><b>投信轉向最關鍵：</b>上週 11/9～11/11 投信每天買超 147～368 億元撐盤，這次連 24 買中止，代表本土買盤也開始減碼（推論）。</li>
+        <li><b>外資：</b>上週賣超 967.87 億元，前一交易日（11/13）一度轉買，這天又大賣 701.89 億元。</li>
+        <li><b>期貨避險：</b>台指期跌幅（−6.74%，推算）大於現貨，逆價差擴大到 155 點。</li>
+      </ul></div>
+      <div class="card"><h3>政府與央行</h3><ul class="plain">
+        <li><b>央行：</b>楊金龍在立法院稱黃仁勳離職是「短期亂流」，國安基金若未進場波動會更大；外資賣超是獲利了結，不是恐慌。</li>
+        <li><b>國安基金：</b>11/6 起仍在授權期間，實際買進金額與標的未公布。</li>
+        <li><b>限空令：</b>本報告未查到解除公告；借券賣出上限仍為 30 日均量的 3%（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>AI 供應鏈公司</h3><ul class="plain">
+        <li><b>伺服器：</b>鴻海跌 9.34%，是權值股中跌幅最深之一。</li>
+        <li><b>零組件：</b>電源（台達電）、BMC 晶片（信驊）、ASIC（創意）、CPO、PCB 全面跌停。</li>
+        <li><b>基本面未變：</b>這是對未來訂單的預期修正，各公司當天沒有公布營運利空（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>一般投資人</h3><ul class="plain">
+        <li><b>槓桿 ETF：</b>正 2 ETF 跌幅居前，單日損失約為大盤的 2 倍（推論）。</li>
+        <li><b>市值型 ETF：</b>台積電、聯發科、鴻海權重高，持有人同樣受傷。</li>
+        <li><b>融資族：</b>單日 6% 跌幅讓高槓桿帳戶面臨追繳壓力（推論）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>台股跌幅遠大於日韓，因為 AI 供應鏈的比重最高</h2>
+      <p>台股與亞股為 11/16 收盤；美股為美東 11/13（上週五）收盤。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/16 台股與亞股、11/13 美股漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；台達電、信驊為跌停</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>跌 6.03%，亞洲最重；台積電、聯發科、鴻海三大權值股合計拖累最多（推論）。</li>
+          <li><b>韓國：</b>KOSPI 跌 3.6% 收 5,100.25 點，SK 海力士跌 7.9%、三星跌 4.5%（美聯社）。</li>
+          <li><b>日本：</b>日經跌 2.4% 收 59,662.02 點，東京威力科創跌 7.1%、鎧俠跌 8%；日本上季經濟也萎縮。</li>
+          <li><b>香港、中國：</b>恒生指數漲 0.5%、上證跌 1%，AI 硬體比重低的市場受傷較輕。</li>
+          <li><b>美股上週五：</b>標普 500 跌 0.40%、那斯達克跌 0.9%；輝達跌 2.01%、AMD 跌 8.8%、博通跌 4.8%，費半跌 3.43%（中央社）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>漲跌原因</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">41,040.08（11/16）</td><td class="num down">−6.03%</td><td class="period">11/6 起 +3.37%；11/11 起 −7.27%</td><td>史上第 2 大跌點。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,215 元（11/16）</td><td class="num down">−5.74%</td><td class="period">11/11 起 −7.52%</td><td>AI 晶片龍頭，外資賣壓集中。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,795 元（11/16）</td><td class="num down">−7.89%</td><td class="period">—</td><td>AI ASIC 業務受 AI 疑慮波及。</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">218.5 元（11/16）</td><td class="num down">−9.34%</td><td class="period">11/13 起 −9.34%；11/6 起 −2.67%</td><td>AI 伺服器組裝，Vera Rubin 傳聞。</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">1,120 元（11/16）</td><td class="num down">跌停</td><td class="period">—</td><td>AI 電源與散熱。</td></tr>
+          <tr><td class="num">5274</td><td><b>信驊</b></td><td>台股</td><td class="num">10,800 元（11/16）</td><td class="num down">跌停</td><td class="period">—</td><td>伺服器管理晶片。</td></tr>
+          <tr><td class="num">3443</td><td><b>創意</b></td><td>台股</td><td class="num">7,750 元（11/16）</td><td class="num down">跌停</td><td class="period">—</td><td>ASIC 設計服務。</td></tr>
+          <tr><td class="num">2409</td><td><b>友達</b></td><td>台股</td><td class="num">27.7 元（11/16）</td><td class="num down">−8.88%</td><td class="period">—</td><td>面板股同步重挫。</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">162.85 美元（11/13）</td><td class="num down">−2.01%</td><td class="period">11/6 起 −12.75%</td><td>執行長辭職、財長介入。</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">398.73 美元（11/13）</td><td class="num down">−1.67%</td><td class="period">11/11 起 −3.54%</td><td>AI 晶片股走弱。</td></tr>
+          <tr><td class="num">^KS11</td><td><b>韓國 KOSPI</b></td><td>韓股</td><td class="num">5,100.25（11/16）</td><td class="num down">−3.6%</td><td class="period">—</td><td>記憶體股重挫。</td></tr>
+          <tr><td class="num">^N225</td><td><b>日經 225</b></td><td>日股</td><td class="num">59,662.02（11/16）</td><td class="num down">−2.4%</td><td class="period">—</td><td>半導體設備股重挫、GDP 萎縮。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">台股為 2026/11/16 收盤；美股為 2026/11/13 收盤（11/16 美股尚未開盤）；來源：中央社、聯合報、Stock Analysis、美聯社。「期間走勢」由收盤價推算。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>全球 AI 交易在等兩場考試：輝達財報與 Anthropic 上市</h2>
+      <p>台股是全球 AI 硬體最集中的市場，它的暴跌常被當成 AI 交易情緒的放大鏡。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>輝達的接班與政治</h3><ul class="plain small">
+        <li>輝達市值從 10 月初約 5.8 兆美元降到上週五約 3.9 兆美元（路透引述 LSEG）。</li>
+        <li>美國財長公開介入執行長人選，企業治理與國安議題綁在一起。</li>
+      </ul></article>
+      <article class="card"><h3>財報的意義打折</h3><ul class="plain small">
+        <li>LSEG 預估輝達本季營收 1,090 億美元、獲利成長 90%；選擇權隱含財報日波動約 ±7%（路透）。</li>
+        <li>Pepperstone 的 Chris Weston 質疑，沒有黃仁勳，這份財報是否還有平常的分量。</li>
+      </ul></article>
+      <article class="card"><h3>亞洲 AI 供應鏈</h3><ul class="plain small">
+        <li>韓國記憶體、日本設備、台灣代工與伺服器同步下跌。</li>
+        <li>AI 硬體占比越高的市場跌越深，資金在做的是「降 AI 曝險」（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>全球利率</h3><ul class="plain small">
+        <li>美國 10 年期殖利率重回 5% 以上，美元指數上週升 1.1%（路透）。</li>
+        <li>新興市場資金外流壓力增加，新台幣貶破 32.9 元。</li>
+      </ul></article>
+      <article class="card"><h3>Anthropic 上市</h3><ul class="plain small">
+        <li>路透指 Anthropic 的機構需求高於 SpaceX，預計在輝達財報後兩天開始交易。</li>
+        <li>市場同時在擔心 AI 估值，也在搶 AI 新股，資金分配更挑剔（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>地緣政治</h3><ul class="plain small">
+        <li>川普、習近平、普丁預計 11/19 在深圳 APEC 會面（美聯社）。</li>
+        <li>黃仁勳案牽涉對中晶片出口，美中科技議題可能在峰會上浮現（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前已知的時程與盤勢整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>40,000～44,000 點來回震盪</h3><ul class="plain small">
+        <li>輝達財報符合預期但缺乏驚喜。</li>
+        <li>外資賣壓放緩、投信重新進場。</li>
+        <li>國安基金與限空令讓跌勢不至於失控。</li>
+      </ul><p class="trig">觸發條件：輝達財報與財測大致符合預期，接班人選有方向。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>跌破 11/6 低點 37,837 點</h3><ul class="plain small">
+        <li>輝達財測保守或接班出現混亂。</li>
+        <li>Vera Rubin 延遲獲證實。</li>
+        <li>Anthropic 上市表現疲弱，AI 估值再修正。</li>
+      </ul><p class="trig">觸發條件：財報後輝達大跌、美債殖利率續升、外資擴大賣超。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>重演上週的 V 型反彈</h3><ul class="plain small">
+        <li>輝達財報亮眼、新執行長人選獲市場認可。</li>
+        <li>Anthropic 首日大漲，帶動 AI 供應鏈回溫。</li>
+        <li>指數重回 44,000 點以上。</li>
+      </ul><p class="trig">觸發條件：財報優於預期、Fed 會議紀錄沒有更鷹派的訊號。</p></article>
+    </div>
+    <div class="note warn">截至 11/16 16:30，輝達尚未宣布新任執行長，也未回應 Vera Rubin 延遲傳聞；新台幣收盤價與櫃買指數收盤本報告未查到。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/17（台灣 11/18 清晨）輝達財報</b>：資料中心營收與下季財測，以及管理層如何談 Vera Rubin 進度。</li>
+      <li><b>輝達接班人選</b>：外部人選、黃仁勳是否回任，以及財政部要求的出口管制說明。</li>
+      <li><b>11/18 Fed 會議紀錄</b>：12 月升息幅度與明年路徑。</li>
+      <li><b>11/19 Anthropic 掛牌</b>：首日表現是 AI 估值的溫度計。</li>
+      <li><b>外資與投信動向</b>：投信何時恢復買超，外資連 7 週賣超能否中止。</li>
+      <li><b>台指期逆價差</b>：逆價差縮小代表避險需求下降。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰被賣最重、誰相對安全</h2>
+      <p>標籤為短中期方向判斷；卡片下方是 11/16 實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>AI 伺服器組裝</h3><span class="tag bad">重挫</span></div><p>Vera Rubin 延遲傳聞與資料中心延後疑慮直接打擊出貨預期（推論）。</p><div class="data">鴻海 −9.34%</div></article>
+      <article class="card"><div class="top"><h3>電源與散熱</h3><span class="tag bad">重挫</span></div><p>AI 機櫃耗電與散熱需求是過去兩年最強的成長故事，修正也最猛。</p><div class="data">台達電跌停、機電類 −6.70%</div></article>
+      <article class="card"><div class="top"><h3>PCB 與材料</h3><span class="tag bad">重挫</span></div><p>AI 伺服器用高階板材全面跌停，主機板翹曲傳聞更讓族群敏感（推論）。</p><div class="data">欣興、南電、景碩、台光電跌停</div></article>
+      <article class="card"><div class="top"><h3>CPO 與光通訊</h3><span class="tag bad">重挫</span></div><p>高本益比、高預期的題材股，在信心動搖時跌幅最大。</p><div class="data">聯鈞、聯亞、光聖、華星光跌停</div></article>
+      <article class="card"><div class="top"><h3>IC 設計與 ASIC</h3><span class="tag bad">重挫</span></div><p>雲端業者自研晶片若跟著資料中心延後，設計服務訂單也會遞延（推論）。</p><div class="data">創意、信驊跌停；聯發科 −7.89%</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工</h3><span class="tag">好壞參半</span></div><p>台積電跌幅小於供應鏈，基本面與定價能力相對穩固（推論）。</p><div class="data">台積電 −5.74%</div></article>
+      <article class="card"><div class="top"><h3>面板</h3><span class="tag bad">重挫</span></div><p>隨大盤殺低，與 AI 關聯較低但同樣被賣。</p><div class="data">友達 −8.88%、群創 −9.14%</div></article>
+      <article class="card"><div class="top"><h3>食品、營建、金融</h3><span class="tag good">相對抗跌</span></div><p>內需與防禦型類股成為資金暫避處。</p><div class="data">食品 +0.26%、營建 +0.18%、金融 −3.40%</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>股匯雙殺：台股越依賴 AI，就越受美國一家公司左右</h2>
+      <p>台股市值高度集中在 AI 供應鏈，這次暴跌顯示，一家美國公司的人事變動就能讓台灣股市一天蒸發數兆元。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>財富縮水：</b>台積電一家市值就蒸發逾 3 兆元（推算）；上市櫃近 170 檔跌停。</li>
+        <li><b>匯率：</b>新台幣午盤貶到 32.955 元，楊金龍說貶值主因是外資賣超，央行 10 月到 11 月初已較常進場調節。</li>
+        <li><b>升息壓力：</b>楊金龍表示，若主要國家都升息，台灣堅持不升「似乎也不太合適」，12 月理監事會將依通膨、各國政策與放款熱度決定。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>進口物價：</b>新台幣若貶破 33 元，進口原物料、能源與出國旅遊成本都會上升。</li>
+        <li><b>房貸族：</b>央行若在 12 月升息，房貸利率可能跟著調高。</li>
+        <li><b>出口與就業：</b>若資料中心建置真的延後，AI 伺服器出口成長會放緩，牽動供應鏈加班與招募。</li>
+        <li><b>國安基金：</b>若跌勢延續，國安基金可能加大投入，盈虧最終由國庫承擔。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>槓桿 ETF 持有人</b></td><td><span class="tag bad">受傷最重</span></td><td>正 2 ETF 單日跌幅居全市場之冠。</td></tr>
+          <tr><td><b>融資族</b></td><td><span class="tag bad">追繳壓力</span></td><td>單日 6% 跌幅讓擔保維持率快速下降（推論）。</td></tr>
+          <tr><td><b>市值型 ETF 與存股族</b></td><td><span class="tag">帳面虧損</span></td><td>主要成分股台積電、聯發科、鴻海同步下跌。</td></tr>
+          <tr><td><b>放空者</b></td><td><span class="tag good">相對有利</span></td><td>但限空令下借券賣出額度有限。</td></tr>
+          <tr><td><b>進口業者與旅客</b></td><td><span class="tag bad">成本上升</span></td><td>新台幣走貶，進口與出國變貴。</td></tr>
+          <tr><td><b>出口商</b></td><td><span class="tag good">匯兌有利</span></td><td>新台幣貶值讓美元收入換回更多台幣。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>台灣媒體把焦點放在「史上第 2 大跌點」與個股跌停；外電則把台股放進「輝達出事後的亞洲 AI 股」脈絡。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>中央社</td><td>盤勢與 AI 供應鏈</td><td>史上第 2 大跌點、AI 供應鏈全面下殺</td><td>個股跌停名單、分析師談資料中心延後</td></tr>
+          <tr><td>聯合報</td><td>美股與政策</td><td>受美股重挫波及</td><td>史上最大跌點比較、貝森特要求</td></tr>
+          <tr><td>鉅亨網</td><td>籌碼</td><td>三大法人同步翻空</td><td>法人賣超金額</td></tr>
+          <tr><td>中時</td><td>傳聞</td><td>2 大鬼故事、Vera Rubin 危機</td><td>HBM、主機板翹曲傳聞</td></tr>
+          <tr><td>財訊快報</td><td>外資流向</td><td>上週外資賣超 967 億元</td><td>今年累計賣超近 3 兆</td></tr>
+          <tr><td>中央社（央行）</td><td>官方說法</td><td>國安基金若未進場波動會更大</td><td>獲利了結而非恐慌、12 月升息考量</td></tr>
+          <tr><td>美聯社</td><td>亞洲市場</td><td>輝達風波憂慮延續</td><td>日韓台跌幅、輝達前的 AI 疑慮</td></tr>
+          <tr><td>路透</td><td>本週事件</td><td>輝達財報、Anthropic 上市考驗科技股</td><td>利率、財報預估、黃仁勳可能回任</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>加權指數跌 2,635.04 點、6.03%，收 41,040.08 點。</li>
+        <li>史上第 2 大收盤跌點。</li>
+        <li>導火線是黃仁勳辭職引發的 AI 疑慮。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>Vera Rubin 延遲是傳聞。</b>只見於中時引述市場說法與社群帳號，輝達未回應。</li>
+        <li><b>黃仁勳回任只是報導。</b>來自《金融時報》引述消息，市場認為機率低。</li>
+        <li><b>盤中與收盤數字混用。</b>外電早盤寫「跌 3.9%」、中時寫「逾 4%」，收盤是 6.03%。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>跌停家數</td><td>近 170 家（中央社收盤稿）</td><td>逾百檔、約 70 檔、15 檔（盤中報導）</td><td>統計時點不同，盤中跌停逐步擴散。</td></tr>
+          <tr><td>10 日均線位置</td><td>約 42,482 點（中央社 13:57）</td><td>約 42,397 點（中央社 14:51）</td><td>計算方式或更新時間不同。</td></tr>
+          <tr><td>韓國、日本跌幅</td><td>KOSPI −3.6%、日經 −2.4%（美聯社）</td><td>KOSPI −2.69%、日經 −1.57%（中時 11:52）</td><td>收盤與盤中的差別。</td></tr>
+          <tr><td>投信賣超</td><td>179.63 億元（中央社）</td><td>179.62 億元（鉅亨網）</td><td>四捨五入。</td></tr>
+          <tr><td>成交值</td><td>8,450.56 億元（中央社）</td><td>8,450.57 億元（鉅亨網）</td><td>四捨五入。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導，資料截至 2026 年 11 月 16 日 16:30（台灣時間）。證交所、櫃買中心與央行原始公告未直接讀取；東森財經頁面拒絕讀取；新台幣收盤價與櫃買指數收盤未查到。</p>
+    </div>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.cna.com.tw/news/afe/202611160119.aspx" target="_blank" rel="noopener">中央社 — 台股重挫 2635.04 點史上第 2 大跌點（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160135.aspx" target="_blank" rel="noopener">中央社 — AI 供應鏈全面下殺（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160118.aspx" target="_blank" rel="noopener">中央社 — 台股跌 2635.04 點：類股與漲跌家數（11/16）</a></li>
+      <li><a href="https://cna.com.tw/news/afe/202611160147.aspx" target="_blank" rel="noopener">中央社 — 三大法人賣超 1140.55 億元（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160146.aspx" target="_blank" rel="noopener">中央社 — 外資連 7 週賣超、今年累計近 3 兆（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160125.aspx" target="_blank" rel="noopener">中央社 — 11 月台股期指跌 2954 點（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160078.aspx" target="_blank" rel="noopener">中央社 — 新台幣午盤重貶 1.17 角（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160101.aspx" target="_blank" rel="noopener">中央社 — 楊金龍：國安基金若未進場波動會更大（11/16）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160116.aspx" target="_blank" rel="noopener">中央社 — 12 月升息？楊金龍談 3 重點（11/16）</a></li>
+      <li><a href="https://udn.com/news/story/7251/9881677" target="_blank" rel="noopener">聯合報 — 受美股重挫波及、台股暴跌 2635 點（11/16）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6663818" target="_blank" rel="noopener">鉅亨網 — 三大法人同步翻空、賣超 1140.55 億元（11/16）</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6663553" target="_blank" rel="noopener">鉅亨網 — 盤中速報：加權指數跌 1806.45 點（11/16）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261116002087-260410" target="_blank" rel="noopener">中時新聞網 — 2 大鬼故事、輝達 Vera Rubin 危機（11/16）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E4%B8%8A%E9%80%B1%E5%A4%96%E8%B3%87%E9%9B%86%E4%B8%AD%E5%B8%82%E5%A0%B4%E8%B3%A3%E8%B6%85967%E5%84%84%E5%85%83-%E5%B9%B4%E5%88%9D%E8%87%B311-13%E6%AD%A2%E8%B3%A3%E8%B6%852%E5%85%869-904%E5%84%84%E5%85%83-062423394.html" target="_blank" rel="noopener">財訊快報 — 上週外資賣超 967 億元（11/16）</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="15">
+      <li><a href="https://www.ksat.com/business/2026/11/16/stocks-decline-in-asia-as-concerns-over-the-nvidia-fallout-persist/" target="_blank" rel="noopener">美聯社（KSAT 轉載）— 輝達風波憂慮延續，亞股下跌（11/16）</a></li>
+      <li><a href="https://investing.com/news/economy-news/asian-shares-fall-before-nvidia-earnings-anthropic-ipo-test-tech-rally-5028293" target="_blank" rel="noopener">路透（Investing.com 轉載）— 輝達財報、Anthropic 上市考驗科技股（11/16）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="17">
+      <li><a href="https://stockanalysis.com/stocks/nvda/history/" target="_blank" rel="noopener">Stock Analysis — NVDA 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/tsm/history/" target="_blank" rel="noopener">Stock Analysis — TSM 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/quote/tpe/2317/history/" target="_blank" rel="noopener">Stock Analysis — 鴻海 2317 歷史價格</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="20">
+      <li><a href="../jensen-huang-resigns-2026-11/index.html">黃仁勳辭去輝達執行長</a></li>
+      <li><a href="../jensen-huang-saga-2026-11/index.html">黃仁勳事件一次看懂</a></li>
+      <li><a href="../taiwan-stabilization-fund-2026-11/index.html">國安基金解讀</a></li>
+      <li><a href="../taiex-rebound-2026-11/index.html">台股三天彈回 4,875 點（11/10）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 16 日 16:30（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'恒生指數', s:'23,759.37（11/16）', v:0.5},
+    {l:'台積電 ADR', s:'398.73 美元（11/13）', v:-1.67},
+    {l:'輝達', s:'162.85 美元（11/13）', v:-2.01},
+    {l:'日經 225', s:'59,662.02（11/16）', v:-2.4},
+    {l:'費城半導體', s:'上週五（中央社）', v:-3.43},
+    {l:'韓國 KOSPI', s:'5,100.25（11/16）', v:-3.6},
+    {l:'台積電', s:'2,215 元（11/16）', v:-5.74},
+    {l:'加權指數', s:'41,040.08（11/16）', v:-6.03},
+    {l:'台指期 11 月', s:'40,885（11/16）', v:-6.74, est:true},
+    {l:'聯發科', s:'3,795 元（11/16）', v:-7.89},
+    {l:'SK 海力士', s:'11/16', v:-7.9},
+    {l:'鴻海', s:'218.5 元（11/16）', v:-9.34},
+    {l:'台達電', s:'1,120 元，跌停（11/16）', v:-10.0, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
