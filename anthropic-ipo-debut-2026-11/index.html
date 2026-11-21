@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 掛牌首日解讀</title>
+<meta name="description" content="Anthropic 2026 年 11 月 19 日在那斯達克掛牌的解讀：發行價 83 美元高於區間、股數加碼到 9.8 億股、史上最大 IPO、首日開高走低收漲 17%、隔天隨美股崩跌下跌 8.5%，以及對 AI 產業、台積電與台灣投資人的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#debut">掛牌首日</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">AI 公司上市解讀 · 掛牌首日 · 資料截至 2026 年 11 月 21 日 22:30（台灣時間）</p>
+      <h1>Anthropic 以 83 美元上市、首日漲 17%，隔天就碰上美股崩跌：史上最大 IPO 的兩天冰火</h1>
+      <p class="lede">Anthropic 11 月 18 日（美東）把發行價定在 83 美元，高於原本 70～78 美元的區間，股數也從 8.25 億股加到 9.8 億股，公開發行募得約 813 億美元，加上 7 家公司同步認購的 260 億美元，成為史上最大的上市案。11 月 19 日在那斯達克以代號 ANT 掛牌，第一筆成交 111.50 美元、收盤 97.17 美元，上漲 17%，市值約 1.28 兆美元。但隔天美股因輝達傳出遭證管會（SEC）查核會計而重挫，那斯達克跌 5.28%，ANT 跌 8.5% 收 88.91 美元，盤中一度逼近發行價。</p>
+    </div>
+    <div class="stmt" aria-label="首日收盤">
+      <div class="k">11/19 首日收盤（ANT）</div>
+      <div class="range">97.17<small>美元</small></div>
+      <div class="was">發行價 83 美元 · 首日 +17.1% · 11/20 收 88.91（−8.5%）</div>
+      <div class="stmt-row">
+        <div><div class="v">813 億</div><div class="l">公開發行募資（美元）</div></div>
+        <div><div class="v">9.8 億股</div><div class="l">發行股數，原定 8.25 億</div></div>
+        <div><div class="v">約 1.28 兆</div><div class="l">首日收盤市值（美元）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂 Anthropic 掛牌</h2>
+      <p>一句話：Anthropic 把錢募到了，也把股價撐在發行價之上，但掛牌碰上 AI 股崩跌，市場對兆美元 AI 估值的耐心只維持了一天。定價前的條款請見<a href="../anthropic-ipo-pricing-2026-11/index.html">IPO 定價解讀</a>。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>定價高於區間。</b>11/18 定價每股 83 美元，比 70～78 美元的區間上緣高 5 美元；證管會同日宣告註冊生效（StockTitan）。</div></li>
+      <li><div><b>股數加碼 19%。</b>發行 9.8 億股 A 類股，其中新股 9.56 億股、7 位共同創辦人各賣約 340 萬股；承銷商超額配售權也從 1.2375 億股增至 1.47 億股。</div></li>
+      <li><div><b>史上最大 IPO。</b>公開發行約 813.4 億美元，公司實拿新股部分約 788.4 億美元；加上 260 億美元同步私募，扣除成本後預計約 1,048 億美元（StockTitan）。</div></li>
+      <li><div><b>首日開高走低。</b>美東 11:48 第一筆成交 111.50 美元（+34.3%），最高 114.99 美元，最低 92.72 美元，收 97.17 美元（+17.1%），成交約 8.3 億股。</div></li>
+      <li><div><b>市值約 1.28 兆美元。</b>StockTitan 以全部股數約 132.2 億股計算，發行價對應約 1.10 兆、首日收盤約 1.28 兆美元；雅虎財經另估完全稀釋約 1.6～1.75 兆美元。</div></li>
+      <li><div><b>隔天就回吐一半漲幅。</b>11/20 美股崩跌，ANT 跌 8.5% 收 88.91 美元，盤中一度跌約 12%、接近 85 美元，仍守在發行價之上。</div></li>
+      <li><div><b>首日買家賺 140 億美元。</b>雅虎財經指首日帳面獲利僅次於 SpaceX；SpaceX 6 月上市首日收漲 19%。</div></li>
+      <li><div><b>散戶分到不到兩成。</b>原定約 20% 給散戶，最終招股書寫「少於 20%」；Vanguard 資料顯示 ANT 是 11/19 散戶交易最熱門個股（CNBC）。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼能加價加量？又為什麼漲不住？</h2>
+      <p>前兩點解釋定價為何高於區間；後兩點解釋為何首日開高走低、隔天下跌。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>認購超額數倍</h3><p>路演期間彭博、《金融時報》都報導認購超額數倍，承銷商考慮調價；最後價格與股數同時上調，公開發行比原區間上緣多募約 170 億美元（推算）。</p></div><div class="ev"><span class="tag">83 美元 &gt; 78 美元</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>營收成長仍快</h3><p>雅虎財經引述修訂招股書，第三季營收約 170 億美元、年增約 12 倍；10 月底年化營收約 810 億美元。</p></div><div class="ev"><span class="tag">第三季約 170 億</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>掛牌當週 AI 股崩跌</h3><p>11/19 美股主要指數各跌逾 2%，道瓊收在 5 萬點以下；11/20 輝達傳出遭 SEC 查核會計、重挫約 14%，那斯達克跌 5.28%。CNBC 形容投資人趁 Anthropic 掛牌「獲利了結」。</p></div><div class="ev"><span class="tag">那斯達克週跌約 10%</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>估值本身就是一大賭注</h3><p>Seaport 分析師 Jay Goldberg 以「中立」評等開始追蹤，說這是投資人「難以置信的信心跳躍」（CNBC）。以首日收盤計，市值約為年化營收的 16 倍（推算）。</p></div><div class="ev"><span class="tag">約 16 倍營收</span></div></div>
+    </div>
+    <div class="note">用演唱會門票來想：主辦單位看到搶票太熱，臨時加開場次又調高票價（加量加價）；開賣當天黃牛價衝到 1.3 倍，但隔天其他演唱會大取消（AI 股崩跌），黃牛價就掉回接近原價（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>Anthropic</span><span><i class="g"></i>市場</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-10-26</div><div class="what">公開招股書。</div></li>
+        <li class="key"><div class="date">2026-11-10</div><div class="what">路演開始，價格區間 70～78 美元、8.25 億股。</div></li>
+        <li class="geo"><div class="date">2026-11-17</div><div class="what">《華爾街日報》首報 SEC 調查輝達；輝達公布財報。</div></li>
+        <li class="key"><div class="date">2026-11-18</div><div class="what"><b>定價 83 美元、9.8 億股</b>，SEC 宣告生效；Fed 會議紀錄偏鷹。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-19</div><div class="what">那斯達克掛牌：開 111.50、收 <b>97.17 美元（+17%）</b>。道瓊跌破 5 萬點。</div></li>
+        <li class="geo"><div class="date">2026-11-20</div><div class="what">路透報導 SEC 查核輝達會計，美股重挫；ANT 收 88.91 美元（−8.5%）。</div></li>
+        <li><div class="date">30 天內</div><div class="what">承銷商決定是否行使 1.47 億股超額配售權。</div></li>
+        <li><div class="date">2026-12-08～09</div><div class="what">Fed 利率會議，市場預期升息 1 碼（CNBC）。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 debut -->
+<section id="debut">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 掛牌首日</div>
+      <h2>開盤衝 34%、收盤剩 17%：一天走完一整個情緒循環</h2>
+      <p>盤中數字取自 StockTitan 即時紀錄；11/20 數字取自優分析與雅虎財經。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">ANT 關鍵價位（美元）</p>
+        <p class="chart-sub">長條以 80 美元為起點；灰色為發行價</p>
+        <div class="hbars">
+          <div class="hbar muted-bar" data-tip="發行價 83 美元（11/18 定價）"><div class="lab">發行價</div><div class="track"><div class="fill" style="width:8.6%"></div></div><div class="val">83.00</div></div>
+          <div class="hbar" data-tip="美東 11:48 第一筆成交 111.50 美元，+34.3%"><div class="lab">第一筆成交<small>11/19 11:48</small></div><div class="track"><div class="fill" style="width:90.1%"></div></div><div class="val">111.50</div></div>
+          <div class="hbar" data-tip="盤中最高 114.99 美元（11:49）"><div class="lab">盤中最高<small>11/19</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">114.99</div></div>
+          <div class="hbar" data-tip="盤中最低 92.72 美元（13:18）"><div class="lab">盤中最低<small>11/19</small></div><div class="track"><div class="fill" style="width:36.4%"></div></div><div class="val">92.72</div></div>
+          <div class="hbar" data-tip="首日收盤 97.17 美元，+17.1%"><div class="lab">首日收盤<small>11/19</small></div><div class="track"><div class="fill" style="width:49.1%"></div></div><div class="val">97.17</div></div>
+          <div class="hbar" data-tip="11/20 收盤 88.91 美元，−8.5%"><div class="lab">第二天收盤<small>11/20</small></div><div class="track"><div class="fill" style="width:25.5%"></div></div><div class="val">88.91</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>首日現場</h3>
+        <ul class="plain small">
+          <li><b>敲鐘：</b>執行長 Dario Amodei 與總裁 Daniela Amodei 在時代廣場那斯達克敲鐘；Daniela 說「這項技術需要你們」（雅虎財經）。</li>
+          <li><b>開盤競價：</b>經那斯達克 IPO 開盤競價，11:48 才出現第一筆成交，比 SpaceX 的 11:46 晚 2 分鐘。</li>
+          <li><b>盤後：</b>11/19 盤後最後成交 92.60 美元，已低於收盤（StockTitan）。</li>
+          <li><b>政治：</b>川普說「我很尊重 Dario」（雅虎財經）。</li>
+          <li><b>第二天：</b>優分析記錄 11/20 收 88.91 美元，比發行價仍高 7.1%（推算）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">最終發行條款（與 11/10 區間比較）</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>11/10 路演</th><th>11/18 定價</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>每股價格</b></td><td class="num">70～78 美元</td><td class="num">83 美元</td><td>高於區間上緣 6.4%</td></tr>
+          <tr><td><b>發行股數</b></td><td class="num">8.25 億股</td><td class="num">9.8 億股</td><td>新股 9.56 億、舊股約 2,365 萬</td></tr>
+          <tr><td><b>超額配售</b></td><td class="num">1.2375 億股</td><td class="num">1.47 億股</td><td>30 天內行使</td></tr>
+          <tr><td><b>公開發行金額</b></td><td class="num">最多 643.5 億</td><td class="num">813.4 億</td><td>承銷費約 5.5 億美元</td></tr>
+          <tr><td><b>同步私募</b></td><td class="num">260 億</td><td class="num">260 億</td><td>3.13 億股 N 類股，以 83 美元認購，尚待完成</td></tr>
+          <tr><td><b>發行價市值</b></td><td class="num">上限 1.405 兆（完全稀釋）</td><td class="num">約 1.10 兆</td><td>StockTitan 以 132.2 億股計</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>Anthropic 拿到史上最多的錢，Amazon、Google 持股價值重估</h2>
+      <p>當事方是 Anthropic、創辦團隊、既有大股東、同步認購的 7 家公司與新股東。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">發行價</div><div class="v">83</div><div class="d">美元，高於區間</div></div>
+      <div class="tile"><div class="l">公開發行</div><div class="v">813 億</div><div class="d">美元</div></div>
+      <div class="tile"><div class="l">含私募淨額</div><div class="v">約 1,048 億</div><div class="d">美元（預估）</div></div>
+      <div class="tile"><div class="l">首日漲幅</div><div class="v">+17.1%</div><div class="d">收 97.17 美元</div></div>
+      <div class="tile"><div class="l">首日成交</div><div class="v">約 8.3 億股</div><div class="d">StockTitan</div></div>
+      <div class="tile"><div class="l">Amazon 持股</div><div class="v">14.6%</div><div class="d">IPO 與私募後</div></div>
+      <div class="tile"><div class="l">Google 持股</div><div class="v">13.4%</div><div class="d">IPO 與私募後</div></div>
+      <div class="tile"><div class="l">創辦人出售</div><div class="v">各約 340 萬股</div><div class="d">7 人合計約 2,365 萬股</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Anthropic</h3><ul class="plain">
+        <li><b>資金：</b>約 1,048 億美元可用來支付算力承諾，大幅降低短期資金壓力（推論）。</li>
+        <li><b>新義務：</b>成為上市公司後每季公布財報，估值每天被市場檢驗。</li>
+      </ul></div>
+      <div class="card"><h3>創辦團隊</h3><ul class="plain">
+        <li><b>套現：</b>7 位共同創辦人各賣約 340 萬股，以 83 美元計每人約 2.8 億美元（推算）。</li>
+        <li><b>控制權：</b>F 類股握 50.1% 投票權不變。</li>
+      </ul></div>
+      <div class="card"><h3>Amazon、Google</h3><ul class="plain">
+        <li><b>持股：</b>IPO 與私募後分別約 14.6%、13.4%（以無投票權股為主）。</li>
+        <li><b>帳面獲利：</b>持股有了每日市價，但 11/20 市場崩跌讓帳面價值波動加大（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>同步認購的 7 家公司</h3><ul class="plain">
+        <li><b>成本：</b>Google、輝達、AMD、博通、美光、微軟、台積電以 83 美元認購，比原區間中值 74 美元貴 12%。</li>
+        <li><b>帳面：</b>以 11/20 收盤 88.91 美元計仍有約 7% 帳面獲利（推算）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>ANT 守住發行價，同步認購的晶片股卻跌得更深</h2>
+      <p>個股為 11/20（週五）收盤與當日漲跌；ANT 列兩日。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">ANT 與相關股票漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；ANT 首日為相對發行價</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>ANT：</b>首日漲 17%，第二天跌 8.5%，兩天合計仍比發行價高 7%（推算）。</li>
+          <li><b>同步認購者：</b>11/20 輝達跌 14.01%、AMD 跌 13.26%、美光跌 13.86%，台積電 ADR 跌 9.48%。</li>
+          <li><b>算力供應商：</b>CoreWeave 跌 12.02%、Nebius 跌 16.1%。</li>
+          <li><b>大盤：</b>那斯達克跌 5.28%，抹去 2026 年全部漲幅；費半跌 10.73%。</li>
+          <li><b>分析師：</b>Capital Economics 的 James Reilly 認為科技股與標普的跌勢還沒結束（CNBC）。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>與 Anthropic 的關係</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">ANT</td><td><b>Anthropic</b></td><td>美股</td><td class="num">88.91 美元（11/20）</td><td class="num down">−8.5%</td><td class="period">較發行價 +7.1%</td><td>本尊；11/19 收 97.17（+17.1%）。</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">125.53 美元（11/20）</td><td class="num down">−14.01%</td><td class="period">11/13 起 −22.92%</td><td>同步認購約 100 億美元。</td></tr>
+          <tr><td class="num">AMD</td><td><b>超微</b></td><td>美股</td><td class="num">—</td><td class="num down">−13.26%</td><td class="period">—</td><td>同步認購約 25 億美元。</td></tr>
+          <tr><td class="num">MU</td><td><b>美光</b></td><td>美股</td><td class="num">—</td><td class="num down">−13.86%</td><td class="period">—</td><td>同步認購約 10 億美元。</td></tr>
+          <tr><td class="num">CRWV</td><td><b>CoreWeave</b></td><td>美股</td><td class="num">39.51 美元（11/20）</td><td class="num down">−12.02%</td><td class="period">11/13 起 −25.64%</td><td>算力供應商。</td></tr>
+          <tr><td class="num">TSM</td><td><b>台積電 ADR</b></td><td>美股</td><td class="num">318.71 美元（11/20）</td><td class="num down">−9.48%</td><td class="period">11/13 起 −20.07%</td><td>同步認購約 5 億美元。</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克</b></td><td>美股</td><td class="num">22,617.73（11/20）</td><td class="num down">−5.28%</td><td class="period">週跌約 10%</td><td>ANT 掛牌市場。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,000 元（11/20）</td><td class="num down">−4.76%</td><td class="period">11/13 起 −14.89%</td><td>同步認購者。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">來源：StockTitan、優分析、雅虎財經、CNBC、TradingKey、Stock Analysis。私募金額為媒體以區間中值估算的分配；AMD、美光收盤價本報告未查到。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>市場願意買 AI 新股，卻同時在拋售 AI 老股</h2>
+      <p>Anthropic 掛牌與 AI 股崩跌發生在同一週，顯示資金不是離開 AI，而是在重新挑選（推論）。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>IPO 紀錄</h3><ul class="plain small">
+        <li>公開發行約 813 億美元，StockTitan 寫 SpaceX 6 月公開發行 750 億美元；CNBC 先前寫 SpaceX 含超額配售為 857 億美元。</li>
+        <li>不論用哪個口徑，加上 260 億同步私募都是史上最大。</li>
+      </ul></article>
+      <article class="card"><h3>AI 估值的錨</h3><ul class="plain small">
+        <li>ANT 每天的股價成為 OpenAI 等未上市公司估值的參考（推論）。</li>
+        <li>首日收盤市值約 1.28 兆美元，約為 SpaceX 首日後的 6 成（雅虎財經引述《華爾街日報》）。</li>
+      </ul></article>
+      <article class="card"><h3>散戶直接參與</h3><ul class="plain small">
+        <li>嘉信、富達、Robinhood、SoFi、E*TRADE 等平台參與配售。</li>
+        <li>散戶在高點進場、隔天就遇到崩跌，可能影響下一批 AI 公司的散戶需求（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>美國政治</h3><ul class="plain small">
+        <li>川普公開稱讚 Dario Amodei（雅虎財經）。</li>
+        <li>經理人整理的招股書風險曾提到與美國政府、國防部的爭議；總統表態有助降低市場對政策風險的疑慮（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>利率環境</h3><ul class="plain small">
+        <li>市場強烈預期 12 月 8～9 日 Fed 升息 1 碼（CNBC）。</li>
+        <li>利率越高，尚未穩定獲利的成長股估值壓力越大（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 安全</h3><ul class="plain small">
+        <li>雅虎財經轉述 Dario Amodei 在敲鐘時強調安全仍是關鍵。</li>
+        <li>上市後的季度壓力與安全承諾如何並存，是公益公司架構的考驗（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依掛牌兩天的走勢與市場環境整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>在發行價上方震盪</h3><ul class="plain small">
+        <li>股價在 83～100 美元間波動。</li>
+        <li>承銷商以穩定操作守住發行價。</li>
+        <li>跟著 AI 類股起伏。</li>
+      </ul><p class="trig">觸發條件：AI 股止跌但未反彈、輝達 SEC 調查沒有新進展。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>跌破發行價</h3><ul class="plain small">
+        <li>美股修正擴大，AI 股繼續被賣。</li>
+        <li>散戶停損帶動賣壓。</li>
+        <li>其他 AI 公司延後上市。</li>
+      </ul><p class="trig">觸發條件：12 月 Fed 升息 2 碼、輝達會計問題證實。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>重回首日高點</h3><ul class="plain small">
+        <li>市場反彈，資金回流 AI 成長股。</li>
+        <li>同步私募順利交割，供應商入股落地。</li>
+        <li>第一份季報優於預期。</li>
+      </ul><p class="trig">觸發條件：AI 股反彈、Fed 升息幅度不超預期、營收持續高成長。</p></article>
+    </div>
+    <div class="note warn">截至 11/21 22:30，承銷商是否行使超額配售權、同步私募是否完成、何時納入指數均未公布。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>83 美元發行價</b>：摩根士丹利是穩定操作代理人，跌近發行價時可能進場（推論）。</li>
+      <li><b>超額配售權</b>：30 天內是否行使 1.47 億股。</li>
+      <li><b>同步私募交割</b>：260 億美元有條件認購何時完成。</li>
+      <li><b>12 月 8～9 日 Fed 會議</b>：利率決定成長股的估值空間。</li>
+      <li><b>輝達 SEC 調查</b>：AI 類股情緒的關鍵。</li>
+      <li><b>第一份季報</b>：上市後首次公布財報的時間與內容。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰受惠、誰要小心</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>雲端與算力</h3><span class="tag good">受惠</span></div><p>Anthropic 手上多了約 1,000 億美元，算力採購更有保障（推論）。</p><div class="data">CoreWeave 11/20 −12.02%（隨大盤）</div></article>
+      <article class="card"><div class="top"><h3>AI 晶片</h3><span class="tag good">受惠</span></div><p>新資金多會轉成 GPU 與客製晶片訂單。</p><div class="data">輝達 11/20 −14.01%（SEC 消息）</div></article>
+      <article class="card"><div class="top"><h3>投資銀行</h3><span class="tag good">受惠</span></div><p>高盛、摩根士丹利等 22 家銀行分享約 5.5 億美元承銷費。</p><div class="data">承銷費約 5.5 億美元</div></article>
+      <article class="card"><div class="top"><h3>券商平台</h3><span class="tag good">受惠</span></div><p>散戶熱烈參與，交易量放大。</p><div class="data">首日成交約 8.3 億股</div></article>
+      <article class="card"><div class="top"><h3>其他 AI 新創</h3><span class="tag">好壞參半</span></div><p>上市窗口打開，但隔天崩跌提醒估值風險。</p><div class="data">兩天內 +17%、−8.5%</div></article>
+      <article class="card"><div class="top"><h3>企業軟體</h3><span class="tag bad">壓力</span></div><p>Anthropic 資金充裕後擴大企業市場，傳統軟體面臨更強競爭（推論）。</p><div class="data">未查到直接相關數據</div></article>
+      <article class="card"><div class="top"><h3>記憶體</h3><span class="tag good">受惠</span></div><p>美光同步認購，AI 模型擴張需要大量記憶體。</p><div class="data">美光 11/20 −13.86%</div></article>
+      <article class="card"><div class="top"><h3>加密資產</h3><span class="tag bad">壓力</span></div><p>風險資產同步被賣，比特幣跌破 6 萬美元（CNBC）。</p><div class="data">比特幣約 59,555 美元</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>台積電成了 Anthropic 股東，台灣投資人在半夜搶新股</h2>
+      <p>台積電以 83 美元認購約 5 億美元；台灣投資人則透過複委託在台灣時間深夜交易。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台積電入股：</b>以 83 美元認購約 5 億美元，約 602 萬股（推算），比原估的 676 萬股少。</li>
+        <li><b>台股：</b>掛牌當週台股跌 7,641.83 點、17.50%，11/20 收 36,033.29 點；AI 股崩跌的影響遠大於 Anthropic 本身。</li>
+        <li><b>交易時間：</b>美東 9:30 是台灣時間 22:30，ANT 首筆成交在台灣時間 11/20 凌晨 0:48。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>訂單：</b>Anthropic 新資金最終多會變成晶片與伺服器採購，對台灣供應鏈是中長期利多。</li>
+        <li><b>投資風險：</b>新股首週就經歷 34% 的高低落差，透過複委託追高的投資人要承擔大波動與匯率成本。</li>
+        <li><b>資金排擠：</b>大型 IPO 與 AI 股修正同時發生，外資從台股撤出的壓力仍在。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台積電與股東</b></td><td><span class="tag good">相對有利</span></td><td>綁定大客戶；入股金額占台積電規模很小。</td></tr>
+          <tr><td><b>AI 供應鏈</b></td><td><span class="tag good">中期有利</span></td><td>Anthropic 算力採購增加（推論）。</td></tr>
+          <tr><td><b>複委託投資人</b></td><td><span class="tag bad">波動大</span></td><td>首兩日最高 114.99、最低約 85 美元。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">受衝擊</span></td><td>同週台股跌 17.50%，主因是 AI 股全面修正。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>外電多把掛牌和 AI 股崩跌放在一起看；即時紀錄型媒體則逐分鐘記下價格。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>StockTitan</td><td>即時紀錄</td><td>ANT 首日逐步更新</td><td>最終條款、盤中高低、成交量</td></tr>
+          <tr><td>雅虎財經</td><td>現場與比較</td><td>首日後股價下跌</td><td>敲鐘、市值、與 SpaceX 比較</td></tr>
+          <tr><td>CNBC</td><td>大盤</td><td>標普與道瓊進入修正</td><td>投資人趁 IPO 獲利了結、分析師評等</td></tr>
+          <tr><td>優分析</td><td>收盤整理</td><td>輝達重挫、費半跌 11%</td><td>ANT 收 88.91 仍高於發行價</td></tr>
+          <tr><td>TradingKey</td><td>AI 股</td><td>那斯達克抹去年內漲幅</td><td>輝達 SEC 調查</td></tr>
+          <tr><td>Forbes</td><td>規模</td><td>史上最大 IPO</td><td>募資 813 億美元（標題；內文未能讀取）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>發行價 83 美元，高於 70～78 美元區間。</li>
+        <li>首筆成交 111.50 美元，首日收 97.17 美元、漲約 17%。</li>
+        <li>11/20 隨美股重挫下跌，仍在發行價之上。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「募資金額」有三種。</b>813 億是公開發行、約 1,048 億含私募並扣成本，NPR 標題的「逾 1,000 億」可能含私募。</li>
+        <li><b>市值口徑不同。</b>1.10～1.28 兆是 StockTitan 以全部股數計，1.6～1.75 兆是雅虎財經的完全稀釋估算。</li>
+        <li><b>私募尚未完成。</b>260 億美元同步私募有條件，StockTitan 寫尚未交割。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>發行股數</td><td>9.8 億股（StockTitan）</td><td>9.56 億股（部分搜尋摘要）</td><td>後者只算新股。</td></tr>
+          <tr><td>首日成交量</td><td>約 8.32 億股（StockTitan）</td><td>逾 8.46 億股（CNBC，搜尋摘要）</td><td>統計時點或是否含盤後。</td></tr>
+          <tr><td>首筆成交時間</td><td>11:48（StockTitan）</td><td>「中午前不久」、「11:30 後」（雅虎財經）</td><td>本報告採 StockTitan 逐分鐘紀錄。</td></tr>
+          <tr><td>首日市值</td><td>約 1.28 兆（StockTitan、雅虎 Howley）</td><td>約 1.27 兆（雅虎 Blikre）</td><td>股數假設不同。</td></tr>
+          <tr><td>SpaceX 募資</td><td>750 億美元（StockTitan）</td><td>857 億美元（CNBC，含超額配售）</td><td>是否計入超額配售。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導，資料截至 2026 年 11 月 21 日 22:30（台灣時間）。SEC 最終招股書未直接讀取；Forbes 拒絕讀取、NPR 連線逾時；ANT 歷史股價頁面尚未建立。</p>
+    </div>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.stocktitan.net/articles/anthropic-ipo-live-ant-first-trading-day-2026" target="_blank" rel="noopener">StockTitan — Anthropic IPO Live：ANT 首日逐步更新（11/19）</a></li>
+      <li><a href="https://finance.yahoo.com/technology/live/anthropic-ipo-live-company-said-to-price-stock-at-83-begin-trading-thursday-212656452.html" target="_blank" rel="noopener">雅虎財經 — Anthropic IPO live：首日後股價下跌（11/20）</a></li>
+      <li><a href="https://www.cnbc.com/amp/2026/11/19/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC — 標普與道瓊進入修正、那斯達克抹去年內漲幅（11/20）</a></li>
+      <li><a href="https://tradingkey.com/zh-hans/analysis/stocks/us-stock/262316080-nasdaq-falls-ai-stock-selloff-nvidia-sec-probe-tradingkey" target="_blank" rel="noopener">TradingKey — 那斯達克暴跌 5%、輝達遭 SEC 查核傳聞（11/20）</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html" target="_blank" rel="noopener">CNBC — 價格區間 70～78 美元、SpaceX 比較（11/10）</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="6">
+      <li><a href="https://uanalyze.com.tw/articles/1259860684" target="_blank" rel="noopener">優分析 — 美股收盤：輝達重挫近 14%、ANT 收 88.91 美元（11/21）</a></li>
+      <li><a href="https://www.storm.mg/article/11183789" target="_blank" rel="noopener">風傳媒 — 台股一週下跌與美股收盤（11/21）</a></li>
+      <li><a href="https://www.managertoday.com.tw/articles/view/73312" target="_blank" rel="noopener">經理人 — 台積電入股與台灣投資人如何購買（11/11）</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="9">
+      <li><a href="https://stockanalysis.com/stocks/nvda/history/" target="_blank" rel="noopener">Stock Analysis — NVDA 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/tsm/history/" target="_blank" rel="noopener">Stock Analysis — TSM 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/stocks/crwv/history/" target="_blank" rel="noopener">Stock Analysis — CRWV 歷史價格</a></li>
+      <li><a href="https://stockanalysis.com/quote/tpe/2330/history/" target="_blank" rel="noopener">Stock Analysis — 台積電 2330 歷史價格</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="13">
+      <li><a href="../anthropic-ipo-pricing-2026-11/index.html">Anthropic IPO 定價解讀（11/12）</a></li>
+      <li><a href="../anthropic-q3-2026-11/index.html">Anthropic 第三季營收解讀（11/3）</a></li>
+      <li><a href="../anthropic-ipo-2026-10/index.html">Anthropic 公開招股書（10/27）</a></li>
+      <li><a href="../us-stocks-volatility-2026-11/index.html">美股震盪解讀（11/21）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 21 日 22:30（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'ANT 首日', s:'97.17 美元（11/19，相對發行價）', v:17.07},
+    {l:'ANT 11/20', s:'88.91 美元（11/20）', v:-8.5},
+    {l:'台積電', s:'2,000 元（11/20）', v:-4.76},
+    {l:'那斯達克', s:'22,617.73（11/20）', v:-5.28},
+    {l:'台積電 ADR', s:'318.71 美元（11/20）', v:-9.48},
+    {l:'費城半導體', s:'8,408.59（11/20）', v:-10.73},
+    {l:'CoreWeave', s:'39.51 美元（11/20）', v:-12.02},
+    {l:'AMD', s:'11/20', v:-13.26},
+    {l:'美光', s:'11/20', v:-13.86},
+    {l:'輝達', s:'125.53 美元（11/20）', v:-14.01}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
