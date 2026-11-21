@@ -11,6 +11,7 @@
 
 | 日期 | 主題 | 報告 |
 |------|------|------|
+| 2026-11-20 | 167 年的數學難題被 AI 攻下了？黎曼猜想「機器驗證過」，但還沒有人真正讀懂 | [`riemann-hypothesis-2026-11/`](riemann-hypothesis-2026-11/index.html) |
 | 2026-11-17 | 黃仁勳打破沉默說「願意回來」，董事會同一天說「不會」：財報亮眼，人事卻關上門 | [`jensen-huang-statement-2026-11/`](jensen-huang-statement-2026-11/index.html) |
 | 2026-11-17 | 12 月 1 日面對國會：黃仁勳同意接受三委員會訪談，是閉門還是公開仍有爭議 | [`jensen-huang-congress-2026-11/`](jensen-huang-congress-2026-11/index.html) |
 | 2026-11-17 | 川普訪亞前夕，俄軍機侵犯日本領空、穿越台灣防空識別區，一路飛到越南 | [`russia-aircraft-japan-taiwan-2026-11/`](russia-aircraft-japan-taiwan-2026-11/index.html) |
@@ -70,6 +71,10 @@
 | 2026-09-22 | 荷莫茲海峽封鎖：全球能源咽喉危機 | [`hormuz-2026-09/`](hormuz-2026-09/index.html) |
 | 2026-09-16 | 聯準會三年來首度升息至 3.75%–4.00% | [`fed-2026-09/`](fed-2026-09/index.html) |
 | 2026-09-09 | Apple 2026 發布會全景報告 | [`apple-2026/`](apple-2026/index.html) |
+
+### 黎曼猜想證明解讀（riemann-hypothesis-2026-11）
+
+2026 年 11 月 20 日 Anthropic 數學家 Levent Alpöge 宣稱與 Claude 證明黎曼猜想與廣義黎曼猜想（GRH），以約 1,700 萬行 Lean 程式碼公開。報告以白話講解黎曼猜想（質數、ζ 函數、零點與臨界線、驗證與證明的差別），整理 MIT 機器檢查進度與尚待完成的步驟、同日 940 頁全人工證明草稿與後續問題、上市隔天的時機爭議、AI 股與台股同日重挫、加密安全的常見誤解、三種劇本與媒體比較。
 
 ### 黃仁勳首度發文解讀（jensen-huang-statement-2026-11）
 
