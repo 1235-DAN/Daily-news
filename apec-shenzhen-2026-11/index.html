@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APEC 深圳峰會</title>
+<meta name="description" content="2026 年 11 月 APEC 深圳領袖會議：《深圳展望》宣言與不提 WTO、川習會與「不支持台獨」中方讀稿、首次美中俄三方峰會、台灣代表施振榮的參與、峰會週股市重挫的真正原因、三種劇本與對台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#6b4bb8;
+  --accent-ink:#553a9a;
+  --accent-wash:rgba(107,75,184,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#121019;
+  --hero-ink:#f3f1f7;
+  --hero-ink-2:#a6a0b5;
+  --hero-accent:#b9a6ef;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f16;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#9b83e0; --accent-ink:#b9a6ef; --accent-wash:rgba(155,131,224,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">峰會成果</a></li>
+      <li><a class="link" href="#markets">市場反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">國際政經解讀 · APEC 2026 · 資料截至 2026 年 11 月 21 日 18:00（台灣時間）</p>
+      <h1>深圳 APEC：共識宣言靠「不提 WTO」換來，美中俄首度三方峰會，台灣只是邊角卻被寫進讀稿</h1>
+      <p class="lede">第 33 屆 APEC 領袖會議 11 月 18～19 日在深圳舉行，21 個經濟體以共識通過《深圳展望》宣言與三份成果文件，避開了 2018 年無法發表宣言的僵局，但全文沒有提到 WTO 或多邊貿易體系。會外，川普與習近平第三度會面，依中方讀稿，川普說「美國不支持台獨」，白宮沒有發布讀稿；川普、習近平、普丁舉行史上首次美中俄三方峰會，發表四點《邁向和平宣言》。台灣由宏碁創辦人施振榮出席。峰會同週全球股市重挫，台股一週跌 17.5%，但媒體把主因歸於 AI 股賣壓與升息疑慮，沒有歸因於峰會。</p>
+    </div>
+    <div class="stmt" aria-label="宣言">
+      <div class="k">《深圳展望》</div>
+      <div class="range">21<small>經濟體共識</small></div>
+      <div class="was">23 段 · 3 份成果文件 · 全文未提 WTO</div>
+      <div class="stmt-row">
+        <div><div class="v">4 點</div><div class="l">美中俄和平宣言</div></div>
+        <div><div class="v">施振榮</div><div class="l">台灣領袖代表</div></div>
+        <div><div class="v">−17.5%</div><div class="l">台股本週</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>宣言有了、大國合照有了，具體成果很少：8 個重點</h2>
+      <p>懶人包：中國作為主辦國辦成了一份全體同意的宣言，也讓美中俄三位領袖同框；但貿易、晶片、烏克蘭都沒有實質突破。對台灣來說，最值得注意的是中方讀稿中川普「不支持台獨」的說法。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>共識宣言。</b>《深圳展望》以「共建亞太共同體、共享繁榮」為主題，涵蓋貿易投資、連結、創新、經濟成長；外長王毅稱是「APEC 史上最重要的成果」。</div></li>
+      <li><div><b>不提 WTO。</b>宣言全文沒有 WTO、「多邊貿易體系」或「以規則為基礎」的字眼，延續 2025 年慶州的寫法；習近平在企業領袖峰會演講則呼籲維護「以 WTO 為核心」的體制。</div></li>
+      <li><div><b>AI 治理談不攏。</b>中國提出數位經濟與 AI 聲明，川普說美國反對「任何形式的全球主義監管」；宣言只有「以人為本、負責任」的一般用語。</div></li>
+      <li><div><b>川習會沒有新關稅協議。</b>雙方同意制定「戰略穩定的建設性中美關係」行動計畫，但沒有內容與時程；中國經貿關係維持釜山休戰（到 2027/1/10）。</div></li>
+      <li><div><b>台灣被寫進中方讀稿。</b>習近平：美方應「繼續做正確的事，避免重大挫折」；中方讀稿稱川普說「美國不支持台獨」。白宮沒有發布讀稿，美方未證實；陸委會說台灣「不是會談焦點」。</div></li>
+      <li><div><b>史上首次美中俄峰會。</b>11/19 在深圳麒麟山莊，約 70～90 分鐘（說法不一），發表四點宣言：聯合國改革、穩定能源供應、反對濫用司法管轄權、「核戰打不贏也絕不能打」；未提烏克蘭與伊朗。</div></li>
+      <li><div><b>台灣出席。</b>施振榮以領袖代表出席，與習近平握手，說台灣「平等參與」、幾乎與貴賓室所有領袖握手寒暄；美國國務卿盧比歐、商務部長盧特尼克與代表團互動。</div></li>
+      <li><div><b>市場崩跌與峰會無關。</b>11/19～20 台股兩天跌 4,161 點，那斯達克 11/20 −5.28%、輝達 −14%；原因是 AI 股賣壓、聯準會升息預期、路透報導 SEC 審查輝達會計，沒有來源歸因於 APEC。</div></li>
+    </ol>
+    <div class="note">延伸閱讀：<a href="../russia-aircraft-japan-taiwan-2026-11/index.html">俄軍機侵犯日本領空</a>（峰會前夕） · <a href="../jensen-huang-congress-2026-11/index.html">黃仁勳赴國會作證</a></div>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>中國為什麼能辦成一份共識宣言？</h2>
+      <p>第 1～3 點是報導中的事實；第 4 點是本報告分析。</p>
+    </div>
+    <div class="note">比喻：21 位鄰居要一起寫一份社區公約，最大的兩戶為「誰定規則」吵了多年。這次主辦的那戶乾脆把「規則」兩個字拿掉，只寫大家都同意的「要和睦、要通路、要創新」，於是全體簽名；但真正的爭執，留到社區會議外的小房間去談。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>避開爭議字眼</h3><p>2018 年莫士比港因美中對 WTO 改革用語爭執，史上首次沒有發表宣言；這次刪去 WTO 與多邊主義字眼，宣言也不談氣候與淨零，換取全員同意。</p></div><div class="ev"><span class="tag">2018 失敗</span><span class="tag">刪去 WTO</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>主場外交</h3><p>習近平親自到寶安機場迎接川普（報導稱 45～46 年來首見），宣布 2,000 萬美元 APEC 合作資金與深圳亞太共同體研究中心；拉美、東南亞領袖也有雙邊會談。</p></div><div class="ev"><span class="tag">2,000 萬美元</span><span class="tag">主場</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>三方峰會的由來</h3><p>華爾街日報報導，普丁 10/9 與川普通話時提議；白宮 11/13、中國外交部 11/16 確認。川普說「比雅爾達還大」。</p></div><div class="ev"><span class="tag">普丁提議</span><span class="tag">「比雅爾達大」</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>大國各取所需（推論）</h3><p>RUSI 的 Eyal 說普丁「擺脫被孤立的地位」、川普「得到不需要的合照」；中國則展示主辦能力與「大國和平」敘事。小國擔心「大國決定、小國受苦」。</p></div><div class="ev"><span class="tag">大國敘事</span><span class="tag">小國疑慮</span></div></div>
+    </div>
+
+    <div class="sub-h">峰會週時間線</div>
+    <div class="legend"><span><i class="a"></i>峰會與會談</span><span><i class="g"></i>背景</span><span><i></i>市場與後續</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">11-11</div><div class="what">總統府宣布施振榮為領袖代表；國台辦：依一中原則與備忘錄處理。</div></li>
+        <li class="geo"><div class="date">11-16</div><div class="what">美國商務部對新加坡、泰國、馬來西亞、印尼、巴西加強頂級 AI 晶片許可。</div></li>
+        <li class="geo"><div class="date">11-17</div><div class="what">俄軍機侵犯日本領空、進入台灣 ADIZ；川普與高市在馬尼拉會談。</div></li>
+        <li class="key"><div class="date">11-18</div><div class="what">習近平機場迎接川普；習李會、習普會；高市與普丁會談約 30 分鐘；施振榮抵深圳。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">11-19 上午</div><div class="what"><b>領袖會議通過《深圳展望》</b>。</div></li>
+        <li class="key"><div class="date">11-19 下午</div><div class="what"><b>川習會</b>；川普與普丁約 35～40 分鐘；<b>美中俄三方峰會</b>。</div></li>
+        <li><div class="date">11-19</div><div class="what">台股跌 1,768 點；越南接任 2027 主辦（富國島）。</div></li>
+        <li><div class="date">11-20</div><div class="what">台股再跌 2,394 點、輝達 −14%、那斯達克 −5.28%。</div></li>
+        <li><div class="date">11-21</div><div class="what">國安基金罕見週末喊話「已進場護盤」。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 outcomes -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 峰會成果</div>
+      <h2>三份文件、四點宣言、一個「行動計畫」</h2>
+      <p>整理正式文件與讀稿內容；宣言全文為中方發布的最終版。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>場合</th><th>文件／成果</th><th>重點</th><th>沒有的東西</th></tr></thead>
+        <tbody>
+          <tr><td><b>領袖會議</b></td><td>《深圳展望》</td><td>供應鏈韌性、FTAAP 議程、跨境資料流動、APEC AI 倡議（2026～2030）、能源「安全且不中斷」</td><td>WTO、多邊主義、氣候、AI 治理、FTAAP 時程</td></tr>
+          <tr><td><b>領袖會議</b></td><td>三份成果文件</td><td>貿易數位化合作框架（2027～2030）、連結藍圖、數位與新興科技促進就業聲明</td><td>—</td></tr>
+          <tr><td><b>川習會</b></td><td>中方讀稿</td><td>「戰略穩定」行動計畫；AI「始終在人類控制下」；禁毒、遣返、電信詐騙合作</td><td>新關稅協議、晶片與 H200 成果、美方讀稿</td></tr>
+          <tr><td><b>美中俄</b></td><td>《邁向和平宣言》</td><td>聯合國改革、增加成品油供應、反對濫用司法管轄權、「核戰打不贏也絕不能打」</td><td>烏克蘭、伊朗、核武談判時程、白宮文件</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>領袖說了什麼</h3><ul class="plain">
+        <li><b>習近平：</b>「APEC 成員就像同船的乘客」；「當大國和睦相處，世界就和平；大國衝突，世界就動盪。」</li>
+        <li><b>川普：</b>「我們真的在創造歷史」；「零到十分的話，我給 12 分」；有 4,000 枚核武的人「當朋友比當敵人好」。</li>
+        <li><b>普丁：</b>三國「在解決區域衝突上有許多共同利益，顯然包括烏克蘭衝突」；宣言沒有設定宏大目標，沒人會被強迫遵守。</li>
+      </ul></div>
+      <div class="card"><h3>懷疑的聲音</h3><ul class="plain">
+        <li><b>武器管制協會 Kimball：</b>「我們需要的不只是外交表演和合照。」</li>
+        <li><b>RUSI 的 Eyal：</b>「大國決定，小國受苦。」</li>
+        <li><b>中國分析人士：</b>懷疑三方核武協議的可能性。</li>
+        <li><b>馬來西亞安華：</b>「只對你的國家」促進貿易的說法，被解讀為暗批美國。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，白宮未發布川習會讀稿或美中俄宣言文件；「美國不支持台獨」只見於中方讀稿。三方峰會時長各家說法 55～90 分鐘不等。</div>
+  </div>
+</section>
+
+<!-- 04 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股市、匯市與油價</div>
+      <h2>峰會週全球股市重挫，但罪魁是 AI 與升息</h2>
+      <p>下圖是 11/13 到 11/20（峰會週）收盤的累計漲跌，紅漲綠跌依台灣慣例。媒體把下跌歸因於 AI 股賣壓、聯準會可能 12 月升息、路透報導 SEC 審查輝達會計；沒有來源把下跌歸因於 APEC 或台灣相關發言。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/13 → 11/20 收盤累計漲跌幅</p>
+        <p class="chart-sub">%；各市場收盤</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>11/19 −1,768 點（−4.40%）、128 檔跌停；11/20 −2,394 點（−6.23%）、史上第三大收盤跌點，收 36,033 點；一週 −17.5%，1990 年以來最慘。金管會 11/20 起「限空令 2.0」仍擋不住。</li>
+          <li><b>美股：</b>11/20 那斯達克 −5.28%、標普 −3.70%，標普與道瓊進入修正；費半 −10.73%、30 檔全跌。</li>
+          <li><b>輝達：</b>11/20 −14.01% 收 125.53 美元，連 7 天下跌；一週 −22.9%。</li>
+          <li><b>中國與香港：</b>上證一週 −2.77%、恆生 −5.19%，跌幅小於台日韓。</li>
+          <li><b>匯市與油價：</b>人民幣、新台幣波動在 0.3% 內；布蘭特原油約 92 美元，三方宣言的「增加成品油供應」未引發油價波動。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關指標一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>11/20 收盤</th><th>11/19 漲跌</th><th>11/20 漲跌</th><th>11/13 以來</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">36,033.29</td><td class="num down">−4.40%</td><td class="num down">−6.23%</td><td class="period">−17.50%</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,000</td><td class="num down">−3.45%</td><td class="num down">−4.76%</td><td class="period">−14.89%</td></tr>
+          <tr><td class="num">000001</td><td><b>上證指數</b></td><td>陸股</td><td class="num">3,533.79</td><td class="num down">−0.28%</td><td class="num down">−1.23%</td><td class="period">−2.77%</td></tr>
+          <tr><td class="num">^HSI</td><td><b>恆生指數</b></td><td>港股</td><td class="num">22,410.80</td><td class="num down">−1.95%</td><td class="num down">−1.89%</td><td class="period">−5.19%</td></tr>
+          <tr><td class="num">^N225</td><td><b>日經 225</b></td><td>日股</td><td class="num">56,436.65</td><td class="num up">+0.71%</td><td class="num down">−5.06%</td><td class="period">−7.70%</td></tr>
+          <tr><td class="num">^KS11</td><td><b>KOSPI</b></td><td>韓股</td><td class="num">4,869.96</td><td class="num up">+1.39%</td><td class="num down">−5.21%</td><td class="period">−7.95%</td></tr>
+          <tr><td class="num">^GSPC</td><td><b>標普 500</b></td><td>美股</td><td class="num">6,910.39</td><td class="num down">−2.02%</td><td class="num down">−3.70%</td><td class="period">−8.61%</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克</b></td><td>美股</td><td class="num">22,617.73</td><td class="num down">−2.25%</td><td class="num down">−5.28%</td><td class="period">−10.02%</td></tr>
+          <tr><td class="num">NVDA</td><td><b>輝達</b></td><td>美股</td><td class="num">125.53</td><td class="num down">−3.30%</td><td class="num down">−14.01%</td><td class="period">−22.92%</td></tr>
+          <tr><td class="num">CNY=X</td><td><b>美元兌人民幣</b></td><td>匯市</td><td class="num">6.6665</td><td class="num">+0.03%</td><td class="num">−0.02%</td><td class="period">≈持平</td></tr>
+          <tr><td class="num">TWD=X</td><td><b>美元兌新台幣</b></td><td>匯市</td><td class="num">33.03</td><td class="num">+0.06%</td><td class="num">+0.29%</td><td class="period">新台幣小貶</td></tr>
+          <tr><td class="num">BZ=F</td><td><b>布蘭特原油</b></td><td>期貨</td><td class="num">92.57</td><td class="num">+0.03%</td><td class="num">+0.64%</td><td class="period">−3.41%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">價格來源：Yahoo Finance；台股跌點、跌停家數與政策來源：公視、三立、Newtalk、ETtoday；美股來源：CNBC、AP。以上僅說明市場變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>多邊貿易退位、大國外交上場</h2>
+      <p>深圳峰會的意義不在宣言條文，而在它顯示的國際秩序變化。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>貿易規則</h3><ul class="plain small">
+        <li>連續兩年宣言不提 WTO，APEC 從「推動自由貿易規則」轉向「供應鏈韌性與連結」（推論）。</li>
+        <li>FTAAP 仍只是「議程」，沒有時程。</li>
+      </ul></article>
+      <article class="card"><h3>核武與安全</h3><ul class="plain small">
+        <li>新削減戰略武器條約 2026 年 2 月到期後，三方首度共同表態「核戰打不贏」；川普要求新條約納入中國，中國約 600 枚核彈頭、美俄各逾 5,000 枚。</li>
+      </ul></article>
+      <article class="card"><h3>烏克蘭</h3><ul class="plain small">
+        <li>宣言沒提烏克蘭；川普以電話參加柏林與澤倫斯基及 40 多國領袖的會議。日本首相高市與普丁會面，是 2022 年後首次日俄領袖會談。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>維持休戰、慢慢談</h3><ul class="plain small">
+        <li>美中貿易委員會繼續談約 300 億美元商品減稅，2027/1/10 前延長休戰。</li>
+        <li>三方宣言停留在原則，無後續機制。</li>
+      </ul><p class="trig">觸發條件：無重大衝突、川普兌現「很多協議」說法。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 台海措辭升級</div><h3>美方對台說法被進一步推動</h3><ul class="plain small">
+        <li>北京爭取美方從「不支持」改為「反對」台獨，作為貿易讓步交換。</li>
+      </ul><p class="trig">觸發條件：白宮正式文件改變措辭、對台軍售延後。</p></article>
+      <article class="card"><div class="prob">劇本 C · 大國協調常態化</div><h3>美中俄機制化</h3><ul class="plain small">
+        <li>三方建立定期對話，處理核武、能源、烏克蘭。</li>
+      </ul><p class="trig">觸發條件：核風險對話啟動、烏克蘭停火談判。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>白宮</b>：是否發布川習會讀稿，台灣措辭如何寫。</li>
+      <li><b>美中貿易委員會</b>：下次會議與關稅成果。</li>
+      <li><b>2027/1/10</b>：釜山休戰到期。</li>
+      <li><b>聯準會 12 月會議</b>：是否升息，影響本週股市跌勢。</li>
+      <li><b>越南 2027</b>：富國島 APEC 籌備與台灣參與安排。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>AI 晶片與伺服器</h3><span class="tag bad">利空</span></div><p>出口許可擴大到東南亞、AI 治理分歧；峰會無晶片成果。</p><div class="data">美國 11/16 加強 5 國晶片許可</div></article>
+      <article class="card"><div class="top"><h3>跨境電商與物流</h3><span class="tag good">受惠</span></div><p>貿易數位化框架與連結藍圖（推論）。</p><div class="data">貿易數位化合作框架 2027～2030</div></article>
+      <article class="card"><div class="top"><h3>能源</h3><span class="tag">好壞參半</span></div><p>三方承諾增加成品油供應，但油價未反應。</p><div class="data">布蘭特約 92 美元</div></article>
+      <article class="card"><div class="top"><h3>農產品出口</h3><span class="tag">留意</span></div><p>川普要求中國多買美國農產品。</p><div class="data">大豆 2,500 萬噸承諾</div></article>
+      <article class="card"><div class="top"><h3>稀土與關鍵礦產</h3><span class="tag">影響有限</span></div><p>中國出口管制暫停延續到 2027/1/10。</p><div class="data">無新成果</div></article>
+      <article class="card"><div class="top"><h3>綠能</h3><span class="tag bad">利空</span></div><p>宣言未提氣候與淨零（推論）。</p><div class="data">「各經濟體自選能源組合」</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>平等參與、與美方寒暄，但「不支持台獨」被北京寫進讀稿</h2>
+      <p>台灣在這屆峰會有兩條線：施振榮的參與待遇，以及美中領袖會談裡的台灣措辭。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>台灣代表團</h3><ul class="plain">
+        <li><b>人選：</b>前兩屆代表林信義因健康婉拒，總統府 11/11 宣布施振榮（2007 年也曾擔任），隨行有國科會主委吳誠文、國安會副秘書長趙怡翔。</li>
+        <li><b>總統府：</b>發言人郭雅慧要求北京「履行書面保證」，讓台灣以 1991 年備忘錄的完整會員身分，平等、尊嚴、安全地參與。</li>
+        <li><b>待遇：</b>習近平夫婦與施振榮夫婦握手；合照在第二排最左、晚宴在最後一排圓桌（自由時報）；盧比歐、盧特尼克與代表團互動寒暄。</li>
+        <li><b>成果：</b>施振榮說台灣「平等參與」，幾乎與貴賓室所有領袖握手寒暄，與川普互動但未透露內容；與安華、黃循財交流。總統府說三項任務「圓滿達成」。</li>
+      </ul></div>
+      <div class="card"><h3>台灣措辭與兩岸</h3><ul class="plain">
+        <li><b>中方讀稿：</b>習近平要美方「繼續做正確的事」；川普說「美國不支持台獨」。這是美國長期用語，不是北京想要的「反對」。</li>
+        <li><b>美方：</b>白宮沒有讀稿，未證實這段話。</li>
+        <li><b>陸委會：</b>台灣「不是會談焦點」，最多是周邊議題。</li>
+        <li><b>國台辦：</b>依一中原則與 APEC 備忘錄處理台灣參會，「只要按照上述做法，台灣地區可以參會」。</li>
+        <li><b>日本：</b>高市說日本的台灣立場自 1972 年以來沒有改變。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">截至查證時，美方沒有任何文件證實「不支持台獨」的說法；施振榮與川普互動的內容也未公開。「陳建仁被拒」的說法應是 2024 年秘魯 APEC，與本屆無關。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>政府外交</b></td><td><span class="tag">守住參與</span></td><td>平等出席，但需關注美方措辭。</td></tr>
+          <tr><td><b>台股投資人</b></td><td><span class="tag bad">重挫</span></td><td>一週 −17.5%，主因 AI 與升息，非峰會。</td></tr>
+          <tr><td><b>科技業</b></td><td><span class="tag">留意</span></td><td>AI 治理美中分歧、東南亞晶片許可收緊。</td></tr>
+          <tr><td><b>出口業</b></td><td><span class="tag">影響有限</span></td><td>宣言無具體貿易承諾。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>中方說「史上最重要成果」，西方說「外交表演」，台灣看「平等參與」</h2>
+      <p>中國官方強調宣言與大國和平；西方媒體聚焦三方峰會的實質不足與 AI 分歧；台灣媒體追代表團待遇與措辭。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>關鍵內容</th><th>需要注意</th></tr></thead>
+        <tbody>
+          <tr><td>中國外交部、CGTN</td><td>官方</td><td>宣言全文、讀稿</td><td>美方未發讀稿</td></tr>
+          <tr><td>China Briefing</td><td>商業</td><td>無新關稅、釜山休戰</td><td>—</td></tr>
+          <tr><td>Latin Times</td><td>AI</td><td>美中 AI 治理分歧</td><td>—</td></tr>
+          <tr><td>Nikkei Asia、路透</td><td>台灣措辭</td><td>「做正確的事」</td><td>—</td></tr>
+          <tr><td>Outlook India</td><td>台灣</td><td>「美國不支持台獨」</td><td>依中方讀稿</td></tr>
+          <tr><td>The National、TASS</td><td>三方宣言</td><td>全文、普丁說法</td><td>—</td></tr>
+          <tr><td>Business Day、Daily Sabah</td><td>懷疑派</td><td>Kimball、Eyal</td><td>—</td></tr>
+          <tr><td>Focus Taiwan、自由時報</td><td>代表團</td><td>施振榮、座位與合照</td><td>—</td></tr>
+          <tr><td>The Standard</td><td>王毅</td><td>「史上最重要成果」</td><td>中方觀點</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>21 經濟體共識通過《深圳展望》。</li>
+        <li>首次美中俄三方峰會，發表四點宣言。</li>
+        <li>川習會無新關稅協議。</li>
+        <li>施振榮代表台灣出席。</li>
+      </ul></div>
+      <div class="card"><h4>閱讀提醒</h4><ul class="plain small">
+        <li><b>「不支持台獨」：</b>只見於中方讀稿，美方未證實。</li>
+        <li><b>市場：</b>台股與美股重挫不是峰會造成的。</li>
+        <li><b>Tribune India：</b>部分搜尋結果是 2025 年慶州峰會的報導。</li>
+        <li><b>三方宣言：</b>「簽署」或「達成」說法不一，白宮未發布文件。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>三方峰會時長</td><td>1 小時 30 分（維基）</td><td>約 70 分（AP）；約 55 分（半島）</td><td>計時方式</td></tr>
+          <tr><td>機場迎接</td><td>45 年首見</td><td>46 年首見（BBC）</td><td>計算方式</td></tr>
+          <tr><td>11/19 台股跌點排名</td><td>史上第 7 大</td><td>第 6 大（同篇另段）</td><td>報導前後不一</td></tr>
+          <tr><td>11/20 台股</td><td>−6.23%（公視）</td><td>−5.65%（CNBC 盤中）</td><td>盤中與收盤</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下官方文件、報導與市場資料，資料截至 2026 年 11 月 21 日 18:00（台灣時間）。南華早報、衛報、共同社、El Ciudadano 頁面無法讀取；2018 年莫士比港峰會比較為一般背景資料。</p>
+    </div>
+    <div class="src-group">官方文件</div>
+    <ol class="sources">
+      <li><a href="https://news.cgtn.com/news/files/2026_APEC_Leaders'_Shenzhen_Outlook.pdf" target="_blank" rel="noopener">2026 APEC 領袖《深圳展望》宣言全文（PDF）</a></li>
+      <li><a href="https://www.mfa.gov.cn/eng/xw/zyxw/202611/t20261119_12062666.html" target="_blank" rel="noopener">中國外交部 — 習近平領袖會議講話</a></li>
+      <li><a href="https://www.mfa.gov.cn/eng./xw/zyxw/202611/t20261119_12063139.html" target="_blank" rel="noopener">中國外交部 — 川習會讀稿</a></li>
+      <li><a href="https://www.mfa.gov.cn/mfa_eng./xw/zyxw/202611/t20261119_12063224.html" target="_blank" rel="noopener">中國外交部 — 中俄美元首和平宣言</a></li>
+      <li><a href="https://news.cgtn.com/news/2026-11-18/Full-text-Xi-Jinping-addresses-APEC-CEO-Summit-2026-opening-ceremony-1SaxVZDtaTu/p.html" target="_blank" rel="noopener">CGTN — 習近平企業領袖峰會演講全文</a></li>
+      <li><a href="https://tass.com/politics/2221037" target="_blank" rel="noopener">TASS — 克宮：川普普丁會談</a></li>
+    </ol>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources" start="7">
+      <li><a href="https://www.china-briefing.com/news/apec-2026-in-shenzhen-what-the-leaders-meeting-and-trump-xi-talks-mean-for-business/" target="_blank" rel="noopener">China Briefing — 峰會對企業的意義</a></li>
+      <li><a href="https://www.latintimes.com/apec-shenzhen-declaration-us-china-ai-governance-601553" target="_blank" rel="noopener">Latin Times — 美中 AI 分歧</a></li>
+      <li><a href="https://www.reuters.com/world/china/chinas-xi-says-us-should-do-right-thing-taiwan-avoid-setbacks-relations-2026-11-19/" target="_blank" rel="noopener">路透 — 習近平：美方應在台灣問題上做正確的事</a></li>
+      <li><a href="https://asia.nikkei.com/politics/international-relations/apec/xi-tells-trump-to-do-right-thing-on-taiwan-as-trade-truce-remains-in-flux" target="_blank" rel="noopener">Nikkei Asia — 習近平對川普談台灣</a></li>
+      <li><a href="https://www.outlookindia.com/international/taiwan-donald-trump-xi-jinping-vladimir-putin-talks-china-taiwan-issue-us-china-relations-apec-2026" target="_blank" rel="noopener">Outlook India — 「美國不支持台獨」</a></li>
+      <li><a href="https://www.thenationalnews.com/news/mena/2026/11/19/nuclear-war-cannot-be-won-full-text-of-china-russia-and-us-peace-declaration/" target="_blank" rel="noopener">The National — 三方宣言全文</a></li>
+      <li><a href="https://www.businessday.co.za/world/americas/2026-11-19-xi-trump-and-putin-pledge-nuclear-restraint-and-un-reform/" target="_blank" rel="noopener">Business Day — 三方承諾核克制與聯合國改革</a></li>
+      <li><a href="https://www.dailysabah.com/world/asia-pacific/trump-xi-putin-end-historic-trilateral-with-peace-declaration/amp" target="_blank" rel="noopener">Daily Sabah — 三方峰會</a></li>
+      <li><a href="https://www.al-monitor.com/originals/2026/11/us-china-can-help-end-ukraine-war-trump-tells-xi-trilateral-putin" target="_blank" rel="noopener">Al-Monitor — 烏克蘭與三方峰會</a></li>
+      <li><a href="https://www.thestandard.com.hk/china/article/349061/Chinese-Foreign-Minister-hails-Shenzhen-Outlook-as-milestone-as-APEC-summit-concludes" target="_blank" rel="noopener">The Standard — 王毅：史上最重要成果</a></li>
+      <li><a href="https://www.malaymail.com/news/world/2026/11/19/japan-pm-takaichi-speaks-with-putin-on-sidelines-of-apec-summit-in-shenzhen/243829" target="_blank" rel="noopener">Malay Mail — 高市與普丁會談</a></li>
+      <li><a href="https://www.koreatimes.co.kr/foreignaffairs/20261118/lee-asks-xis-constructive-role-over-korean-peninsula-issues" target="_blank" rel="noopener">Korea Times — 習李會</a></li>
+      <li><a href="https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/19/vietnam-officially-takes-over-as-apec-2027-host" target="_blank" rel="noopener">The Star — 越南接任 2027 主辦</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/APEC_China_2026" target="_blank" rel="noopener">維基百科 — APEC China 2026</a></li>
+      <li><a href="https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC — 美股 11/20 收盤</a></li>
+      <li><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262316111-nasdaq-falls-ai-stock-selloff-nvidia-sec-probe-tradingkey" target="_blank" rel="noopener">TradingKey — 那斯達克重挫與 SEC 審查</a></li>
+    </ol>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources" start="23">
+      <li><a href="https://focustaiwan.tw/business/202611110022" target="_blank" rel="noopener">Focus Taiwan — 施振榮任領袖代表（11/11）</a></li>
+      <li><a href="https://focustaiwan.tw/politics/202611190024" target="_blank" rel="noopener">Focus Taiwan — 施振榮返國（11/19）</a></li>
+      <li><a href="https://news.ltn.com.tw/news/politics/breakingnews/5645365" target="_blank" rel="noopener">自由時報 — 施振榮抵深圳（11/18）</a></li>
+      <li><a href="https://news.ltn.com.tw/news/politics/paper/1779067" target="_blank" rel="noopener">自由時報 — 合照與座位（11/19）</a></li>
+      <li><a href="https://udn.com/news/story/6656/9889558" target="_blank" rel="noopener">聯合報 — 總統府：任務圓滿達成（11/19）</a></li>
+      <li><a href="https://news.bjd.com.cn/2026/11/11/12026370.shtml" target="_blank" rel="noopener">北京日報 — 國台辦說明（11/11）</a></li>
+      <li><a href="https://news.pts.org.tw/article/836653" target="_blank" rel="noopener">公視 — 台股跌 2,393 點史上第三大（11/20）</a></li>
+      <li><a href="https://www.mirrormedia.mg/external/setn_1941378" target="_blank" rel="noopener">三立 — 台股 11/19 收盤</a></li>
+      <li><a href="https://finance.ettoday.net/news/3276094" target="_blank" rel="noopener">ETtoday — 國安基金週末喊話（11/21）</a></li>
+    </ol>
+    <div class="src-group">市場資料</div>
+    <ol class="sources" start="32">
+      <li><a href="https://finance.yahoo.com/quote/%5ETWII/history/" target="_blank" rel="noopener">Yahoo Finance — 加權指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/000001.SS/history/" target="_blank" rel="noopener">Yahoo Finance — 上證指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EHSI/history/" target="_blank" rel="noopener">Yahoo Finance — 恆生指數</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener">Yahoo Finance — 那斯達克</a></li>
+      <li><a href="https://finance.yahoo.com/quote/NVDA/history/" target="_blank" rel="noopener">Yahoo Finance — 輝達</a></li>
+      <li><a href="https://finance.yahoo.com/quote/BZ=F/history/" target="_blank" rel="noopener">Yahoo Finance — 布蘭特原油</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；「美國不支持台獨」只見於中方讀稿，美方未證實。標示「推論」的內容為分析判斷。市場數據僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 21 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'加權指數', s:'36,033.29', v:-17.50},
+    {l:'台積電', s:'2330 · 2,000', v:-14.89},
+    {l:'上證指數', s:'3,533.79', v:-2.77},
+    {l:'恆生指數', s:'22,410.80', v:-5.19},
+    {l:'日經 225', s:'56,436.65', v:-7.70},
+    {l:'KOSPI', s:'4,869.96', v:-7.95},
+    {l:'標普 500', s:'6,910.39', v:-8.61},
+    {l:'那斯達克', s:'22,617.73', v:-10.02},
+    {l:'輝達', s:'NVDA · 125.53', v:-22.92},
+    {l:'布蘭特原油', s:'92.57', v:-3.41}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
