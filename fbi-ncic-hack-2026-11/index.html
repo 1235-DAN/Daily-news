@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FBI 犯罪資料庫遭駭</title>
+<meta name="description" content="2026 年 11 月美國 FBI 國家犯罪資訊中心（NCIC）疑遭駭：NCIC 是什麼、已知與未知、竄改與外洩風險、川普與官員說法、FBI 接連遭駭、資安股與對台灣的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#local">美國影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">資安解讀 · 美國執法 · 資料截至 2026 年 11 月 23 日 18:00（台灣時間）</p>
+      <h1>全美警察每天查 1,100 萬次的資料庫被駭：FBI 國家犯罪資訊中心疑遭入侵，至今未證實</h1>
+      <p class="lede">CNN、福斯、美聯社、ABC 都引述匿名人士報導，美國聯邦調查局（FBI）的國家犯罪資訊中心（NCIC）疑似遭駭；FBI 官員 11 月 19 日得知，CNN 20 日首報。NCIC 是全美 10 萬多個執法單位用來查通緝令、犯罪紀錄、失蹤人口、保護令、性犯罪者登記的系統，每天約 1,100 萬筆查詢。入侵方式、攻擊者、資料是否被竊或竄改都未公布，FBI 拒絕評論。川普說「這不好，我不喜歡」，但又說「也許我們會知道以前不知道的事」。這是 FBI 幾個月內第二次被駭，也是同一週美國政府系統接連出事的其中一起。</p>
+    </div>
+    <div class="stmt" aria-label="每日查詢量">
+      <div class="k">NCIC 每日交易量</div>
+      <div class="range">≈1,100<small>萬筆</small></div>
+      <div class="was">逾 1,800 萬筆有效紀錄 · 10 萬多個執法夥伴</div>
+      <div class="stmt-row">
+        <div><div class="v">11/19</div><div class="l">FBI 得知</div></div>
+        <div><div class="v">0</div><div class="l">FBI 公開聲明</div></div>
+        <div><div class="v">第 2 次</div><div class="l">FBI 數月內遭駭</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>最怕的不是被偷看，而是被改掉：8 個重點</h2>
+      <p>懶人包：美國警察攔車、抓人、做槍枝背景審查都要查 NCIC。如果資料被偷，受害人與證人資訊可能曝光；如果資料被改，可能讓通緝犯脫身或讓無辜者被抓。目前一切都還是「疑似」。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>疑似入侵。</b>CNN 引述兩名知情人士：FBI 正在調查 NCIC 遭入侵；福斯引述三名消息人士說正在找「未經授權的入口」；美聯社與 ABC 各有一名匿名執法人士證實。</div></li>
+      <li><div><b>FBI 不評論。</b>截至 11/23，FBI 沒有發布任何聲明；局長派特爾未就此發言。</div></li>
+      <li><div><b>NCIC 有多大。</b>1967 年成立，22 個檔案、逾 1,800 萬筆有效紀錄，2023 財年每天約 1,100 萬筆交易，服務 10 萬多個刑事司法與執法夥伴。</div></li>
+      <li><div><b>什麼都不知道。</b>何時開始入侵、從哪裡進來、誰做的、資料是否被複製或竄改，全部未公布；也沒有組織宣稱犯案。</div></li>
+      <li><div><b>川普的反應。</b>「我們剛聽說，我得說這不好，我不喜歡。」又說「也許我們會知道以前不知道的事」，並暗示可能揭露「通俄調查」，ABC 指出 NCIC 不會有這類資料。</div></li>
+      <li><div><b>國家情報總監：</b>Clayton 說 FBI「正在調查，會找出來源、範圍」，升級過程中預期會有「顛簸」。</div></li>
+      <li><div><b>FBI 接連出事。</b>9 月 ShinyHunters 駭進 FBI 求職網站、聲稱取得約 3.8 萬名員工資料；3 月與中國有關的入侵碰觸監聽系統。</div></li>
+      <li><div><b>同週多起事故。</b>微軟 Outlook 當機、FAA 全國停飛、國安局網路、銀行網銀、農業部系統；官方說多數是更新或人為錯誤，與 NCIC 沒有已知關聯。白宮國家網路總監 11/20 換人。</div></li>
+    </ol>
+    <div class="note">延伸閱讀：<a href="../us-faa-ground-stop-2026-11/index.html">美國航管大當機</a> · <a href="../taiwan-boca-photo-leak-2026-11/index.html">領務局護照大頭照外洩</a></div>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼 NCIC 是駭客最想進的系統之一？</h2>
+      <p>第 1、2 點是報導中的事實；第 3、4 點是專家看法與本報告分析。入侵原因尚未公布。</p>
+    </div>
+    <div class="note">比喻：NCIC 像全美警察共用的「黑名單電話簿」，警察攔下一個人，第一件事就是翻這本簿子。小偷偷看簿子，可能知道誰是證人、誰申請了保護令；更可怕的是偷偷改掉幾頁，讓通緝犯消失、讓好人變成通緝犯。</div>
+    <div style="margin-top:12px">
+      <div class="reason"><div class="n">1</div><div><h3>資料極度敏感</h3><p>14 個人員檔案（通緝、失蹤、外國逃犯、移民違規、保護令、幫派、恐怖分子觀察名單、性犯罪者登記、槍枝購買被拒等）與 7 個財物檔案（槍枝、車輛、車牌、證券等）。</p></div><div class="ev"><span class="tag">22 個檔案</span><span class="tag">1,800 萬筆</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>入口很多</h3><p>地方警局透過州級控制單位連線，在 FBI 刑事司法資訊服務部（CJIS）安全政策下運作；10 萬多個使用單位，代表有很多潛在入口（一般背景資料，報導未說明本案入口）。</p></div><div class="ev"><span class="tag">CJIS</span><span class="tag">州級連線</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>舊系統與人力</h3><p>國家情報總監 Clayton 說數位基礎設施「日益過時、需要升級」；民主黨議員批評川普政府「削弱了 CISA」；國土安全部長穆林說 CISA「沒有漏掉任何任務」。</p></div><div class="ev"><span class="tag">老舊</span><span class="tag">CISA 人力</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>AI 掃描與攻擊潮（推論）</h3><p>同期日本、台灣領務局外洩案都出現 AI 掃描找漏洞的說法；10 月 PHP、11/17 Java 漏洞被揭露。NCIC 是否與這波攻擊有關，沒有任何證據。</p></div><div class="ev"><span class="tag">AI</span><span class="tag">無證據</span></div></div>
+    </div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>NCIC 事件</span><span><i class="g"></i>FBI 先前事件</span><span><i></i>同週其他事故</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-03</div><div class="what">與中國有關的入侵碰觸 FBI 監聽回傳系統，經網路業者的供應商入侵，被列為「重大事件」。</div></li>
+        <li class="geo"><div class="date">2026-09-22</div><div class="what">ShinyHunters 駭進 FBIJobs.gov，聲稱取得約 3.8 萬人資料；10/8～9 逮捕嫌犯。</div></li>
+        <li><div class="date">11-12～13</div><div class="what">微軟 Outlook 當機 36 小時；FAA 全國停飛。</div></li>
+        <li><div class="date">11-18</div><div class="what">眾院國土安全威脅聽證，派特爾缺席；副局長 Raia：多起事故「沒有任何惡意網路活動跡象」。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">11-19</div><div class="what"><b>FBI 官員得知 NCIC 遭入侵</b>（CNN）。</div></li>
+        <li class="key"><div class="date">11-20</div><div class="what"><b>CNN 首報</b>；白宮國家網路總監換人。</div></li>
+        <li class="key"><div class="date">11-21</div><div class="what">川普在福斯電話訪問回應；美聯社、ABC 證實；FBI 拒絕評論。</div></li>
+        <li><div class="date">11-22</div><div class="what">國家情報總監 Clayton：FBI 正在查來源與範圍。</div></li>
+        <li><div class="date">11-23</div><div class="what">截至查證時無官方更新。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 對美國的影響</div>
+      <h2>警察還能相信查到的資料嗎？</h2>
+      <p>目前沒有執法單位失去 NCIC 存取的報導；但資料完整性的疑慮，已經影響執法信任。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">成立</div><div class="v">1967</div><div class="d">胡佛時代</div></div>
+      <div class="tile"><div class="l">檔案數</div><div class="v">22</div><div class="d">14 人員、7 財物（維基 21）</div></div>
+      <div class="tile"><div class="l">有效紀錄</div><div class="v">1,800 萬+</div><div class="d">2023 年</div></div>
+      <div class="tile"><div class="l">執法夥伴</div><div class="v">10 萬+</div><div class="d">聯邦、州、地方</div></div>
+      <div class="tile"><div class="l">失蹤人口紀錄</div><div class="v">8.8 萬</div><div class="d">有效，2025 年底</div></div>
+      <div class="tile"><div class="l">2025 年新增失蹤</div><div class="v">近 50 萬</div><div class="d">FBI 數據</div></div>
+      <div class="tile"><div class="l">資料是否被竊</div><div class="v">未知</div><div class="d">截至 11/23</div></div>
+      <div class="tile"><div class="l">攻擊者</div><div class="v">未知</div><div class="d">無人宣稱</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>可能的風險（專家分析）</h3><ul class="plain">
+        <li><b>竄改紀錄：</b>刪掉通緝令可能放走通緝犯，假造通緝令可能讓無辜者被拘留（HNGN、Shattered）。</li>
+        <li><b>外洩：</b>保護令（含家暴受害者）、性犯罪者登記、失蹤人口、幫派與恐怖分子觀察名單。</li>
+        <li><b>準確性：</b>前 FBI 督導 Pack：「警察需要知道，查 NCIC 回來的資訊是正確的。」</li>
+        <li><b>規則：</b>FBI 規定 NCIC 查到「不足以構成逮捕的相當理由」，須向原登錄單位確認，但前提是原單位的紀錄沒被動過。</li>
+      </ul></div>
+      <div class="card"><h3>政治反應</h3><ul class="plain">
+        <li><b>川普：</b>「我總是喜歡往正面想」，要大家「放輕鬆」；「如果能知道通俄、通俄、通俄的事不是很好嗎」。</li>
+        <li><b>眾議員 LaLota（共和黨）：</b>「只是巧合嗎？我們在對付伊朗、中國越來越強硬、俄烏戰爭時，一週出五件事？」</li>
+        <li><b>參議員 Warner（民主黨）：</b>人力刪減「削弱了我們應對這種時刻所需的專業」。</li>
+        <li><b>國會調查：</b>截至查證時未宣布聽證。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">所有入侵細節都來自匿名人士，FBI 未證實。「正面看待」「放輕鬆」等川普說法只見於法新社與半島電視台轉述。維基百科寫「11/21 遭攻擊」與報導時間不符。</div>
+  </div>
+</section>
+
+<!-- 04 stocks -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 股價與市場反應</div>
+      <h2>消息在週五收盤後傳出，資安股還沒反應</h2>
+      <p>CNN 11/20（週五）晚間首報，美股已收盤，接著是週末；11/20 資安股的下跌是跟著 AI 股大跌。下圖是 11/13 到 11/20 收盤的累計漲跌，紅漲綠跌依台灣慣例。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/13 → 11/20 收盤累計漲跌幅</p>
+        <p class="chart-sub">%；美股收盤（NCIC 消息在 11/20 收盤後）</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各市場怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>11/19 資安股大漲：</b>Palo Alto 上修全年營收預測，股價漲 6.42%、市值增加逾 180 億美元，帶動 CrowdStrike 等族群（路透）。</li>
+          <li><b>11/20 回落：</b>CrowdStrike −5.76%、Palo Alto −5.09%、Fortinet −5.25%、資安 ETF −5.12%，與大盤同步；標普 −3.70%。</li>
+          <li><b>11/23 盤前：</b>Palo Alto +2.89%、Fortinet +3.38%、CIBR +3.90%，CrowdStrike −3.24%；未見報導歸因於 NCIC。</li>
+          <li><b>長期（推論）：</b>聯邦政府系統接連出事，可能推升政府資安與系統更新支出。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>11/20 收盤</th><th>11/20 漲跌</th><th>11/13 以來</th><th>與此事的關聯</th></tr></thead>
+        <tbody>
+          <tr><td class="num">PANW</td><td><b>Palo Alto</b></td><td>美股</td><td class="num">343.32</td><td class="num down">−5.09%</td><td class="period">+6.54%</td><td>11/19 上修財測</td></tr>
+          <tr><td class="num">CRWD</td><td><b>CrowdStrike</b></td><td>美股</td><td class="num">229.44</td><td class="num down">−5.76%</td><td class="period">+1.25%</td><td>端點資安</td></tr>
+          <tr><td class="num">FTNT</td><td><b>Fortinet</b></td><td>美股</td><td class="num">124.56</td><td class="num down">−5.25%</td><td class="period">−2.09%</td><td>網路資安</td></tr>
+          <tr><td class="num">CIBR</td><td><b>資安 ETF</b></td><td>美股</td><td class="num">91.43</td><td class="num down">−5.12%</td><td class="period">−3.80%</td><td>資安產業</td></tr>
+          <tr class="hl"><td class="num">^GSPC</td><td><b>標普 500</b></td><td>美股指數</td><td class="num">6,910.39</td><td class="num down">−3.70%</td><td class="period">−8.61%</td><td>大盤</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">收盤價來源：Yahoo Finance；Palo Alto 財測來源：路透。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 05 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 對世界的影響</div>
+      <h2>政府資料庫成為全球攻擊目標</h2>
+      <p>從日本企業外洩潮、台灣領務局，到美國 FBI，2026 年秋天政府與關鍵系統接連出事。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>國際執法合作</h3><ul class="plain small">
+        <li>NCIC 有外國逃犯檔案；資料若外洩或被竄改，跨國通緝與引渡也可能受影響（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>同期亞洲事件</h3><ul class="plain small">
+        <li>台灣領務局 11/4 發現遭駭、7.27 萬張護照大頭照外洩；日本今年前 9 個月 600 起攻擊、Nitori 最多 3,762 萬筆；沒有證據與 NCIC 有關。</li>
+      </ul></article>
+      <article class="card"><h3>國家級攻擊的陰影</h3><ul class="plain small">
+        <li>2024～25 年中國「鹽颱風」入侵美國電信商與合法監聽系統；今年 3 月與中國有關的入侵碰觸 FBI 監聽系統。NCIC 目前無歸因。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依目前報導整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 有限入侵</div><h3>未竊取大量資料</h3><ul class="plain small">
+        <li>FBI 確認入侵範圍有限、紀錄未被竄改，加強存取控管。</li>
+      </ul><p class="trig">觸發條件：鑑識結果、無資料外流。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 重大外洩</div><h3>資料被竊或竄改</h3><ul class="plain small">
+        <li>受害者與證人資訊外洩、紀錄需全面核對，國會聽證與問責。</li>
+      </ul><p class="trig">觸發條件：資料在暗網出現、發現竄改。</p></article>
+      <article class="card"><div class="prob">劇本 C · 國家級攻擊</div><h3>歸因於外國政府</h3><ul class="plain small">
+        <li>若證實是國家行為者，美方可能制裁或反制。</li>
+      </ul><p class="trig">觸發條件：情報單位公開歸因。</p></article>
+    </div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>FBI 正式聲明</b>：入口、範圍、是否竄改。</li>
+      <li><b>國會</b>：是否舉行聽證、要求派特爾說明。</li>
+      <li><b>各州執法單位</b>：是否收到新指引或暫停查詢。</li>
+      <li><b>駭客聲明</b>：是否有組織宣稱犯案或兜售資料。</li>
+      <li><b>新任國家網路總監</b>：政策方向。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 各產業影響</div>
+      <h2>誰受傷、誰受惠</h2>
+      <p>標籤為中長期方向判斷；卡片下方是實際數據。標註「推論」的是本報告的分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>政府資安服務</h3><span class="tag good">受惠</span></div><p>聯邦系統更新與監控需求（推論）。</p><div class="data">Palo Alto 上修財測</div></article>
+      <article class="card"><div class="top"><h3>執法科技</h3><span class="tag">好壞參半</span></div><p>系統更換需求增加，但現有供應商受檢視。</p><div class="data">NCIC 2000 架構</div></article>
+      <article class="card"><div class="top"><h3>背景審查業</h3><span class="tag bad">留意</span></div><p>槍枝與就業背景審查依賴 NCIC。</p><div class="data">每日約 1,100 萬筆交易</div></article>
+      <article class="card"><div class="top"><h3>身分驗證</h3><span class="tag good">受惠</span></div><p>零信任與多因素登入需求（推論）。</p><div class="data">10 萬多個存取單位</div></article>
+      <article class="card"><div class="top"><h3>系統整合商</h3><span class="tag bad">留意</span></div><p>FBI 求職網站案即是承包商未修補漏洞。</p><div class="data">Oracle PeopleSoft 漏洞</div></article>
+      <article class="card"><div class="top"><h3>資安保險</h3><span class="tag">留意</span></div><p>政府與關鍵基礎設施風險重估（推論）。</p><div class="data">同週多起事故</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 對台灣的影響</div>
+      <h2>台灣人的資料在不在 NCIC？多數人不在，但有幾種情況要留意</h2>
+      <p>NCIC 主要記錄在美國有通緝、犯罪紀錄、失蹤、保護令或移民違規等紀錄的人；一般赴美旅客的資料不在其中。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>台灣媒體：</b>TVBS、世界日報、新唐人、大紀元、星島等報導，TVBS 以「FBI 遭駭川普反叫好」為標題。</li>
+        <li><b>台美合作：</b>台灣 2012 年 11 月加入美國免簽計畫，需簽資訊分享協議；2025 年 8 月台美簽署毒品情資合作備忘錄。</li>
+        <li><b>政府回應：</b>截至查證時未見台灣政府評論。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>在美台灣人：</b>若曾申請保護令、報案或有移民相關紀錄，資料可能在 NCIC 中。</li>
+        <li><b>跨國詐騙：</b>外洩資料可能被用於冒充執法單位的詐騙，接到自稱 FBI 的電話要查證。</li>
+        <li><b>台灣借鏡：</b>台灣也有警政與戶政資料庫，委外與存取控管是共同課題（見本站領務局報告）。</li>
+      </ul></div>
+    </div>
+    <div class="note warn">台美是否有「防止及打擊重大犯罪合作協議」（PCSC）並已生效，本報告未能查證；免簽計畫的資訊分享範圍以官方說明為準。</div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>一般赴美旅客</b></td><td><span class="tag good">影響低</span></td><td>多數人不在 NCIC。</td></tr>
+          <tr><td><b>在美台灣人</b></td><td><span class="tag">留意</span></td><td>保護令、報案紀錄等可能在內。</td></tr>
+          <tr><td><b>資安業者</b></td><td><span class="tag good">借鏡</span></td><td>政府系統防護需求。</td></tr>
+          <tr><td><b>政府</b></td><td><span class="tag">檢視</span></td><td>台美資料交換的安全性（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 09 media comparison -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 新聞重點比較</div>
+      <h2>全部匿名，但政治解讀已經開打</h2>
+      <p>主流媒體都靠匿名來源；右派媒體列出同週多起事故質疑「巧合」；川普把焦點拉到通俄調查。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>關鍵內容</th><th>需要注意</th></tr></thead>
+        <tbody>
+          <tr><td>CNN</td><td>首報</td><td>兩名知情人士；11/19 得知</td><td>原文無法讀取</td></tr>
+          <tr><td>福斯</td><td>調查</td><td>三名消息人士；找入口</td><td>—</td></tr>
+          <tr><td>美聯社（PBS）</td><td>證實</td><td>一名匿名人士；範圍不明</td><td>—</td></tr>
+          <tr><td>ABC</td><td>川普</td><td>「這不好」、NCIC 不含通俄資料</td><td>—</td></tr>
+          <tr><td>法新社（ABC 澳洲）</td><td>川普</td><td>「正面想」「放輕鬆」</td><td>僅此來源</td></tr>
+          <tr><td>半島電視台</td><td>脈絡</td><td>派特爾缺席聽證、前次入侵</td><td>—</td></tr>
+          <tr><td>Daily Caller、Townhall</td><td>巧合論</td><td>同週多起事故</td><td>立場偏右</td></tr>
+          <tr><td>HNGN</td><td>NCIC 規模</td><td>1,800 萬筆、1,100 萬筆／日</td><td>—</td></tr>
+          <tr><td>TVBS</td><td>台灣</td><td>「川普反叫好」</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>FBI 正在調查 NCIC 疑似遭入侵。</li>
+        <li>FBI 拒絕評論。</li>
+        <li>入侵範圍不明。</li>
+        <li>幾個月內第二次 FBI 被駭。</li>
+      </ul></div>
+      <div class="card"><h4>閱讀提醒</h4><ul class="plain small">
+        <li><b>「確認被駭」：</b>都是匿名來源，FBI 未證實。</li>
+        <li><b>同週事故：</b>官方說多是更新或人為錯誤，沒有證據彼此相關。</li>
+        <li><b>通俄說法：</b>川普的推測，NCIC 不存這類資料。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>檔案數</td><td>22 個（FBI 數據，HNGN）</td><td>21 個（維基）</td><td>版本不同</td></tr>
+          <tr><td>入侵日期</td><td>11/19 得知（CNN）</td><td>11/21 遭攻擊（維基）</td><td>維基有誤</td></tr>
+          <tr><td>派特爾受訪日</td><td>週四（路透）</td><td>週五（Daily Beast）</td><td>報導不一</td></tr>
+          <tr><td>新任網路總監公布</td><td>11/19（世界日報）</td><td>11/20 換人（Daily Caller）</td><td>宣布與生效</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下報導與市場資料，資料截至 2026 年 11 月 23 日 18:00（台灣時間）。CNN、BleepingComputer、Axios 頁面無法讀取；NCIC 存取方式與 2021 年、鹽颱風事件為一般背景資料。</p>
+    </div>
+    <div class="src-group">國際媒體</div>
+    <ol class="sources">
+      <li><a href="https://www.cnbc.com/2026/11/21/fbis-criminal-information-database-hacked-cnn-reports.html" target="_blank" rel="noopener">CNBC（路透）— FBI 犯罪資料庫遭駭（11/21）</a></li>
+      <li><a href="https://abcnews.com/US/fbis-national-crime-database-targeted-hack-trump/story?id=138347810" target="_blank" rel="noopener">ABC — 川普：這不好（11/21）</a></li>
+      <li><a href="https://www.foxnews.com/politics/fbi-probes-second-cyberattack-months-hackers-breach-key-crime-database-sources-say" target="_blank" rel="noopener">福斯 — FBI 調查第二次入侵（11/21）</a></li>
+      <li><a href="https://www.pbs.org/newshour/politics/ap-source-fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database" target="_blank" rel="noopener">PBS（AP）— FBI 調查 NCIC（11/21）</a></li>
+      <li><a href="https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports" target="_blank" rel="noopener">半島電視台 — NCIC 疑遭入侵（11/21）</a></li>
+      <li><a href="https://www.abc.net.au/news/2026-11-22/fbi-database-hacked-according-to-media-outlets/107413682" target="_blank" rel="noopener">ABC 澳洲（法新社）— 川普「正面想」（11/22）</a></li>
+      <li><a href="https://www.wbaltv.com/article/fbi-suspected-hack-national-crime-database-ap-reports/74500671" target="_blank" rel="noopener">WBAL（AP）— 國家情報總監說法（11/22）</a></li>
+      <li><a href="https://www.hngn.com/articles/273932/20261122/fbi-probes-hack-national-crime-database-used-police.htm" target="_blank" rel="noopener">HNGN — NCIC 規模與風險（11/22）</a></li>
+      <li><a href="https://shattered.io/fbi-ncic-hack-six-record-types-integrity-risk-cause-unknown/" target="_blank" rel="noopener">Shattered — 資料完整性風險</a></li>
+      <li><a href="https://dailycaller.com/2026/11/21/national-crime-database-hack-federal-bureau-investigation-probe-cyberattack/" target="_blank" rel="noopener">Daily Caller — 同週事故時間線</a></li>
+      <li><a href="https://townhall.com/news/frank-camp/2026/11/21/fbi-database-hacked-trump-confirms-i-will-say-that-its-not-good-n2686855" target="_blank" rel="noopener">Townhall — NCIC 內容</a></li>
+      <li><a href="https://cybersecuritydive.com/news/technology-outages-cyberattacks-ai-house-hearing/875148" target="_blank" rel="noopener">Cybersecurity Dive — 眾院威脅聽證（11/18）</a></li>
+      <li><a href="https://www.jpost.com/international/article-915620" target="_blank" rel="noopener">Jerusalem Post（路透）— 派特爾受訪</a></li>
+      <li><a href="https://www.foxnews.com/politics/fbi-notified-congress-last-week-china-linked-hack-deemed-major-incident" target="_blank" rel="noopener">福斯 — 3 月中國相關入侵</a></li>
+      <li><a href="https://www.opb.org/article/2026/09/30/fbi-hunting-the-hackers-who-stole-its-employees-sensitive-data/" target="_blank" rel="noopener">OPB — 9 月 FBI 求職網站遭駭</a></li>
+      <li><a href="https://whbl.com/2026/11/19/palo-altos-raised-sales-forecast-powers-cybersecurity-stock-rally/" target="_blank" rel="noopener">路透（WHBL）— Palo Alto 帶動資安股（11/19）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/National_Crime_Information_Center" target="_blank" rel="noopener">維基百科 — NCIC</a></li>
+    </ol>
+    <div class="src-group">台灣／中文媒體</div>
+    <ol class="sources" start="18">
+      <li><a href="https://news.tvbs.com.tw/world/4054185" target="_blank" rel="noopener">TVBS — FBI 遭駭川普「反叫好」（11/22）</a></li>
+      <li><a href="https://www.worldjournal.com/wj/story/124279/9894551" target="_blank" rel="noopener">世界日報（11/22）</a></li>
+      <li><a href="https://www.singtaousa.com/2026/11/22/news/usa/fbi-hacking-national-database/" target="_blank" rel="noopener">星島（11/22）</a></li>
+      <li><a href="https://focustaiwan.tw/politics/202508210015" target="_blank" rel="noopener">Focus Taiwan — 台美毒品情資備忘錄（2025/8）</a></li>
+      <li><a href="../taiwan-boca-photo-leak-2026-11/index.html">本站 — 領務局護照大頭照外洩</a></li>
+    </ol>
+    <div class="src-group">股價資料</div>
+    <ol class="sources" start="23">
+      <li><a href="https://finance.yahoo.com/quote/PANW/history/" target="_blank" rel="noopener">Yahoo Finance — Palo Alto</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CRWD/history/" target="_blank" rel="noopener">Yahoo Finance — CrowdStrike</a></li>
+      <li><a href="https://finance.yahoo.com/quote/FTNT/history/" target="_blank" rel="noopener">Yahoo Finance — Fortinet</a></li>
+      <li><a href="https://finance.yahoo.com/quote/CIBR/history/" target="_blank" rel="noopener">Yahoo Finance — CIBR</a></li>
+      <li><a href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">Yahoo Finance — 標普 500</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；入侵細節均來自匿名人士，FBI 未證實。標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 23 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+  var STOCKS = [
+    {l:'Palo Alto', s:'PANW · 343.32', v:6.54},
+    {l:'CrowdStrike', s:'CRWD · 229.44', v:1.25},
+    {l:'Fortinet', s:'FTNT · 124.56', v:-2.09},
+    {l:'資安 ETF', s:'CIBR · 91.43', v:-3.80},
+    {l:'標普 500', s:'6,910.39', v:-8.61}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
