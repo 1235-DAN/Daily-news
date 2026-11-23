@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>施羅德 2027 預測解讀</title>
+<meta name="description" content="施羅德 2026 年 11 月 23 日發布的 2027 全球投資十大預測解讀：十項做多逐條白話說明、為何在台股暴跌後仍看好台灣、股債相關性轉正與多元配置、相關市場位置，以及對台灣投資人的意義。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#2a78d6;
+  --accent-ink:#1f62b3;
+  --accent-wash:rgba(42,120,214,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0f1115;
+  --hero-ink:#f5f4f0;
+  --hero-ink-2:#a9a8a2;
+  --hero-accent:#7fb2f0;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#141518;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#7fb2f0; --accent-wash:rgba(57,135,229,.15);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#141518;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#ten">十大預測</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">市場位置</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">投資展望解讀 · 2027 年預測 · 資料截至 2026 年 11 月 23 日 18:00（台灣時間）</p>
+      <h1>施羅德 2027 十大預測：台股是新興市場首選，但「股債各半」的時代要結束了</h1>
+      <p class="lede">英國資產管理公司施羅德（Schroders）11 月 23 日發布 2027 年全球投資十大預測，亞洲多元資產團隊主管近藤敬子來台說明。十項全是「做多」：美股、相對新興市場的台股、醫療保健、歐日銀行股、可轉債與非投資等級債、證券化信用、新興市場當地貨幣債、相對原油的工業金屬、避險基金與實質資產。發布時點很特別——台股上週才跌 17.5%、美股進入修正。施羅德的核心訊息是：股票與債券開始同漲同跌，只靠「股債平衡」分散風險已經不夠。</p>
+    </div>
+    <div class="stmt" aria-label="十大預測">
+      <div class="k">施羅德 2027 全球投資預測</div>
+      <div class="range">10<small>項，全為做多</small></div>
+      <div class="was">第 14 年發布 · 2026 年預測 7 項被認為實現</div>
+      <div class="stmt-row">
+        <div><div class="v">4 項</div><div class="l">股票（含歐日銀行股）</div></div>
+        <div><div class="v">3 項</div><div class="l">債券與信用</div></div>
+        <div><div class="v">3 項</div><div class="l">商品、避險基金、實質資產</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂施羅德的 2027</h2>
+      <p>一句話：施羅德沒有因為這波 AI 股崩跌而看空，反而把台灣列為重點；但它提醒投資人，2027 年要靠更多種資產分散，而不是只靠股票加債券。以下為投資機構觀點，不是保證報酬。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>十項全部做多。</b>做多美股；相對新興市場做多台股；做多醫療保健；做多歐洲與日本銀行股；做多可轉債與非投資等級債；做多證券化信用；做多新興市場當地貨幣債；相對原油做多工業金屬；做多避險基金；做多實質資產（財訊快報）。</div></li>
+      <li><div><b>台股是新興市場首選。</b>近藤敬子說台灣價值不只在 AI 題材，而在半導體、零組件、伺服器到基礎設施的完整供應鏈；台灣企業獲利預期持續上修（中央社）。</div></li>
+      <li><div><b>美股獲利會擴散。</b>美國企業獲利成長可望從大型科技股擴散到更多產業。</div></li>
+      <li><div><b>AI 走進醫療。</b>AI 應用延伸到新藥研發與成本控制，醫療保健成為做多標的。</div></li>
+      <li><div><b>銀行股受惠高利率。</b>歐洲與日本銀行可望受惠於殖利率曲線變陡與「結構性較高」的利率環境。</div></li>
+      <li><div><b>股債平衡失靈。</b>股票與債券的相關性由負轉正，傳統股債配置的分散效果下降，需要加入可轉債、證券化信用、避險基金與實質資產（經濟日報）。</div></li>
+      <li><div><b>AI 也推升實質資產。</b>AI 資料中心帶動長期電力需求，能源轉型與資料中心推升銅需求，工業金屬比原油更有結構性支撐。</div></li>
+      <li><div><b>去年命中 7 項。</b>經濟日報指這是施羅德第 14 年發布，2026 年十大預測有 7 項被認為實現，包括美股、亞洲科技股、歐洲銀行與工業股、全球可轉債、新興市場當地債與私募資產。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼在暴跌之後還看好？施羅德的四個邏輯</h2>
+      <p>前三點是施羅德的說法，第四點是本報告的推論。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>看獲利，不看股價波動</h3><p>近藤敬子強調台灣企業獲利預期仍在上修；中信投顧同日指台股前瞻本益比已降到約 11.9 倍（ETtoday），股價跌、獲利沒跌，代表變便宜（推論）。</p></div><div class="ev"><span class="tag">獲利上修</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>AI 從題材變成供應鏈</h3><p>施羅德把台灣定位為「完整供應鏈」，而非單一 AI 題材；國發會也指雲端業者資本支出從 2026 年約 9,750 億美元增至明年約 1.5 兆美元（工商時報）。</p></div><div class="ev"><span class="tag">供應鏈完整</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>股債同漲同跌</h3><p>過去股票跌時債券常漲，能互相抵銷；但在高通膨、高利率環境下，股債可能一起跌。2026 年 11 月美國 10 年期殖利率一度升破 5%，就是例子（推論）。</p></div><div class="ev"><span class="tag">相關性轉正</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>不確定性仍高</h3><p>施羅德點名地緣政治、AI 發展、通膨與利率變化；近藤敬子說「靜態、單一的配置」已不能滿足多數投資人（基優網）。</p></div><div class="ev"><span class="tag">動態配置</span></div></div>
+    </div>
+    <div class="note">用菜籃來想：以前買股票（肉）配債券（菜），肉價漲時菜價常跌，總花費穩定；現在肉菜一起漲跌，所以施羅德建議菜籃裡再放些米、蛋、水果（可轉債、避險基金、實質資產），讓總花費更穩（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>施羅德</span><span><i class="g"></i>市場背景</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2025 年底</div><div class="what">施羅德發布 2026 十大預測，事後被認為 7 項實現。</div></li>
+        <li class="geo"><div class="date">2026-10</div><div class="what">台股創高點約 49,968 點。</div></li>
+        <li class="geo"><div class="date">2026-11-16～20</div><div class="what">台股一週跌 17.50%，美股標普進入修正。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-23</div><div class="what"><b>施羅德發布 2027 十大預測</b>；近藤敬子來台說明。台股同日漲 778.60 點。</div></li>
+        <li><div class="date">2026-11-27</div><div class="what">國發會公布 10 月景氣燈號。</div></li>
+        <li><div class="date">2026-12-08～09</div><div class="what">美國 Fed 利率會議。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ten -->
+<section id="ten">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 十大預測</div>
+      <h2>十項預測逐條白話解釋</h2>
+      <p>預測項目依財訊快報列出的順序；「白話解釋」為施羅德說法整理，「為什麼」欄中標註推論者為本報告分析。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>預測</th><th>白話解釋</th><th>施羅德的理由</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><b>做多美國股票</b></td><td>看好美股整體</td><td>獲利成長從大型科技擴散到更多產業</td></tr>
+          <tr class="hl"><td class="num">2</td><td><b>相對新興市場，做多台灣股票</b></td><td>新興市場裡最看好台灣</td><td>AI 完整供應鏈、獲利預期上修</td></tr>
+          <tr><td class="num">3</td><td><b>做多醫療保健</b></td><td>藥廠、醫療相關股</td><td>AI 用於新藥研發與降低成本</td></tr>
+          <tr><td class="num">4</td><td><b>做多歐洲與日本銀行股</b></td><td>銀行賺利差</td><td>殖利率曲線變陡、利率結構性偏高</td></tr>
+          <tr><td class="num">5</td><td><b>做多可轉債與非投資等級債</b></td><td>可轉成股票的債券；信用評等較低但利息較高的債券</td><td>可轉債能參與上漲又有下檔緩衝；高收益債提供收益</td></tr>
+          <tr><td class="num">6</td><td><b>做多證券化信用資產</b></td><td>把房貸、車貸等打包成的債券</td><td>提供政府債以外的收益來源</td></tr>
+          <tr><td class="num">7</td><td><b>做多新興市場當地貨幣債</b></td><td>以當地貨幣計價的新興國家公債</td><td>收益較高，並分散美元資產</td></tr>
+          <tr><td class="num">8</td><td><b>相對原油，做多工業金屬</b></td><td>銅等金屬優於石油</td><td>能源轉型與資料中心推升銅需求，供給受限</td></tr>
+          <tr><td class="num">9</td><td><b>做多避險基金</b></td><td>總經、多空、市場中立策略</td><td>股債同跌時仍可能創造報酬</td></tr>
+          <tr><td class="num">10</td><td><b>做多實質資產</b></td><td>基礎建設、不動產等實物</td><td>抗通膨、基建融資、AI 資料中心長期電力需求</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px;align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">十大預測的資產分布（項數）</p>
+        <p class="chart-sub">本報告依資產類別歸類</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="美股、台股、醫療保健、歐日銀行股"><div class="lab">股票</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">4</div></div>
+          <div class="hbar" data-tip="可轉債與非投資等級債、證券化信用、新興市場當地債"><div class="lab">債券與信用</div><div class="track"><div class="fill" style="width:75%"></div></div><div class="val">3</div></div>
+          <div class="hbar" data-tip="避險基金、實質資產"><div class="lab">另類資產</div><div class="track"><div class="fill" style="width:50%"></div></div><div class="val">2</div></div>
+          <div class="hbar" data-tip="相對原油做多工業金屬"><div class="lab">商品</div><div class="track"><div class="fill" style="width:25%"></div></div><div class="val">1</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>施羅德沒說的事</h3>
+        <ul class="plain small">
+          <li>本報告讀到的報導中，<b>沒有</b>經濟成長率、企業獲利成長率、利率或通膨的具體預測數字。</li>
+          <li>也沒有台股或美股的 2027 年指數目標。</li>
+          <li>沒有對 Fed、美元、新台幣走勢的明確看法。</li>
+          <li>沒有談到 AI 泡沫風險本身，只把 AI 發展列為不確定因素之一。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>對施羅德是品牌，對投資人是一份配置清單</h2>
+      <p>當事方是施羅德本身、它的基金投資人，以及被點名的市場與產業。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">發布年數</div><div class="v">第 14 年</div><div class="d">經濟日報</div></div>
+      <div class="tile"><div class="l">2026 命中</div><div class="v">7 / 10</div><div class="d">經濟日報整理</div></div>
+      <div class="tile"><div class="l">股票相關</div><div class="v">4 項</div><div class="d">美、台、醫療、銀行</div></div>
+      <div class="tile"><div class="l">非傳統資產</div><div class="v">6 項</div><div class="d">信用、商品、另類</div></div>
+      <div class="tile"><div class="l">台股 11/23</div><div class="v">36,811.89</div><div class="d">+2.16%</div></div>
+      <div class="tile"><div class="l">台股前瞻本益比</div><div class="v">約 11.9 倍</div><div class="d">中信投顧</div></div>
+      <div class="tile"><div class="l">歷史下緣</div><div class="v">約 10.8 倍</div><div class="d">對應約 32,800 點</div></div>
+      <div class="tile"><div class="l">台股高點</div><div class="v">約 49,968</div><div class="d">2026 年 10 月</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>施羅德</h3><ul class="plain">
+        <li><b>主動管理：</b>經濟日報指施羅德強調主動管理的價值，配置建議也偏向它擅長的多元資產與另類投資（推論）。</li>
+        <li><b>信譽：</b>在市場重挫時看多台股，若 2027 年應驗會強化品牌，反之則受考驗（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>台灣投資人</h3><ul class="plain">
+        <li><b>台股：</b>外資連 6 賣、累計 2,476 億元之際，外資機構看好台股，形成對比。</li>
+        <li><b>配置：</b>建議從「股債比例」走向「跨市場、跨策略、跨風險因子」的動態配置（財訊快報）。</li>
+      </ul></div>
+      <div class="card"><h3>被點名的市場</h3><ul class="plain">
+        <li><b>美國、台灣：</b>股市被看好。</li>
+        <li><b>歐洲、日本：</b>銀行股被看好。</li>
+        <li><b>新興市場：</b>當地貨幣債被看好，但股票方面只點名台灣。</li>
+      </ul></div>
+      <div class="card"><h3>原油</h3><ul class="plain">
+        <li><b>相對看淡：</b>施羅德偏好工業金屬勝過原油，但不是直接看空油價。</li>
+        <li><b>現況：</b>布蘭特原油 11/20 約 92.57 美元（CNBC）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 市場位置</div>
+      <h2>預測發布當下，被看好的資產剛經歷一場大跌</h2>
+      <p>預測本身沒有對應單一股價；以下列出發布前後相關市場的位置，作為解讀背景。台股為 11/23 收盤，美股為 11/20 收盤。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">發布前後相關市場漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色為期間累計</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>怎麼解讀</h3>
+        <ul class="plain small">
+          <li><b>台股：</b>11/23 反彈 2.16%，但距 10 月高點仍約低 26%（推算）。</li>
+          <li><b>美股：</b>標普 500 上週跌 8.61%，施羅德仍做多美股。</li>
+          <li><b>債券：</b>美國 10 年期殖利率 11/20 降到 4.93%，資金在股市大跌時流入公債，股債相關性這週短暫回到負值（推論）。</li>
+          <li><b>估值：</b>中信投顧估台股前瞻本益比約 11.9 倍，歷史下緣約 10.8 倍。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關指數與個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>與預測的關係</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">36,811.89（11/23）</td><td class="num up">+2.16%</td><td class="period">距高點約 −26%</td><td>預測 2：做多台股。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,030 元（11/23）</td><td class="num up">+1.50%</td><td class="period">—</td><td>AI 供應鏈核心。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,685 元（11/23）</td><td class="num up">+10.0%</td><td class="period">—</td><td>AI 供應鏈。</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">990 元（11/23）</td><td class="num up">+10.0%</td><td class="period">—</td><td>電力與資料中心，呼應實質資產主題。</td></tr>
+          <tr><td class="num">^GSPC</td><td><b>標普 500</b></td><td>美股</td><td class="num">6,910.39（11/20）</td><td class="num down">−3.70%</td><td class="period">週跌 8.61%</td><td>預測 1：做多美股。</td></tr>
+          <tr><td class="num">^IXIC</td><td><b>那斯達克</b></td><td>美股</td><td class="num">22,617.73（11/20）</td><td class="num down">−5.28%</td><td class="period">週跌約 10%</td><td>科技股修正。</td></tr>
+          <tr><td class="num">^SOX</td><td><b>費城半導體</b></td><td>美股</td><td class="num">8,408.59（11/20）</td><td class="num down">−10.73%</td><td class="period">週跌約 17%</td><td>台股連動指標。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">來源：ETtoday、鉅亨網、CNBC、TradingKey。施羅德的預測不針對個股，表中個股僅作背景說明，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>全球資產配置的三個轉向</h2>
+      <p>施羅德的預測反映大型資產管理公司對 2027 年的共同關切：利率長期偏高、AI 擴散、地緣政治。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>從科技到全面</h3><ul class="plain small">
+        <li>美股獲利從大型科技擴散，代表資金可能從少數 AI 股分散到更多產業（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>高利率常態化</h3><ul class="plain small">
+        <li>「結構性較高的利率環境」有利銀行，不利高估值成長股（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>股債不再互補</h3><ul class="plain small">
+        <li>相關性轉正讓全球退休基金與保險業重新檢視配置，另類資產需求上升（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>AI 的實體需求</h3><ul class="plain small">
+        <li>資料中心用電與銅需求，讓 AI 從科技股延伸到電力、基建與原物料。</li>
+      </ul></article>
+      <article class="card"><h3>新興市場分化</h3><ul class="plain small">
+        <li>股票只點名台灣，債券則看好新興市場當地貨幣債，顯示對新興市場是「挑著買」（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>地緣政治</h3><ul class="plain small">
+        <li>被列為首要不確定因素，但施羅德的回應是分散，而不是撤出。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>預測會不會成真？三種劇本</h2>
+      <p>以下為本報告對 2027 年情境的推論，不是施羅德的預測，也不是保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>AI 需求延續、股市震盪向上</h3><ul class="plain small">
+        <li>台灣企業獲利如預期成長。</li>
+        <li>美股獲利擴散到更多產業。</li>
+        <li>多數預測方向正確。</li>
+      </ul><p class="trig">觸發條件：AI 資本支出如期增加、Fed 升息有限。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>AI 資本支出明顯降溫</h3><ul class="plain small">
+        <li>台股獲利預期下修。</li>
+        <li>股債同跌，傳統配置受傷。</li>
+        <li>另類資產相對抗跌。</li>
+      </ul><p class="trig">觸發條件：雲端業者削減支出、利率續升、地緣衝突升高。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>修正後強勁反彈</h3><ul class="plain small">
+        <li>台股估值修復，回到前高附近。</li>
+        <li>醫療、銀行等擴散題材同步上漲。</li>
+        <li>股票配置大幅勝過其他資產。</li>
+      </ul><p class="trig">觸發條件：通膨降溫、Fed 停止升息、AI 獲利超預期。</p></article>
+    </div>
+    <div class="note warn">投資機構年度預測是觀點而非保證；本報告未讀到施羅德原始英文報告全文，內容以台灣媒體報導為準。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>台灣企業獲利預估</b>：施羅德看好台股的核心理由。</li>
+      <li><b>股債相關性</b>：股市跌時債市是否同步跌。</li>
+      <li><b>美國殖利率曲線</b>：變陡有利歐日銀行股。</li>
+      <li><b>銅價與油價</b>：檢驗「工業金屬優於原油」。</li>
+      <li><b>雲端業者資本支出</b>：AI 供應鏈與電力需求的源頭。</li>
+      <li><b>2027 年底回顧</b>：施羅德通常會在下一份預測中檢討命中率。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>被點名與被冷落的產業</h2>
+      <p>標籤為施羅德預測的方向；卡片下方是目前可得的數據或狀態。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>半導體與 AI 供應鏈</h3><span class="tag good">看好</span></div><p>台股被看好的核心，從晶片到伺服器、基礎設施。</p><div class="data">聯發科、台達電 11/23 漲停</div></article>
+      <article class="card"><div class="top"><h3>醫療保健</h3><span class="tag good">看好</span></div><p>AI 加速新藥研發、降低成本。</p><div class="data">施羅德預測 3</div></article>
+      <article class="card"><div class="top"><h3>銀行</h3><span class="tag good">看好（歐日）</span></div><p>殖利率曲線變陡、利率偏高有利利差。</p><div class="data">台灣金融股 11/23 偏弱</div></article>
+      <article class="card"><div class="top"><h3>電力與基礎建設</h3><span class="tag good">看好</span></div><p>AI 資料中心的長期電力需求，屬實質資產主題。</p><div class="data">台達電 11/23 +10%</div></article>
+      <article class="card"><div class="top"><h3>銅與工業金屬</h3><span class="tag good">看好</span></div><p>能源轉型與資料中心推升需求，供給受限。</p><div class="data">相對原油做多</div></article>
+      <article class="card"><div class="top"><h3>石油</h3><span class="tag">相對看淡</span></div><p>相對工業金屬不被偏好。</p><div class="data">布蘭特約 92.57 美元</div></article>
+      <article class="card"><div class="top"><h3>資產管理與基金業</h3><span class="tag good">受惠</span></div><p>多元資產、另類投資與主動管理需求上升（推論）。</p><div class="data">施羅德強調主動管理</div></article>
+      <article class="card"><div class="top"><h3>傳統政府債</h3><span class="tag">配角</span></div><p>不再單獨擔任分散風險的角色，需要搭配其他收益來源。</p><div class="data">股債相關性轉正</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>外資一邊賣、外資機構一邊看好：台灣投資人該怎麼讀</h2>
+      <p>施羅德看好台股，和外資連日賣超並不矛盾——前者談的是 2027 年的方向，後者反映的是短期資金調整（推論）。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>市場情緒：</b>發布當天台股反彈 778.60 點，但主因是禁空令與國安基金，不是這份預測（推論）。</li>
+        <li><b>外資動向：</b>11/23 外資仍賣超 289.48 億元，連 6 賣累計 2,476.18 億元（ETtoday）。</li>
+        <li><b>景氣：</b>國發會景氣燈號 9 月已連 10 紅，基本面支撐施羅德的看法。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>不要只看單一預測：</b>投資機構的年度展望常互相矛盾，應比較多家看法。</li>
+        <li><b>配置觀念：</b>台灣投資人常見「台股 + 美債」組合，在股債同跌時效果有限。</li>
+        <li><b>基金銷售：</b>預測公布後，相關主題基金的行銷會增加，投資前應看清費用與風險。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>台股投資人</b></td><td><span class="tag good">觀點支持</span></td><td>外資機構看好中長期方向。</td></tr>
+          <tr><td><b>股債平衡型投資人</b></td><td><span class="tag">需要調整</span></td><td>施羅德認為傳統分散效果下降。</td></tr>
+          <tr><td><b>AI 供應鏈企業</b></td><td><span class="tag good">相對有利</span></td><td>被定位為台灣價值的核心。</td></tr>
+          <tr><td><b>金融業</b></td><td><span class="tag">間接相關</span></td><td>看好的是歐日銀行，不是台灣。</td></tr>
+          <tr><td><b>基金投資人</b></td><td><span class="tag">留意風險</span></td><td>另類資產流動性與費用較高（推論）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>台灣媒體幾乎都以「看好台股」為標題；差別在於是否交代股債配置的新觀念。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>中央社</td><td>台股</td><td>十大預測看好台股 AI 供應鏈</td><td>完整供應鏈、獲利上修</td></tr>
+          <tr><td>經濟日報</td><td>配置</td><td>看好美股、台股、實質資產</td><td>股債相關性轉正、去年命中 7 項</td></tr>
+          <tr><td>財訊快報</td><td>完整清單</td><td>台灣重要性提升、股債平衡迎新變局</td><td>十項逐條列出、動態配置</td></tr>
+          <tr><td>基優網</td><td>主題</td><td>新興市場首選台灣</td><td>四大主題、近藤敬子引言；作者疑為公關稿</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>十項預測內容與順序一致。</li>
+        <li>由近藤敬子在台灣說明。</li>
+        <li>台股相對新興市場被看好。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>多為新聞稿改寫。</b>各家內容高度相似，缺少獨立分析或數字。</li>
+        <li><b>「命中 7 項」是記者整理。</b>不是施羅德的正式檢討數字。</li>
+        <li><b>基優網文章來源。</b>作者帳號名稱顯示可能是公關投稿，頁面未標示是否為業配。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>主題數</td><td>十大預測（多數媒體）</td><td>四大主題（基優網）</td><td>同一份展望的兩種整理方式。</td></tr>
+          <tr><td>台股前瞻本益比</td><td>約 11.9 倍（中信投顧，ETtoday）</td><td>約 11～12 倍（雅虎股市側欄摘要）</td><td>後者未讀到原文，本報告採前者。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導，資料截至 2026 年 11 月 23 日 18:00（台灣時間）。施羅德官方英文報告全文未讀取。</p>
+    </div>
+    <div class="src-group">施羅德展望報導</div>
+    <ol class="sources">
+      <li><a href="https://www.cna.com.tw/news/afe/202611230145.aspx" target="_blank" rel="noopener">中央社 — 施羅德 2027 全球投資 10 大預測，看好台股 AI 供應鏈（11/23）</a></li>
+      <li><a href="https://udn.com/news/story/10103/9896726" target="_blank" rel="noopener">經濟日報 — 2027 全球投資關鍵十大預測：看好美股、台股、實質資產（11/23）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E6%96%BD%E7%BE%85%E5%BE%B7%E6%8F%AD2027%E5%85%A8%E7%90%83%E6%8A%95%E8%B3%87%E5%8D%81%E5%A4%A7%E9%A0%90%E6%B8%AC-%E5%8F%B0%E7%81%A3%E9%87%8D%E8%A6%81%E6%80%A7%E6%8F%90%E5%8D%87-%E8%82%A1%E5%82%B5%E5%B9%B3%E8%A1%A1%E8%BF%8E%E6%96%B0%E8%AE%8A%E5%B1%80-045110665.html" target="_blank" rel="noopener">財訊快報 — 台灣重要性提升、股債平衡迎新變局（11/23）</a></li>
+      <li><a href="https://www.fundlover.com/post/%E6%96%BD%E7%BE%85%E5%BE%B72027%E5%85%A8%E7%90%83%E6%8A%95%E8%B3%87%E9%97%9C%E9%8D%B5%E5%8D%81%E5%A4%A7%E9%A0%90%E6%B8%AC-%E6%96%B0%E8%88%88%E5%B8%82%E5%A0%B4%E9%A6%96%E9%81%B8%E5%8F%B0%E7%81%A3" target="_blank" rel="noopener">基優網 — 新興市場首選台灣（11/23）</a></li>
+    </ol>
+    <div class="src-group">市場背景</div>
+    <ol class="sources" start="5">
+      <li><a href="https://finance.ettoday.net/news/3276909" target="_blank" rel="noopener">ETtoday — 中信投顧：台股前瞻本益比約 11.9 倍（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3277068" target="_blank" rel="noopener">ETtoday — 外資連 6 賣、三大法人賣超（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3276976" target="_blank" rel="noopener">ETtoday — 台股翻紅收漲 779 點（11/23）</a></li>
+      <li><a href="https://www.cnbc.com/amp/2026/11/19/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC — 美股 11/20 收盤（11/20）</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20261029701871-430104" target="_blank" rel="noopener">工商時報 — 國發會：雲端業者資本支出預估（10/29）</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="10">
+      <li><a href="../taiex-2026-11-23/index.html">台股 11/23 表現解讀</a></li>
+      <li><a href="../taiwan-business-signal-2026-11/index.html">景氣燈號連 10 紅解讀</a></li>
+      <li><a href="../us-stocks-volatility-2026-11/index.html">美股震盪解讀（11/21）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。投資機構預測與股價僅作說明，內容不構成任何投資建議。資料截至 2026 年 11 月 23 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'聯發科', s:'3,685 元（11/23）', v:10.0},
+    {l:'台達電', s:'990 元（11/23）', v:10.0},
+    {l:'加權指數', s:'36,811.89（11/23）', v:2.16},
+    {l:'台積電', s:'2,030 元（11/23）', v:1.50},
+    {l:'標普 500', s:'6,910.39（11/20）', v:-3.70},
+    {l:'那斯達克', s:'22,617.73（11/20）', v:-5.28},
+    {l:'標普 500 一週', s:'11/16～11/20', v:-8.61, est:true},
+    {l:'費城半導體', s:'8,408.59（11/20）', v:-10.73},
+    {l:'加權 距高點', s:'約 49,968 → 36,811.89', v:-26.3, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

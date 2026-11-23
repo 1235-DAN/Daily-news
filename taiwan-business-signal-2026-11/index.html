@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>景氣燈號連 10 紅解讀</title>
+<meta name="description" content="國發會 2026 年 9 月景氣對策信號 41 分、連續 10 個紅燈創 1984 年來紀錄的解讀：九項指標數值與計分方式、為何能紅這麼久、和 2021 年的差別、2027 年第一季高基期風險、與 11 月台股崩跌的背離，以及對台灣各族群的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#a8620c;
+  --accent-ink:#8a4f08;
+  --accent-wash:rgba(168,98,12,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#14110d;
+  --hero-ink:#f4f1ea;
+  --hero-ink-2:#a9a192;
+  --hero-accent:#e8a64c;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#e0a04a; --accent-ink:#ecb86e; --accent-wash:rgba(224,160,74,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#110f0c;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#e0a04a; --accent-ink:#ecb86e; --accent-wash:rgba(224,160,74,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#110f0c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#howto">燈號怎麼算</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台灣景氣解讀 · 景氣燈號 · 資料截至 2026 年 11 月 23 日 18:00（台灣時間）</p>
+      <h1>景氣燈號連 10 紅創 1984 年來紀錄：經濟最熱的時候，股市卻剛崩了 17%</h1>
+      <p class="lede">國發會 10 月 29 日公布 9 月景氣對策信號 41 分，連續第 10 個月亮紅燈，是 1984 年採用九項構成指標以來最長的紅燈紀錄，超過 2021 年 2～10 月的連 9 紅。這波紅燈從 2025 年 12 月開始，靠的是 AI 帶動的出口、投資與消費。國發會「審慎樂觀」紅燈可延續到年底，但也提醒 2026 年第一季出口年增 51% 的高基期，可能在 2027 年第一季讓燈號轉色。11 月台股一週重挫 17.5%，和紅燈形成強烈對比；10 月燈號將在 11 月 27 日公布。</p>
+    </div>
+    <div class="stmt" aria-label="9 月景氣燈號">
+      <div class="k">2026 年 9 月景氣對策信號</div>
+      <div class="range">41<small>分 · 紅燈</small></div>
+      <div class="was">連續第 10 個紅燈 · 1984 年來最長 · 8 月修正為 40 分</div>
+      <div class="stmt-row">
+        <div><div class="v">6 / 9</div><div class="l">構成項目亮紅燈</div></div>
+        <div><div class="v">+86%</div><div class="l">股價指數年增率</div></div>
+        <div><div class="v">11/27</div><div class="l">10 月燈號公布</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂連 10 紅</h2>
+      <p>一句話：景氣燈號量的是「過去一個月經濟有多熱」，而 AI 讓台灣經濟熱到創紀錄；股市量的是「未來會不會更熱」，這兩者這個月剛好分道揚鑣。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>9 月 41 分、連 10 紅。</b>比 8 月修正後的 40 分增加 1 分，從 2025 年 12 月起連續 10 個月紅燈（工商時報）。</div></li>
+      <li><div><b>史上最長。</b>國發會說是 1984 年採用九項構成項目以來最長紀錄，前一次是 2021 年 2～10 月的連 9 紅（經濟日報、中時）。</div></li>
+      <li><div><b>只有一項變動。</b>工業及服務業加班工時年增率回升到 4.6%，由綠燈轉黃紅燈、加 1 分；其餘 8 項燈號不變。</div></li>
+      <li><div><b>6 項紅燈。</b>股價指數（年增 86%）、工業生產（19.8%）、海關出口（67.6%）、機械及電機設備進口（81.3%）、製造業銷售量（15.8%）、批發零售及餐飲業營業額（36.8%）都在紅燈區（鉅亨網）。</div></li>
+      <li><div><b>領先與同時指標都還在升。</b>領先指標 104.69、月增 0.56；同時指標 105.21、月增 0.01（鉅亨網）。</div></li>
+      <li><div><b>三大引擎。</b>國發會處長陳美菊點名出口（AI 與雲端需求）、民間投資（科技業資本支出）與國內消費（加薪、年終消費）。</div></li>
+      <li><div><b>2027 年第一季是關卡。</b>2026 年第一季出口年增 51%，高基期效應可能在 2027 年第一季出現，出口成長若明顯下滑，燈號就可能變化。</div></li>
+      <li><div><b>股市與燈號背離。</b>9 月紅燈公布後不到一個月，台股 11/16～11/20 一週跌 17.50%；但股價年增率仍高，可能繼續拉高分數（推論）。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼能紅這麼久？和 2021 年哪裡不同</h2>
+      <p>前三點來自國發會說法，第四點是本報告推論。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>AI 需求層層疊加</h3><p>陳美菊說，2021 年是疫情後低基期加上遠距電子需求；這次則是 AI 需求持續在越墊越高的基期上疊加（工商時報）。</p></div><div class="ev"><span class="tag">不是低基期反彈</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>雲端業者砸錢</h3><p>國發會估雲端服務業者（CSP）資本支出 2026 年約 9,750 億美元、明年約 1.5 兆美元；台積電 2026 年資本支出約 640 億美元。外溢到銅箔、載板、特化與機械出口。</p></div><div class="ev"><span class="tag">CSP 1.5 兆美元</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>內需也跟上</h3><p>批發零售及餐飲業營業額年增 36.8%，國發會提到加薪、汽車銷售與節慶、年終消費。</p></div><div class="ev"><span class="tag">內需 +36.8%</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>股價本身是構成項目</h3><p>九項指標之一就是股價指數；元大期貨說明 8 月加權指數平均約 45,125 點，比去年同期高 87.7%。股市大漲本身就幫燈號加分（推論）。</p></div><div class="ev"><span class="tag">股價 +86%</span></div></div>
+    </div>
+    <div class="note">用體溫計來想：景氣燈號是量「已經發生」的體溫，紅燈代表經濟在發燒般熱絡；股市則像在猜「明天會不會退燒」。病人現在 39 度，不代表明天也是 39 度（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>景氣燈號</span><span><i class="g"></i>市場</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="key"><div class="date">2021-02～10</div><div class="what">連 9 紅，前一次最長紀錄。</div></li>
+        <li class="key"><div class="date">2025-12</div><div class="what">這一波紅燈開始。</div></li>
+        <li class="key"><div class="date">2026 Q1</div><div class="what">出口年增 51%，形成高基期。</div></li>
+        <li class="key"><div class="date">2026-08</div><div class="what">連 9 紅，追平紀錄；初值 41 分，後修正為 40 分。</div></li>
+        <li class="key"><div class="date">2026-10-29</div><div class="what">公布 9 月 <b>41 分、連 10 紅</b>，創新紀錄。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-10</div><div class="what">台股創高約 49,968 點。</div></li>
+        <li class="geo"><div class="date">2026-11-16～20</div><div class="what">台股一週跌 7,641.83 點（17.50%）。</div></li>
+        <li class="geo"><div class="date">2026-11-23</div><div class="what">禁空令首日，台股反彈 778.60 點收 36,811.89 點。</div></li>
+        <li><div class="date">2026-11-27 16:00</div><div class="what">國發會公布 10 月景氣燈號（元大期貨列出的預定時間）。</div></li>
+        <li><div class="date">2027 Q1</div><div class="what">國發會提醒的高基期觀察點。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 howto -->
+<section id="howto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 燈號怎麼算</div>
+      <h2>九項指標各打 1～5 分，加總決定燈色</h2>
+      <p>計分規則與檢查值取自元大期貨對國發會資料的說明；9 月各項數值取自鉅亨網。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">五種燈號與分數區間（分）</p>
+        <p class="chart-sub">九項合計，最低 9 分、最高 45 分</p>
+        <div class="hbars">
+          <div class="hbar" data-tip="紅燈 38～45 分：景氣熱絡"><div class="lab">紅燈<small>景氣熱絡</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">38～45</div></div>
+          <div class="hbar" data-tip="黃紅燈 32～37 分：注意性燈號"><div class="lab">黃紅燈<small>注意</small></div><div class="track"><div class="fill" style="width:82.2%"></div></div><div class="val">32～37</div></div>
+          <div class="hbar muted-bar" data-tip="綠燈 23～31 分：景氣穩定"><div class="lab">綠燈<small>景氣穩定</small></div><div class="track"><div class="fill" style="width:68.9%"></div></div><div class="val">23～31</div></div>
+          <div class="hbar muted-bar" data-tip="黃藍燈 17～22 分：注意性燈號"><div class="lab">黃藍燈<small>注意</small></div><div class="track"><div class="fill" style="width:48.9%"></div></div><div class="val">17～22</div></div>
+          <div class="hbar muted-bar" data-tip="藍燈 9～16 分：景氣低迷"><div class="lab">藍燈<small>景氣低迷</small></div><div class="track"><div class="fill" style="width:35.6%"></div></div><div class="val">9～16</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>用期末成績來想</h3>
+        <ul class="plain small">
+          <li><b>九科考試：</b>每一項指標是一科，依表現給 1～5 分（藍 1、黃藍 2、綠 3、黃紅 4、紅 5）。</li>
+          <li><b>總分：</b>九科加總 9～45 分，38 分以上就是紅燈。</li>
+          <li><b>9 月成績單：</b>6 科紅燈各 5 分、2 科黃紅燈各 4 分、1 科綠燈 3 分，合計 30＋8＋3＝41 分（推算，詳見下表）。</li>
+          <li><b>公布時間：</b>每月下旬公布上個月的燈號，有約一個月的落差。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">2026 年 9 月九項構成指標</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>指標</th><th>9 月數值</th><th>燈號</th><th>分數</th><th>紅燈門檻</th></tr></thead>
+        <tbody>
+          <tr><td><b>股價指數</b>（年增率）</td><td class="num">86%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">17.5%</td></tr>
+          <tr><td><b>工業生產指數</b></td><td class="num">19.8%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">11.0%</td></tr>
+          <tr><td><b>海關出口值</b></td><td class="num">67.6%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">15.0%</td></tr>
+          <tr><td><b>機械及電機設備進口值</b></td><td class="num">81.3%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">17.5%</td></tr>
+          <tr><td><b>製造業銷售量指數</b></td><td class="num">15.8%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">10.0%</td></tr>
+          <tr><td><b>批發、零售及餐飲業營業額</b></td><td class="num">36.8%</td><td><span class="tag bad">紅</span></td><td class="num">5</td><td class="num">8.0%</td></tr>
+          <tr class="hl"><td><b>工業及服務業加班工時</b></td><td class="num">4.6%</td><td><span class="tag">黃紅（綠轉）</span></td><td class="num">4</td><td class="num">6.5%</td></tr>
+          <tr><td><b>製造業營業氣候測驗點</b></td><td class="num">101.39</td><td><span class="tag">黃紅</span></td><td class="num">4</td><td class="num">103.5</td></tr>
+          <tr><td><b>貨幣總計數 M1B</b></td><td class="num">7.2%</td><td><span class="tag good">綠</span></td><td class="num">3</td><td class="num">14.0%</td></tr>
+          <tr><td><b>合計</b></td><td class="num">—</td><td><span class="tag bad">紅燈</span></td><td class="num">41</td><td class="num">38 分以上</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">燈號依鉅亨網描述，分數依元大期貨說明的 1～5 分規則換算（推算），合計與國發會公布的 41 分相符。紅燈門檻為元大期貨列出的國發會檢查值（2024 年 1 月起適用）。</p>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>政府拿紅燈穩信心，央行看紅燈想升息</h2>
+      <p>當事方包括國發會與政府財經部門、央行、企業與受薪族。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">9 月分數</div><div class="v">41</div><div class="d">分，紅燈</div></div>
+      <div class="tile"><div class="l">連續紅燈</div><div class="v">10 個月</div><div class="d">2025/12～2026/9</div></div>
+      <div class="tile"><div class="l">出口年增</div><div class="v">67.6%</div><div class="d">9 月海關出口值</div></div>
+      <div class="tile"><div class="l">設備進口年增</div><div class="v">81.3%</div><div class="d">9 月</div></div>
+      <div class="tile"><div class="l">領先指標</div><div class="v">104.69</div><div class="d">月增 0.56</div></div>
+      <div class="tile"><div class="l">同時指標</div><div class="v">105.21</div><div class="d">月增 0.01</div></div>
+      <div class="tile"><div class="l">今年經濟成長預估</div><div class="v">11.05%</div><div class="d">主計總處（國安基金聲明引述）</div></div>
+      <div class="tile"><div class="l">CSP 資本支出</div><div class="v">約 1.5 兆</div><div class="d">美元，2027 年估</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>政府</h3><ul class="plain">
+        <li><b>國發會：</b>「審慎樂觀」紅燈延續到年底，經濟日報引述說「非常有希望」。</li>
+        <li><b>護盤論述：</b>國安基金 11/21 聲明以景氣燈號、經濟成長 11.05% 等數據，強調股市下跌不是基本面轉弱（風傳媒）。</li>
+      </ul></div>
+      <div class="card"><h3>央行</h3><ul class="plain">
+        <li><b>升息壓力：</b>楊金龍 11/16 說 12 月理監事會將考量通膨、各國政策與放款熱度（中央社）。</li>
+        <li><b>紅燈的意義：</b>景氣過熱時，央行通常更傾向緊縮，紅燈會增加升息理由（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>企業</h3><ul class="plain">
+        <li><b>AI 相關：</b>出口、生產與設備進口全面紅燈，代表訂單與擴產仍強。</li>
+        <li><b>非 AI 產業：</b>國發會說這波紅燈也是「產業結構改變」的紀錄，景氣熱度集中在科技業（工商時報標題）。</li>
+      </ul></div>
+      <div class="card"><h3>受薪族</h3><ul class="plain">
+        <li><b>加班增加：</b>加班工時年增 4.6%，由綠轉黃紅。</li>
+        <li><b>就業：</b>2024 年改版後已不再把非農業就業人數列入燈號，紅燈不直接代表就業同步熱絡（元大期貨說明）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>燈號越紅，股市越跌：一個月內的背離</h2>
+      <p>景氣燈號沒有直接對應單一股價；以下比較紅燈公布後的市場變化。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">景氣構成指標與台股表現（%）</p>
+        <p class="chart-sub">前五列為 9 月各指標年增率；後列為台股期間漲跌，淡色為推算</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>為什麼會背離？</h3>
+        <ul class="plain small">
+          <li><b>時間差：</b>燈號反映 9 月，股市反映對 2027 年的預期（推論）。</li>
+          <li><b>外部衝擊：</b>11 月的崩跌來自輝達領導危機、SEC 會計疑雲與美國升息，不是台灣景氣轉弱。</li>
+          <li><b>股價年增仍高：</b>就算 11 月指數在 36,000～40,000 點，仍遠高於去年同期，股價項目可能仍是紅燈（推論；元大期貨所引 2025 年 8 月均值約 24,045 點）。</li>
+          <li><b>「紅燈賣、藍燈買」：</b>元大期貨說明這只是坊間說法，國發會強調燈號是景氣體溫計，不是交易訊號。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關指數與個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>與景氣的關係</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">36,811.89（11/23）</td><td class="num up">+2.16%</td><td class="period">距 10 月高點約 −26%</td><td>燈號構成項目之一。</td></tr>
+          <tr><td class="num">^TWII</td><td><b>加權指數一週</b></td><td>台股</td><td class="num">36,033.29（11/20）</td><td class="num down">−17.50%</td><td class="period">11/16～11/20</td><td>史上最大單週跌點。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,030 元（11/23）</td><td class="num up">+1.50%</td><td class="period">—</td><td>出口與設備進口的主力。</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">990 元（11/23）</td><td class="num up">+10.0%</td><td class="period">—</td><td>AI 電源，出口受惠者。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,685 元（11/23）</td><td class="num up">+10.0%</td><td class="period">—</td><td>IC 設計。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">來源：鉅亨網、ETtoday、元大期貨、中央社。以上僅說明數據與股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>台灣的紅燈，是全球 AI 投資的溫度計</h2>
+      <p>台灣出口高度集中在 AI 伺服器與晶片，台灣景氣燈號某種程度反映了全球雲端業者的花錢速度。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>雲端業者資本支出</h3><ul class="plain small">
+        <li>國發會估 2026 年約 9,750 億美元、2027 年約 1.5 兆美元。</li>
+        <li>台灣出口紅燈直接反映這筆支出（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>國際風險</h3><ul class="plain small">
+        <li>國發會點名地緣衝突、貿易政策、AI 企業融資疑慮、主要央行政策。</li>
+      </ul></article>
+      <article class="card"><h3>美國股市</h3><ul class="plain small">
+        <li>美股 11 月修正，市場質疑 AI 投資回報，若雲端業者削減支出，台灣出口首當其衝（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>外資機構看法</h3><ul class="plain small">
+        <li>施羅德 11/23 把台股列為 2027 年新興市場首選，理由是供應鏈完整、獲利上修。</li>
+      </ul></article>
+      <article class="card"><h3>貿易對手</h3><ul class="plain small">
+        <li>出口年增 67.6%，對美貿易順差擴大可能引發關稅或貿易壓力（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>匯率</h3><ul class="plain small">
+        <li>出口強勁本應支撐新台幣，但外資賣股匯出讓新台幣反而走弱（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>紅燈還能亮多久？三種劇本</h2>
+      <p>以下依國發會說法與各項指標整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>紅燈延續到年底、2027 年初轉黃紅</h3><ul class="plain small">
+        <li>10～12 月維持紅燈，連紅延長到 13 個月。</li>
+        <li>2027 年第一季高基期讓出口年增率下滑。</li>
+        <li>分數降到 32～37 分的黃紅燈。</li>
+      </ul><p class="trig">觸發條件：AI 需求持續但成長率放緩。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 提早降溫</div><h3>股市與出口同步轉弱</h3><ul class="plain small">
+        <li>股價年增率大幅下滑，股價項目轉色。</li>
+        <li>雲端業者削減支出，出口成長放慢。</li>
+        <li>燈號提前轉黃紅甚至綠燈。</li>
+      </ul><p class="trig">觸發條件：AI 資本支出降溫、美國升息衝擊需求。</p></article>
+      <article class="card"><div class="prob">劇本 C · 紅燈延長</div><h3>2027 年仍維持紅燈</h3><ul class="plain small">
+        <li>CSP 支出如期增至 1.5 兆美元。</li>
+        <li>出口在高基期上仍維持兩位數成長。</li>
+        <li>連紅紀錄持續刷新。</li>
+      </ul><p class="trig">觸發條件：AI 訂單延續、新一代平台放量。</p></article>
+    </div>
+    <div class="note warn">截至 11/23 18:00，10 月景氣燈號尚未公布；元大期貨列出的預定公布時間為 11/27（週五）16:00，以國發會實際公布為準。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>11/27 10 月燈號</b>：是否連 11 紅、分數是否維持 40 分以上。</li>
+      <li><b>股價指數項目</b>：11 月股市重挫會反映在 12 月底公布的 11 月燈號。</li>
+      <li><b>海關出口</b>：每月上旬公布的出口數字是燈號的先行參考。</li>
+      <li><b>領先指標</b>：連續下滑代表景氣可能轉折。</li>
+      <li><b>央行 12 月理監事會</b>：紅燈是否成為升息理由。</li>
+      <li><b>2027 年第一季</b>：國發會點名的高基期關卡。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>紅燈裡誰最熱、誰比較冷</h2>
+      <p>標籤為依構成指標與國發會說法的判斷；標註「推論」的是本報告分析。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>半導體與 AI 伺服器</h3><span class="tag good">最熱</span></div><p>出口、生產、設備進口全面紅燈的主要來源。</p><div class="data">出口年增 67.6%</div></article>
+      <article class="card"><div class="top"><h3>材料與零組件</h3><span class="tag good">受惠</span></div><p>國發會點名銅箔、載板、特化外溢受惠。</p><div class="data">工業生產年增 19.8%</div></article>
+      <article class="card"><div class="top"><h3>機械設備</h3><span class="tag good">受惠</span></div><p>擴產帶動設備進口與機械出口。</p><div class="data">設備進口年增 81.3%</div></article>
+      <article class="card"><div class="top"><h3>零售與餐飲</h3><span class="tag good">熱絡</span></div><p>加薪與年終消費支撐內需。</p><div class="data">營業額年增 36.8%</div></article>
+      <article class="card"><div class="top"><h3>金融</h3><span class="tag">好壞參半</span></div><p>景氣好有利放款，但股市重挫影響財富管理與投資收益（推論）。</p><div class="data">M1B 年增 7.2%，綠燈</div></article>
+      <article class="card"><div class="top"><h3>傳統製造</h3><span class="tag">相對冷</span></div><p>景氣熱度集中科技業，非 AI 產業未必同步（推論）。</p><div class="data">營業氣候測驗點 101.39，黃紅</div></article>
+      <article class="card"><div class="top"><h3>營建與房地產</h3><span class="tag">好壞參半</span></div><p>景氣熱帶動需求，但升息壓力不利房市（推論）。</p><div class="data">建築開工面積列入領先指標上升</div></article>
+      <article class="card"><div class="top"><h3>出口商</h3><span class="tag">高基期風險</span></div><p>2027 年第一季面臨年增率大幅下滑的數字壓力。</p><div class="data">2026 Q1 出口年增 51%</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>經濟數字創紀錄，但不是每個人都感受到</h2>
+      <p>紅燈代表整體經濟熱絡，但熱度集中在 AI 相關產業；股市重挫也讓許多家庭的財富感受與燈號相反。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>經濟成長：</b>主計總處預估今年經濟成長 11.05%（國安基金聲明引述）。</li>
+        <li><b>消費：</b>批發零售及餐飲業營業額年增 36.8%。</li>
+        <li><b>股市財富：</b>11 月中旬一週跌 17.5%，帳面財富大幅縮水。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>利率：</b>景氣過熱加上通膨高於 2%，央行 12 月升息可能性升高，房貸族負擔增加。</li>
+        <li><b>薪資分配：</b>科技業加薪、分紅亮眼，非科技業薪資未必同步，「有感」程度落差大。</li>
+        <li><b>2027 年：</b>高基期讓出口年增率下滑，新聞標題可能從「創紀錄」轉為「衰退」，但實際規模仍在高檔。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>科技業員工</b></td><td><span class="tag good">有利</span></td><td>加班、分紅、招募增加。</td></tr>
+          <tr><td><b>非科技業員工</b></td><td><span class="tag">有限</span></td><td>景氣熱度集中，未必同步加薪（推論）。</td></tr>
+          <tr><td><b>房貸族</b></td><td><span class="tag bad">升息壓力</span></td><td>景氣過熱增加升息理由。</td></tr>
+          <tr><td><b>股市投資人</b></td><td><span class="tag">背離</span></td><td>基本面好、股價卻大跌。</td></tr>
+          <tr><td><b>零售與餐飲業者</b></td><td><span class="tag good">有利</span></td><td>年終消費與加薪支撐生意。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>各家都以「史上最長」為主軸，差別在於強調產業結構改變、續紅可能，還是風險。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>工商時報</td><td>結構</td><td>景氣連紅新紀錄、更是產業結構改變</td><td>與 2021 年比較、CSP 支出、高基期</td></tr>
+          <tr><td>中時新聞網</td><td>紀錄</td><td>連 10 紅創新歷史紀錄</td><td>8 月下修為 40 分</td></tr>
+          <tr><td>經濟日報</td><td>續紅</td><td>史上最長，有望續紅至年底</td><td>加班工時 4.6%</td></tr>
+          <tr><td>鉅亨網</td><td>數據</td><td>疫後最長擴張、三大引擎</td><td>各項指標數值、領先同時指標</td></tr>
+          <tr><td>元大期貨</td><td>教學</td><td>景氣燈號怎麼算</td><td>分數區間、檢查值、公布時間</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>9 月 41 分、連 10 紅。</li>
+        <li>1984 年以來最長，超過 2021 年連 9 紅。</li>
+        <li>加班工時由綠轉黃紅，其餘不變。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「疫後最長」與「史上最長」。</b>鉅亨網寫疫後最長，其他媒體寫 1984 年來最長，後者是國發會說法。</li>
+        <li><b>8 月分數。</b>初值 41 分，9 月公布時修正為 40 分。</li>
+        <li><b>燈號不是買賣訊號。</b>國發會強調是景氣體溫計。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>8 月分數</td><td>41 分（9/29 初值）</td><td>40 分（10/29 修正值）</td><td>資料修正，以修正值為準。</td></tr>
+          <tr><td>紀錄描述</td><td>1984 年以來最長（經濟日報、中時）</td><td>疫後最長（鉅亨網）</td><td>口徑不同，前者範圍較廣。</td></tr>
+          <tr><td>今年經濟成長</td><td>11.05%（主計總處，國安基金引述）</td><td>「一定超過 12.7%」（經濟部長，經濟日報相關報導標題）</td><td>不同機關、不同時間的說法；後者未讀到原文。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導與說明，資料截至 2026 年 11 月 23 日 18:00（台灣時間）。國發會景氣指標查詢系統拒絕讀取，新聞稿原文未直接讀取。</p>
+    </div>
+    <div class="src-group">景氣燈號報導</div>
+    <ol class="sources">
+      <li><a href="https://www.ctee.com.tw/news/20261029701871-430104" target="_blank" rel="noopener">工商時報 — 國發會：景氣連紅歷史新紀錄、產業結構改變（10/29）</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20261029701759-430104" target="_blank" rel="noopener">工商時報 — 連 10 紅，景氣燈號寫歷史紀錄（10/29）</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261029004162-260410" target="_blank" rel="noopener">中時新聞網 — 景氣燈號連 10 紅創新紀錄（10/29）</a></li>
+      <li><a href="https://udn.com/news/story/7238/9845229" target="_blank" rel="noopener">經濟日報 — 史上最長！連十紅，有望續紅至年底（10/29）</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E6%99%AF%E6%B0%A3%E7%87%88%E8%99%9F-%E7%96%AB%E5%BE%8C%E6%9C%80%E9%95%B7%E6%93%B4%E5%BC%B5%E9%80%A310%E7%B4%85-%E5%88%86%E6%95%B8%E5%8D%87%E8%87%B341%E5%88%86-%E5%9C%8B%E7%99%BC%E6%9C%83%E7%9C%8B%E5%A5%BD3%E5%A4%A7%E5%BC%95%E6%93%8E%E6%94%AF%E6%92%90%E6%9C%89%E6%9C%9B%E7%BA%8C%E7%B4%85-090142529.html" target="_blank" rel="noopener">鉅亨網（雅虎股市）— 疫後最長擴張連 10 紅、三大引擎（10/29）</a></li>
+      <li><a href="https://www.mirrormedia.mg/external/setn_1914631" target="_blank" rel="noopener">三立新聞網（鏡週刊）— 8 月景氣燈號續亮紅（9/29）</a></li>
+      <li><a href="https://www.yuantatop.com/news-post/business-cycle-indicator/" target="_blank" rel="noopener">元大期貨 — 景氣燈號是什麼？分數、指標與台股關係</a></li>
+    </ol>
+    <div class="src-group">市場背景</div>
+    <ol class="sources" start="8">
+      <li><a href="https://www.storm.mg/article/11183789" target="_blank" rel="noopener">風傳媒 — 國安基金聲明與基本面數據（11/21）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611160116.aspx" target="_blank" rel="noopener">中央社 — 楊金龍談 12 月升息三重點（11/16）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3276976" target="_blank" rel="noopener">ETtoday — 台股 11/23 收盤（11/23）</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="11">
+      <li><a href="../taiex-2026-11-23/index.html">台股 11/23 表現解讀</a></li>
+      <li><a href="../schroders-outlook-2027/index.html">施羅德 2027 十大預測解讀</a></li>
+      <li><a href="../taiex-short-ban-2026-11/index.html">台股禁空令解讀（11/21）</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 23 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'股價指數 年增', s:'9 月', v:86.0},
+    {l:'機電設備進口 年增', s:'9 月', v:81.3},
+    {l:'海關出口 年增', s:'9 月', v:67.6},
+    {l:'零售餐飲 年增', s:'9 月', v:36.8},
+    {l:'工業生產 年增', s:'9 月', v:19.8},
+    {l:'加權指數 11/23', s:'36,811.89', v:2.16},
+    {l:'加權指數 一週', s:'11/16～11/20', v:-17.50},
+    {l:'加權 距 10 月高點', s:'約 49,968 → 36,812', v:-26.3, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

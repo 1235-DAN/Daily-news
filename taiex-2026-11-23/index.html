@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台股 11/23 表現解讀</title>
+<meta name="description" content="2026 年 11 月 23 日禁空令首日台股 V 轉漲 778 點的解讀：盤中走勢與漲停族群、三大法人仍賣超 511 億元、外資期貨空單、融資維持率降至 120%、估值與三種劇本，以及對台灣投資人的影響。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   News-analysis report template (news-reporter skill)
+   Report text is Traditional Chinese; replace every TODO placeholder (full-width brackets).
+   To change the theme, swap only the --accent / --hero-* variables
+   (see references/design.md).
+   Stock colours follow Taiwan's convention: red up (--up), green down
+   (--down); keep them separate from the good/bad tags.
+   ========================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4f0;
+  --surface:#fcfcfb;
+  --surface-2:#efeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#76746e;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --accent:#1f7a5a;
+  --accent-ink:#17614a;
+  --accent-wash:rgba(31,122,90,.10);
+  --neg:#d4572a;
+  --neg-wash:rgba(212,87,42,.10);
+  --neutral-bar:#b9b7ae;
+  --up:#d0342c;
+  --down:#1f8a4c;
+  --hero-bg:#0e1311;
+  --hero-ink:#f3f4f0;
+  --hero-ink-2:#9fa8a2;
+  --hero-accent:#6fd0a6;
+  --radius:14px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+    --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+    --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+    --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+    --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+    --up:#f06a5f; --down:#4cc27e;
+    --hero-bg:#101513;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0d0e0d; --surface:#181a19; --surface-2:#222523;
+  --ink:#ffffff; --ink-2:#c3c6c0; --muted:#8e928c;
+  --grid:#2a2d2b; --axis:#3a3e3b; --border:rgba(255,255,255,.10);
+  --accent:#43b58a; --accent-ink:#6fd0a6; --accent-wash:rgba(67,181,138,.14);
+  --neg:#e0714a; --neg-wash:rgba(224,113,74,.14); --neutral-bar:#555a56;
+  --up:#f06a5f; --down:#4cc27e;
+  --hero-bg:#101513;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:saturate(1.4) blur(12px); -webkit-backdrop-filter:saturate(1.4) blur(12px); border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:52px}
+/* far-left 「回到新聞入口」 button: required on every report */
+.nav .home-btn{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--bg); background:var(--ink); padding:5px 12px; border-radius:8px}
+.nav .home-btn:hover{opacity:.88; text-decoration:none}
+.nav .home-btn .hb-short{display:none}
+.nav .home{flex-shrink:0; font-weight:700; font-size:13.5px; white-space:nowrap; color:var(--ink-2); padding:5px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface)}
+.nav .home:hover{color:var(--ink); text-decoration:none}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; flex:1}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.link{display:block; padding:6px 10px; border-radius:8px; font-size:13.5px; color:var(--ink-2); white-space:nowrap}
+.nav a.link:hover{background:var(--surface-2); text-decoration:none; color:var(--ink)}
+.nav a.link.active{color:var(--ink); background:var(--surface-2); font-weight:500}
+.theme-btn{border:1px solid var(--border); background:var(--surface); color:var(--ink-2); border-radius:8px; height:32px; padding:0 10px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero-bg); color:var(--hero-ink); padding:72px 0 64px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -10% -70% 45%; height:520px; background:radial-gradient(closest-side, color-mix(in srgb, var(--hero-accent) 22%, transparent), transparent); pointer-events:none}
+.eyebrow{font-size:13px; letter-spacing:.12em; color:var(--hero-ink-2); margin:0 0 18px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:48px; align-items:end; position:relative; z-index:1}
+.hero h1{font-size:clamp(32px, 5vw, 56px); line-height:1.15; margin:0 0 20px; font-weight:900; text-wrap:balance}
+.hero .lede{font-size:clamp(15px, 1.8vw, 18px); color:color-mix(in srgb, var(--hero-ink) 85%, transparent); margin:0; max-width:620px}
+.stmt{border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:22px 24px; background:rgba(255,255,255,.03)}
+.stmt .k{font-size:12px; letter-spacing:.1em; color:var(--hero-ink-2)}
+.stmt .range{font-family:var(--mono); font-weight:600; font-size:clamp(44px, 7vw, 76px); line-height:1.05; letter-spacing:-.02em; margin:6px 0 4px; color:#fff}
+.stmt .range small{font-size:.42em; color:var(--hero-ink-2); font-weight:500; margin-left:6px}
+.stmt .was{font-family:var(--mono); font-size:13.5px; color:var(--hero-ink-2)}
+.stmt-row{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; margin-top:18px; background:rgba(255,255,255,.12); border-radius:10px; overflow:hidden}
+.stmt-row div{background:var(--hero-bg); padding:12px 14px}
+.stmt-row .v{font-family:var(--mono); font-weight:600; font-size:22px; color:var(--hero-accent); line-height:1.3}
+.stmt-row .l{font-size:12px; color:var(--hero-ink-2)}
+
+/* sections */
+section{padding:76px 0 8px}
+.sec-head{margin-bottom:28px; max-width:780px}
+.sec-num{font-size:13px; font-weight:700; color:var(--accent-ink); letter-spacing:.08em}
+h2{font-size:clamp(26px, 3.4vw, 34px); line-height:1.3; margin:6px 0 12px; font-weight:900; text-wrap:balance}
+.sec-head p{color:var(--ink-2); margin:0}
+h3{font-size:19px; line-height:1.45; margin:0 0 10px; font-weight:700; text-wrap:balance}
+h4{font-size:16px; margin:0 0 6px; font-weight:700}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.sub-h{font-size:15px; font-weight:700; color:var(--ink-2); margin:40px 0 14px; display:flex; align-items:center; gap:10px}
+.sub-h::after{content:""; flex:1; height:1px; background:var(--grid)}
+.tag{display:inline-block; font-size:12px; font-weight:500; padding:2px 9px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); white-space:nowrap; line-height:1.6}
+.tag.good{background:var(--accent-wash); color:var(--accent-ink); border-color:transparent}
+.tag.bad{background:var(--neg-wash); color:var(--neg); border-color:transparent}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2, minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3, minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4, minmax(0,1fr))}
+ul.plain{margin:0; padding-left:18px; color:var(--ink-2); font-size:15px}
+ul.plain li{margin:5px 0}
+ul.plain b{color:var(--ink); font-weight:700}
+.note{border-left:3px solid var(--accent); background:var(--accent-wash); padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--ink); margin:16px 0 0}
+.note.warn{border-left-color:var(--neg); background:var(--neg-wash)}
+.infer{font-size:12px; font-weight:700; color:var(--muted); border:1px dashed var(--axis); border-radius:6px; padding:0 6px; margin-left:4px; white-space:nowrap}
+
+/* 01 summary */
+.summary{margin:0; padding:0; list-style:none; counter-reset:s}
+.summary li{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--grid)}
+.summary li:last-child{border-bottom:1px solid var(--grid)}
+.summary li::before{counter-increment:s; content:counter(s, decimal-leading-zero); font-family:var(--mono); font-weight:600; font-size:18px; color:var(--accent-ink); line-height:1.7}
+.summary b{font-weight:700}
+
+/* 02 reasons + timeline */
+.reason{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding:18px 0; border-top:1px solid var(--grid)}
+.reason:last-child{border-bottom:1px solid var(--grid)}
+.reason .n{font-family:var(--mono); font-weight:600; font-size:28px; color:var(--accent-ink); line-height:1.1; min-width:1.6em}
+.reason h3{margin:0 0 4px}
+.reason p{color:var(--ink-2); margin:0; font-size:15px}
+.reason .ev{grid-column:2; display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--ink-2); margin:0 0 14px}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--surface); border:2px solid var(--axis)}
+.legend i.a{background:var(--accent); border-color:var(--accent)}
+.legend i.g{background:var(--neg); border-color:var(--neg)}
+.timeline{position:relative; margin:0; padding:0 0 0 28px; list-style:none}
+.timeline::before{content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--grid)}
+.timeline li{position:relative; padding:0 0 20px}
+.timeline li::before{content:""; position:absolute; left:-27px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--axis)}
+.timeline li.key::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 3px var(--bg)}
+.timeline li.geo::before{background:var(--neg); border-color:var(--neg); box-shadow:0 0 0 3px var(--bg)}
+.timeline .date{display:inline-block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; font-size:13.5px; color:var(--ink); background:var(--surface-2); border:1.5px solid var(--axis); border-radius:6px; padding:1px 8px; margin-bottom:4px}
+.timeline .what{color:var(--ink-2); font-size:15px}
+.timeline .what b{color:var(--ink)}
+
+/* kpi tiles */
+.tiles{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-radius:var(--radius); overflow:hidden}
+.tile{background:var(--surface); padding:16px 18px}
+.tile .l{font-size:13px; color:var(--muted)}
+.tile .v{font-family:var(--mono); font-weight:600; font-size:clamp(22px, 2.6vw, 28px); line-height:1.3; margin:2px 0; font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px; color:var(--ink-2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
+/* 04 stock chart (diverging bars, red up / green down) */
+.chart-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px 22px 16px}
+.chart-title{font-weight:700; font-size:16px; margin:0}
+.chart-sub{font-size:13px; color:var(--muted); margin:2px 0 14px}
+.div-rows{display:grid; gap:9px}
+.div-row, .axis-note{display:grid; grid-template-columns:9.5em minmax(90px, 1fr) 72px; gap:12px; align-items:center; font-size:14px}
+.div-row .lab{color:var(--ink-2); line-height:1.3}
+.div-row .lab small{display:block; color:var(--muted); font-size:12px}
+.div-track{position:relative; height:20px}
+.div-track::before{content:""; position:absolute; left:50%; top:-5px; bottom:-5px; width:1px; background:var(--axis)}
+.div-bar{position:absolute; top:0; bottom:0}
+.div-bar.u{left:50%; background:var(--up); border-radius:0 4px 4px 0}
+.div-bar.d{right:50%; background:var(--down); border-radius:4px 0 0 4px}
+.div-bar.est{opacity:.45}
+.div-row .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+.axis-note{font-size:12px; color:var(--muted); margin:8px 0 0}
+.axis-note > div{display:flex; justify-content:space-between}
+.tip{position:fixed; z-index:50; pointer-events:none; background:var(--surface); color:var(--ink); border:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,.14); border-radius:10px; padding:8px 12px; font-size:13px; line-height:1.5; max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s}
+.tip.show{opacity:1; transform:none}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:680px}
+th, td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--grid); vertical-align:top}
+th{font-size:12.5px; font-weight:700; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.period{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; min-width:12em}
+table.stocks td:nth-child(2), table.stocks td:nth-child(3){white-space:nowrap}
+table.stocks td:last-child{min-width:14em}
+tr.hl td{background:var(--accent-wash)}
+.media td:first-child{white-space:nowrap; font-weight:700}
+.diff td:nth-child(2), .diff td:nth-child(3){font-family:var(--mono); font-size:13.5px}
+
+/* 06 scenarios */
+.scen{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.scen .card{display:flex; flex-direction:column}
+.scen .prob{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--accent-ink); letter-spacing:.04em}
+.scen .card.alt .prob{color:var(--neg)}
+.scen .trig{font-size:13px; color:var(--muted); margin:auto 0 0; padding-top:12px; border-top:1px dashed var(--grid)}
+.watch{list-style:none; margin:0; padding:0; max-width:820px}
+.watch li{padding:14px 0; border-top:1px solid var(--grid); color:var(--ink-2)}
+.watch li:last-child{border-bottom:1px solid var(--grid)}
+.watch b{color:var(--ink)}
+
+/* 07 industry */
+.ind{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.ind .card{display:flex; flex-direction:column; gap:6px}
+.ind .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.ind h3{margin:0; font-size:17px}
+.ind p{font-size:14.5px; color:var(--ink-2); margin:0}
+.ind .data{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-top:auto; padding-top:8px}
+
+/* single-series bars */
+.hbars{display:grid; gap:10px}
+.hbar{display:grid; grid-template-columns:9.5em minmax(60px,1fr) 4em; gap:12px; align-items:center; font-size:14px}
+.hbar .lab{color:var(--ink-2); line-height:1.3}
+.hbar .lab small{display:block; color:var(--muted); font-size:12px}
+.hbar .track{height:14px}
+.hbar .fill{height:100%; background:var(--accent); border-radius:0 4px 4px 0; min-width:3px}
+.hbar.muted-bar .fill{background:var(--neutral-bar)}
+.hbar.est .fill{opacity:.45}
+.hbar .val{font-family:var(--mono); text-align:right; font-weight:600; font-size:13.5px}
+
+/* 10 sources */
+.src-group{font-size:13px; font-weight:700; color:var(--muted); margin:18px 0 8px; letter-spacing:.04em}
+.sources{columns:2; column-gap:32px; font-size:13.5px; padding-left:20px; margin:0}
+.sources li{break-inside:avoid; margin:0 0 6px; color:var(--ink-2)}
+footer{margin-top:72px; padding:32px 0 48px; border-top:1px solid var(--border); font-size:13px; color:var(--muted)}
+
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; gap:32px}
+  .g4, .tiles{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .g3, .ind, .scen{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  .wrap{padding:0 16px}
+  .nav .wrap{gap:8px}
+  .nav .home-btn{padding:5px 10px}
+  .nav .home-btn .hb-long{display:none}
+  .nav .home-btn .hb-short{display:inline}
+  .g2, .g3, .ind, .scen{grid-template-columns:1fr}
+  .hero{padding:52px 0 44px}
+  .stmt{padding:18px}
+  .stmt-row div{padding:10px}
+  .stmt-row .v{font-size:18px; white-space:nowrap}
+  section{padding-top:56px}
+  .sources{columns:1}
+  .div-row, .axis-note{grid-template-columns:86px minmax(80px, 1fr) 62px; gap:8px; font-size:13px}
+  .hbar{grid-template-columns:7.5em minmax(50px,1fr) 3.5em; gap:8px; font-size:13px}
+  .stmt-row .v{font-size:15px}
+}
+@media print{ .nav, .theme-btn{display:none} .card, .chart-card{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="章節導覽">
+  <div class="wrap">
+    <a class="home-btn" href="../index.html" aria-label="回到新聞入口">← <span class="hb-long">回到新聞入口</span><span class="hb-short">入口</span></a>
+    <a class="home" href="../timeline/index.html">時間線</a>
+    <ul>
+      <li><a class="link" href="#summary">摘要</a></li>
+      <li><a class="link" href="#cause">前因後果</a></li>
+      <li><a class="link" href="#intraday">盤中走勢</a></li>
+      <li><a class="link" href="#local">當事方影響</a></li>
+      <li><a class="link" href="#markets">股價反應</a></li>
+      <li><a class="link" href="#world">全球影響</a></li>
+      <li><a class="link" href="#outlook">未來影響</a></li>
+      <li><a class="link" href="#industry">產業影響</a></li>
+      <li><a class="link" href="#taiwan">台灣影響</a></li>
+      <li><a class="link" href="#media">報導比較</a></li>
+      <li><a class="link" href="#sources">資料來源</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 主題</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">台股解讀 · 禁空令首日 · 資料截至 2026 年 11 月 23 日 18:00（台灣時間）</p>
+      <h1>禁空令首日台股 V 轉漲 778 點：從 35,442 點拉上 37,108 點，但法人全站賣方</h1>
+      <p class="lede">11 月 23 日是金管會全面禁止平盤以下放空的第一天。加權指數開低 133.81 點後一度跌到 35,442.41 點，約 11 點起急拉逾千點，最高 37,108.20 點，收 36,811.89 點、漲 778.60 點（2.16%），盤中振幅 1,665.79 點。聯發科、台達電、聯電漲停，台積電漲 30 元收 2,030 元。但三大法人合計仍賣超 511.77 億元，外資連 6 賣、累計 2,476.18 億元；撐盤的是限空令下的空方縮手、國安基金，以及證交所盤後宣布把融資維持率門檻從 130% 降到 120%。</p>
+    </div>
+    <div class="stmt" aria-label="加權指數收盤">
+      <div class="k">11/23 加權指數收盤</div>
+      <div class="range">36,811.89<small>點</small></div>
+      <div class="was">+778.60 點 · +2.16% · 盤中振幅 1,665.79 點</div>
+      <div class="stmt-row">
+        <div><div class="v">−511.77 億</div><div class="l">三大法人合計賣超（元）</div></div>
+        <div><div class="v">35,442</div><div class="l">盤中最低點</div></div>
+        <div><div class="v">120%</div><div class="l">融資維持率新門檻（11/24 起）</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 summary -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01 · 重點摘要</div>
+      <h2>八個重點看懂 11/23 台股</h2>
+      <p>一句話：政策讓賣壓找不到「加速器」，指數終於止跌；但法人還在賣，這是一次政策撐出來的反彈，不是資金回流。禁空令內容請見<a href="../taiex-short-ban-2026-11/index.html">台股禁空令解讀</a>。</p>
+    </div>
+    <ol class="summary">
+      <li><div><b>V 型反轉。</b>開盤 35,899.48 點（−133.81），最低 35,442.41 點，最高 37,108.20 點，收 36,811.89 點、漲 778.60 點（+2.16%）。</div></li>
+      <li><div><b>從低點拉回 1,369 點。</b>盤中振幅 1,665.79 點；收盤距高點仍差約 296 點（推算）。</div></li>
+      <li><div><b>成交值破兆。</b>成交值 1 兆 791.65 億元（ETtoday、鏡週刊），比 11/20 的 8,773.50 億元增加約 23%（推算）。</div></li>
+      <li><div><b>AI 權值股漲停。</b>聯發科收 3,685 元、台達電收 990 元，雙雙漲停；聯電、力積電也漲停；台積電漲 1.5% 收 2,030 元。</div></li>
+      <li><div><b>PCB 族群全面漲停。</b>金像電、聯茂、台光電、南亞、健鼎、台玻漲停，臻鼎-KY 漲約 7%（鉅亨網）。</div></li>
+      <li><div><b>法人全站賣方。</b>外資賣超 289.48 億元、投信 32.28 億元、自營商 190.01 億元，合計 511.77 億元；外資已連 6 個交易日賣超、累計 2,476.18 億元（ETtoday）。</div></li>
+      <li><div><b>融資門檻放寬。</b>證交所盤後宣布 11/24 起整戶擔保維持率追繳門檻從 130% 降到 120%，並取消 24 日前依 130% 發出的追繳通知（ETtoday）。</div></li>
+      <li><div><b>估值落到歷史下緣附近。</b>中信投顧估台股前瞻本益比約 11.9 倍，對應約 36,000 點；歷史下緣約 10.8 倍、約 32,800 點，認為下檔風險相對有限。</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 causes -->
+<section id="cause">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02 · 前因後果</div>
+      <h2>為什麼法人在賣，指數還能漲？四個原因</h2>
+      <p>第 1、2 點為報導事實，第 3、4 點含本報告推論。</p>
+    </div>
+    <div>
+      <div class="reason"><div class="n">1</div><div><h3>禁空令讓空方縮手</h3><p>11/23 起融券與借券賣出不得低於平盤，融券保證金 150%。股價一跌，空方就不能追殺，下跌的「加速器」被拔掉。鉅亨網把反彈歸因於「美股期貨反彈及護盤措施擴大」。</p></div><div class="ev"><span class="tag">禁空令首日</span></div></div>
+      <div class="reason"><div class="n">2</div><div><h3>國安基金已進場</h3><p>財政部 11/21 新聞稿說國安基金已進場護盤，並「將視市場情況適時採取必要措施」（NOWnews）。實際買進金額未公布。</p></div><div class="ev"><span class="tag">國安基金</span></div></div>
+      <div class="reason"><div class="n">3</div><div><h3>空單回補</h3><p>借券出借人被鼓勵召回股票，既有空單可能被迫回補，形成買盤（推論；本報告未查到 11/23 融券、借券餘額數據）。</p></div><div class="ev"><span class="tag">推論</span></div></div>
+      <div class="reason"><div class="n">4</div><div><h3>跌深估值吸引</h3><p>上週一週跌 17.50%，中信投顧指前瞻本益比已降到約 11.9 倍；當天施羅德也發布 2027 預測、把台股列為新興市場首選（中央社）。</p></div><div class="ev"><span class="tag">11.9 倍</span></div></div>
+    </div>
+    <div class="note">用電梯來想：上週電梯在急墜，這週一政府把「空方按下樓鍵」的權限拿走（禁空令），還派人站在電梯裡撐住（國安基金），電梯就停下來往上走了一段；但真正要離開大樓的人（外資）還在一個個走出去（推論）。</div>
+
+    <div class="sub-h">事件經過</div>
+    <div class="legend"><span><i class="a"></i>政策</span><span><i class="g"></i>台股</span><span><i></i>預定時程</span></div>
+    <div class="grid g2" style="align-items:start">
+      <ol class="timeline">
+        <li class="geo"><div class="date">2026-11-16～20</div><div class="what">台股一週跌 7,641.83 點（17.50%），11/20 收 36,033.29 點。</div></li>
+        <li class="key"><div class="date">2026-11-21</div><div class="what">金管會宣布 11/23 起全面平盤下禁空；國安基金證實已進場。</div></li>
+        <li class="key"><div class="date">2026-11-23 早盤</div><div class="what">開低 133.81 點，最低 35,442.41 點。</div></li>
+      </ol>
+      <ol class="timeline">
+        <li class="key"><div class="date">2026-11-23 11:00 後</div><div class="what">急拉逾千點，最高 37,108.20 點；<b>收 36,811.89 點、漲 778.60 點</b>。</div></li>
+        <li class="key"><div class="date">2026-11-23 盤後</div><div class="what">證交所宣布融資維持率門檻降至 120%，11/24 生效。</div></li>
+        <li><div class="date">2026-11-27</div><div class="what">國發會公布 10 月景氣燈號。</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 intraday -->
+<section id="intraday">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03 · 盤中走勢</div>
+      <h2>早盤再探底、11 點後翻轉：一天走完恐慌到搶反彈</h2>
+      <p>盤中數字取自鏡週刊、NOWnews 與 ETtoday；漲跌停名單取自鉅亨網、ETtoday 與鏡週刊。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/23 加權指數關鍵點位（點）</p>
+        <p class="chart-sub">長條以 35,000 點為起點；灰色為前一交易日收盤</p>
+        <div class="hbars">
+          <div class="hbar muted-bar" data-tip="11/20 收盤 36,033.29 點"><div class="lab">11/20 收盤</div><div class="track"><div class="fill" style="width:49.0%"></div></div><div class="val">36,033</div></div>
+          <div class="hbar" data-tip="開盤 35,899.48 點，−133.81"><div class="lab">開盤</div><div class="track"><div class="fill" style="width:42.7%"></div></div><div class="val">35,899</div></div>
+          <div class="hbar" data-tip="盤中最低 35,442.41 點"><div class="lab">盤中最低</div><div class="track"><div class="fill" style="width:21.0%"></div></div><div class="val">35,442</div></div>
+          <div class="hbar" data-tip="盤中最高 37,108.20 點"><div class="lab">盤中最高<small>11 點後急拉</small></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">37,108</div></div>
+          <div class="hbar" data-tip="收盤 36,811.89 點，+778.60"><div class="lab">收盤</div><div class="track"><div class="fill" style="width:85.9%"></div></div><div class="val">36,812</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>漲停與重挫名單</h3>
+        <ul class="plain small">
+          <li><b>漲停：</b>聯發科、台達電、聯電、力積電、智邦、貿聯-KY、群聯、奇鋐、台光電、金像電、聯茂、南亞、健鼎、台玻等。</li>
+          <li><b>大漲：</b>信驊、川湖漲逾 5%，日月光投控、力成漲約 5%，南電漲約 6%。</li>
+          <li><b>下跌：</b>精測、漢測、創意跌 4～6%；中信金跌約 6%、華南金與富邦金跌約 4%（鉅亨網）。</li>
+          <li><b>景碩：</b>盤中一度跌停，收盤翻紅（鉅亨網）。</li>
+          <li><b>鴻海：</b>逆勢跌 4 元收 206 元（ETtoday）。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 local -->
+<section id="local">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04 · 對當事方的影響</div>
+      <h2>政策撐住指數，法人繼續減碼</h2>
+      <p>當事方包括主管機關與國安基金、三大法人、融資戶與放空者。</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="l">外資</div><div class="v">−289.48 億</div><div class="d">元，連 6 賣</div></div>
+      <div class="tile"><div class="l">投信</div><div class="v">−32.28 億</div><div class="d">元</div></div>
+      <div class="tile"><div class="l">自營商</div><div class="v">−190.01 億</div><div class="d">元，避險 −161.02 億</div></div>
+      <div class="tile"><div class="l">外資 6 日累計</div><div class="v">−2,476 億</div><div class="d">元，11/16 起</div></div>
+      <div class="tile"><div class="l">外資賣台積電</div><div class="v">1.1 萬張</div><div class="d">連 9 賣、累計約 7.6 萬張</div></div>
+      <div class="tile"><div class="l">外資期貨淨空單</div><div class="v">逾 10.3 萬口</div><div class="d">單日增 5,569 口</div></div>
+      <div class="tile"><div class="l">融資維持率門檻</div><div class="v">130% → 120%</div><div class="d">11/24 起</div></div>
+      <div class="tile"><div class="l">上市融資餘額</div><div class="v">約 4,352 億</div><div class="d">元（中信投顧引述）</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>政府與證交所</h3><ul class="plain">
+        <li><b>第四道措施：</b>融資門檻降到 120%，取消依舊門檻發出的追繳通知，可用其他擔保品補繳（ETtoday）。</li>
+        <li><b>喊話：</b>證交所董事長林修銘致函上市公司，鼓勵庫藏股與法說會（ETtoday 相關報導標題）。</li>
+      </ul></div>
+      <div class="card"><h3>外資</h3><ul class="plain">
+        <li><b>現貨：</b>11/16 起每天賣超：701.89、380.94、765.64、243.12、95.11、289.48 億元。</li>
+        <li><b>期貨：</b>淨空單再增 5,569 口到逾 10.3 萬口，顯示外資仍在避險或看空（推論）。</li>
+        <li><b>賣超個股：</b>台玻 3.15 萬張居首，鴻海 1.49 萬張、台積電 1.10 萬張。</li>
+      </ul></div>
+      <div class="card"><h3>融資戶</h3><ul class="plain">
+        <li><b>喘息：</b>門檻降到 120%，原本 120～130% 的帳戶暫時不必補錢。</li>
+        <li><b>風險：</b>高盛 11/21 研究（彭博引述）估全市場維持率約 132%，53% 個股低於 130%（ETtoday 相關報導標題）。</li>
+      </ul></div>
+      <div class="card"><h3>投信與自營商</h3><ul class="plain">
+        <li><b>投信：</b>小幅賣超 32.28 億元，不再像 11 月初那樣大買撐盤。</li>
+        <li><b>自營商：</b>避險賣超 161.02 億元，反映權證與期貨避險部位調整（推論）。</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 markets -->
+<section id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05 · 股價與市場反應</div>
+      <h2>AI 二線股與 PCB 領漲，權值股鴻海、金融股落後</h2>
+      <p>皆為 11/23 收盤。顏色依台灣習慣：紅漲綠跌。</p>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="chart-card">
+        <p class="chart-title">11/23 主要個股與指數漲跌幅</p>
+        <p class="chart-sub">收盤漲跌（%）；淡色為由點數推算</p>
+        <div class="div-rows" id="stockChart"></div>
+        <div class="axis-note"><span></span><div><span>▼ 下跌</span><span>0</span><span>上漲 ▲</span></div><span></span></div>
+      </div>
+      <div class="card">
+        <h3>各方怎麼看</h3>
+        <ul class="plain small">
+          <li><b>中信投顧：</b>三波護盤政策下，台股探底空間有限，36,000 點是長線投資的合理價位；需觀察成交量能否站穩 1.3 兆元、指數站回 5 日線（ETtoday）。</li>
+          <li><b>鉅亨網：</b>美股期貨反彈與護盤措施擴大帶動反彈。</li>
+          <li><b>NOWnews：</b>國安基金說明美國 AI 監管、資本支出回報與融資風險是這波下跌的原因。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-h">相關個股一覽</div>
+    <div class="tbl-wrap">
+      <table class="stocks">
+        <thead><tr><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>漲跌幅</th><th>期間走勢</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">^TWII</td><td><b>加權指數</b></td><td>台股</td><td class="num">36,811.89</td><td class="num up">+2.16%</td><td class="period">距 10 月高點約 −26%</td><td>禁空令首日 V 轉。</td></tr>
+          <tr><td class="num">2330</td><td><b>台積電</b></td><td>台股</td><td class="num">2,030 元</td><td class="num up">+1.50%</td><td class="period">開 1,990、高 2,050、低 1,970</td><td>外資連 9 賣。</td></tr>
+          <tr><td class="num">2454</td><td><b>聯發科</b></td><td>台股</td><td class="num">3,685 元</td><td class="num up">+10.0%</td><td class="period">開 3,355</td><td>漲停，領漲權值股。</td></tr>
+          <tr><td class="num">2308</td><td><b>台達電</b></td><td>台股</td><td class="num">990 元</td><td class="num up">+10.0%</td><td class="period">開 864</td><td>漲停，AI 電源。</td></tr>
+          <tr><td class="num">3017</td><td><b>奇鋐</b></td><td>台股</td><td class="num">2,425 元</td><td class="num up">漲停</td><td class="period">開 2,005</td><td>AI 散熱。</td></tr>
+          <tr><td class="num">2383</td><td><b>台光電</b></td><td>台股</td><td class="num">3,090 元</td><td class="num up">漲停</td><td class="period">開 2,600</td><td>PCB 材料。</td></tr>
+          <tr><td class="num">2382</td><td><b>廣達</b></td><td>台股</td><td class="num">257 元</td><td class="num up">約 +2.0%</td><td class="period">—</td><td>AI 伺服器。</td></tr>
+          <tr><td class="num">2317</td><td><b>鴻海</b></td><td>台股</td><td class="num">206 元</td><td class="num down">約 −1.9%</td><td class="period">—</td><td>外資賣超 1.49 萬張。</td></tr>
+          <tr><td class="num">2891</td><td><b>中信金</b></td><td>台股</td><td class="num">—</td><td class="num down">約 −6%</td><td class="period">—</td><td>金融股走弱。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">來源：ETtoday（證交所資料）、鏡週刊、鉅亨網、NOWnews。新台幣、台指期與櫃買指數收盤本報告未查到。以上僅說明股價變動，不構成投資建議。</p>
+  </div>
+</section>
+
+<!-- 06 world -->
+<section id="world">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06 · 對世界的影響</div>
+      <h2>台股靠政策止跌，鄰近市場仍在恐慌中</h2>
+      <p>本報告讀到的資料對其他市場著墨有限，以下以已知事實為主。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card"><h3>美股期貨</h3><ul class="plain small">
+        <li>鉅亨網指美股期貨反彈是台股回穩的原因之一。</li>
+        <li>上週五美股那斯達克跌 5.28%、費半跌 10.73%。</li>
+      </ul></article>
+      <article class="card"><h3>韓股</h3><ul class="plain small">
+        <li>ETtoday 相關報導標題指韓國 KOSPI 盤中一度重挫近 6%、連兩天觸發程式交易暫停機制；本報告未讀到全文。</li>
+      </ul></article>
+      <article class="card"><h3>政策工具比較</h3><ul class="plain small">
+        <li>台灣同時動用禁空、國安基金、融資門檻三種工具，力道在主要市場中相當罕見（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>外資動向</h3><ul class="plain small">
+        <li>外資在台股與台指期同步站在賣方，顯示全球資金仍在降低 AI 硬體曝險（推論）。</li>
+      </ul></article>
+      <article class="card"><h3>外資機構觀點</h3><ul class="plain small">
+        <li>施羅德同日把台股列為 2027 年新興市場首選，短線賣、長線看好並存。</li>
+      </ul></article>
+      <article class="card"><h3>AI 供應鏈</h3><ul class="plain small">
+        <li>漲停股集中在 AI 電源、散熱、PCB，市場仍認為 AI 需求長期存在（推論）。</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 07 outlook -->
+<section id="outlook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07 · 之後可能的影響</div>
+      <h2>接下來三種劇本</h2>
+      <p>以下依政策工具與資金面整理，屬情境推論，不是預測保證。</p>
+    </div>
+    <div class="scen">
+      <article class="card"><div class="prob">劇本 A · 基本情境</div><h3>35,000～38,000 點築底</h3><ul class="plain small">
+        <li>政策撐住下檔，外資賣壓逐漸減少。</li>
+        <li>成交量回落，指數區間整理。</li>
+        <li>等待 11/27 景氣燈號與美國 PCE。</li>
+      </ul><p class="trig">觸發條件：美股止跌、外資賣超縮小。</p></article>
+      <article class="card alt"><div class="prob">劇本 B · 惡化</div><h3>政策效果遞減、再破底</h3><ul class="plain small">
+        <li>外資持續大賣現貨與期貨。</li>
+        <li>跌破 11/23 低點 35,442 點。</li>
+        <li>向中信投顧估的歷史下緣約 32,800 點靠近。</li>
+      </ul><p class="trig">觸發條件：美股再跌、輝達 SEC 調查擴大、Fed 升息 2 碼。</p></article>
+      <article class="card"><div class="prob">劇本 C · 樂觀</div><h3>延續反彈、收復 38,000 點以上</h3><ul class="plain small">
+        <li>空單回補與國安基金加碼。</li>
+        <li>外資轉買、期貨空單下降。</li>
+        <li>成交量維持 1.3 兆元以上。</li>
+      </ul><p class="trig">觸發條件：美股反彈、AI 股情緒回穩。</p></article>
+    </div>
+    <div class="note warn">截至 11/23 18:00，國安基金實際投入金額、禁空令下融券與借券餘額變化均未公布；新台幣與台指期收盤本報告未查到。</div>
+    <div class="sub-h">值得盯緊的訊號</div>
+    <ul class="watch">
+      <li><b>外資連賣是否中止</b>：現貨與期貨淨空單同步觀察。</li>
+      <li><b>成交量</b>：中信投顧以 1.3 兆元為量能指標。</li>
+      <li><b>5 日均線</b>：能否站穩代表短線止跌。</li>
+      <li><b>融資維持率</b>：120% 新門檻下的追繳戶數。</li>
+      <li><b>11/27 景氣燈號</b>：10 月是否連 11 紅。</li>
+      <li><b>美股與輝達</b>：外部因素仍是方向關鍵。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 industry -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">08 · 各產業影響</div>
+      <h2>誰反彈最強、誰還在跌</h2>
+      <p>標籤為 11/23 當日表現；卡片下方是實際數據。</p>
+    </div>
+    <div class="ind">
+      <article class="card"><div class="top"><h3>PCB 與材料</h3><span class="tag good">強彈</span></div><p>上週跌停最多的族群，這天反彈最猛。</p><div class="data">金像電、台光電、聯茂漲停</div></article>
+      <article class="card"><div class="top"><h3>電源與散熱</h3><span class="tag good">強彈</span></div><p>AI 機櫃關鍵零組件。</p><div class="data">台達電、奇鋐漲停</div></article>
+      <article class="card"><div class="top"><h3>IC 設計</h3><span class="tag">分歧</span></div><p>聯發科漲停，但創意、精測下跌。</p><div class="data">聯發科 +10%、創意跌 4～6%</div></article>
+      <article class="card"><div class="top"><h3>記憶體與晶圓代工</h3><span class="tag good">反彈</span></div><p>聯電、力積電漲停，華邦電大漲。</p><div class="data">外資買超力積電 1.29 萬張</div></article>
+      <article class="card"><div class="top"><h3>晶圓代工龍頭</h3><span class="tag good">小漲</span></div><p>台積電漲幅落後大盤，外資仍連 9 賣。</p><div class="data">台積電 +1.5%</div></article>
+      <article class="card"><div class="top"><h3>伺服器組裝</h3><span class="tag">分歧</span></div><p>廣達小漲、鴻海下跌。</p><div class="data">鴻海 −1.9%、廣達 +2.0%</div></article>
+      <article class="card"><div class="top"><h3>金融</h3><span class="tag bad">走弱</span></div><p>外資賣超凱基金、玉山金、台新新光金。</p><div class="data">中信金約 −6%</div></article>
+      <article class="card"><div class="top"><h3>面板與鋼鐵</h3><span class="tag bad">外資賣</span></div><p>外資賣超群創、友達、中鋼。</p><div class="data">群創 2.00 萬張</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Taiwan -->
+<section id="taiwan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">09 · 對台灣的影響</div>
+      <h2>政府四道防線全開，台股暫時止血</h2>
+      <p>國安基金、三波限空、融資門檻放寬，加上行政院連日開會，政府工具幾乎全數動用。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>現在看得到的影響</h3><ul class="plain">
+        <li><b>市值回升：</b>指數漲 2.16%，但仍比 11/13 收盤低約 15.7%（推算）。</li>
+        <li><b>融資戶：</b>門檻降到 120% 後，短期斷頭壓力減輕。</li>
+        <li><b>市場結構：</b>空方受限、融資放寬，市場上漲容易、下跌時的避險工具變少（推論）。</li>
+      </ul></div>
+      <div class="card"><h3>接下來要注意 <span class="infer">推論</span></h3><ul class="plain">
+        <li><b>政策退場：</b>禁空令與融資放寬何時解除，會影響之後的波動。</li>
+        <li><b>道德風險：</b>一再護盤可能讓投資人低估風險、加大槓桿。</li>
+        <li><b>基本面：</b>景氣燈號仍紅，若 11/27 公布的 10 月燈號持續紅燈，有助支撐信心。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">對台灣各族群的影響</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>對象</th><th>影響</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><b>持股投資人</b></td><td><span class="tag good">喘息</span></td><td>指數止跌反彈。</td></tr>
+          <tr><td><b>融資族</b></td><td><span class="tag good">壓力減輕</span></td><td>追繳門檻 130% → 120%。</td></tr>
+          <tr><td><b>放空者</b></td><td><span class="tag bad">不利</span></td><td>平盤下禁空、空單可能被迫回補。</td></tr>
+          <tr><td><b>外資</b></td><td><span class="tag">持續減碼</span></td><td>現貨與期貨同步偏空。</td></tr>
+          <tr><td><b>納稅人</b></td><td><span class="tag">潛在風險</span></td><td>國安基金盈虧最終由國庫承擔。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">10 · 新聞重點比較</div>
+      <h2>同一件事，各家媒體怎麼報</h2>
+      <p>多數媒體強調「限空令奏效、V 轉」；ETtoday 則把焦點放在法人仍是賣方。</p>
+    </div>
+    <div class="tbl-wrap media">
+      <table>
+        <thead><tr><th>媒體</th><th>主要切入點</th><th>標題重點</th><th>特別強調</th></tr></thead>
+        <tbody>
+          <tr><td>鉅亨網</td><td>族群</td><td>護盤措施擴大激勵反彈</td><td>聯發科、台達電領軍，PCB 漲停名單</td></tr>
+          <tr><td>ETtoday</td><td>籌碼</td><td>V 轉收漲 778 點、外資連 6 砍</td><td>三大法人全賣、融資門檻 120%</td></tr>
+          <tr><td>鏡週刊</td><td>盤中</td><td>翻紅收 36,811 點、震盪 1,665 點</td><td>個股開高低收</td></tr>
+          <tr><td>NOWnews</td><td>政策</td><td>限空令上路、國安基金護盤</td><td>措施全文、國安基金說法</td></tr>
+          <tr><td>中央社</td><td>外資觀點</td><td>施羅德看好台股</td><td>同日長線看多觀點</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h4>各家一致的事實</h4><ul class="plain small">
+        <li>收 36,811.89 點、漲 778.60 點、+2.16%。</li>
+        <li>聯發科、台達電漲停，台積電漲 30 元。</li>
+        <li>禁空令首日、國安基金在場。</li>
+      </ul></div>
+      <div class="card"><h4>報導差異與閱讀提醒</h4><ul class="plain small">
+        <li><b>「奏效」是一天的結果。</b>法人仍是賣方，反彈能否延續待觀察。</li>
+        <li><b>漲點寫法不同。</b>778.6、778、779 點都指同一個漲幅。</li>
+        <li><b>融資門檻新聞在盤後。</b>當天上漲與融資放寬無直接關係。</li>
+      </ul></div>
+    </div>
+    <div class="sub-h">數字不一致的地方</div>
+    <div class="tbl-wrap diff">
+      <table>
+        <thead><tr><th>項目</th><th>說法 A</th><th>說法 B</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>成交值</td><td>1 兆 791.65 億元（ETtoday、鏡週刊、NOWnews）</td><td>1 兆 1,066.77 億元（ETtoday 另一篇）</td><td>可能一篇含盤後或其他交易，本報告採前者。</td></tr>
+          <tr><td>外資 6 日累計賣超</td><td>2,476.18 億元</td><td>2,476.17 億元</td><td>四捨五入。</td></tr>
+          <tr><td>中信金跌幅</td><td>收盤約 −6%（鉅亨網）</td><td>盤中一度 −9%（ETtoday）</td><td>收盤與盤中。</td></tr>
+          <tr><td>創意</td><td>跌 4～6%（鉅亨網）</td><td>「跌停」（ETtoday 標題）</td><td>盤中與收盤時點不同，未能確認。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11 sources -->
+<section id="sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">11 · 資料來源</div>
+      <h2>資料來源</h2>
+      <p>本報告整理自以下公開報導，資料截至 2026 年 11 月 23 日 18:00（台灣時間）。證交所新聞稿原文未直接讀取；高盛、韓股、證交所董事長致函內容僅見於相關報導標題。</p>
+    </div>
+    <div class="src-group">台灣媒體</div>
+    <ol class="sources">
+      <li><a href="https://news.cnyes.com/news/id/6670135" target="_blank" rel="noopener">鉅亨網 — 台股盤後：護盤措施擴大激勵反彈（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3276976" target="_blank" rel="noopener">ETtoday — 台股翻紅收漲 779 點（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3277068" target="_blank" rel="noopener">ETtoday — V 轉收漲 778 點、外資連 6 砍（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3277144" target="_blank" rel="noopener">ETtoday — 外資進出前 10 大、期貨空單（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3276909" target="_blank" rel="noopener">ETtoday — 中信投顧：探底再崩有限（11/23）</a></li>
+      <li><a href="https://finance.ettoday.net/news/3277059" target="_blank" rel="noopener">ETtoday — 融資擔保維持率降至 120%（11/23）</a></li>
+      <li><a href="https://www.mirrormedia.mg/story/20261123edi026" target="_blank" rel="noopener">鏡週刊 — 台股翻紅、盤中震盪 1,665 點（11/23）</a></li>
+      <li><a href="https://www.nownews.com/news/6894765" target="_blank" rel="noopener">NOWnews — 台股強彈 778 點、限空令上路（11/23）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611230145.aspx" target="_blank" rel="noopener">中央社 — 施羅德看好台股（11/23）</a></li>
+      <li><a href="https://www.cna.com.tw/news/afe/202611210127.aspx" target="_blank" rel="noopener">中央社 — 金管會禁空令 5 措施（11/21）</a></li>
+    </ol>
+    <div class="src-group">本站相關報告</div>
+    <ol class="sources" start="11">
+      <li><a href="../taiex-short-ban-2026-11/index.html">台股禁空令解讀（11/21）</a></li>
+      <li><a href="../us-stocks-volatility-2026-11/index.html">美股震盪解讀（11/21）</a></li>
+      <li><a href="../schroders-outlook-2027/index.html">施羅德 2027 十大預測解讀</a></li>
+      <li><a href="../taiwan-business-signal-2026-11/index.html">景氣燈號連 10 紅解讀</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>本報告為獨立整理的新聞解讀；標示「推論」的內容為分析判斷。股價僅作事件影響說明，內容不構成任何投資建議。資料截至 2026 年 11 月 23 日 18:00（台灣時間）。 · <a href="../index.html">回到新聞入口</a></p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var isDark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  var tip = document.getElementById('tip');
+  function showTip(html, x, y){
+    tip.innerHTML = html; tip.classList.add('show');
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(Math.max(8, x + 14), window.innerWidth - w - 8) + 'px';
+    var top = y - h - 14; if (top < 8) top = y + 18;
+    tip.style.top = top + 'px';
+  }
+  function hideTip(){ tip.classList.remove('show'); }
+
+  // ---------- stock move bars (red up / green down) ----------
+  // l: name  s: close or other note (may be empty)  v: % change  est: true = derived from reports (pale bar)
+    var STOCKS = [
+    {l:'聯發科', s:'3,685 元', v:10.0},
+    {l:'台達電', s:'990 元', v:10.0},
+    {l:'加權指數', s:'36,811.89', v:2.16},
+    {l:'廣達', s:'257 元', v:1.98, est:true},
+    {l:'台積電', s:'2,030 元', v:1.50},
+    {l:'鴻海', s:'206 元', v:-1.90, est:true},
+    {l:'中信金', s:'約', v:-6.0, est:true}
+  ];
+  var vmax = Math.max.apply(null, STOCKS.map(function(r){ return Math.abs(r.v); }).concat([1])) * 1.15;
+  document.getElementById('stockChart').innerHTML = STOCKS.map(function(r){
+    var w = Math.abs(r.v) / vmax * 50;
+    var sign = r.v > 0 ? '+' : (r.v < 0 ? '−' : '');
+    var cls = (r.v >= 0 ? 'u' : 'd') + (r.est ? ' est' : '');
+    var txt = sign + Math.abs(r.v).toFixed(2) + '%';
+    return '<div class="div-row" data-tip="' + r.l + (r.s ? ' ' + r.s : '') + '：' + txt + (r.est ? '（推算）' : '') + '">' +
+      '<div class="lab">' + r.l + (r.s ? '<small>' + r.s + '</small>' : '') + '</div>' +
+      '<div class="div-track"><div class="div-bar ' + cls + '" style="width:' + Math.max(w, 0.6) + '%"></div></div>' +
+      '<div class="val ' + (r.v > 0 ? 'up' : (r.v < 0 ? 'down' : '')) + '">' + txt + '</div></div>';
+  }).join('');
+
+  document.querySelectorAll('[data-tip]').forEach(function(n){
+    n.addEventListener('mousemove', function(ev){ showTip('<div>' + n.getAttribute('data-tip') + '</div>', ev.clientX, ev.clientY); });
+    n.addEventListener('mouseleave', hideTip);
+  });
+
+  // ---------- nav: highlight the current section ----------
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.link'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = -1;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
